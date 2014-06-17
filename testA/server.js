@@ -1,10 +1,13 @@
+// SERVER TEST A
+
 var http = require("http") ;
 var url = require("url") ;
 var midi = require("../midi.js");
 
-
+ var ipAdd = 'null';
 function start(route, handle)
 {
+
 
 
 	function onRequest(request, response)
@@ -20,13 +23,19 @@ function start(route, handle)
 		postData += postDataChunk ;
 		console.log("Received POST data chunk '" +
 			postDataChunk + "' .") ;
+		ipAdd = postDataChunk ;
 
-//////
-		var output = new midi.output();
-output.openVirtualPort("JellyVibes");
+////////////////////
 
-var PORT = 33334;
-var HOST = postDataChunk;
+if (ipAdd != 'null')
+{
+
+var output = new midi.output();
+ output.openVirtualPort("JellyVibes");
+
+var PORT = 33333;
+//var HOST = '10.120.91.147';
+var HOST = ipAdd;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 server.on('listening', function () {
@@ -38,7 +47,10 @@ server.on('message', function (message, remote) {
     output.sendMessage([message]) ;
 });
 server.bind(PORT, HOST);
-//////////
+
+}
+
+///////////////////
 
 	}) ;
 /*
@@ -55,5 +67,10 @@ server.bind(PORT, HOST);
 http.createServer(onRequest).listen(8888) ;
 console.log("Server has started.") ;
 }
+
+//////////////////////////////////////
+
+
+//////////////////////////////////////
 
 exports.start = start ;
