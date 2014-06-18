@@ -33,11 +33,11 @@ var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 // console.log(message[1]) ;
 // console.log(message[2]) ;
 
-console.log(send) ;
-   output.sendMessage(message) ;
+//console.log(send) ;
+  // output.sendMessage(message) ;
   client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
-    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    //console.log('UDP message sent to ' + HOST +':'+ PORT);
     //console.log(send) ;
     //client.close();
 
