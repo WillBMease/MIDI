@@ -2,6 +2,9 @@
 
 var midi = require("../midi.js");
 
+var output = new midi.output();
+output.openVirtualPort("JellyVibesNew");
+
 var PORT = 33333;
 var HOST = '10.120.91.147';
 var dgram = require('dgram');
@@ -38,7 +41,7 @@ var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 // console.log(message[2]) ;
 
 console.log(send) ;
-
+   output.sendMessage(message) ;
   client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
     console.log('UDP message sent to ' + HOST +':'+ PORT);
@@ -49,9 +52,9 @@ console.log(send) ;
 
 });
 input.openPort(0);
-setTimeout(function() {
-  input.closePort();
-}, 100000);
+// setTimeout(function() {
+//   input.closePort();
+// }, 100000);
 
 
 
