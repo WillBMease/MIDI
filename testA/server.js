@@ -3,6 +3,7 @@
 var http = require("http") ;
 var url = require("url") ;
 var midi = require("../midi.js");
+var count = 0 ;
 
 // var ipAdd = 'null';
 function start(route, handle)
@@ -22,7 +23,7 @@ server.on('listening', function () {
     console.log('UDP Server listening on ' + address.address + ":" + address.port);
 });
 server.on('message', function (message, remote) {
-   // console.log(remote.address + ':' + remote.port +' - ' + message);
+    console.log(remote.address + ':' + remote.port +' - ' + message);
 
    var newMsg = message.toString('utf8');
    var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
@@ -32,7 +33,16 @@ server.on('message', function (message, remote) {
    var intMsg2 = parseInt(sendMsg2,10);
    var intMsg3 = parseInt(sendMsg3,10);
 
-	output.sendMessage([intMsg1,intMsg2,intMsg3]) ;
+
+
+	output.sendMessage([intMsg1,intMsg2,91]) ;
+	count += 1 ;
+	if (count % 2 == 0)
+	{
+	var counter = count / 2 ;
+	console.log(counter) ;
+	} 
+
 });
 server.bind(PORT, HOST);
 
