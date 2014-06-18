@@ -22,7 +22,7 @@ server.on('listening', function () {
     console.log('UDP Server listening on ' + address.address + ":" + address.port);
 });
 server.on('message', function (message, remote) {
-    console.log(remote.address + ':' + remote.port +' - ' + message);
+   // console.log(remote.address + ':' + remote.port +' - ' + message);
 
    var newMsg = message.toString('utf8');
    var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
