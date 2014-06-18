@@ -2,8 +2,8 @@ var midi = require("../midi.js");
 var count = 0 ;
 //var input = new midi.input() ;
 
-var output = new midi.output();
-output.openVirtualPort("JellyVibes1");
+var output1 = new midi.output();
+output1.openVirtualPort("JellyVibes1");
 var output2 = new midi.output();
 output2.openVirtualPort("JellyVibes2");
 // setTimeout(function() {
@@ -44,7 +44,7 @@ server.on('message', function (message, remote) {
    // console.log(sendMsg3) ;
     //var sendMsg = [intMsg1,intMsg2,intMsg3] ;
     //console.log(sendMsg) ;
-	output.sendMessage([intMsg1,intMsg2,intMsg3]) ;
+	output1.sendMessage([intMsg1,intMsg2,intMsg3]) ;
 	count += 1 ;
 	console.log(count) ;
 	//output.sendMessage([137,40,64]) ;
