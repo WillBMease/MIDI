@@ -5,17 +5,49 @@ var url = require("url") ;
 var midi = require("../midi.js");
 var count = 0 ;
 
-// var ipAdd = 'null';
+ var ipAdd ;
 function start(route, handle)
 {
 
 
-var output = new midi.output();
- output.openVirtualPort("JellyVibes");
+//var output = new midi.output();
+// output.openVirtualPort("JellyVibes");
+
+
+
+	function onRequest(request, response)
+	{
+		var postData = "" ;
+	var pathname = url.parse(request.url).pathname ;
+	console.log("Request for " + pathname + " received.") ;
+
+	request.setEncoding("utf8") ;
+
+	request.addListener("data", function(postDataChunk)
+	{
+		postData += postDataChunk ;
+		console.log("Received POST data chunk '" +
+			postDataChunk + "' .") ;
+
+var length = postDataChunk.length ;
+
+ipAdd = postDataChunk[5] ;
+for (var i = 6 ; i < length ; i++)
+{
+	ipAdd += postDataChunk[i] ;
+}
+
+		console.log(ipAdd) ;
+
+////////////////////
+
+// if (ipAdd != 'null')
+// {
+
 
 var PORT = 33333;
-var HOST = '10.120.91.147';
-//var HOST = ipAdd;
+//var HOST = '10.120.91.147';
+var HOST = ipAdd;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 server.on('listening', function () {
@@ -35,7 +67,7 @@ server.on('message', function (message, remote) {
 
 
 
-	output.sendMessage([intMsg1,intMsg2,91]) ;
+	//output.sendMessage([intMsg1,intMsg2,intMsg3) ;
 	count += 1 ;
 	if (count % 2 == 0)
 	{
@@ -45,29 +77,6 @@ server.on('message', function (message, remote) {
 
 });
 server.bind(PORT, HOST);
-
-
-	function onRequest(request, response)
-	{
-		var postData = "" ;
-	var pathname = url.parse(request.url).pathname ;
-	console.log("Request for " + pathname + " received.") ;
-
-	request.setEncoding("utf8") ;
-
-	request.addListener("data", function(postDataChunk)
-	{
-		postData += postDataChunk ;
-		console.log("Received POST data chunk '" +
-			postDataChunk + "' .") ;
-		//ipAdd = postDataChunk ;
-
-////////////////////
-
-// if (ipAdd != 'null')
-// {
-
-
 
 // }
 
