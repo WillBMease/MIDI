@@ -12,8 +12,8 @@ function start(route, handle)
 // var output = new midi.output();
 //  output.openVirtualPort("JellyVibes");
 
-var PORT = 33333;
-var HOST = '10.120.16.174';
+var PORT = 8888;
+var HOST = '54.213.132.53';
 //var HOST = ipAdd;
 var dgram = require('dgram');
 var client = dgram.createSocket('udp4');
@@ -37,9 +37,9 @@ var send = new Buffer(send0 + " " + send1 + " " + send2) ;
   // output.sendMessage(message) ;
   client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
-    //console.log('UDP message sent to ' + HOST +':'+ PORT);
-    //console.log(send) ;
-    //client.close();
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    console.log(send) ;
+    client.close();
 
  }); // end client send 
 
