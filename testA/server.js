@@ -41,6 +41,9 @@ for (var i = 6 ; i < length ; i++)
  //var output = new midi.output();
  //output.openVirtualPort("JellyVibes");
 
+ var output = new midi.output();
+ output.openVirtualPort("JellyVibes");
+
 var PORT = 33333;
 //var HOST = '10.120.91.147';
 var HOST = ipAdd;
@@ -61,7 +64,7 @@ server.on('message', function (message, remote) {
    var intMsg2 = parseInt(sendMsg2,10);
    var intMsg3 = parseInt(sendMsg3,10);
 
-	//output.sendMessage([intMsg1,intMsg2,intMsg3]) ;
+	output.sendMessage([intMsg1,intMsg2,91]) ;
 	count += 1 ;
 	if (count % 2 == 0)
 	{
