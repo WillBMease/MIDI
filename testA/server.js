@@ -44,7 +44,7 @@ for (var i = 6 ; i < length ; i++)
  var output = new midi.output();
  output.openVirtualPort("JellyVibes");
 
-var PORT = 8889;
+var PORT = 33333;
 //var HOST = '10.120.91.147';
 var HOST = ipAdd;
 var dgram = require('dgram');
