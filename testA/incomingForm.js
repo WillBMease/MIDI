@@ -13,8 +13,10 @@ http.createServer(function(req, res)
       res.writeHead(200, {'content-type': 'text/plain'}) ;
       res.write('received upload: \n\n') ;
       res.end(sys.inspect({fields: fields, files: files})) ;
+      console.log('where') ;
     }) ;
     return ;
+
   }
 
   // show a file upload form
