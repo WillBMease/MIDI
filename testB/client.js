@@ -24,7 +24,9 @@ var client = dgram.createSocket('udp4');
 
 var input = new midi.input();
 console.log(input.getPortCount());
-console.log(input.getPortName(0));
+for (var i = 0 ; i < input.getPortCount() ; i++)
+console.log(input.getPortName(i));
+
 input.on('message', function(deltaTime, message) {
   //console.log('m:' + message + ' d:' + deltaTime);
 
