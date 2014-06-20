@@ -17,10 +17,26 @@ output1.openVirtualPort("JellyVibes1");
 // }, 20000);
 
 var PORT = 33333;
-//var HOST = '10.120.91.147';
+var HOST = '10.120.91.147';
 //var HOST = ipAdd ;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
+var client = dgram.createSocket('udp4');
+
+  client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    console.log(send) ;
+    //client.close();
+
+});
+
+client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    client.close();
+});
+
 server.on('listening', function () {
     var address = server.address();
     console.log('UDP Server listening on ' + address.address + ":" + address.port);
@@ -51,7 +67,7 @@ server.on('message', function (message, remote) {
 
 });
 //server.bind(PORT, HOST);
-server.bind(PORT) ;
+server.bind(PORT, HOST) ;
 
 var output2 = new midi.output();
 output2.openVirtualPort("JellyVibes2");
