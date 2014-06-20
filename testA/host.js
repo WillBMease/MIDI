@@ -49,7 +49,7 @@ var send = new Buffer(send0 + " " + send1 + " " + send2) ;
  }); // end client send 
 
 });
-input.openPort(0);ß
+input.openPort(0);
 
 server.on('listening', function () {
     var address = server.address();
