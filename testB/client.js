@@ -3,7 +3,7 @@
 var midi = require("../midi.js");
 
 var PORT = 33333;
-var HOST = '10.120.91.147';
+var HOST = '54.213.132.53';
 var dgram = require('dgram');
 //var message = new Buffer('Note Played');
 var client = dgram.createSocket('udp4');
@@ -49,9 +49,9 @@ console.log(send) ;
 
 });
 input.openPort(0);
-setTimeout(function() {
-  input.closePort();
-}, 100000);
+// setTimeout(function() {
+//   input.closePort();
+// }, 100000);
 
 
 

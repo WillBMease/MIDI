@@ -66,7 +66,7 @@ function show(response)
 	fs.createReadStream("/tmp/test.png").pipe(response) ;
 }
 
-function userBegin()
+function printWeb()
 {
 
 }
