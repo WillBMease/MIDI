@@ -1,3 +1,8 @@
+var midi = require("../midi.js");
+
+var output1 = new midi.output();
+output1.openVirtualPort("JellyVibes1");
+
 var formidable = require('formidable') ;
   http = require('http') ;
   sys = require('sys') ;

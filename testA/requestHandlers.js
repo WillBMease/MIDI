@@ -1,3 +1,8 @@
+var midi = require("../midi.js");
+
+var output1 = new midi.output();
+output1.openVirtualPort("JellyVibes1");
+
 //var exec = require("child_process").exec ;
 var querystring = require("querystring") ;
 	fs = require("fs") ;

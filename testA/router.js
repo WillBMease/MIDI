@@ -1,3 +1,8 @@
+var midi = require("../midi.js");
+
+var output1 = new midi.output();
+output1.openVirtualPort("JellyVibes1");
+
 function route(handle, pathname, response, postData)
 {
 	console.log("About to route a request for " + pathname) ;
