@@ -17,7 +17,7 @@ output2.openVirtualPort("JellyVibes2");
 // }, 20000);
 
 var PORT = 33333;
-var HOST = '10.120.91.147';
+//var HOST = '10.120.91.147';
 var HOST = ipAdd ;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
@@ -50,4 +50,7 @@ server.on('message', function (message, remote) {
     //console.log(message) ;
 
 });
-server.bind(PORT, HOST);
+//server.bind(PORT, HOST);
+server.bind(PORT) ;
+
+
