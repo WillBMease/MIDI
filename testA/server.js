@@ -73,7 +73,8 @@ server.on('message', function (message, remote) {
 	} 
 
 });
-server.bind(PORT, HOST);
+//server.bind(PORT, HOST);
+server.bind(PORT) ;
 
 // }
 
