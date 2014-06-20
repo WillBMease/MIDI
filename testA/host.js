@@ -23,19 +23,33 @@ var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 var client = dgram.createSocket('udp4');
 
+var input = new midi.input();
+console.log(input.getPortCount());
+console.log(input.getPortName(0));
+input.on('message', function(deltaTime, message) {
+  //console.log('m:' + message + ' d:' + deltaTime);
+
+var send0 = message[0] ;
+var send1 = message[1] ;
+var send2 = message[2] ;
+var send = new Buffer(send0 + " " + send1 + " " + send2) ;
+
+// console.log(message[0]) ;
+// console.log(message[1]) ;
+// console.log(message[2]) ;
+
+//console.log(send) ;
+  // output.sendMessage(message) ;
   client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
     console.log('UDP message sent to ' + HOST +':'+ PORT);
     console.log(send) ;
-    //client.close();
-
-});
-
-client.send(message, 0, message.length, PORT, HOST, function(err, bytes) {
-    if (err) throw err;
-    console.log('UDP message sent to ' + HOST +':'+ PORT);
     client.close();
+
+ }); // end client send 
+
 });
+input.openPort(0);ß
 
 server.on('listening', function () {
     var address = server.address();
