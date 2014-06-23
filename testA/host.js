@@ -114,7 +114,7 @@ var count = 0 ;
   
 var PORT = 33334;
 //var ...33334
-var HOST = '192.168.70.3';
+var HOST = '68.181.36.36';
 
 var client1 = dgram.createSocket('udp4');
 
