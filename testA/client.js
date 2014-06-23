@@ -14,10 +14,10 @@ var client = dgram.createSocket('udp4');
 
 //var send = new Buffer('151, 57, 127') ;
 
-//   client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
-//     if (err) throw err;
-//     console.log('UDP message sent to ' + HOST +':'+ PORT);
-//     console.log(send) ;
+  client.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    console.log(send) ;
 //     //client.close();
 
 // });

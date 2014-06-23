@@ -16,57 +16,63 @@ var count = 0 ;
 //   output.closePort();
 // }, 20000);
 
-var MYPORT = 33333 ;
-//var .... 33333
-//var HOST = '192.168.70.3';
-//var MYHOST = '10.120.79.164'
-var MYHOST = '206.117.88.5' ;
-//var HOST = ipAdd ;
-var dgram = require('dgram');
-var server = dgram.createSocket('udp4');
+// var MYPORT = 33333 ;
+// //var .... 33333
+// //var HOST = '192.168.70.3';
+// //var MYHOST = '10.120.79.164'
+// var MYHOST = '206.117.88.5' ;
+// //var HOST = ipAdd ;
+// var dgram = require('dgram');
+// var server = dgram.createSocket('udp4');
 
 
 
-var output1 = new midi.output();
-output1.openVirtualPort("JellyVibes");
+// var output1 = new midi.output();
+// output1.openVirtualPort("JellyVibes");
 
-server.on('listening', function () {
-    var address = server.address();
-    console.log('UDP Server listening on ' + address.address + ":" + address.port);
-});
-server.on('message', function (message, remote) {
-    console.log(remote.address + ':' + remote.port +' - ' + message);
-   // var d = [message[0] + " " + message[1] + " " + message[2]] ;
-   var newMsg = message.toString('utf8');
-   var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
-   var sendMsg2 = newMsg[4] + newMsg[5] ;
-   var sendMsg3 = newMsg[7] + newMsg[8] ; 
-   var intMsg1 = parseInt(sendMsg1,10);
-   var intMsg2 = parseInt(sendMsg2,10);
-   var intMsg3 = parseInt(sendMsg3,10);
-   // console.log(intMsg1) ;
-   //    console.log(intMsg2) ;
-   //       console.log(intMsg3) ;
-   // console.log(sendMsg1) ;
-   // console.log(sendMsg2) ;
-   // console.log(sendMsg3) ;
-    //var sendMsg = [intMsg1,intMsg2,intMsg3] ;
-    //console.log(sendMsg) ;
-  output1.sendMessage([intMsg1,intMsg2,90]) ;
-  count += 1 ;
-  console.log(count) ;
-  //output.sendMessage([137,40,64]) ;
-    //console.log(message) ;
+// server.on('listening', function () {
+//     var address = server.address();
+//     console.log('UDP Server listening on ' + address.address + ":" + address.port);
+// });
+// server.on('message', function (message, remote) {
+//     console.log(remote.address + ':' + remote.port +' - ' + message);
+//    // var d = [message[0] + " " + message[1] + " " + message[2]] ;
 
-});
-// //server.bind(PORT, HOST);
-server.bind(MYPORT, MYHOST) ;
+//    // READING MIDI DATA
+//    var newMsg = message.toString('utf8');
+//    var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
+//    var sendMsg2 = newMsg[4] + newMsg[5] ;
+//    var sendMsg3 = newMsg[7] + newMsg[8] ; 
+//    var intMsg1 = parseInt(sendMsg1,10);
+//    var intMsg2 = parseInt(sendMsg2,10);
+//    var intMsg3 = parseInt(sendMsg3,10);
+//    // END READING MIDI DATA
+
+//    // console.log(intMsg1) ;
+//    //    console.log(intMsg2) ;
+//    //       console.log(intMsg3) ;
+//    // console.log(sendMsg1) ;
+//    // console.log(sendMsg2) ;
+//    // console.log(sendMsg3) ;
+//     //var sendMsg = [intMsg1,intMsg2,intMsg3] ;
+//     //console.log(sendMsg) ;
+//   output1.sendMessage([intMsg1,intMsg2,90]) ;
+//   count += 1 ;
+//   console.log(count) ;
+//   //output.sendMessage([137,40,64]) ;
+//     //console.log(message) ;
+
+// });
+// // //server.bind(PORT, HOST);
+// server.bind(MYPORT, MYHOST) ;
 
 
 
 /////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////
+
+
 // var PORT = 33334;
 // //var ...33334
 // var HOST = '192.168.70.3';
@@ -74,11 +80,9 @@ server.bind(MYPORT, MYHOST) ;
 // var client1 = dgram.createSocket('udp4');
 // //var client2 = dgram.createSocket('upd4') ;
 
-
 // var input = new midi.input();
 // console.log(input.getPortCount());
-// for (var i = 0 ; i < 4 ; i++)
-// console.log(input.getPortName(i));
+// console.log(input.getPortName(0));
 // input.on('message', function(deltaTime, message) {
 //   //console.log('m:' + message + ' d:' + deltaTime);
 
@@ -105,4 +109,23 @@ server.bind(MYPORT, MYHOST) ;
 // input.openPort(0);
 
 
+
+/// NO MIDI
+  
+var PORT = 33334;
+//var ...33334
+var HOST = '192.168.70.3';
+
+var client1 = dgram.createSocket('udp4');
+
+send = [137,40,64] ;
+
+setTimeout(function() {
+
+  client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    console.log(send) ;
+
+}, 1000);
 
