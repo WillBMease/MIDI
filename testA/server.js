@@ -45,7 +45,7 @@ for (var i = 6 ; i < length ; i++)
  output.openVirtualPort("JellyVibes");
 
 var PORT = 8887;
-var HOST = '68.181.54.61';
+//var HOST = '68.181.54.61';
 var HOST = ipAdd;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
@@ -74,7 +74,7 @@ server.on('message', function (message, remote) {
 
 });
 //server.bind(PORT, HOST);
-server.bind(PORT, HOST) ;
+server.bind(PORT) ;
 
 // }
 
