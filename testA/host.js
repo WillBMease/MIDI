@@ -16,7 +16,7 @@ var count = 0 ;
 //   output.closePort();
 // }, 20000);
 
-var MYPORT = 33333 ;
+var MYPORT = 33334 ;
 //var .... 33333
 //var HOST = '192.168.70.3';
 //var MYHOST = '10.120.79.164'
@@ -115,16 +115,16 @@ server.bind(MYPORT) ;
   
 
 
-var PORT = 33334;
+var PORT = 33333;
 //var ...33334
 //var HOST = '206.117.88.5';
-var HOST = '10.120.35.30' ;
+var HOST = '68.181.39.48' ;
 //var dgram = require('dgram');
 var client1 = dgram.createSocket('udp4');
 
-var send0 = 222 ;
-var send1 = 22 ;
-var send2 = 22 ;
+var send0 = 111 ;
+var send1 = 11 ;
+var send2 = 11 ;
 var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 
 var timer = 1000 ;
