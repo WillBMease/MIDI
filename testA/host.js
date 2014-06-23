@@ -112,20 +112,38 @@ var count = 0 ;
 
 /// NO MIDI
   
+
+
 var PORT = 33334;
 //var ...33334
 var HOST = '68.181.36.36';
-
+ var dgram = require('dgram');
 var client1 = dgram.createSocket('udp4');
 
-send = [137,40,64] ;
+var send0 = 137 ;
+var send1 = 40 ;
+var send2 = 64 ;
+var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 
-setTimeout(function() {
+var timer = 10000 ;
+
+for (var i = 0 ; i < timer ; i++)
+{
+	if (i % 500 == 0)
+	{
 
   client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
     console.log('UDP message sent to ' + HOST +':'+ PORT);
-    console.log(send) ;
+    console.log(i + " " + send) ;
+    }) ;
+	}
+}
 
-}, 1000);
+
+
+
+
+
+
 
