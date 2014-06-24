@@ -3,7 +3,7 @@ var http = require('http').Server(app) ;
 var io = require('socket.io')(http) ;
 
 app.get('/', function(req, res){
-	res.sendfile('http://54.213.132.53:3000/index.html');
+	res.sendfile('index.html');
 });
 
 io.on('connection', function(socket){
