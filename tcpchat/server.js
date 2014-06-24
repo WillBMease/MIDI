@@ -5,7 +5,7 @@
 app.listen(80);
 
 function handler (req, res) {
-  fs.readFile(__dirname + '/client.html',
+  fs.readFile('client.html',
   function (err, data) {
     if (err) {
       res.writeHead(500);
