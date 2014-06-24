@@ -45,7 +45,7 @@
 //oscillator.noteOn(0); // Play bass guitar instantly
 
 
- setInterval(function(){oscillator.noteOn(0);},300);
+ setInterval(function(){oscillator.noteOn(0); setTimeout(function(){oscillator.noteOff(0);}, 100)},300);
 // setInterval(function(){oscillator.noteOff(0);},400) ;
 
 // setTimeout(function(){
