@@ -16,55 +16,55 @@ var count = 0 ;
 //   output.closePort();
 // }, 20000);
 
-// var MYPORT = 33333 ;
-// //var .... 33333
-// //var HOST = '192.168.70.3';
-// //var MYHOST = '10.120.79.164'
-// var MYHOST = '206.117.88.5' ;
-// //var HOST = ipAdd ;
-// var dgram = require('dgram');
-// var server = dgram.createSocket('udp4');
+var MYPORT = 33334 ;
+//var .... 33333
+//var HOST = '192.168.70.3';
+//var MYHOST = '10.120.79.164'
+var MYHOST = '206.117.88.5' ;
+//var HOST = ipAdd ;
+var dgram = require('dgram');
+var server = dgram.createSocket('udp4');
 
 
 
-// var output1 = new midi.output();
-// output1.openVirtualPort("JellyVibes");
+var output1 = new midi.output();
+output1.openVirtualPort("JellyVibes");
 
-// server.on('listening', function () {
-//     var address = server.address();
-//     console.log('UDP Server listening on ' + address.address + ":" + address.port);
-// });
-// server.on('message', function (message, remote) {
-//     console.log(remote.address + ':' + remote.port +' - ' + message);
-//    // var d = [message[0] + " " + message[1] + " " + message[2]] ;
+server.on('listening', function () {
+    var address = server.address();
+    console.log('UDP Server listening on ' + address.address + ":" + address.port);
+});
+server.on('message', function (message, remote) {
+    console.log(remote.address + ':' + remote.port +' - ' + message);
+   // var d = [message[0] + " " + message[1] + " " + message[2]] ;
 
-//    // READING MIDI DATA
-//    var newMsg = message.toString('utf8');
-//    var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
-//    var sendMsg2 = newMsg[4] + newMsg[5] ;
-//    var sendMsg3 = newMsg[7] + newMsg[8] ; 
-//    var intMsg1 = parseInt(sendMsg1,10);
-//    var intMsg2 = parseInt(sendMsg2,10);
-//    var intMsg3 = parseInt(sendMsg3,10);
-//    // END READING MIDI DATA
+   // READING MIDI DATA
+   var newMsg = message.toString('utf8');
+   var sendMsg1 = newMsg[0] + newMsg[1] + newMsg[2] ;
+   var sendMsg2 = newMsg[4] + newMsg[5] ;
+   var sendMsg3 = newMsg[7] + newMsg[8] ; 
+   var intMsg1 = parseInt(sendMsg1,10);
+   var intMsg2 = parseInt(sendMsg2,10);
+   var intMsg3 = parseInt(sendMsg3,10);
+   // END READING MIDI DATA
 
-//    // console.log(intMsg1) ;
-//    //    console.log(intMsg2) ;
-//    //       console.log(intMsg3) ;
-//    // console.log(sendMsg1) ;
-//    // console.log(sendMsg2) ;
-//    // console.log(sendMsg3) ;
-//     //var sendMsg = [intMsg1,intMsg2,intMsg3] ;
-//     //console.log(sendMsg) ;
-//   output1.sendMessage([intMsg1,intMsg2,90]) ;
-//   count += 1 ;
-//   console.log(count) ;
-//   //output.sendMessage([137,40,64]) ;
-//     //console.log(message) ;
+   // console.log(intMsg1) ;
+   //    console.log(intMsg2) ;
+   //       console.log(intMsg3) ;
+   // console.log(sendMsg1) ;
+   // console.log(sendMsg2) ;
+   // console.log(sendMsg3) ;
+    //var sendMsg = [intMsg1,intMsg2,intMsg3] ;
+    //console.log(sendMsg) ;
+  //output1.sendMessage([intMsg1,intMsg2,90]) ;
+  count += 1 ;
+  console.log(count) ;
+  //output.sendMessage([137,40,64]) ;
+    //console.log(message) ;
 
-// });
-// // //server.bind(PORT, HOST);
-// server.bind(MYPORT, MYHOST) ;
+});
+// //server.bind(PORT, HOST);
+server.bind(MYPORT) ;
 
 
 
@@ -111,21 +111,29 @@ var count = 0 ;
 
 
 /// NO MIDI
-  
 
 
-var PORT = 33334;
+
+// function keyMap(key) {
+// 	var keyPressed = key.which;
+
+// }
+
+var PORT = 33333;
 //var ...33334
-var HOST = '68.181.36.36';
- var dgram = require('dgram');
+// var HOST = '68.181.54.61';
+var HOST = '10.120.83.44' ;
+var dgram = require('dgram');
 var client1 = dgram.createSocket('udp4');
 
-var send0 = 137 ;
-var send1 = 40 ;
-var send2 = 64 ;
+var send0 = 111 ;
+var send1 = 11;
+var send2 = 11 ;
 var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 
-var timer = 10000 ;
+var timer = 1000 ;
+var stdin = process.openStdin();
+
 
 for (var i = 0 ; i < timer ; i++)
 {
@@ -134,6 +142,34 @@ for (var i = 0 ; i < timer ; i++)
 
   client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
     if (err) throw err;
+
+    process.stdin.resume();
+    //process.stdin.setEncoding('utf8');
+    process.stdin.setRawMode(true);
+    setEncoding();
+    process.stdin.on('data', function(char){
+    //process.stdout.write(char);
+    	
+    	if(char == '\3'){
+    	process.exit();
+
+    	}
+
+    	else if(char == 'q'){
+    		console.log("you hit q");
+    	}
+    	else{
+    		process.stdout.write(char);
+    	}
+    })
+ 	// //stdin.on('keypress',function(chunk, key) {
+ 	// //process.stdout.write('Get Chunk: ' + chunk + '/n');
+ 	// console.log('f');
+ 	// process.stdout.write("hello");
+ 	// if (key && key.ctrl && key.name == 'c') {process.exit()} 
+	 // });
+   	
+
     console.log('UDP message sent to ' + HOST +':'+ PORT);
     console.log(i + " " + send) ;
     }) ;

@@ -1,0 +1,83 @@
+<html>
+
+<body>
+<div class="keyboard">
+	<span class="keyAnchor"></span>
+	<ul class="keys">
+		<li class="whiteKey" data-key="1"><span>1</span></li>
+		<li class="blackKey"></li>
+		<li class="whiteKey"  data-key="2"><span>2</span></li>
+		<li class="blackKey"></li>
+		<li class="whiteKey"  data-key="3"><span>3</span></li>
+		<li class="whiteKey"  data-key="4"><span>4</span></li>
+		<li class="blackKey"></li>
+		<li class="whiteKey"  data-key="5"><span>5</span></li>
+		<li class="blackKey"></li>
+		<li class="whiteKey"  data-key="6"><span>6</span></li>
+		<li class="blackKey"></li>
+		<li class="whiteKey"  data-key="7"><span>7</span></li>
+		<li class="whiteKey"  data-key="8"><span>8</span></li>
+
+		<div class="clear"></div>
+	</ul>
+
+
+	<ul class="audioBin">
+		<li>
+			<audio id="1" preload="auto">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_C4.wav"/>
+			</audio>
+			<audio id="2">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_D4.wav"/>
+			</audio>
+			<audio id="3">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_E4.wav"/>
+			</audio>
+			<audio id="4">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_F4.wav"/>
+			</audio>
+			<audio id="5">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_G4.wav"/>
+			</audio>
+			<audio id="6">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_A5.wav"/>
+			</audio>
+			<audio id="7">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_B5.wav"/>
+			</audio>
+			<audio id="8">
+				<source src="/home/jerry/Audio/Sound Bank/Grand Piano/Grand Piano_C5.wav"/>
+			</audio>
+		</li>
+	</ul>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+function triggerAudio(key, delay) {
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	setTimeout(function(){
+		notes[key].currentTime = 0;
+		notes[key].play();
+	}, delay);
+}
+function keyMap(e,delay) {
+  var pressed = e.which;
+	pressed = pressed - 49;
+	triggerAudio(pressed, delay);
+}
+
+$(document).ready(function(){
+	$(window).on('keypress',function(e){
+	  keyMap(e,20)
+	});
+
+});
+
+</script>
+
+</body>
+</html>
