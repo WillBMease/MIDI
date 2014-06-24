@@ -20,7 +20,7 @@ var MYPORT = 33334 ;
 //var .... 33333
 //var HOST = '192.168.70.3';
 //var MYHOST = '10.120.79.164'
-var MYHOST = '206.117.88.5' ;
+//var MYHOST = '206.117.88.5' ;
 //var HOST = ipAdd ;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
@@ -122,7 +122,7 @@ server.bind(MYPORT) ;
 var PORT = 33333;
 //var ...33334
 // var HOST = '68.181.54.61';
-var HOST = '10.120.83.44' ;
+var HOST = '68.181.55.4' ;
 var dgram = require('dgram');
 var client1 = dgram.createSocket('udp4');
 
