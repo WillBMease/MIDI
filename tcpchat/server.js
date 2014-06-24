@@ -5,11 +5,11 @@
 app.listen(80);
 
 function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
+  fs.readFile(__dirname + '/client.html',
   function (err, data) {
     if (err) {
       res.writeHead(500);
-      return res.end('Error loading index.html'+err);
+      return res.end('Error loading client.html'+err);
     }
 
     res.writeHead(200);
