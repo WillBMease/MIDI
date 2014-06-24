@@ -27,11 +27,11 @@
 			$('form').submit(function(){
 				socket.emit('chat message', $('#m').val());
 				$('#m').val('');
-				return false ;
+				//return false ;
 			});
 			socket.on('chat message', function(msg){
 				//$('#messages').append($('<li>').text(msg));
-				console.log(msg) ;
+				//console.log(msg) ;
 
 	var context = new webkitAudioContext(); // Create audio container with webkit prefix
 	oscillator = context.createOscillator(); // Create bass guitar
