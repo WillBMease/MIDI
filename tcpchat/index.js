@@ -18,7 +18,7 @@ io.on('connection', function(socket){
 });
 
 http.listen(8888, function(){
-	console.log('listening on *:3000');
+	console.log('listening on *:8888');
 });
 
 // var http = require("http");
