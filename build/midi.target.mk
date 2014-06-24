@@ -29,9 +29,9 @@ CFLAGS_CC_Debug := \
 	-fno-rtti
 
 INCS_Debug := \
-	-I/home/jerry/.node-gyp/0.10.25/src \
-	-I/home/jerry/.node-gyp/0.10.25/deps/uv/include \
-	-I/home/jerry/.node-gyp/0.10.25/deps/v8/include \
+	-I/usr/include/nodejs/src \
+	-I/usr/include/nodejs/deps/uv/include \
+	-I/usr/include/nodejs/deps/v8/include \
 	-I$(srcdir)/src
 
 DEFS_Release := \
@@ -61,9 +61,9 @@ CFLAGS_CC_Release := \
 	-fno-rtti
 
 INCS_Release := \
-	-I/home/jerry/.node-gyp/0.10.25/src \
-	-I/home/jerry/.node-gyp/0.10.25/deps/uv/include \
-	-I/home/jerry/.node-gyp/0.10.25/deps/v8/include \
+	-I/usr/include/nodejs/src \
+	-I/usr/include/nodejs/deps/uv/include \
+	-I/usr/include/nodejs/deps/v8/include \
 	-I$(srcdir)/src
 
 OBJS := \
