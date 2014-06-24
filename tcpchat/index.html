@@ -12,12 +12,20 @@
 			#messages li { padding: 5px 10px; }
 			#messages li:nth-child(odd) { background: #eee; }
 		</style>
+
+		<script>
+			function playA()
+			{
+			
+			}
+		</script>
+
 	</head>
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
 			<input id = "m" autocomplete = "off" /><button>Send</button>
-			<input type = "text" onkeypress = "playA()">
+			<input id = "n" type = "text" onkeypress = "playA()">
 		</form>
 		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
 		<script src = "/socket.io/socket.io.js"></script>
@@ -28,8 +36,8 @@
 
 			var socket = io() ;
 			$('form').submit(function(){
-				socket.emit('chat message', $('#m').val());
-				$('#m').val('');
+				socket.emit('chat message', $('#n').val());
+				$('#n').val('');
 				return false ;
 			});
 			socket.on('chat message', function(msg){
