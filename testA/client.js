@@ -6,7 +6,7 @@ var output = new midi.output();
 output.openVirtualPort("JellyVibesNew");
 
 var PORT = 33334;
-var HOST = '68.181.54.61';
+var HOST = '10.0.4.143';
 var dgram = require('dgram');
 //var message = new Buffer('Note Played');
 var client = dgram.createSocket('udp4');
@@ -51,7 +51,7 @@ var MYPORT = 33333 ;
 //var .... 33333
 //var HOST = '192.168.70.3';
 //var MYHOST = '10.120.79.164'
-var MYHOST = '68.181.54.61' ;
+var MYHOST = '10.0.4.143' ;
 //var MYHOST = '68.181.54.61'
 //var HOST = ipAdd ;
 var dgram = require('dgram');
@@ -69,7 +69,7 @@ server.on('listening', function () {
 server.on('message', function (message, remote) {
     console.log(remote.address + ':' + remote.port +' - ' + message);
  	hrend = process.hrtime(hrstart) ;
- 	console.log (hrend[1]/1000000);
+ 	console.log (hrend[1]/1000000 + 'ms');
 
  	 	client.close() ;
  	server.close() ;
