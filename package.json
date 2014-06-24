@@ -28,6 +28,9 @@
       "name": "Hugo Hromic"
     }
   ],
+  "config": {
+    "unsafe-perm":true
+},
   "engines": {
     "node": ">=0.8.0"
   },
