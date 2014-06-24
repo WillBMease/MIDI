@@ -146,7 +146,7 @@ for (var i = 0 ; i < timer ; i++)
     process.stdin.resume();
     //process.stdin.setEncoding('utf8');
     process.stdin.setRawMode(true);
-    setEncoding();
+    
     process.stdin.on('data', function(char){
     //process.stdout.write(char);
     	
