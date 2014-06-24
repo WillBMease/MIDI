@@ -32,6 +32,7 @@
 			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));
 
+if
 
 
 
@@ -42,15 +43,14 @@
 	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
-//oscillator.noteOn(0); // Play bass guitar instantly
+oscillator.noteOn(0); // Play bass guitar instantly
 
-
- setInterval(function(){oscillator.noteOn(0); setTimeout(function(){oscillator.noteOff(0);}, 100)},400);
 // setInterval(function(){oscillator.noteOff(0);},400) ;
 
-// setTimeout(function(){
-// oscillator.noteOff(0) ;
-// }, 100)
+setTimeout(function(){
+oscillator.noteOff(0) ;
+oscillator.disconnect();
+}, 100)
 
 // function createSource(buffer) {
 //   var source = context.createBufferSource();
