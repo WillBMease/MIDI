@@ -22,13 +22,7 @@
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 		<script>
-	var context = new webkitAudioContext(); // Create audio container with webkit prefix
-	oscillator = context.createOscillator(); // Create bass guitar
-    gainNode = context.createGainNode(); // Create boost pedal
- 
-	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
-	gainNode.connect(context.destination); // Connect boost pedal to amplifier
-	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+
 
 			var socket = io() ;
 			$('form').submit(function(){
@@ -38,12 +32,59 @@
 			});
 			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));
+// 	var context = new webkitAudioContext(); // Create audio container with webkit prefix
+// 	oscillator = context.createOscillator(); // Create bass guitar
+//     gainNode = context.createGainNode(); // Create boost pedal
+ 
+// 	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
+// 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
+// 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+// oscillator.noteOn(0); // Play bass guitar instantly
 
-oscillator.noteOn(0); // Play bass guitar instantly
+// setTimeout(function(){
+// oscillator.noteOff(0) ;
+// }, 100)
 
-setTimeout(function(){
-oscillator.noteOff(0) ;
-}, 100)
+function createSource(buffer) {
+  var source = context.createBufferSource();
+  var gainNode = context.createGainNode();
+  source.buffer = buffer;
+  // Connect source to gain.
+  source.connect(gainNode);
+  // Connect gain to destination.
+  gainNode.connect(context.destination);
+
+  return {
+    source: source,
+    gainNode: gainNode
+  };
+}
+
+function playHelper(buffers, iterations, fadeTime) {
+  var currTime = context.currentTime;
+  for (var i = 0; i < iterations; i++) {
+    // For each buffer, schedule its playback in the future.
+    for (var j = 0; j < buffers.length; j++) {
+      var buffer = buffers[j];
+      var duration = buffer.duration;
+      var info = createSource(buffer);
+      var source = info.source;
+      var gainNode = info.gainNode;
+      // Fade it in.
+      gainNode.gain.linearRampToValueAtTime(0, currTime);
+      gainNode.gain.linearRampToValueAtTime(1, currTime + fadeTime);
+      // Then fade it out.
+      gainNode.gain.linearRampToValueAtTime(1, currTime + duration-fadeTime);
+      gainNode.gain.linearRampToValueAtTime(0, currTime + duration);
+
+      // Play the track now.
+      source.noteOn(currTime);
+
+      // Increment time for the next iteration.
+      currTime += duration - fadeTime;
+    }
+  }
+}
 
 			});
 		</script>
