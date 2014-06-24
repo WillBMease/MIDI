@@ -11,7 +11,7 @@ var dgram = require('dgram');
 //var message = new Buffer('Note Played');
 var client = dgram.createSocket('udp4');
 
-var start ;
+var hrstart ;
 
 var send = new Buffer('151, 57, 127') ;
 
@@ -20,7 +20,7 @@ var send = new Buffer('151, 57, 127') ;
     console.log('UDP message sent to ' + HOST +':'+ PORT);
     console.log(send) ;
 //     //client.close();
-start = new Date() ;
+hrstart = process.hrtime();
 
  });
 
@@ -68,9 +68,13 @@ server.on('listening', function () {
 });
 server.on('message', function (message, remote) {
     console.log(remote.address + ':' + remote.port +' - ' + message);
- 	var end = new Date() - start ;
- 	console.log(end + 'ms') ;
+ 	hrend = process.hrtime(hrstart) ;
+ 	console.log (hrend[1]/1000000);
+
+ 	 	client.close() ;
+ 	server.close() ;
 
 });
 // //server.bind(PORT, HOST);
 server.bind(MYPORT, MYHOST) ;
+
