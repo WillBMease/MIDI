@@ -2,33 +2,21 @@ var midi = require("../midi.js");
 var count = 0 ;
 //var input = new midi.input() ;
 
-// var output1 = new midi.output();
-// output1.openVirtualPort("JellyVibes1");
-// var output2 = new midi.output();
-// output2.openVirtualPort("JellyVibes2");
-// setTimeout(function() {
-//   output.sendMessage([144,64,90]);
-// }, 10000);
-// setTimeout(function() {
-//   output.sendMessage([128,64,40]);
-// }, 15000);
-// setTimeout(function() {
-//   output.closePort();
-// }, 20000);
 
 var MYPORT = 33334 ;
 //var .... 33333
 //var HOST = '192.168.70.3';
 //var MYHOST = '10.120.79.164'
-//var MYHOST = '206.117.88.5' ;
+var MYHOST = '68.181.55.4' ;
+//var MYHOST = '68.181.54.61'
 //var HOST = ipAdd ;
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 
 
 
-var output1 = new midi.output();
-output1.openVirtualPort("JellyVibes");
+// var output1 = new midi.output();
+// output1.openVirtualPort("JellyVibes");
 
 server.on('listening', function () {
     var address = server.address();
@@ -37,6 +25,26 @@ server.on('listening', function () {
 server.on('message', function (message, remote) {
     console.log(remote.address + ':' + remote.port +' - ' + message);
    // var d = [message[0] + " " + message[1] + " " + message[2]] ;
+var start = new Date() ;
+////////////////////////////////////////////
+
+var PORT = 33333;
+//var ...33334
+//var HOST = '206.117.88.5';
+var HOST = '68.181.55.4' ;
+//var dgram = require('dgram');
+var client1 = dgram.createSocket('udp4');
+
+var send = new Buffer('151, 57, 127') ;
+
+  client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    }) ;
+var end = start - new Date() ;
+console.log(end) ;
+/////////////////////////////////////////////
+
 
    // READING MIDI DATA
    var newMsg = message.toString('utf8');
@@ -64,7 +72,7 @@ server.on('message', function (message, remote) {
 
 });
 // //server.bind(PORT, HOST);
-server.bind(MYPORT) ;
+server.bind(MYPORT, MYHOST) ;
 
 
 
@@ -111,75 +119,25 @@ server.bind(MYPORT) ;
 
 
 /// NO MIDI
+  
 
 
+// var PORT = 33333;
+// //var ...33334
+// //var HOST = '206.117.88.5';
+// var HOST = '68.181.39.48' ;
+// //var dgram = require('dgram');
+// var client1 = dgram.createSocket('udp4');
 
-// function keyMap(key) {
-// 	var keyPressed = key.which;
+// var send0 = 111 ;
+// var send1 = 11 ;
+// var send2 = 11 ;
+// var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 
-// }
-
-var PORT = 33333;
-//var ...33334
-// var HOST = '68.181.54.61';
-var HOST = '68.181.55.4' ;
-var dgram = require('dgram');
-var client1 = dgram.createSocket('udp4');
-
-var send0 = 111 ;
-var send1 = 11;
-var send2 = 11 ;
-var send = new Buffer(send0 + " " + send1 + " " + send2) ;
-
-var timer = 1000 ;
-var stdin = process.openStdin();
-
-
-for (var i = 0 ; i < timer ; i++)
-{
-	if (i % 500 == 0)
-	{
-
-  client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
-    if (err) throw err;
-
-    process.stdin.resume();
-    //process.stdin.setEncoding('utf8');
-    process.stdin.setRawMode(true);
-    
-    process.stdin.on('data', function(char){
-    //process.stdout.write(char);
-    	
-    	if(char == '\3'){
-    	process.exit();
-
-    	}
-
-    	else if(char == 'q'){
-    		console.log("you hit q");
-    	}
-    	else{
-    		process.stdout.write(char);
-    	}
-    })
- 	// //stdin.on('keypress',function(chunk, key) {
- 	// //process.stdout.write('Get Chunk: ' + chunk + '/n');
- 	// console.log('f');
- 	// process.stdout.write("hello");
- 	// if (key && key.ctrl && key.name == 'c') {process.exit()} 
-	 // });
-   	
-
-    console.log('UDP message sent to ' + HOST +':'+ PORT);
-    console.log(i + " " + send) ;
-    }) ;
-	}
-}
-
-
-
-
-
-
-
-
+//   client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+//     if (err) throw err;
+//     console.log('UDP message sent to ' + HOST +':'+ PORT);
+//     console.log(i + " " + send) ;
+//     var end = new Date() - start ;
+//     console.log(end) ;
+//     }) ;

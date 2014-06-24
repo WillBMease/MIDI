@@ -6,7 +6,7 @@ var output = new midi.output();
 output.openVirtualPort("JellyVibesNew");
 
 var PORT = 33334;
-var HOST = '54.213.132.53';
+var HOST = '68.181.55.4';
 var dgram = require('dgram');
 //var message = new Buffer('Note Played');
 var client = dgram.createSocket('udp4');
