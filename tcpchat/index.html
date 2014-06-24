@@ -62,8 +62,9 @@ else if (msg = 'g')
 
 oscillator.noteOn(0); // Play bass guitar instantly
 setTimeout(function(){
+	oscillator.noteOff(0) ;
 	oscillator.disconnect() ;
-}, 50);
+}, 100);
 
 
 // var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); // declare new audio context
