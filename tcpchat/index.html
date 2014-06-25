@@ -23,8 +23,8 @@
 <!-- 			<input placeholder = "c" id = "n" autocomplete = "off" /><button>C</button> -->
 <!-- 			<input id = "m" autocomplete = "off" /><button>Send</button>
 			<input id = "m" autocomplete = "off" /><button>Send</button> -->
-			<input id = "m" type = "text" onkeypress = "playA()">
-			<input id = "n" type = "text" onkeypress = "playC()">
+			<input id = "m" type = "text" onkeyup = "playA()">
+			<input id = "n" type = "text" onkeyup = "playC()">
 		</form>
 		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
 		
@@ -37,14 +37,6 @@
 		<script>
 	var context = new (window.AudioContext || window.webkitAudioContext)();
 
-var test = true ;
-
-// while (test)
-// {
-
-// document.onkeypress = function (e) {
-//     e = e || window.event;
-//     // use e.keyCode
 
 function init() {
     var inp = document.getElementById("txtinput");
@@ -99,7 +91,7 @@ else if (note == 'c')
 				// socket.emit('chat message', e);
 // };
 
-			socket.on('chat message', function(){
+			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));
 				console.log(msg) ;
 				// socket.on('chat message', f);
@@ -149,11 +141,11 @@ else if (msg = 'f')
 else if (msg = 'g')
 	oscillator.frequency.value = 783.99;
 
-oscillator.noteOn(0); // Play bass guitar instantly
-setTimeout(function(){
-	oscillator.noteOff(0) ;
-	oscillator.disconnect() ;
-}, 100);
+// oscillator.noteOn(0); // Play bass guitar instantly
+// setTimeout(function(){
+// 	oscillator.noteOff(0) ;
+// 	oscillator.disconnect() ;
+// }, 100);
 
 
 
