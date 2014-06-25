@@ -99,7 +99,7 @@ else if (note == 'c')
 				// socket.emit('chat message', e);
 // };
 
-			socket.on('chat message', function(msg){
+			socket.on('chat message', function(){
 				$('#messages').append($('<li>').text(msg));
 				console.log(msg) ;
 				// socket.on('chat message', f);
@@ -113,12 +113,33 @@ else if (note == 'c')
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 console.log(msg);
-if (msg == 'a')
+if (note == 'a')
+{
 	oscillator.frequency.value = 440.00;
-else if (msg == 'b')
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
+else if (note == 'b')
+{
 	oscillator.frequency.value = 493.88;
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
 else if (msg == 'c')
+{
 	oscillator.frequency.value = 523.25;
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
 else if (msg = 'd')
 	oscillator.frequency.value = 587.33;
 else if (msg = 'e')
