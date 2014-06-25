@@ -41,6 +41,11 @@
 		<script>
 	var context = new (window.AudioContext || window.webkitAudioContext)();
 
+var test = true ;
+
+while (test)
+{
+
 document.onkeypress = function (e) {
     e = e || window.event;
     // use e.keyCode
@@ -54,9 +59,10 @@ document.onkeypress = function (e) {
 				socket.emit('chat message', e);
 };
 
-			socket.on('chat message', function(msg){
-				$('#messages').append($('<li>').text(msg));
+			// socket.on('chat message', function(msg){
+			// 	$('#messages').append($('<li>').text(msg));
 				//console.log(msg) ;
+				socket.on('chat message', f);
 
 	//var context = new webkitAudioContext(); // Create audio container with webkit prefix
 
@@ -67,11 +73,11 @@ document.onkeypress = function (e) {
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
-if (msg == 'a')
+if (f == 'a')
 	oscillator.frequency.value = 440.00;
-else if (msg == 'b')
+else if (f == 'b')
 	oscillator.frequency.value = 493.88;
-else if (msg == 'c')
+else if (f == 'c')
 	oscillator.frequency.value = 523.25;
 else if (msg = 'd')
 	oscillator.frequency.value = 587.33;
@@ -89,7 +95,10 @@ setTimeout(function(){
 	oscillator.noteOff(0) ;
 	oscillator.disconnect() ;
 }, 100);
+} // end while
 
+
+			// });    // end socket on !!!!!!
 
 // var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); // declare new audio context
 // // Webkit/blink browser require a prefix, and it needs the window object specifically declared to work in Safari
@@ -149,7 +158,7 @@ setTimeout(function(){
 // }
 
 
-			});
+
 		</script>
 	</body>
 </html>
