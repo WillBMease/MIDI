@@ -41,13 +41,19 @@
 		<script>
 	var context = new (window.AudioContext || window.webkitAudioContext)();
 
+document.onkeypress = function (e) {
+    e = e || window.event;
+    // use e.keyCode
+   //  			var socket = io() ;
+			// $('form').submit(function(){
+			// 	socket.emit('chat message', $('#m').val());
+			// 	$('#m').val('');
+			// 	return false ;
+			// });
+    			var socket = io() ;
+				socket.emit('chat message', e);
+};
 
-			var socket = io() ;
-			$('form').submit(function(){
-				socket.emit('chat message', $('#m').val());
-				$('#m').val('');
-				return false ;
-			});
 			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));
 				//console.log(msg) ;
@@ -75,6 +81,8 @@ else if (msg = 'f')
 	oscillator.frequency.value = 698.46;
 else if (msg = 'g')
 	oscillator.frequency.value = 783.99;
+else
+	oscillator.frequency.value = 523.25;
 
 oscillator.noteOn(0); // Play bass guitar instantly
 setTimeout(function(){
