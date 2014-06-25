@@ -31,8 +31,8 @@
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
-			<input id = "m" autocomplete = "off" /><button>A</button>
-			<input id = "n" autocomplete = "off" /><button>B</button>
+			<input text = "a" id = "m" autocomplete = "off" /><button>A</button>
+			<input text = "b"id = "n" autocomplete = "off" /><button>B</button>
 <!-- 			<input id = "m" autocomplete = "off" /><button>Send</button>
 			<input id = "m" autocomplete = "off" /><button>Send</button> -->
 			<!-- <input id = "n" type = "text" onkeypress = "playA()"> -->
@@ -56,10 +56,10 @@ var test = true ;
     			var socket = io() ;
 			$('body').click(function(){
 				// socket.emit('chat message', $('#m').val());
-				socket.emit('chat message', 'a');
+				socket.emit('chat message', $('#m').val());
 				$('#m').val('');
 				return false ;
-				socket.emit('chat message', 'b');
+				socket.emit('chat message', $('#n').val());
 				$('#n').val('');
 				return false ;
 			});
