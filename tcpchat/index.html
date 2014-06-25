@@ -105,7 +105,7 @@ else if (note == 'c')
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 console.log(msg);
-if (note == 'a')
+if (msg == 'a')
 {
 	oscillator.frequency.value = 440.00;
 	oscillator.noteOn(0); // Play bass guitar instantly
@@ -114,7 +114,7 @@ setTimeout(function(){
 	oscillator.disconnect() ;
 }, 100);
 }
-else if (note == 'b')
+else if (msg == 'b')
 {
 	oscillator.frequency.value = 493.88;
 	oscillator.noteOn(0); // Play bass guitar instantly
