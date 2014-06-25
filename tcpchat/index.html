@@ -12,11 +12,17 @@
 			#messages li { padding: 5px 10px; }
 			#messages li:nth-child(odd) { background: #eee; }
 		</style>
-
+		<script src = "/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 		<script>
 			function playA()
 			{
-			
+						var socket = io() ;
+			$('form').submit(function(){
+				socket.emit('chat message', $('#m').val());
+				$('#m').val('');
+				return false ;
+			});
 			}
 		</script>
 
@@ -24,22 +30,24 @@
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
-			<input id = "m" autocomplete = "off" /><button>Send</button>
-			<input id = "n" type = "text" onkeypress = "playA()">
+			<input id = "m" autocomplete = "off" onkeypress() =  /><button>Send</button>
+			<!-- <input id = "n" type = "text" onkeypress = "playA()"> -->
 		</form>
 		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
+		<!--
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		-->
 		<script>
 	var context = new (window.AudioContext || window.webkitAudioContext)();
 
 
-			var socket = io() ;
-			$('form').submit(function(){
-				socket.emit('chat message', $('#n').val());
-				$('#n').val('');
-				return false ;
-			});
+			// var socket = io() ;
+			// $('form').submit(function(){
+			// 	socket.emit('chat message', $('#m').val());
+			// 	$('#m').val('');
+			// 	return false ;
+			// });
 			socket.on('chat message', function(msg){
 				$('#messages').append($('<li>').text(msg));
 				//console.log(msg) ;
