@@ -51,7 +51,8 @@ var test = true ;
 //     // use e.keyCode
     			var socket = io() ;
 			$('form').submit(function(){
-				socket.emit('chat message', $('#m').val());
+				// socket.emit('chat message', $('#m').val());
+				socket.emit('chat message', "b";
 				$('#m').val('');
 				return false ;
 			});
