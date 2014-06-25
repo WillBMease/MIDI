@@ -50,7 +50,7 @@ var test = true ;
 //     e = e || window.event;
 //     // use e.keyCode
     			var socket = io() ;
-			$('form').submit(function(){
+			$('body').click(function(){
 				// socket.emit('chat message', $('#m').val());
 				socket.emit('chat message', 'b');
 				$('#m').val('');
