@@ -74,11 +74,11 @@ var test = true ;
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 console.log(msg);
-if (f == 'a')
+if (msg == 'a')
 	oscillator.frequency.value = 440.00;
 else if (msg == 'b')
 	oscillator.frequency.value = 493.88;
-else if (f == 'c')
+else if (msg == 'c')
 	oscillator.frequency.value = 523.25;
 else if (msg = 'd')
 	oscillator.frequency.value = 587.33;
