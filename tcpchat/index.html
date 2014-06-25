@@ -12,8 +12,8 @@
 			#messages li { padding: 5px 10px; }
 			#messages li:nth-child(odd) { background: #eee; }
 		</style>
-		<script src = "/socket.io/socket.io.js"></script>
-		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		// <script src = "/socket.io/socket.io.js"></script>
+		// <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 		<script>
 			function playA()
 			{
@@ -30,14 +30,14 @@
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
-			<input id = "m" autocomplete = "off" onkeypress() =  /><button>Send</button>
+			<input id = "m" autocomplete = "off" onkeypress() = "playA()" /><button>Send</button>
 			<!-- <input id = "n" type = "text" onkeypress = "playA()"> -->
 		</form>
 		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
-		<!--
-		<script src = "/socket.io/socket.io.js"></script>
-		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-		-->
+		
+		// <script src = "/socket.io/socket.io.js"></script>
+		// <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
 		<script>
 	var context = new (window.AudioContext || window.webkitAudioContext)();
 
