@@ -109,10 +109,10 @@ if (msg == 'a')
 {
 	oscillator.frequency.value = 440.00;
 	oscillator.noteOn(0); // Play bass guitar instantly
-// setTimeout(function(){
-// 	oscillator.noteOff(0) ;
-// 	oscillator.disconnect() ;
-// }, 100);
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
 }
 else if (msg == 'b')
 {
@@ -151,10 +151,10 @@ else if (msg = 'g')
 
 			});    // end socket on !!!!!!
 
-setTimeout(function(){
-	oscillator.noteOff(0) ;
-	oscillator.disconnect() ;
-}, 100);
+// setTimeout(function(){
+// 	oscillator.noteOff(0) ;
+// 	oscillator.disconnect() ;
+// }, 100);
 
 } // end checkInput
 
