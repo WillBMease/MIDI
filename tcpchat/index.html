@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Socket.IO chat </title>
+		<style>
+			* { margin: 0; padding: 0 box-sizing: border-box; }
+			body { font: 13px Helvetica, Arial; }
+			form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+			form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+			form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+			#messages { list-style-type: none; margin: 0; padding: 0; }
+			#messages li { padding: 5px 10px; }
+			#messages li:nth-child(odd) { background: #eee; }
+		</style>
+<!-- 		// <script src = "/socket.io/socket.io.js"></script>
+		// <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
+
+	</head>
+	<body>
+		<ul id = "messages"></ul>
+		<form action = "">
+<!-- 			<input placeholder = "a" id = "m" autocomplete = "off" /><button>A</button> -->
+<!-- 			<input placeholder = "c" id = "n" autocomplete = "off" /><button>C</button> -->
+<!-- 			<input id = "m" autocomplete = "off" /><button>Send</button>
+			<input id = "m" autocomplete = "off" /><button>Send</button> -->
+			<input id = "m" type = "text" onkeyup = "playA()">
+			<input id = "n" type = "text" onkeyup = "playC()">
+		</form>
+		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
+		
+		<script src = "/socket.io/socket.io.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+<p>Your Answer: <input type="text" id="txtinput" /></p>
+<p id="note"></p>
+
+		<script>
+
+
+function init() {
+    var inp = document.getElementById("txtinput");
+    inp.onkeyup=checkInput;
+
+    checkInput();
+}
+
+onload = init ;
+
+function checkInput() {
+		var context = new (window.AudioContext || window.webkitAudioContext)();
+	var text = document.getElementById("txtinput") ;
+	var msg = document.getElementById("note") ;
+
+	var note = text.value ;
+
+var socket = io() ;
+
+if (note == 'a')
+{
+	socket.emit('chat message', 'a') ;
+}
+
+else if (note == 'b')
+{
+	socket.emit('chat message', 'b') ; 
+}
+else if (note == 'c')
+{
+	socket.emit('chat message', 'c') ;
+}
+
+   //  			var socket = io() ;
+			// $('form').onkeypress(function(){
+			// 	// socket.emit('chat message', $('#m').val());
+			// 	if (note == 'a')
+			// 	{
+			// 	socket.emit('chat message', 'a');
+			// 	$('#m').val('');
+			// 	return false ;
+			// 	}
+			// });
+			// $('form').onkeypress(function(){
+			// 	if (note == 'c')
+			// 	{
+			// 	socket.emit('chat message', 'c');
+			// 	$('#n').val('');
+			// 	return false ;
+			// 	}
+			// });
+    // 			var socket = io() ;
+				// socket.emit('chat message', e);
+// };
+
+			socket.on('chat message', function(msg){
+				$('#messages').append($('<li>').text(msg));
+				console.log(msg) ;
+				// socket.on('chat message', f);
+
+	//var context = new webkitAudioContext(); // Create audio container with webkit prefix
+
+	oscillator = context.createOscillator(); // Create bass guitar
+    gainNode = context.createGainNode(); // Create boost pedal
+ 
+	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
+	gainNode.connect(context.destination); // Connect boost pedal to amplifier
+	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+console.log(msg);
+if (msg == 'a')
+{
+	oscillator.frequency.value = 440.00;
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
+else if (msg == 'b')
+{
+	oscillator.frequency.value = 493.88;
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
+else if (msg == 'c')
+{
+	oscillator.frequency.value = 523.25;
+	oscillator.noteOn(0); // Play bass guitar instantly
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+}
+else if (msg = 'd')
+	oscillator.frequency.value = 587.33;
+else if (msg = 'e')
+	oscillator.frequency.value = 659.25;
+else if (msg = 'f')
+	oscillator.frequency.value = 698.46;
+else if (msg = 'g')
+	oscillator.frequency.value = 783.99;
+
+// oscillator.noteOn(0); // Play bass guitar instantly
+// setTimeout(function(){
+// 	oscillator.noteOff(0) ;
+// 	oscillator.disconnect() ;
+// }, 100);
+
+
+
+			});    // end socket on !!!!!!
+
+setTimeout(function(){
+	oscillator.noteOff(0) ;
+	oscillator.disconnect() ;
+}, 100);
+
+} // end checkInput
+
+// var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); // declare new audio context
+// // Webkit/blink browser require a prefix, and it needs the window object specifically declared to work in Safari
+
+// var oscillatorNode = audioCtx.createOscillator();
+// var gainNode = audioCtx.createGain();
+// var finish = audioCtx.destination;
+// // etc.
+
+
+// setInterval(function(){oscillator.noteOff(0);},400) ;
+
+// setTimeout(function(){
+
+// oscillator.disconnect();
+// }, 200)
+
+// function createSource(buffer) {
+//   var source = context.createBufferSource();
+//   var gainNode = context.createGainNode();
+//   source.buffer = buffer;
+//   // Connect source to gain.
+//   source.connect(gainNode);
+//   // Connect gain to destination.
+//   gainNode.connect(context.destination);
+
+//   return {
+//     source: source,
+//     gainNode: gainNode
+//   };
+// }
+
+// function playHelper(buffers, iterations, fadeTime) {
+//   var currTime = context.currentTime;
+//   for (var i = 0; i < iterations; i++) {
+//     // For each buffer, schedule its playback in the future.
+//     for (var j = 0; j < buffers.length; j++) {
+//       var buffer = buffers[j];
+//       var duration = buffer.duration;
+//       var info = createSource(buffer);
+//       var source = info.source;
+//       var gainNode = info.gainNode;
+//       // Fade it in.
+//       gainNode.gain.linearRampToValueAtTime(0, currTime);
+//       gainNode.gain.linearRampToValueAtTime(1, currTime + fadeTime);
+//       // Then fade it out.
+//       gainNode.gain.linearRampToValueAtTime(1, currTime + duration-fadeTime);
+//       gainNode.gain.linearRampToValueAtTime(0, currTime + duration);
+
+//       // Play the track now.
+//       source.noteOn(currTime);
+
+//       // Increment time for the next iteration.
+//       currTime += duration - fadeTime;
+//     }
+//   }
+// }
+
+
+
+		</script>
+	</body>
+</html>

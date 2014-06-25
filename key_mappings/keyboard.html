@@ -1,0 +1,98 @@
+<html>
+
+<body>
+<div class="keyboard">
+	<span class="keyAnchor"></span>
+	<ul class="keys">
+		<li class="whiteKey" data-key="1"><span>1</span></li>
+		<li class="blackKey"  data-key="2"><span>2</span></li>
+		<li class="whiteKey"  data-key="3"><span>3</span></li>
+		<li class="blackKey" data-key="4"><span>4</span></li>
+		<li class="whiteKey"  data-key="5"><span>5</span></li>
+		<li class="whiteKey"  data-key="6"><span>6</span></li>
+		<li class="blackKey" data-key="7"><span>7</span></li>
+		<li class="whiteKey"  data-key="8"><span>8</span></li>
+		<li class="blackKey"  data-key="9"><span>9</span></li>
+		<li class="whiteKey"  data-key="10"><span>10</span></li>
+		<li class="blackKey" data-key="11"><span>11</span></li>
+		<li class="whiteKey"  data-key="12"><span>12</span></li>
+		<li class="whiteKey"  data-key="13"><span>13</span></li>
+
+		<div class="clear"></div>
+	</ul>
+
+
+	<ul class="audioBin">
+		<li>
+			<audio id="1" preload="auto">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_C4.wav"/>
+			</audio>
+			<audio id="2" preload="auto">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_C#4.wav"/>
+			</audio>
+			<audio id="3">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_D4.wav"/>
+			</audio>
+			<audio id="4" preload="auto">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_D#4.wav"/>
+			</audio>
+			<audio id="5">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_E4.wav"/>
+			</audio>
+			<audio id="6">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_F4.wav"/>
+			</audio>
+			<audio id="7">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_F#4.wav"/>
+			</audio>
+			<audio id="8">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_G4.wav"/>
+			</audio>
+			<audio id="9">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_G#4.wav"/>
+			</audio>
+			<audio id="10">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_A5.wav"/>
+			</audio>
+			<audio id="10">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_A#5.wav"/>
+			</audio>
+			<audio id="12">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_B5.wav"/>
+			</audio>
+			<audio id="13">
+				<source src="/Sound Bank/Grand Piano/Grand Piano_C5.wav"/>
+			</audio>
+		</li>
+	</ul>
+</div>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script>
+function triggerAudio(key, delay) {
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	setTimeout(function(){
+		notes[key].currentTime = 0;
+		notes[key].play();
+	}, delay);
+}
+function keyMap(e,delay) {
+  var pressed = e.which;
+	pressed = pressed - 49;
+	triggerAudio(pressed, delay);
+}
+
+$(document).ready(function(){
+	$(window).on('keypress',function(e){
+	  keyMap(e,20)
+	});
+
+});
+
+</script>
+
+</body>
+</html>
