@@ -15,15 +15,14 @@
 <!-- 		// <script src = "/socket.io/socket.io.js"></script>
 		// <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
 		<script>
-		var count = 0;
+		var note ;
 			function playA()
 			{
-			// 			var socket = io() ;
-			// $('form').submit(function(){
-			// 	socket.emit('chat message', $('#m').val());
-			// 	$('#m').val('');
-			// 	return false ;
-			// });
+				note = 'a' ;
+			}
+			function playC()
+			{
+				note = 'b' ;
 			}
 		</script>
 
@@ -31,11 +30,12 @@
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
-			<input placeholder = "a" id = "m" autocomplete = "off" /><button>A</button>
-			<input placeholder = "c" id = "n" autocomplete = "off" /><button>C</button>
+<!-- 			<input placeholder = "a" id = "m" autocomplete = "off" /><button>A</button> -->
+<!-- 			<input placeholder = "c" id = "n" autocomplete = "off" /><button>C</button> -->
 <!-- 			<input id = "m" autocomplete = "off" /><button>Send</button>
 			<input id = "m" autocomplete = "off" /><button>Send</button> -->
-			<!-- <input id = "n" type = "text" onkeypress = "playA()"> -->
+			<input id = "m" type = "text" onkeypress = "playA()">
+			<input id = "n" type = "text" onkeypress = "playC()">
 		</form>
 		<!-- <audio id="audiotag1" src="a.m4a" preload="auto"></audio> -->
 		
@@ -54,14 +54,22 @@ var test = true ;
 //     e = e || window.event;
 //     // use e.keyCode
     			var socket = io() ;
-			$('form').click(function(){
+			$('form').onkeypress(function(){
 				// socket.emit('chat message', $('#m').val());
-				socket.emit('chat message', $('#m').val());
+				if (note == 'a')
+				{
+				socket.emit('chat message', 'a');
 				$('#m').val('');
 				return false ;
-				socket.emit('chat message', $('#n').val());
+				}
+			});
+			$('form').onkeypress(function(){
+				if (note == 'b')
+				{
+				socket.emit('chat message', 'b');
 				$('#n').val('');
 				return false ;
+				}
 			});
     // 			var socket = io() ;
 				// socket.emit('chat message', e);
