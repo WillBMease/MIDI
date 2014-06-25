@@ -29,9 +29,15 @@ CFLAGS_CC_Debug := \
 	-fno-rtti
 
 INCS_Debug := \
+<<<<<<< HEAD
+	-I/Users/bottomsup/.node-gyp/0.10.29/src \
+	-I/Users/bottomsup/.node-gyp/0.10.29/deps/uv/include \
+	-I/Users/bottomsup/.node-gyp/0.10.29/deps/v8/include \
+=======
 	-I/usr/include/nodejs/src \
 	-I/usr/include/nodejs/deps/uv/include \
 	-I/usr/include/nodejs/deps/v8/include \
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 	-I$(srcdir)/src
 
 DEFS_Release := \
@@ -61,9 +67,15 @@ CFLAGS_CC_Release := \
 	-fno-rtti
 
 INCS_Release := \
+<<<<<<< HEAD
+	-I/Users/bottomsup/.node-gyp/0.10.29/src \
+	-I/Users/bottomsup/.node-gyp/0.10.29/deps/uv/include \
+	-I/Users/bottomsup/.node-gyp/0.10.29/deps/v8/include \
+=======
 	-I/usr/include/nodejs/src \
 	-I/usr/include/nodejs/deps/uv/include \
 	-I/usr/include/nodejs/deps/v8/include \
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 	-I$(srcdir)/src
 
 OBJS := \
