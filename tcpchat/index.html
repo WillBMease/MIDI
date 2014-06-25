@@ -35,7 +35,6 @@
 <p id="note"></p>
 
 		<script>
-	var context = new (window.AudioContext || window.webkitAudioContext)();
 
 
 function init() {
@@ -48,6 +47,7 @@ function init() {
 onload = init ;
 
 function checkInput() {
+		var context = new (window.AudioContext || window.webkitAudioContext)();
 	var text = document.getElementById("txtinput") ;
 	var msg = document.getElementById("note") ;
 
