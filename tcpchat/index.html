@@ -14,17 +14,6 @@
 		</style>
 <!-- 		// <script src = "/socket.io/socket.io.js"></script>
 		// <script src="http://code.jquery.com/jquery-1.11.1.js"></script> -->
-		<script>
-		var note ;
-			function playA()
-			{
-				note = 'a' ;
-			}
-			function playC()
-			{
-				note = 'b' ;
-			}
-		</script>
 
 	</head>
 	<body>
@@ -64,30 +53,48 @@ function init() {
     checkInput();
 }
 
+onload = init ;
+
 function checkInput() {
 	var text = document.getElementById("txtinput") ;
 	var msg = document.getElementById("note") ;
-	console.log (text) ;
-	console.log (msg) ;
 
-    			var socket = io() ;
-			$('form').onkeypress(function(){
-				// socket.emit('chat message', $('#m').val());
-				if (note == 'a')
-				{
-				socket.emit('chat message', 'a');
-				$('#m').val('');
-				return false ;
-				}
-			});
-			$('form').onkeypress(function(){
-				if (note == 'c')
-				{
-				socket.emit('chat message', 'c');
-				$('#n').val('');
-				return false ;
-				}
-			});
+	var note = text.value ;
+
+var socket = io() ;
+
+if (note == 'a')
+{
+	socket.emit('chat message', 'a') ;
+}
+
+else if (note == 'b')
+{
+	socket.emit('chat message', 'b') ; 
+}
+else if (note == 'c')
+{
+	socket.emit('chat message', 'c') ;
+}
+
+   //  			var socket = io() ;
+			// $('form').onkeypress(function(){
+			// 	// socket.emit('chat message', $('#m').val());
+			// 	if (note == 'a')
+			// 	{
+			// 	socket.emit('chat message', 'a');
+			// 	$('#m').val('');
+			// 	return false ;
+			// 	}
+			// });
+			// $('form').onkeypress(function(){
+			// 	if (note == 'c')
+			// 	{
+			// 	socket.emit('chat message', 'c');
+			// 	$('#n').val('');
+			// 	return false ;
+			// 	}
+			// });
     // 			var socket = io() ;
 				// socket.emit('chat message', e);
 // };
