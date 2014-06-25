@@ -31,7 +31,7 @@
 	<body>
 		<ul id = "messages"></ul>
 		<form action = "">
-			<input id = "m" autocomplete = "off" /><button>Send</button>
+			<input id = "m" autocomplete = "off" /><button>A</button>
 			<input id = "n" autocomplete = "off" /><button>B</button>
 <!-- 			<input id = "m" autocomplete = "off" /><button>Send</button>
 			<input id = "m" autocomplete = "off" /><button>Send</button> -->
@@ -54,10 +54,13 @@ var test = true ;
 //     e = e || window.event;
 //     // use e.keyCode
     			var socket = io() ;
-			$('body').onKeypress(function(){
+			$('body').click(function(){
 				// socket.emit('chat message', $('#m').val());
-				socket.emit('chat message', 'b');
+				socket.emit('chat message', 'a');
 				$('#m').val('');
+				return false ;
+				socket.emit('chat message', 'b');
+				$('#n').val('');
 				return false ;
 			});
     // 			var socket = io() ;
