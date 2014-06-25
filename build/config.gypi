@@ -32,18 +32,37 @@
     "v8_enable_gdbjit": 0,
     "v8_no_strict_aliasing": 1,
     "v8_use_snapshot": "false",
+<<<<<<< HEAD
+    "nodedir": "/Users/bottomsup/.node-gyp/0.10.29",
+=======
     "nodedir": "/usr/include/nodejs",
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
     "copy_dev_lib": "true",
     "standalone_static_library": 1,
     "cache_lock_stale": "60000",
     "pre": "",
     "sign_git_tag": "",
     "always_auth": "",
+<<<<<<< HEAD
+    "spin": "true",
+    "cache_lock_retries": "10",
+    "heading": "npm",
+    "fetch_retry_mintimeout": "10000",
+    "proprietary_attribs": "true",
+    "json": "",
+    "description": "true",
+    "engine_strict": "",
+    "https_proxy": "",
+    "init_module": "/Users/bottomsup/.npm-init.js",
+    "userconfig": "/Users/bottomsup/.npmrc",
+    "node_version": "v0.10.29",
+=======
     "user_agent": "node/v0.10.25 linux x64",
     "bin_links": "true",
     "description": "true",
     "fetch_retries": "2",
     "init_version": "0.0.0",
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
     "user": "",
     "force": "",
     "ignore": "",
@@ -102,6 +121,31 @@
     "username": "",
     "globalconfig": "/etc/npmrc",
     "dev": "",
+<<<<<<< HEAD
+    "fetch_retry_factor": "10",
+    "group": "20",
+    "save_exact": "",
+    "cache_lock_stale": "60000",
+    "version": "",
+    "cache_min": "10",
+    "cache": "/Users/bottomsup/.npm",
+    "searchexclude": "",
+    "color": "true",
+    "save_optional": "",
+    "user_agent": "npm/1.4.14 node/v0.10.29 darwin x64",
+    "ignore_scripts": "",
+    "cache_lock_wait": "10000",
+    "production": "",
+    "save_bundle": "",
+    "umask": "18",
+    "git": "git",
+    "init_author_name": "",
+    "onload_script": "",
+    "tmp": "/var/folders/88/48p0fjzs2q5618f4f92d8f3m0000gn/T/",
+    "unsafe_perm": "true",
+    "link": "",
+    "prefix": "/usr/local"
+=======
     "init_module": "/home/lj/.npm-init.js",
     "parseable": "",
     "globalignorefile": "/etc/npmignore",
@@ -112,5 +156,6 @@
     "git": "git",
     "optional": "true",
     "json": ""
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
   }
 }

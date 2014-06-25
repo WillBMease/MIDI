@@ -122,12 +122,48 @@ server.bind(MYPORT, MYHOST) ;
   
 
 
+<<<<<<< HEAD
+var PORT = 33334;
+//var ...33334
+//var HOST = '206.117.88.5';
+//var HOST = '68.181.54.61' ;
+var HOST = '54.213.132.53' ;
+//var dgram = require('dgram');
+var client1 = dgram.createSocket('udp4');
+
+var send0 = 222 ;
+var send1 = 22 ;
+var send2 = 22 ;
+var send = new Buffer(send0 + " " + send1 + " " + send2) ;
+
+var timer = 1000 ;
+
+for (var i = 0 ; i < timer ; i++)
+{
+	if (i % 500 == 0)
+	{
+
+  client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+    if (err) throw err;
+    console.log('UDP message sent to ' + HOST +':'+ PORT);
+    console.log(i + " " + send) ;
+    }) ;
+	}
+}
+
+
+
+
+
+
+=======
 // var PORT = 33333;
 // //var ...33334
 // //var HOST = '206.117.88.5';
 // var HOST = '68.181.39.48' ;
 // //var dgram = require('dgram');
 // var client1 = dgram.createSocket('udp4');
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 
 // var send0 = 111 ;
 // var send1 = 11 ;

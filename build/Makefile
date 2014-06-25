@@ -316,8 +316,13 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 
 quiet_cmd_regen_makefile = ACTION Regenerating $@
+<<<<<<< HEAD
+cmd_regen_makefile = cd $(srcdir); /usr/local/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py -fmake --ignore-environment "--toplevel-dir=." -I/Users/bottomsup/jellyvibes/MIDI/build/config.gypi -I/usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi -I/Users/bottomsup/.node-gyp/0.10.29/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/Users/bottomsup/.node-gyp/0.10.29" "-Dmodule_root_dir=/Users/bottomsup/jellyvibes/MIDI" binding.gyp
+Makefile: $(srcdir)/../../.node-gyp/0.10.29/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp $(srcdir)/../../../../usr/local/lib/node_modules/npm/node_modules/node-gyp/addon.gypi
+=======
 cmd_regen_makefile = cd $(srcdir); /usr/share/node-gyp/gyp/gyp -fmake --ignore-environment "--toplevel-dir=." -I/home/lj/MIDI/build/config.gypi -I/usr/share/node-gyp/addon.gypi -I/usr/include/nodejs/common.gypi "--depth=." "-Goutput_dir=." "--generator-output=build" "-Dlibrary=shared_library" "-Dvisibility=default" "-Dnode_root_dir=/usr/include/nodejs" "-Dmodule_root_dir=/home/lj/MIDI" binding.gyp
 Makefile: $(srcdir)/../../../usr/share/node-gyp/addon.gypi $(srcdir)/../../../usr/include/nodejs/common.gypi $(srcdir)/build/config.gypi $(srcdir)/binding.gyp
+>>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 	$(call do_cmd,regen_makefile)
 
 # "all" is a concatenation of the "all" targets from all the included
