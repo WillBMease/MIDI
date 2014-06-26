@@ -56,7 +56,9 @@ var isPlaying = false;
 
 // send keypress event
 $(document).keypress(function(e){
-	on = e.which;
+
+	if (e == null) { key = event.keyCode;}  
+    else {  on = e.which;}
 	socket.emit('message on', on);
 	return false;
 });
