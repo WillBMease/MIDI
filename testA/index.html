@@ -63,11 +63,11 @@ $(document).keypress(function(e){
 });
 
 // send keyup event
-$(document).keyup(function(e){
-	off = e.which;
-	socket.emit('message off', off);
-	return false;
-});
+// $(document).keyup(function(e){
+// 	off = e.which;
+// 	socket.emit('message off', off);
+// 	return false;
+// });
 
 
 // Receive and process message
@@ -75,9 +75,9 @@ socket.on('message on', function(msgOn){
 	noteOn = msgOn ;
 });
 
-socket.on('message off', function(msgOff){
-	noteOff = msgOff ;
-});
+// socket.on('message off', function(msgOff){
+// 	noteOff = msgOff ;
+// });
 
 
 	oscillator = context.createOscillator(); // Create bass guitar
@@ -89,13 +89,16 @@ socket.on('message off', function(msgOff){
 
 	console.log(msg);
 
-if (!isPlaying)
-{
+// if (!isPlaying)
+// {
 	if (noteOn == 97)
 	{
 		oscillator.frequency.value = 440.00; // A
 		oscillator.noteOn(0); // Play bass guitar instantly
 		isPlaying = true ;
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+
 	}
 	else if (noteOn == 98)
 	{
@@ -121,41 +124,41 @@ if (!isPlaying)
 		oscillator.noteOn(0) ;
 		isPlaying = true ;
 	}
-}
+// }
 
-else if (isPlaying)
-{
-	if (noteOff == 97)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-		isPlaying = false ;
-	}
-	else if (noteOff == 98)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-		isPlaying = false ;
-	}
-	else if (noteOff == 99)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-		isPlaying = false ;
-	}
-	else if (noteOff = 100)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-		isPlaying = false ;
-	}
-	else if (noteOff = 101)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-		isPlaying = false ;
-	}
-}
+// else if (isPlaying)
+// {
+// 	if (noteOff == 97)
+// 	{
+// 		oscillator.noteOff(0); // Play bass guitar instantly
+// 		oscillator.disconnect();
+// 		isPlaying = false ;
+// 	}
+// 	else if (noteOff == 98)
+// 	{
+// 		oscillator.noteOff(0); // Play bass guitar instantly
+// 		oscillator.disconnect();
+// 		isPlaying = false ;
+// 	}
+// 	else if (noteOff == 99)
+// 	{
+// 		oscillator.noteOff(0); // Play bass guitar instantly
+// 		oscillator.disconnect();
+// 		isPlaying = false ;
+// 	}
+// 	else if (noteOff = 100)
+// 	{
+// 		oscillator.noteOff(0); // Play bass guitar instantly
+// 		oscillator.disconnect();
+// 		isPlaying = false ;
+// 	}
+// 	else if (noteOff = 101)
+// 	{
+// 		oscillator.noteOff(0); // Play bass guitar instantly
+// 		oscillator.disconnect();
+// 		isPlaying = false ;
+// 	}
+// }
 
 
 		</script>
