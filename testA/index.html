@@ -53,15 +53,29 @@ var soundOn ;
 var soundOff ;
 var isPlaying = false;
 
-
-// send keypress event
-$(document).keypress(function(e){
-
-	if (e == null) { key = event.keyCode;}  
-    else {  on = e.which;}
+$(document).keydown(function(e) { 
+  if (isPlaying) return;
+  isPlaying = true;
+	on = e.which;}
 	socket.emit('message on', on);
 	return false;
 });
+
+$(document).keyup(function(e) { 
+  isPlaying = false;
+});
+$(document).focus(function(e) { 
+  isPlaying = false;
+});
+
+// send keypress event
+// $(document).keypress(function(e){
+
+// 	if (e == null) { on = event.keyCode;}  
+//     else {  on = e.which;}
+// 	socket.emit('message on', on);
+// 	return false;
+// });
 
 // send keyup event
 // $(document).keyup(function(e){
