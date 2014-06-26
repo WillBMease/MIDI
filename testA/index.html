@@ -153,7 +153,7 @@ $(document).keyup(function(e){
 });
 
 socket.on('message off', function(msgOff){
-	startNote(msgOff, oscillator) ;
+	endNote(msgOff, oscillator) ;
 });
 
 }
@@ -162,13 +162,13 @@ socket.on('message off', function(msgOff){
 
 function endNote(soundOff, oscillator)
 {
-	if (noteOff == 97)
+	if (noteOff == 65)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
-	else if (noteOff == 98)
+	else if (noteOff == 66)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
