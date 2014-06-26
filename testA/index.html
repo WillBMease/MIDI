@@ -165,6 +165,7 @@ function startNote(soundOn)
 $(document).keyup(function(e){
 	off = e.which;
 	socket.emit('message off', off);
+	isPlaying = false ;
 	return false;
 });
 
