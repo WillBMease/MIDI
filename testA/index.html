@@ -72,7 +72,7 @@ $(document).keypress(function(e){
 // Receive and process message
 socket.on('message on', function(msgOn){
 	soundOn = msgOn ;
-});
+
 
 // socket.on('message off', function(msgOff){
 // 	noteOff = msgOff ;
@@ -140,6 +140,8 @@ setTimeout(function(){
 		oscillator.disconnect();
 			}, 100);
 	}
+
+	});
 // }
 
 // else if (isPlaying)
