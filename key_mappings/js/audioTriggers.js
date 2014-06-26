@@ -42,7 +42,7 @@ var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp
 
 var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
 
-var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "Sounds/Grand_Piano"};
+var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
 
 
 
