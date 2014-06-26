@@ -10,10 +10,7 @@
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 
-<p>Your Answer: <input type="text" id="txtinput" /></p>
-<p id="note"></p>
-
-		<script>
+<script>
 
 // var midi = require("../midi.js");
 
@@ -51,8 +48,9 @@ var socket = io() ;
 
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext)();
-var noteOn = 8 ;
-var noteOff ;
+
+var soundOn = 8 ;
+var soundOff ;
 var isPlaying = false;
 
 
@@ -73,7 +71,7 @@ $(document).keypress(function(e){
 
 // Receive and process message
 socket.on('message on', function(msgOn){
-	noteOn = msgOn ;
+	soundOn = msgOn ;
 });
 
 // socket.on('message off', function(msgOff){
@@ -88,11 +86,11 @@ socket.on('message on', function(msgOn){
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
-	console.log(noteOn) ;
+	console.log(soundOn) ;
 
 // if (!isPlaying)
 // {
-	if (noteOn == 97)
+	if (soundOn == 97)
 	{
 		oscillator.frequency.value = 440.00; // A
 		oscillator.noteOn(0); // Play bass guitar instantly
@@ -102,25 +100,25 @@ setTimeout(function(){
 		oscillator.disconnect();
 			}, 100);
 	}
-	else if (noteOn == 98)
+	else if (soundOn == 98)
 	{
 		oscillator.frequency.value = 493.88; // B
 		oscillator.noteOn(0);
 		isPlaying = true ;
 	}
-	else if (noteOn == 99)
+	else if (soundOn == 99)
 	{
 		oscillator.frequency.value = 523.25; // C
 		oscillator.noteOn(0);
 		isPlaying = true ;
 	}
-	else if (noteOn = 100)
+	else if (soundOn = 100)
 	{
 		oscillator.frequency.value = 587.33; // D
 		oscillator.noteOn(0) ;
 		isPlaying = true ;
 	}
-	else if (noteOn = 101)
+	else if (soundOn = 101)
 	{
 		oscillator.frequency.value = 659.25; // E
 		oscillator.noteOn(0) ;
