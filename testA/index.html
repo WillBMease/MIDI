@@ -78,7 +78,10 @@ socket.on('message on', function(msgOn){
 // 	noteOff = msgOff ;
 // });
 
-
+// if (!isPlaying)
+// {
+function startNote(soundOn)
+{
 	oscillator = context.createOscillator(); // Create bass guitar
     gainNode = context.createGainNode(); // Create boost pedal
  
@@ -87,11 +90,7 @@ socket.on('message on', function(msgOn){
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
 	console.log(soundOn) ;
-
-// if (!isPlaying)
-// {
-function startNote(soundOn)
-{
+	
 	if (soundOn == 97)
 	{
 		oscillator.frequency.value = 440.00; // A
