@@ -61,7 +61,7 @@ $(document).keypress(function(e){
 	return false;
 });
 
-send keyup event
+// send keyup event
 $(document).keyup(function(e){
 	off = e.which;
 	socket.emit('message off', off);
