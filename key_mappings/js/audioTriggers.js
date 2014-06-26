@@ -38,9 +38,9 @@ instrument = '<audio id="" preload="auto">' +
 
 //preset instrumemt list/////////////////////////////
 
-var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "Sounds/Harp"};
+var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
 
-var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "Sounds/E-Bass_Guitar"};
+var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
 
 
 
