@@ -71,8 +71,8 @@ $(document).keypress(function(e){
 
 // Receive and process message
 socket.on('message on', function(msgOn){
-	soundOn = msgOn ;
-
+	startNote(msgOn) ;
+	});
 
 // socket.on('message off', function(msgOff){
 // 	noteOff = msgOff ;
@@ -90,6 +90,8 @@ socket.on('message on', function(msgOn){
 
 // if (!isPlaying)
 // {
+function startNote(soundOn)
+{
 	if (soundOn == 97)
 	{
 		oscillator.frequency.value = 440.00; // A
@@ -140,8 +142,8 @@ setTimeout(function(){
 		oscillator.disconnect();
 			}, 100);
 	}
+}
 
-	});
 // }
 
 // else if (isPlaying)
