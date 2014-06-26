@@ -47,14 +47,14 @@
 // onload = init ;
 
 // function checkInput() {
-// 		var context = new (window.AudioContext || window.webkitAudioContext)();
+
 // 	var text = document.getElementById("txtinput") ;
 // 	var mesg = document.getElementById("note") ;
 
 // 	var note = text.value ;
 
 var socket = io() ;
-
+		var context = new (window.AudioContext || window.webkitAudioContext)();
 $(document).keypress(function(e){
 	kr = e.which;
 	socket.emit('chat message', kr);
@@ -85,7 +85,7 @@ $(document).keypress(function(e){
 
 			socket.on('chat message', function(msg){
 				
-			// });
+			});
 				// socket.on('chat message', f);
 
 	//var context = new webkitAudioContext(); // Create audio container with webkit prefix
@@ -141,7 +141,7 @@ else if (msg = 'g')
 
 
 
-			});    // end socket on !!!!!!
+			// });    // end socket on !!!!!!
 
 // setTimeout(function(){
 // 	oscillator.noteOff(0) ;
