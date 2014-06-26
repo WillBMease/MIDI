@@ -61,12 +61,12 @@ $(document).keydown(function(e) {
 	return false;
 });
 
-$(document).keyup(function(e) { 
-  isPlaying = false;
-});
-$(document).focus(function(e) { 
-  isPlaying = false;
-});
+// $(document).keyup(function(e) { 
+//   isPlaying = false;
+// });
+// $(document).focus(function(e) { 
+//   isPlaying = false;
+// });
 
 // send keypress event
 // $(document).keypress(function(e){
@@ -115,7 +115,6 @@ function startNote(soundOn)
 	{
 		oscillator.frequency.value = 440.00; // A
 		oscillator.noteOn(0); // Play bass guitar instantly
-		//isPlaying = true ;
 // setTimeout(function(){
 // 		oscillator.noteOff(0); // Play bass guitar instantly
 // 		oscillator.disconnect();
@@ -125,7 +124,6 @@ function startNote(soundOn)
 	{
 		oscillator.frequency.value = 493.88; // B
 		oscillator.noteOn(0);
-		isPlaying = true ;
 		// setTimeout(function(){
 		// oscillator.noteOff(0); // Play bass guitar instantly
 		// oscillator.disconnect();
@@ -135,7 +133,6 @@ function startNote(soundOn)
 	{
 		oscillator.frequency.value = 523.25; // C
 		oscillator.noteOn(0);
-		isPlaying = true ;
 		// setTimeout(function(){
 		// oscillator.noteOff(0); // Play bass guitar instantly
 		// oscillator.disconnect();
@@ -145,21 +142,19 @@ function startNote(soundOn)
 	{
 		oscillator.frequency.value = 587.33; // D
 		oscillator.noteOn(0) ;
-		isPlaying = true ;
-		setTimeout(function(){
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-			}, 100);
+		// setTimeout(function(){
+		// oscillator.noteOff(0); // Play bass guitar instantly
+		// oscillator.disconnect();
+		// 	}, 100);
 	}
 	else if (soundOn = 101)
 	{
 		oscillator.frequency.value = 659.25; // E
 		oscillator.noteOn(0) ;
-		isPlaying = true ;
-		setTimeout(function(){
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-			}, 100);
+		// setTimeout(function(){
+		// oscillator.noteOff(0); // Play bass guitar instantly
+		// oscillator.disconnect();
+		// 	}, 100);
 	}
 
 $(document).keyup(function(e){
@@ -167,6 +162,9 @@ $(document).keyup(function(e){
 	socket.emit('message off', off);
 	isPlaying = false ;
 	return false;
+});
+$(document).focus(function(e) { 
+  isPlaying = false;
 });
 
 socket.on('message off', function(msgOff){
@@ -183,31 +181,26 @@ function endNote(soundOff, oscillator)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
-		isPlaying = false ;
 	}
 	else if (soundOff == 66)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
-		isPlaying = false ;
 	}
 	else if (soundOff == 99)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
-		isPlaying = false ;
 	}
 	else if (soundOff = 100)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
-		isPlaying = false ;
 	}
 	else if (soundOff = 101)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
-		isPlaying = false ;
 	}
 }
 
