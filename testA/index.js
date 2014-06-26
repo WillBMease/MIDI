@@ -16,10 +16,10 @@ io.on('connection', function(socket){
 		io.emit('message on', msg) ;
 		console.log(msg) ;
 	});
-	// socket.on('message off', function(msg){
-	// 	io.emit('message off', msg) ;
-	// 	console.log(msg) ;
-	// });
+	socket.on('message off', function(msg){
+		io.emit('message off', msg) ;
+		console.log(msg) ;
+	});
 });
 
 http.listen(8888, function(){
