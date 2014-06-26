@@ -51,7 +51,8 @@ var socket = io() ;
 
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext)();
-var noteOn, noteOff ;
+var noteOn = 8 ;
+var noteOff ;
 var isPlaying = false;
 
 
