@@ -12,10 +12,13 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
 	});
-	socket.on('chat message', function(msg){
-		io.emit('chat message', msg) ;
+	socket.on('message on', function(msg){
+		io.emit('message on', msg) ;
 		console.log(msg) ;
-
+	});
+	socket.on('message off', function(msg){
+		io.emit('message off', msg) ;
+		console.log(msg) ;
 	});
 });
 

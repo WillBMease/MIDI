@@ -103,19 +103,19 @@ if (!isPlaying)
 		oscillator.noteOn(0);
 		isPlaying = true ;
 	}
-	else if (msg == 99)
+	else if (noteOn == 99)
 	{
 		oscillator.frequency.value = 523.25; // C
 		oscillator.noteOn(0);
 		isPlaying = true ;
 	}
-	else if (msg = 100)
+	else if (noteOn = 100)
 	{
 		oscillator.frequency.value = 587.33; // D
 		oscillator.noteOn(0) ;
 		isPlaying = true ;
 	}
-	else if (msg = 101)
+	else if (noteOn = 101)
 	{
 		oscillator.frequency.value = 659.25; // E
 		oscillator.noteOn(0) ;
@@ -125,40 +125,37 @@ if (!isPlaying)
 
 else if (isPlaying)
 {
-	if (noteOn == 97)
+	if (noteOff == 97)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
-	else if (noteOn == 98)
+	else if (noteOff == 98)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
-	else if (msg == 99)
+	else if (noteOff == 99)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
-	else if (msg = 100)
+	else if (noteOff = 100)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
-	else if (msg = 101)
+	else if (noteOff = 101)
 	{
 		oscillator.noteOff(0); // Play bass guitar instantly
 		oscillator.disconnect();
 		isPlaying = false ;
 	}
 }
-
-
-
 
 
 		</script>
