@@ -54,7 +54,9 @@ var soundOff ;
 var isPlaying = false;
 
 $(document).keydown(function(e) { 
-  if (isPlaying) return;
+  if (isPlaying) {
+  	return; }
+  
   isPlaying = true;
 	on = e.which;
 	socket.emit('message on', on);
