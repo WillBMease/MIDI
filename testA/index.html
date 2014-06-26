@@ -56,7 +56,7 @@ var isPlaying = false;
 $(document).keydown(function(e) { 
   if (isPlaying) return;
   isPlaying = true;
-	on = e.which;}
+	on = e.which;
 	socket.emit('message on', on);
 	return false;
 });
