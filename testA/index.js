@@ -1,16 +1,46 @@
-var server = require("./server") ;
-var router = require("./router") ;
-var requestHandlers = require("./requestHandlers") ;
+var app = require('express')() ;
+var http = require('http').Server(app) ;
+var io = require('socket.io')(http) ;
+var net = require('net') ;
 
-var handle = {} 
-handle["/"] = requestHandlers.start ;
-handle["/start"] = requestHandlers.start ;
-handle["/upload"] = requestHandlers.upload ;
-handle["/show"] = requestHandlers.show ;
+app.get('/', function(req, res){
+	res.sendfile('index.html');
+});
 
-var midi = require("../midi.js");
+io.on('connection', function(socket){
+	console.log('a user connected');
+	socket.on('disconnect', function(){
+		console.log('user disconnected');
+	});
+	socket.on('message on', function(msg){
+		io.emit('message on', msg) ;
+		console.log(msg) ;
+	});
+	// socket.on('message off', function(msg){
+	// 	io.emit('message off', msg) ;
+	// 	console.log(msg) ;
+	// });
+});
 
-var output1 = new midi.output();
-output1.openVirtualPort("JellyVibes1");
+http.listen(8888, function(){
+	console.log('listening on *:8888');
+});
 
-server.start(router.route, handle) ;
+// var http = require("http");
+
+
+// var net = require("net");
+
+// var server=net.createServer(function(socket){
+//     socket.on('connection',function(socket){
+//         console.log('socket connection...');
+//     });
+//     socket.on('data',function(message){
+//         console.log('socket message:'+message);
+//         socket.write('You wrote:'+message); 
+//         socket.end(); // <-- :)    
+//     });
+//     socket.on('error',function(error){
+//         console.log('error on socket message:'+error);      
+//     });
+// }).listen(1024);
