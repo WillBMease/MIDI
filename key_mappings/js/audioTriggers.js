@@ -78,7 +78,7 @@ function transpose(noteInput){
 	}
 }
 
-//<script src="mappedKeys.js"></script>
+//<script src="js/mappedKeys.js"></script>
 
 function keyboardMap(keyInput){
 	var output;
