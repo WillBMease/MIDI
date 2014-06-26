@@ -62,11 +62,11 @@ $(document).keypress(function(e){
 });
 
 // send keyup event
-$(document).keyup(function(e){
-	off = e.which;
-	socket.emit('message off', off);
-	return false;
-});
+// $(document).keyup(function(e){
+// 	off = e.which;
+// 	socket.emit('message off', off);
+// 	return false;
+// });
 
 
 // Receive and process message
@@ -74,9 +74,9 @@ socket.on('message on', function(msgOn){
 	startNote(msgOn) ;
 	});
 
-socket.on('message off', function(msgOff){
-	endNote(msgOff) ;
-});
+// socket.on('message off', function(msgOff){
+// 	startNote(msgOff) ;
+// });
 
 // socket.on('message off', function(msgOff){
 // 	noteOff = msgOff ;
@@ -145,11 +145,22 @@ function startNote(soundOn)
 		oscillator.disconnect();
 			}, 100);
 	}
+
+$(document).keyup(function(e){
+	off = e.which;
+	socket.emit('message off', off);
+	return false;
+});
+
+socket.on('message off', function(msgOff){
+	startNote(msgOff, oscillator) ;
+});
+
 }
 
 // }
 
-function endNote(soundOff)
+function endNote(soundOff, oscillator)
 {
 	if (noteOff == 97)
 	{
