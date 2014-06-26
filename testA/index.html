@@ -15,35 +15,35 @@
 
 		<script>
 
-var midi = require("../midi.js");
+// var midi = require("../midi.js");
 
-var input = new midi.input();
-console.log(input.getPortCount());
-console.log(input.getPortName(0));
-input.on('message', function(deltaTime, message) {
-  //console.log('m:' + message + ' d:' + deltaTime);
+// var input = new midi.input();
+// console.log(input.getPortCount());
+// console.log(input.getPortName(0));
+// input.on('message', function(deltaTime, message) {
+//   //console.log('m:' + message + ' d:' + deltaTime);
 
-var send0 = message[0] ;
-var send1 = message[1] ;
-var send2 = message[2] ;
-var send = new Buffer(send0 + " " + send1 + " " + send2) ;
+// var send0 = message[0] ;
+// var send1 = message[1] ;
+// var send2 = message[2] ;
+// var send = new Buffer(send0 + " " + send1 + " " + send2) ;
 
-// console.log(message[0]) ;
-// console.log(message[1]) ;
-// console.log(message[2]) ;
+// // console.log(message[0]) ;
+// // console.log(message[1]) ;
+// // console.log(message[2]) ;
 
-//console.log(send) ;
-  // output.sendMessage(message) ;
-  // client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
-  //   if (err) throw err;
-  //   console.log('UDP message sent to ' + HOST +':'+ PORT);
-  //   console.log(send) ;
-    //client.close();
+// //console.log(send) ;
+//   // output.sendMessage(message) ;
+//   // client1.send(send, 0, send.length, PORT, HOST, function(err, bytes) {
+//   //   if (err) throw err;
+//   //   console.log('UDP message sent to ' + HOST +':'+ PORT);
+//   //   console.log(send) ;
+//     //client.close();
 
- // }); // end client send 
+//  // }); // end client send 
 
-});
-input.openPort(0);
+// });
+// input.openPort(0);
 
 
 // Create socket
@@ -52,7 +52,7 @@ var socket = io() ;
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext)();
 var noteOn, noteOff ;
-var isPlaying ;
+var isPlaying = false;
 
 
 // send keypress event
@@ -124,7 +124,38 @@ if (!isPlaying)
 }
 
 else if (isPlaying)
-
+{
+	if (noteOn == 97)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+		isPlaying = false ;
+	}
+	else if (noteOn == 98)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+		isPlaying = false ;
+	}
+	else if (msg == 99)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+		isPlaying = false ;
+	}
+	else if (msg = 100)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+		isPlaying = false ;
+	}
+	else if (msg = 101)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+		isPlaying = false ;
+	}
+}
 
 
 
