@@ -220,10 +220,11 @@ function triggerSample(key) {
 	var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
 	transpose(key);
+	var check = keyboardMap(key) ;
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
-	if(key == 100){
+	if(check == 200){
 
 	}
 	else{
@@ -383,7 +384,7 @@ function keyboardMap(keyInput)
 	}
 
 	else{
-		output = 100;
+		output = 200;
 	}
 	return output;
 }
