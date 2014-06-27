@@ -76,7 +76,7 @@ if(!sampleActive){
 
 else {
 	var pressed = e.which;
-	socket.emit('sample on', on);
+	socket.emit('sample on', pressed);
 	console.log(pressed);
 	// triggerSample(pressed);
 }
