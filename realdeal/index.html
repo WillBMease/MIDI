@@ -223,8 +223,14 @@ function triggerSample(key) {
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(keyTrue == 100){
+
+	}
+	else{
 		notes[keyTrue].currentTime = 0;
 		notes[keyTrue].play();
+	}
+
 }
 
 function transpose(noteInput){
@@ -376,6 +382,9 @@ function keyboardMap(keyInput)
 		output = 32;
 	}
 
+	else{
+		output = 100;
+	}
 	return output;
 }
 
