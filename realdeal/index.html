@@ -3,12 +3,25 @@
 	<head>
 		<title> Socket.IO chat </title>
 
+		<script src='http://localhost:8888/js/WebMIDIAPI.js'></script>
+				<script src = "http://localhost:8888/js/audioTriggers.js" type = "text/javascript"></script>
 	</head>
 	<body>
-		
+		<div class="buttons">
+<button class="choose-inst" onClick="generateNotes(bass)">Bass</button>
+<button class="choose-inst" onClick="generateNotes(harp)">Harp</button>
+<button class="choose-inst" onClick="generateNotes(gPiano)">Grand_Piano</button>
+
+	<ul class="audioBin">
+		<li>
+			
+		</li>
+	</ul>
+</div>
+
+
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
-		<script src = "js/oscillator.js"></script>
 
 <script>
 
@@ -17,111 +30,134 @@
 var socket = io() ;
 
 // initialize web audio api
-var context = new (window.AudioContext || window.webkitAudioContext)();
+var context = new (window.AudioContext || window.webkitAudioContext ||  
+	window.mozAudioContext || 
+    window.oAudioContext || 
+    window.msAudioContext)();
+if (context) {
+  // Web Audio API is available.
+} else {
+  alert('browser not supported') ;
+}
 
 var soundOn ;
 var soundOff ;
 var isPlaying = false;
 
-$(document).keypress(function(e) { 
-  if (isPlaying) {
-  	return; }
+// $(document).keypress(function(e) { 
+//   if (isPlaying) {
+//   	return; }
   
-  isPlaying = true;
-	on = e.which;
-	socket.emit('message on', on);
-	return false;
-});
+//   isPlaying = true;
+// 	on = e.which;
+// 	socket.emit('osc on', on);
+// 	return false;
+// });
 
 
 // Receive and process message
-socket.on('message on', function(msgOn){
-	startNote(msgOn, socket, isPlaying) ;
+socket.on('osc on', function(msgOn){
+	//startNote(msgOn) ;
 	});
 
-// function startNote(soundOn)
-// {
-// 	oscillator = context.createOscillator(); // Create bass guitar
-//     gainNode = context.createGainNode(); // Create boost pedal
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// OSCILLATOR
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+function startNote(soundOn)
+{
+	oscillator = context.createOscillator(); // Create bass guitar
+    gainNode = context.createGainNode(); // Create boost pedal
  
-// 	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
-// 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
-// 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
+	gainNode.connect(context.destination); // Connect boost pedal to amplifier
+	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
-// 	console.log(soundOn) ;
+	console.log(soundOn) ;
 
-// 	if (soundOn == 97)
-// 	{
-// 		oscillator.frequency.value = 440.00; // A
-// 		oscillator.noteOn(0); // Play bass guitar instantly
-// 	}
-// 	else if (soundOn == 98)
-// 	{
-// 		oscillator.frequency.value = 493.88; // B
-// 		oscillator.noteOn(0);
-// 	}
-// 	else if (soundOn == 99)
-// 	{
-// 		oscillator.frequency.value = 523.25; // C
-// 		oscillator.noteOn(0);
-// 	}
-// 	else if (soundOn = 100)
-// 	{
-// 		oscillator.frequency.value = 587.33; // D
-// 		oscillator.noteOn(0) ;
-// 	}
-// 	else if (soundOn = 101)
-// 	{
-// 		oscillator.frequency.value = 659.25; // E
-// 		oscillator.noteOn(0) ;
-// 	}
+	if (soundOn == 97)
+	{
+		oscillator.frequency.value = 440.00; // A
+		oscillator.noteOn(0); // Play bass guitar instantly
+	}
+	else if (soundOn == 98)
+	{
+		oscillator.frequency.value = 493.88; // B
+		oscillator.noteOn(0);
+	}
+	else if (soundOn == 99)
+	{
+		oscillator.frequency.value = 523.25; // C
+		oscillator.noteOn(0);
+	}
+	else if (soundOn = 100)
+	{
+		oscillator.frequency.value = 587.33; // D
+		oscillator.noteOn(0) ;
+	}
+	else if (soundOn = 101)
+	{
+		oscillator.frequency.value = 659.25; // E
+		oscillator.noteOn(0) ;
+	}
 
-// $(document).keyup(function(e){
-// 	off = e.which;
-// 	socket.emit('message off', off);
-// 	isPlaying = false ;
-// 	return false;
-// });
-// $(document).focus(function(e) { 
-//   isPlaying = false;
-// });
+$(document).keyup(function(e){
+	off = e.which;
+	socket.emit('osc off', off);
+	isPlaying = false ;
+	return false;
+});
+$(document).focus(function(e) { 
+  isPlaying = false;
+});
 
-// socket.on('message off', function(msgOff){
-// 	endNote(msgOff, oscillator) ;
-// });
+socket.on('osc off', function(msgOff){
+	endNote(msgOff, oscillator) ;
+});
+
+}
 
 // }
 
-// // }
+function endNote(soundOff, oscillator)
+{
+	if (soundOff == 65)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 66)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 67)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff = 68)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff = 69)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+}
 
-// function endNote(soundOff, oscillator)
-// {
-// 	if (soundOff == 65)
-// 	{
-// 		oscillator.noteOff(0); // Play bass guitar instantly
-// 		oscillator.disconnect();
-// 	}
-// 	else if (soundOff == 66)
-// 	{
-// 		oscillator.noteOff(0); // Play bass guitar instantly
-// 		oscillator.disconnect();
-// 	}
-// 	else if (soundOff == 67)
-// 	{
-// 		oscillator.noteOff(0); // Play bass guitar instantly
-// 		oscillator.disconnect();
-// 	}
-// 	else if (soundOff = 68)
-// 	{
-// 		oscillator.noteOff(0); // Play bass guitar instantly
-// 		oscillator.disconnect();
-// 	}
-// 	else if (soundOff = 69)
-// 	{
-// 		oscillator.noteOff(0); // Play bass guitar instantly
-// 		oscillator.disconnect();
-// 	}
-// }
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// SAMPLES
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
 
 
 		</script>

@@ -12,12 +12,12 @@ io.on('connection', function(socket){
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
 	});
-	socket.on('message on', function(msg){
-		io.emit('message on', msg) ;
+	socket.on('osc on', function(msg){
+		io.emit('osc on', msg) ;
 		console.log(msg) ;
 	});
-	socket.on('message off', function(msg){
-		io.emit('message off', msg) ;
+	socket.on('osc off', function(msg){
+		io.emit('osc off', msg) ;
 		console.log(msg) ;
 	});
 });
