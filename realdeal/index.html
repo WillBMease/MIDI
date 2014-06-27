@@ -217,7 +217,8 @@ function triggerSample(key) {
 	transpose(key);
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
-		notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+		notes[keyTrue].currentTime = 0;
 		notes[keyTrue].play();
 }
 
