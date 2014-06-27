@@ -21,6 +21,16 @@ var soundOn ;
 var soundOff ;
 var isPlaying = false;
 
+var instrument; 
+instrument = '<audio id="" preload="auto">' +
+			'</audio>';
+
+//preset instrumemt list/////////////////////////////
+
+var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
+var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
+var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
+
 function startOscilator(soundOn)
 {
 	var output;
@@ -49,13 +59,22 @@ $(document).keypress(function(e) {
 
   else {
   	var pressed = e.which;
-	//pressed = pressed - 49;
-	//if (pressed == 122) {};
-	//triggerAudio(pressed, delay);
+	triggerSample(pressed, delay);
 	console.log(pressed);
   }
 });
 
+function triggerSample(key, delay) {
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	transpose(key);
+	key = keyboardMap(key) + (octave*12);
+	setTimeout(function(){
+		notes[key].currentTime = 0;
+		notes[key].play();
+	}, delay);
+}
 
 
 function transpose(noteInput){
@@ -69,7 +88,7 @@ function transpose(noteInput){
 	}
 }
 
-function keyInput(keyInput)
+function keyboardMap(keyInput)
 {
 
 

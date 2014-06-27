@@ -12,8 +12,10 @@ function triggerAudio(key, delay) {
 	setTimeout(function(){
 		notes[key].currentTime = 0;
 		notes[key].play();
+		console.log(key);
 	}, delay);
 }
+
 function keyMap(e,delay) {
   var pressed = e.which;
 	//pressed = pressed - 49;
