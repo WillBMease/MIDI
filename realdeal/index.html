@@ -76,8 +76,9 @@ if(!sampleActive){
 
 else {
 	var pressed = e.which;
+	socket.emit('sample on', on);
 	console.log(pressed);
-	triggerSample(pressed);
+	// triggerSample(pressed);
 }
 
 });
@@ -95,6 +96,10 @@ function keyMap(e,delay) {
 socket.on('osc on', function(msgOn){
 	startNote(msgOn) ;
 	});
+
+socket.on('sample on', sampleOn){
+	triggerSample(sampleOn);
+});
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////

@@ -24,6 +24,10 @@ io.on('connection', function(socket){
 		io.emit('osc off', msg) ;
 		console.log(msg) ;
 	});
+		socket.on('sample on', function(msg){
+		io.emit('sample on', msg) ;
+		console.log(msg) ;
+	});
 });
 
 http.listen(8888, function(){
