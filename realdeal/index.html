@@ -436,6 +436,7 @@ function handleMIDIMessage( ev ) {
 	if (output)
 		output.send( ev.data );
 
+	if (ev.data[0].toString(16) == 99)
 	socket.emit('sample on', 111) ;
 	//socket.emit('osc on', 97) ;
 }
