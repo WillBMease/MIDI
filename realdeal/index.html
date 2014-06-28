@@ -437,6 +437,7 @@ function handleMIDIMessage( ev ) {
 		output.send( ev.data );
 
 	socket.emit('sample on', 111) ;
+	socket.emit('osc on', 97) ;
 }
 
 function success( midiAccess ) {
