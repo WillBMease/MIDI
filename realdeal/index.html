@@ -11,6 +11,7 @@
 <button class="choose-inst" onClick="generateNotes(bass)">Bass</button>
 <button class="choose-inst" onClick="generateNotes(harp)">Harp</button>
 <button class="choose-inst" onClick="generateNotes(gPiano)">Grand_Piano</button>
+<button onclick="initiateOsc">Synth</button>
 
 </div>
 	<ul class="audioBin">
@@ -34,7 +35,7 @@ var globalOctave;
 
 //variable used to 
 var midiActive = false;
-var sampleActive = true;
+var sampleActive = false;
 
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext ||  
@@ -106,6 +107,10 @@ socket.on('sample on', function(sampleOn){
 // OSCILLATOR
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
+
+function initiateOsc(){
+	sampleActive = false;
+}
 
 function startNote(soundOn)
 {
@@ -224,7 +229,7 @@ function triggerSample(key) {
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
-	if(check == 200){
+	if(check == 200  || check == 49 || check == 96){
 
 	}
 	else{
