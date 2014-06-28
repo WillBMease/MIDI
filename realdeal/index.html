@@ -205,6 +205,7 @@ function endNote(soundOff, oscillator)
 
 function generateNotes(presetInstrument){
 	$(window).unbind();
+	sampleActive = true;
 	var target = $('.audioBin li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
