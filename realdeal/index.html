@@ -3,6 +3,7 @@
 	<head>
 		<title> Socket.IO chat </title>
 
+<<<<<<< HEAD
 		 <!-- <script src="js/WebMIDIAPI.js"></script>
 		// <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
 <!-- /*<style>
@@ -13,12 +14,18 @@
   text-transform: uppercase;
 }
 </style>*/ -->
+=======
+		 <script src="js/WebMIDIAPI.js"></script>
+<!-- 		 // <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
+
+>>>>>>> ae1a3e2482104b1154f2169eeee827bea4ad9562
 	</head>
 	<body>
 <div class="buttons">
 <button class="choose-inst" onClick="generateNotes(bass)">Bass</button>
 <button class="choose-inst" onClick="generateNotes(harp)">Harp</button>
 <button class="choose-inst" onClick="generateNotes(gPiano)">Grand_Piano</button>
+<button onclick="initiateOsc">Synth</button>
 
 </div>
 	<ul class="audioBin">
@@ -27,6 +34,12 @@
 		</li>
 	</ul>
 </div> 
+
+<button onclick="runTest();">Test MIDI!</button>
+	<pre id="log">
+	</pre>
+	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
+
 
 		<script src = "/socket.io/socket.io.js"></script>
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
@@ -42,7 +55,7 @@ var globalOctave;
 
 //variable used to 
 var midiActive = false;
-var sampleActive = true;
+var sampleActive = false;
 
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext ||  
@@ -115,14 +128,18 @@ socket.on('sample on', function(sampleOn){
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
+function initiateOsc(){
+	sampleActive = false;
+}
+
 function startNote(soundOn)
 {
-	// oscillator = context.createOscillator(); // Create bass guitar
- //    gainNode = context.createGainNode(); // Create boost pedal
+	oscillator = context.createOscillator(); // Create bass guitar
+    gainNode = context.createGainNode(); // Create boost pedal
  
-	// oscillator.connect(gainNode); // Connect bass guitar to boost pedal
-	// gainNode.connect(context.destination); // Connect boost pedal to amplifier
-	// gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
+	gainNode.connect(context.destination); // Connect boost pedal to amplifier
+	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
 	console.log(soundOn) ;
 
@@ -208,6 +225,7 @@ function endNote(soundOff, oscillator)
 
 function generateNotes(presetInstrument){
 	$(window).unbind();
+	sampleActive = true;
 	var target = $('.audioBin li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
@@ -232,7 +250,7 @@ function triggerSample(key) {
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
-	if(check == 200){
+	if(check == 200  || check == 49 || check == 96){
 
 	}
 	else{
@@ -396,6 +414,77 @@ function keyboardMap(keyInput)
 	}
 	return output;
 }
+
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// MIDI
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+
+
+var midi=null;
+var inputs=null;
+var outputs=null;
+var input=null;
+var output=null;
+var log=null;
+
+function runTest() {
+	if (!log)
+		log = document.getElementById("log");
+	log.innerText = "Starting up MIDI...\n";
+	navigator.requestMIDIAccess().then( success, failure );
+}
+
+function handleMIDIMessage( ev ) {
+	// testing - just reflect.
+	log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
+	if (ev.data.length == 3) 
+		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
+	log.innerText += "\n";
+	if (output)
+		output.send( ev.data );
+
+	if (ev.data[0].toString(16) == 99)
+	socket.emit('sample on', 111) ;
+	//socket.emit('osc on', 97) ;
+}
+
+function success( midiAccess ) {
+	log.innerText += "MIDI ready!\n";
+	midi = midiAccess;
+
+	inputs = midi.inputs();
+	log.innerText += inputs.length+" inputs:\n";
+	for (var i=0;i<inputs.length;i++)
+		log.innerText += i + ": " + inputs[i].name + "\n";
+
+	if (inputs.length>0) {
+		input = inputs[0];
+//		input.onmessage = handleMIDIMessage;
+		input.addEventListener("midimessage", handleMIDIMessage);
+		log.innerText += "Hooked up first input.\n";
+	}
+
+	outputs = midi.outputs();
+	log.innerText += outputs.length+" outputs:\n";
+	for (var i=0;i<outputs.length;i++)
+		log.innerText += i + ": " + outputs[i].name + "\n";
+
+	if (outputs.length) {
+		output = outputs[0];
+		output.send( [0xb0, 0x00, 0x7f] );	// If the first device is a Novation Launchpad, this will light it up!
+	}
+}
+
+function failure( error ) {
+	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
+}
+
 
 
 		</script>
