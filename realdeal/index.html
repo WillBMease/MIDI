@@ -133,7 +133,22 @@ socket.on('osc on', function(msgOn){
 	});
 
 socket.on('sample on', function(sampleOn){
-	triggerSample(sampleOn);
+	if (sampleOn == 30)
+	{
+			playMidi(sampleOn);
+	}
+	else
+	//triggerSample(sampleOn);
+playB();
+	log.innerText += "incoming data " + sampleOn;
+});
+
+socket.on('midi on', function(midiOn){
+	//playMidi(midiOn);
+	console.log('received: ' + midiOn);
+	playMidi(midiOn) ;
+		log.innerText += "received" + midiOn;
+	midiOn.clear();
 });
 
 //////////////////////////////////////////////////////////////////
@@ -460,12 +475,20 @@ function handleMIDIMessage( ev ) {
 	if (ev.data.length == 3) 
 		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
 	log.innerText += "\n";
-	if (output)
-		output.send( ev.data );
-
+	//console.log(output) ;
 	if (ev.data[0].toString(16) == 99)
-	socket.emit('sample on', 111) ;
+	{
+		var midiMsg = ev.data[1].toString(16) ;
+		socket.emit('midi on', midiMsg) ;
+		console.log('sent ' + midiMsg);
+		ev.clear();
+		//playMIDI(ev.data[1].toString(16))
 	//socket.emit('osc on', 97) ;
+	}
+
+// Plays the drum note through MIDI output (Apple DLS Synth)
+	// if (output)
+	// 	output.send( ev.data );
 }
 
 function success( midiAccess ) {
@@ -506,6 +529,23 @@ function failure( error ) {
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
+function playMidi(mNote)
+{
+	if (mNote == '26')
+		playA() ;
+	else if (mNote == '30')
+		playB() ;
+	else if (mNote == '2d')
+		playC();
+	else if (mNote == '2b')
+		playD() ;
+	else if (mNote == '31')
+		playE();
+	else if (mNote == '33')
+		playF();
+}
+
+
 function playA()
 {
 	triggerSample(122);
@@ -539,6 +579,13 @@ function playE()
 	triggerSample(121);
 	socket.emit('sample on', 121);
 	console.log(121);
+}
+
+function playF()
+{
+	socket.emit('sample on', 99);
+    triggerSample(99);
+	console.log(99);
 }
 
 

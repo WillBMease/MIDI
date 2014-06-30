@@ -28,6 +28,10 @@ io.on('connection', function(socket){
 		io.emit('sample on', msg) ;
 		console.log(msg) ;
 	});
+		socket.on('midi on', function(msg){
+		io.emit('midi on', msg) ;
+		console.log(msg) ;
+	});
 });
 
 http.listen(8888, function(){
