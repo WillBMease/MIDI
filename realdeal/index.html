@@ -504,23 +504,23 @@ function failure( error ) {
 
 function playA()
 {
-	triggerSample(105);
-	socket.emit('sample on', 105);
-	console.log(105);
+	triggerSample(122);
+	socket.emit('sample on', 122);
+	console.log(122);
 }
 
 function playB()
 {
-	triggerSample(111);
-	socket.emit('sample on', 111);
-	console.log(111);
+	triggerSample(120);
+	socket.emit('sample on', 120);
+	console.log(120);
 }
 
 function playC()
 {
-	triggerSample(114);
-	socket.emit('sample on', 114);
-	console.log(114);
+	socket.emit('sample on', 99);
+    triggerSample(99);
+	console.log(99);
 }
 
 function playD()
