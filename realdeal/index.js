@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app) ;
 var io = require('socket.io')(http) ;
-var net = require('net') ;
-var fs = require('fs');
+//var net = require('net') ;
+//var fs = require('fs');
 var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
