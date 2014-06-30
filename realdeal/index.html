@@ -133,11 +133,11 @@ socket.on('osc on', function(msgOn){
 	});
 
 socket.on('sample on', function(sampleOn){
-	if (sampleOn == 30)
-	{
-			//playMidi(sampleOn);
-	}
-	else
+	// if (sampleOn == 30)
+	// {
+	// 		//playMidi(sampleOn);
+	// }
+	
 	triggerSample(sampleOn);
 //playB();
 	log.innerText += "incoming data " + sampleOn;
