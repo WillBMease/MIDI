@@ -135,18 +135,19 @@ socket.on('osc on', function(msgOn){
 socket.on('sample on', function(sampleOn){
 	if (sampleOn == 30)
 	{
-			playMidi(sampleOn);
+			//playMidi(sampleOn);
 	}
 	else
-	//triggerSample(sampleOn);
-playB();
+	triggerSample(sampleOn);
+//playB();
 	log.innerText += "incoming data " + sampleOn;
 });
 
 socket.on('midi on', function(midiOn){
 	//playMidi(midiOn);
 	console.log('received: ' + midiOn);
-	playMidi(midiOn) ;
+	//playMidi(midiOn) ;
+	output.send(midiOn.data);
 		log.innerText += "received" + midiOn;
 	midiOn.clear();
 });
@@ -479,7 +480,7 @@ function handleMIDIMessage( ev ) {
 	if (ev.data[0].toString(16) == 99)
 	{
 		var midiMsg = ev.data[1].toString(16) ;
-		socket.emit('midi on', midiMsg) ;
+		socket.emit('midi on', ev) ;
 		console.log('sent ' + midiMsg);
 		ev.clear();
 		//playMIDI(ev.data[1].toString(16))
