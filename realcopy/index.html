@@ -261,8 +261,6 @@ if (context) {
 var soundOn ;
 var soundOff ;
 var isPlaying = false;
-var latencyActive = true ;
-var latencyCount = new Date() ;
 
 var instrument; 
 instrument = '<audio id="" preload="auto">' +
@@ -338,11 +336,17 @@ socket.emit('latency', msgReturn) ;
 
 function startLatency()
 {
+var latencyActive = true ;
+var latencyCount = new Date() ;
+
 		if (!log)
 		log = document.getElementById("log");
 
-	while (latencyActive && latencyCount % 100 == 0)
+	while (latencyActive)
 	{
+
+if (latencyCount % 100 == 0)
+{
 	var ping = 1 ;
 	var time = new Date() ;
 socket.emit('latencySend', ping) ;
@@ -356,6 +360,7 @@ socket.on('latencyReturn', function(latency){
 	var oneway = rtt/2 ;
 	log.innerText = "latency: " + oneway ;
 		}); // end socket on
+} // end if
 	 } // end while
 }
 
