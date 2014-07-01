@@ -310,6 +310,10 @@ socket.on('midi on', function(mNote){
 	triggerSample(121);
 	else if (mNote == '33')
     triggerSample(99);
+
+var msgReturn = 1 ;
+
+socket.emit('latency', msgReturn) ;
 });
 
 //////////////////////////////////////////////////////////////////
@@ -644,20 +648,19 @@ function handleMIDIMessage( ev ) {
 	if (ev.data.length == 3) 
 		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
 	log.innerText += "\n";
-	//console.log(output) ;
-	if (ev.data[0].toString(16) == 89)
-	{
-		ev = 'null' ;
-	}
+	console.log(ev) ;
 
-	else if (ev.data[0].toString(16) == 99)
-	{
 		var midiMsg = ev.data[1].toString(16) ;
 		socket.emit('midi on', midiMsg) ;
+		var time = new Date() ;
 		console.log('sent ' + midiMsg);
-		//playMIDI(ev.data[1].toString(16))
-	//socket.emit('osc on', 97) ;
-	}
+
+		socket.on('latency', function(latency){
+			var newTime = new Date() ;
+			var rtt =  newTime - time ;
+			console.log('latency: ' + rtt) ;
+});
+
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	// if (output)
