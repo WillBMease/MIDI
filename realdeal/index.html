@@ -249,23 +249,23 @@ socket.on('osc on', function(msgOn){
 	});
 
 socket.on('sample on', function(sampleOn){
-	// if (sampleOn == 30)
-	// {
-	// 		//playMidi(sampleOn);
-	// }
-	
 	triggerSample(sampleOn);
-//playB();
-	//log.innerText += "incoming data " + sampleOn;
 });
 
-socket.on('midi on', function(midiOn){
-	//playMidi(midiOn);
-	console.log('received: ' + midiOn);
-	//playMidi(midiOn) ;
-	output.send(midiOn.data);
-		log.innerText += "received" + midiOn;
-	midiOn.clear();
+socket.on('midi on', function(mNote){
+	// playMidi(midiOn) ;
+		if (mNote == '26')
+	triggerSample(122);
+	else if (mNote == '30')
+	triggerSample(120);
+	else if (mNote == '2d')
+    triggerSample(99);
+	else if (mNote == '2b')
+	triggerSample(116);
+	else if (mNote == '31')
+	triggerSample(121);
+	else if (mNote == '33')
+    triggerSample(99);
 });
 
 //////////////////////////////////////////////////////////////////
@@ -593,19 +593,23 @@ function handleMIDIMessage( ev ) {
 		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
 	log.innerText += "\n";
 	//console.log(output) ;
-	if (ev.data[0].toString(16) == 99)
+	if (ev.data[0].toString(16) == 89)
+	{
+		ev = 'null' ;
+	}
+
+	else if (ev.data[0].toString(16) == 99)
 	{
 		var midiMsg = ev.data[1].toString(16) ;
-		socket.emit('midi on', ev) ;
+		socket.emit('midi on', midiMsg) ;
 		console.log('sent ' + midiMsg);
-		ev.clear();
 		//playMIDI(ev.data[1].toString(16))
 	//socket.emit('osc on', 97) ;
 	}
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
-	if (output)
-		output.send( ev.data );
+	// if (output)
+	// 	output.send( ev.data );
 }
 
 function success( midiAccess ) {
@@ -649,17 +653,17 @@ function failure( error ) {
 function playMidi(mNote)
 {
 	if (mNote == '26')
-		playA() ;
+	triggerSample(122);
 	else if (mNote == '30')
-		playB() ;
+	triggerSample(120);
 	else if (mNote == '2d')
-		playC();
+    triggerSample(99);
 	else if (mNote == '2b')
-		playD() ;
+	triggerSample(116);
 	else if (mNote == '31')
-		playE();
+	triggerSample(121);
 	else if (mNote == '33')
-		playF();
+    triggerSample(99);
 }
 
 
