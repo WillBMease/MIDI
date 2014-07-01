@@ -209,7 +209,7 @@ inavibe</a>
 </div>
 	<ul class="audioBin">
 		<li>
-			
+
 		</li>
 	</ul>
 </div> 
@@ -322,42 +322,61 @@ function initiateOsc(){
 	sampleActive = false;
 }
 
+function freqCalculator(note){
+
+	var noteFrequency = 0;
+	transpose(note);
+	var trueOutput = keyboardMap(note) + (octave*12);
+	//Note frequency calculator
+	var numerator = trueOutput - 49;
+	var dividend = (numerator/12);//.toPrecision(4);
+	noteFrequency = 440*Math.pow(2,dividend);
+	return noteFrequency;
+}
+
 function startNote(soundOn)
 {
+	
 	oscillator = context.createOscillator(); // Create bass guitar
     gainNode = context.createGainNode(); // Create boost pedal
- 
+ 	
 	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
 	gainNode.connect(context.destination); // Connect boost pedal to amplifier
 	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
 
-	console.log(soundOn) ;
+	
 
-	if (soundOn == 97)
-	{
-		oscillator.frequency.value = 440.00; // A
-		oscillator.noteOn(0); // Play bass guitar instantly
-	}
-	else if (soundOn == 98)
-	{
-		oscillator.frequency.value = 493.88; // B
-		oscillator.noteOn(0);
-	}
-	else if (soundOn == 99)
-	{
-		oscillator.frequency.value = 523.25; // C
-		oscillator.noteOn(0);
-	}
-	else if (soundOn == 100)
-	{
-		oscillator.frequency.value = 587.33; // D
-		oscillator.noteOn(0) ;
-	}
-	else if (soundOn == 101)
-	{
-		oscillator.frequency.value = 659.25; // E
-		oscillator.noteOn(0) ;
-	}
+	oscillator.frequency.value = freqCalculator(soundOn);
+	// oscillator.noteOn(0);
+	console.log("key: " + soundOn + " frequency: " + oscillator.frequency.value) ;
+	// if (soundOn == 97)	
+	// {
+	// 	oscillator.frequency.value = 440.00; // A
+	// 	oscillator.noteOn(0); // Play bass guitar instantly
+	// }
+	// else if (soundOn == 98)
+	// {
+	// 	oscillator.frequency.value = 493.88; // B
+	// 	oscillator.noteOn(0);
+	// }
+	// else if (soundOn == 99)
+	// {
+	// 	oscillator.frequency.value = 523.25; // C
+	// 	oscillator.noteOn(0);
+	// }
+	// else if (soundOn == 100)
+	// {
+	// 	oscillator.frequency.value = 587.33; // D
+	// 	oscillator.noteOn(0) ;
+	// }
+	// else if (soundOn == 101)
+	// {
+	// 	oscillator.frequency.value = 659.25; // E
+	// 	oscillator.noteOn(0) ;
+	// }
+
+	// z
+	
 
 $(document).keyup(function(e){
 	off = e.which;
@@ -452,11 +471,19 @@ function triggerSample(key) {
 
 function transpose(noteInput){
 	// 1
-	if(noteInput == 49 && octave < globalOctave){
+	if(sampleActive && noteInput == 49 && octave < globalOctave){
 		octave = octave + 1;
 	}
 	// ~
-	if(noteInput == 96 && octave != 0){
+	if(sampleActive && noteInput == 96 && octave != 0){
+		octave = octave - 1;
+	}
+	//////For Oscillator/////////////////
+	if(!sampleActive && noteInput == 49 && octave < 8){
+		octave = octave + 1;
+	}
+
+	if(!sampleActive && noteInput == 96 && octave != 0){
 		octave = octave - 1;
 	}
 }
