@@ -144,12 +144,11 @@ socket.on('sample on', function(sampleOn){
 });
 
 socket.on('midi on', function(midiOn){
-	//playMidi(midiOn);
 	console.log('received: ' + midiOn);
-	//playMidi(midiOn) ;
-	output.send(midiOn.data);
+	playMidi(midiOn) ;
+	// output.send(midiOn.data);
 		log.innerText += "received" + midiOn;
-	midiOn.clear();
+	// midiOn.clear();
 });
 
 //////////////////////////////////////////////////////////////////
