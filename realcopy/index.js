@@ -36,6 +36,14 @@ io.on('connection', function(socket){
 		io.emit('latency', msg) ;
 		console.log(msg) ;
 	});
+		socket.on('latencySend', function(msg){
+		io.emit('latencySend', msg) ;
+		console.log(msg) ;
+	});
+		socket.on('latencyReturn', function(msg){
+		io.emit('latencyReturn', msg) ;
+		console.log(msg) ;
+	});
 });
 
 http.listen(8888, function(){
