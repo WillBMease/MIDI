@@ -97,6 +97,10 @@ h4{
   padding-bottom: -20px;
 }
 
+.midi-pos{
+	position: right ;
+}
+
 </style>
 		 <script src="js/WebMIDIAPI.js"></script>
 <!-- 		 // <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
@@ -112,9 +116,12 @@ h4{
 <a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
 <a class = "choose-inst" onClick="generateNotes(gPiano)"><i>piano</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
+<a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
+	<pre id="log">
+	</pre>
+	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
 </h2>
 
-<h4><i>MIDI</i></h4>
 <!-- <div class="buttons">
 <button class="choose-inst" onClick="generateNotes(bass)">Bass</button>
 <button class="choose-inst" onClick="generateNotes(harp)">Harp</button>
