@@ -1,0 +1,772 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Socket.IO chat </title>
+
+		 <!-- <script src="js/WebMIDIAPI.js"></script>
+		// <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
+
+<style>
+
+		button {
+  color: #888;
+  font-weight: bold;
+  font-size: 150%;
+  text-transform: uppercase;
+  text-align: center ;
+  background-color: #202020;
+}
+
+.musicNotes{
+	display: ;
+	padding: 0px ;
+	width: 80px;
+	height: 80px;
+	text-align: center ;
+}
+
+.midiButton{
+	text-align: center ;
+}
+
+body{ background:#202020;}
+
+i{
+  /* HOVER OFF*/
+  color:black;
+  transition: color 3s;
+}
+
+  /*HOVER ON */
+i:hover, .active{  
+  color:white;
+  text-shadow: 0px 0px 70px #FFF;
+  transition:color 0s;  
+}
+
+i:active{
+  color:white;
+  text-shadow: 0px 0px 70px #FFF;
+  transition:color 0s;  
+}
+
+.icons{
+  width:100%;
+}
+
+
+h1{
+  font-style:italic;
+  font-size:6em;
+  text-align: center;
+  /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+  top: 120px;
+}
+
+h2{
+  font-style:italic;
+  font-size:3em;
+  text-align: left;
+  /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+  position: fixed;
+  top: 55px;
+}
+
+h3{
+  font-style:italic;
+  font-size:1em;
+  text-align: right;
+  /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+}
+
+h4{
+  font-style:italic;
+  font-size:2em;
+  text-align: right;
+  /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+}
+
+.inavibe{
+	  color:#81d4fa;
+  text-shadow: 0px 0px 70px #81d4fa;
+    font-style:italic;
+  font-size:6em;
+  text-align: right;
+   /*Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+  position: fixed;
+  top: -4px;
+
+}
+
+.midi-pos{
+	   position: fixed;
+    top: 30px;
+    right: 5px;
+}
+
+.midi-pos-download{
+	   position: fixed;
+    top: 2px;
+    right: 5px;
+}
+
+.note-pos{
+
+	top: 120px;
+}
+
+.bassBegin{
+		  color:white;
+  text-shadow: 0px 0px 70px #FFF;
+  text-decoration: blink;
+}
+
+</style>
+		 <script src="js/WebMIDIAPI.js"></script>
+<!-- 		 // <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
+
+<script>
+
+
+</script>
+
+	</head>
+
+	<body>
+
+<a class = "inavibe">
+inavibe</a>
+<h2>
+<a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
+<a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
+<a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
+<a onclick = "initiateOsc()"><i>synth</i><a>
+<a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
+</h2>
+<h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3>
+<h4>
+	<pre id="log">
+	</pre>
+	<div class = "midi-pos" id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
+</h4>
+
+<!-- <div class="buttons">
+<button class="choose-inst" onClick="generateNotes(bass)">Bass</button>
+<button class="choose-inst" onClick="generateNotes(harp)">Harp</button>
+<button class="choose-inst" onClick="generateNotes(gPiano)">Grand_Piano</button>
+<button onclick="initiateOsc()">Synth</button> -->
+
+<!-- <button class = "midiButton" onclick="runTest();">Test MIDI!</button>
+	<pre id="log">
+	</pre>
+	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"></div> -->
+
+
+<!-- <h1> Play Notes: <h1> -->
+
+<!-- <h1>
+<button onClick="playA()" class = "h1">A</button>
+<button onClick="playB()" class = "h1">B</button>
+<button onClick="playC()" class = "h1">C</button>
+<button onClick="playD()" class = "h1">D</button>
+<button onClick="playE()" class = "h1">E</button>
+</h1> -->
+
+<h1 class = "note-pos">
+
+<i>
+	A
+</i>
+<i>
+	B
+</i>
+<i>
+	C
+</i>
+<i>
+	D
+</i>
+<i>
+	E
+</i>
+<i>
+	F
+</i>
+
+</h1>
+
+
+</div>
+	<ul class="audioBin">
+		<li>
+			
+		</li>
+	</ul>
+</div> 
+
+
+		<script src = "/socket.io/socket.io.js"></script>
+		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+
+<script>
+
+// Create socket
+var socket = io() ;
+
+var octave = 1;
+var globalOctave;
+
+//variable used to 
+var midiActive = false;
+var sampleActive = false;
+
+// initialize web audio api
+var context = new (window.AudioContext || window.webkitAudioContext ||  
+	window.mozAudioContext || 
+    window.oAudioContext || 
+    window.msAudioContext)();
+if (context) {
+  // Web Audio API is available.
+} else {
+  alert('browser not supported') ;
+}
+
+var soundOn ;
+var soundOff ;
+var isPlaying = false;
+
+var instrument; 
+instrument = '<audio id="" preload="auto">' +
+			'</audio>';
+
+//preset instrumemt list/////////////////////////////
+
+var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
+
+var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
+
+var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
+
+$(document).keypress(function(e) { 
+if(!sampleActive){
+  if (isPlaying) {
+  	return; }
+  
+  isPlaying = true;
+	on = e.which;
+	socket.emit('osc on', on);
+	return false;
+}
+
+else {
+	var pressed = e.which;
+	socket.emit('sample on', pressed);
+	console.log(pressed);
+	// triggerSample(pressed);
+}
+
+});
+
+function keyMap(e,delay) {
+  var pressed = e.which;
+	//pressed = pressed - 49;
+	//if (pressed == 122) {};
+	triggerSample(pressed, delay);
+	console.log(pressed);
+}
+
+
+// Receive and process message
+socket.on('osc on', function(msgOn){
+	startNote(msgOn) ;
+	});
+
+socket.on('sample on', function(sampleOn){
+	triggerSample(sampleOn);
+});
+
+socket.on('midi on', function(mNote){
+	// playMidi(midiOn) ;
+		if (mNote == '26')
+	triggerSample(122);
+	else if (mNote == '30')
+	triggerSample(120);
+	else if (mNote == '2d')
+    triggerSample(99);
+	else if (mNote == '2b')
+	triggerSample(116);
+	else if (mNote == '31')
+	triggerSample(121);
+	else if (mNote == '33')
+    triggerSample(99);
+});
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// OSCILLATOR
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+function initiateOsc(){
+	sampleActive = false;
+}
+
+function startNote(soundOn)
+{
+	oscillator = context.createOscillator(); // Create bass guitar
+    gainNode = context.createGainNode(); // Create boost pedal
+ 
+	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
+	gainNode.connect(context.destination); // Connect boost pedal to amplifier
+	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
+
+	console.log(soundOn) ;
+
+	if (soundOn == 97)
+	{
+		oscillator.frequency.value = 440.00; // A
+		oscillator.noteOn(0); // Play bass guitar instantly
+	}
+	else if (soundOn == 98)
+	{
+		oscillator.frequency.value = 493.88; // B
+		oscillator.noteOn(0);
+	}
+	else if (soundOn == 99)
+	{
+		oscillator.frequency.value = 523.25; // C
+		oscillator.noteOn(0);
+	}
+	else if (soundOn == 100)
+	{
+		oscillator.frequency.value = 587.33; // D
+		oscillator.noteOn(0) ;
+	}
+	else if (soundOn == 101)
+	{
+		oscillator.frequency.value = 659.25; // E
+		oscillator.noteOn(0) ;
+	}
+
+$(document).keyup(function(e){
+	off = e.which;
+	socket.emit('osc off', off);
+	isPlaying = false ;
+	return false;
+});
+$(document).focus(function(e) { 
+  isPlaying = false;
+});
+
+socket.on('osc off', function(msgOff){
+	endNote(msgOff, oscillator) ;
+});
+
+}
+
+// }
+
+function endNote(soundOff, oscillator)
+{
+	if (soundOff == 65)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 66)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 67)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 68)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+	else if (soundOff == 69)
+	{
+		oscillator.noteOff(0); // Play bass guitar instantly
+		oscillator.disconnect();
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// SAMPLES
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+function generateNotes(presetInstrument){
+	$(window).unbind();
+	sampleActive = true;
+	var target = $('.audioBin li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	for(var i = 1; i <presetInstrument.notes; i++){
+		target.append(instrument);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+	}
+	// $(window).on('keypress',function(e){
+	//  triggerSample(e);
+	// });
+}
+
+function triggerSample(key) {
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	transpose(key);
+	var check = keyboardMap(key) ;
+	var keyTrue = keyboardMap(key) + (octave*12);
+	console.log(notes[keyTrue]);
+		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(check == 200  || check == 49 || check == 96){
+
+	}
+	else{
+		notes[keyTrue].currentTime = 0;
+		notes[keyTrue].play();
+	}
+
+}
+
+function transpose(noteInput){
+	// 1
+	if(noteInput == 49 && octave < globalOctave){
+		octave = octave + 1;
+	}
+	// ~
+	if(noteInput == 96 && octave != 0){
+		octave = octave - 1;
+	}
+}
+
+function keyGlow(cssClass){
+	$('.active').removeClass(active);
+	$(this).addClass('active');
+	$('.button').click(function(){
+	})
+}
+
+
+function keyboardMap(keyInput)
+{
+	var output;
+	// z
+	if(keyInput == 122){
+		output = 1;
+		//keyGlow(keyInput);
+	}
+	// s
+	else if (keyInput == 115) {
+		output = 2;
+	}
+	// x
+	else if (keyInput == 120) {
+		output = 3;
+	}
+	// d
+	else if (keyInput == 100) {
+		output = 4;
+	}
+	// c
+	else if (keyInput == 99) {
+		output = 5;
+	}
+	// v
+	else if (keyInput == 118) {
+		output = 6;
+	}
+	// g
+	else if (keyInput == 103) {
+		output = 7;
+	}
+	// b
+	else if (keyInput == 98) {
+		output = 8;
+	}
+	// h
+	else if (keyInput == 104) {
+		output = 9;
+	}
+	// n
+	else if (keyInput == 110) {
+		output = 10;
+	}
+	// j
+	else if (keyInput == 106) {
+		output = 11;
+	}
+	// m
+	else if (keyInput == 109) {
+		output = 12;
+	}
+
+///////////////////////////// Next Octave /////////////////////////////////
+	// < OR q
+	else if (keyInput == 44 || keyInput == 113) {
+		output = 13;
+	}
+	// l OR 2
+	else if (keyInput == 108 || keyInput == 50) {
+		output = 14;
+	}
+	// > OR w
+	else if (keyInput == 46 || keyInput == 119) {
+		output = 15;
+	}
+	// ; OR 3
+	else if (keyInput == 59 || keyInput == 51) {
+		output = 16;
+	}
+	// ? OR e
+	else if (keyInput == 47 || keyInput == 101) {
+		output = 17;
+	}
+	// r
+	else if (keyInput == 114) {
+		output = 18;
+	}
+	// 5
+	else if (keyInput == 53) {
+		output = 19;
+	}
+	// t
+	else if (keyInput == 116) {
+		output = 20;
+	}
+	// 6
+	else if (keyInput == 54) {
+		output = 21;
+	}
+	// y
+	else if (keyInput == 121) {
+		output = 22;
+	}
+	// 7
+	else if (keyInput == 55) {
+		output = 23;
+	}
+	// u
+	else if (keyInput == 117) {
+		output = 24;
+	}
+
+/////////////////////// Start of the next Octave /////////////////////////
+
+	// i
+	else if (keyInput == 105) {
+		output = 25;
+	}
+	// 9
+	else if (keyInput == 57) {
+		output = 26;
+	}
+	// o
+	else if (keyInput == 111) {
+		output = 27;
+	}
+	// 0
+	else if (keyInput == 48) {
+		output = 28;
+	}
+	// p
+	else if (keyInput == 112) {
+		output = 29;
+	}
+	// {
+	else if (keyInput == 91) {
+		output = 30;
+	}
+	// +
+	else if (keyInput == 61) {
+		output = 31;
+	}
+	// }
+	else if (keyInput == 93) {
+		output = 32;
+	}
+
+	else{
+		output = 200;
+	}
+	return output;
+}
+
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// MIDI
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+
+
+
+var midi=null;
+var inputs=null;
+var outputs=null;
+var input=null;
+var output=null;
+var log=null;
+
+function runTest() {
+	if (!log)
+		log = document.getElementById("log");
+	 log.innerText = "Starting up MIDI...\n";
+	navigator.requestMIDIAccess().then( success, failure );
+}
+
+function handleMIDIMessage( ev ) {
+	// testing - just reflect.
+	log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
+	if (ev.data.length == 3) 
+		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
+	log.innerText += "\n";
+	//console.log(output) ;
+	if (ev.data[0].toString(16) == 89)
+	{
+		ev = 'null' ;
+	}
+
+	else if (ev.data[0].toString(16) == 99)
+	{
+		var midiMsg = ev.data[1].toString(16) ;
+		socket.emit('midi on', midiMsg) ;
+		console.log('sent ' + midiMsg);
+		//playMIDI(ev.data[1].toString(16))
+	//socket.emit('osc on', 97) ;
+	}
+
+// Plays the drum note through MIDI output (Apple DLS Synth)
+	// if (output)
+	// 	output.send( ev.data );
+}
+
+function success( midiAccess ) {
+	 log.innerText += "MIDI ready!\n";
+	midi = midiAccess;
+
+	inputs = midi.inputs();
+	log.innerText += inputs.length+" inputs:\n";
+	for (var i=0;i<inputs.length;i++)
+		log.innerText += i + ": " + inputs[i].name + "\n";
+
+	if (inputs.length>0) {
+		input = inputs[0];
+		input.onmessage = handleMIDIMessage;
+		input.addEventListener("midimessage", handleMIDIMessage);
+		log.innerText += inputs[0] + "Hooked up first input.\n";
+	}
+
+	outputs = midi.outputs();
+	log.innerText += outputs.length+" outputs:\n";
+	for (var i=0;i<outputs.length;i++)
+		log.innerText += i + ": " + outputs[i].name + "\n";
+
+	if (outputs.length) {
+		output = outputs[0];
+		output.send( [0xb0, 0x00, 0x7f] );	// If the first device is a Novation Launchpad, this will light it up!
+	}
+}
+
+function failure( error ) {
+	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+// NOTE BUTTONS
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+function playMidi(mNote)
+{
+	if (mNote == '26')
+	triggerSample(122);
+	else if (mNote == '30')
+	triggerSample(120);
+	else if (mNote == '2d')
+    triggerSample(99);
+	else if (mNote == '2b')
+	triggerSample(116);
+	else if (mNote == '31')
+	triggerSample(121);
+	else if (mNote == '33')
+    triggerSample(99);
+}
+
+
+function playA()
+{
+	triggerSample(122);
+	socket.emit('sample on', 122);
+	console.log(122);
+}
+
+function playB()
+{
+	triggerSample(120);
+	socket.emit('sample on', 120);
+	console.log(120);
+}
+
+function playC()
+{
+	socket.emit('sample on', 99);
+    triggerSample(99);
+	console.log(99);
+}
+
+function playD()
+{
+	triggerSample(116);
+	socket.emit('sample on', 116);
+	console.log(116);
+}
+
+function playE()
+{
+	triggerSample(121);
+	socket.emit('sample on', 121);
+	console.log(121);
+}
+
+function playF()
+{
+	socket.emit('sample on', 99);
+    triggerSample(99);
+	console.log(99);
+}
+
+function playG()
+{
+
+}
+
+
+		</script>
+	</body>
+</html>
