@@ -38,7 +38,13 @@ i{
 }
 
   /*HOVER ON */
-i:hover{  
+i:hover, .active{  
+  color:white;
+  text-shadow: 0px 0px 70px #FFF;
+  transition:color 0s;  
+}
+
+i:active{
   color:white;
   text-shadow: 0px 0px 70px #FFF;
   transition:color 0s;  
@@ -47,7 +53,6 @@ i:hover{
 .icons{
   width:100%;
 }
-
 
 
 h1{
@@ -456,6 +461,13 @@ function transpose(noteInput){
 	}
 }
 
+function keyGlow(cssClass){
+	$('.active').removeClass(active);
+	$(this).addClass('active');
+	$('.button').click(function(){
+	})
+}
+
 
 function keyboardMap(keyInput)
 {
@@ -463,6 +475,7 @@ function keyboardMap(keyInput)
 	// z
 	if(keyInput == 122){
 		output = 1;
+		//keyGlow(keyInput);
 	}
 	// s
 	else if (keyInput == 115) {
