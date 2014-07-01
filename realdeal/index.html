@@ -479,7 +479,7 @@ function handleMIDIMessage( ev ) {
 	if (ev.data[0].toString(16) == 99)
 	{
 		var midiMsg = ev.data[1].toString(16) ;
-		socket.emit('midi on', ev) ;
+		socket.emit('midi on', midiMsg) ;
 		console.log('sent ' + midiMsg);
 		ev.clear();
 		//playMIDI(ev.data[1].toString(16))
