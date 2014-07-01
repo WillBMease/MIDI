@@ -644,11 +644,13 @@ function runTest() {
 
 function handleMIDIMessage( ev ) {
 	// testing - just reflect.
-	log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
+	// log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
 	if (ev.data.length == 3) 
-		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
-	log.innerText += "\n";
-	console.log(ev) ;
+	// 	log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
+	// log.innerText += "\n";
+	// console.log(ev) ;
+
+
 
 		var midiMsg = ev.data[1].toString(16) ;
 		socket.emit('midi on', midiMsg) ;
@@ -658,7 +660,8 @@ function handleMIDIMessage( ev ) {
 		socket.on('latency', function(latency){
 			var newTime = new Date() ;
 			var rtt =  newTime - time ;
-			console.log('latency: ' + rtt/2) ;
+			var oneway = rtt/2 ;
+			log.innerText = "latency" + oneway ;
 });
 
 
