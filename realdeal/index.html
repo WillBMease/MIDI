@@ -136,8 +136,20 @@ socket.on('sample on', function(sampleOn){
 	triggerSample(sampleOn);
 });
 
-socket.on('midi on', function(midiOn){
-	playMidi(midiOn) ;
+socket.on('midi on', function(mNote){
+	// playMidi(midiOn) ;
+		if (mNote == '26')
+	triggerSample(122);
+	else if (mNote == '30')
+	triggerSample(120);
+	else if (mNote == '2d')
+    triggerSample(99);
+	else if (mNote == '2b')
+	triggerSample(116);
+	else if (mNote == '31')
+	triggerSample(121);
+	else if (mNote == '33')
+    triggerSample(99);
 });
 
 //////////////////////////////////////////////////////////////////
