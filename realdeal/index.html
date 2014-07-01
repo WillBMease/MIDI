@@ -133,14 +133,7 @@ socket.on('osc on', function(msgOn){
 	});
 
 socket.on('sample on', function(sampleOn){
-	// if (sampleOn == 30)
-	// {
-	// 		//playMidi(sampleOn);
-	// }
-	
 	triggerSample(sampleOn);
-//playB();
-	//log.innerText += "incoming data " + sampleOn;
 });
 
 socket.on('midi on', function(midiOn){
@@ -532,17 +525,17 @@ function failure( error ) {
 function playMidi(mNote)
 {
 	if (mNote == '26')
-		playA() ;
+	triggerSample(122);
 	else if (mNote == '30')
-		playB() ;
+	triggerSample(120);
 	else if (mNote == '2d')
-		playC();
+    triggerSample(99);
 	else if (mNote == '2b')
-		playD() ;
+	triggerSample(116);
 	else if (mNote == '31')
-		playE();
+	triggerSample(121);
 	else if (mNote == '33')
-		playF();
+    triggerSample(99);
 }
 
 
