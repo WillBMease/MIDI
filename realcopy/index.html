@@ -666,7 +666,7 @@ function handleMIDIMessage( ev ) {
 			var newTime = new Date() ;
 			var rtt =  newTime - time ;
 			var oneway = rtt/2 ;
-			log.innerText = "latency" + oneway ;
+			log.innerText = "latency: " + oneway ;
 });
 
 
