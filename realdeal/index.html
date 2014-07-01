@@ -137,11 +137,7 @@ socket.on('sample on', function(sampleOn){
 });
 
 socket.on('midi on', function(midiOn){
-	console.log('received: ' + midiOn);
 	playMidi(midiOn) ;
-	// output.send(midiOn.data);
-		log.innerText += "received" + midiOn;
-	// midiOn.clear();
 });
 
 //////////////////////////////////////////////////////////////////
@@ -474,14 +470,13 @@ function handleMIDIMessage( ev ) {
 		var midiMsg = ev.data[1].toString(16) ;
 		socket.emit('midi on', midiMsg) ;
 		console.log('sent ' + midiMsg);
-		ev.clear();
 		//playMIDI(ev.data[1].toString(16))
 	//socket.emit('osc on', 97) ;
 	}
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
-	if (output)
-		output.send( ev.data );
+	// if (output)
+	// 	output.send( ev.data );
 }
 
 function success( midiAccess ) {
