@@ -477,7 +477,12 @@ function handleMIDIMessage( ev ) {
 		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
 	log.innerText += "\n";
 	//console.log(output) ;
-	if (ev.data[0].toString(16) == 99)
+	if (ev.data[0].toString(16) == 89)
+	{
+		ev.clear() ;
+	}
+
+	else if (ev.data[0].toString(16) == 99)
 	{
 		var midiMsg = ev.data[1].toString(16) ;
 		socket.emit('midi on', midiMsg) ;
