@@ -341,8 +341,8 @@ function startLatency()
 		if (!log)
 		log = document.getElementById("log");
 
-	while (latencyActive && latencyCount % 100 == 0)
-	{
+	// while (latencyActive && latencyCount % 100 == 0)
+	// {
 	var ping = 1 ;
 	var time = new Date() ;
 socket.emit('latencySend', ping) ;
@@ -356,7 +356,7 @@ socket.on('latencyReturn', function(latency){
 	var oneway = rtt/2 ;
 	log.innerText = "latency: " + oneway ;
 		}); // end socket on
-	} // end while
+	// } // end while
 }
 
 //////////////////////////////////////////////////////////////////
