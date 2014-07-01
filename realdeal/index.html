@@ -593,7 +593,7 @@ var log=null;
 function runTest() {
 	if (!log)
 		log = document.getElementById("log");
-	log.innerText = "Starting up MIDI...\n";
+	// log.innerText = "Starting up MIDI...\n";
 	navigator.requestMIDIAccess().then( success, failure );
 }
 
@@ -624,7 +624,7 @@ function handleMIDIMessage( ev ) {
 }
 
 function success( midiAccess ) {
-	log.innerText += "MIDI ready!\n";
+	// log.innerText += "MIDI ready!\n";
 	midi = midiAccess;
 
 	inputs = midi.inputs();
@@ -636,7 +636,7 @@ function success( midiAccess ) {
 		input = inputs[0];
 //		input.onmessage = handleMIDIMessage;
 		input.addEventListener("midimessage", handleMIDIMessage);
-		log.innerText += "Hooked up first input.\n";
+		log.innerText += inputs[0] + "Hooked up first input.\n";
 	}
 
 	outputs = midi.outputs();
