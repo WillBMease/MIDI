@@ -479,7 +479,7 @@ function handleMIDIMessage( ev ) {
 	//console.log(output) ;
 	if (ev.data[0].toString(16) == 89)
 	{
-		ev.clear() ;
+		ev = 'null' ;
 	}
 
 	else if (ev.data[0].toString(16) == 99)
