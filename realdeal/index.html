@@ -44,6 +44,12 @@ i:hover{
   transition:color 0s;  
 }
 
+i:target{
+	  color:white;
+  text-shadow: 0px 0px 70px #FFF;
+  transition:color 0s; 
+}
+
 .icons{
   width:100%;
 }
@@ -114,7 +120,7 @@ h4{
 <a class = "inavibe">
 <h2>inavibe</h2><a>
 <h2>
-<a class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
+<a class = "choose-inst" onClick = "generateNotes(bass)" onclick = "highlight"><i>bass</i>
 <a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
 <a class = "choose-inst" onClick="generateNotes(gPiano)"><i>piano</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
