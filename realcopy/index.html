@@ -658,7 +658,7 @@ function handleMIDIMessage( ev ) {
 		socket.on('latency', function(latency){
 			var newTime = new Date() ;
 			var rtt =  newTime - time ;
-			console.log('latency: ' + rtt) ;
+			console.log('latency: ' + rtt/2) ;
 });
 
 
