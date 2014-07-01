@@ -250,6 +250,8 @@ if (context) {
 var soundOn ;
 var soundOff ;
 var isPlaying = false;
+var latencyActive = true ;
+var latencyCount = new Date() ;
 
 var instrument; 
 instrument = '<audio id="" preload="auto">' +
@@ -318,8 +320,29 @@ socket.on('midi on', function(mNote){
 
 var msgReturn = 1 ;
 
+
 socket.emit('latency', msgReturn) ;
 });
+
+
+function startLatency()
+{
+	while (latencyActive && latencyCount % 100 == 0)
+	{
+	var ping = 1 ;
+	var time = new Date() ;
+socket.emit('latencySend', ping) ;
+socket.on('latencySend', function(receivePing){
+	socket.emit('latencyReturn', receivePing) ;
+}
+socket.on('latencyReturn', function(latency){
+	var newTime = new Date() ;
+	var rtt = newTime - time ;
+	var oneway = rtt/2 ;
+	log.innerText = "latency: " + oneway ;
+		} // end socket on
+	} // end while
+}
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
