@@ -260,22 +260,22 @@ var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Ba
 var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
 
 $(document).keypress(function(e) { 
-if(!sampleActive){
-  if (osc1Active) {
-  	return; }
+// if(!sampleActive){
+//   if (osc1Active) {
+//   	return; }
   
-  osc1Active = true;
-	on = e.which;
-	socket.emit('osc on', on);
-	return false;
-}
+//   osc1Active = true;
+// 	on = e.which;
+// 	socket.emit('osc on', on);
+// 	return false;
+// }
 
-else {
+// else {
 	var pressed = e.which;
 	socket.emit('sample on', pressed);
 	console.log(pressed);
 	// triggerSample(pressed);
-}
+//}
 
 });
 
@@ -374,17 +374,8 @@ socket.on('osc off', function(msgOff){
 
 }
 
-// }
-
 function endNote(soundOff, oscillator)
 {
-	
-	//oscillator.frequency.value = freqCalculator(soundOff);
-
-
-	// oscillator.noteOff(0); // Play bass guitar instantly
-	// oscillator.disconnect(); 
-
 	console.log("endNote called for " + soundOff);
 	
 	if (soundOff == 65)
@@ -469,13 +460,13 @@ function transpose(noteInput){
 		octave = octave - 1;
 	}
 	//////For Oscillator/////////////////
-	if(!sampleActive && noteInput == 49 && octave < 8){
-		octave = octave + 1;
-	}
+	// if(!sampleActive && noteInput == 49 && octave < 8){
+	// 	octave = octave + 1;
+	// }
 
-	if(!sampleActive && noteInput == 96 && octave != 0){
-		octave = octave - 1;
-	}
+	// if(!sampleActive && noteInput == 96 && octave != 0){
+	// 	octave = octave - 1;
+	// }
 }
 
 function keyGlow(cssClass){
