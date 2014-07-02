@@ -668,8 +668,8 @@ function handleMIDIMessage( ev ) {
 	}
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
-	// if (output)
-	// 	output.send( ev.data );
+	if (output)
+		output.send( ev.data );
 }
 
 function success( midiAccess ) {
