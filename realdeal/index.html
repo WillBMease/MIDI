@@ -668,14 +668,15 @@ function handleMIDIMessage( ev ) {
 	var rando = 1 ;
 	socket.emit('latency', rando) ;
 			var time = new Date() ;
-	}
-
+	
 		socket.on('latency', function(latency){
 			var newTime = new Date() ;
 			var rtt =  newTime - time ;
 			var oneway = rtt/2 ;
-			 log.innerText += "latency: " + oneway ;
+			 log.innerText += "\n" "latency: " + oneway ;
 			});
+	}
+
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	if (output)
