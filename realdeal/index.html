@@ -667,13 +667,13 @@ function handleMIDIMessage( ev ) {
 	//socket.emit('osc on', 97) ;
 	var rando = 1 ;
 	socket.emit('latency', rando) ;
-			var time = new Date() ;
+		var time = new Date() ;
 	
 		socket.on('latency', function(latency){
 			var newTime = new Date() ;
 			var rtt =  newTime - time ;
 			var oneway = rtt/2 ;
-			 log.innerText += "\n" "latency: " + oneway ;
+			 log.innerText += "\n" + "latency: " + oneway ;
 			});
 	}
 
