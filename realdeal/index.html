@@ -675,6 +675,7 @@ function handleMIDIMessage( ev ) {
 			var rtt =  newTime - time ;
 			var oneway = rtt/2 ;
 			 log.innerText += "latency: " + oneway ;
+			});
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	if (output)
