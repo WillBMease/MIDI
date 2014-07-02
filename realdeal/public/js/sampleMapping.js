@@ -1,56 +1,6 @@
-
-var octave = 1;
-var globalOctave;
-
-
-function triggerAudio(key, delay) {
-	var notes = [];
-	var noteWrap = $('.audioBin li');
-	notes = noteWrap.find('audio');
-	transpose(key);
-	key = keyboardMap(key) + (octave*12);
-	setTimeout(function(){
-		notes[key].currentTime = 0;
-		notes[key].play();
-		console.log(key);
-	}, delay);
-}
-
-function keyMap(e,delay) {
-  var pressed = e.which;
-	//pressed = pressed - 49;
-	//if (pressed == 122) {};
-	triggerAudio(pressed, delay);
-	console.log(pressed);
-}
-
-$(document).ready(function(){
-	// $('button.choose-inst').click(function(e){
-	// 	e.preventDefault();
-	// 	var inst = $(this).data('inst');
-	// 	console.log(inst);
-	// 	//$(window).unbind();
-	// 	generateNotes(inst);
-	// });
-});
-
-var instrument; 
-instrument = '<audio id="" preload="auto">' +
-			'</audio>';
-
-//preset instrumemt list/////////////////////////////
-
-var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
-
-var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
-
-var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
-
-
-
-
 function generateNotes(presetInstrument){
 	$(window).unbind();
+	sampleActive = true;
 	var target = $('.audioBin li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
@@ -62,27 +12,30 @@ function generateNotes(presetInstrument){
 		newInstrument.attr("id", i);
 	}
 
-	$(window).on('keypress',function(e){
-	  keyMap(e,0)
-	});
 }
 
-function transpose(noteInput){
-	// 1
-	if(noteInput == 49 && octave < globalOctave){
-		octave = octave + 1;
+function triggerSample(key) {
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	transpose(key);
+	var check = keyboardMap(key) ;
+	var keyTrue = keyboardMap(key) + (octave*12);
+	console.log(notes[keyTrue]);
+		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(check == 200  || check == 49 || check == 96){
+
 	}
-	// ~
-	if(noteInput == 96 && octave != 0){
-		octave = octave - 1;
+	else{
+		notes[keyTrue].currentTime = 0;
+		notes[keyTrue].play();
 	}
+
 }
 
-//<script src="js/mappedKeys.js"></script>
-
-function keyboardMap(keyInput){
+function keyboardMap(keyInput)
+{
 	var output;
-
 	// z
 	if(keyInput == 122){
 		output = 1;
@@ -217,5 +170,9 @@ function keyboardMap(keyInput){
 		output = 32;
 	}
 
+	else{
+		output = 200;
+	}
 	return output;
+
 }

@@ -3,79 +3,85 @@
 TOOLSET := target
 TARGET := midi
 DEFS_Debug := \
+	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
-	'-D__LINUX_ALSA__' \
+	'-D__MACOSX_CORE__' \
 	'-DBUILDING_NODE_EXTENSION' \
 	'-DDEBUG' \
 	'-D_DEBUG'
 
 # Flags passed to all source files.
 CFLAGS_Debug := \
-	-fPIC \
+	-O0 \
+	-gdwarf-2 \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
 	-Wall \
-	-Wextra \
-	-Wno-unused-parameter \
-	-pthread \
-	-m64 \
-	-g \
-	-O0
+	-Wendif-labels \
+	-W \
+	-Wno-unused-parameter
 
 # Flags passed to only C files.
-CFLAGS_C_Debug :=
+CFLAGS_C_Debug := \
+	-fno-strict-aliasing
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Debug := \
-	-fno-rtti
+	-fno-rtti \
+	-fno-threadsafe-statics \
+	-fno-strict-aliasing
+
+# Flags passed to only ObjC files.
+CFLAGS_OBJC_Debug :=
+
+# Flags passed to only ObjC++ files.
+CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-<<<<<<< HEAD
 	-I/Users/bottomsup/.node-gyp/0.10.29/src \
 	-I/Users/bottomsup/.node-gyp/0.10.29/deps/uv/include \
 	-I/Users/bottomsup/.node-gyp/0.10.29/deps/v8/include \
-=======
-	-I/usr/include/nodejs/src \
-	-I/usr/include/nodejs/deps/uv/include \
-	-I/usr/include/nodejs/deps/v8/include \
->>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 	-I$(srcdir)/src
 
 DEFS_Release := \
+	'-D_DARWIN_USE_64_BIT_INODE=1' \
 	'-D_LARGEFILE_SOURCE' \
 	'-D_FILE_OFFSET_BITS=64' \
-	'-D__LINUX_ALSA__' \
+	'-D__MACOSX_CORE__' \
 	'-DBUILDING_NODE_EXTENSION'
 
 # Flags passed to all source files.
 CFLAGS_Release := \
-	-fPIC \
+	-Os \
+	-gdwarf-2 \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
 	-Wall \
-	-Wextra \
-	-Wno-unused-parameter \
-	-pthread \
-	-m64 \
-	-O2 \
-	-fno-strict-aliasing \
-	-fno-tree-vrp \
-	-fno-omit-frame-pointer
+	-Wendif-labels \
+	-W \
+	-Wno-unused-parameter
 
 # Flags passed to only C files.
-CFLAGS_C_Release :=
+CFLAGS_C_Release := \
+	-fno-strict-aliasing
 
 # Flags passed to only C++ files.
 CFLAGS_CC_Release := \
-	-fno-rtti
+	-fno-rtti \
+	-fno-threadsafe-statics \
+	-fno-strict-aliasing
+
+# Flags passed to only ObjC files.
+CFLAGS_OBJC_Release :=
+
+# Flags passed to only ObjC++ files.
+CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-<<<<<<< HEAD
 	-I/Users/bottomsup/.node-gyp/0.10.29/src \
 	-I/Users/bottomsup/.node-gyp/0.10.29/deps/uv/include \
 	-I/Users/bottomsup/.node-gyp/0.10.29/deps/v8/include \
-=======
-	-I/usr/include/nodejs/src \
-	-I/usr/include/nodejs/deps/uv/include \
-	-I/usr/include/nodejs/deps/v8/include \
->>>>>>> a90534ccd44e507d16ace6d305c82ea7d7c77455
 	-I$(srcdir)/src
 
 OBJS := \
@@ -89,6 +95,8 @@ all_deps += $(OBJS)
 $(OBJS): TOOLSET := $(TOOLSET)
 $(OBJS): GYP_CFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE))
 $(OBJS): GYP_CXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE))
+$(OBJS): GYP_OBJCFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_C_$(BUILDTYPE)) $(CFLAGS_OBJC_$(BUILDTYPE))
+$(OBJS): GYP_OBJCXXFLAGS := $(DEFS_$(BUILDTYPE)) $(INCS_$(BUILDTYPE))  $(CFLAGS_$(BUILDTYPE)) $(CFLAGS_CC_$(BUILDTYPE)) $(CFLAGS_OBJCC_$(BUILDTYPE))
 
 # Suffix rules, putting all outputs into $(obj).
 
@@ -106,39 +114,44 @@ $(obj).$(TOOLSET)/$(TARGET)/%.o: $(obj)/%.cpp FORCE_DO_CMD
 # End of this set of suffix rules
 ### Rules for final target.
 LDFLAGS_Debug := \
-	-pthread \
-	-rdynamic \
-	-m64
+	-Wl,-search_paths_first \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
+	-L$(builddir)
+
+LIBTOOLFLAGS_Debug := \
+	-Wl,-search_paths_first
 
 LDFLAGS_Release := \
-	-pthread \
-	-rdynamic \
-	-m64
+	-Wl,-search_paths_first \
+	-mmacosx-version-min=10.5 \
+	-arch x86_64 \
+	-L$(builddir)
+
+LIBTOOLFLAGS_Release := \
+	-Wl,-search_paths_first
 
 LIBS := \
-	-lasound \
-	-lpthread
+	-undefined dynamic_lookup \
+	-framework CoreMIDI \
+	-framework CoreAudio \
+	-framework CoreFoundation
 
-$(obj).target/midi.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
-$(obj).target/midi.node: LIBS := $(LIBS)
-$(obj).target/midi.node: TOOLSET := $(TOOLSET)
-$(obj).target/midi.node: $(OBJS) FORCE_DO_CMD
+$(builddir)/midi.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
+$(builddir)/midi.node: LIBS := $(LIBS)
+$(builddir)/midi.node: GYP_LIBTOOLFLAGS := $(LIBTOOLFLAGS_$(BUILDTYPE))
+$(builddir)/midi.node: TOOLSET := $(TOOLSET)
+$(builddir)/midi.node: $(OBJS) FORCE_DO_CMD
 	$(call do_cmd,solink_module)
 
-all_deps += $(obj).target/midi.node
+all_deps += $(builddir)/midi.node
 # Add target alias
 .PHONY: midi
 midi: $(builddir)/midi.node
 
-# Copy this to the executable output path.
-$(builddir)/midi.node: TOOLSET := $(TOOLSET)
-$(builddir)/midi.node: $(obj).target/midi.node FORCE_DO_CMD
-	$(call do_cmd,copy)
-
-all_deps += $(builddir)/midi.node
 # Short alias for building this executable.
 .PHONY: midi.node
-midi.node: $(obj).target/midi.node $(builddir)/midi.node
+midi.node: $(builddir)/midi.node
 
 # Add executable to "all" target.
 .PHONY: all
