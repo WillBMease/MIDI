@@ -216,10 +216,25 @@ inavibe</a>
 
 
 		<script src = "/socket.io/socket.io.js"></script>
-		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
-		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>	
+		<script src="js/peer.js"></script>
+		
+
 
 <script>
+
+var peer = new Peer({
+	key: 'x7fwx2kavpy6tj4i',
+
+  // Set highest debug level (log everything!).
+  debug: 3,
+
+  // Set a logging function:
+  logFunction: function() {
+    var copy = Array.prototype.slice.call(arguments).join(' ');
+    $('.log').append(copy + '<br>');
+  }
+});
 
 // Create socket
 var socket = io() ;
@@ -608,7 +623,6 @@ function playG()
 
 		</script>
 	<script src="js/sampleMapping.js"></script>
-	<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 	</body>
 </html>
