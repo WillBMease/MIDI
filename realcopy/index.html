@@ -331,6 +331,7 @@ function connect(c) {
     c.on('data', function(data) {
       messages.append('<div><span class="peer">' + c.peer + '</span>: ' + data +
         '</div>');
+      console.log(data) ;
         });
         c.on('close', function() {
           alert(c.peer + ' has left the chat.');
