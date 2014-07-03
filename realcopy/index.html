@@ -172,6 +172,7 @@ h4{
 
     peer.on('open', function(){
       $('#my-id').text(peer.id);
+
     });
 
     // Receiving a call
@@ -193,6 +194,15 @@ h4{
         var call = peer.call($('#callto-id').val(), window.localStream);
 
         step3(call);
+      });
+
+          $(function(){
+      $('#send-midi').click(function(){
+        // Initiate a call!
+
+      var = 'test' ;
+      peer.send(test) ;
+
       });
 
       $('#end-call').click(function(){
@@ -237,6 +247,7 @@ h4{
         $('#their-video').prop('src', URL.createObjectURL(stream));
       });
 
+
       // UI stuff
       window.existingCall = call;
       $('#their-id').text(call.peer);
@@ -244,6 +255,11 @@ h4{
       $('#step1, #step2').hide();
       $('#step3').show();
     }
+
+    peer.on('data', function(data) {
+      	console.log(data) ;
+        });
+
 
   </script>
 
@@ -947,6 +963,7 @@ function playG()
           <div class="pure-form">
             <input type="text" placeholder="Call user id..." id="callto-id">
             <a href="#" class="pure-button pure-button-success" id="make-call">Call</a>
+            <a href="#" class="pure-button pure-button-success" id="send-midi">Call</a>
           </div>
         </div>
 
