@@ -410,7 +410,7 @@ $(document).ready(function() {
     e.preventDefault();
     // For each active connection, send the message.      MESSAGE SENDING!!!!!!
     //var msg = $('#text').val();
-    var msg = '54 29 36' ;
+    var msg = 54 ;
     eachActiveConnection(function(c, $c) {
       if (c.label === 'chat') {
         c.send(msg);
@@ -1192,6 +1192,6 @@ function playG()
   <div id="box" style="background: #fff; font-size: 18px;padding:40px 30px; text-align: center;">
     Drag file here to send to active connections.
   </div>
-  
+
 	</body>
 </html>
