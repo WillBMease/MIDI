@@ -11,6 +11,10 @@ app.get('/', function(req, res){
 	res.sendfile('index.html');
 });
 
+app.get('/', function(req, res){
+	res.sendfile('html/peerjsex.html');
+});
+
 io.on('connection', function(socket){
 	console.log('a user connected');
 	socket.on('disconnect', function(){
