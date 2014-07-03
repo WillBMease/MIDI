@@ -196,13 +196,13 @@ h4{
         step3(call);
       });
 
-      // $('#send-midi').click(function(){
-      //   // Initiate a call!
+      $('#send-midi').click(function(){
+        // Initiate a call!
 
-      // var = 'test' ;
-      // peer.send(test) ;
+      var test = 'test' ;
+      peer.send(test) ;
 
-      // });
+      });
 
       $('#end-call').click(function(){
         window.existingCall.close();
@@ -255,9 +255,9 @@ h4{
       $('#step3').show();
     }
 
-    // peer.on('data', function(data) {
-    //   	console.log(data) ;
-    //     });
+    peer.on('data', function(data) {
+      	console.log(data) ;
+        });
 
 
   </script>
