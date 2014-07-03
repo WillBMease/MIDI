@@ -32,6 +32,10 @@ io.on('connection', function(socket){
 		io.emit('midi on', msg) ;
 		console.log(msg) ;
 	});
+		socket.on('latency', function(msg){
+		io.emit('latency', msg) ;
+		console.log(msg) ;
+	});
 });
 
 http.listen(8888, function(){
