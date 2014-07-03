@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/', function(req, res){
-	res.sendfile('peerjsex.html');
+	res.sendfile('html/peerjsex.html');
 });
 
 io.on('connection', function(socket){
