@@ -188,7 +188,8 @@ h4{
     });
     // Send a chat message
     $('#send').click(function(){
-      var msg = $('#text').val();
+      // var msg = $('#text').val();
+      var msg = 'hey' ;
       conn.send(msg);
       $('#messages').append('<br>You:<br>' + msg);
       $('#text').val('');
