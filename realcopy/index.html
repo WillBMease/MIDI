@@ -411,9 +411,10 @@ $(document).ready(function() {
     e.preventDefault();
     // For each active connection, send the message.      MESSAGE SENDING!!!!!!
     //var msg = $('#text').val();
-    var msg = "54" ;
+
     eachActiveConnection(function(c, $c) {
       if (c.label === 'chat') {
+      	    var msg = "54" ;
         c.send(msg);
         $c.find('.messages').append('<div><span class="you">You: </span>' + msg
           + '</div>');
