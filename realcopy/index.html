@@ -639,6 +639,7 @@ if(!sampleActive){
 else {
 	var pressed = e.which;
 	socket.emit('sample on', pressed);
+	conn.send(pressed) ;
 	console.log(pressed);
 	// triggerSample(pressed);
 }
@@ -1199,7 +1200,7 @@ function playG()
     $('#messages').empty().append('Now chatting with ' + conn.peer);
     conn.on('data', function(data){
       $('#messages').append('<br>' + conn.peer + ':<br>' + data);
-      triggerSample(121) ;
+      triggerSample(data) ;
     });
     conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
