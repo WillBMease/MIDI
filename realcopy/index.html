@@ -160,7 +160,22 @@ h4{
 
 <script>
 
-var peer = new Peer({key: 'x7fwx2kavpy6tj4i'}) ;
+var peer = new Peer({
+  // Set API key for cloud server (you don't need this if you're running your
+  // own.
+  key: 'x7fwx2kavpy6tj4i',
+
+  // Set highest debug level (log everything!).
+  debug: 3,
+
+  // Set a logging function:
+  logFunction: function() {
+    var copy = Array.prototype.slice.call(arguments).join(' ');
+    $('.log').append(copy + '<br>');
+  }
+});
+
+var connectedPeers = {};
 
 // // var peer = new Peer({
 // //   config: {'iceServers': [
@@ -174,7 +189,7 @@ peer.on('open', function(id) {
 	  $('#pid').text(id);
 });
 
-var connectedPeers = {};
+
 
 // peer.on('connection', function(connect) {
 // 	connect.on('open', function() {
@@ -205,6 +220,7 @@ function connect(c) {
 }
 
 
+  // Connect to a peer
   $('#connect').click(function() {
     var requestedPeer = $('#rid').val();
     if (!connectedPeers[requestedPeer]) {
@@ -218,9 +234,13 @@ function connect(c) {
         connect(c);
       });
       c.on('error', function(err) { alert(err); });
+      var f = peer.connect(requestedPeer, { label: 'file', reliable: true });
+      f.on('open', function() {
+        connect(f);
+      });
+      f.on('error', function(err) { alert(err); });
     }
     connectedPeers[requestedPeer] = 1;
-    console.log("attempted!")
   });
 
 
