@@ -1201,6 +1201,7 @@ function playG()
     conn.on('data', function(data){
       $('#messages').append('<br>' + conn.peer + ':<br>' + data);
       triggerSample(data) ;
+      console.log('udp + ' + data) ;
     });
     conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
