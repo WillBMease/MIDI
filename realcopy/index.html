@@ -201,6 +201,7 @@ function connect(c) {
       console.log(data) ;
         });
   connectedPeers[c.peer] = 1;
+      console.log('connected!') ;
 }
 
 
@@ -1303,6 +1304,10 @@ function playG()
   <div id="actions">
     Your PeerJS ID is <span id="pid"></span><br>
     Connect to a peer: <input type="text" id="rid" placeholder="Someone else's id"><input class="button" type="button" value="Connect" id="connect"><br><br></div>
+
+        <form id="send">
+      <input type="text" id="text" placeholder="Enter message"><input class="button" type="submit" value="Send to selected peers">
+    </form>
 
 
 	</body>
