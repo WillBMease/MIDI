@@ -265,6 +265,12 @@ function connect(c) {
     });
   }
 
+window.onunload = window.onbeforeunload = function(e) {
+  if (!!peer && !peer.destroyed) {
+    peer.destroy();
+  }
+};
+
 </script>
 
 
@@ -1304,11 +1310,12 @@ function playG()
 
   <div id="actions">
     Your PeerJS ID is <span id="pid"></span><br>
-    Connect to a peer: <input type="text" id="rid" placeholder="Someone else's id"><input class="button" type="button" value="Connect" id="connect"><br><br></div>
+    Connect to a peer: <input type="text" id="rid" placeholder="Someone else's id"><input class="button" type="button" value="Connect" id="connect"><br><br>
 
         <form id="send">
       <input type="text" id="text" placeholder="Enter message"><input class="button" type="submit" value="Send to selected peers">
     </form>
+    </div>
 
 
 	</body>
