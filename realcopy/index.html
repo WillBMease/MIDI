@@ -292,14 +292,14 @@ $(document).ready(function() {
   $('#send').submit(function(e) {
     e.preventDefault();
     // For each active connection, send the message.      MESSAGE SENDING!!!!!!
-    //var msg = $('#text').val();
-    var msg = '54 29 36' ;
+    var msg = $('#text').val();
+    //var msg = '54 29 36' ;
     eachActiveConnection(function(c, $c) {
-      // if (c.label === 'chat') {
+      if (c.label === 'chat') {
         c.send(msg);
         $c.find('.messages').append('<div><span class="you">You: </span>' + msg
           + '</div>');
-      // }
+      }
     });
     $('#text').val('');
     $('#text').focus();
