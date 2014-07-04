@@ -160,43 +160,43 @@ h4{
 
 <script>
 
- var conn;
-  // Connect to PeerJS, have server assign an ID instead of providing one
-  var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
-  peer.on('open', function(id){
-    $('#pid').text(id);
-  });  
-  // Await connections from others
-  peer.on('connection', connect);
-  function connect(c) {
-    $('#chat_area').show();
-    conn = c;
-    $('#messages').empty().append('Now chatting with ' + conn.peer);
-    conn.on('data', function(data){
-      $('#messages').append('<br>' + conn.peer + ':<br>' + data);
-    });
-    conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
-  }
-  $(document).ready(function() {
-    // Conect to a peer
-    $('#connect').click(function(){
-      var c = peer.connect($('#rid').val());
-      c.on('open', function(){
-        connect(c);
-      });
-      c.on('error', function(err){ alert(err) });  
-    });
-    // Send a chat message
-    $('#send').click(function(){
-      // var msg = $('#text').val();
-      var msg = 'hey' ;
-      conn.send(msg);
-      $('#messages').append('<br>You:<br>' + msg);
-      $('#text').val('');
-    });
-    // Show browser version
-    $('#browsers').text(navigator.userAgent);
-  });
+ // var conn;
+ //  // Connect to PeerJS, have server assign an ID instead of providing one
+ //  var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
+ //  peer.on('open', function(id){
+ //    $('#pid').text(id);
+ //  });  
+ //  // Await connections from others
+ //  peer.on('connection', connect);
+ //  function connect(c) {
+ //    $('#chat_area').show();
+ //    conn = c;
+ //    $('#messages').empty().append('Now chatting with ' + conn.peer);
+ //    conn.on('data', function(data){
+ //      $('#messages').append('<br>' + conn.peer + ':<br>' + data);
+ //    });
+ //    conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+ //  }
+ //  $(document).ready(function() {
+ //    // Conect to a peer
+ //    $('#connect').click(function(){
+ //      var c = peer.connect($('#rid').val());
+ //      c.on('open', function(){
+ //        connect(c);
+ //      });
+ //      c.on('error', function(err){ alert(err) });  
+ //    });
+ //    // Send a chat message
+ //    $('#send').click(function(){
+ //      // var msg = $('#text').val();
+ //      var msg = 'hey' ;
+ //      conn.send(msg);
+ //      $('#messages').append('<br>You:<br>' + msg);
+ //      $('#text').val('');
+ //    });
+ //    // Show browser version
+ //    $('#browsers').text(navigator.userAgent);
+ //  });
 
 </script>
 
@@ -1170,6 +1170,64 @@ function playG()
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ var conn;
+  // Connect to PeerJS, have server assign an ID instead of providing one
+  var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
+  peer.on('open', function(id){
+    $('#pid').text(id);
+  });  
+  // Await connections from others
+  peer.on('connection', connect);
+  function connect(c) {
+    $('#chat_area').show();
+    conn = c;
+    $('#messages').empty().append('Now chatting with ' + conn.peer);
+    conn.on('data', function(data){
+      $('#messages').append('<br>' + conn.peer + ':<br>' + data);
+      triggerSample(121) ;
+    });
+    conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+  }
+  $(document).ready(function() {
+    // Conect to a peer
+    $('#connect').click(function(){
+      var c = peer.connect($('#rid').val());
+      c.on('open', function(){
+        connect(c);
+      });
+      c.on('error', function(err){ alert(err) });  
+    });
+    // Send a chat message
+    $('#send').click(function(){
+      // var msg = $('#text').val();
+      var msg = 121 ;
+      conn.send(msg);
+      $('#messages').append('<br>You:<br>' + msg);
+      $('#text').val('');
+    });
+    // Show browser version
+    $('#browsers').text(navigator.userAgent);
+  });
+
+
+
+
+
 		</script>
 
 <body> 
@@ -1284,6 +1342,8 @@ NATs. -->
 
 <!-- <div class="log" style="color:#FF7500;text-shadow:none;padding:15px;background:#eee"><strong>Connection status</strong>:<br></div>
 </div> -->
+
+
 
 
 	</body>
