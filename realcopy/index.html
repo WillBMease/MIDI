@@ -220,6 +220,7 @@ function connect(c) {
       c.on('error', function(err) { alert(err); });
     }
     connectedPeers[requestedPeer] = 1;
+    console.log("attempted!")
   });
 
 
