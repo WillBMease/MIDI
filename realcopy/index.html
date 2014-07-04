@@ -285,11 +285,11 @@ function connect(c) {
     });
   }
 
-window.onunload = window.onbeforeunload = function(e) {
-  if (!!peer && !peer.destroyed) {
-    peer.destroy();
-  }
-};
+// window.onunload = window.onbeforeunload = function(e) {
+//   if (!!peer && !peer.destroyed) {
+//     peer.destroy();
+//   }
+// };
 
 </script>
 
