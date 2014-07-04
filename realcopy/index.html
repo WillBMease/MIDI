@@ -414,8 +414,8 @@ $(document).ready(function() {
 
     eachActiveConnection(function(c, $c) {
       if (c.label === 'chat') {
-      	    var msg = "54" ;
-        c.send(msg);
+      	    var msg = 'hey' ;
+        c.send('hey');
         $c.find('.messages').append('<div><span class="you">You: </span>' + msg
           + '</div>');
       }
