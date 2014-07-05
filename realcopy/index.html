@@ -7,7 +7,7 @@
 		// <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
 
   <link rel="stylesheet" href="css/style.css">
-<!--   <link href="css/fancy.css" rel="stylesheet" type="text/css"> -->
+  <link href="css/fancy.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
@@ -1048,10 +1048,12 @@ function playG()
   // Connect to PeerJS, have server assign an ID instead of providing one
   var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
   peer.on('open', function(id){
+  	id = Math.floor(Math.random() * 50) + 1 ;
     $('#pid').text(id);
   });  
   // Await connections from others
   peer.on('connection', connect);
+  peer.on()
   function connect(c) {
     $('#chat_area').show();
     conn = c;
@@ -1073,9 +1075,16 @@ function playG()
       c.on('error', function(err){ alert(err) });  
     });
     // Send a chat message
-    $('#send').click(function(){
+    // $('#send').click(function(){
+    //   // var msg = $('#text').val();
+    //   var msg = 121 ;
+    //   conn.send(msg);
+    //   $('#messages').append('<br>You:<br>' + msg);
+    //   $('#text').val('');
+    // });
+      $('#send-midi').keypress(function(e){
       // var msg = $('#text').val();
-      var msg = 121 ;
+      var msg = e.val() ;
       conn.send(msg);
       $('#messages').append('<br>You:<br>' + msg);
       $('#text').val('');
