@@ -703,9 +703,7 @@ function triggerSample(key) {
 	var keyTrue = axiomMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
-	if(check == 200  || check == 49 || check == 96){
 
-	}
 	else{
 		notes[keyTrue].currentTime = 0;
 		notes[keyTrue].play();
@@ -891,18 +889,18 @@ function axiomMap(keyInput)
 {
 	var output;
 	// z
-	if(keyInput == '24'){
+	if(keyInput == 24){
 		output = 1;
 		//keyGlow(keyInput);
 		console.log('yes');
 	}
 	// s
-	else if (keyInput == '25') {
+	else if (keyInput == 25) {
 		output = 2;
 				console.log('yes');
 	}
 	// x
-	else if (keyInput == '26') {
+	else if (keyInput == 26) {
 		output = 3;
 				console.log('yes');
 	}
