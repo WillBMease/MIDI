@@ -1048,12 +1048,12 @@ function playG()
   // Connect to PeerJS, have server assign an ID instead of providing one
   var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
   peer.on('open', function(id){
-  	id = Math.floor(Math.random() * 50) + 1 ;
     $('#pid').text(id);
+    id = Math.floor(Math.random() * 50) + 1 ;
   });  
   // Await connections from others
   peer.on('connection', connect);
-  peer.on()
+  //peer.on()
   function connect(c) {
     $('#chat_area').show();
     conn = c;
