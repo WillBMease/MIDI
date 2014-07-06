@@ -450,7 +450,7 @@ var globalOctave;
 
 //variable used to 
 var midiActive = false;
-var sampleActive = true;
+var sampleActive = false;
 
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext ||  
@@ -887,157 +887,6 @@ function keyboardMap(keyInput)
 
 
 
-function axiomMap(keyInput)
-{
-	var output;
-	// z
-	if(keyInput == 24){
-		output = 1;
-		//keyGlow(keyInput);
-		console.log('yes');
-	}
-	// s
-	else if (keyInput == 25) {
-		output = 2;
-				console.log('yes');
-	}
-	// x
-	else if (keyInput == 26) {
-		output = 3;
-				console.log('yes');
-	}
-	// d
-	else if (keyInput == '27') {
-		output = 4;
-				console.log('yes');
-	}
-	// c
-	else if (keyInput == '28') {
-		output = 5;
-				console.log('yes');
-	}
-	// v
-	else if (keyInput == '29') {
-		output = 6;
-				console.log('yes');
-	}
-	// g
-	else if (keyInput == '30') {
-		output = 7;
-				console.log('yes');
-	}
-	// b
-	else if (keyInput == '31') {
-		output = 8;
-	}
-	// h
-	else if (keyInput == '32') {
-		output = 9;
-	}
-	// n
-	else if (keyInput == '33') {
-		output = 10;
-	}
-	// j
-	else if (keyInput == '34') {
-		output = 11;
-	}
-	// m
-	else if (keyInput == '35') {
-		output = 12;
-	}
-
-///////////////////////////// Next Octave /////////////////////////////////
-	// < OR q
-	else if (keyInput == 44 || keyInput == 113) {
-		output = 13;
-	}
-	// l OR 2
-	else if (keyInput == 108 || keyInput == 50) {
-		output = 14;
-	}
-	// > OR w
-	else if (keyInput == 46 || keyInput == 119) {
-		output = 15;
-	}
-	// ; OR 3
-	else if (keyInput == 59 || keyInput == 51) {
-		output = 16;
-	}
-	// ? OR e
-	else if (keyInput == 47 || keyInput == 101) {
-		output = 17;
-	}
-	// r
-	else if (keyInput == 114) {
-		output = 18;
-	}
-	// 5
-	else if (keyInput == 53) {
-		output = 19;
-	}
-	// t
-	else if (keyInput == 116) {
-		output = 20;
-	}
-	// 6
-	else if (keyInput == 54) {
-		output = 21;
-	}
-	// y
-	else if (keyInput == 121) {
-		output = 22;
-	}
-	// 7
-	else if (keyInput == 55) {
-		output = 23;
-	}
-	// u
-	else if (keyInput == 117) {
-		output = 24;
-	}
-
-/////////////////////// Start of the next Octave /////////////////////////
-
-	// i
-	else if (keyInput == 105) {
-		output = 25;
-	}
-	// 9
-	else if (keyInput == 57) {
-		output = 26;
-	}
-	// o
-	else if (keyInput == 111) {
-		output = 27;
-	}
-	// 0
-	else if (keyInput == 48) {
-		output = 28;
-	}
-	// p
-	else if (keyInput == 112) {
-		output = 29;
-	}
-	// {
-	else if (keyInput == 91) {
-		output = 30;
-	}
-	// +
-	else if (keyInput == 61) {
-		output = 31;
-	}
-	// }
-	else if (keyInput == 93) {
-		output = 32;
-	}
-
-	else{
-		output = 200;
-	}
-	return output;
-}
-
 
 
 //////////////////////////////////////////////////////////////////
@@ -1184,7 +1033,7 @@ function handleMIDIMessage( ev ) {
 
 		var midiMsg = ev.data[1].toString(16) ;
 		//socket.emit('midi on', midiMsg) ;
-		conn.send(midiMsg);
+		//conn.send(midiMsg);
 		var time = new Date() ;
 		console.log('sent ' + midiMsg);
 
