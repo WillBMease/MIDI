@@ -469,6 +469,7 @@ var isPlaying = false;
 
 var latencyActive = false;
 var latencyCount ;
+var conn ;
 
 
 var instrument; 
@@ -1208,7 +1209,7 @@ function playG()
 
 
 
- var conn;
+
   // Connect to PeerJS, have server assign an ID instead of providing one
   var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
   peer.on('open', function(id){
