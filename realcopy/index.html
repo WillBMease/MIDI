@@ -1065,12 +1065,115 @@ function runTest() {
 
 function handleMIDIMessage( ev ) {
 	// testing - just reflect.
-	log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
+	// log.innerText += "Message: " + ev.data.length + " bytes, timestamp: " + ev.timestamp;
 	if (ev.data.length == 3) 
-		log.innerText += " 0x" + ev.data[0].toString(16) + " 0x" + ev.data[1].toString(16) + " 0x" + ev.data[2].toString(16);
+	{
+		log.innerText += " " + ev.data[0].toString(16) + " " + ev.data[1].toString(16) + " " + ev.data[2].toString(16);
+
+		switch (ev.data[1].toString(16))
+		{
+			case '24' : log.innerText = "C2" ;
+			break ;
+			case '25' : log.innerText = "C#2" ;
+			break ;
+			case '26' : log.innerText = "D2" ;
+			break ;
+			case '27' : log.innerText = "D#2" ;
+			break ;
+			case '28' : log.innerText = "E2" ;
+			break ;
+			case '29' : log.innerText = "F2" ;
+			break ;
+			case '2a' : log.innerText = "F#2" ;
+			break ;
+			case '2b' : log.innerText = "G2" ;
+			break ;
+			case '2c' : log.innerText = "G#2" ;
+			break ;
+			case '2d' : log.innerText = "A2" ;
+			break ;
+			case '2e' : log.innerText = "A#2" ;
+			break ;
+			case '2f' : log.innerText = "B2" ;
+			break ;
+			case '30' : log.innerText = "C3" ;
+			break ;
+			case '31' : log.innerText = "C#3" ;
+			break ;
+			case '32' : log.innerText = "D3" ;
+			break ;
+			case '33' : log.innerText = "D#3" ;
+			break ;
+			case '34' : log.innerText = "E3" ;
+			break ;
+			case '35' : log.innerText = "F3" ;
+			break ;
+			case '36' : log.innerText = "F#3" ;
+			break ;
+			case '37' : log.innerText = "G3" ;
+			break ;
+			case '38' : log.innerText = "G#3" ;
+			break ;
+			case '39' : log.innerText = "A3" ;
+			break ;
+			case '3a' : log.innerText = "A#3" ;
+			break ;
+			case '3b' : log.innerText = "B3" ;
+			break ;
+			case '3c' : log.innerText = "C4" ;
+			break ;
+			case '3d' : log.innerText = "C#4" ;
+			break ;
+			case '3e' : log.innerText = "D4" ;
+			break ;
+			case '3f' : log.innerText = "D#4" ;
+			break ;
+			case '40' : log.innerText = "E4" ;
+			break ;
+			case '41' : log.innerText = "F4" ;
+			break ;
+			case '42' : log.innerText = "F#4" ;
+			break ;
+			case '43' : log.innerText = "G4" ;
+			break ;
+			case '44' : log.innerText = "G#4" ;
+			break ;
+			case '45' : log.innerText = "A4" ;
+			break ;
+			case '46' : log.innerText = "A#4" ;
+			break ;
+			case '47' : log.innerText = "B4" ;
+			break ;
+			case '48' : log.innerText = "C5" ;
+			break ;
+			case '49' : log.innerText = "C#5" ;
+			break ;
+			case '4a' : log.innerText = "D5" ;
+			break ;
+			case '4b' : log.innerText = "D#5" ;
+			break ;
+			case '4c' : log.innerText = "E5" ;
+			break ;
+			case '4d' : log.innerText = "F5" ;
+			break ;
+			case '4e' : log.innerText = "F#5" ;
+			break ;
+			case '4f' : log.innerText = "G5" ;
+			break ;
+			case '50' : log.innerText = "G#5" ;
+			break ;
+			case '51' : log.innerText = "A5" ;
+			break ;
+			case '52' : log.innerText = "A#5" ;
+			break ;
+			case '53' : log.innerText = "B5" ;
+			break ;
+			case '54' : log.innerText = "C6" ;
+		}
+
 	log.innerText += "\n";
 	console.log(ev) ;
-
+}
 
 		var midiMsg = ev.data[1].toString(16) ;
 		//socket.emit('midi on', midiMsg) ;
