@@ -18,6 +18,8 @@
 
 <script>
 
+  $(document).ready(function() {
+
  // var conn;
  //  // Connect to PeerJS, have server assign an ID instead of providing one
  //  var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
@@ -497,7 +499,7 @@ if(!sampleActive){
 else {
 	var pressed = e.which;
 	//socket.emit('sample on', pressed);
-	conn.send(pressed) ;
+	//conn.send(pressed) ;
 	console.log(pressed);
 	// triggerSample(pressed);
 }
@@ -1229,7 +1231,7 @@ function playG()
     });
     conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
-  $(document).ready(function() {
+  // $(document).ready(function() {
     // Conect to a peer
     $('#connect').click(function(){
       var c = peer.connect($('#rid').val());
@@ -1258,7 +1260,7 @@ function playG()
   });
 
 
-
+});
 
 
 		</script>
