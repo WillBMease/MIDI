@@ -441,7 +441,7 @@ inavibe</a>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 
 <script>
-  $(document).ready(function() {
+
 // Create socket
 var socket = io() ;
 
@@ -1229,8 +1229,8 @@ function playG()
     });
     conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
-  // $(document).ready(function() {
-    // Conect to a peer
+  $(document).ready(function() {
+    // Connect to a peer
     $('#connect').click(function(){
       var c = peer.connect($('#rid').val());
       c.on('open', function(){
