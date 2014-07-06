@@ -1071,18 +1071,18 @@ function handleMIDIMessage( ev ) {
 	console.log(ev) ;
 
 
-
 		var midiMsg = ev.data[1].toString(16) ;
-		socket.emit('midi on', midiMsg) ;
+		//socket.emit('midi on', midiMsg) ;
+		conn.send(midiMsg);
 		var time = new Date() ;
 		console.log('sent ' + midiMsg);
 
-		socket.on('latency', function(latency){
-			var newTime = new Date() ;
-			var rtt =  newTime - time ;
-			var oneway = rtt/2 ;
-			// log.innerText = "latency: " + oneway ;
-});
+// 		socket.on('latency', function(latency){
+// 			var newTime = new Date() ;
+// 			var rtt =  newTime - time ;
+// 			var oneway = rtt/2 ;
+// 			// log.innerText = "latency: " + oneway ;
+// });
 
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
@@ -1246,7 +1246,7 @@ function playG()
     //   $('#messages').append('<br>You:<br>' + msg);
     //   $('#text').val('');
     // });
-      $('#send-midi').keypress(function(e){
+      $('#send').keypress(function(e){
       // var msg = $('#text').val();
       var msg = e.val() ;
       conn.send(msg);
