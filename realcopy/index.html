@@ -405,134 +405,191 @@ function failure( error ) {
 	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
 }
 
+
+function masterConversion(midiInput){
+
+	var output;
+	switch (midiInput[1]){
+		case '24' : log.innerText = "C2" ; 
+		output = 'C2';
+		break ;
+
+		case '25' : log.innerText = "C#2" ;
+		output = 'C#2';
+		break ;
+
+		case '26' : log.innerText = "D2" ;
+		output = 'D2';
+		break ;
+
+		case '27' : log.innerText = "D#2" ;
+		output = 'D#2';
+		break ;
+		case '28' : log.innerText = "E2" ;
+		triggerMidiDevice(99) ;
+		break ;
+		case '29' : log.innerText = "F2" ;
+		triggerMidiDevice(118) ;
+		break ;
+		case '2a' : log.innerText = "F#2" ;
+		triggerMidiDevice(103) ;
+		break ;
+		case '2b' : log.innerText = "G2" ;
+		triggerMidiDevice(98) ;
+		break ;
+		case '2c' : log.innerText = "G#2" ;
+		triggerMidiDevice(104) ;
+		break ;
+		case '2d' : log.innerText = "A2" ;
+			triggerMidiDevice(106) ;
+		break ;
+		case '2e' : log.innerText = "A#2" ;
+		riggerMidiDevice(109) ;
+		break ;
+		case '2f' : log.innerText = "B2" ;
+		triggerMidiDevice(44) ;
+		break ;
+
+	}
+	return output;
+
+}
+
+
+
 function playMidi(midiNote)
 {
 	if (midiNote[2] != '0')
 		{
-
-		switch (midiNote[1])
-		{
-			case '24' : log.innerText = "C2" ;
-			triggerMidiDevice(122) ;
-			break ;
-			case '25' : log.innerText = "C#2" ;
-			triggerMidiDevice(115) ;
-			break ;
-			case '26' : log.innerText = "D2" ;
-			triggerMidiDevice(120) ;
-			break ;
-			case '27' : log.innerText = "D#2" ;
-			triggerMidiDevice(100) ;
-			break ;
-			case '28' : log.innerText = "E2" ;
-			triggerMidiDevice(99) ;
-			break ;
-			case '29' : log.innerText = "F2" ;
-			triggerMidiDevice(118) ;
-			break ;
-			case '2a' : log.innerText = "F#2" ;
-			triggerMidiDevice(103) ;
-			break ;
-			case '2b' : log.innerText = "G2" ;
-			triggerMidiDevice(98) ;
-			break ;
-			case '2c' : log.innerText = "G#2" ;
-			triggerMidiDevice(104) ;
-			break ;
-			case '2d' : log.innerText = "A2" ;
-			triggerMidiDevice(106) ;
-			break ;
-			case '2e' : log.innerText = "A#2" ;
-			triggerMidiDevice(109) ;
-			break ;
-			case '2f' : log.innerText = "B2" ;
-			triggerMidiDevice(44) ;
-			break ;
-			case '30' : log.innerText = "C3" ;
-			triggerMidiDevice(108) ;
-			break ;
-			case '31' : log.innerText = "C#3" ;
-			triggerMidiDevice(46) ;
-			break ;
-			case '32' : log.innerText = "D3" ;
-			triggerMidiDevice(59) ;
-			break ;
-			case '33' : log.innerText = "D#3" ;
-			triggerMidiDevice(47) ;
-			break ;
-			case '34' : log.innerText = "E3" ;
-			triggerMidiDevice(114) ;
-			break ;
-			case '35' : log.innerText = "F3" ;
-			triggerMidiDevice(53) ;
-			break ;
-			case '36' : log.innerText = "F#3" ;
-			triggerMidiDevice(116) ;
-			break ;
-			case '37' : log.innerText = "G3" ;
-			triggerMidiDevice(54) ;
-			break ;
-			case '38' : log.innerText = "G#3" ;
-			triggerMidiDevice(121) ;
-			break ;
-			case '39' : log.innerText = "A3" ;
-			triggerMidiDevice(55) ;
-			break ;
-			case '3a' : log.innerText = "A#3" ;
-			triggerMidiDevice(53) ;
-			break ;
-			case '3b' : log.innerText = "B3" ;
-			break ;
-			case '3c' : log.innerText = "C4" ;
-			break ;
-			case '3d' : log.innerText = "C#4" ;
-			break ;
-			case '3e' : log.innerText = "D4" ;
-			break ;
-			case '3f' : log.innerText = "D#4" ;
-			break ;
-			case '40' : log.innerText = "E4" ;
-			break ;
-			case '41' : log.innerText = "F4" ;
-			break ;
-			case '42' : log.innerText = "F#4" ;
-			break ;
-			case '43' : log.innerText = "G4" ;
-			break ;
-			case '44' : log.innerText = "G#4" ;
-			break ;
-			case '45' : log.innerText = "A4" ;
-			break ;
-			case '46' : log.innerText = "A#4" ;
-			break ;
-			case '47' : log.innerText = "B4" ;
-			break ;
-			case '48' : log.innerText = "C5" ;
-			break ;
-			case '49' : log.innerText = "C#5" ;
-			break ;
-			case '4a' : log.innerText = "D5" ;
-			break ;
-			case '4b' : log.innerText = "D#5" ;
-			break ;
-			case '4c' : log.innerText = "E5" ;
-			break ;
-			case '4d' : log.innerText = "F5" ;
-			break ;
-			case '4e' : log.innerText = "F#5" ;
-			break ;
-			case '4f' : log.innerText = "G5" ;
-			break ;
-			case '50' : log.innerText = "G#5" ;
-			break ;
-			case '51' : log.innerText = "A5" ;
-			break ;
-			case '52' : log.innerText = "A#5" ;
-			break ;
-			case '53' : log.innerText = "B5" ;
-			break ;
-			case '54' : log.innerText = "C6" ;
-		}
+		console.log("playMidi was called");
+		var note;
+		note = masterConversion(midiNote);
+		//console.log(note);
+		playMidiNote(note);
+		// switch (midiNote[1])
+		// {
+		// 	case '24' : log.innerText = "C2" ;
+		// 	triggerMidiDevice(122) ;
+		// 	break ;
+		// 	case '25' : log.innerText = "C#2" ;
+		// 	triggerMidiDevice(115) ;
+		// 	break ;
+		// 	case '26' : log.innerText = "D2" ;
+		// 	triggerMidiDevice(120) ;
+		// 	break ;
+		// 	case '27' : log.innerText = "D#2" ;
+		// 	triggerMidiDevice(100) ;
+		// 	break ;
+		// 	case '28' : log.innerText = "E2" ;
+		// 	triggerMidiDevice(99) ;
+		// 	break ;
+		// 	case '29' : log.innerText = "F2" ;
+		// 	triggerMidiDevice(118) ;
+		// 	break ;
+		// 	case '2a' : log.innerText = "F#2" ;
+		// 	triggerMidiDevice(103) ;
+		// 	break ;
+		// 	case '2b' : log.innerText = "G2" ;
+		// 	triggerMidiDevice(98) ;
+		// 	break ;
+		// 	case '2c' : log.innerText = "G#2" ;
+		// 	triggerMidiDevice(104) ;
+		// 	break ;
+		// 	case '2d' : log.innerText = "A2" ;
+		// 	triggerMidiDevice(106) ;
+		// 	break ;
+		// 	case '2e' : log.innerText = "A#2" ;
+		// 	triggerMidiDevice(109) ;
+		// 	break ;
+		// 	case '2f' : log.innerText = "B2" ;
+		// 	triggerMidiDevice(44) ;
+		// 	break ;
+		// 	case '30' : log.innerText = "C3" ;
+		// 	triggerMidiDevice(108) ;
+		// 	break ;
+		// 	case '31' : log.innerText = "C#3" ;
+		// 	triggerMidiDevice(46) ;
+		// 	break ;
+		// 	case '32' : log.innerText = "D3" ;
+		// 	triggerMidiDevice(59) ;
+		// 	break ;
+		// 	case '33' : log.innerText = "D#3" ;
+		// 	triggerMidiDevice(47) ;
+		// 	break ;
+		// 	case '34' : log.innerText = "E3" ;
+		// 	triggerMidiDevice(114) ;
+		// 	break ;
+		// 	case '35' : log.innerText = "F3" ;
+		// 	triggerMidiDevice(53) ;
+		// 	break ;
+		// 	case '36' : log.innerText = "F#3" ;
+		// 	triggerMidiDevice(116) ;
+		// 	break ;
+		// 	case '37' : log.innerText = "G3" ;
+		// 	triggerMidiDevice(54) ;
+		// 	break ;
+		// 	case '38' : log.innerText = "G#3" ;
+		// 	triggerMidiDevice(121) ;
+		// 	break ;
+		// 	case '39' : log.innerText = "A3" ;
+		// 	triggerMidiDevice(55) ;
+		// 	break ;
+		// 	case '3a' : log.innerText = "A#3" ;
+		// 	triggerMidiDevice(53) ;
+		// 	break ;
+		// 	case '3b' : log.innerText = "B3" ;
+		// 	break ;
+		// 	case '3c' : log.innerText = "C4" ;
+		// 	break ;
+		// 	case '3d' : log.innerText = "C#4" ;
+		// 	break ;
+		// 	case '3e' : log.innerText = "D4" ;
+		// 	break ;
+		// 	case '3f' : log.innerText = "D#4" ;
+		// 	break ;
+		// 	case '40' : log.innerText = "E4" ;
+		// 	break ;
+		// 	case '41' : log.innerText = "F4" ;
+		// 	break ;
+		// 	case '42' : log.innerText = "F#4" ;
+		// 	break ;
+		// 	case '43' : log.innerText = "G4" ;
+		// 	break ;
+		// 	case '44' : log.innerText = "G#4" ;
+		// 	break ;
+		// 	case '45' : log.innerText = "A4" ;
+		// 	break ;
+		// 	case '46' : log.innerText = "A#4" ;
+		// 	break ;
+		// 	case '47' : log.innerText = "B4" ;
+		// 	break ;
+		// 	case '48' : log.innerText = "C5" ;
+		// 	break ;
+		// 	case '49' : log.innerText = "C#5" ;
+		// 	break ;
+		// 	case '4a' : log.innerText = "D5" ;
+		// 	break ;
+		// 	case '4b' : log.innerText = "D#5" ;
+		// 	break ;
+		// 	case '4c' : log.innerText = "E5" ;
+		// 	break ;
+		// 	case '4d' : log.innerText = "F5" ;
+		// 	break ;
+		// 	case '4e' : log.innerText = "F#5" ;
+		// 	break ;
+		// 	case '4f' : log.innerText = "G5" ;
+		// 	break ;
+		// 	case '50' : log.innerText = "G#5" ;
+		// 	break ;
+		// 	case '51' : log.innerText = "A5" ;
+		// 	break ;
+		// 	case '52' : log.innerText = "A#5" ;
+		// 	break ;
+		// 	case '53' : log.innerText = "B5" ;
+		// 	break ;
+		// 	case '54' : log.innerText = "C6" ;
+		// }
+		// }
 		}
 		else
 		{

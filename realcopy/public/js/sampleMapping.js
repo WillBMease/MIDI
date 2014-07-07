@@ -35,15 +35,24 @@ function triggerSample(key) {
 	}
 }
 
-function triggerMidiDevice(input){
-	var notes = [];
-	var noteWrap = $('.audioBin li');
-	notes = noteWrap.find('audio');
+// function triggerMidiDevice(input){
+// 	var notes = [];
+// 	var noteWrap = $('.audioBin li');
+// 	notes = noteWrap.find('audio');
 	
-	var keyTrue = keyboardMap(input) + (octave*12);
-	console.log(notes[keyTrue]);
-	notes[keyTrue].currentTime = 0;
-	notes[keyTrue].play();
+// 	var keyTrue = keyboardMap(input) + (octave*12);
+// 	console.log(notes[keyTrue]);
+// 	notes[keyTrue].currentTime = 0;
+// 	notes[keyTrue].play();
+// }
+
+function playMidiNote(noteInput){
+	if(noteInput == 'C2'){
+		triggerSample(122);
+	}
+	if(noteInput == 'C#2'){
+		triggersample(115) ;
+	}
 }
 
 function keyboardMap(keyInput){
