@@ -18,13 +18,19 @@
 
 <script>
 
- var conn;
+ var conn = [] ;
+ conn[0] = 0;
+ conn[1] = 0;
+ conn[2] = 0;
+ var x = 0 ;
   // Connect to PeerJS, have server assign an ID instead of providing one
   
   // Generate random ID between 1 and 50 for the user
   var randID = Math.floor(Math.random() * 50) + 1 ;
 
   // Create a new peer, and assign the randID as "label" in peer
+  // the label is assigned automatically by how i passed it in
+  // the key connects the peer to the server that does the handshake
   var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
   // Open the peer using the randID "label" we assigned
@@ -39,19 +45,54 @@
   function connect(c) {
     $('#chat_area').show();
 
+    x = 0 ;
+
     // Assign the connection to the user (array for multiple connections?)
-    conn = c;
-    $('#messages').empty().append('Now chatting with ' + conn.peer);
+    if (conn[0] != 0)
+    {
+      conn[0].on('data', function(data){
+      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+		x++ ;
+    }
+
+    if (conn[1] != 0)
+    {
+      conn[1].on('data', function(data){
+      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+      x++ ;
+    }
+
+    if (conn[2] != 0)
+    {
+      conn[2].on('data', function(data){
+      $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+      x++ ;
+    }
+
+    conn[x] = c;
+    $('#messages').empty().append('Now chatting with ' + conn[x].peer);
 
     // Receive the incoming message and play it calling midi function
-    conn.on('data', function(data){
-      $('#messages').append('<br>' + conn.peer + ':<br>' + data);
+    conn[x].on('data', function(data){
+      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
       playMidi(data) ;
+      triggerSample(data) ;
     });
 
     // Close the connection if other peer leaves
-    conn.on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+    conn[x].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
+
+
   $(document).ready(function() {
     // Conect to a peer
     $('#connect').click(function(){
@@ -62,13 +103,14 @@
       c.on('error', function(err){ alert(err) });  
     });
     // Send a chat message
-    $('#send').click(function(){
-      // var msg = $('#text').val();
-      var msg = 'hey' ;
-      conn.send(msg);
-      $('#messages').append('<br>You:<br>' + msg);
-      $('#text').val('');
-    });
+    // $('#send').click(function(){
+    //   // var msg = $('#text').val();
+    //   var msg = 'hey' ;
+    //   conn.send(msg);
+    //   $('#messages').append('<br>You:<br>' + msg);
+    //   $('#text').val('');
+    // });
+
     // Show browser version
     $('#browsers').text(navigator.userAgent);
   });
@@ -194,9 +236,15 @@ if(!sampleActive){
 else {
 	var pressed = e.which;
 	//socket.emit('sample on', pressed);
-	conn.send(pressed) ;
+	if (conn[0] != 0)
+	conn[0].send(pressed) ;
+	if (conn[1] != 0)
+	conn[1].send(pressed) ;
+	if (conn[2] != 0)
+	conn[2].send(pressed) ;
+
 	console.log(pressed);
-    triggerSample(pressed);
+    //triggerSample(pressed);
 }
 
 });
@@ -357,8 +405,14 @@ function handleMIDIMessage( ev ) {
 		midiMsg[0] = ev.data[0].toString(16) ;
 		midiMsg[1] = ev.data[1].toString(16) ;
 		midiMsg[2] = ev.data[2].toString(16) ;
-		midiMsg[3] = new Date() ;
-		conn.send(midiMsg);
+		//midiMsg[3] = new Date() ;
+
+		if (conn[0] != 0)
+		conn[0].send(midiMsg);
+		if (conn[1] != 0)
+		conn[1].send(midiMsg);
+		if (conn[2] != 0)
+		conn[2].send(midiMsg);
 
     // conn.on('data', function(retLat){
     //   var lat = new Date() ;
@@ -414,137 +468,8 @@ function playMidi(midiNote)
 		console.log("playMidi was called");
 		var note;
 		note = masterConversion(midiNote);
-		//console.log(note);
 		playMidiNote(note);
-		// switch (midiNote[1])
-		// {
-		// 	case '24' : log.innerText = "C2" ;
-		// 	triggerMidiDevice(122) ;
-		// 	break ;
-		// 	case '25' : log.innerText = "C#2" ;
-		// 	triggerMidiDevice(115) ;
-		// 	break ;
-		// 	case '26' : log.innerText = "D2" ;
-		// 	triggerMidiDevice(120) ;
-		// 	break ;
-		// 	case '27' : log.innerText = "D#2" ;
-		// 	triggerMidiDevice(100) ;
-		// 	break ;
-		// 	case '28' : log.innerText = "E2" ;
-		// 	triggerMidiDevice(99) ;
-		// 	break ;
-		// 	case '29' : log.innerText = "F2" ;
-		// 	triggerMidiDevice(118) ;
-		// 	break ;
-		// 	case '2a' : log.innerText = "F#2" ;
-		// 	triggerMidiDevice(103) ;
-		// 	break ;
-		// 	case '2b' : log.innerText = "G2" ;
-		// 	triggerMidiDevice(98) ;
-		// 	break ;
-		// 	case '2c' : log.innerText = "G#2" ;
-		// 	triggerMidiDevice(104) ;
-		// 	break ;
-		// 	case '2d' : log.innerText = "A2" ;
-		// 	triggerMidiDevice(106) ;
-		// 	break ;
-		// 	case '2e' : log.innerText = "A#2" ;
-		// 	triggerMidiDevice(109) ;
-		// 	break ;
-		// 	case '2f' : log.innerText = "B2" ;
-		// 	triggerMidiDevice(44) ;
-		// 	break ;
-		// 	case '30' : log.innerText = "C3" ;
-		// 	triggerMidiDevice(108) ;
-		// 	break ;
-		// 	case '31' : log.innerText = "C#3" ;
-		// 	triggerMidiDevice(46) ;
-		// 	break ;
-		// 	case '32' : log.innerText = "D3" ;
-		// 	triggerMidiDevice(59) ;
-		// 	break ;
-		// 	case '33' : log.innerText = "D#3" ;
-		// 	triggerMidiDevice(47) ;
-		// 	break ;
-		// 	case '34' : log.innerText = "E3" ;
-		// 	triggerMidiDevice(114) ;
-		// 	break ;
-		// 	case '35' : log.innerText = "F3" ;
-		// 	triggerMidiDevice(53) ;
-		// 	break ;
-		// 	case '36' : log.innerText = "F#3" ;
-		// 	triggerMidiDevice(116) ;
-		// 	break ;
-		// 	case '37' : log.innerText = "G3" ;
-		// 	triggerMidiDevice(54) ;
-		// 	break ;
-		// 	case '38' : log.innerText = "G#3" ;
-		// 	triggerMidiDevice(121) ;
-		// 	break ;
-		// 	case '39' : log.innerText = "A3" ;
-		// 	triggerMidiDevice(55) ;
-		// 	break ;
-		// 	case '3a' : log.innerText = "A#3" ;
-		// 	triggerMidiDevice(53) ;
-		// 	break ;
-		// 	case '3b' : log.innerText = "B3" ;
-		// 	break ;
-		// 	case '3c' : log.innerText = "C4" ;
-		// 	break ;
-		// 	case '3d' : log.innerText = "C#4" ;
-		// 	break ;
-		// 	case '3e' : log.innerText = "D4" ;
-		// 	break ;
-		// 	case '3f' : log.innerText = "D#4" ;
-		// 	break ;
-		// 	case '40' : log.innerText = "E4" ;
-		// 	break ;
-		// 	case '41' : log.innerText = "F4" ;
-		// 	break ;
-		// 	case '42' : log.innerText = "F#4" ;
-		// 	break ;
-		// 	case '43' : log.innerText = "G4" ;
-		// 	break ;
-		// 	case '44' : log.innerText = "G#4" ;
-		// 	break ;
-		// 	case '45' : log.innerText = "A4" ;
-		// 	break ;
-		// 	case '46' : log.innerText = "A#4" ;
-		// 	break ;
-		// 	case '47' : log.innerText = "B4" ;
-		// 	break ;
-		// 	case '48' : log.innerText = "C5" ;
-		// 	break ;
-		// 	case '49' : log.innerText = "C#5" ;
-		// 	break ;
-		// 	case '4a' : log.innerText = "D5" ;
-		// 	break ;
-		// 	case '4b' : log.innerText = "D#5" ;
-		// 	break ;
-		// 	case '4c' : log.innerText = "E5" ;
-		// 	break ;
-		// 	case '4d' : log.innerText = "F5" ;
-		// 	break ;
-		// 	case '4e' : log.innerText = "F#5" ;
-		// 	break ;
-		// 	case '4f' : log.innerText = "G5" ;
-		// 	break ;
-		// 	case '50' : log.innerText = "G#5" ;
-		// 	break ;
-		// 	case '51' : log.innerText = "A5" ;
-		// 	break ;
-		// 	case '52' : log.innerText = "A#5" ;
-		// 	break ;
-		// 	case '53' : log.innerText = "B5" ;
-		// 	break ;
-		// 	case '54' : log.innerText = "C6" ;
-		// }
-		// }
-		}
-		else
-		{
-			
-		}
+	}
 }
 
 </script>
