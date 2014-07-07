@@ -315,150 +315,6 @@ function keyGlow(cssClass){
 }
 
 
-// function keyboardMap(keyInput)
-// {
-// 	var output;
-// 	// z
-// 	if(keyInput == 122){
-// 		output = 1;
-// 	}
-// 	// s
-// 	else if (keyInput == 115) {
-// 		output = 2;
-// 	}
-// 	// x
-// 	else if (keyInput == 120) {
-// 		output = 3;
-// 	}
-// 	// d
-// 	else if (keyInput == 100) {
-// 		output = 4;
-// 	}
-// 	// c
-// 	else if (keyInput == 99) {
-// 		output = 5;
-// 	}
-// 	// v
-// 	else if (keyInput == 118) {
-// 		output = 6;
-// 	}
-// 	// g
-// 	else if (keyInput == 103) {
-// 		output = 7;
-// 	}
-// 	// b
-// 	else if (keyInput == 98) {
-// 		output = 8;
-// 	}
-// 	// h
-// 	else if (keyInput == 104) {
-// 		output = 9;
-// 	}
-// 	// n
-// 	else if (keyInput == 110) {
-// 		output = 10;
-// 	}
-// 	// j
-// 	else if (keyInput == 106) {
-// 		output = 11;
-// 	}
-// 	// m
-// 	else if (keyInput == 109) {
-// 		output = 12;
-// 	}
-
-// ///////////////////////////// Next Octave /////////////////////////////////
-// 	// < OR q
-// 	else if (keyInput == 44 || keyInput == 113) {
-// 		output = 13;
-// 	}
-// 	// l OR 2
-// 	else if (keyInput == 108 || keyInput == 50) {
-// 		output = 14;
-// 	}
-// 	// > OR w
-// 	else if (keyInput == 46 || keyInput == 119) {
-// 		output = 15;
-// 	}
-// 	// ; OR 3
-// 	else if (keyInput == 59 || keyInput == 51) {
-// 		output = 16;
-// 	}
-// 	// ? OR e
-// 	else if (keyInput == 47 || keyInput == 101) {
-// 		output = 17;
-// 	}
-// 	// r
-// 	else if (keyInput == 114) {
-// 		output = 18;
-// 	}
-// 	// 5
-// 	else if (keyInput == 53) {
-// 		output = 19;
-// 	}
-// 	// t
-// 	else if (keyInput == 116) {
-// 		output = 20;
-// 	}
-// 	// 6
-// 	else if (keyInput == 54) {
-// 		output = 21;
-// 	}
-// 	// y
-// 	else if (keyInput == 121) {
-// 		output = 22;
-// 	}
-// 	// 7
-// 	else if (keyInput == 55) {
-// 		output = 23;
-// 	}
-// 	// u
-// 	else if (keyInput == 117) {
-// 		output = 24;
-// 	}
-
-// /////////////////////// Start of the next Octave /////////////////////////
-
-// 	// i
-// 	else if (keyInput == 105) {
-// 		output = 25;
-// 	}
-// 	// 9
-// 	else if (keyInput == 57) {
-// 		output = 26;
-// 	}
-// 	// o
-// 	else if (keyInput == 111) {
-// 		output = 27;
-// 	}
-// 	// 0
-// 	else if (keyInput == 48) {
-// 		output = 28;
-// 	}
-// 	// p
-// 	else if (keyInput == 112) {
-// 		output = 29;
-// 	}
-// 	// {
-// 	else if (keyInput == 91) {
-// 		output = 30;
-// 	}
-// 	// +
-// 	else if (keyInput == 61) {
-// 		output = 31;
-// 	}
-// 	// }
-// 	else if (keyInput == 93) {
-// 		output = 32;
-// 	}
-
-// 	else{
-// 		output = 200;
-// 	}
-// 	return output;
-// }
-
-
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 // MIDI
@@ -492,57 +348,73 @@ function handleMIDIMessage( ev ) {
 		switch (ev.data[1].toString(16))
 		{
 			case '24' : log.innerText = "C2" ;
-			triggerSample(122) ;
+			triggerMidiDevice(122) ;
 			break ;
 			case '25' : log.innerText = "C#2" ;
-			triggerSample(115) ;
+			triggerMidiDevice(115) ;
 			break ;
 			case '26' : log.innerText = "D2" ;
-			triggerSample(120) ;
+			triggerMidiDevice(120) ;
 			break ;
 			case '27' : log.innerText = "D#2" ;
-			triggerSample(100) ;
+			triggerMidiDevice(100) ;
 			break ;
 			case '28' : log.innerText = "E2" ;
-			triggerSample(99) ;
+			triggerMidiDevice(99) ;
 			break ;
 			case '29' : log.innerText = "F2" ;
-			triggerSample(118) ;
+			triggerMidiDevice(118) ;
 			break ;
 			case '2a' : log.innerText = "F#2" ;
-			triggerSample(103) ;
+			triggerMidiDevice(103) ;
 			break ;
 			case '2b' : log.innerText = "G2" ;
+			triggerMidiDevice(98) ;
 			break ;
 			case '2c' : log.innerText = "G#2" ;
+			triggerMidiDevice(104) ;
 			break ;
 			case '2d' : log.innerText = "A2" ;
+			triggerMidiDevice(106) ;
 			break ;
 			case '2e' : log.innerText = "A#2" ;
+			triggerMidiDevice(109) ;
 			break ;
 			case '2f' : log.innerText = "B2" ;
+			triggerMidiDevice(44) ;
 			break ;
 			case '30' : log.innerText = "C3" ;
+			triggerMidiDevice(108) ;
 			break ;
 			case '31' : log.innerText = "C#3" ;
+			triggerMidiDevice(46) ;
 			break ;
 			case '32' : log.innerText = "D3" ;
+			triggerMidiDevice(59) ;
 			break ;
 			case '33' : log.innerText = "D#3" ;
+			triggerMidiDevice(47) ;
 			break ;
 			case '34' : log.innerText = "E3" ;
+			triggerMidiDevice(114) ;
 			break ;
 			case '35' : log.innerText = "F3" ;
+			triggerMidiDevice(53) ;
 			break ;
 			case '36' : log.innerText = "F#3" ;
+			triggerMidiDevice(116) ;
 			break ;
 			case '37' : log.innerText = "G3" ;
+			triggerMidiDevice(54) ;
 			break ;
 			case '38' : log.innerText = "G#3" ;
+			triggerMidiDevice(121) ;
 			break ;
 			case '39' : log.innerText = "A3" ;
+			triggerMidiDevice(55) ;
 			break ;
 			case '3a' : log.innerText = "A#3" ;
+			triggerMidiDevice(53) ;
 			break ;
 			case '3b' : log.innerText = "B3" ;
 			break ;

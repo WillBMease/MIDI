@@ -35,6 +35,15 @@ function triggerSample(key) {
 	}
 }
 
+function triggerMidiDevice(input){
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	console.log(notes[keyTrue]);
+	notes[keyTrue].currentTime = 0;
+	notes[keyTrue].play();
+}
+
 function keyboardMap(keyInput){
 	var output;
 
