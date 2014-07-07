@@ -20,11 +20,11 @@
 
  var conn;
   // Connect to PeerJS, have server assign an ID instead of providing one
-   var randID = Math.floor(Math.random() * 50) + 1 ;
+   //var randID = Math.floor(Math.random() * 50) + 1 ;
   //var randID = '21' ;
   // console.log(randID) ;
-  var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
-  peer.metadata = randID ;
+  var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
+  // peer.metadata = randID ;
   peer.on('open', function(randID){
     $('#pid').text(randID);
   });  
