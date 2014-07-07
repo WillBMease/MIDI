@@ -128,6 +128,7 @@ inavibe</a>
 <h2>
 <a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
 <a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
+<a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a>
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
@@ -217,6 +218,8 @@ instrument = '<audio id="" preload="auto">' +
 //preset instrumemt list/////////////////////////////
 
 var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
+
+var newHarp = { "name" : "newHarp", "octaveNum": 5, "notes": 57, "path" : "sounds/newHarp"};
 
 var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
 

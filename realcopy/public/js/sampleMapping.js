@@ -16,6 +16,25 @@ function generateNotes(presetInstrument){
 	//  triggerSample(e);
 	// });
 }
+function newGenerateNotes(presetInstrument){
+	$(window).unbind();
+	sampleActive = true;
+	var target = $('.audioBin li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated!!!");
+	for(var i = 1; i <presetInstrument.notes; i++){
+		target.append(instrument);
+		var instrumentPath = String(presetInstrument.path + "/__" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+	}
+	// $(window).on('keypress',function(e){
+	//  triggerSample(e);
+	// });
+}
+
 
 function triggerSample(key) {
 	var notes = [];
