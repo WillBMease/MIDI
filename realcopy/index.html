@@ -488,6 +488,8 @@ function handleMIDIMessage( ev ) {
 	if (ev.data.length == 3) 
 	{
 		log.innerText += " " + ev.data[0].toString(16) + " " + ev.data[1].toString(16) + " " + ev.data[2].toString(16);
+		if (ev.data[2].toString(16) != '0')
+		{
 
 		switch (ev.data[1].toString(16))
 		{
@@ -595,6 +597,11 @@ function handleMIDIMessage( ev ) {
 			case '53' : log.innerText = "B5" ;
 			break ;
 			case '54' : log.innerText = "C6" ;
+		}
+		}
+		else
+		{
+			
 		}
 
 	log.innerText += "\n";
