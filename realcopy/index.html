@@ -25,8 +25,8 @@
   // console.log(randID) ;
   var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
   // peer.metadata = randID ;
-  peer.on('open', function(randID){
-    $('#pid').text(randID);
+  peer.on('open', function(label){
+    $('#pid').text(label);
   });  
   // Await connections from others
   peer.on('connection', connect);
