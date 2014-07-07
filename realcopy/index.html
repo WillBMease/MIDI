@@ -182,7 +182,7 @@ if(!sampleActive){
 else {
 	var pressed = e.which;
 	//socket.emit('sample on', pressed);
-	//conn.send(pressed) ;
+	conn.send(pressed) ;
 	console.log(pressed);
     triggerSample(pressed);
 }
