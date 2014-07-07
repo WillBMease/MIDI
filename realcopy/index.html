@@ -25,6 +25,8 @@
   var randID = Math.floor(Math.random() * 50) + 1 ;
 
   // Create a new peer, and assign the randID as "label" in peer
+  // the label is assigned automatically by how i passed it in
+  // the key connects the peer to the server that does the handshake
   var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
   // Open the peer using the randID "label" we assigned
@@ -47,6 +49,7 @@
     conn.on('data', function(data){
       $('#messages').append('<br>' + conn.peer + ':<br>' + data);
       playMidi(data) ;
+      triggerSample(data) ;
     });
 
     // Close the connection if other peer leaves
@@ -196,7 +199,7 @@ else {
 	//socket.emit('sample on', pressed);
 	conn.send(pressed) ;
 	console.log(pressed);
-    triggerSample(pressed);
+    //triggerSample(pressed);
 }
 
 });
