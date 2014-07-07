@@ -1,10 +1,10 @@
-
 function generateNotes(presetInstrument){
 	$(window).unbind();
 	sampleActive = true;
 	var target = $('.audioBin li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated!!!");
 	for(var i = 1; i <presetInstrument.notes; i++){
 		target.append(instrument);
 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -26,12 +26,13 @@ function triggerSample(key) {
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(check == 200  || check == 49 || check == 96){
 
-	// else{
+	}
+	else{
 		notes[keyTrue].currentTime = 0;
 		notes[keyTrue].play();
-	// }
-
+	}
 }
 
 function keyboardMap(keyInput){
