@@ -1,3 +1,22 @@
+
+function generateNotes(presetInstrument){
+	$(window).unbind();
+	sampleActive = true;
+	var target = $('.audioBin li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	for(var i = 1; i <presetInstrument.notes; i++){
+		target.append(instrument);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+	}
+	// $(window).on('keypress',function(e){
+	//  triggerSample(e);
+	// });
+}
+
 function triggerSample(key) {
 	var notes = [];
 	var noteWrap = $('.audioBin li');
@@ -14,19 +33,6 @@ function triggerSample(key) {
 	// }
 
 }
-
-function transpose(noteInput){
-	// 1
-	if(noteInput == 49 && octave < globalOctave){
-		octave = octave + 1;
-	}
-	// ~
-	if(noteInput == 96 && octave != 0){
-		octave = octave - 1;
-	}
-}
-
-
 
 function keyboardMap(keyInput){
 	var output;

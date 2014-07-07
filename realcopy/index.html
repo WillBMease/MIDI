@@ -685,6 +685,7 @@ function generateNotes(presetInstrument){
 	var target = $('.audioBin li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated!!!");
 	for(var i = 1; i <presetInstrument.notes; i++){
 		target.append(instrument);
 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -706,14 +707,15 @@ function triggerSample(key) {
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(check == 200  || check == 49 || check == 96){
+	}
 
-	// else{
+	else{
 		notes[keyTrue].currentTime = 0;
 		notes[keyTrue].play();
-	// }
+	}
 
 }
-
 function transpose(noteInput){
 	// 1
 	if(noteInput == 49 && octave < globalOctave){
@@ -724,6 +726,7 @@ function transpose(noteInput){
 		octave = octave - 1;
 	}
 }
+
 
 function keyGlow(cssClass){
 	$('.active').removeClass(active);
@@ -1156,20 +1159,6 @@ function playG()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // // Connect to PeerJS, have server assign an ID instead of providing one
   // var peer = new Peer({key: 'lwjd5qra8257b9', debug: true});
   // peer.on('open', function(id){
@@ -1222,6 +1211,8 @@ function playG()
 
 
 		</script>
+		<script src="js/sampleMapping.js"></script>
+
 
 <body> 
 
@@ -1335,8 +1326,6 @@ NATs. -->
 
 <!-- <div class="log" style="color:#FF7500;text-shadow:none;padding:15px;background:#eee"><strong>Connection status</strong>:<br></div>
 </div> -->
-
-
 
 
 	</body>
