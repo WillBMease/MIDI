@@ -24,7 +24,7 @@
   //var randID = '21' ;
   // console.log(randID) ;
   var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
- // peer.metadata = randID ;
+  peer.metadata = randID ;
   peer.on('open', function(randID){
     $('#pid').text(randID);
   });  
