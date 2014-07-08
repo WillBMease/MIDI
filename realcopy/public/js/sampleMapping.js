@@ -36,6 +36,7 @@ function generateNotes1(presetInstrument){
 	// });
 }
 
+
 function newGenerateNotes(presetInstrument){
 	$(window).unbind();
 	sampleActive = true;
