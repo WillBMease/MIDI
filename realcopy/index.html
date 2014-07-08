@@ -55,8 +55,11 @@
       conn[0].on('data', function(data){
       $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
       playMidi(data) ;
-      triggerSample(data) ;
+      triggerSample1(data) ;
     });
+
+          conn[0].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+
 		x++ ;
     }
 
@@ -67,6 +70,9 @@
       playMidi(data) ;
       triggerSample(data) ;
     });
+
+          conn[1].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+
       x++ ;
     }
 
@@ -77,6 +83,9 @@
       playMidi(data) ;
       triggerSample(data) ;
     });
+
+          conn[2].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+
       x++ ;
     }
 
@@ -87,7 +96,7 @@
     conn[x].on('data', function(data){
       $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
       playMidi(data) ;
-      triggerSample(data) ;
+      triggerSample1(data) ;
     });
 
     // Close the connection if other peer leaves
@@ -129,7 +138,7 @@
 inavibe</a>
 <h2>
 <a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
-<a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
+<a class = "choose-inst" onClick = "generateNotes1(harp)"><i>harp</i></a>
 <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a>
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
@@ -145,7 +154,7 @@ inavibe</a>
 <!-- <div class = "latency" onclick = "startLatency()"><i> Start Latency </i></div> -->
 
 
-<h1 class = "note-pos">
+<!-- <h1 class = "note-pos">
 
 <i>
 	A
@@ -166,11 +175,15 @@ inavibe</a>
 	F
 </i>
 
-</h1>
+</h1> -->
 
 
 </div>
 	<ul class="audioBin">
+	<li></li>
+
+	</ul>
+	<ul class="audioBin1">
 	<li></li>
 
 	</ul>
@@ -246,35 +259,22 @@ if(!sampleActive){
 
 else {
 	var pressed = e.which;
-	//socket.emit('sample on', pressed);
-	// if (conn[0] != 0)
-	// conn[0].send(pressed) ;
-	// if (conn[1] != 0)
-	// conn[1].send(pressed) ;
-	// if (conn[2] != 0)
-	// conn[2].send(pressed) ;
 
-	// console.log(pressed);
-    //triggerSample(pressed);
-
-		if (conn[0] != 0)
-		{
+	if (conn[0] != 0)
+	{
 		conn[0].send(pressed);
 		console.log("send 0");
 	}
-		if (conn[1] != 0)
-		{
+	if (conn[1] != 0)
+	{
 		conn[1].send(pressed);
 			console.log("send 1");
-		}
-		if (conn[2] != 0)
-		{
+	}
+	if (conn[2] != 0)
+	{
 		conn[2].send(pressed);
 			console.log("send 2");
-		}
-
-    // Receive the incoming message and play it calling midi function
-
+	}
 }
 
 });

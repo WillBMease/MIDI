@@ -16,6 +16,26 @@ function generateNotes(presetInstrument){
 	//  triggerSample(e);
 	// });
 }
+
+function generateNotes1(presetInstrument){
+	$(window).unbind();
+	sampleActive = true;
+	var target = $('.audioBin1 li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated!!!");
+	for(var i = 1; i <presetInstrument.notes; i++){
+		target.append(instrument);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+	}
+	// $(window).on('keypress',function(e){
+	//  triggerSample(e);
+	// });
+}
+
 function newGenerateNotes(presetInstrument){
 	$(window).unbind();
 	sampleActive = true;
@@ -39,6 +59,24 @@ function newGenerateNotes(presetInstrument){
 function triggerSample(key) {
 	var notes = [];
 	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	transpose(key);
+	var check = keyboardMap(key) ;
+	var keyTrue = keyboardMap(key) + (octave*12);
+	console.log(notes[keyTrue]);
+		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	if(check == 200  || check == 49 || check == 96){
+
+	}
+	else{
+		notes[keyTrue].currentTime = 0;
+		notes[keyTrue].play();
+	}
+}
+
+function triggerSample1(key) {
+	var notes = [];
+	var noteWrap = $('.audioBin1 li');
 	notes = noteWrap.find('audio');
 	transpose(key);
 	var check = keyboardMap(key) ;
