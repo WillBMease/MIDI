@@ -241,15 +241,39 @@ if(!sampleActive){
 else {
 	var pressed = e.which;
 	//socket.emit('sample on', pressed);
-	if (conn[0] != 0)
-	conn[0].send(pressed) ;
-	if (conn[1] != 0)
-	conn[1].send(pressed) ;
-	if (conn[2] != 0)
-	conn[2].send(pressed) ;
+	// if (conn[0] != 0)
+	// conn[0].send(pressed) ;
+	// if (conn[1] != 0)
+	// conn[1].send(pressed) ;
+	// if (conn[2] != 0)
+	// conn[2].send(pressed) ;
 
-	console.log(pressed);
+	// console.log(pressed);
     //triggerSample(pressed);
+
+		if (conn[0] != 0)
+		{
+		conn[0].send(midiMsg);
+		console.log("send 0");
+	}
+		if (conn[1] != 0)
+		{
+		conn[1].send(midiMsg);
+			console.log("send 1");
+		}
+		if (conn[2] != 0)
+		{
+		conn[2].send(midiMsg);
+			console.log("send 2");
+		}
+
+    // Receive the incoming message and play it calling midi function
+    conn[0].on('data', function(data){
+      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+    
 }
 
 });
