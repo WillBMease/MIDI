@@ -454,11 +454,11 @@ function handleMIDIMessage( ev ) {
 		}
 
     // Receive the incoming message and play it calling midi function
-    conn[0].on('data', function(data){
-      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
-      playMidi(data) ;
-      triggerSample(data) ;
-    });
+    // conn[0].on('data', function(data){
+    //   $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
+    //   playMidi(data) ;
+    //   triggerSample(data) ;
+    // });
     // conn.on('data', function(retLat){
     //   var lat = new Date() ;
     //   var total = lat - retLat[3] ;
