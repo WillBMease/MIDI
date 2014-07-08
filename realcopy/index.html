@@ -177,7 +177,7 @@ inavibe</a>
 </div> 
 
 
-		<script src = "/socket.io/socket.io.js"></script>
+<!-- 		// <script src = "/socket.io/socket.io.js"></script> -->
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 
@@ -240,7 +240,7 @@ if(!sampleActive){
   
   isPlaying = true;
 	on = e.which;
-	socket.emit('osc on', on);
+	// socket.emit('osc on', on);
 	return false;
 }
 
@@ -334,7 +334,7 @@ function startNote(soundOn)
 
 $(document).keyup(function(e){
 	off = e.which;
-	socket.emit('osc off', off);
+	// socket.emit('osc off', off);
 	isPlaying = false ;
 	return false;
 });
@@ -342,9 +342,9 @@ $(document).focus(function(e) {
   isPlaying = false;
 });
 
-socket.on('osc off', function(msgOff){
-	endNote(msgOff, oscillator) ;
-});
+// socket.on('osc off', function(msgOff){
+// 	endNote(msgOff, oscillator) ;
+// });
 
 }
 
