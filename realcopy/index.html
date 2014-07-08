@@ -54,7 +54,7 @@
     {
       conn[0].on('data', function(data){
       $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
-      playMidi(data) ;
+      //playMidi(data) ;
       triggerSample1(data) ;
     });
 
@@ -67,7 +67,7 @@
     {
       conn[1].on('data', function(data){
       $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
-      playMidi(data) ;
+      //playMidi(data) ;
       triggerSample(data) ;
     });
 
@@ -80,7 +80,7 @@
     {
       conn[2].on('data', function(data){
       $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
-      playMidi(data) ;
+      //playMidi(data) ;
       triggerSample(data) ;
     });
 
@@ -95,7 +95,7 @@
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
       $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
-      playMidi(data) ;
+      //playMidi(data) ;
       triggerSample1(data) ;
     });
 
