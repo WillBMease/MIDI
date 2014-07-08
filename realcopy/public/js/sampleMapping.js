@@ -117,7 +117,7 @@ function playMidiNote(noteInput){
 		break ;
 		case 'E': triggerSample(99) ;
 		break;
-		case 'F': triggerSample();
+		case 'F': triggerSample(99);
 		break;
 
 	}
