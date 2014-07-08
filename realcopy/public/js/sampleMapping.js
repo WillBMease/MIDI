@@ -37,24 +37,24 @@ function generateNotes1(presetInstrument){
 }
 
 
-function newGenerateNotes(presetInstrument){
-	$(window).unbind();
-	sampleActive = true;
-	var target = $('.audioBin li');
-	target.empty();
-	globalOctave = presetInstrument.octaveNum;
-	console.log("generateNotes was initiated!!!");
-	for(var i = 1; i <presetInstrument.notes; i++){
-		target.append(instrument);
-		var instrumentPath = String(presetInstrument.path + "/__" + i + ".ogg");
-		var newInstrument = target.find("audio:last-child");
-		newInstrument.attr("src", instrumentPath);
-		newInstrument.attr("id", i);
-	}
-	// $(window).on('keypress',function(e){
-	//  triggerSample(e);
-	// });
-}
+// function newGenerateNotes(presetInstrument){
+// 	$(window).unbind();
+// 	sampleActive = true;
+// 	var target = $('.audioBin li');
+// 	target.empty();
+// 	globalOctave = presetInstrument.octaveNum;
+// 	console.log("generateNotes was initiated!!!");
+// 	for(var i = 1; i <presetInstrument.notes; i++){
+// 		target.append(instrument);
+// 		var instrumentPath = String(presetInstrument.path + "/__" + i + ".ogg");
+// 		var newInstrument = target.find("audio:last-child");
+// 		newInstrument.attr("src", instrumentPath);
+// 		newInstrument.attr("id", i);
+// 	}
+// 	// $(window).on('keypress',function(e){
+// 	//  triggerSample(e);
+// 	// });
+// }
 
 
 function triggerSample(key) {
@@ -93,36 +93,41 @@ function triggerSample1(key) {
 	}
 }
 
-// function triggerMidiDevice(input){
-// 	var notes = [];
-// 	var noteWrap = $('.audioBin li');
-// 	notes = noteWrap.find('audio');
-	
-// 	var keyTrue = keyboardMap(input) + (octave*12);
-// 	console.log(notes[keyTrue]);
-// 	notes[keyTrue].currentTime = 0;
-// 	notes[keyTrue].play();
-// }
-
-function playMidiNote(noteInput){
-	switch(noteInput){
-
-		case 'C2': triggerSample(122) ;
-		break ;
-		case 'C#2': triggerSample(115) ;
-		break ;
-		case 'D2': triggerSample(120) ;
-		break ;
-		case 'D#2': triggerSample(100) ;
-		break ;
-		case 'E': triggerSample(99) ;
-		break;
-		case 'F': triggerSample(99);
-		break;
-
+function triggerMidiDevice(input){
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	key = masterConversion(input);
+	console.log(key);
+	//var keyTrue = keyboardMap(input) + (octave*12);
+	//console.log(notes[key]);
+	if(key != 200){
+		notes[key].currentTime = 0;
+		notes[key].play();
 	}
+	else{}
 
 }
+
+// function playMidiNote(noteInput){
+// 	switch(noteInput){
+
+// 		case 'C2': triggerSample(122) ;
+// 		break ;
+// 		case 'C#2': triggerSample(115) ;
+// 		break ;
+// 		case 'D2': triggerSample(120) ;
+// 		break ;
+// 		case 'D#2': triggerSample(100) ;
+// 		break ;
+// 		case 'E': triggerSample(99) ;
+// 		break;
+// 		case 'F': triggerSample(99);
+// 		break;
+
+// 	}
+
+// }
 
 function keyboardMap(keyInput){
 	var output;
@@ -267,363 +272,401 @@ function keyboardMap(keyInput){
 function masterConversion(midiInput){
 
 	var output;
+
+if(midiInput[2] == 0){
+	console.log("NO!");
+	output = 200;
+}
+else{
 	switch (midiInput[1]){
-		case '14' : log.innerText = "C1" ; 
-		output = 'C1';
-		break ;
-
-		case '15' : log.innerText = "C#1" ;
-		output = 'C#1';
-		break ;
-
-		case '16' : log.innerText = "D1" ;
-		output = 'D1';
-		break ;
-
-		case '17' : log.innerText = "B0" ;
-		output = 'B0';
-		break ;
-
+	
 		case '18' : log.innerText = "C1" ;
-		output = 'C1';
+		output = '1';
 		break ;
 
 		case '19' : log.innerText = "C#1" ;
-		output = 'C#1';
+		output = '2';
 		break ;
 
 		case '1a' : log.innerText = "D1" ;
-		output = 'D1';
+		output = '3';
 		break ;
 
 		case '1b' : log.innerText = "D#1" ;
-		output = 'D#1';
+		output = '4';
 		break ;
 
 		case '1c' : log.innerText = "E#1" ;
-		output = 'E#1';
+		output = '5';
 		break ;
 
 		case '1d' : log.innerText = "F1" ;
-		output = 'F1';
+		output = '6';
 		break ;
 
 		case '1e' : log.innerText = "F#1" ;
-		output = 'F#1';
+		output = '7';
 		break ;
 
 		case '1f' : log.innerText = "G1" ;
-		output = 'G1';
+		output = '8';
 		break ;
 
 		case '20' : log.innerText = "G#1" ;
-		output = 'G#1';
+		output = '9';
 		break ;
 
 		case '21' : log.innerText = "A1";
-		output = 'A1';
+		output = '10';
 		break ;
 
 		case '22' : log.innerText = "A#1";
-		output = 'A#1';
+		output = '11';
 		break ;
 
 		case '23' : log.innerText = "B1";
-		output = 'B1';
+		output = '12';
 		break ;
 
 		case '24' : log.innerText = "C2" ; 
-		output = 'C2';
+		output = '13';
 		break ;
 
 		case '25' : log.innerText = "C#2" ;
-		output = 'C#2';
+		output = '14';
 		break ;
 
 		case '26' : log.innerText = "D2" ;
-		output = 'D2';
+		output = '15';
 		break ;
 
 		case '27' : log.innerText = "D#2" ;
-		output = 'D#2';
+		output = '16';
 		break ;
 
 		case '28' : log.innerText = "E2" ;
-		output = 'E2';
+		output = '17';
 		break ;
 
 		case '29' : log.innerText = "F2" ;
-		output = 'F2';
+		output = '18';
 		break ;
 
 		case '2a' : log.innerText = "F#2" ;
-		output = 'F#2';
+		output = '19';
 		break ;
 
 		case '2b' : log.innerText = "G2" ;
-		output = 'G2';
+		output = '20';
 		break ;
 
 		case '2c' : log.innerText = "G#2" ;
-		output = 'G#2';
+		output = '21';
 		break ;
 
 		case '2d' : log.innerText = "A2" ;
-		output = 'A2';
+		output = '22';
 		break ;
 
 		case '2e' : log.innerText = "A#2" ;
-		output = 'A#2';
+		output = '23';
 		break ;
 
 		case '2f' : log.innerText = "B2" ;
-		output = 'B2';
+		output = '24';
 		break ;
 
 		case '30' : log.innerText = "C3" ;
-		output = 'C3';
+		output = '25';
 		break ;
 
 		case '31' : log.innerText = "C#3" ;
-		output = 'C#3';
+		output = '26';
 		break ;
 
 		case '32' : log.innerText = "D3" ;
-		output = 'D3';
+		output = '27';
 		break ;
 
 		case '33' : log.innerText = "D#3" ;
-		output = 'D#3';
+		output = '28';
 		break ;
 
 		case '34' : log.innerText = "E3" ;
-		output = 'E3';
+		output = '29';
 		break ;
 
 		case '35' : log.innerText = "F3" ;
-		output = 'F3';
+		output = '30';
 		break ;
 
 		case '36' : log.innerText = "F#3" ;
-		output = 'F#3';
+		output = '31';
 		break ;
 
 		case '37' : log.innerText = "G3" ;
-		output = 'G3';
+		output = '32';
 		break ;
 
 		case '38' : log.innerText = "G#3" ;
-		output = 'G#3';
+		output = '33';
 		break ;
 
 		case '39' : log.innerText = "A3" ;
-		output = 'A3';
+		output = '34';
 		break ;
 
 		case '3a' : log.innerText = "A#3" ;
-		output = 'A#3';
+		output = '35';
 		break ;
 
 		case '3b' : log.innerText = "B3" ;
-		output = 'B3';
+		output = '36';
 		break ;
 
 		case '3c' : log.innerText = "C4" ;
-		output = 'C4';
+		output = '37';
 		break ;
 
 		case '3d' : log.innerText = "C#4" ;
-		output = 'C#4';
+		output = '38';
 		break ;
 
 		case '3e' : log.innerText = "D4" ;
-		output = 'D4';
+		output = '39';
 		break ;
 
 		case '3f' : log.innerText = "D#4" ;
-		output = 'D#4';
+		output = '40';
 		break ;
 
 		case '40' : log.innerText = "E4" ;
-		output = 'E4';
+		output = '41';
 		break ;
 
 		case '41' : log.innerText = "F4" ;
-		output = 'F4';
+		output = '42';
 		break ;
 		
 		case '42' : log.innerText = "F#4" ;
-		output = 'F#4';
+		output = '43';
 		break ;
 		
 		case '43' : log.innerText = "G4" ;
-		output = 'G4';
+		output = '44';
 		break ;
 		
 		case '44' : log.innerText = "G#4" ;
-		output = 'G#4';
+		output = '45';
 		break ;
 		
 		case '45' : log.innerText = "A4" ;
-		output = 'A4';
+		output = '46';
 		break ;
 		
 		case '46' : log.innerText = "A#4" ;
-		output = 'A#4';
+		output = '47';
 		break ;
 
 		case '47' : log.innerText = "B4" ;
-		output = 'B4';
+		output = '48';
 		break ;	
 
 		case '48' : log.innerText = "C5" ;
-		output = 'C5';
+		output = '49';
 		break ;
 
 		case '49' : log.innerText = "C#5" ;
-		output = 'C#5';
+		output = '50';
 		break ;
 
 		case '4a' : log.innerText = "D5" ;
-		output = 'D5';
+		output = '51';
 		break ;
 
 		case '4b' : log.innerText = "D#5" ;
-		output = 'D#5';
+		output = '52';
 		break ;
 
 		case '4c' : log.innerText = "E5" ;
-		output = 'E5';
+		output = '53';
 		break ;
 
 		case '4d' : log.innerText = "F5" ;
-		output = 'F5';
+		output = '54';
 		break ;
 
 		case '4e' : log.innerText = "F#5" ;
-		output = 'F#5';
+		output = '55';
 		break ;
 
 		case '4f' : log.innerText = "G5" ;
-		output = 'G5';
+		output = '56';
 		break ;
 
 		case '50' : log.innerText = "G#5" ;
-		output = 'G#5';
+		output = '57';
 		break ;
 
 		case '51' : log.innerText = "A5" ;
-		output = 'A5';
+		output = '58';
 		break ;
 
 		case '52' : log.innerText = "A#5" ;
-		output = 'A#5';
+		output = '59';
 		break ;
 
 		case '53' : log.innerText = "B5" ;
-		output = 'B5';
+		output = '60';
 		break ;
 
 		case '54' : log.innerText = "C6" ;
-		output = 'C6';
+		output = '61';
 		break;
 
 		case '55' : log.innerText = "C#6" ;
-		output = 'C6';
+		output = '62';
 		break;
 
 		case '56' : log.innerText = "D6" ;
-		output = 'D6';
+		output = '63';
 		break;
 
 		case '57' : log.innerText = "D#6" ;
-		output = 'D#6';
+		output = '64';
 		break;
 
 		case '58' : log.innerText = "E6" ;
-		output = 'E6';
+		output = '65';
 		break;
 
 		case '59' : log.innerText = "F6" ;
-		output = 'F6';
+		output = '66';
 		break;
 
 		case '5A' : log.innerText = "F#6" ;
-		output = 'F#6';
+		output = '67';
 		break;
 
 		case '5B' : log.innerText = "G6" ;
-		output = 'G6';
+		output = '68';
 		break;
 
 		case '5C' : log.innerText = "G#6" ;
-		output = 'G#6';
+		output = '69';
 		break;
 
 		case '5D' : log.innerText = "A6" ;
-		output = 'A6';
+		output = '70';
 		break;
 
 		case '5E' : log.innerText = "A#6" ;
-		output = 'A#6';
+		output = '71';
 		break;
 	
 		case '5F' : log.innerText = "B6" ;
-		output = 'B6';
+		output = '72';
 		break;
 
 		case '60' : log.innerText = "C7" ;
-		output = 'C7';
+		output = '73';
 		break ;
 
 		case '61' : log.innerText = "C#7" ;
-		output = 'C#7';
+		output = '74';
 		break ;
 
 		case '62' : log.innerText = "D7" ;
-		output = 'D7';
+		output = '75';
 		break ;
 
 		case '63' : log.innerText = "D#7" ;
-		output = 'D#7';
+		output = '76';
 		break ;
 
 		case '64' : log.innerText = "E7" ;
-		output = 'E7';
+		output = '77';
 		break;
 
 		case '66' : log.innerText = "F7" ;
-		output = 'F7';
+		output = '78';
 		break;
 
 		case '66' : log.innerText = "F#7" ;
-		output = 'F#7';
+		output = '79';
 		break;
 
 		case '67' : log.innerText = "G7" ;
-		output = 'G7';
+		output = '80';
 		break;
 
 		case '68' : log.innerText = "G#7" ;
-		output = 'G#7';
+		output = '81';
 		break;
 
 		case '69' : log.innerText = "A7" ;
-		output = 'A7';
+		output = '82';
 		break;
 
 		case '6A' : log.innerText = "A#7" ;
-		output = 'A#7';
+		output = '83';
 		break;
 
 		case '6B' : log.innerText = "B7" ;
-		output = 'B7';
+		output = '84';
 		break;
 
 		case '6C' : log.innerText = "C8" ;
-		output = 'C8';
+		output = '85';
 		break;
-	}
-	return output;
 
+		case '6D' : log.innerText = "C#8" ;
+		output = '86';
+		break;
+
+		case '6E' : log.innerText = "D8" ;
+		output = '87';
+		break;
+
+		case '6F' : log.innerText = "D#8" ;
+		output = '88';
+		break;
+
+		case '70' : log.innerText = "E8" ;
+		output = '89';
+		break;
+
+		case '71' : log.innerText = "F8" ;
+		output = '90';
+		break;
+
+		case '72' : log.innerText = "F#8" ;
+		output = '91';
+		break;
+
+		case '73' : log.innerText = "G8" ;
+		output = '92';
+		break;
+
+		case '74' : log.innerText = "G#8" ;
+		output = '93';
+		break;
+
+		case '75' : log.innerText = "A8" ;
+		output = '94';
+		break;
+
+		case '76' : log.innerText = "A#8" ;
+		output = '95';
+		break;
+
+		case '77' : log.innerText = "B8" ;
+		output = '96';
+		break;
+	
+	}
+
+}
+
+	return output;
 }
