@@ -104,20 +104,22 @@ function triggerSample1(key) {
 // }
 
 function playMidiNote(noteInput){
-	if(noteInput == 'C2'){
-		triggerSample(122);
-	}
-	if(noteInput == 'C#2'){
-		triggersample(115) ;
-	}
+	switch(noteInput){
 
-	// else if(noteInput == 'D2'){
-	// 	triggerSample(120);
-	// }
+		case 'C2': triggerSample(122) ;
+		break ;
+		case 'C#2': triggerSample(115) ;
+		break ;
+		case 'D2': triggerSample(120) ;
+		break ;
+		case 'D#2': triggerSample(100) ;
+		break ;
+		case 'E': triggerSample(99) ;
+		break;
+		case 'F': triggerSample();
+		break;
 
-	// else if(noteInput == 'D#2'){
-	// 	triggerSample(100);
-	// }
+	}
 
 }
 
@@ -277,39 +279,55 @@ function masterConversion(midiInput){
 		output = 'D1';
 		break ;
 
-		case '17' : log.innerText = "D#1" ;
+		case '17' : log.innerText = "B0" ;
+		output = 'B0';
+		break ;
+
+		case '18' : log.innerText = "C1" ;
+		output = 'C1';
+		break ;
+
+		case '19' : log.innerText = "C#1" ;
+		output = 'C#1';
+		break ;
+
+		case '1a' : log.innerText = "D1" ;
+		output = 'D1';
+		break ;
+
+		case '1b' : log.innerText = "D#1" ;
 		output = 'D#1';
 		break ;
 
-		case '18' : log.innerText = "E1" ;
-		output = 'E1';
+		case '1c' : log.innerText = "E#1" ;
+		output = 'E#1';
 		break ;
 
-		case '19' : log.innerText = "F1" ;
+		case '1d' : log.innerText = "F1" ;
 		output = 'F1';
 		break ;
 
-		case '1a' : log.innerText = "F#1" ;
+		case '1e' : log.innerText = "F#1" ;
 		output = 'F#1';
 		break ;
 
-		case '1b' : log.innerText = "G1" ;
+		case '1f' : log.innerText = "G1" ;
 		output = 'G1';
 		break ;
 
-		case '1c' : log.innerText = "G#1" ;
+		case '20' : log.innerText = "G#1" ;
 		output = 'G#1';
 		break ;
 
-		case '1d' : log.innerText = "A1" ;
+		case '21' : log.innerText = "A1";
 		output = 'A1';
 		break ;
 
-		case '1e' : log.innerText = "A#1" ;
+		case '22' : log.innerText = "A#1";
 		output = 'A#1';
 		break ;
 
-		case '1f' : log.innerText = "B1" ;
+		case '23' : log.innerText = "B1";
 		output = 'B1';
 		break ;
 
