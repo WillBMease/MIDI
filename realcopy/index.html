@@ -253,17 +253,17 @@ else {
 
 		if (conn[0] != 0)
 		{
-		conn[0].send(midiMsg);
+		conn[0].send(pressed);
 		console.log("send 0");
 	}
 		if (conn[1] != 0)
 		{
-		conn[1].send(midiMsg);
+		conn[1].send(pressed);
 			console.log("send 1");
 		}
 		if (conn[2] != 0)
 		{
-		conn[2].send(midiMsg);
+		conn[2].send(pressed);
 			console.log("send 2");
 		}
 
@@ -273,7 +273,7 @@ else {
       playMidi(data) ;
       triggerSample(data) ;
     });
-    
+
 }
 
 });
