@@ -45,53 +45,53 @@
   function connect(c) {
 
   	conn[0] = c ;
-  //   $('#chat_area').show();
+    $('#chat_area').show();
 
-  //   x = 0 ;
+    x = 0 ;
 
-  //   // Assign the connection to the user (array for multiple connections?)
-  //   if (conn[0] != 0)
-  //   {
-  //     conn[0].on('data', function(data){
-  //     $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
-  //     playMidi(data) ;
-  //     triggerSample(data) ;
-  //   });
-		// x++ ;
-  //   }
+    // Assign the connection to the user (array for multiple connections?)
+    if (conn[0] != 0)
+    {
+      conn[0].on('data', function(data){
+      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+		x++ ;
+    }
 
-  //   if (conn[1] != 0)
-  //   {
-  //     conn[1].on('data', function(data){
-  //     $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
-  //     playMidi(data) ;
-  //     triggerSample(data) ;
-  //   });
-  //     x++ ;
-  //   }
+    if (conn[1] != 0)
+    {
+      conn[1].on('data', function(data){
+      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+      x++ ;
+    }
 
-  //   if (conn[2] != 0)
-  //   {
-  //     conn[2].on('data', function(data){
-  //     $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
-  //     playMidi(data) ;
-  //     triggerSample(data) ;
-  //   });
-  //     x++ ;
-  //   }
+    if (conn[2] != 0)
+    {
+      conn[2].on('data', function(data){
+      $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
+      x++ ;
+    }
 
-  //   conn[x] = c;
-  //   $('#messages').empty().append('Now chatting with ' + conn[x].peer);
+    conn[x] = c;
+    $('#messages').empty().append('Now chatting with ' + conn[x].peer);
 
-  //   // Receive the incoming message and play it calling midi function
-  //   conn[x].on('data', function(data){
-  //     $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
-  //     playMidi(data) ;
-  //     triggerSample(data) ;
-  //   });
+    // Receive the incoming message and play it calling midi function
+    conn[x].on('data', function(data){
+      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
+      playMidi(data) ;
+      triggerSample(data) ;
+    });
 
-  //   // Close the connection if other peer leaves
-  //   conn[x].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
+    // Close the connection if other peer leaves
+    conn[x].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
 
 
