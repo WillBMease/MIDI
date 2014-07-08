@@ -44,7 +44,7 @@
   // Function called from line above ^
   function connect(c) {
 
-  	conn[0] = c ;
+  	//conn[0] = c ;
     $('#chat_area').show();
 
     x = 0 ;
@@ -53,7 +53,7 @@
     if (conn[0] != 0)
     {
       conn[0].on('data', function(data){
-      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
       //playMidi(data) ;
       triggerSample1(data) ;
     });
@@ -96,7 +96,7 @@
     conn[x].on('data', function(data){
       $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
       //playMidi(data) ;
-      triggerSample1(data) ;
+      triggerSample(data) ;
     });
 
     // Close the connection if other peer leaves
