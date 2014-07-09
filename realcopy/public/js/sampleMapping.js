@@ -294,11 +294,11 @@ else if(midiInput[0] == 99)
 	switch (midiInput[1]){
 
 		case '26': log.innerText = "Snare" ;
-		output = 14;
+		output = 13;
 		break ;
 
 		case '24': log.innerText = "Kick" ;
-		output = 5 ;
+		output = 4 ;
 		break ;
 
 		case '2e': log.innerText = "Hi-Hat" ;
