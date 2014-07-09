@@ -5,7 +5,7 @@ function generateNotes(presetInstrument){
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated!!!");
-	for(var i = 1; i <48; i++){
+	for(var i = 0; i <presetInstrument.notes; i++){
 		target.append(instrument);
 		console.log(i);
 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -13,17 +13,15 @@ function generateNotes(presetInstrument){
 		newInstrument.attr("src", instrumentPath);
 		newInstrument.attr("id", i);
 	}
-	for(var i = 48; i <96; i++){
-		target.append(instrument);
-		console.log(i);
-		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-		var newInstrument = target.find("audio:last-child");
-		newInstrument.attr("src", instrumentPath);
-		newInstrument.attr("id", i);
-	}
-	// $(window).on('keypress',function(e){
-	//  triggerSample(e);
-	// });
+	// for(var i = 48; i <96; i++){
+	// 	target.append(instrument);
+	// 	console.log(i);
+	// 	var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+	// 	var newInstrument = target.find("audio:last-child");
+	// 	newInstrument.attr("src", instrumentPath);
+	// 	newInstrument.attr("id", i);
+	// }
+// 
 }
 
 function generateNotes1(presetInstrument){
@@ -33,16 +31,14 @@ function generateNotes1(presetInstrument){
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated!!!");
-	for(var i = 1; i <presetInstrument.notes; i++){
+	for(var i = 0; i <presetInstrument.notes; i++){
 		target.append(instrument);
 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 		var newInstrument = target.find("audio:last-child");
 		newInstrument.attr("src", instrumentPath);
 		newInstrument.attr("id", i);
 	}
-	// $(window).on('keypress',function(e){
-	//  triggerSample(e);
-	// });
+
 }
 
 
