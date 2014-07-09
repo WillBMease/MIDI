@@ -13,6 +13,7 @@ function generateNotes(presetInstrument){
 		newInstrument.attr("src", instrumentPath);
 		newInstrument.attr("id", i);
 	}
+	////////for bass guitar/////////////////
 	if(presetInstrument.name == "bass"){
 		for(var i = 27; i <presetInstrument.notes + 27; i++){
 		target.append(instrument);
