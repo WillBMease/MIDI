@@ -89,7 +89,7 @@ user[2] = 0
 
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
-      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data[0] + " " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
+      $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
         console.log("received most recent connection from " + x);
 
 
