@@ -98,7 +98,7 @@ function triggerMidiDevice(input){
 	var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
 	key = masterConversion(input);
-	console.log(key);
+	//console.log(key);
 	//var keyTrue = keyboardMap(input) + (octave*12);
 	//console.log(notes[key]);
 	if(key != 200){
