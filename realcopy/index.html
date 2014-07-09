@@ -148,11 +148,11 @@
       		{
       			var endTime = new Date();
       			rttLatency = endTime - startTime ;
-      			console.log('Latency is ' + rttLatency);
+      			console.log('Latency is ' + rttLatency + 'ms');
 
       		}
       });
-      $('#messages').append('<br>You:<br>' + rttLatency);
+      $('#messages').append('<br>You:<br>' + rttLatency + 'ms');
       $('#text').val('');
     });
 
