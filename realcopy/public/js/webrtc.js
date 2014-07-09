@@ -12,7 +12,7 @@ user[2] = 0
 
   // Connect to PeerJS, have server assign an ID instead of providing one
   
-  // Generate random ID between 1 and 50 for the user
+  // Generate random ID between 1 and 999 for the user
   var randID = Math.floor(Math.random() * 999) + 1 ;
 
   // Create a new peer, and assign the randID as "label" in peer

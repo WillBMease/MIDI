@@ -5,15 +5,7 @@ function generateNotes(presetInstrument){
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
-	for(var i = 0; i <presetInstrument.notes; i++){
-		target.append(instrument);
-		console.log(i);
-		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-		var newInstrument = target.find("audio:last-child");
-		newInstrument.attr("src", instrumentPath);
-		newInstrument.attr("id", i);
-	}
-	////////for bass guitar/////////////////
+	/////////for bass guitar////////////////////	
 	if(presetInstrument.name == "bass"){
 		for(var i = 27; i <presetInstrument.notes + 27; i++){
 		target.append(instrument);
@@ -24,7 +16,16 @@ function generateNotes(presetInstrument){
 		newInstrument.attr("id", i);
 		}
 	}
-
+	else{
+		for(var i = 0; i <presetInstrument.notes; i++){
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+		}
+	}
 }
 
 function generateNotes1(presetInstrument){
@@ -74,15 +75,15 @@ function triggerSample(key) {
 	transpose(key);
 	var check = keyboardMap(key) ;
 		console.log('check is: ' + check) ;
-	var keyTrue = keyboardMap(key) + (octave*12);
-	console.log(notes[keyTrue]);
-		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	var mappedKey = keyboardMap(key) + (octave*12);
+	console.log(notes[mappedKey]);
+		//notes[mappedKey].onloadedmetadata = function(){notes[mappedKey].currentTime = 0;}
 	if(check == 200  || check == 49 || check == 96){
 
 	}
 	else{
-		notes[keyTrue].currentTime = 0;
-		notes[keyTrue].play();
+		notes[mappedKey].currentTime = 0;
+		notes[mappedKey].play();
 	}
 }
 
@@ -92,15 +93,15 @@ function triggerSample1(key) {
 	notes = noteWrap.find('audio');
 	transpose(key);
 	var check = keyboardMap(key) ;
-	var keyTrue = keyboardMap(key) + (octave*12);
-	console.log(notes[keyTrue]);
-		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
+	var mappedKey = keyboardMap(key) + (octave*12);
+	console.log(notes[mappedKey]);
+		//notes[mappedKey].onloadedmetadata = function(){notes[mappedKey].currentTime = 0;}
 	if(check == 200  || check == 49 || check == 96){
 
 	}
 	else{
-		notes[keyTrue].currentTime = 0;
-		notes[keyTrue].play();
+		notes[mappedKey].currentTime = 0;
+		notes[mappedKey].play();
 	}
 }
 
@@ -110,11 +111,12 @@ function triggerMidiDevice(input){
 	var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
 	key = masterConversion(input);
-	console.log(key);
-	console.log(notes.size());
-	//var keyTrue = keyboardMap(input) + (octave*12);
-	console.log(notes[key]);
+	
+	//console.log(notes.size());
+	//var mappedKey = keyboardMap(input) + (octave*12);
+	//console.log(notes[key]);
 	if(key != 200){
+		console.log('midi key input is: ' + key);
 		notes[key].currentTime = 0;
 		notes[key].play();
 	}
