@@ -298,7 +298,7 @@ else if(midiInput[0] == 99)
 		break ;
 
 		case '2e': log.innerText = "Hi-Hat" ;
-		output = '5' ;
+		output = '6' ;
 		break ;
 
 		case '31': log.innerText = "Crash" ;

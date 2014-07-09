@@ -109,7 +109,7 @@
       	var testing = endLat - beginLat ;
       	console.log('testing: ' + testing) ;
       }
-      else{
+      else if (data != '0'){
      	triggerMidiDevice(data) ;
      	//triggerSample(data) ;
      }
@@ -144,11 +144,11 @@
       		
       		console.log('I got the ping back: ' + data);
 
-      		if (data[0] == 0)
+      		if (data[0] == '0')
       		{
       			console.log('I should not receive this ping: ' + data);
       		}
-      		else if (data[0] == 1)
+      		else if (data[0] == '1')
       		{
       			var endTime = new Date();
       			rttLatency = endTime - startTime ;
@@ -185,7 +185,7 @@ inavibe</a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 </h2>
-<h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3>
+<!-- <h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3> -->
 <h4>
 	<pre id="log">
 	</pre>
