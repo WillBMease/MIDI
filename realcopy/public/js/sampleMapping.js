@@ -13,6 +13,16 @@ function generateNotes(presetInstrument){
 		newInstrument.attr("src", instrumentPath);
 		newInstrument.attr("id", i);
 	}
+	if(presetInstrument.name == "bass"){
+		for(var i = 27; i <presetInstrument.notes + 27; i++){
+		target.append(instrument);
+		console.log(i);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+		}
+	}
 
 }
 
@@ -109,25 +119,6 @@ function triggerMidiDevice(input){
 
 }
 
-// function playMidiNote(noteInput){
-// 	switch(noteInput){
-
-// 		case 'C2': triggerSample(122) ;
-// 		break ;
-// 		case 'C#2': triggerSample(115) ;
-// 		break ;
-// 		case 'D2': triggerSample(120) ;
-// 		break ;
-// 		case 'D#2': triggerSample(100) ;
-// 		break ;
-// 		case 'E': triggerSample(99) ;
-// 		break;
-// 		case 'F': triggerSample(99);
-// 		break;
-
-// 	}
-
-// }
 
 function keyboardMap(keyInput){
 	var output;
