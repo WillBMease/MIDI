@@ -54,8 +54,8 @@
     if (conn[0] != 0)
     {
       conn[0].on('data', function(data){
-      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
-      triggerMidiDevice(data) ;
+      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data + 'from 0 sender');
+      //triggerMidiDevice(data) ;
       //triggerSample1(data) ;
     });
 
@@ -67,9 +67,9 @@
     if (conn[1] != 0)
     {
       conn[1].on('data', function(data){
-      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
+      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data + 'from 1 sender');
       //triggerMidiDevice(data) ;
-      triggerSample(data) ;
+      //triggerSample(data) ;
 
     });
 
@@ -81,9 +81,9 @@
     if (conn[2] != 0)
     {
       conn[2].on('data', function(data){
-      $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
+      $('#messages').append('<br>' + conn[2].peer + ':<br>' + data + 'from 2 sender');
      	//triggerMidiDevice(data) ;
-      triggerSample(data) ;
+      //triggerSample(data) ;
     });
 
           conn[2].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
@@ -96,9 +96,19 @@
 
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
-      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
-     	triggerMidiDevice(data) ;
+      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data + 'from x sender');
+
+      if (data == '0')
+      {
+      	console.log('I received the ping: ' + data);
+      	data = '1' ;
+      	conn[x].send(data) ;
+      	console.log('Now I sent the ping back: ' + data)
+      }
+      else{
+     	//triggerMidiDevice(data) ;
      	//triggerSample(data) ;
+     }
     });
 
     // Close the connection if other peer leaves
@@ -115,14 +125,36 @@
       });
       c.on('error', function(err){ alert(err) });  
     });
-    // Send a chat message
-    // $('#send').click(function(){
-    //   // var msg = $('#text').val();
-    //   var msg = 'hey' ;
-    //   conn.send(msg);
-    //   $('#messages').append('<br>You:<br>' + msg);
-    //   $('#text').val('');
-    // });
+   // Send a chat message
+    $('#send').click(function(){
+      // var msg = $('#text').val();
+      var startTime = new Date() ;
+      var msg = '0' ;
+
+      var rttLatency ;
+      conn[0].send(msg);
+      console.log('I sent the ping: ' + msg);
+
+
+      conn[0].on('data', function(data){
+      		
+      		console.log('I got the ping back: ' + data);
+
+      		if (data[0] == 0)
+      		{
+      			console.log('I should not receive this ping: ' + data);
+      		}
+      		else if (data[0] == 1)
+      		{
+      			var endTime = new Date();
+      			rttLatency = endTime - startTime ;
+      			console.log('Latency is ' + rttLatency);
+
+      		}
+      });
+      $('#messages').append('<br>You:<br>' + rttLatency);
+      $('#text').val('');
+    });
 
     // Show browser version
     $('#browsers').text(navigator.userAgent);
