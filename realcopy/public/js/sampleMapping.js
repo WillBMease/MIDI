@@ -294,35 +294,35 @@ else if(midiInput[0] == 99)
 	switch (midiInput[1]){
 
 		case '26': log.innerText = "Snare" ;
-		output = '13';
+		output = '12';
 		break ;
 
 		case '24': log.innerText = "Kick" ;
-		output = '5' ;
+		output = '4' ;
 		break ;
 
 		case '2e': log.innerText = "Hi-Hat" ;
-		output = '6' ;
+		output = '5' ;
 		break ;
 
 		case '31': log.innerText = "Crash" ;
-		output = '3' ;
+		output = '2' ;
 		break ;
 
 		case '33': log.innerText = "Ride" ;
-		output = '9' ;
+		output = '8' ;
 		break ;
 
 		case '30': log.innerText = "Tom 1" ;
-		output = '15' ;
+		output = '14' ;
 		break ;
 
 		case '2d': log.innerText = "Tom 2" ;
-		output = '17' ;
+		output = '16' ;
 		break ;
 
 		case '2b': log.innerText = "Tom 3" ;
-		output = '16' ;
+		output = '15' ;
 		break ;
 	}
 }
