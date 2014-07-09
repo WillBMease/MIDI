@@ -42,6 +42,10 @@
   // Await connections from others
   peer.on('connection', connect);
 
+  var startTime ;
+  var endTime ;
+  var rttTime ;
+
   // Function called from line above ^
   function connect(c) {
 
@@ -109,10 +113,22 @@
       	var testing = endLat - beginLat ;
       	console.log('testing: ' + testing) ;
       }
-      else if (data != '0'){
-     	//triggerMidiDevice(data) ;
-     	//triggerSample(data) ;
-     }
+     //  else if (data != '0'){
+     // 	//triggerMidiDevice(data) ;
+     // 	//triggerSample(data) ;
+     // }
+
+
+      		else if (data[0] == '1')
+      		{
+      			endTime = new Date();
+      			rttTime = (endTime - startTime) / 2 ;
+      			console.log('Latency is ' + rttTime + 'ms');
+      			var rttString = rttTime.toString() ;
+      			console.log('string is' + rttString) ;
+       $('#messages').append('<br>You:<br>' + rttString + 'ms');
+      		}
+
     });
 
     // Close the connection if other peer leaves
@@ -133,32 +149,32 @@
     $('#send').click(function(){
       // var msg = $('#text').val();
 
-      var startTime = new Date() ;
+      startTime = new Date() ;
       var msg = '0' ;
 
-      var rttLatency ;
       conn[0].send(msg);
       console.log('I sent the ping: ' + msg);
 
 
-      conn[0].on('data', function(data){
+      // conn[0].on('data', function(data){
 
-      		console.log('I got the ping back: ' + data);
+      // 		console.log('I got the ping back: ' + data);
 
-      		if (data[0] == '0')
-      		{
-      			console.log('I should not receive this ping: ' + data);
-      		}
-      		else if (data[0] == '1')
-      		{
-      			var endTime = new Date();
-      			rttLatency = (endTime - startTime) / 2 ;
-      			console.log('Latency is ' + rttLatency + 'ms');
-      			var rttString = rttLatency.toString() ;
-      			console.log('string is' + rttString) ;
-       $('#messages').append('<br>You:<br>' + rttString + 'ms');
-      		}
-      });
+      // 		if (data[0] == '0')
+      // 		{
+      // 			console.log('I should not receive this ping: ' + data);
+      // 		}
+      // 		else if (data[0] == '1')
+      // 		{
+      // 			endTime = new Date();
+      // 			var rttTime = (endTime - startTime) / 2 ;
+      // 			console.log('Latency is ' + rttLatency + 'ms');
+      // 			var rttString = rttTime.toString() ;
+      // 			console.log('string is' + rttString) ;
+      //  $('#messages').append('<br>You:<br>' + rttString + 'ms');
+      // 		}
+      // 		endTime.clear();
+      // });
 
       $('#text').val('');
     });
