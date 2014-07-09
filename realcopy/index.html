@@ -57,6 +57,7 @@
       $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
       triggerMidiDevice(data) ;
       //triggerSample1(data) ;
+      triggerDrums(data) ;
     });
 
           conn[0].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
@@ -99,6 +100,7 @@
       $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
      	triggerMidiDevice(data) ;
      	//triggerSample(data) ;
+     	triggerDrums(data) ;
     });
 
     // Close the connection if other peer leaves
@@ -143,6 +145,7 @@ inavibe</a>
 <a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
 <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a>
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
+<a class = "choose-inst" onClick = "generateNotes(jazzdrums)"><i>drums</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 </h2>
@@ -251,6 +254,8 @@ var newHarp = { "name" : "newHarp", "octaveNum": 5, "notes": 57, "path" : "sound
 var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
 
 var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
+
+var jazzdrums = { "name" : "drums" , "octaveNum": 2, "notes": 17, "path" : "sounds/jazzdrums"};
 
 $(document).keypress(function(e) { 
 if(!sampleActive){

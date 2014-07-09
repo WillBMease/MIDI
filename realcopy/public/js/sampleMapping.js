@@ -109,6 +109,22 @@ function triggerMidiDevice(input){
 
 }
 
+function triggerDrums(input){
+	var notes = [];
+	var noteWrap = $('.audioBin li');
+	notes = noteWrap.find('audio');
+	key = masterConversion(input);
+	console.log(key);
+	//var keyTrue = keyboardMap(input) + (octave*12);
+	//console.log(notes[key]);
+	if(key != 200){
+		notes[key].currentTime = 0;
+		notes[key].play();
+	}
+	else{}
+
+}
+
 // function playMidiNote(noteInput){
 // 	switch(noteInput){
 
@@ -277,6 +293,17 @@ if(midiInput[2] == 0){
 	console.log("NO!");
 	output = 200;
 }
+
+else if(midiInput[0] == 99)
+{
+	switch (midiInput[1]){
+
+		case '26': log.innerText = "Snare" ;
+		output = 13;
+		break ;
+	}
+}
+
 else{
 	switch (midiInput[1]){
 	
