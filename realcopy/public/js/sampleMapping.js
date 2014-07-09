@@ -70,8 +70,10 @@ function triggerSample(key) {
 	var notes = [];
 	var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
+		console.log('key is: ' + key) ;
 	transpose(key);
 	var check = keyboardMap(key) ;
+		console.log('check is: ' + check) ;
 	var keyTrue = keyboardMap(key) + (octave*12);
 	console.log(notes[keyTrue]);
 		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
@@ -265,14 +267,14 @@ function masterConversion(midiInput){
 
 	var output;
 
-if(midiInput[2] == 0){
+if(midiInput[4] == 0){
 	//console.log("NO!");
 	output = 200;
 }
 
-else if(midiInput[0] == 99)
+else if(midiInput[2] == 99)
 {
-	switch (midiInput[1]){
+	switch (midiInput[3]){
 
 		case '26': log.innerText = "Snare" ;
 		output = '12';
@@ -308,8 +310,13 @@ else if(midiInput[0] == 99)
 	}
 }
 
-else if (midiInput[0] != 89){
-	switch (midiInput[1]){
+else if (midiInput[2] == 89)
+{
+	output = 200 ;
+}
+
+else if (midiInput[2] != 89){
+	switch (midiInput[3]){
 	
 		case '18' : log.innerText = "C1" ;
 		output = '1';

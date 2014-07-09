@@ -3,6 +3,13 @@
  conn[1] = 0;
  conn[2] = 0;
  var x = 0 ;
+
+var me ;
+var user = [] 
+user[0] = 0
+user[1] = 0 
+user[2] = 0
+
   // Connect to PeerJS, have server assign an ID instead of providing one
   
   // Generate random ID between 1 and 50 for the user
@@ -82,39 +89,48 @@
 
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
-      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data + 'from x sender');
+      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data[0] + " " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
         console.log("received most recent connection from " + x);
-      if (data == '0')
+
+
+    if (conn[0] != 0 && data[0] == conn[0].peer)
+    {
+      console.log ('from ' + conn[0].peer)
+    }
+    else if (conn[1] != 0 && data[0] == conn[1].peer)
+    {
+      console.log ('from ' + conn[1].peer)
+    }
+
+      if (data[1] == '0' && data[2] == '0')
       {
 
-      	console.log('I received the ping: ' + data);
-      	data = '1' ;
+      	console.log('I received the ping: ' + data[2]);
+      	data[1] = '1' ;
       	conn[x].send(data) ;
-      	console.log('Now I sent the ping back: ' + data)
+      	console.log('Now I sent the ping back: ' + data[2])
 
       }
 
-     //  else if (data != '0'){
-     // 	//triggerMidiDevice(data) ;
-     // 	//triggerSample(data) ;
-     // }
-
-
-      		else if (data[0] == '1')
-      		{
-      			endTime = new Date();
-      			rttTime = (endTime - startTime) / 2 ;
-      			console.log('Latency is ' + rttTime + 'ms');
-      			var rttString = rttTime.toString() ;
-      			console.log('string is' + rttString) ;
+          else if (data[1] == '0' && data[2] == '1')
+          {
+            endTime = new Date();
+            rttTime = (endTime - startTime) / 2 ;
+            console.log('Latency is ' + rttTime + 'ms');
+            var rttString = rttTime.toString() ;
+            console.log('string is' + rttString) ;
        $('#messages').append('<br>You:<br>' + rttString + 'ms');
-      		}
+          }
 
-
-      else if (data != '0'){
+      else if (data[1] == 1){
      	triggerMidiDevice(data) ;
-     	//triggerSample(data) ;
      }
+
+      else if (data[1] == 2){
+     	triggerSample(data[2]) ;
+      console.log('got the keyboard data');
+     }
+
 
     });
 
@@ -137,10 +153,12 @@
       // var msg = $('#text').val();
 
       startTime = new Date() ;
-      var msg = '0' ;
+      midiMsg[0] = randID ;
+      midiMsg[1] = '0' ;
+      midiMsg[2] = '0' ;
 
-      conn[0].send(msg);
-      console.log('I sent the ping: ' + msg);
+      conn[0].send(midiMsg);
+      console.log('I sent the ping: ' + midiMsg[2]);
 
 
       // conn[0].on('data', function(data){
@@ -163,9 +181,9 @@
       // 		endTime.clear();
       // });
 
-      $('#text').val('');
+    //  $('#text').val('');
     });
 
     // Show browser version
-    $('#browsers').text(navigator.userAgent);
+   // $('#browsers').text(navigator.userAgent);
   });

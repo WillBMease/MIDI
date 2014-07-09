@@ -13,6 +13,7 @@
 
 		 <script src="js/WebMIDIAPI.js"></script>
 <!-- 		 // <script src="js/videochatroom.js"></script> -->
+		<script src="js/webrtc.js"></script>
 
 
 	</head>
@@ -62,6 +63,34 @@ inavibe</a>
 
 <script>
 
+// Legend
+
+// midiMsg[0]
+// which user
+
+// midiMsg[1]
+// 0 = ping
+// 1 = keyboard 
+// 2 = MIDI 
+// 3 = instrument change
+
+// midiMsg[2]
+// actual data value
+
+// midiMsg[3]
+// only for midi
+
+// midiMsg[4]
+// only for midi
+
+
+var midiMsg = [] ;
+
+midiMsg[0] = randID ; // defines which user
+midiMsg[1] = null ; // defines what type of message
+midiMsg[2] = null ;
+midiMsg[3] = null ;
+midiMsg[4] = null ;
 var octave = 1;
 var globalOctave;
 
@@ -117,20 +146,22 @@ if(!sampleActive){
 
 else {
 	var pressed = e.which;
+	midiMsg[1] = '2' ;
+	midiMsg[2] = pressed ;
 
 	if (conn[0] != 0)
 	{
-		conn[0].send(pressed);
+		conn[0].send(midiMsg);
 		console.log("send 0");
 	}
 	if (conn[1] != 0)
 	{
-		conn[1].send(pressed);
+		conn[1].send(midiMsg);
 			console.log("send 1");
 	}
 	if (conn[2] != 0)
 	{
-		conn[2].send(pressed);
+		conn[2].send(midiMsg);
 			console.log("send 2");
 	}
 }
@@ -190,10 +221,10 @@ function runTest() {
 
 function handleMIDIMessage( ev ) {
 	
-		var midiMsg = [] ;
-		midiMsg[0] = ev.data[0].toString(16) ;
-		midiMsg[1] = ev.data[1].toString(16) ;
-		midiMsg[2] = ev.data[2].toString(16) ;
+		midiMsg[1] = 1 ;
+		midiMsg[2] = ev.data[0].toString(16) ;
+		midiMsg[3] = ev.data[1].toString(16) ;
+		midiMsg[4] = ev.data[2].toString(16) ;
 		//midiMsg[3] = new Date() ;
 
 		if (conn[0] != 0)
@@ -266,7 +297,6 @@ function failure( error ) {
 
 		
 		<script src="js/sampleMapping.js"></script>
-		<script src="js/webrtc.js"></script>
 
 
   Your PeerJS id is : <span id="pid"></span><br><br>
