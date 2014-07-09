@@ -132,6 +132,7 @@
    // Send a chat message
     $('#send').click(function(){
       // var msg = $('#text').val();
+
       var startTime = new Date() ;
       var msg = '0' ;
 
@@ -141,7 +142,7 @@
 
 
       conn[0].on('data', function(data){
-      		
+
       		console.log('I got the ping back: ' + data);
 
       		if (data[0] == '0')
@@ -151,7 +152,7 @@
       		else if (data[0] == '1')
       		{
       			var endTime = new Date();
-      			rttLatency = endTime - startTime ;
+      			rttLatency = (endTime - startTime) / 2 ;
       			console.log('Latency is ' + rttLatency + 'ms');
       			var rttString = rttLatency.toString() ;
       			console.log('string is' + rttString) ;
