@@ -12,6 +12,7 @@
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 		 <script src="js/WebMIDIAPI.js"></script>
+<!-- 		 // <script src="js/videochatroom.js"></script> -->
 <!-- 		 // <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
 
 
@@ -529,7 +530,14 @@ function playMidi(midiNote)
     <input type="button" value="Send" id="send">
   </div>
   
+  <center>
+    <h1>Video Chat Room</h1>
+    <div id="mypeerid"></div>
+    <input id="remotepeerid" type="text" placeholder="Enter peer id"/>
+    <button id="call" type="button">Call</button>
+  </center>
 
+  <div id="videos"></div>
 
 	</body>
 </html>
