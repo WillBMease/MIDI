@@ -111,7 +111,7 @@ function triggerMidiDevice(input){
 	console.log(key);
 	console.log(notes.size());
 	//var keyTrue = keyboardMap(input) + (octave*12);
-	//console.log(notes[key]);
+	console.log(notes[key]);
 	if(key != 200){
 		notes[key].currentTime = 0;
 		notes[key].play();
