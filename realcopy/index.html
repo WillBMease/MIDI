@@ -179,7 +179,7 @@ inavibe</a>
 <h2>
 <a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
 <a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
-<a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a>
+<!-- <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a> -->
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
 <a class = "choose-inst" onClick = "generateNotes(jazzdrums)"><i>drums</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
@@ -283,13 +283,13 @@ instrument = '<audio id="" preload="auto">' +
 
 //preset instrumemt list/////////////////////////////
 
-var harp = { "name" : "harp", "octaveNum": 5, "notes": 57, "path" : "sounds/Harp"};
+var harp = { "name" : "harp", "octaveNum": 8, "notes": 96, "path" : "sounds/Harp"};
 
-var newHarp = { "name" : "newHarp", "octaveNum": 5, "notes": 57, "path" : "sounds/newHarp"};
+// var newHarp = { "name" : "newHarp", "octaveNum": 8, "notes": 97, "path" : "sounds/newHarp"};
 
 var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
 
-var gPiano = { "name" : "gPiano" , "octaveNum": 6, "notes": 73, "path" : "sounds/Grand_Piano"};
+var gPiano = { "name" : "gPiano" , "octaveNum": 8, "notes": 96, "path" : "sounds/Grand_Piano"};
 
 var jazzdrums = { "name" : "drums" , "octaveNum": 2, "notes": 17, "path" : "sounds/jazzdrums"};
 
