@@ -100,13 +100,17 @@
 
       if (data == '0')
       {
+      	var beginLat = new Date();
       	console.log('I received the ping: ' + data);
       	data = '1' ;
       	conn[x].send(data) ;
       	console.log('Now I sent the ping back: ' + data)
+      	var endLat = new Date() ;
+      	var testing = endLat - beginLat ;
+      	console.log('testing: ' + testing) ;
       }
       else{
-     	//triggerMidiDevice(data) ;
+     	triggerMidiDevice(data) ;
      	//triggerSample(data) ;
      }
     });
@@ -149,10 +153,12 @@
       			var endTime = new Date();
       			rttLatency = endTime - startTime ;
       			console.log('Latency is ' + rttLatency + 'ms');
-
+      			var rttString = rttLatency.toString() ;
+      			console.log('string is' + rttString) ;
+       $('#messages').append('<br>You:<br>' + rttString + 'ms');
       		}
       });
-      $('#messages').append('<br>You:<br>' + rttLatency + 'ms');
+
       $('#text').val('');
     });
 
