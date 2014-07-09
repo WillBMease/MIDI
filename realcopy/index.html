@@ -55,8 +55,8 @@
     {
       conn[0].on('data', function(data){
       $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
-      //playMidi(data) ;
-      triggerSample1(data) ;
+      triggerMidiDevice(data) ;
+      //triggerSample1(data) ;
     });
 
           conn[0].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
@@ -68,8 +68,9 @@
     {
       conn[1].on('data', function(data){
       $('#messages').append('<br>' + conn[1].peer + ':<br>' + data);
-      //playMidi(data) ;
+      //triggerMidiDevice(data) ;
       triggerSample(data) ;
+
     });
 
           conn[1].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
@@ -81,7 +82,7 @@
     {
       conn[2].on('data', function(data){
       $('#messages').append('<br>' + conn[2].peer + ':<br>' + data);
-      //playMidi(data) ;
+     	//triggerMidiDevice(data) ;
       triggerSample(data) ;
     });
 
@@ -96,8 +97,8 @@
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
       $('#messages').append('<br>' + conn[x].peer + ':<br>' + data);
-      //playMidi(data) ;
-      triggerSample(data) ;
+     	triggerMidiDevice(data) ;
+     	//triggerSample(data) ;
     });
 
     // Close the connection if other peer leaves
@@ -139,7 +140,7 @@
 inavibe</a>
 <h2>
 <a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
-<a class = "choose-inst" onClick = "generateNotes1(harp)"><i>harp</i></a>
+<a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
 <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a>
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
@@ -185,6 +186,10 @@ inavibe</a>
 
 	</ul>
 	<ul class="audioBin1">
+	<li></li>
+
+	</ul>
+	<ul class="audioBin2">
 	<li></li>
 
 	</ul>
