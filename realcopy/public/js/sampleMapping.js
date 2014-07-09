@@ -294,7 +294,11 @@ else if(midiInput[0] == 99)
 	switch (midiInput[1]){
 
 		case '26': log.innerText = "Snare" ;
-		output = 13;
+		output = 14;
+		break ;
+
+		case '24': log.innerText = "Kick" ;
+		output = 5 ;
 		break ;
 
 		case '2e': log.innerText = "Hi-Hat" ;
@@ -323,7 +327,7 @@ else if(midiInput[0] == 99)
 	}
 }
 
-else{
+else if (midiInput[0] != 89){
 	switch (midiInput[1]){
 	
 		case '18' : log.innerText = "C1" ;
