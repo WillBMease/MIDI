@@ -5,8 +5,17 @@ function generateNotes(presetInstrument){
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated!!!");
-	for(var i = 1; i <presetInstrument.notes; i++){
+	for(var i = 1; i <48; i++){
 		target.append(instrument);
+		console.log(i);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+	}
+	for(var i = 48; i <96; i++){
+		target.append(instrument);
+		console.log(i);
 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 		var newInstrument = target.find("audio:last-child");
 		newInstrument.attr("src", instrumentPath);
@@ -94,11 +103,13 @@ function triggerSample1(key) {
 }
 
 function triggerMidiDevice(input){
-	var notes = [];
+	var notes1 = [];
+	var notes2 = [];
 	var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
 	key = masterConversion(input);
-	//console.log(key);
+	console.log(key);
+	console.log(notes.size());
 	//var keyTrue = keyboardMap(input) + (octave*12);
 	//console.log(notes[key]);
 	if(key != 200){
@@ -274,7 +285,7 @@ function masterConversion(midiInput){
 	var output;
 
 if(midiInput[2] == 0){
-	console.log("NO!");
+	//console.log("NO!");
 	output = 200;
 }
 else{
@@ -544,27 +555,27 @@ else{
 		output = '66';
 		break;
 
-		case '5A' : log.innerText = "F#6" ;
+		case '5a' : log.innerText = "F#6" ;
 		output = '67';
 		break;
 
-		case '5B' : log.innerText = "G6" ;
+		case '5b' : log.innerText = "G6" ;
 		output = '68';
 		break;
 
-		case '5C' : log.innerText = "G#6" ;
+		case '5c' : log.innerText = "G#6" ;
 		output = '69';
 		break;
 
-		case '5D' : log.innerText = "A6" ;
+		case '5d' : log.innerText = "A6" ;
 		output = '70';
 		break;
 
-		case '5E' : log.innerText = "A#6" ;
+		case '5e' : log.innerText = "A#6" ;
 		output = '71';
 		break;
 	
-		case '5F' : log.innerText = "B6" ;
+		case '5f' : log.innerText = "B6" ;
 		output = '72';
 		break;
 
@@ -608,27 +619,27 @@ else{
 		output = '82';
 		break;
 
-		case '6A' : log.innerText = "A#7" ;
+		case '6a' : log.innerText = "A#7" ;
 		output = '83';
 		break;
 
-		case '6B' : log.innerText = "B7" ;
+		case '6b' : log.innerText = "B7" ;
 		output = '84';
 		break;
 
-		case '6C' : log.innerText = "C8" ;
+		case '6c' : log.innerText = "C8" ;
 		output = '85';
 		break;
 
-		case '6D' : log.innerText = "C#8" ;
+		case '6d' : log.innerText = "C#8" ;
 		output = '86';
 		break;
 
-		case '6E' : log.innerText = "D8" ;
+		case '6e' : log.innerText = "D8" ;
 		output = '87';
 		break;
 
-		case '6F' : log.innerText = "D#8" ;
+		case '6f' : log.innerText = "D#8" ;
 		output = '88';
 		break;
 
