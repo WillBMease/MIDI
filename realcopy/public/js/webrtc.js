@@ -43,13 +43,6 @@ user[2] = 0
     // Assign the connection to the user (array for multiple connections?)
     if (conn[0] != 0)
     {
-    //   conn[0].on('data', function(data){
-    //   $('#messages').append('<br>' + conn[0].peer + ':<br>' + data + 'from 0 sender');
-    //   console.log("received from first connection");
-    //   //triggerMidiDevice(data) ;
-    //   //triggerSample1(data) ;
-    // });
-
     //       conn[0].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
 
 		x++ ;
@@ -57,12 +50,6 @@ user[2] = 0
 
     if (conn[1] != 0)
     {
-    //   conn[1].on('data', function(data){
-    //   $('#messages').append('<br>' + conn[1].peer + ':<br>' + data + 'from 1 sender');
-    //   console.log("received from second connection");
-    //   //triggerMidiDevice(data) ;
-    //   //triggerSample(data) ;
-
     // });
 
     //       conn[1].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
@@ -72,12 +59,6 @@ user[2] = 0
 
     if (conn[2] != 0)
     {
-    //   conn[2].on('data', function(data){
-    //   $('#messages').append('<br>' + conn[2].peer + ':<br>' + data + 'from 2 sender');
-    //   console.log("I shouldn't receive this");
-    //  	//triggerMidiDevice(data) ;
-    //   //triggerSample(data) ;
-    // });
 
     //       conn[2].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
 
@@ -87,9 +68,19 @@ user[2] = 0
     conn[x] = c;
     $('#messages').empty().append('Now chatting with ' + conn[x].peer);
 
+
+
+
+
+
+
+
+
+
+
     // Receive the incoming message and play it calling midi function
     conn[x].on('data', function(data){
-      $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
+      // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
         console.log("received most recent connection from " + x);
 
 
@@ -106,9 +97,10 @@ user[2] = 0
       {
 
       	console.log('I received the ping: ' + data[2]);
-      	data[1] = '1' ;
+      	data[2] = '1' ;
       	conn[x].send(data) ;
       	console.log('Now I sent the ping back: ' + data[2])
+        $('#messages').append('<br>' + 'sent ping back to ' + conn[x].peer);
 
       }
 
@@ -119,28 +111,92 @@ user[2] = 0
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
             console.log('string is' + rttString) ;
-       $('#messages').append('<br>You:<br>' + rttString + 'ms');
+       $('#messages').append('<br> Latency for ' + conn[x].peer + ": " + rttString + 'ms');
           }
 
       else if (data[1] == 1){
-     	triggerMidiDevice(data) ;
+     	//triggerMidiDevice(data) ;
      }
 
       else if (data[1] == 2){
-     	triggerSample(data[2]) ;
+     	//triggerSample(data[2]) ;
       console.log('got the keyboard data');
      }
 
 
     });
 
+
+
+
+
+
+
+
+
+
+
+
+// Second latency measure
+
+if (conn[1] != 0)
+{
+    conn[0].on('data', function(data){
+      // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
+        console.log("received most recent connection from " + x);
+
+
+    if (conn[0] != 0 && data[0] == conn[0].peer)
+    {
+      console.log ('from ' + conn[0].peer)
+    }
+    else if (conn[1] != 0 && data[0] == conn[1].peer)
+    {
+      console.log ('from ' + conn[1].peer)
+    }
+
+      if (data[1] == '0' && data[2] == '0')
+      {
+
+        console.log('I received the ping: ' + data[2]);
+        data[2] = '1' ;
+        conn[x].send(data) ;
+        console.log('Now I sent the ping back: ' + data[2])
+          $('#messages').append('<br>' + 'sent ping back to ' + conn[0].peer);
+
+      }
+
+          else if (data[1] == '0' && data[2] == '1')
+          {
+            endTime = new Date();
+            rttTime = (endTime - startTime) / 2 ;
+            console.log('Latency is ' + rttTime + 'ms');
+            var rttString = rttTime.toString() ;
+            console.log('string is' + rttString) ;
+       $('#messages').append('<br> Latency for ' + conn[0].peer + ": " + rttString + 'ms');
+          }
+
+      else if (data[1] == 1){
+      //triggerMidiDevice(data) ;
+     }
+
+      else if (data[1] == 2){
+      //triggerSample(data[2]) ;
+      console.log('got the keyboard data');
+     }
+
+
+    });
+}
+
     // Close the connection if other peer leaves
     conn[x].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
   }
 
 
-  $(document).ready(function() {
-    // Conect to a peer
+$(document).ready(function() {
+    // Connect to a peer
+
     $('#connect').click(function(){
       var c = peer.connect($('#rid').val());
       c.on('open', function(){
@@ -157,30 +213,16 @@ user[2] = 0
       midiMsg[1] = '0' ;
       midiMsg[2] = '0' ;
 
+      if (conn[0] != 0)
+      {
       conn[0].send(midiMsg);
-      console.log('I sent the ping: ' + midiMsg[2]);
-
-
-      // conn[0].on('data', function(data){
-
-      // 		console.log('I got the ping back: ' + data);
-
-      // 		if (data[0] == '0')
-      // 		{
-      // 			console.log('I should not receive this ping: ' + data);
-      // 		}
-      // 		else if (data[0] == '1')
-      // 		{
-      // 			endTime = new Date();
-      // 			var rttTime = (endTime - startTime) / 2 ;
-      // 			console.log('Latency is ' + rttLatency + 'ms');
-      // 			var rttString = rttTime.toString() ;
-      // 			console.log('string is' + rttString) ;
-      //  $('#messages').append('<br>You:<br>' + rttString + 'ms');
-      // 		}
-      // 		endTime.clear();
-      // });
-
+      console.log('I sent the ping: ' + midiMsg[2] + " to " + conn[0].peer);
+      }
+      if (conn[1] != 0)
+      {
+      conn[1].send(midiMsg);
+      console.log('I sent the ping: ' + midiMsg[2] + " to " + conn[1].peer);
+      }
     //  $('#text').val('');
     });
 
