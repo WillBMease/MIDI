@@ -96,7 +96,7 @@ function connect(c) {
           }
 
       else if (data[1] == 1){
-      triggerMidiDevice(data) ;
+      triggerMidiDevice(0, data) ;
      }
 
       else if (data[1] == 2){
@@ -165,7 +165,7 @@ function connect(c) {
           }
 
       else if (data[1] == 1){
-      triggerMidiDevice(data) ;
+      triggerMidiDevice(1, data) ;
      }
 
       else if (data[1] == 2){
@@ -232,7 +232,7 @@ function connect(c) {
           }
 
       else if (data[1] == '1'){
-      triggerMidiDevice(data) ;
+      triggerMidiDevice(2, data) ;
      }
 
       else if (data[1] == '2'){

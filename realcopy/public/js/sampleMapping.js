@@ -189,10 +189,17 @@ function triggerSample(index, key) {
 	}
 }
 
-function triggerMidiDevice(input){
-	var notes1 = [];
-	var notes2 = [];
-	var noteWrap = $('.audioBin li');
+function triggerMidiDevice(index, input){
+	var notes = [];
+
+	if (index == 0)
+	var noteWrap = $('.audioBin0 li');
+	else if(index == 1)
+	var noteWrap = $('.audioBin1 li');
+	else if (index == 2)
+	var noteWrap = $('.audioBin2 li');
+
+	// var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
 	key = masterConversion(input);
 	
