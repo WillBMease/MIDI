@@ -63,7 +63,6 @@ function connect(c) {
     // Assign the connection to the user (array for multiple connections?)
     if (user[0] == 0)
     {
-         // conn[0] = c;
          createTest(0,c);
           // Receive the incoming message and play it calling midi function
               $('#messages').empty().append('Now chatting with ' + user[0].peer);
@@ -75,10 +74,6 @@ function connect(c) {
     {
       console.log ('from ' + user[0].peer)
     }
-    // else if (user[1] != 0 && data[0] == user[1].peer)
-    // {
-    //   console.log ('from ' + user[1].peer)
-    // }
 
       if (data[1] == '0' && data[2] == '0')
       {
@@ -178,6 +173,21 @@ function connect(c) {
       console.log('got the keyboard data');
      }
 
+     else if (data[1] == 3)
+     {
+        if (data[2] == 0)
+        {
+        generateNotes(bass)
+        }
+        else if (data[2] == 1)
+        {
+        generateNotes(harp)
+        }
+        else if (data[2] == 2)
+        {
+        generateNotes(gPiano)
+        }
+     }
 
     });
           user[1].on('close', function(err){ alert(user[1].peer + ' has left the chat.') });
@@ -230,12 +240,42 @@ function connect(c) {
       console.log('got the keyboard data');
      }
 
+     else if (data[1] == 3)
+     {
+        if (data[2] == 0)
+        {
+        generateNotes(bass)
+        }
+        else if (data[2] == 1)
+        {
+        generateNotes(harp)
+        }
+        else if (data[2] == 2)
+        {
+        generateNotes(gPiano)
+        }
+     }
 
     });
           user[2].on('close', function(err){ alert(user[2].peer + ' has left the chat.') });
     }
 
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
     // Connect to a peer
