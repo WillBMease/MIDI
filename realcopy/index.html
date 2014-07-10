@@ -238,7 +238,9 @@ function handleMIDIMessage( ev ) {
 		midiMsg[4] = ev.data[2].toString(16) ;
 		//midiMsg[3] = new Date() ;
 
-		if (conn[0] != 0)
+console.log('detect midi')
+
+		if (user[0] != 0)
 		{
 		user[0].send(midiMsg);
 		console.log("send 0");
