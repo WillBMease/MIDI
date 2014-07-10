@@ -13,161 +13,9 @@
 
 		 <script src="js/WebMIDIAPI.js"></script>
 <!-- 		 // <script src="js/videochatroom.js"></script> -->
-<!-- 		 // <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
-
-
-
-<script>
-
- var conn = [] ;
- conn[0] = 0;
- conn[1] = 0;
- conn[2] = 0;
- var x = 0 ;
-  // Connect to PeerJS, have server assign an ID instead of providing one
-  
-  // Generate random ID between 1 and 50 for the user
-  var randID = Math.floor(Math.random() * 999) + 1 ;
-
-  // Create a new peer, and assign the randID as "label" in peer
-  // the label is assigned automatically by how i passed it in
-  // the key connects the peer to the server that does the handshake
-  var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
-
-  // Open the peer using the randID "label" we assigned
-  peer.on('open', function(label){
-    $('#pid').text(label);
-  });  
-
-  // Await connections from others
-  peer.on('connection', connect);
-
-  // Function called from line above ^
-  function connect(c) {
-
-  	//conn[0] = c ;
-    $('#chat_area').show();
-
-    x = 0 ;
-
-    // Assign the connection to the user (array for multiple connections?)
-    if (conn[0] != 0)
-    {
-      conn[0].on('data', function(data){
-      $('#messages').append('<br>' + conn[0].peer + ':<br>' + data + 'from 0 sender');
-      //triggerMidiDevice(data) ;
-      //triggerSample1(data) ;
-    });
-
-          conn[0].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
-
-		x++ ;
-    }
-
-    if (conn[1] != 0)
-    {
-      conn[1].on('data', function(data){
-      $('#messages').append('<br>' + conn[1].peer + ':<br>' + data + 'from 1 sender');
-      //triggerMidiDevice(data) ;
-      //triggerSample(data) ;
-
-    });
-
-          conn[1].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
-
-      x++ ;
-    }
-
-    if (conn[2] != 0)
-    {
-      conn[2].on('data', function(data){
-      $('#messages').append('<br>' + conn[2].peer + ':<br>' + data + 'from 2 sender');
-     	//triggerMidiDevice(data) ;
-      //triggerSample(data) ;
-    });
-
-          conn[2].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
-
-      x++ ;
-    }
-
-    conn[x] = c;
-    $('#messages').empty().append('Now chatting with ' + conn[x].peer);
-
-    // Receive the incoming message and play it calling midi function
-    conn[x].on('data', function(data){
-      $('#messages').append('<br>' + conn[x].peer + ':<br>' + data + 'from x sender');
-
-      if (data == '0')
-      {
-      	var beginLat = new Date();
-      	console.log('I received the ping: ' + data);
-      	data = '1' ;
-      	conn[x].send(data) ;
-      	console.log('Now I sent the ping back: ' + data)
-      	var endLat = new Date() ;
-      	var testing = endLat - beginLat ;
-      	console.log('testing: ' + testing) ;
-      }
-      else if (data != '0'){
-     	//triggerMidiDevice(data) ;
-     	//triggerSample(data) ;
-     }
-    });
-
-    // Close the connection if other peer leaves
-    conn[x].on('close', function(err){ alert(conn.peer + ' has left the chat.') });
-  }
-
-
-  $(document).ready(function() {
-    // Conect to a peer
-    $('#connect').click(function(){
-      var c = peer.connect($('#rid').val());
-      c.on('open', function(){
-        connect(c);
-      });
-      c.on('error', function(err){ alert(err) });  
-    });
-   // Send a chat message
-    $('#send').click(function(){
-      // var msg = $('#text').val();
-      var startTime = new Date() ;
-      var msg = '0' ;
-
-      var rttLatency ;
-      conn[0].send(msg);
-      console.log('I sent the ping: ' + msg);
-
-
-      conn[0].on('data', function(data){
-      		
-      		console.log('I got the ping back: ' + data);
-
-      		if (data[0] == '0')
-      		{
-      			console.log('I should not receive this ping: ' + data);
-      		}
-      		else if (data[0] == '1')
-      		{
-      			var endTime = new Date();
-      			rttLatency = endTime - startTime ;
-      			console.log('Latency is ' + rttLatency + 'ms');
-      			var rttString = rttLatency.toString() ;
-      			console.log('string is' + rttString) ;
-       $('#messages').append('<br>You:<br>' + rttString + 'ms');
-      		}
-      });
-
-      $('#text').val('');
-    });
-
-    // Show browser version
-    $('#browsers').text(navigator.userAgent);
-  });
-
-</script>
-
+<!-- 		// <script type="js/users.js"></script> -->
+		 <script src="js/webrtc.js"></script>
+		 <script src="js/video.js"></script>
 
 
 	</head>
@@ -192,42 +40,28 @@ inavibe</a>
 	<div class = "midi-pos" id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
 </h4>
 
-<!-- <div class = "latency" onclick = "startLatency()"><i> Start Latency </i></div> -->
 
-
-<!-- <h1 class = "note-pos">
-
-<i>
-	A
-</i>
-<i>
-	B
-</i>
-<i>
-	C
-</i>
-<i>
-	D
-</i>
-<i>
-	E
-</i>
-<i>
-	F
-</i>
-
-</h1> -->
 
 
 </div>
-	<ul class="audioBin">
+<!--////this is for the 1st user//////////////////// -->
+
+	<ul class="audioBinME">
 	<li></li>
 
 	</ul>
+<!--////this is for the 2nd user//////////////////// -->
+	<ul class="audioBin0">
+	<li></li>
+
+	</ul>
+<!--////this is for the 3rd user//////////////////// -->
+
 	<ul class="audioBin1">
 	<li></li>
 
 	</ul>
+<!--////this is for the 4th user//////////////////// -->
 	<ul class="audioBin2">
 	<li></li>
 
@@ -241,14 +75,34 @@ inavibe</a>
 
 <script>
 
-    // conn[0].on('data', function(data){
-    //   $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
-    //   playMidi(data) ;
-    //   triggerSample(data) ;
-    // });
+// Legend
 
-// Create socket
-//var socket = io() ;
+// midiMsg[0]
+// which user
+
+// midiMsg[1]
+// 0 = ping
+// 1 = keyboard 
+// 2 = MIDI 
+// 3 = instrument change
+
+// midiMsg[2]
+// actual data value
+
+// midiMsg[3]
+// only for midi
+
+// midiMsg[4]
+// only for midi
+
+
+var midiMsg = [] ;
+
+midiMsg[0] = randID ; // defines which user
+midiMsg[1] = null ; // defines what type of message
+midiMsg[2] = null ;
+midiMsg[3] = null ;
+midiMsg[4] = null ;
 
 var octave = 1;
 var globalOctave;
@@ -287,7 +141,7 @@ var harp = { "name" : "harp", "octaveNum": 8, "notes": 96, "path" : "sounds/Harp
 
 // var newHarp = { "name" : "newHarp", "octaveNum": 8, "notes": 97, "path" : "sounds/newHarp"};
 
-var bass = { "name": "bass", "octaveNum": 3, "notes" : 31, "path" : "sounds/E-Bass_Guitar"};
+var bass = { "name": "bass", "octaveNum": 4, "notes" : 48, "path" : "sounds/E-Bass_Guitar"};
 
 var gPiano = { "name" : "gPiano" , "octaveNum": 8, "notes": 96, "path" : "sounds/Grand_Piano"};
 
@@ -300,124 +154,32 @@ if(!sampleActive){
   
   isPlaying = true;
 	on = e.which;
-	// socket.emit('osc on', on);
 	return false;
 }
 
 else {
 	var pressed = e.which;
+	midiMsg[1] = '2' ;
+	midiMsg[2] = pressed ;
 
-	if (conn[0] != 0)
+	if (user[0] != 0)
 	{
-		conn[0].send(pressed);
+		user[0].send(midiMsg);
 		console.log("send 0");
 	}
-	if (conn[1] != 0)
+	if (user[1] != 0)
 	{
-		conn[1].send(pressed);
+		user[1].send(midiMsg);
 			console.log("send 1");
 	}
-	if (conn[2] != 0)
+	if (user[2] != 0)
 	{
-		conn[2].send(pressed);
+		user[2].send(midiMsg);
 			console.log("send 2");
 	}
 }
 
 });
-
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// OSCILLATOR
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-
-function initiateOsc(){
-	sampleActive = false;
-}
-
-function startNote(soundOn)
-{
-	oscillator = context.createOscillator(); // Create bass guitar
-    gainNode = context.createGainNode(); // Create boost pedal
- 
-	oscillator.connect(gainNode); // Connect bass guitar to boost pedal
-	gainNode.connect(context.destination); // Connect boost pedal to amplifier
-	gainNode.gain.value = 0.3; // Set boost pedal to 30 percent volume
-
-	console.log(soundOn) ;
-
-	if (soundOn == 97)
-	{
-		oscillator.frequency.value = 440.00; // A
-		oscillator.noteOn(0); // Play bass guitar instantly
-	}
-	else if (soundOn == 98)
-	{
-		oscillator.frequency.value = 493.88; // B
-		oscillator.noteOn(0);
-	}
-	else if (soundOn == 99)
-	{
-		oscillator.frequency.value = 523.25; // C
-		oscillator.noteOn(0);
-	}
-	else if (soundOn == 100)
-	{
-		oscillator.frequency.value = 587.33; // D
-		oscillator.noteOn(0) ;
-	}
-	else if (soundOn == 101)
-	{
-		oscillator.frequency.value = 659.25; // E
-		oscillator.noteOn(0) ;
-	}
-
-$(document).keyup(function(e){
-	off = e.which;
-	// socket.emit('osc off', off);
-	isPlaying = false ;
-	return false;
-});
-$(document).focus(function(e) { 
-  isPlaying = false;
-});
-
-// socket.on('osc off', function(msgOff){
-// 	endNote(msgOff, oscillator) ;
-// });
-
-}
-
-function endNote(soundOff, oscillator)
-{
-	if (soundOff == 65)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-	}
-	else if (soundOff == 66)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-	}
-	else if (soundOff == 67)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-	}
-	else if (soundOff == 68)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-	}
-	else if (soundOff == 69)
-	{
-		oscillator.noteOff(0); // Play bass guitar instantly
-		oscillator.disconnect();
-	}
-}
-
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
@@ -472,39 +234,31 @@ function runTest() {
 
 function handleMIDIMessage( ev ) {
 	
-		var midiMsg = [] ;
-		midiMsg[0] = ev.data[0].toString(16) ;
-		midiMsg[1] = ev.data[1].toString(16) ;
-		midiMsg[2] = ev.data[2].toString(16) ;
+		midiMsg[1] = 1 ;
+		midiMsg[2] = ev.data[0].toString(16) ;
+		midiMsg[3] = ev.data[1].toString(16) ;
+		midiMsg[4] = ev.data[2].toString(16) ;
 		//midiMsg[3] = new Date() ;
 
-		if (conn[0] != 0)
+console.log('detect midi')
+
+		if (user[0] != 0)
 		{
-		conn[0].send(midiMsg);
+		user[0].send(midiMsg);
 		console.log("send 0");
 	}
-		if (conn[1] != 0)
+		if (user[1] != 0)
 		{
-		conn[1].send(midiMsg);
+		user[1].send(midiMsg);
 			console.log("send 1");
 		}
-		if (conn[2] != 0)
+		if (user[2] != 0)
 		{
-		conn[2].send(midiMsg);
+		user[2].send(midiMsg);
 			console.log("send 2");
 		}
 
-    // Receive the incoming message and play it calling midi function
-    // conn[0].on('data', function(data){
-    //   $('#messages').append('<br>' + conn[0].peer + ':<br>' + data);
-    //   playMidi(data) ;
-    //   triggerSample(data) ;
-    // });
-    // conn.on('data', function(retLat){
-    //   var lat = new Date() ;
-    //   var total = lat - retLat[3] ;
-    //   console.log ('latency: ' + total) ;
-    // });
+
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	// if (output)
@@ -542,21 +296,16 @@ function failure( error ) {
 	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
 }
 
-
-
-
-
-
-function playMidi(midiNote)
-{
-	if (midiNote[2] != '0')
-		{
-		console.log("playMidi was called");
-		var note;
-		note = masterConversion(midiNote);
-		playMidiNote(note);
-	}
-}
+// function playMidi(midiNote)
+// {
+// 	if (midiNote[2] != '0')
+// 		{
+// 		console.log("playMidi was called");
+// 		var note;
+// 		note = masterConversion(midiNote);
+// 		playMidiNote(note);
+// 	}
+// }
 
 </script>
 
@@ -574,6 +323,10 @@ function playMidi(midiNote)
     <div id="messages"></div>
     <input type="text" id="text" placeholder="Enter message">
     <input type="button" value="Send" id="send">
+    <input type="button" value="Bass" id="changeBass">
+    <input type="button" value="Harp" id="changeHarp">
+    <input type="button" value="Piano" id="changePiano">
+    <input type="button" value="Drums" id="changeDrums">
   </div>
   
   <center>

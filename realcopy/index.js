@@ -6,6 +6,9 @@ var io = require('socket.io')(http) ;
 //var fs = require('fs');
 var path = require('path');
 
+var createUser = require('./users.js');
+//var webrtc = require('./webrtc.js')
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
 	res.sendfile('index.html');
