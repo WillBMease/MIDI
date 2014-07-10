@@ -405,7 +405,7 @@ $(document).ready(function() {
 
       midiMsg[0] = randID ;
       midiMsg[1] = '3' ;
-      midiMsg[2] = '2' ;
+      midiMsg[2] = '3' ;
 
       generateNotes('me', jazzdrums)
 
