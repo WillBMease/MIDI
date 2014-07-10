@@ -34,7 +34,7 @@ function getLocalVideo() {
 
 function callPeer() {
   console.log("Calling peer");
-  var call = peer.call($('#remotepeerid').val(), window.localStream);
+  var call = peer.call($(user[0].peer, window.localStream);
   processCall(call);
 }
 
