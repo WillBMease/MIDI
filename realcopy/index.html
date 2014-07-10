@@ -160,19 +160,19 @@ else {
 	midiMsg[1] = '2' ;
 	midiMsg[2] = pressed ;
 
-	if (conn[0] != 0)
+	if (user[0] != 0)
 	{
-		conn[0].send(midiMsg);
+		user[0].send(midiMsg);
 		console.log("send 0");
 	}
-	if (conn[1] != 0)
+	if (user[1] != 0)
 	{
-		conn[1].send(midiMsg);
+		user[1].send(midiMsg);
 			console.log("send 1");
 	}
-	if (conn[2] != 0)
+	if (user[2] != 0)
 	{
-		conn[2].send(midiMsg);
+		user[2].send(midiMsg);
 			console.log("send 2");
 	}
 }
@@ -240,17 +240,17 @@ function handleMIDIMessage( ev ) {
 
 		if (conn[0] != 0)
 		{
-		conn[0].send(midiMsg);
+		user[0].send(midiMsg);
 		console.log("send 0");
 	}
-		if (conn[1] != 0)
+		if (user[1] != 0)
 		{
-		conn[1].send(midiMsg);
+		user[1].send(midiMsg);
 			console.log("send 1");
 		}
-		if (conn[2] != 0)
+		if (user[2] != 0)
 		{
-		conn[2].send(midiMsg);
+		user[2].send(midiMsg);
 			console.log("send 2");
 		}
 
@@ -319,6 +319,7 @@ function failure( error ) {
     <div id="messages"></div>
     <input type="text" id="text" placeholder="Enter message">
     <input type="button" value="Send" id="send">
+    <input type="button" value="Send" id="changeHarp">
   </div>
   
   <center>
