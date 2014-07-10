@@ -109,6 +109,22 @@ function connect(c) {
       console.log('got the keyboard data');
      }
 
+     else if (data[1] == 3)
+     {
+        if (data[2] == 0)
+        {
+        generateNotes(bass)
+        }
+        else if (data[2] == 1)
+        {
+        generateNotes(harp)
+        }
+        else if (data[2] == 2)
+        {
+        generateNotes(gPiano)
+        }
+     }
+
 
     });
           user[0].on('close', function(err){ alert(user[0].peer + ' has left the chat.') });
@@ -258,34 +274,52 @@ $(document).ready(function() {
     //  $('#text').val('');
     });
 
-    $('#changeHarp').click(function(){
-      // var msg = $('#text').val();
+    $('#changeBass').click(function(){
+      midiMsg[0] = randID ;
+      midiMsg[1] = '3' ;
+      midiMsg[2] = '0' ;
 
-      generateNotes(harp)
-      
-      // startTime = new Date() ;
-      // midiMsg[0] = randID ;
-      // midiMsg[1] = '0' ;
-      // midiMsg[2] = '0' ;
+      generateNotes(bass)
 
-      // if (user[0] != 0)
-      // {
-      // user[0].send(midiMsg);
-      // console.log('I sent the ping: ' + midiMsg[2] + " to " + user[0].peer);
-      // }
-      // if (user[1] != 0)
-      // {
-      // user[1].send(midiMsg);
-      // console.log('I sent the ping: ' + midiMsg[2] + " to " + user[1].peer);
-      // }
-      // if (user[2] != 0)
-      // {
-      // user[2].send(midiMsg);
-      // console.log('I sent the ping: ' + midiMsg[2] + " to " + user[2].peer);
-      // }
-    //  $('#text').val('');
+      if (user[0] != 0)
+      {
+      user[0].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+
     });
 
+    $('#changeHarp').click(function(){
+
+      midiMsg[0] = randID ;
+      midiMsg[1] = '3' ;
+      midiMsg[2] = '1' ;
+
+      generateNotes(harp)
+
+      if (user[0] != 0)
+      {
+      user[0].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+
+    });
+
+    $('#changePiano').click(function(){
+
+      generateNotes(gPiano)
+
+      midiMsg[0] = randID ;
+      midiMsg[1] = '3' ;
+      midiMsg[2] = '2' ;
+
+      if (user[0] != 0)
+      {
+      user[0].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+
+    });
     // Show browser version
    // $('#browsers').text(navigator.userAgent);
   });
