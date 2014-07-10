@@ -1,9 +1,43 @@
 var userList = []
 
-function generateNotes(presetInstrument){
+function generateNotes(index, presetInstrument){
 	$(window).unbind();
+
+
+	if (index == 'me')
+	{
 	sampleActive = true;
-	var target = $('.audioBin li');
+	var target = $('.audioBinME li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
+	/////////for bass guitar////////////////////	
+	if(presetInstrument.name == "bass"){
+		for(var i = 27; i <presetInstrument.notes + 27; i++){
+		target.append(instrument);
+		console.log(i);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+		}
+	}
+	else{
+		for(var i = 0; i <presetInstrument.notes; i++){
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+		}
+	}
+	}
+
+	else if (index == 0)
+{
+	sampleActive = true;
+	var target = $('.audioBin0 li');
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
@@ -30,9 +64,73 @@ function generateNotes(presetInstrument){
 	}
 }
 
+	else if (index == 1)
+	{
+
+	sampleActive = true;
+	var target = $('.audioBin1 li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
+	/////////for bass guitar////////////////////	
+	if(presetInstrument.name == "bass"){
+		for(var i = 27; i <presetInstrument.notes + 27; i++){
+		target.append(instrument);
+		console.log(i);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+		}
+	}
+	else{
+		for(var i = 0; i <presetInstrument.notes; i++){
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+		}
+	}
+
+	}
+
+	else if (index == 2)
+	{
+
+	sampleActive = true;
+	var target = $('.audioBin2 li');
+	target.empty();
+	globalOctave = presetInstrument.octaveNum;
+	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
+	/////////for bass guitar////////////////////	
+	if(presetInstrument.name == "bass"){
+		for(var i = 27; i <presetInstrument.notes + 27; i++){
+		target.append(instrument);
+		console.log(i);
+		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+		var newInstrument = target.find("audio:last-child");
+		newInstrument.attr("src", instrumentPath);
+		newInstrument.attr("id", i);
+		}
+	}
+	else{
+		for(var i = 0; i <presetInstrument.notes; i++){
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+		}
+	}
+
+	}
+}
+
 
 function generatePeerNotes(presetInstrument, user){
-	userList.append(id);
 	$(window).unbind()
 	sampleActive = true;
 	
@@ -64,9 +162,17 @@ function generatePeerNotes(presetInstrument, user){
 // }
 
 
-function triggerSample(key) {
+function triggerSample(index, key) {
 	var notes = [];
-	var noteWrap = $('.audioBin li');
+
+	if (index == 0)
+	var noteWrap = $('.audioBin0 li');
+	else if(index == 1)
+	var noteWrap = $('.audioBin1 li');
+	else if (index == 2)
+	var noteWrap = $('.audioBin2 li');
+
+
 	notes = noteWrap.find('audio');
 		console.log('key is: ' + key) ;
 	transpose(key);

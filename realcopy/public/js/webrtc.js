@@ -100,7 +100,7 @@ function connect(c) {
      }
 
       else if (data[1] == 2){
-      triggerSample(data[2]) ;
+      triggerSample(0, data[2]) ;
       console.log('got the keyboard data');
      }
 
@@ -108,15 +108,15 @@ function connect(c) {
      {
         if (data[2] == 0)
         {
-        generateNotes(bass)
+        generateNotes(0, bass)
         }
         else if (data[2] == 1)
         {
-        generateNotes(harp)
+        generateNotes(0, harp)
         }
         else if (data[2] == 2)
         {
-        generateNotes(gPiano)
+        generateNotes(0, gPiano)
         }
      }
 
@@ -169,7 +169,7 @@ function connect(c) {
      }
 
       else if (data[1] == 2){
-      triggerSample(data[2]) ;
+      triggerSample(1, data[2]) ;
       console.log('got the keyboard data');
      }
 
@@ -177,15 +177,15 @@ function connect(c) {
      {
         if (data[2] == 0)
         {
-        generateNotes(bass)
+        generateNotes(1, bass)
         }
         else if (data[2] == 1)
         {
-        generateNotes(harp)
+        generateNotes(1, harp)
         }
         else if (data[2] == 2)
         {
-        generateNotes(gPiano)
+        generateNotes(1, gPiano)
         }
      }
 
@@ -236,7 +236,7 @@ function connect(c) {
      }
 
       else if (data[1] == '2'){
-      triggerSample(data[2]) ;
+      triggerSample(2, data[2]) ;
       console.log('got the keyboard data');
      }
 
@@ -244,15 +244,15 @@ function connect(c) {
      {
         if (data[2] == 0)
         {
-        generateNotes(bass)
+        generateNotes(2, bass)
         }
         else if (data[2] == 1)
         {
-        generateNotes(harp)
+        generateNotes(2, harp)
         }
         else if (data[2] == 2)
         {
-        generateNotes(gPiano)
+        generateNotes(2, gPiano)
         }
      }
 
@@ -319,7 +319,7 @@ $(document).ready(function() {
       midiMsg[1] = '3' ;
       midiMsg[2] = '0' ;
 
-      generateNotes(bass)
+      generateNotes('me', bass)
 
       if (user[0] != 0)
       {
@@ -336,7 +336,7 @@ $(document).ready(function() {
       user[2].send(midiMsg);
       console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
       }
-      
+
     });
 
     $('#changeHarp').click(function(){
@@ -345,7 +345,7 @@ $(document).ready(function() {
       midiMsg[1] = '3' ;
       midiMsg[2] = '1' ;
 
-      generateNotes(harp)
+      generateNotes('me', harp)
 
       if (user[0] != 0)
       {
@@ -371,7 +371,7 @@ $(document).ready(function() {
       midiMsg[1] = '3' ;
       midiMsg[2] = '2' ;
 
-      generateNotes(gPiano)
+      generateNotes('me', gPiano)
 
       if (user[0] != 0)
       {
