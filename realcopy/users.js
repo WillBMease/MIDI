@@ -1,8 +1,8 @@
 
 var peers = {};
 
-function createUser(Id, Instrument, Peers){
-	this.id = ID
+function createUser(id, Instrument, Peers){
+	this.userName = id
 	this.instrument = Instrument
 	this.peers = Peers
 }
