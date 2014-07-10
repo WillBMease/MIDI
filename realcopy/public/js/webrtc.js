@@ -1,3 +1,7 @@
+ 
+ // var createUser = require('./users.js')
+
+//var 
  var conn = [] ;
  conn[0] = 0;
  conn[1] = 0;
@@ -6,6 +10,13 @@
 
 var me ;
 var user = [] 
+// user[0] = createUser(null, null, user[])
+// user[1] = createUser(null, null, user[])
+// user[2] = createUser(null, null, user[])
+// me = createUser(randID, null, user[])
+
+
+
 user[0] = 0
 user[1] = 0 
 user[2] = 0
@@ -19,7 +30,7 @@ user[2] = 0
   // the label is assigned automatically by how i passed it in
   // the key connects the peer to the server that does the handshake
   var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
-
+ 
   // Open the peer using the randID "label" we assigned
   peer.on('open', function(label){
     $('#pid').text(label);
