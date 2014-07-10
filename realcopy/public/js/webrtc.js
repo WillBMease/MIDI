@@ -336,6 +336,7 @@ $(document).ready(function() {
       user[2].send(midiMsg);
       console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
       }
+      
     });
 
     $('#changeHarp').click(function(){
@@ -366,11 +367,11 @@ $(document).ready(function() {
 
     $('#changePiano').click(function(){
 
-      generateNotes(gPiano)
-
       midiMsg[0] = randID ;
       midiMsg[1] = '3' ;
       midiMsg[2] = '2' ;
+
+      generateNotes(gPiano)
 
       if (user[0] != 0)
       {
