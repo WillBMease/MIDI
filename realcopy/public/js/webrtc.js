@@ -53,6 +53,7 @@ function createTest(index, connection){
 
 function connect(c) {
 
+    $('#chat_area').show();
 
 ///////////////////// 1st USER CONNECTION
 
@@ -60,7 +61,6 @@ function connect(c) {
     // Assign the connection to the user (array for multiple connections?)
     if (user[0] == 0)
     {
-          $('#chat_area').show();
          createTest(0,c);
           // Receive the incoming message and play it calling midi function
               $('#messages').empty().append('Now chatting with ' + user[0].peer);
@@ -94,7 +94,7 @@ function connect(c) {
           }
 
       else if (data[1] == 1){
-      triggerMidiDevice(data) ;
+      triggerMidiDevice(0, data) ;
      }
 
       else if (data[1] == 2){
@@ -130,7 +130,6 @@ function connect(c) {
 
     else if (user[0] != 0 && user[1] == 0)
     {
-          $('#chat_area').show();
           createTest(1,c);
        $('#messages').append('<br>' + 'Now chatting with ' + user[1].peer);   
           // Receive the incoming message and play it calling midi function
@@ -197,7 +196,6 @@ function connect(c) {
 
     else if (user[0] != 0 && user[1] != 0 && user[2] == 0)
     {
-          $('#chat_area').show();
             createTest(2,c);
     $('#messages').append('<br>' + ' Now chatting with ' + user[2].peer);
           // Receive the incoming message and play it calling midi function
