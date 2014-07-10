@@ -370,35 +370,35 @@ function masterConversion(midiInput){
 		switch (midiInput[3]){
 
 			case '26': log.innerText = "Snare" ;
-			output = '12';
+			output = '13';
 			break ;
 
 			case '24': log.innerText = "Kick" ;
-			output = '4' ;
+			output = '5' ;
 			break ;
 
 			case '2e': log.innerText = "Hi-Hat" ;
-			output = '6' ;
+			output = '7' ;
 			break ;
 
 			case '31': log.innerText = "Crash" ;
-				output = '2' ;
+				output = '3' ;
 			break ;
 
 			case '33': log.innerText = "Ride" ;
-			output = '8' ;
+			output = '9' ;
 			break ;
 
 			case '30': log.innerText = "Tom 1" ;
-			output = '14' ;
+			output = '15' ;
 			break ;
 
 			case '2d': log.innerText = "Tom 2" ;
-			output = '16' ;
+			output = '17' ;
 			break ;
 
 			case '2b': log.innerText = "Tom 3" ;
-			output = '15' ;
+			output = '16' ;
 			break ;
 		}
 	}
