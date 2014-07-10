@@ -326,7 +326,16 @@ $(document).ready(function() {
       user[0].send(midiMsg);
       console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
       }
-
+      if (user[1] != 0)
+      {
+      user[1].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
+      }
+      if (user[2] != 0)
+      {
+      user[2].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
+      }
     });
 
     $('#changeHarp').click(function(){
@@ -341,6 +350,16 @@ $(document).ready(function() {
       {
       user[0].send(midiMsg);
       console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+      if (user[1] != 0)
+      {
+      user[1].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
+      }
+      if (user[2] != 0)
+      {
+      user[2].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
       }
 
     });
@@ -357,6 +376,16 @@ $(document).ready(function() {
       {
       user[0].send(midiMsg);
       console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+      if (user[1] != 0)
+      {
+      user[1].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
+      }
+      if (user[2] != 0)
+      {
+      user[2].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
       }
 
     });
