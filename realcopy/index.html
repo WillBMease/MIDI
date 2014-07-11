@@ -30,6 +30,7 @@ inavibe</a>
 <!-- <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a> -->
 <a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
 <a class = "choose-inst" onClick = "generateNotes(jazzdrums)"><i>drums</i></a>
+<a class = "choose-inst" onclick = "generateNotes(Brass)"><i>brass</i></a>
 <a onclick = "initiateOsc()"><i>synth</i><a>
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 </h2>
@@ -139,6 +140,7 @@ instrument = '<audio id="" preload="auto">' +
 
 var harp = { "name" : "harp", "octaveNum": 8, "notes": 96, "path" : "sounds/Harp"};
 
+var brass = { "name" : "Brass", "octaveNum": 8, "notes" : 96, "path" : "sounds/Brass"}
 // var newHarp = { "name" : "newHarp", "octaveNum": 8, "notes": 97, "path" : "sounds/newHarp"};
 
 var bass = { "name": "bass", "octaveNum": 4, "notes" : 48, "path" : "sounds/E-Bass_Guitar"};
@@ -324,6 +326,7 @@ function failure( error ) {
     <input type="text" id="text" placeholder="Enter message">
     <input type="button" value="Send" id="send">
     <input type="button" value="Bass" id="changeBass">
+    <input type="button" value="Brass" id="changeBrass">
     <input type="button" value="Harp" id="changeHarp">
     <input type="button" value="Piano" id="changePiano">
     <input type="button" value="Drums" id="changeDrums">

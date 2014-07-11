@@ -120,6 +120,11 @@ function connect(c) {
         {
         generateNotes(0, jazzdrums)
         }
+
+        else if (data[2] == 4)
+        {
+          generateNotes(0, brass)
+        }
      }
 
 
@@ -193,6 +198,10 @@ function connect(c) {
         {
           generateNotes(1, jazzdrums)
         }
+        else if (data[2] == 4)
+        {
+          generateNotes(1, brass)
+        }
      }
 
     });
@@ -263,6 +272,10 @@ function connect(c) {
         else if (data[2] == 3)
         {
           generateNotes(2, jazzdrums)
+        }
+        else if (data[2] == 4)
+        {
+          generateNotes(2, brass)
         }
      }
 
@@ -408,6 +421,32 @@ $(document).ready(function() {
       midiMsg[2] = '3' ;
 
       generateNotes('me', jazzdrums)
+
+      if (user[0] != 0)
+      {
+      user[0].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      }
+      if (user[1] != 0)
+      {
+      user[1].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
+      }
+      if (user[2] != 0)
+      {
+      user[2].send(midiMsg);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
+      }
+
+    });
+
+      $('#changeBrass').click(function(){
+
+      midiMsg[0] = randID ;
+      midiMsg[1] = '3' ;
+      midiMsg[2] = '4' ;
+
+      generateNotes('me', brass)
 
       if (user[0] != 0)
       {
