@@ -24,6 +24,10 @@ $(function(){
   getLocalVideo();
 });
 
+$(function(){
+  $('#end').bind('click', endCall);
+  // getLocalVideo();
+});
 
 
 // Call/Video Management
@@ -76,7 +80,7 @@ function processCall(call) {
   // UI stuff
   window.existingCall = call;
   //document.getElementById('their-id').text(call.peer);
-  //call.on('close', prepareDebateScreen);
+  call.on('close', prepareDebateScreen);
 }
 
 function endCall() {
