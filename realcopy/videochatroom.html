@@ -23,12 +23,6 @@ peer.on('open', function(){
 peer.on('call', function(call){
   console.log("Call received");
   // Answer the call automatically (instead of prompting user) for demo purposes
-//   var s = function(t) {
-//     t.stop();
-// }
-// call.getAudioTracks().map(s);
-
-// call.getAudioTracks()[0].enabled = false;
 
   call.answer(window.localStream);
   processCall(call);
