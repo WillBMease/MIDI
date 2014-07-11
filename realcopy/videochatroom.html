@@ -13,12 +13,17 @@ navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia 
 
 // Start user
 var peer = new Peer({ key: 'lwjd5qra8257b9', debug: 0});
+
+
 peer.on('open', function(){
   $('#mypeerid').append("Your peer id: " + peer.id);
 });
+
+
 peer.on('call', function(call){
   console.log("Call received");
   // Answer the call automatically (instead of prompting user) for demo purposes
+
   call.answer(window.localStream);
   processCall(call);
 });

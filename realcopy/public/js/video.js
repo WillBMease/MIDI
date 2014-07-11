@@ -1,13 +1,17 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 
-
-
-
 peer.on('call', function(call){
   console.log("Call received");
   // Answer the call automatically (instead of prompting user) for demo purposes
+  
   call.answer(window.localStream);
+
+//   var s = function(t) {
+//     t.stop();
+// }
+// call.getAudioTracks().map(s);
+  
   processCall(call);
 });
 peer.on('error', function(err){
@@ -24,18 +28,36 @@ $(function(){
 
 // Call/Video Management
 function getLocalVideo() {
-  navigator.getUserMedia({audio: true, video: true}, function(stream){
+  navigator.getUserMedia({audio: false, video: true}, function(stream){
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
+
   }, function(){ alert('Cannot connect to webcam. Allow access.') });
 }
 
 function callPeer() {
   console.log("Calling peer");
-  var call = peer.call($('#remotepeerid').val(), window.localStream);
-  processCall(call);
+  //var call = peer.call($('#remotepeerid').val(), window.localStream);
+  if (user[0] != 0)
+  {
+    var call = peer.call(user[0].peer, window.localStream);
+    processCall(call);
+  }
+
+  if (user[1] != 0)
+  {
+    var call = peer.call(user[1].peer, window.localStream);
+    processCall(call);
+  }
+
+  if (user[2] != 0)
+  {
+    var call = peer.call(user[2].peer, window.localStream);
+    processCall(call);
+  }
+
 }
 
 function processCall(call) {
