@@ -1,19 +1,14 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 
+
 peer.on('call', function(call){
   console.log("Call received");
   // Answer the call automatically (instead of prompting user) for demo purposes
-  
-  call.answer(window.localStream);
-
-//   var s = function(t) {
-//     t.stop();
-// }
-// call.getAudioTracks().map(s);
-  
+  call.answer(window.localStream);  
   processCall(call);
 });
+
 peer.on('error', function(err){
   console.log(err.message);
 });
@@ -26,49 +21,38 @@ $(function(){
 
 $(function(){
   $('#end').bind('click', endCall);
-  // getLocalVideo();
 });
 
 
 // Call/Video Management
 function getLocalVideo() {
-  navigator.getUserMedia({audio: true, video: true}, function(stream){
+  navigator.getUserMedia({audio: false, video: true}, function(stream){
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
-  }, function(){ alert('Cannot connect to webcam. Allow access.') });
+  }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
 
 function callPeer() {
   console.log("Calling peer");
-  //var call = peer.call($('#remotepeerid').val(), window.localStream);
-  if (user[0] != 0)
-  {
-    var call = peer.call(user[0].peer, window.localStream);
-    processCall(call);
-  }
-
-  if (user[1] != 0)
-  {
-    var call = peer.call(user[1].peer, window.localStream);
-    processCall(call);
-  }
-
-  if (user[2] != 0)
-  {
-    var call = peer.call(user[2].peer, window.localStream);
-    processCall(call);
-  }
-
+  
+  for (var i = 1 ; i < userLimit ; i++) {
+    if (user[i] != 0)
+    {
+  var call = peer.call(user[i].peer, window.localStream);
+  processCall(call);
+    }
 }
+
+} // end callPeer
 
 function processCall(call) {
   // Hang up on an existing call if present
-  if (window.existingCall) {
-    window.existingCall.close();
-  }
+  // if (window.existingCall) {
+  //   window.existingCall.close();
+  // }
 
   // Wait for stream on the call, then set peer video display
   call.on('stream', function(remoteStream){
@@ -80,7 +64,7 @@ function processCall(call) {
   // UI stuff
   window.existingCall = call;
   //document.getElementById('their-id').text(call.peer);
-  call.on('close', prepareDebateScreen);
+  //call.on('close', prepareDebateScreen);
 }
 
 function endCall() {

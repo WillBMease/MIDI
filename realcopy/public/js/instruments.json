@@ -1,0 +1,42 @@
+{
+
+
+	"harp" : { 
+		"name" : "harp", 
+		"octaveNum": 8, 
+		"notes": 96, 
+		"path" : "sounds/Harp"
+	} ,
+
+	"bass" : { 
+		"name": "bass", 
+		"octaveNum": 4, 
+		"notes" : 48, 
+		"path" : "sounds/E-Bass_Guitar"
+	} ,
+
+	"brass": {
+		"name" : "Brass", 
+		"octaveNum": 8, 
+		"notes" : 96, 
+		"path" : "sounds/Brass"
+ 	} ,
+
+	"gPiano" : { 
+		"name" : "gPiano", 
+		"octaveNum": 8, 
+		"notes": 96, 
+		"path" : "sounds/Grand_Piano"
+	} ,
+
+	"jazzdrums" : { 
+		"name" : "drums", 
+		"octaveNum": 2, 
+		"notes": 17, 
+		"path" : "sounds/jazzdrums"
+	}
+
+}
+
+
+

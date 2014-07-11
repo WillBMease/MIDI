@@ -3,22 +3,17 @@
 	<head>
 		<title> Socket.IO chat </title>
 
-		 <!-- <script src="js/WebMIDIAPI.js"></script>
-		// <script src = "js/audioTriggers.js" type = "text/javascript"></script> -->
-
   <link rel="stylesheet" href="css/style.css">
   <link href="css/fancy.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 		 <script src="js/WebMIDIAPI.js"></script>
-<!-- 		 // <script src="js/videochatroom.js"></script> -->
-<!-- 		// <script type="js/users.js"></script> -->
 		 <script src="js/webrtc.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
-
+		 <script src="js/dataProcess.js"></script>
 
 	</head>
 
@@ -44,28 +39,26 @@ inavibe</a>
 </h4>
 
 
-
-
 </div>
-<!--////this is for the 1st user//////////////////// -->
+<!--//// Audio samples for you ////////////////////////// -->
 
-	<ul class="audioBinME">
-	<li></li>
-
-	</ul>
-<!--////this is for the 2nd user//////////////////// -->
 	<ul class="audioBin0">
 	<li></li>
 
 	</ul>
-<!--////this is for the 3rd user//////////////////// -->
-
+<!--//// Audio samples for 1st connection//////////////// -->
 	<ul class="audioBin1">
 	<li></li>
 
 	</ul>
-<!--////this is for the 4th user//////////////////// -->
+<!--//// Audio Samples for 2nd connection//////////////// -->
+
 	<ul class="audioBin2">
+	<li></li>
+
+	</ul>
+<!--//// Audio samples for 3rd connection//////////////// -->
+	<ul class="audioBin3">
 	<li></li>
 
 	</ul>
@@ -76,246 +69,9 @@ inavibe</a>
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 
-<script>
+<script src="js/mainHandle.js"></script>
 
-// Legend
-
-// midiMsg[0]
-// which user
-
-// midiMsg[1]
-// 0 = ping
-// 1 = keyboard 
-// 2 = MIDI 
-// 3 = instrument change
-
-// midiMsg[2]
-// actual data value
-
-// midiMsg[3]
-// only for midi
-
-// midiMsg[4]
-// only for midi
-
-
-var midiMsg = [] ;
-
-midiMsg[0] = randID ; // defines which user
-midiMsg[1] = null ; // defines what type of message
-midiMsg[2] = null ;
-midiMsg[3] = null ;
-midiMsg[4] = null ;
-
-var octave = 1;
-var globalOctave;
-
-//variable used to 
-var midiActive = false;
-var sampleActive = false;
-
-// initialize web audio api
-var context = new (window.AudioContext || window.webkitAudioContext ||  
-	window.mozAudioContext || 
-    window.oAudioContext || 
-    window.msAudioContext)();
-if (context) {
-  // Web Audio API is available.
-} else {
-  alert('browser not supported') ;
-}
-
-var soundOn ;
-var soundOff ;
-var isPlaying = false;
-
-var latencyActive = false;
-var latencyCount ;
-var conn ;
-
-
-var instrument; 
-instrument = '<audio id="" preload="auto">' +
-			'</audio>';
-
-//preset instrumemt list/////////////////////////////
-
-var harp = { "name" : "harp", "octaveNum": 8, "notes": 96, "path" : "sounds/Harp"};
-
-var brass = { "name" : "Brass", "octaveNum": 8, "notes" : 96, "path" : "sounds/Brass"}
-// var newHarp = { "name" : "newHarp", "octaveNum": 8, "notes": 97, "path" : "sounds/newHarp"};
-
-var bass = { "name": "bass", "octaveNum": 4, "notes" : 48, "path" : "sounds/E-Bass_Guitar"};
-
-var gPiano = { "name" : "gPiano" , "octaveNum": 8, "notes": 96, "path" : "sounds/Grand_Piano"};
-
-var jazzdrums = { "name" : "drums" , "octaveNum": 2, "notes": 17, "path" : "sounds/jazzdrums"};
-
-$(document).keypress(function(e) { 
-if(!sampleActive){
-  if (isPlaying) {
-  	return; }
-  
-  isPlaying = true;
-	on = e.which;
-	return false;
-}
-
-else {
-	var pressed = e.which;
-	midiMsg[1] = '2' ;
-	midiMsg[2] = pressed ;
-
-	if (user[0] != 0)
-	{
-		user[0].send(midiMsg);
-		console.log("send 0");
-	}
-	if (user[1] != 0)
-	{
-		user[1].send(midiMsg);
-			console.log("send 1");
-	}
-	if (user[2] != 0)
-	{
-		user[2].send(midiMsg);
-			console.log("send 2");
-	}
-}
-
-});
-
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// SAMPLES
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-
-
-
-function transpose(noteInput){
-	// 1
-	if(noteInput == 49 && octave < globalOctave){
-		octave = octave + 1;
-	}
-	// ~
-	if(noteInput == 96 && octave != 0){
-		octave = octave - 1;
-	}
-}
-
-
-function keyGlow(cssClass){
-	$('.active').removeClass(active);
-	$(this).addClass('active');
-	$('.button').click(function(){
-	})
-}
-
-
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// MIDI
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-
-
-
-
-var midi=null;
-var inputs=null;
-var outputs=null;
-var input=null;
-var output=null;
-var log=null;
-
-function runTest() {
-	if (!log)
-		log = document.getElementById("log");
-	 log.innerText = "Starting up MIDI...\n";
-	navigator.requestMIDIAccess().then( success, failure );
-}
-
-function handleMIDIMessage( ev ) {
-	
-		midiMsg[1] = 1 ;
-		midiMsg[2] = ev.data[0].toString(16) ;
-		midiMsg[3] = ev.data[1].toString(16) ;
-		midiMsg[4] = ev.data[2].toString(16) ;
-		//midiMsg[3] = new Date() ;
-
-console.log('detect midi')
-
-		if (user[0] != 0)
-		{
-		user[0].send(midiMsg);
-		console.log("send 0");
-	}
-		if (user[1] != 0)
-		{
-		user[1].send(midiMsg);
-			console.log("send 1");
-		}
-		if (user[2] != 0)
-		{
-		user[2].send(midiMsg);
-			console.log("send 2");
-		}
-
-
-
-// Plays the drum note through MIDI output (Apple DLS Synth)
-	// if (output)
-	// 	output.send( ev.data );
-}
-
-function success( midiAccess ) {
-	 log.innerText += "MIDI ready!\n";
-	midi = midiAccess;
-
-	inputs = midi.inputs();
-	log.innerText += inputs.length+" inputs:\n";
-	for (var i=0;i<inputs.length;i++)
-		log.innerText += i + ": " + inputs[i].name + "\n";
-
-	if (inputs.length>0) {
-		input = inputs[0];
-		input.onmessage = handleMIDIMessage;
-		input.addEventListener("midimessage", handleMIDIMessage);
-		log.innerText += inputs[0] + "Hooked up first input.\n";
-	}
-
-	outputs = midi.outputs();
-	log.innerText += outputs.length+" outputs:\n";
-	for (var i=0;i<outputs.length;i++)
-		log.innerText += i + ": " + outputs[i].name + "\n";
-
-	if (outputs.length) {
-		output = outputs[0];
-		output.send( [0xb0, 0x00, 0x7f] );	// If the first device is a Novation Launchpad, this will light it up!
-	}
-}
-
-function failure( error ) {
-	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
-}
-
-// function playMidi(midiNote)
-// {
-// 	if (midiNote[2] != '0')
-// 		{
-// 		console.log("playMidi was called");
-// 		var note;
-// 		note = masterConversion(midiNote);
-// 		playMidiNote(note);
-// 	}
-// }
-
-</script>
-
-
-		
-		<script src="js/sampleMapping.js"></script>
+	<script src="js/sampleMapping.js"></script>
 
 
   Your PeerJS id is : <span id="pid"></span><br><br>
@@ -326,13 +82,16 @@ function failure( error ) {
   <div id="chat_area" style="display: none;">
     <div id="messages"></div>
     <input type="text" id="text" placeholder="Enter message">
-    <input type="button" value="Ping" id="send">
-    <input type="button" value="Bass" id="changeBass">
-    <input type="button" value="Brass" id="changeBrass">
-    <input type="button" value="Harp" id="changeHarp">
-    <input type="button" value="Piano" id="changePiano">
-    <input type="button" value="Drums" id="changeDrums">
+    <input type="button" value="Ping" id="send-ping">
   </div>
+
+  <ul>
+  		<li id="bass" class="changeInstrument">Bass</li>
+  		<li id="harp" class="changeInstrument">Harp</li>
+  		<li id="gPiano" class="changeInstrument">Piano</li>
+  		<li id="jazzdrums" class="changeInstrument">Drums</li>
+  		<li id="brass" class="changeInstrument">Brass</li>
+  </ul>
   
   <center>
     <h1>Video Chat Room</h1>
