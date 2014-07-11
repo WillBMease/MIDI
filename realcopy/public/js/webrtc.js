@@ -2,21 +2,10 @@
  // var createUser = require('./users.js')
 
 //var 
- var conn = [] ;
- conn[0] = 0;
- conn[1] = 0;
- conn[2] = 0;
- var x = 0 ;
+
 
 var me ;
 var user = [] 
-// user[0] = createUser(null, null, user[])
-// user[1] = createUser(null, null, user[])
-// user[2] = createUser(null, null, user[])
-// me = createUser(randID, null, user[])
-
-
-
 user[0] = 0
 user[1] = 0 
 user[2] = 0
