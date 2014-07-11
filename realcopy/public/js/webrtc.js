@@ -286,20 +286,6 @@ function connect(c) {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function() {
     // Connect to a peer
 
@@ -310,160 +296,29 @@ $(document).ready(function() {
       });
       c.on('error', function(err){ alert(err) });  
     });
-   // Send a chat message
+   // Ping for latency
     $('#send').click(function(){
-      // var msg = $('#text').val();
-
-      startTime = new Date() ;
-      midiMsg[0] = randID ;
-      midiMsg[1] = '0' ;
-      midiMsg[2] = '0' ;
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the ping: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the ping: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the ping: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-    //  $('#text').val('');
+      Ping()
     });
 
     $('#changeBass').click(function(){
-      midiMsg[0] = randID ;
-      midiMsg[1] = '3' ;
-      midiMsg[2] = '0' ;
-
-      generateNotes('me', bass)
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-
+      instrumentChange(0, bass)
     });
 
     $('#changeHarp').click(function(){
-
-      midiMsg[0] = randID ;
-      midiMsg[1] = '3' ;
-      midiMsg[2] = '1' ;
-
-      generateNotes('me', harp)
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-
+      instrumentChange(1, harp)
     });
 
     $('#changePiano').click(function(){
-
-      midiMsg[0] = randID ;
-      midiMsg[1] = '3' ;
-      midiMsg[2] = '2' ;
-
-      generateNotes('me', gPiano)
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-
-});
-
-      $('#changeDrums').click(function(){
-
-      midiMsg[0] = randID ;
-      midiMsg[1] = '3' ;
-      midiMsg[2] = '3' ;
-
-      generateNotes('me', jazzdrums)
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-
+      instrumentChange(2, gPiano)
     });
 
-      $('#changeBrass').click(function(){
+    $('#changeDrums').click(function(){
+      instrumentChange(3, jazzdrums)
+    });
 
-      midiMsg[0] = randID ;
-      midiMsg[1] = '3' ;
-      midiMsg[2] = '4' ;
-
-      generateNotes('me', brass)
-
-      if (user[0] != 0)
-      {
-      user[0].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
-      }
-      if (user[1] != 0)
-      {
-      user[1].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[1].peer);
-      }
-      if (user[2] != 0)
-      {
-      user[2].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[2].peer);
-      }
-
+    $('#changeBrass').click(function(){
+      instrumentChange(4, brass)
     });
     // Show browser version
    // $('#browsers').text(navigator.userAgent);
