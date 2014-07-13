@@ -21,14 +21,18 @@
 
 <a class = "inavibe">
 inavibe</a>
+
 <h2>
-<a style "color: white" class = "choose-inst" onClick = "generateNotes(bass)"><i>bass</i>
-<a class = "choose-inst" onClick = "generateNotes(harp)"><i>harp</i></a>
-<!-- <a class = "choose-inst" onClick = "newGenerateNotes(newHarp)"><i>new harp</i></a> -->
-<a class = "choose-inst" onClick = "generateNotes(gPiano)"><i>piano</i></a>
-<a class = "choose-inst" onClick = "generateNotes(jazzdrums)"><i>drums</i></a>
-<a class = "choose-inst" onclick = "generateNotes(Brass)"><i>brass</i></a>
-<a onclick = "initiateOsc()"><i>synth</i><a>
+<a id="bass" class="changeInstrument"><i>bass</i>
+<a id="harp" class="changeInstrument"><i>harp</i></a>
+<a id="gPiano" class="changeInstrument"><i>piano</i></a>
+<a id="jazzdrums" class="changeInstrument"><i>drums</i><a>
+<a id="brass" class="changeInstrument"><i>brass</i></a>
+<a id="organ" class="changeInstrument"><i>organ</i></a>
+<a id="bells" class="changeInstrument"><i>bells</i></a>
+
+
+
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 </h2>
 <!-- <h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3> -->
@@ -84,16 +88,6 @@ inavibe</a>
     <input type="text" id="text" placeholder="Enter message">
     <input type="button" value="Ping" id="send-ping">
   </div>
-
-  <ul>
-  		<li id="bass" class="changeInstrument">Bass</li>
-  		<li id="harp" class="changeInstrument">Harp</li>
-  		<li id="gPiano" class="changeInstrument">Piano</li>
-  		<li id="jazzdrums" class="changeInstrument">Drums</li>
-  		<li id="brass" class="changeInstrument">Brass</li>
-  		<li id="organ" class="changeInstrument">Organ</li>
-  		<li id="bells" class="changeInstrument">Bells</li>
-  </ul>
   
   <center>
     <h1>Video Chat Room</h1>

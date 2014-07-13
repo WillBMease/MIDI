@@ -84,9 +84,9 @@ function triggerMidiDevice(index, midiData){
 	notes = noteWrap.find('audio');
 	key = masterConversion(midiData);
 	
-	//console.log(notes.size());
-	//var mappedKey = keyboardMap(input) + (octave*12);
-	//console.log(notes[key]);
+	// console.log(notes.size());
+	// var mappedKey = keyboardMap(input) + (octave*12);
+	// console.log(notes[key]);
 	if(key != 200){
 		console.log('midi key input is: ' + key);
 		notes[key].currentTime = 0;
@@ -96,7 +96,7 @@ function triggerMidiDevice(index, midiData){
 		// if (velocity > 100)
 		// 	velocity = velocity - 27
 		// notes[key].volume = (velocity * .01)
-		console.log('volume: ' + notes[key].volume)
+		// console.log('volume: ' + notes[key].volume)
 		notes[key].play();
 	}
 	else{}
