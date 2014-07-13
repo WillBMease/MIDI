@@ -12,12 +12,15 @@
 
 // midiMsg[2]
 // actual data value
+//MIDI Note On/Off
 
 // midiMsg[3]
 // only for midi
+//MIDI note value
 
 // midiMsg[4]
 // only for midi
+//MIDI Velocity
 
 
 var midiMsg = [] ;
@@ -128,6 +131,9 @@ function handleMIDIMessage( ev ) {
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
 		midiMsg[4] = ev.data[2].toString(16) ;
+		//midiMsg[4] = ev.data[2] ;
+
+		log.innerText += 'velocity is: ' + midiMsg[4]
 
 console.log('detect midi')
 

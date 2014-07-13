@@ -34,6 +34,20 @@
 		"octaveNum": 2, 
 		"notes": 17, 
 		"path" : "sounds/jazzdrums"
+	} ,
+
+	"organ" : {
+		"name" : "organ",
+		"octaveNum" : 5,
+		"notes" : 47,
+		"path" : "sounds/organ"
+	} ,
+
+	"bells" : {
+		"name" : "bells",
+		"octaveNum" : 7,
+		"notes" : 60,
+		"path" : "sounds/bells"
 	}
 
 }

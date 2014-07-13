@@ -2,14 +2,8 @@
 
 function loadInstrument(index, instr)
 {
-
 	$.getJSON("js/instruments.json", function(json){
-
-       var selectInstrument = json[instr]
-            console.log("Name: " + selectInstrument.name)
-            console.log("Name: " + selectInstrument.octaveNum)
-
-        generateNotes(index, selectInstrument)
+        generateNotes(index, json[instr])
 });
 
 }
@@ -37,6 +31,12 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 		newInstrument.attr("id", i);
 		}
 	}
+
+	// else if(presetInstrument.name == "cowbell"){
+	// 	target.append(instrument)
+	// 	console
+	// }
+
 	else{
 		for(var i = 0; i <presetInstrument.notes; i++){
 			target.append(instrument);
@@ -49,6 +49,7 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 	}
 
 }
+
 
 
 function triggerSample(index, key) {
@@ -73,7 +74,7 @@ function triggerSample(index, key) {
 	}
 }
 
-function triggerMidiDevice(index, input){
+function triggerMidiDevice(index, midiData){
 	var notes = [];
 
 	var noteWrap = $('.audioBin' + index + ' li');
@@ -81,7 +82,7 @@ function triggerMidiDevice(index, input){
 
 	// var noteWrap = $('.audioBin li');
 	notes = noteWrap.find('audio');
-	key = masterConversion(input);
+	key = masterConversion(midiData);
 	
 	//console.log(notes.size());
 	//var mappedKey = keyboardMap(input) + (octave*12);
@@ -89,6 +90,13 @@ function triggerMidiDevice(index, input){
 	if(key != 200){
 		console.log('midi key input is: ' + key);
 		notes[key].currentTime = 0;
+		// var velocity = parseInt(midiData[4]) ;
+		// var velocity = midiData[4] ;
+		// console.log('velocity is: ' + velocity)
+		// if (velocity > 100)
+		// 	velocity = velocity - 27
+		// notes[key].volume = (velocity * .01)
+		console.log('volume: ' + notes[key].volume)
 		notes[key].play();
 	}
 	else{}
