@@ -46,7 +46,7 @@
 	"bells" : {
 		"name" : "bells",
 		"octaveNum" : 7,
-		"notes" : 60,
+		"notes" : 80,
 		"path" : "sounds/bells"
 	}
 
