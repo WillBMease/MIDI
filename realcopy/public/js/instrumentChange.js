@@ -9,7 +9,7 @@ for (var i = 1 ; i < userLimit ; i++) {
       if (user[i] != 0)
       {
       user[i].send(midiMsg);
-      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[0].peer);
+      console.log('I sent the instrument change: ' + midiMsg[2] + " to " + user[i].peer);
       }
 }
 } // end function
