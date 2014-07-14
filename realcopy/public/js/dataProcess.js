@@ -7,7 +7,6 @@ function dataProcess(index, c){
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
-
       if (data[1] == '0' && data[2] == '0')
       {
 
@@ -38,6 +37,28 @@ function dataProcess(index, c){
 
      else if (data[1] == 3) {
       loadInstrument(index, data[2])
+     }
+
+     else if (data[1] == 4) {
+      audioPrc++
+      if (data[2] == 500) {
+        var percent = ((audioPrc / 500) * 100)
+        console.log('<br> % received is ' + percent)
+        audioPrc = 0
+        var msg = []
+        msg[0] = peer.label
+        msg[1] = 5
+        msg[2] = percent
+        user[index].send(msg)
+      }
+     }
+
+     else if (data[1] == 5)
+     {
+      console.log('<br> Received is %' + data[2])
+      lastDate = new Date()
+      var finalDate = lastDate - firstDate
+      console.log(finalDate)
      }
 
 

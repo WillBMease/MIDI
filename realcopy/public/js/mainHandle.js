@@ -9,6 +9,7 @@
 // 1 = keyboard 
 // 2 = MIDI 
 // 3 = instrument change
+// 4 = Audio test
 
 // midiMsg[2]
 // actual data value

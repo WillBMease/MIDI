@@ -1,5 +1,8 @@
 var user = [] 
 var userLimit = 4
+var audioPrc = 0
+var firstDate = 0
+var lastDate = 0
 
 for (var i = 0 ; i < userLimit ; i++) {
       user[i] = 0
@@ -62,6 +65,11 @@ $(document).ready(function() {
     $('.changeInstrument').click(function(){
       var instr = $(this).attr('id')
       instrumentChange(instr)
+    })
+
+    $('#audio-test').click(function(){
+      firstDate = new Date()
+      audioTest()
     })
 
   });
