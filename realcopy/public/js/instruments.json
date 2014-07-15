@@ -76,7 +76,22 @@
 		"octaveNum" : 8,
 		"notes" : 96,
 		"path" : "sounds/western_piano"
+	} ,
+
+	"ballad_guitar" : {
+		"name" : "ballad_guitar",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/ballad_guitar"
+	} ,
+	
+	"blown_bottles" : {
+		"name" : "blown_bottles",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/blown_bottles"
 	}
+
 
 }
 
