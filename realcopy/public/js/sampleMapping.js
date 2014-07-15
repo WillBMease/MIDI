@@ -1,4 +1,4 @@
-
+	var noteNode = []
 
 function loadInstrument(index, instr)
 {
@@ -45,14 +45,18 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 			var notes = [];
 
 	var noteWrap = $('.audioBin' + index + ' li');
-	var noteNode = []
 
 	notes = noteWrap.find('audio');
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
 	noteNode[i] = context.createMediaElementSource(notes[i])
-	console.log(noteNode[i])
-	noteNode[i].connect(context.destination)
+
+
+	noteNode[i].connect(delay.input)
+	//delay.connect(chorus.input)
+
+delay.connect(context.destination);
+	// noteNode[i].connect(context.destination)
 }
 	} // end else
 
@@ -74,9 +78,6 @@ function triggerSample(index, key) {
 	var mappedKey = keyboardMap(key[2]) + (octave*12);
 	//console.log(notes[mappedKey]);
 
-	notes[mappedKey].pause();
-	notes[mappedKey].currentTime = 0
-	notes[mappedKey].play(0)
 
 	if(check == 200  || check == 49 || check == 96){
 	}
@@ -84,6 +85,7 @@ function triggerSample(index, key) {
 	notes[mappedKey].pause();
 	notes[mappedKey].currentTime = 0
 	notes[mappedKey].play(0)
+	//noteNode[mappedKey].start(0)
 	}
 }
 
@@ -110,7 +112,7 @@ function triggerMidiDevice(index, midiData){
 		// 	velocity = velocity - 27
 		// notes[key].volume = (velocity * .01)
 		// console.log('volume: ' + notes[key].volume)
-		notes[key].play();
+		notes[key].play(0);
 	}
 	else{}
 

@@ -46,6 +46,7 @@ var context = new (window.AudioContext || window.webkitAudioContext ||
     window.msAudioContext)();
 if (context) {
   // Web Audio API is available.
+  var tuna = new Tuna(context)
 } else {
   alert('browser not supported') ;
 }
@@ -54,6 +55,22 @@ var soundOn ;
 var soundOff ;
 var isPlaying = false;
 
+
+var chorus = new tuna.Chorus({
+                 rate: 1.5,         //0.01 to 8+
+                 feedback: 0.2,     //0 to 1+
+                 delay: 0.5,     //0 to 1
+                 bypass: 0          //the value 1 starts the effect as bypassed, 0 or 1
+             });
+
+var delay = new tuna.Delay({
+                feedback: 0.45,    //0 to 1+
+                delayTime: 500,    //how many milliseconds should the wet signal be delayed? 
+                wetLevel: 0.25,    //0 to 1+
+                dryLevel: 1,       //0 to 1+
+                cutoff: 20,        //cutoff frequency of the built in highpass-filter. 20 to 22050
+                bypass: 0
+            });
 
 
 $(document).keypress(function(e) { 
