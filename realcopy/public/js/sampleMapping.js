@@ -32,11 +32,6 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 		}
 	}
 
-	// else if(presetInstrument.name == "cowbell"){
-	// 	target.append(instrument)
-	// 	console
-	// }
-
 	else{
 		for(var i = 0; i <presetInstrument.notes; i++){
 			target.append(instrument);
@@ -46,7 +41,20 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
 		}
-	}
+
+			var notes = [];
+
+	var noteWrap = $('.audioBin' + index + ' li');
+	var noteNode = []
+
+	notes = noteWrap.find('audio');
+for (var i = 0 ; i < presetInstrument.notes ; i++)
+{
+	noteNode[i] = context.createMediaElementSource(notes[i])
+	console.log(noteNode[i])
+	noteNode[i].connect(context.destination)
+}
+	} // end else
 
 }
 
@@ -64,13 +72,18 @@ function triggerSample(index, key) {
 	var check = keyboardMap(key[2]) ;
 		console.log('check is: ' + check) ;
 	var mappedKey = keyboardMap(key[2]) + (octave*12);
-	console.log(notes[mappedKey]);
-		//notes[mappedKey].onloadedmetadata = function(){notes[mappedKey].currentTime = 0;}
+	//console.log(notes[mappedKey]);
+
+	notes[mappedKey].pause();
+	notes[mappedKey].currentTime = 0
+	notes[mappedKey].play(0)
+
 	if(check == 200  || check == 49 || check == 96){
 	}
 	else{
-		notes[mappedKey].currentTime = 0;
-		notes[mappedKey].play();
+	notes[mappedKey].pause();
+	notes[mappedKey].currentTime = 0
+	notes[mappedKey].play(0)
 	}
 }
 
