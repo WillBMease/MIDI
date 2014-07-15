@@ -48,6 +48,34 @@
 		"octaveNum" : 7,
 		"notes" : 80,
 		"path" : "sounds/bells"
+	}	,
+
+	"flute" : {
+		"name" : "flute",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/flute"
+	} ,
+
+	"violin" : {
+		"name" : "violin",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/Violin"
+	} ,
+
+	"alto_sax" : {
+		"name" : "alto_sax",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/alto_sax"
+	} ,
+
+	"western_piano" : {
+		"name" : "western_piano",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/western_piano"
 	}
 
 }
