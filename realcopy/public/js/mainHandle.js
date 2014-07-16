@@ -142,16 +142,25 @@ function runTest() {
 	 log.innerText = "Starting up MIDI...\n";
 	navigator.requestMIDIAccess().then( success, failure );
 }
+function h2d(h) {return parseInt(h,16);}
 
 function handleMIDIMessage( ev ) {
+	
 	
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
-		midiMsg[4] = ev.data[2].toString(16) ;
-		//midiMsg[4] = ev.data[2] ;
-
+		//console.log('ev raw data : ' + ev.data[2])
+		//midiMsg[4] = h2d(ev.data[2]);
+		midiMsg[4] = ev.data[2] ;
+		log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
+		log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
 		log.innerText += 'velocity is: ' + midiMsg[4]
+
+		// console.log('msg 2 is: ' + midiMsg[2])
+		// console.log('msg 3 is: ' + midiMsg[3])
+		//onsole.log('velocity is: ' + midiMsg[4])
+		//console.log(ev.data[2])
 
 console.log('detect midi')
 
