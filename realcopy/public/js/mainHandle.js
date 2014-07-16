@@ -64,13 +64,21 @@ var chorus = new tuna.Chorus({
              });
 
 var delay = new tuna.Delay({
-                feedback: 0.45,    //0 to 1+
+                feedback: 0.8,    //0 to 1+
                 delayTime: 500,    //how many milliseconds should the wet signal be delayed? 
                 wetLevel: 0.25,    //0 to 1+
                 dryLevel: 1,       //0 to 1+
                 cutoff: 20,        //cutoff frequency of the built in highpass-filter. 20 to 22050
                 bypass: 0
             });
+
+var overdrive = new tuna.Overdrive({
+                    outputGain: 0.2,         //0 to 1+
+                    drive: 0.3,              //0 to 1
+                    curveAmount: 1,          //0 to 1
+                    algorithmIndex: 2,       //0 to 5, selects one of our drive algorithms
+                    bypass: 0
+                });
 
 
 $(document).keypress(function(e) { 

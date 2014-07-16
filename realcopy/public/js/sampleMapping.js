@@ -52,10 +52,15 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
 
-	noteNode[i].connect(delay.input)
+// 	noteNode[i].connect(delay.input)
+// 	//delay.connect(chorus.input)
+
+// delay.connect(context.destination);
+
+	noteNode[i].connect(overdrive.input)
 	//delay.connect(chorus.input)
 
-delay.connect(context.destination);
+overdrive.connect(context.destination);
 	// noteNode[i].connect(context.destination)
 }
 	} // end else
