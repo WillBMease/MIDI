@@ -56,11 +56,15 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 // 	//delay.connect(chorus.input)
 
 // delay.connect(context.destination);
-
+	//noteNode[i].connect(context.destination)
 	noteNode[i].connect(overdrive.input)
 	//delay.connect(chorus.input)
+overdrive.connect(delay.input)
+delay.connect(convolver.input)
+convolver.connect(wahwah.input)
+wahwah.connect(cabinet.input)
 
-overdrive.connect(context.destination);
+cabinet.connect(context.destination);
 	// noteNode[i].connect(context.destination)
 }
 	} // end else
