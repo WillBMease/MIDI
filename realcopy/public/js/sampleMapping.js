@@ -1,4 +1,5 @@
 	var noteNode = []
+	var faderArray = []
 
 function loadInstrument(index, instr)
 {
@@ -8,6 +9,21 @@ function loadInstrument(index, instr)
 
 }
 
+function assignFader(){
+	// if (!log)
+	// 	log = document.getElementById("log");
+
+	// if (midi == null){
+	// 	log.innerText = ('No midi device found!!');
+	// 	console.log('No midi device found!!')
+	// }
+	// else if {
+	// 	log.innerText = ('Please move your desired fader')
+		
+	// }
+
+
+}
 
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
@@ -120,7 +136,9 @@ function triggerMidiDevice(index, midiData){
 		// if (velocity > 100)
 		// 	velocity = velocity - 27
 		// notes[key].volume = (velocity * .01)
-		// console.log('volume: ' + notes[key].volume)
+
+		console.log('volume: ' + midiData[4]/127)
+		notes[key].volume = midiData[4]/127
 		notes[key].play(0);
 	}
 	else{}
@@ -181,7 +199,6 @@ function keyboardMap(keyInput){
 	}
 
 ///////////////////////////// Next Octave /////////////////////////////////
-	// < OR q
 	else if (keyInput == 44 || keyInput == 113) {
 		output = 13;
 	}
@@ -272,9 +289,8 @@ function masterConversion(midiInput){
 
 	var output;
 
-	if(midiInput[4] == 0){
-	//console.log("NO!");
-	output = 200;
+	if(midiInput[4] == 0 && midiInput[2] == 'e0'){
+		output = 200;
 	} 
 	///// for drums ////////////
 	else if(midiInput[2] == 99)
@@ -320,7 +336,8 @@ function masterConversion(midiInput){
 		output = 200 ;
 	}
 
-	else if (midiInput[2] != 89){
+	//else if (midiInput[2] != 89){
+	else if (midiInput[2] == 90){
 		switch (midiInput[3]){
 		
 			case '18' : log.innerText = "C1" ;
@@ -710,6 +727,14 @@ function masterConversion(midiInput){
 		}
 
 	}
+
+	
+	// else if (midiInput[2] == 'e0'){
+	// 	///////////Pitch Wheel/////////////////////////////
+	// 	if(midiInput[3] == 0){
+	// 		log.innerText('Ptich Wheel registered: ' + midiInput[4])
+	// 	}
+	// }
 
 	return output;
 }

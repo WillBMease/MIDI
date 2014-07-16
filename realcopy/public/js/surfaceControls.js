@@ -1,0 +1,3 @@
+function assignFader(index,midiData){
+	
+}
