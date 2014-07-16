@@ -66,7 +66,6 @@ function dataProcess(index, c){
           user[index].on('close', function(err){ 
           $('#messages').append('<br>' + user[index].peer + ' has left the chat.'); 
             user[index] = 0 
-
           });
 
 }

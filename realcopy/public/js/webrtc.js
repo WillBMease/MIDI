@@ -6,6 +6,7 @@ var lastDate = 0
 
 for (var i = 0 ; i < userLimit ; i++) {
       user[i] = 0
+     // user[i].peer = 0
 }
   // Connect to PeerJS, have server assign an ID instead of providing one
   
@@ -33,16 +34,25 @@ for (var i = 0 ; i < userLimit ; i++) {
 function connect(c) {
 
    $('#chat_area').show();
-   var done = false
+   var makeNew = true
 
-for (var i = 1 ; i < userLimit || done == true ; i++) {
-    
+for (var i = 0 ; i < userLimit ; i++)
+{
+  if (user[i] != 0) {
+    if (user[i].peer == c.peer)
+      makeNew = false
+  }
+}
+
+if (makeNew) {
+
+for (var i = 1 ; i < userLimit ; i++) {    
     if (user[i] == 0) {
-        dataProcess(i, c)
+      dataProcess(i, c)
       i = userLimit
     }
   }
-
+}
 
 } // end connect function
 
