@@ -74,8 +74,8 @@ var delay = new tuna.Delay({
 
 var overdrive = new tuna.Overdrive({
                     outputGain: 0.2,         //0 to 1+
-                    drive: 0.3,              //0 to 1
-                    curveAmount: 1,          //0 to 1
+                    drive: 0.1,              //0 to 1
+                    curveAmount: 0.3,          //0 to 1
                     algorithmIndex: 2,       //0 to 5, selects one of our drive algorithms
                     bypass: 0
                 });
