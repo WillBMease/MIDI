@@ -77,7 +77,7 @@ var overdrive = new tuna.Overdrive({
                     drive: 0.1,              //0 to 1
                     curveAmount: 0.3,          //0 to 1
                     algorithmIndex: 2,       //0 to 5, selects one of our drive algorithms
-                    bypass: 0
+                    bypass: 1
                 });
 
 
@@ -160,14 +160,14 @@ function handleMIDIMessage( ev ) {
 		midiMsg[3] = ev.data[1].toString(16) ;
 		//console.log('ev raw data : ' + ev.data[2])
 		//midiMsg[4] = h2d(ev.data[2]);
-		midiMsg[4] = ev.data[2] ;
+		midiMsg[4] = ev.data[2];//.toString(16)  ;
 		log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
 		log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
 		log.innerText += 'velocity is: ' + midiMsg[4]
 
-		// console.log('msg 2 is: ' + midiMsg[2])
-		// console.log('msg 3 is: ' + midiMsg[3])
-		//onsole.log('velocity is: ' + midiMsg[4])
+		console.log('msg 2 is: ' + midiMsg[2])
+		console.log('msg 3 is: ' + midiMsg[3])
+		console.log('velocity is: ' + midiMsg[4])
 		//console.log(ev.data[2])
 
 console.log('detect midi')

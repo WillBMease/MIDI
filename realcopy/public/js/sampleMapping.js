@@ -1,4 +1,5 @@
 	var noteNode = []
+	var faderArray = []
 
 function loadInstrument(index, instr)
 {
@@ -8,6 +9,21 @@ function loadInstrument(index, instr)
 
 }
 
+function assignFader(){
+	// if (!log)
+	// 	log = document.getElementById("log");
+
+	// if (midi == null){
+	// 	log.innerText = ('No midi device found!!');
+	// 	console.log('No midi device found!!')
+	// }
+	// else if {
+	// 	log.innerText = ('Please move your desired fader')
+		
+	// }
+
+
+}
 
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
