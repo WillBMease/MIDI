@@ -10,6 +10,8 @@
 // 2 = MIDI 
 // 3 = instrument change
 // 4 = Audio test
+// 5 = Audio test
+// 6 = Metronome
 
 // midiMsg[2]
 // actual data value

@@ -1,7 +1,7 @@
 var metroActive = false
 var refreshIntervalId
 var metroMsg = []
-metroMsg[1] = '2' ;
+metroMsg[1] = '6' ;
 metroMsg[2] = 100 ;
 
 function metronome() {
@@ -16,12 +16,16 @@ else if (metroActive) {
 	clearInterval(refreshIntervalId)
 }
 
-
-
-
 }
 
 function playMetronome() {
-		user[1].send(metroMsg)
 		triggerSample(0, metroMsg)
+}
+
+function startMetronome() {
+	for (var i = 1 ; i < userLimit ; i++) {
+		if (user[i] != 0)
+			user[i].send(metroMsg)
+	}
+
 }

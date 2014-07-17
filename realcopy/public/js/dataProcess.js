@@ -60,10 +60,17 @@ function dataProcess(index, c){
       loadInstrument(index, data[2])
      }
 
-  
-
-
-
+     else if (data[1] == 6) {
+      // if (!metroActive) {
+      //   metroActive = true
+      //   refreshIntervalId = setInterval(playMetronome, 1000)
+      // }
+      // else if (metroActive) {
+      //   metroActive = false
+      //   clearInterval(refreshIntervalId)
+      // }
+      metronome()
+     }
 
     });
           user[index].on('close', function(err){ 
