@@ -1,5 +1,19 @@
 var noteNode = [];
 
+for (var i = 0 ; i < 120 ; i++)
+	noteNode[i] = 0
+
+	cabinet.connect(overdrive.input)
+	overdrive.connect(compressor.input)
+	compressor.connect(tremolo.input)
+	tremolo.connect(chorus.input)
+	chorus.connect(phaser.input)
+	phaser.connect(convolver.input)
+	convolver.connect(delay.input)
+	delay.connect(filter.input)
+	filter.connect(wahwah.input)
+
+	wahwah.connect(context.destination);
 
 function loadInstrument(index, instr)
 {
@@ -47,23 +61,30 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var noteWrap = $('.audioBin' + index + ' li');
 
 	notes = noteWrap.find('audio');
+
+if (noteNode[0] != 0){
+	for (var i = 0 ; i < presetInstrument.notes ; i++)
+		noteNode[i].disconnect
+}
+
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
+
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
 	noteNode[i].connect(cabinet.input)
 
-	cabinet.connect(overdrive.input)
-	overdrive.connect(compressor.input)
-	compressor.connect(tremolo.input)
-	tremolo.connect(chorus.input)
-	chorus.connect(phaser.input)
-	phaser.connect(convolver.input)
-	convolver.connect(delay.input)
-	delay.connect(filter.input)
-	filter.connect(wahwah.input)
+	// cabinet.connect(overdrive.input)
+	// overdrive.connect(compressor.input)
+	// compressor.connect(tremolo.input)
+	// tremolo.connect(chorus.input)
+	// chorus.connect(phaser.input)
+	// phaser.connect(convolver.input)
+	// convolver.connect(delay.input)
+	// delay.connect(filter.input)
+	// filter.connect(wahwah.input)
 
-	wahwah.connect(context.destination);
+	// wahwah.connect(context.destination);
 
 }
 	} // end else
