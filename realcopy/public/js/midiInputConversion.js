@@ -577,7 +577,18 @@ function masterConversion(midiInput){
 			case '77' : log.innerText = "B8" ;
 			output = '96';
 			break;
-	
+
+			case '78' : log.innerText = "C9" ;
+			output = '97';
+			break;
+			
+			case '79' : log.innerText = "C#9" ;
+			output = '98';
+			break;
+
+			case '7a' : log.innerText = "D9" ;
+			output = '99';
+			break;
 		}
 
 	}
