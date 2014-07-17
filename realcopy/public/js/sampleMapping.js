@@ -97,8 +97,8 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 	//delay.connect(chorus.input)
 overdrive.connect(delay.input)
 delay.connect(convolver.input)
-convolver.connect(cabinet.input)
-//wahwah.connect(cabinet.input)
+convolver.connect(wahwah.input)
+wahwah.connect(cabinet.input)
 
 cabinet.connect(context.destination);
 	// noteNode[i].connect(context.destination)
@@ -167,6 +167,7 @@ function triggerSample(index, key) {
 	else{
 	notes[mappedKey].pause();
 	notes[mappedKey].currentTime = 0
+	notes[mappedKey].volume = 0.5
 	notes[mappedKey].play(0)
 	//noteNode[mappedKey].start(0)
 	}
