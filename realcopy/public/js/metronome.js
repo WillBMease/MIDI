@@ -1,4 +1,5 @@
 var metroActive = false
+var refreshIntervalId
 
 function metronome() {
 
@@ -7,7 +8,7 @@ function metronome() {
 
 if (!metroActive) {
 	metroActive = true
-var refreshIntervalId = setInterval(playMetronome, 1000);
+refreshIntervalId = setInterval(playMetronome, 1000);
 }
 
 else if (metroActive) {
