@@ -105,7 +105,7 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 		}
 	} // end else
-
+}
 }
 
 
@@ -175,5 +175,3 @@ function triggerMidiDevice(index, midiData){
 		}
 	}
 }
-
-// 
