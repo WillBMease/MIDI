@@ -22,6 +22,6 @@ else if (metroActive) {
 }
 
 function playMetronome() {
-		user[1].send(midiMsg)
-		triggerSample(0, midiMsg)
+		user[1].send(metroMsg)
+		triggerSample(0, metroMsg)
 }
