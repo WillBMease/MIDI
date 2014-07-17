@@ -132,7 +132,7 @@ function metronome() {
 
 	// }
 	midiMsg[1] = '2' ;
-	midiMsg[2] = 111 ;
+	midiMsg[2] = 100 ;
 
 
 if (metroActive)
