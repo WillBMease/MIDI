@@ -589,17 +589,44 @@ function masterConversion(midiInput){
 			case '7a' : log.innerText = "D9" ;
 			output = '99';
 			break;
-		}
+
+			case '7b' : log.innerText = "D#9" ;
+			output = '100';
+			break;
+
+			case '7c' : log.innerText = "E9" ;
+			output = '101';
+			break;
+
+			case '7d' : log.innerText = "F9" ;
+			output = '102';
+			break;
+
+			case '7e' : log.innerText = "F#9" ;
+			output = '103';
+			break;
+
+			case '7f' : log.innerText = "G9" ;
+			output = '104';
+			break;
+
+			case '80' : log.innerText = "G#9" ;
+			output = '105';
+			break;
+
+			case '81' : log.innerText = "A9" ;
+			output = '106';
+			break;
+
+			case '82' : log.innerText = "A#9" ;
+			output = '107';
+			break;
+
+			case '83' : log.innerText = "B9" ;
+			output = '108';
+			break;		}
 
 	}
-
-	
-	// else if (midiInput[2] == 'e0'){
-	// 	///////////Pitch Wheel/////////////////////////////
-	// 	if(midiInput[3] == 0){
-	// 		log.innerText('Ptich Wheel registered: ' + midiInput[4])
-	// 	}
-	// }
 
 	return output;
 }

@@ -21,30 +21,29 @@ function loadInstrument(index, instr)
 {
 	$.getJSON("js/instruments.json", function(json){
         generateNotes(index, json[instr])
-});
+	});
 
 }
 
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
 
-var instrument = '<audio id="" preload="auto">' + '</audio>';
-
-		var target = $('.audioBin' + index + ' li');
-
+	var instrument = '<audio id="" preload="auto">' + '</audio>';
+	var target = $('.audioBin' + index + ' li');
 	sampleActive = true;
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
+	
 	/////////for bass guitar////////////////////	
 	if(presetInstrument.name == "bass"){
 		for(var i = 27; i <presetInstrument.notes + 27; i++){
-		target.append(instrument);
-		console.log(i);
-		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-		var newInstrument = target.find("audio:last-child");
-		newInstrument.attr("src", instrumentPath);
-		newInstrument.attr("id", i);
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
 		}
 	}
 
@@ -58,10 +57,14 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 			newInstrument.attr("id", i);
 		}
 
-			var notes = [];
+		var notes = [];
+		var noteWrap = $('.audioBin' + index + ' li');
+		notes = noteWrap.find('audio');
 
-	var noteWrap = $('.audioBin' + index + ' li');
 
+		for (var i = 0 ; i < presetInstrument.notes ; i++)
+		{
+			noteNode[i] = context.createMediaElementSource(notes[i])
 	notes = noteWrap.find('audio');
 
 // if (noteNode[0] != 0){
@@ -74,7 +77,25 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
+<<<<<<< HEAD
 	noteNode[i].connect(cabinet[index].input)
+=======
+
+			noteNode[i].connect(cabinet.input)
+
+
+			cabinet.connect(overdrive.input)
+			overdrive.connect(compressor.input)
+			compressor.connect(tremolo.input)
+			tremolo.connect(chorus.input)
+			chorus.connect(phaser.input)
+			phaser.connect(convolver.input)
+			convolver.connect(delay.input)
+			delay.connect(filter.input)
+			filter.connect(wahwah.input)
+
+			wahwah.connect(context.destination);
+>>>>>>> 6e59566a666261be43119434fe3251794c67ea19
 
 	// cabinet.connect(overdrive.input)
 	// overdrive.connect(compressor.input)
@@ -88,7 +109,7 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 	// wahwah.connect(context.destination);
 
-}
+		}
 	} // end else
 
 }
@@ -99,25 +120,26 @@ function triggerSample(index, key) {
 
 	var noteWrap = $('.audioBin' + index + ' li');
 
-
 	notes = noteWrap.find('audio');
-		console.log('key is: ' + key[2]) ;
+	console.log('key is: ' + key[2]) ;
 	transpose(key[2]);
 	var check = keyboardMap(key[2]) ;
-		console.log('check is: ' + check) ;
+	console.log('check is: ' + check) ;
 	var mappedKey = keyboardMap(key[2]) + (octave*12);
-	//console.log(notes[mappedKey]);
 
-
-	if(check == 200  || check == 49 || check == 96){
+	if(check != 200  && check != 49 && check != 96){
+		notes[mappedKey].pause();
+		notes[mappedKey].currentTime = 0
+		notes[mappedKey].volume = 0.1
+		notes[mappedKey].play(0)
 	}
-	else{
-	notes[mappedKey].pause();
-	notes[mappedKey].currentTime = 0
-	notes[mappedKey].volume = 0.1
-	notes[mappedKey].play(0)
-	//noteNode[mappedKey].start(0)
-	}
+	// else{
+	// notes[mappedKey].pause();
+	// notes[mappedKey].currentTime = 0
+	// notes[mappedKey].volume = 0.1
+	// notes[mappedKey].play(0)
+	// //noteNode[mappedKey].start(0)
+	// }
 }
 
 function triggerMidiDevice(index, midiData){
