@@ -87,6 +87,11 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 // delay.connect(context.destination);
 	//noteNode[i].connect(context.destination)
+
+delay.bypass = 1
+convolver.bypass = 1
+wahwah.bypass = 1
+
 	noteNode[i].connect(overdrive.input)
 	//delay.connect(chorus.input)
 overdrive.connect(delay.input)
