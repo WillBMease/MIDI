@@ -69,7 +69,7 @@ function dataProcess(index, c){
      }
 
      else if (data[1] == 8) {
-      incomingEffect(data)
+      incomingEffect(index, data)
      }
 
     });

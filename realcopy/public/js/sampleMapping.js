@@ -3,17 +3,19 @@ var noteNode = [];
 for (var i = 0 ; i < 120 ; i++)
 	noteNode[i] = 0
 
-	cabinet.connect(overdrive.input)
-	overdrive.connect(compressor.input)
-	compressor.connect(tremolo.input)
-	tremolo.connect(chorus.input)
-	chorus.connect(phaser.input)
-	phaser.connect(convolver.input)
-	convolver.connect(delay.input)
-	delay.connect(filter.input)
-	filter.connect(wahwah.input)
+for (var i = 1 ; i < userLimit ; i++) {
+	cabinet[i].connect(overdrive.input)
+	overdrive[i].connect(compressor.input)
+	compressor[i].connect(tremolo.input)
+	tremolo[i].connect(chorus.input)
+	chorus[i].connect(phaser.input)
+	phaser[i].connect(convolver.input)
+	convolver[i].connect(delay.input)
+	delay[i].connect(filter.input)
+	filter[i].connect(wahwah.input)
 
-	wahwah.connect(context.destination);
+	wahwah[i].connect(context.destination);
+}
 
 function loadInstrument(index, instr)
 {
@@ -65,16 +67,19 @@ function generateNotes(index, presetInstrument){
 			noteNode[i] = context.createMediaElementSource(notes[i])
 	notes = noteWrap.find('audio');
 
-if (noteNode[0] != 0){
-	for (var i = 0 ; i < presetInstrument.notes ; i++)
-		noteNode[i].disconnect()
-}
+// if (noteNode[0] != 0){
+// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
+// 		noteNode[i].disconnect()
+// }
 
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
 
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
+<<<<<<< HEAD
+	noteNode[i].connect(cabinet[index].input)
+=======
 
 			noteNode[i].connect(cabinet.input)
 
@@ -90,6 +95,7 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 			filter.connect(wahwah.input)
 
 			wahwah.connect(context.destination);
+>>>>>>> 6e59566a666261be43119434fe3251794c67ea19
 
 	// cabinet.connect(overdrive.input)
 	// overdrive.connect(compressor.input)
