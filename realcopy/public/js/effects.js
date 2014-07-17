@@ -159,3 +159,17 @@ function filterEffect() {
 	else if (filter.bypass == 1)
 		filter.bypass = 0
 }
+
+function incomingEffect(data) {
+	// if (data[2] == 'chorus')
+		
+	// else if (data[2] == 'delay')
+	// else if (data[2] == 'overdrive')
+	// else if (data[2] == 'phaser')
+	// else if (data[2] == 'cabinet')
+	// else if (data[2] == 'wahwah')
+	// else if (data[2] == 'tremolo')
+	// else if (data[2] == 'filter')
+	// else if (data[2] == 'convolver')
+	// else if (data[2] == 'compressor')
+}

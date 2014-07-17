@@ -60,10 +60,17 @@ function dataProcess(index, c){
       loadInstrument(index, data[2])
      }
 
-  
+     else if (data[1] == 6) {
+      metronome()
+     }
 
+     else if (data[1] == 7) {
+      octave = data[2]
+     }
 
-
+     else if (data[1] == 8) {
+      incomingEffect(data)
+     }
 
     });
           user[index].on('close', function(err){ 
