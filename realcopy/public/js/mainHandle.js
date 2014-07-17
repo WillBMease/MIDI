@@ -64,11 +64,11 @@ var chorus = new tuna.Chorus({
              });
 
 var delay = new tuna.Delay({
-                feedback: 0.8,    //0 to 1+
-                delayTime: 500,    //how many milliseconds should the wet signal be delayed? 
+                feedback: 0.4,    //0 to 1+
+                delayTime: 125,    //how many milliseconds should the wet signal be delayed? 
                 wetLevel: 0.25,    //0 to 1+
                 dryLevel: 1,       //0 to 1+
-                cutoff: 10000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
+                cutoff: 13000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
                 bypass: 0
             });
 
@@ -224,13 +224,13 @@ function handleMIDIMessage( ev ) {
 		//console.log('ev raw data : ' + ev.data[2])
 		//midiMsg[4] = h2d(ev.data[2]);
 		midiMsg[4] = ev.data[2];//.toString(16)  ;
-		log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
-		log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
-		log.innerText += 'velocity is: ' + midiMsg[4]
+		// log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
+		// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
+		// log.innerText += 'velocity is: ' + midiMsg[4]
 
 		console.log('msg 2 is: ' + midiMsg[2])
 		console.log('msg 3 is: ' + midiMsg[3])
-		console.log('velocity is: ' + midiMsg[4])
+		// console.log('velocity is: ' + midiMsg[4])
 		//console.log(ev.data[2])
 
 console.log('detect midi')

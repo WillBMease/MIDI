@@ -1,6 +1,20 @@
-	var noteNode = []
+	var noteNode = [];
+	var numOfFaders = 1;
+	var setFader = false
 	var faderArray = []
 		var metroActive = true
+
+//window.onLoad(function(){
+$(document).ready(function() {
+		surfaceObj = {
+			id:"",
+			type:"",
+			velocity:""
+		};
+
+		faderArray[0] = surfaceObj;
+		console.log(faderArray.length);
+});
 
 function loadInstrument(index, instr)
 {
@@ -11,19 +25,19 @@ function loadInstrument(index, instr)
 }
 
 function assignFader(){
-	// if (!log)
-	// 	log = document.getElementById("log");
-
-	// if (midi == null){
-	// 	log.innerText = ('No midi device found!!');
-	// 	console.log('No midi device found!!')
-	// }
-	// else if {
-	// 	log.innerText = ('Please move your desired fader')
-		
-	// }
-
-
+	if (!log){
+		log = document.getElementById("log");
+	}
+	if(midi == null){
+		log.innerText = ('No midi device found!!');
+		console.log('No midi device found!!')
+	}
+	else{
+		numOfFaders = numOfFaders +1
+		log.innerText = ('Please move your desired fader')
+		setFader = true;
+		console.log('setFader has been set to: ' + setFader)
+	}
 }
 
 function generateNotes(index, presetInstrument){
@@ -83,8 +97,8 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 	//delay.connect(chorus.input)
 overdrive.connect(delay.input)
 delay.connect(convolver.input)
-convolver.connect(wahwah.input)
-wahwah.connect(cabinet.input)
+convolver.connect(cabinet.input)
+//wahwah.connect(cabinet.input)
 
 cabinet.connect(context.destination);
 	// noteNode[i].connect(context.destination)
@@ -163,32 +177,64 @@ function triggerMidiDevice(index, midiData){
 
 	var noteWrap = $('.audioBin' + index + ' li');
 	
-
-	// var noteWrap = $('.audioBin li');
-	notes = noteWrap.find('audio');
-	key = masterConversion(midiData);
-	
-	// console.log(notes.size());
-	// var mappedKey = keyboardMap(input) + (octave*12);
-	// console.log(notes[key]);
-	if(key != 200){
-		console.log('midi key input is: ' + key);
-		notes[key].currentTime = 0;
-		// var velocity = parseInt(midiData[4]) ;
-		// var velocity = midiData[4] ;
-		// console.log('velocity is: ' + velocity)
-		// if (velocity > 100)
-		// 	velocity = velocity - 27
-		// notes[key].volume = (velocity * .01)
-
-		console.log('volume: ' + midiData[4]/127)
-		notes[key].volume = midiData[4]/127
-		notes[key].play(0);
+	if(setFader){
+		setControls(midiData);
+		
 	}
-	else{}
+		// var noteWrap = $('.audioBin li');
+		notes = noteWrap.find('audio');
+		key = masterConversion(midiData);
+		
+		// console.log(notes.size());
+		// var mappedKey = keyboardMap(input) + (octave*12);
+		// console.log(notes[key]);
+		if(key != 200){
+			console.log('midi key input is: ' + key);
+			notes[key].currentTime = 0;
+			// var velocity = parseInt(midiData[4]) ;
+			// var velocity = midiData[4] ;
+			// console.log('velocity is: ' + velocity)
+			// if (velocity > 100)
+				// 	velocity = velocity - 27
+			// notes[key].volume = (velocity * .01)
+
+			console.log('volume: ' + midiData[4]/127)
+			notes[key].volume = midiData[4]/127
+			notes[key].play(0);
+		}
+	//else{}
 
 }
 
+function setControls(midiInput){
+	var output;
+	//var fader.id = midiInput[3]
+	log.innerText = ('Midimsg 2 : ' + midiInput[2])
+	log.innerText = ('Midimsg 3 : ' + midiInput[3])
+
+	if(faderArray.length == 1){
+		faderArray[0].type = midiInput[2]
+		faderArray[0].ID = midiInput[3]
+		faderArray[0].velocity = midiInput[4]
+		console.log('the fader id is: ' + faderArray[0].ID)
+		faderArray.length++;
+	}
+	else{
+		var fader  = {
+			id:"",
+			type:"",
+			velocity:""
+		};
+		faderArray.append(fader);
+		faderArray[faderArray.length - 1].type = midiInput[2]
+		faderArray[faderArray.length - 1].ID = midiInput[3]
+		faderArray[faderArray.length - 1].velocity = midiInput[4]
+		console.log('the fader id is: ' + faderArray[faderArray.length - 1].ID)
+	}
+	console.log('Number of faders: ' + faderArray.length)
+	//faderArray.push();
+	setFader = false;
+}
 
 function keyboardMap(keyInput){
 	var output;
@@ -328,6 +374,7 @@ function keyboardMap(keyInput){
 
 	return output;
 }
+
 
 function masterConversion(midiInput){
 
