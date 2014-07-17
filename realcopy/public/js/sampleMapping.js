@@ -167,7 +167,7 @@ function triggerSample(index, key) {
 	else{
 	notes[mappedKey].pause();
 	notes[mappedKey].currentTime = 0
-	notes[mappedKey].volume = 0.5
+	notes[mappedKey].volume = 0.3
 	notes[mappedKey].play(0)
 	//noteNode[mappedKey].start(0)
 	}
