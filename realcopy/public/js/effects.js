@@ -177,26 +177,26 @@ function filterEffect(index) {
 		filter[index].bypass = 0
 }
 
-function incomingEffect(index, data) {
-	if (data[2] == 'chorus')
+function incomingEffect(index, effectName) {
+	if (effectName == 'chorus')
 		chorusEffect(index)
-	else if (data[2] == 'delay')
+	else if (effectName == 'delay')
 		delayEffect(index)
-	else if (data[2] == 'overdrive')
+	else if (effectName == 'overdrive')
 		overdriveEffect(index)
-	else if (data[2] == 'phaser')
+	else if (effectName == 'phaser')
 		phaserEffect(index)
-	else if (data[2] == 'cabinet')
+	else if (effectName == 'cabinet')
 		cabinetEffect(index)
-	else if (data[2] == 'wahwah')
+	else if (effectName == 'wahwah')
 		wahEffect(index)
-	else if (data[2] == 'tremolo')
+	else if (effectName == 'tremolo')
 		tremoloEffect(index)
-	else if (data[2] == 'filter')
+	else if (effectName == 'filter')
 		filterEffect(index)
-	else if (data[2] == 'convolver')
+	else if (effectName == 'convolver')
 		convolverEffect(index)
-	else if (data[2] == 'compressor')
+	else if (effectName == 'compressor')
 		compressorEffect(index)
 }
 
