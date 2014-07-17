@@ -52,3 +52,6 @@ function setControls(midiInput){
 	setFader = false;
 }
 
+function freqConversion(midiInput){
+	var x = 20000
+}

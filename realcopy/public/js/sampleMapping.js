@@ -77,9 +77,8 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
-<<<<<<< HEAD
 	noteNode[i].connect(cabinet[index].input)
-=======
+
 
 			noteNode[i].connect(cabinet.input)
 
@@ -95,7 +94,7 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 			filter.connect(wahwah.input)
 
 			wahwah.connect(context.destination);
->>>>>>> 6e59566a666261be43119434fe3251794c67ea19
+
 
 	// cabinet.connect(overdrive.input)
 	// overdrive.connect(compressor.input)
