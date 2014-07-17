@@ -74,9 +74,9 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 // delay.connect(context.destination);
 	//noteNode[i].connect(context.destination)
 
-delay.bypass = 1
-convolver.bypass = 1
-wahwah.bypass = 1
+// delay.bypass = 1
+// convolver.bypass = 1
+// wahwah.bypass = 1
 
 	noteNode[i].connect(overdrive.input)
 	//delay.connect(chorus.input)
@@ -92,7 +92,21 @@ cabinet.connect(context.destination);
 
 }
 
+function reverbEffect() {
+	if (convolver.bypass == 0)
+		convolver.bypass = 1
 
+	else if (convolver.bypass == 1)
+		convolver.bypass = 0
+}
+
+function wahEffect() {
+	if (wahwah.bypass == 0)
+		wahwah.bypass = 1
+
+	else if (wahwah.bypass == 1)
+		wahwah.bypass = 0
+}
 
 function triggerSample(index, key) {
 	var notes = [];
