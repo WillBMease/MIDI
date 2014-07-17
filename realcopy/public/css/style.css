@@ -194,6 +194,12 @@ li{
     right: 5px;
 }
 
+.controller-pos{
+	position: : fixed;
+	top: -50px;
+	right: 100px;
+}
+
 .midi-pos-download{
 	   position: fixed;
     top: 2px;

@@ -1,17 +1,5 @@
-	var noteNode = [];
+var noteNode = [];
 
-
-//window.onLoad(function(){
-// $(document).ready(function() {
-// 		surfaceObj = {
-// 			id:"",
-// 			type:"",
-// 			velocity:""
-// 		};
-
-// 		faderArray[0] = surfaceObj;
-// 		console.log(faderArray.length);
-// });
 
 function loadInstrument(index, instr)
 {
@@ -20,8 +8,6 @@ function loadInstrument(index, instr)
 });
 
 }
-
-
 
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
@@ -121,24 +107,20 @@ function triggerMidiDevice(index, midiData){
 		
 	}
 	else{
-		for(var i = 0;i<faderArray.length;i++){
-			if(midiData[2] == faderArray[i].type && midiData[3] == faderArray[i].ID){
-				faderArray[0].velocity = midiData[4]*6
-				console.log('surface controller ' + faderArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
-				
+		for(var i = 0;i<controllerArray.length;i++){
+			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
+				controllerArray[0].velocity = midiData[4]
+				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
+				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
 			}
 		}
 
-		// var noteWrap = $('.audioBin li');
 		notes = noteWrap.find('audio');
 		key = masterConversion(midiData);
-		
-		// console.log(notes.size());
-		// var mappedKey = keyboardMap(input) + (octave*12);
-		// console.log(notes[key]);
+
 		if(key != 200){
-			console.log('midi key input is: ' + key);
+			//console.log('midi key input is: ' + key);
 			notes[key].currentTime = 0;
 			// var velocity = parseInt(midiData[4]) ;
 			// var velocity = midiData[4] ;
@@ -148,7 +130,7 @@ function triggerMidiDevice(index, midiData){
 			// notes[key].volume = (velocity * .01)
 
 			console.log('volume: ' + midiData[4]/127)
-			//filter.frequency = faderArray[0].velocity
+			//filter.frequency = controllerArray[0].velocity
 			notes[key].volume = midiData[4]/127
 			notes[key].play(0);
 		}
