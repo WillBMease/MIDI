@@ -63,10 +63,10 @@ function generateNotes(index, presetInstrument){
 		notes = noteWrap.find('audio');
 
 
-// if (noteNode[0] != 0){
-// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
-// 		noteNode[i].disconnect()
-// }
+if (noteNode[0] != 0){
+	for (var i = 0 ; i < presetInstrument.notes ; i++)
+		noteNode[i].disconnect()
+}
 
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
@@ -74,20 +74,6 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
 	noteNode[i].connect(cabinet[index].input)
-
-
-
-	// cabinet.connect(overdrive.input)
-	// overdrive.connect(compressor.input)
-	// compressor.connect(tremolo.input)
-	// tremolo.connect(chorus.input)
-	// chorus.connect(phaser.input)
-	// phaser.connect(convolver.input)
-	// convolver.connect(delay.input)
-	// delay.connect(filter.input)
-	// filter.connect(wahwah.input)
-
-	// wahwah.connect(context.destination);
 
 		}
 	}
