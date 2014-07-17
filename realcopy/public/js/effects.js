@@ -13,7 +13,7 @@ var effectMsg = []
 effectMsg[1] = 8
 
 
-for (var i = 1 ; i < userLimit ; i++) {
+for (var i = 0 ; i < userLimit ; i++) {
 
 chorus[i] = new tuna.Chorus({
                  rate: 1.5,         //0.01 to 8+
@@ -200,10 +200,11 @@ function incomingEffect(index, data) {
 		compressorEffect(index)
 }
 
-function outgoingEffect(chosenEffect) {
+function outgoingEffectChange(chosenEffect) {
 	effectMsg[2] = chosenEffect
 	for (var i = 1 ; i < userLimit ; i++) {
 		if (user[i] != 0)
 			user[i].send(effectMsg)
 	}
+	incomingEffect(0, chosenEffect)
 }

@@ -1,18 +1,19 @@
 var noteNode = [];
 
-for (var i = 0 ; i < 120 ; i++)
+for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
+}
 
-for (var i = 1 ; i < userLimit ; i++) {
-	cabinet[i].connect(overdrive.input)
-	overdrive[i].connect(compressor.input)
-	compressor[i].connect(tremolo.input)
-	tremolo[i].connect(chorus.input)
-	chorus[i].connect(phaser.input)
-	phaser[i].connect(convolver.input)
-	convolver[i].connect(delay.input)
-	delay[i].connect(filter.input)
-	filter[i].connect(wahwah.input)
+for (var i = 0 ; i < userLimit ; i++) {
+	cabinet[i].connect(overdrive[i].input)
+	overdrive[i].connect(compressor[i].input)
+	compressor[i].connect(tremolo[i].input)
+	tremolo[i].connect(chorus[i].input)
+	chorus[i].connect(phaser[i].input)
+	phaser[i].connect(convolver[i].input)
+	convolver[i].connect(delay[i].input)
+	delay[i].connect(filter[i].input)
+	filter[i].connect(wahwah[i].input)
 
 	wahwah[i].connect(context.destination);
 }
@@ -62,11 +63,6 @@ function generateNotes(index, presetInstrument){
 		notes = noteWrap.find('audio');
 
 
-		for (var i = 0 ; i < presetInstrument.notes ; i++)
-		{
-			noteNode[i] = context.createMediaElementSource(notes[i])
-	notes = noteWrap.find('audio');
-
 // if (noteNode[0] != 0){
 // 	for (var i = 0 ; i < presetInstrument.notes ; i++)
 // 		noteNode[i].disconnect()
@@ -94,7 +90,7 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 	// wahwah.connect(context.destination);
 
 		}
-	} // end else
+	}
 
 }
 
@@ -165,5 +161,3 @@ function triggerMidiDevice(index, midiData){
 		}
 	}
 }
-
-// 
