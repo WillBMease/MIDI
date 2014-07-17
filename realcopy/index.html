@@ -9,13 +9,18 @@
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 		 <script src="js/WebMIDIAPI.js"></script>
+		 <script src="js/tuna.js"></script>
+		 <script src="js/dataProcess.js"></script>
 		 <script src="js/webrtc.js"></script>
+		 <script src="js/mainHandle.js"></script>
+		 <script src="js/effects.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
-		 <script src="js/dataProcess.js"></script>
 		 <script src="js/audioTest.js"></script>
-		 <script src="js/tuna.js"></script>
+		 <script src="js/sampleMapping.js"></script>
+		 <script src="js/metronome.js"></script>
+		 <script src="js/audioTest.js"></script>
 
 	</head>
 
@@ -47,11 +52,22 @@ inavibe</a>
 
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 <a class = "fader" onclick = "assignFader();" ><i>Assign Fader</i></a>
-<a class = "reverbEffect()" ><i>Reverb</i></a>
-<a onclick = "wahEffect()" ><i>WahWah</i></a>
-<a onclick = "metronome()" ><i>Metronome</i></a>
-
 </div>
+</h2>
+
+<h6>
+<a onclick = "reverbEffect()" ><i>Reverb</i></a>
+<a onclick = "wahEffect()" ><i>WahWah</i></a>
+<a onclick = "overdriveEffect()" ><i>Overdrive</i></a>
+<a onclick = "chorusEffect()" ><i>Chorus</i></a>
+<a onclick = "phaserEffect()" ><i>Phaser</i></a>
+<a onclick = "cabinetEffect()" ><i>Cabinet</i></a>
+<a onclick = "tremoloEffect()" ><i>Tremolo</i></a>
+<a onclick = "delayEffect()" ><i>Delay</i></a>
+<a onclick = "compressorEffect()" ><i>Compressor</i></a>
+<a onclick = "metronome()" ><i>Metronome</i></a>
+</h6>
+
 
 </h2>
 <!-- <h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3> -->
@@ -95,10 +111,6 @@ inavibe</a>
 <!-- 		// <script src = "/socket.io/socket.io.js"></script> -->
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-<script src="js/mainHandle.js"></script>
-
-	<script src="js/sampleMapping.js"></script>
 
 
   Your PeerJS id is : <span id="pid"></span><br><br>

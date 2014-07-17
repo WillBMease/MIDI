@@ -2,7 +2,7 @@
 	var numOfFaders = 1;
 	var setFader = false
 	var faderArray = []
-		var metroActive = true
+
 
 //window.onLoad(function(){
 $(document).ready(function() {
@@ -82,70 +82,25 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
+	noteNode[i].connect(cabinet.input)
 
-// 	noteNode[i].connect(delay.input)
-// 	//delay.connect(chorus.input)
+	cabinet.connect(overdrive.input)
+	overdrive.connect(compressor.input)
+	compressor.connect(tremolo.input)
+	tremolo.connect(chorus.input)
+	chorus.connect(phaser.input)
+	phaser.connect(convolver.input)
+	convolver.connect(delay.input)
+	delay.connect(filter.input)
+	filter.connect(wahwah.input)
 
-// delay.connect(context.destination);
-	//noteNode[i].connect(context.destination)
+	wahwah.connect(context.destination);
 
-// delay.bypass = 1
-// convolver.bypass = 1
-// wahwah.bypass = 1
-
-	noteNode[i].connect(overdrive.input)
-	//delay.connect(chorus.input)
-overdrive.connect(delay.input)
-delay.connect(convolver.input)
-convolver.connect(wahwah.input)
-wahwah.connect(cabinet.input)
-
-cabinet.connect(context.destination);
-	// noteNode[i].connect(context.destination)
 }
 	} // end else
 
 }
 
-function reverbEffect() {
-	if (convolver.bypass == 0)
-		convolver.bypass = 1
-
-	else if (convolver.bypass == 1)
-		convolver.bypass = 0
-}
-
-function wahEffect() {
-	if (wahwah.bypass == 0)
-		wahwah.bypass = 1
-
-	else if (wahwah.bypass == 1)
-		wahwah.bypass = 0
-}
-
-function metronome() {
-	// if (metronomeActive) {
-
-	// }
-
-	// else if {
-
-	// }
-	midiMsg[1] = '2' ;
-	midiMsg[2] = 100 ;
-
-
-if (metroActive)
-	metroActive = false
-else if (!metroActive) {
-setInterval(function() {
-	user[1].send(midiMsg)
-	triggerSample(0, midiMsg)
-},1000)
-metroActive = true
-}
-
-}
 
 function triggerSample(index, key) {
 	var notes = [];
@@ -167,7 +122,7 @@ function triggerSample(index, key) {
 	else{
 	notes[mappedKey].pause();
 	notes[mappedKey].currentTime = 0
-	notes[mappedKey].volume = 0.3
+	notes[mappedKey].volume = 0.1
 	notes[mappedKey].play(0)
 	//noteNode[mappedKey].start(0)
 	}
@@ -242,7 +197,8 @@ function keyboardMap(keyInput){
 
 	// z
 	if(keyInput == 122){
-		output = 1;
+		// output = 1;
+		audioTest()
 	}
 	// s
 	else if (keyInput == 115) {

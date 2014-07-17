@@ -1,3 +1,6 @@
+var audioPrc = 0
+var receiveCt = 0
+
 function dataProcess(index, c){
 
         user[index] = c 
@@ -7,8 +10,7 @@ function dataProcess(index, c){
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
-      if (data[1] == '0' && data[2] == '0')
-      {
+      if (data[1] == '0' && data[2] == '0') {
 
         console.log('I received the ping: ' + data[2]);
         data[2] = '1' ;
@@ -18,14 +20,33 @@ function dataProcess(index, c){
 
       }
 
-          else if (data[1] == '0' && data[2] == '1')
-          {
+      else if (data[1] == '0' && data[2] == '1') {
             endTime = new Date();
             rttTime = (endTime - startTime) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
        $('#messages').append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
           }
+
+          ////////// Audio packet testing
+
+      else if (data[1] == '5' && data[2] == '2') {
+        receiveCt++
+        //console.log('I received the packet: ' + data[3])
+        data[2] = '3' 
+        //data[3] = receiveCt
+        //user[index].send(data) 
+        //console.log('Now I sent the packet back: ' + data[3])
+        if (receiveCt % 100 == 0) {
+        $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
+          }
+        }
+
+      else if (data[1] == '5' && data[2] == '3') {
+       // $('#messages').append('<br>' + 'packetID: ' + packetID + ' & ' + data[3]);
+            }
+
+      ///////// End Audio packet testing
 
       else if (data[1] == 1) {
       triggerMidiDevice(index, data) ;
@@ -39,27 +60,9 @@ function dataProcess(index, c){
       loadInstrument(index, data[2])
      }
 
-     else if (data[1] == 4) {
-      audioPrc++
-      if (data[2] == 500) {
-        var percent = ((audioPrc / 500) * 100)
-        console.log('<br> % received is ' + percent)
-        audioPrc = 0
-        var msg = []
-        msg[0] = peer.label
-        msg[1] = 5
-        msg[2] = percent
-        user[index].send(msg)
-      }
-     }
+  
 
-     else if (data[1] == 5)
-     {
-      console.log('<br> Received is %' + data[2])
-      lastDate = new Date()
-      var finalDate = lastDate - firstDate
-      console.log(finalDate)
-     }
+
 
 
     });

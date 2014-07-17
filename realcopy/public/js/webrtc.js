@@ -1,6 +1,5 @@
 var user = [] 
 var userLimit = 4
-var audioPrc = 0
 var firstDate = 0
 var lastDate = 0
 
@@ -93,7 +92,6 @@ $(document).ready(function() {
     })
 
     $('#audio-test').click(function(){
-      firstDate = new Date()
       audioTest()
     })
 
