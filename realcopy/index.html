@@ -21,7 +21,8 @@
 		 <script src="js/sampleMapping.js"></script>
 		 <script src="js/metronome.js"></script>
 		 <script src="js/audioTest.js"></script>
-
+		 <script src="js/midiInputConversion.js"></script>
+		 <script src="js/surfaceControllers.js"></script>
 	</head>
 
 	<body>
@@ -49,9 +50,10 @@ inavibe</a>
 <div class="row3">
 <a id="blown_bottles" class="changeInstrument"><i>blown bottles</i></a>
 <a id="soft_voices" class="changeInstrument"><i>soft voices</i></a>
+<a id="electric_guitar" class="changeInstrument"><i>electric guitar</i></a>
 
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
-<a class = "fader" onclick = "assignFader();" ><i>Assign Fader</i></a>
+<a class = "fader" onclick = "assignControllers();" ><i>Assign Fader</i></a>
 </div>
 </h2>
 
@@ -66,6 +68,7 @@ inavibe</a>
 <a onclick = "delayEffect()" ><i>Delay</i></a>
 <a onclick = "compressorEffect()" ><i>Compressor</i></a>
 <a onclick = "metronome()" ><i>Metronome</i></a>
+<a onclick = "filterEffect()" ><i>filter</i></a>
 </h6>
 
 
