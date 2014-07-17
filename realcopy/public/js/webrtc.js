@@ -91,6 +91,11 @@ $(document).ready(function() {
       instrumentChange(instr)
     })
 
+    $('.outgoingEffect').click(function(){
+      var chosenEffect = $(this).attr('id')
+      outgoingEffectChange(chosenEffect)
+    })
+
     $('#audio-test').click(function(){
       audioTest()
     })
