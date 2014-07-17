@@ -123,7 +123,9 @@ function triggerMidiDevice(index, midiData){
 	else{
 		for(var i = 0;i<faderArray.length;i++){
 			if(midiData[2] == faderArray[i].type && midiData[3] == faderArray[i].ID){
+				faderArray[0].velocity = midiData[4]*6
 				console.log('surface controller ' + faderArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
+				
 				return;
 			}
 		}
@@ -146,6 +148,7 @@ function triggerMidiDevice(index, midiData){
 			// notes[key].volume = (velocity * .01)
 
 			console.log('volume: ' + midiData[4]/127)
+			//filter.frequency = faderArray[0].velocity
 			notes[key].volume = midiData[4]/127
 			notes[key].play(0);
 		}
