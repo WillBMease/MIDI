@@ -61,15 +61,15 @@ function dataProcess(index, c){
      }
 
      else if (data[1] == 6) {
-      // if (!metroActive) {
-      //   metroActive = true
-      //   refreshIntervalId = setInterval(playMetronome, 1000)
-      // }
-      // else if (metroActive) {
-      //   metroActive = false
-      //   clearInterval(refreshIntervalId)
-      // }
       metronome()
+     }
+
+     else if (data[1] == 7) {
+      octave = data[2]
+     }
+
+     else if (data[1] == 8) {
+      incomingEffect(data)
      }
 
     });
