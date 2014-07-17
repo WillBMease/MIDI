@@ -64,7 +64,7 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 
 if (noteNode[0] != 0){
 	for (var i = 0 ; i < presetInstrument.notes ; i++)
-		noteNode[i].disconnect
+		noteNode[i].disconnect()
 }
 
 for (var i = 0 ; i < presetInstrument.notes ; i++)
