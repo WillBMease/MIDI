@@ -1,5 +1,6 @@
 	var noteNode = []
 	var faderArray = []
+		var metroActive = true
 
 function loadInstrument(index, instr)
 {
@@ -106,6 +107,30 @@ function wahEffect() {
 
 	else if (wahwah.bypass == 1)
 		wahwah.bypass = 0
+}
+
+function metronome() {
+	// if (metronomeActive) {
+
+	// }
+
+	// else if {
+
+	// }
+	midiMsg[1] = '2' ;
+	midiMsg[2] = 111 ;
+
+
+if (metroActive)
+	metroActive = false
+else if (!metroActive) {
+setInterval(function() {
+	user[1].send(midiMsg)
+	triggerSample(0, midiMsg)
+},1000)
+metroActive = true
+}
+
 }
 
 function triggerSample(index, key) {
