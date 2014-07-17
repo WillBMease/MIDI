@@ -29,7 +29,7 @@ else if (!audioActive) {
 	user[y].send(audioMsg)
 		}
 	}
-	packetID++ }, 100)
+	packetID++ }, 10)
 
 	audioActive = true
 
