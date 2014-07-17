@@ -26,7 +26,7 @@ $(function(){
 
 // Call/Video Management
 function getLocalVideo() {
-  navigator.getUserMedia({audio: false, video: true}, function(stream){
+  navigator.getUserMedia({audio: true, video: true}, function(stream){
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));

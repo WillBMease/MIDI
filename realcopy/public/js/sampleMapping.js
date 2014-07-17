@@ -1,4 +1,20 @@
-	var noteNode = []
+	var noteNode = [];
+	var numOfFaders = 1;
+	var setFader = false
+	var faderArray = []
+
+
+//window.onLoad(function(){
+$(document).ready(function() {
+		surfaceObj = {
+			id:"",
+			type:"",
+			velocity:""
+		};
+
+		faderArray[0] = surfaceObj;
+		console.log(faderArray.length);
+});
 
 function loadInstrument(index, instr)
 {
@@ -8,6 +24,21 @@ function loadInstrument(index, instr)
 
 }
 
+function assignFader(){
+	if (!log){
+		log = document.getElementById("log");
+	}
+	if(midi == null){
+		log.innerText = ('No midi device found!!');
+		console.log('No midi device found!!')
+	}
+	else{
+		numOfFaders = numOfFaders +1
+		log.innerText = ('Please move your desired fader')
+		setFader = true;
+		console.log('setFader has been set to: ' + setFader)
+	}
+}
 
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
@@ -51,17 +82,24 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
 	noteNode[i] = context.createMediaElementSource(notes[i])
 
+	noteNode[i].connect(cabinet.input)
 
-	noteNode[i].connect(delay.input)
-	//delay.connect(chorus.input)
+	cabinet.connect(overdrive.input)
+	overdrive.connect(compressor.input)
+	compressor.connect(tremolo.input)
+	tremolo.connect(chorus.input)
+	chorus.connect(phaser.input)
+	phaser.connect(convolver.input)
+	convolver.connect(delay.input)
+	delay.connect(filter.input)
+	filter.connect(wahwah.input)
 
-delay.connect(context.destination);
-	// noteNode[i].connect(context.destination)
+	wahwah.connect(context.destination);
+
 }
 	} // end else
 
 }
-
 
 
 function triggerSample(index, key) {
@@ -84,6 +122,7 @@ function triggerSample(index, key) {
 	else{
 	notes[mappedKey].pause();
 	notes[mappedKey].currentTime = 0
+	notes[mappedKey].volume = 0.1
 	notes[mappedKey].play(0)
 	//noteNode[mappedKey].start(0)
 	}
@@ -94,37 +133,72 @@ function triggerMidiDevice(index, midiData){
 
 	var noteWrap = $('.audioBin' + index + ' li');
 	
-
-	// var noteWrap = $('.audioBin li');
-	notes = noteWrap.find('audio');
-	key = masterConversion(midiData);
-	
-	// console.log(notes.size());
-	// var mappedKey = keyboardMap(input) + (octave*12);
-	// console.log(notes[key]);
-	if(key != 200){
-		console.log('midi key input is: ' + key);
-		notes[key].currentTime = 0;
-		// var velocity = parseInt(midiData[4]) ;
-		// var velocity = midiData[4] ;
-		// console.log('velocity is: ' + velocity)
-		// if (velocity > 100)
-		// 	velocity = velocity - 27
-		// notes[key].volume = (velocity * .01)
-		// console.log('volume: ' + notes[key].volume)
-		notes[key].play(0);
+	if(setFader){
+		setControls(midiData);
+		
 	}
-	else{}
+		// var noteWrap = $('.audioBin li');
+		notes = noteWrap.find('audio');
+		key = masterConversion(midiData);
+		
+		// console.log(notes.size());
+		// var mappedKey = keyboardMap(input) + (octave*12);
+		// console.log(notes[key]);
+		if(key != 200){
+			console.log('midi key input is: ' + key);
+			notes[key].currentTime = 0;
+			// var velocity = parseInt(midiData[4]) ;
+			// var velocity = midiData[4] ;
+			// console.log('velocity is: ' + velocity)
+			// if (velocity > 100)
+				// 	velocity = velocity - 27
+			// notes[key].volume = (velocity * .01)
+
+			console.log('volume: ' + midiData[4]/127)
+			notes[key].volume = midiData[4]/127
+			notes[key].play(0);
+		}
+	//else{}
 
 }
 
+function setControls(midiInput){
+	var output;
+	//var fader.id = midiInput[3]
+	log.innerText = ('Midimsg 2 : ' + midiInput[2])
+	log.innerText = ('Midimsg 3 : ' + midiInput[3])
+
+	if(faderArray.length == 1){
+		faderArray[0].type = midiInput[2]
+		faderArray[0].ID = midiInput[3]
+		faderArray[0].velocity = midiInput[4]
+		console.log('the fader id is: ' + faderArray[0].ID)
+		faderArray.length++;
+	}
+	else{
+		var fader  = {
+			id:"",
+			type:"",
+			velocity:""
+		};
+		faderArray.append(fader);
+		faderArray[faderArray.length - 1].type = midiInput[2]
+		faderArray[faderArray.length - 1].ID = midiInput[3]
+		faderArray[faderArray.length - 1].velocity = midiInput[4]
+		console.log('the fader id is: ' + faderArray[faderArray.length - 1].ID)
+	}
+	console.log('Number of faders: ' + faderArray.length)
+	//faderArray.push();
+	setFader = false;
+}
 
 function keyboardMap(keyInput){
 	var output;
 
 	// z
 	if(keyInput == 122){
-		output = 1;
+		// output = 1;
+		audioTest()
 	}
 	// s
 	else if (keyInput == 115) {
@@ -172,7 +246,6 @@ function keyboardMap(keyInput){
 	}
 
 ///////////////////////////// Next Octave /////////////////////////////////
-	// < OR q
 	else if (keyInput == 44 || keyInput == 113) {
 		output = 13;
 	}
@@ -259,13 +332,13 @@ function keyboardMap(keyInput){
 	return output;
 }
 
+
 function masterConversion(midiInput){
 
 	var output;
 
-	if(midiInput[4] == 0){
-	//console.log("NO!");
-	output = 200;
+	if(midiInput[4] == 0 && midiInput[2] == 'e0'){
+		output = 200;
 	} 
 	///// for drums ////////////
 	else if(midiInput[2] == 99)
@@ -311,7 +384,8 @@ function masterConversion(midiInput){
 		output = 200 ;
 	}
 
-	else if (midiInput[2] != 89){
+	//else if (midiInput[2] != 89){
+	else if (midiInput[2] == 90){
 		switch (midiInput[3]){
 		
 			case '18' : log.innerText = "C1" ;
@@ -701,6 +775,14 @@ function masterConversion(midiInput){
 		}
 
 	}
+
+	
+	// else if (midiInput[2] == 'e0'){
+	// 	///////////Pitch Wheel/////////////////////////////
+	// 	if(midiInput[3] == 0){
+	// 		log.innerText('Ptich Wheel registered: ' + midiInput[4])
+	// 	}
+	// }
 
 	return output;
 }

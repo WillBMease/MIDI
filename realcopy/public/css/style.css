@@ -126,14 +126,16 @@ h1{
 
 h2{
   font-style:italic;
-  font-size:3em;
+  font-size:2em;
   text-align: left;
   /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 100;
   position: fixed;
-  top: 70px;
-  left: 270px;
+  top: 35px;
+  left: 300px;
+  word-spacing: 20px;
+  border-spacing: 20px;
 }
 
 h3{
@@ -152,6 +154,18 @@ h4{
   /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 100;
+}
+
+h6 {
+	  font-style:italic;
+  font-size:2em;
+  text-align: right;
+  /* Better helvetica from http://css-tricks.com/snippets/css/better-helvetica/ */
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 100;
+  position: fixed;
+  top: 125px;
+  left: 500px;
 }
 
 .inavibe{
@@ -207,3 +221,13 @@ li{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 100;
 }
+
+
+.row1{
+	top: 50px;
+}
+
+.row2{
+	top: 300px;
+}
+

@@ -9,13 +9,18 @@
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 		 <script src="js/WebMIDIAPI.js"></script>
+		 <script src="js/tuna.js"></script>
+		 <script src="js/dataProcess.js"></script>
 		 <script src="js/webrtc.js"></script>
+		 <script src="js/mainHandle.js"></script>
+		 <script src="js/effects.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
-		 <script src="js/dataProcess.js"></script>
 		 <script src="js/audioTest.js"></script>
-		 <script src="js/tuna.js"></script>
+		 <script src="js/sampleMapping.js"></script>
+		 <script src="js/metronome.js"></script>
+		 <script src="js/audioTest.js"></script>
 
 	</head>
 
@@ -25,28 +30,55 @@
 inavibe</a>
 
 <h2>
+<div class="row1">
 <a id="bass" class="changeInstrument"><i>bass</i>
 <a id="harp" class="changeInstrument"><i>harp</i></a>
 <a id="gPiano" class="changeInstrument"><i>piano</i></a>
 <a id="jazzdrums" class="changeInstrument"><i>drums</i><a>
 <a id="brass" class="changeInstrument"><i>brass</i></a>
 <a id="organ" class="changeInstrument"><i>organ</i></a>
+</div>
+<div class="row2">
 <a id="bells" class="changeInstrument"><i>bells</i></a>
 <a id="flute" class="changeInstrument"><i>flute</i></a>
 <a id="violin" class="changeInstrument"><i>violin</i></a>
-<a id="alto_sax" class="changeInstrument"><i>alto_sax</i></a>
-<a id="western_piano" class="changeInstrument"><i>western_piano</i></a>
-<a id="ballad_guitar" class="changeInstrument"><i>ballad_guitar</i></a>
-<a id="blown_bottles" class="changeInstrument"><i>blown_bottles</i></a>
-
+<a id="alto_sax" class="changeInstrument"><i>alto sax</i></a>
+<a id="western_piano" class="changeInstrument"><i>western piano</i></a>
+<a id="ballad_guitar" class="changeInstrument"><i>ballad guitar</i></a>
+</div>
+<div class="row3">
+<a id="blown_bottles" class="changeInstrument"><i>blown bottles</i></a>
+<a id="soft_voices" class="changeInstrument"><i>soft voices</i></a>
 
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
+<a class = "fader" onclick = "assignFader();" ><i>Assign Fader</i></a>
+</div>
+</h2>
+
+<h6>
+<a onclick = "reverbEffect()" ><i>Reverb</i></a>
+<a onclick = "wahEffect()" ><i>WahWah</i></a>
+<a onclick = "overdriveEffect()" ><i>Overdrive</i></a>
+<a onclick = "chorusEffect()" ><i>Chorus</i></a>
+<a onclick = "phaserEffect()" ><i>Phaser</i></a>
+<a onclick = "cabinetEffect()" ><i>Cabinet</i></a>
+<a onclick = "tremoloEffect()" ><i>Tremolo</i></a>
+<a onclick = "delayEffect()" ><i>Delay</i></a>
+<a onclick = "compressorEffect()" ><i>Compressor</i></a>
+<a onclick = "metronome()" ><i>Metronome</i></a>
+</h6>
+
+
 </h2>
 <!-- <h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3> -->
 <h4>
 	<pre id="log">
 	</pre>
 	<div class = "midi-pos" id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
+
+	<pre id="log">
+	</pre>
+	<div class = "fader" id="MIDIFader" style="position:absolute; visibility:hidden"></div>
 </h4>
 
 
@@ -79,10 +111,6 @@ inavibe</a>
 <!-- 		// <script src = "/socket.io/socket.io.js"></script> -->
 		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
-
-<script src="js/mainHandle.js"></script>
-
-	<script src="js/sampleMapping.js"></script>
 
 
   Your PeerJS id is : <span id="pid"></span><br><br>

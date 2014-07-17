@@ -1,11 +1,11 @@
 var user = [] 
 var userLimit = 4
-var audioPrc = 0
 var firstDate = 0
 var lastDate = 0
 
 for (var i = 0 ; i < userLimit ; i++) {
       user[i] = 0
+     // user[i].peer = 0
 }
   // Connect to PeerJS, have server assign an ID instead of providing one
   
@@ -15,7 +15,19 @@ for (var i = 0 ; i < userLimit ; i++) {
   // Create a new peer, and assign the randID as "label" in peer
   // the label is assigned automatically by how i passed it in
   // the key connects the peer to the server that does the handshake
-  var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
+  //var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
+
+    var peer = new Peer(randID, {
+            host: "54.191.34.54",
+            port: 9000,
+            config: {
+              'iceServers': [
+              { url: 'stun:54.186.225.6:3478?proto=udp' },
+              { url: 'turn:jvtest1@54.186.225.6:3478?proto=udp',
+                credential: 'jvsecretkey'
+              }]},
+            debug: 3
+  });
  
   // Open the peer using the randID "label" we assigned
   peer.on('open', function(label){
@@ -33,16 +45,28 @@ for (var i = 0 ; i < userLimit ; i++) {
 function connect(c) {
 
    $('#chat_area').show();
-   var done = false
+   var makeNew = true
 
-for (var i = 1 ; i < userLimit || done == true ; i++) {
-    
+for (var i = 0 ; i < userLimit ; i++)
+{
+  if (user[i] != 0) {
+    if (user[i].peer == c.peer)
+      makeNew = false
+  }
+}
+
+if (makeNew) {
+
+for (var i = 1 ; i < userLimit ; i++) {    
     if (user[i] == 0) {
-        dataProcess(i, c)
+      dataProcess(i, c)
       i = userLimit
     }
   }
 
+      // callPeer()
+
+}
 
 } // end connect function
 
@@ -68,7 +92,6 @@ $(document).ready(function() {
     })
 
     $('#audio-test').click(function(){
-      firstDate = new Date()
       audioTest()
     })
 

@@ -56,22 +56,6 @@ var soundOff ;
 var isPlaying = false;
 
 
-var chorus = new tuna.Chorus({
-                 rate: 1.5,         //0.01 to 8+
-                 feedback: 0.2,     //0 to 1+
-                 delay: 0.5,     //0 to 1
-                 bypass: 0          //the value 1 starts the effect as bypassed, 0 or 1
-             });
-
-var delay = new tuna.Delay({
-                feedback: 0.45,    //0 to 1+
-                delayTime: 500,    //how many milliseconds should the wet signal be delayed? 
-                wetLevel: 0.25,    //0 to 1+
-                dryLevel: 1,       //0 to 1+
-                cutoff: 20,        //cutoff frequency of the built in highpass-filter. 20 to 22050
-                bypass: 0
-            });
-
 
 $(document).keypress(function(e) { 
 if(!sampleActive){
@@ -142,16 +126,25 @@ function runTest() {
 	 log.innerText = "Starting up MIDI...\n";
 	navigator.requestMIDIAccess().then( success, failure );
 }
+function h2d(h) {return parseInt(h,16);}
 
 function handleMIDIMessage( ev ) {
+	
 	
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
-		midiMsg[4] = ev.data[2].toString(16) ;
-		//midiMsg[4] = ev.data[2] ;
+		//console.log('ev raw data : ' + ev.data[2])
+		//midiMsg[4] = h2d(ev.data[2]);
+		midiMsg[4] = ev.data[2];//.toString(16)  ;
+		// log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
+		// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
+		// log.innerText += 'velocity is: ' + midiMsg[4]
 
-		log.innerText += 'velocity is: ' + midiMsg[4]
+		console.log('msg 2 is: ' + midiMsg[2])
+		console.log('msg 3 is: ' + midiMsg[3])
+		// console.log('velocity is: ' + midiMsg[4])
+		//console.log(ev.data[2])
 
 console.log('detect midi')
 
