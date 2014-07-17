@@ -8,12 +8,17 @@ function metronome() {
 
 if (metroActive)
 	metroActive = false
-else if (!metroActive) {
-setInterval(function() {
-	user[1].send(midiMsg)
-	triggerSample(0, midiMsg)
+
+else if (!metroActive)
+	metroActive = true
+
+	setInterval(function() {
+		if (metroActive) {
+		user[1].send(midiMsg)
+		triggerSample(0, midiMsg)
+	}
+
 },1000)
-metroActive = true
-}
+
 
 }
