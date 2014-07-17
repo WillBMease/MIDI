@@ -1,10 +1,10 @@
 var metroActive = false
 var refreshIntervalId
+var metroMsg = []
+metroMsg[1] = '2' ;
+metroMsg[2] = 100 ;
 
 function metronome() {
-
-	midiMsg[1] = '2' ;
-	midiMsg[2] = 100 ;
 
 if (!metroActive) {
 	metroActive = true
