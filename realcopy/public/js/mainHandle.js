@@ -10,6 +10,10 @@
 // 2 = MIDI 
 // 3 = instrument change
 // 4 = Audio test
+// 5 = Audio test
+// 6 = Metronome
+// 7 = Octave Change
+// 8 = Effect Change
 
 // midiMsg[2]
 // actual data value
@@ -89,14 +93,31 @@ for (var i = 1 ; i < userLimit ; i++) {
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
+var octaveMsg = []
+octaveMsg[1] = 7
+
+
 function transpose(noteInput){
+	var octaveTrue = false
+
 	// 1
 	if(noteInput == 49 && octave < globalOctave){
 		octave = octave + 1;
+		octaveMsg[2] = octave
+		octaveTrue = true
 	}
 	// ~
 	if(noteInput == 96 && octave != 0){
 		octave = octave - 1;
+		octaveMsg[2] = octave
+		octaveTrue = true
+	}
+
+	if (octaveTrue) {
+		for (var i = 1 ; i < userLimit ; i++) {
+		if (user[i] != 0)
+			user[i].send(octaveMsg)
+		}
 	}
 }
 

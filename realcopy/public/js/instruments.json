@@ -91,12 +91,19 @@
 		"notes" : 72,
 		"path" : "sounds/blown_bottles"
 	} ,
-	
+
 	"soft_voices" : {
 		"name" : "soft_voices",
 		"octaveNum" : 8,
 		"notes" : 96,
 		"path" : "sounds/soft_voices"
+	} ,
+
+	"electric_guitar" : {
+		"name" : "electric_guitar",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/electric_guitar"
 	}
 
 }
