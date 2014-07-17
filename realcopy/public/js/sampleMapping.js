@@ -62,10 +62,10 @@ var instrument = '<audio id="" preload="auto">' + '</audio>';
 
 	notes = noteWrap.find('audio');
 
-if (noteNode[0] != 0){
-	for (var i = 0 ; i < presetInstrument.notes ; i++)
-		noteNode[i].disconnect()
-}
+// if (noteNode[0] != 0){
+// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
+// 		noteNode[i].disconnect()
+// }
 
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
