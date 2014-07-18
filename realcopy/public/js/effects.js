@@ -1,11 +1,28 @@
-var chorus = new tuna.Chorus({
+var chorus = []
+var delay = []
+var overdrive = []
+var phaser = []
+var cabinet = []
+var wahwah = []
+var tremolo = []
+var filter = []
+var convolver = []
+var compressor = []
+
+var effectMsg = []
+effectMsg[1] = 8
+
+
+for (var i = 0 ; i < userLimit ; i++) {
+
+chorus[i] = new tuna.Chorus({
                  rate: 1.5,         //0.01 to 8+
                  feedback: 0.2,     //0 to 1+
                  delay: 0.5,     //0 to 1
                  bypass: 1          //the value 1 starts the effect as bypassed, 0 or 1
              });
 
-var delay = new tuna.Delay({
+delay[i] = new tuna.Delay({
                 feedback: 0.4,    //0 to 1+
                 delayTime: 125,    //how many milliseconds should the wet signal be delayed? 
                 wetLevel: 0.25,    //0 to 1+
@@ -14,7 +31,7 @@ var delay = new tuna.Delay({
                 bypass: 1
             });
 
-var overdrive = new tuna.Overdrive({
+overdrive[i] = new tuna.Overdrive({
                     outputGain: 0.4,         //0 to 1+
                     drive: 0.1,              //0 to 1
                     curveAmount: 0.3,          //0 to 1
@@ -22,7 +39,7 @@ var overdrive = new tuna.Overdrive({
                     bypass: 1
                 });
 
-var phaser = new tuna.Phaser({
+phaser[i] = new tuna.Phaser({
                  rate: 1.2,                     //0.01 to 8 is a decent range, but higher values are possible
                  depth: 0.3,                    //0 to 1
                  feedback: 0.2,                 //0 to 1+
@@ -31,13 +48,13 @@ var phaser = new tuna.Phaser({
                  bypass: 1
              });
 
-var cabinet = new tuna.Cabinet({
+cabinet[i] = new tuna.Cabinet({
                   makeupGain: 15,                                 //0 to 20
                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
                   bypass: 1
               });
 
-var wahwah = new tuna.WahWah({
+wahwah[i] = new tuna.WahWah({
                  automode: true,                //true/false
                  baseFrequency: 0.5,            //0 to 1
                  excursionOctaves: 4,           //1 to 6
@@ -47,7 +64,7 @@ var wahwah = new tuna.WahWah({
                  bypass: 1
              });
 
-var tremolo = new tuna.Tremolo({
+tremolo[i] = new tuna.Tremolo({
                   intensity: 0.3,    //0 to 1
                   rate: 0.1,         //0.001 to 8
                   stereoPhase: 0,    //0 to 180
@@ -55,7 +72,7 @@ var tremolo = new tuna.Tremolo({
               });
 
 // basic filter
-var filter = new tuna.Filter({
+filter[i] = new tuna.Filter({
                  frequency: 20,         //20 to 22050
                  Q: 1,                  //0.001 to 100
                  gain: 0,               //-40 to 40
@@ -64,7 +81,7 @@ var filter = new tuna.Filter({
                  bypass: 1
              });
 
-var convolver = new tuna.Convolver({
+convolver[i] = new tuna.Convolver({
                     highCut: 22050,                         //20 to 22050
                     lowCut: 20,                             //20 to 22050
                     dryLevel: 1,                            //0 to 1+
@@ -74,7 +91,7 @@ var convolver = new tuna.Convolver({
                     bypass: 1
                 });
 
-var compressor = new tuna.Compressor({
+compressor[i] = new tuna.Compressor({
                      threshold: 0.5,    //-100 to 0
                      makeupGain: 1,     //0 and up
                      attack: 1,         //0 to 1000
@@ -85,91 +102,109 @@ var compressor = new tuna.Compressor({
                      bypass: 1
                  });
 
-
-
-
-
-
-function reverbEffect() {
-	if (convolver.bypass == 0)
-		convolver.bypass = 1
-	else if (convolver.bypass == 1)
-		convolver.bypass = 0
 }
 
-function wahEffect() {
-	if (wahwah.bypass == 0)
-		wahwah.bypass = 1
-	else if (wahwah.bypass == 1)
-		wahwah.bypass = 0
+
+
+
+function reverbEffect(index) {
+	if (convolver[index].bypass == 0)
+		convolver[index].bypass = 1
+	else if (convolver[index].bypass == 1)
+		convolver[index].bypass = 0
 }
 
-function overdriveEffect() {
-	if (overdrive.bypass == 0)
-		overdrive.bypass = 1
-	else if (overdrive.bypass == 1)
-		overdrive.bypass = 0
+function wahEffect(index) {
+	if (wahwah[index].bypass == 0)
+		wahwah[index].bypass = 1
+	else if (wahwah[index].bypass == 1)
+		wahwah[index].bypass = 0
 }
 
-function chorusEffect() {
-	if (chorus.bypass == 0)
-		chorus.bypass = 1
-	else if (chorus.bypass == 1)
-		chorus.bypass = 0
+function overdriveEffect(index) {
+	if (overdrive[index].bypass == 0)
+		overdrive[index].bypass = 1
+	else if (overdrive[index].bypass == 1)
+		overdrive[index].bypass = 0
 }
 
-function phaserEffect() {
-	if (phaser.bypass == 0)
-		phaser.bypass = 1
-	else if (phaser.bypass == 1)
-		phaser.bypass = 0
+function chorusEffect(index) {
+	if (chorus[index].bypass == 0)
+		chorus[index].bypass = 1
+	else if (chorus[index].bypass == 1)
+		chorus[index].bypass = 0
 }
 
-function cabinetEffect() {
-	if (cabinet.bypass == 0)
-		cabinet.bypass = 1
-	else if (cabinet.bypass == 1)
-		cabinet.bypass = 0
+function phaserEffect(index) {
+	if (phaser[index].bypass == 0)
+		phaser[index].bypass = 1
+	else if (phaser[index].bypass == 1)
+		phaser[index].bypass = 0
 }
 
-function tremoloEffect() {
-	if (tremolo.bypass == 0)
-		tremolo.bypass = 1
-	else if (tremolo.bypass == 1)
-		tremolo.bypass = 0
+function cabinetEffect(index) {
+	if (cabinet[index].bypass == 0)
+		cabinet[index].bypass = 1
+	else if (cabinet[index].bypass == 1)
+		cabinet[index].bypass = 0
 }
 
-function delayEffect() {
-	if (delay.bypass == 0)
-		delay.bypass = 1
+function tremoloEffect(index) {
+	if (tremolo[index].bypass == 0)
+		tremolo[index].bypass = 1
+	else if (tremolo[index].bypass == 1)
+		tremolo[index].bypass = 0
+}
+
+function delayEffect(index) {
+	if (delay[index].bypass == 0)
+		delay[index].bypass = 1
 	else if (delay.bypass == 1)
-		delay.bypass = 0
+		delay[index].bypass = 0
 }
 
-function compressorEffect() {
-	if (compressor.bypass == 0)
-		compressor.bypass = 1
-	else if (compressor.bypass == 1)
-		compressor.bypass = 0
+function compressorEffect(index) {
+	if (compressor[index].bypass == 0)
+		compressor[index].bypass = 1
+	else if (compressor[index].bypass == 1)
+		compressor[index].bypass = 0
 }
 
-function filterEffect() {
-	if (filter.bypass == 0)
-		filter.bypass = 1
-	else if (filter.bypass == 1)
-		filter.bypass = 0
+function filterEffect(index) {
+	if (filter[index].bypass == 0)
+		filter[index].bypass = 1
+	else if (filter[index].bypass == 1)
+		filter[index].bypass = 0
 }
 
-function incomingEffect(data) {
-	// if (data[2] == 'chorus')
-		
-	// else if (data[2] == 'delay')
-	// else if (data[2] == 'overdrive')
-	// else if (data[2] == 'phaser')
-	// else if (data[2] == 'cabinet')
-	// else if (data[2] == 'wahwah')
-	// else if (data[2] == 'tremolo')
-	// else if (data[2] == 'filter')
-	// else if (data[2] == 'convolver')
-	// else if (data[2] == 'compressor')
+function incomingEffect(index, effectName) {
+	if (effectName == 'chorus')
+		chorusEffect(index)
+	else if (effectName == 'delay')
+		delayEffect(index)
+	else if (effectName == 'overdrive')
+		overdriveEffect(index)
+	else if (effectName == 'phaser')
+		phaserEffect(index)
+	else if (effectName == 'cabinet')
+		cabinetEffect(index)
+	else if (effectName == 'wahwah')
+		wahEffect(index)
+	else if (effectName == 'tremolo')
+		tremoloEffect(index)
+	else if (effectName == 'filter')
+		filterEffect(index)
+	else if (effectName == 'convolver')
+		convolverEffect(index)
+	else if (effectName == 'compressor')
+		compressorEffect(index)
+}
+
+function outgoingEffectChange(chosenEffect) {
+	effectMsg[2] = chosenEffect
+	for (var i = 1 ; i < userLimit ; i++) {
+		if (user[i] != 0)
+			user[i].send(effectMsg)
+	}
+	incomingEffect(0, chosenEffect)
 }

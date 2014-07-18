@@ -76,6 +76,7 @@ $(document).ready(function() {
 
     $('#connect').click(function(){
       var c = peer.connect($('#rid').val());
+      console.log('this is a TEST: ' + c)
       c.on('open', function(){
         connect(c);
       });
@@ -89,6 +90,11 @@ $(document).ready(function() {
     $('.changeInstrument').click(function(){
       var instr = $(this).attr('id')
       instrumentChange(instr)
+    })
+
+    $('.outgoingEffect').click(function(){
+      var chosenEffect = $(this).attr('id')
+      outgoingEffectChange(chosenEffect)
     })
 
     $('#audio-test').click(function(){

@@ -1,5 +1,5 @@
 var metroActive = false
-var refreshIntervalId
+var refreshMetronome
 var metroMsg = []
 metroMsg[1] = '6' ;
 metroMsg[2] = 100 ;
@@ -8,12 +8,12 @@ function metronome() {
 
 if (!metroActive) {
 	metroActive = true
-refreshIntervalId = setInterval(playMetronome, 1000);
+refreshMetronome = setInterval(playMetronome, 1000);
 }
 
 else if (metroActive) {
 	metroActive = false
-	clearInterval(refreshIntervalId)
+	clearInterval(refreshMetronome)
 }
 
 }
@@ -27,6 +27,5 @@ function startMetronome() {
 		if (user[i] != 0)
 			user[i].send(metroMsg)
 	}
-	metronome()
-
+		metronome()
 }
