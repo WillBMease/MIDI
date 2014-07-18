@@ -63,10 +63,10 @@ function generateNotes(index, presetInstrument){
 		notes = noteWrap.find('audio');
 
 
-if (noteNode[0] != 0){
-	for (var i = 0 ; i < presetInstrument.notes ; i++)
-		noteNode[i].disconnect()
-}
+// if (noteNode[0] != 0){
+// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
+// 		noteNode[i].disconnect()
+// }
 
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
