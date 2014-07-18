@@ -1,4 +1,4 @@
-var setFader = false
+var setController = false
 var controllerArray = []
 
 function assignControllers(){
@@ -60,38 +60,38 @@ function ConversionScale(controller, min, max){
 	return y;
 }
 
-function ConversionScale1(controller){
-	var y = controller.velocity/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale1(controller){
+// 	var y = controller.velocity/127
+// 	console.log(y)
+// 	return y;
+// }
 
-function ConversionScale10(controller){
-	var y = (10*controller.velocity)/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale10(controller){
+// 	var y = (10*controller.velocity)/127
+// 	console.log(y)
+// 	return y;
+// }
 
-function ConversionScale100(controller){
-	var y = (100*controller.velocity)/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale100(controller){
+// 	var y = (100*controller.velocity)/127
+// 	console.log(y)
+// 	return y;
+// }
 
-function ConversionScale1k(controller){
-	var y = (1000*controller.velocity)/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale1k(controller){
+// 	var y = (1000*controller.velocity)/127
+// 	console.log(y)
+// 	return y;
+// }
 
-function ConversionScale10k(controller){
-	var y = (10000*controller.velocity)/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale10k(controller){
+// 	var y = (10000*controller.velocity)/127
+// 	console.log(y)
+// 	return y;
+// }
 
-function ConversionScale20k(controller){
-	var y = (20000*controller.velocity)/127
-	console.log(y)
-	return y;
-}
+// function ConversionScale20k(controller){
+// 	var y = (20000*controller.velocity)/127
+// 	console.log(y)
+// 	return y;
+// }
