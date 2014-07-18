@@ -48,27 +48,27 @@ function dataProcess(index, c){
 
       ///////// End Audio packet testing
 
-      else if (data[1] == 1) {
+      else if (data[1] == 1) {          // midi play
       triggerMidiDevice(index, data) ;
      }
 
-      else if (data[1] == 2) {
+      else if (data[1] == 2) {          // keyboard play
       triggerSample(index, data) ;
      }
 
-     else if (data[1] == 3) {
+     else if (data[1] == 3) {           // instrument changes
       loadInstrument(index, data[2])
      }
 
-     else if (data[1] == 6) {
+     else if (data[1] == 6) {           // metronome changes
       metronome()
      }
 
-     else if (data[1] == 7) {
+     else if (data[1] == 7) {           // octave changes
       octave = data[2]
      }
 
-     else if (data[1] == 8) {
+     else if (data[1] == 8) {           // effect changes
       incomingEffect(index, data[2])
      }
 

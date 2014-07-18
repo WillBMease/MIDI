@@ -76,6 +76,7 @@ $(document).ready(function() {
 
     $('#connect').click(function(){
       var c = peer.connect($('#rid').val());
+      console.log('this is a TEST: ' + c)
       c.on('open', function(){
         connect(c);
       });

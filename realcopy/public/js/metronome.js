@@ -27,6 +27,5 @@ function startMetronome() {
 		if (user[i] != 0)
 			user[i].send(metroMsg)
 	}
-	metronome()
-
+		metronome()
 }
