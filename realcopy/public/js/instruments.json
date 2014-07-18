@@ -104,6 +104,13 @@
 		"octaveNum" : 8,
 		"notes" : 96,
 		"path" : "sounds/electric_guitar"
+	} ,
+
+		"pizzicato" : {
+		"name" : "pizzicato",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/pizzicato"
 	}
 
 }

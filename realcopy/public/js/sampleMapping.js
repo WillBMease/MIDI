@@ -75,8 +75,12 @@ for (var i = 0 ; i < presetInstrument.notes ; i++)
 
 	noteNode[i].connect(cabinet[index].input)
 
+
+
+
 		}
 	}
+
 
 }
 
@@ -113,14 +117,21 @@ function triggerMidiDevice(index, midiData){
 
 	var noteWrap = $('.audioBin' + index + ' li');
 	
-	if(setFader){
+	if(setController){
 		setControls(midiData);
 		
 	}
 	else{
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
-				controllerArray[0].velocity = midiData[4]
+				controllerArray[i].velocity = midiData[4]
+				ConversionScale(controllerArray[i],0,1)
+				// ConversionScale1(controllerArray[i])
+				// ConversionScale10(controllerArray[i])
+				// ConversionScale100(controllerArray[i])
+				// ConversionScale1k(controllerArray[i])
+				// ConversionScale10k(controllerArray[i])
+				// ConversionScale20k(controllerArray[i])
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
