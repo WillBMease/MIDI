@@ -38,18 +38,19 @@ function generateNotes(index, presetInstrument){
 	
 	/////////for bass guitar////////////////////	
 	if(presetInstrument.name == "bass"){
-		for(var i = 27; i <presetInstrument.notes + 27; i++){
+		for(var i = 27; i <presetInstrument.notes + 27 +1; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
+			octave = 1;
 		}
 	}
 
 	else{
-		for(var i = 0; i <presetInstrument.notes; i++){
+		for(var i = 0; i <presetInstrument.notes +1; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -62,25 +63,11 @@ function generateNotes(index, presetInstrument){
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
 
-
-// if (noteNode[0] != 0){
-// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
-// 		noteNode[i].disconnect()
-// }
-
-for (var i = 0 ; i < presetInstrument.notes ; i++)
-{
-
-	noteNode[i] = context.createMediaElementSource(notes[i])
-
-	noteNode[i].connect(cabinet[index].input)
-
-
-
-
+		for (var i = 0 ; i < presetInstrument.notes ; i++){
+			noteNode[i] = context.createMediaElementSource(notes[i])
+			noteNode[i].connect(cabinet[index].input)
 		}
 	}
-
 
 }
 
@@ -126,12 +113,6 @@ function triggerMidiDevice(index, midiData){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
 				controllerArray[i].velocity = midiData[4]
 				ConversionScale(controllerArray[i],0,1)
-				// ConversionScale1(controllerArray[i])
-				// ConversionScale10(controllerArray[i])
-				// ConversionScale100(controllerArray[i])
-				// ConversionScale1k(controllerArray[i])
-				// ConversionScale10k(controllerArray[i])
-				// ConversionScale20k(controllerArray[i])
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;

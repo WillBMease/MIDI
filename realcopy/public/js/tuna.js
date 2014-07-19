@@ -336,15 +336,15 @@
         if(!properties) {
             properties = this.getDefaults();
         }
-        this.input = userContext.createGainNode();
-        this.attenuator = this.activateNode = userContext.createGainNode();
+        this.input = userContext.createGain();
+        this.attenuator = this.activateNode = userContext.createGain();
         this.splitter = userContext.createChannelSplitter(2);
-        this.delayL = userContext.createDelayNode();
-        this.delayR = userContext.createDelayNode();
-        this.feedbackGainNodeLR = userContext.createGainNode();
-        this.feedbackGainNodeRL = userContext.createGainNode();
+        this.delayL = userContext.createDelay();
+        this.delayR = userContext.createDelay();
+        this.feedbackGainNodeLR = userContext.createGain();
+        this.feedbackGainNodeRL = userContext.createGain();
         this.merger = userContext.createChannelMerger(2);
-        this.output = userContext.createGainNode();
+        this.output = userContext.createGain();
 
         this.lfoL = new userInstance.LFO({
             target: this.delayL.delayTime,
