@@ -106,11 +106,18 @@
 		"path" : "sounds/electric_guitar"
 	} ,
 
-		"pizzicato" : {
+	"pizzicato" : {
 		"name" : "pizzicato",
 		"octaveNum" : 6,
 		"notes" : 72,
 		"path" : "sounds/pizzicato"
+	} ,
+
+	"old_strings" : {
+		"name" : "old_strings",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/old_strings"
 	}
 
 }
