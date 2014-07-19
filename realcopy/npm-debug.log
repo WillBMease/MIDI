@@ -1,0 +1,1581 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'component' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 warn package.json net@1.0.2 net is also the name of a node core module.
+5 warn package.json net@1.0.2 'repositories' (plural) Not supported. Please pick one as the 'repository' field
+6 warn package.json node@0.0.0 No description
+7 warn package.json node@0.0.0 No repository field.
+8 verbose readDependencies using package.json deps
+9 verbose cache add [ 'component', null ]
+10 verbose cache add name=undefined spec="component" args=["component",null]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: 'component',
+11 verbose parsed url   path: 'component',
+11 verbose parsed url   href: 'component' }
+12 silly lockFile 335c4c1e-component component
+13 verbose lock component /Users/wmease/.npm/335c4c1e-component.lock
+14 silly lockFile 335c4c1e-component component
+15 silly lockFile 335c4c1e-component component
+16 verbose addNamed [ 'component', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile fa4251c1-component component@
+19 verbose lock component@ /Users/wmease/.npm/fa4251c1-component.lock
+20 silly addNameRange { name: 'component', range: '*', hasData: false }
+21 verbose url raw component
+22 verbose url resolving [ 'https://registry.npmjs.org/', './component' ]
+23 verbose url resolved https://registry.npmjs.org/component
+24 info trying registry request attempt 1 at 17:35:19
+25 verbose etag "8J2LLOCQ39BN1GDLDV7HCU119"
+26 http GET https://registry.npmjs.org/component
+27 http 200 https://registry.npmjs.org/component
+28 silly registry.get cb [ 200,
+28 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+28 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+28 silly registry.get     etag: '"A5MXP9CNJG0O7F6CV8YZTXODK"',
+28 silly registry.get     'content-type': 'application/json',
+28 silly registry.get     'cache-control': 'max-age=60',
+28 silly registry.get     'content-length': '124335',
+28 silly registry.get     'accept-ranges': 'bytes',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     age: '189',
+28 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+28 silly registry.get     'x-cache': 'HIT',
+28 silly registry.get     'x-cache-hits': '1',
+28 silly registry.get     'x-timer': 'S1405730120.141489,VS0,VE30',
+28 silly registry.get     vary: 'Accept',
+28 silly registry.get     'keep-alive': 'timeout=10, max=50',
+28 silly registry.get     connection: 'Keep-Alive' } ]
+29 silly addNameRange number 2 { name: 'component', range: '*', hasData: true }
+30 silly addNameRange versions [ 'component',
+30 silly addNameRange   [ '0.0.1',
+30 silly addNameRange     '0.0.2',
+30 silly addNameRange     '0.0.3',
+30 silly addNameRange     '0.0.4',
+30 silly addNameRange     '0.0.5',
+30 silly addNameRange     '0.0.6',
+30 silly addNameRange     '0.0.7',
+30 silly addNameRange     '0.1.0',
+30 silly addNameRange     '0.1.1',
+30 silly addNameRange     '0.2.0',
+30 silly addNameRange     '0.3.0',
+30 silly addNameRange     '0.4.0',
+30 silly addNameRange     '0.4.1',
+30 silly addNameRange     '0.4.2',
+30 silly addNameRange     '0.5.0',
+30 silly addNameRange     '0.6.0',
+30 silly addNameRange     '0.6.2',
+30 silly addNameRange     '0.6.3',
+30 silly addNameRange     '0.6.4',
+30 silly addNameRange     '0.7.0',
+30 silly addNameRange     '0.7.1',
+30 silly addNameRange     '0.8.0',
+30 silly addNameRange     '0.9.0',
+30 silly addNameRange     '0.9.1',
+30 silly addNameRange     '0.10.0',
+30 silly addNameRange     '0.10.1',
+30 silly addNameRange     '0.11.0',
+30 silly addNameRange     '0.11.1',
+30 silly addNameRange     '0.12.0',
+30 silly addNameRange     '0.13.0',
+30 silly addNameRange     '0.13.1',
+30 silly addNameRange     '0.13.2',
+30 silly addNameRange     '0.14.0',
+30 silly addNameRange     '0.15.0',
+30 silly addNameRange     '0.15.1',
+30 silly addNameRange     '0.16.0',
+30 silly addNameRange     '0.16.1',
+30 silly addNameRange     '0.16.2',
+30 silly addNameRange     '0.16.3',
+30 silly addNameRange     '0.16.4',
+30 silly addNameRange     '0.16.5',
+30 silly addNameRange     '0.16.6',
+30 silly addNameRange     '0.16.7',
+30 silly addNameRange     '0.16.8',
+30 silly addNameRange     '0.17.0',
+30 silly addNameRange     '0.17.2',
+30 silly addNameRange     '0.17.3',
+30 silly addNameRange     '0.17.4',
+30 silly addNameRange     '0.17.5',
+30 silly addNameRange     '0.17.6',
+30 silly addNameRange     '0.18.0',
+30 silly addNameRange     '0.19.0',
+30 silly addNameRange     '0.19.1',
+30 silly addNameRange     '0.19.2',
+30 silly addNameRange     '0.19.3',
+30 silly addNameRange     '0.19.4',
+30 silly addNameRange     '0.19.5',
+30 silly addNameRange     '0.19.6',
+30 silly addNameRange     '0.19.7',
+30 silly addNameRange     '0.19.8',
+30 silly addNameRange     '1.0.0-rc1',
+30 silly addNameRange     '1.0.0-rc2',
+30 silly addNameRange     '1.0.0-rc3',
+30 silly addNameRange     '1.0.0-rc4',
+30 silly addNameRange     '1.0.0-rc5',
+30 silly addNameRange     '0.19.9' ] ]
+31 verbose addNamed [ 'component', '0.19.9' ]
+32 verbose addNamed [ '0.19.9', '0.19.9' ]
+33 silly lockFile c920a002-component-0-19-9 component@0.19.9
+34 verbose lock component@0.19.9 /Users/wmease/.npm/c920a002-component-0-19-9.lock
+35 silly lockFile c920a002-component-0-19-9 component@0.19.9
+36 silly lockFile c920a002-component-0-19-9 component@0.19.9
+37 silly lockFile fa4251c1-component component@
+38 silly lockFile fa4251c1-component component@
+39 silly resolved [ { name: 'component',
+39 silly resolved     version: '0.19.9',
+39 silly resolved     description: 'Component package manager consuming git repositories',
+39 silly resolved     keywords: [ 'component', 'package', 'client', 'browser', 'module' ],
+39 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+39 silly resolved     repository: { type: 'git', url: 'git://github.com/component/component.git' },
+39 silly resolved     dependencies:
+39 silly resolved      { commander: '1.0.5',
+39 silly resolved        mkdirp: '~0.3.4',
+39 silly resolved        superagent: '~0.15.4',
+39 silly resolved        'component-builder': '0.10.1',
+39 silly resolved        'string-to-js': '0.0.1',
+39 silly resolved        jog: '0.4.0',
+39 silly resolved        batch: '~0.5.0',
+39 silly resolved        'win-fork': '~1.1.1',
+39 silly resolved        archy: '0.0.2',
+39 silly resolved        netrc: '~0.1.3',
+39 silly resolved        debug: '*',
+39 silly resolved        rimraf: '~2.2.6',
+39 silly resolved        'proxy-agent': '~1.1.0',
+39 silly resolved        'superagent-proxy': '~0.3.0',
+39 silly resolved        open: '0.0.4',
+39 silly resolved        'component-installer': '~0.0.8',
+39 silly resolved        'component-package': '~0.0.4' },
+39 silly resolved     devDependencies: { express: '3.0.0', minstache: '0.0.1', mocha: '*', should: '*' },
+39 silly resolved     bin:
+39 silly resolved      { component: 'bin/component',
+39 silly resolved        'component-info': 'bin/component-info',
+39 silly resolved        'component-help': 'bin/component-help',
+39 silly resolved        'component-install': 'bin/component-install',
+39 silly resolved        'component-ls': 'bin/component-ls',
+39 silly resolved        'component-convert': 'bin/component-convert',
+39 silly resolved        'component-build': 'bin/component-build',
+39 silly resolved        'component-search': 'bin/component-search',
+39 silly resolved        'component-create': 'bin/component-create',
+39 silly resolved        'component-changes': 'bin/component-changes',
+39 silly resolved        'component-wiki': 'bin/component-wiki' },
+39 silly resolved     main: 'index',
+39 silly resolved     engines: { node: '>= 0.8.0' },
+39 silly resolved     scripts: { test: 'make test' },
+39 silly resolved     readme: '  ![web component logo](http://i49.tinypic.com/e7nj9v.png)\n\n  Component package manager for building a better web. [![Build Status](https://travis-ci.org/component/component.png)](https://travis-ci.org/component/component)\n\n## Installation\n\n  With [node](http://nodejs.org) previously installed:\n\n     $ npm install -g component\n\n  With node binary on OSX:\n\n     $ (cd /usr/local && \\\n        curl -L# http://nodejs.org/dist/v0.8.15/node-v0.8.15-darwin-x86.tar.gz \\\n        | tar -zx --strip 1) \\\n       && npm install -g component \\\n       && printf "installed component(1) %s\\n" $(component --version)\n\n  NOTE: tested with node 0.8.x\n\n## Features\n\n  - write modular commonjs components\n  - write components that include their own styles, images, scripts, or any combo\n  - no registry publishing or account required, uses github repositories\n  - extensible sub-commands via `component-YOURCOMMAND` git-style\n  - component skeleton creation command\n  - installs dependencies from the command-line or ./component.json\n  - avoid name squatting through github\'s naming conventions\n  - build your components with `--standalone` to share them with non-component(1) users\n  - discovery of useful packages is simple with a robust search\n  - view documentation from the command line\n  - simple private registry set up (all you need is a file server)\n  - very fast installs (50 components in ~4.5s)\n  - very fast search (~300ms)\n\n## Links\n\n - [List](https://github.com/component/component/wiki/Components) of all available components\n - [Wiki](https://github.com/component/component/wiki)\n - [Mailing List](https://groups.google.com/group/componentjs)\n - [Google+ Community](https://plus.google.com/u/0/communities/109771441994395167277)\n - component ["spec"](https://github.com/component/component/wiki/Spec)\n - join `#components` on freenode\n - follow [@component_js](http://twitter.com/component_js) on twitter\n - [Building better components](https://github.com/component/component/wiki/Building-better-components) tips\n - [F.A.Q](https://github.com/component/component/wiki/F.A.Q)\n - In-browser component [builder](http://component-kelonye.rhcloud.com/)\n - component [dependency visualizer](http://component-graph.herokuapp.com/component/dom)\n\n## Screencasts\n\n - [Creating web components](https://vimeo.com/53730178)\n - [App integration introduction](https://vimeo.com/48054442)\n\n## Articles\n\n  - building a [date picker component](http://tjholowaychuk.tumblr.com/post/37832588021/building-a-date-picker-component)\n  - original [component blog post](http://tjholowaychuk.tumblr.com/post/27984551477/components)\n\n## Usage\n\n Via `--help`:\n\n```\n\nUsage: component <command> [options]\n\nOptions:\n\n  -h, --help     output usage information\n  -V, --version  output the version number\n\nCommands:\n\n  install [name ...]      install one or more components\n  create [dir]            create a component skeleton\n  search [query]          search with the given query\n  convert <file ...>      convert html files to js modules\n  info <name> [prop]      output json component information\n  changes <name>          output changelog contents\n  wiki                    open the components list wiki page\n  build                   build the component\n  ls                      list installed components\n\n```\n\n## Installing packages\n\n  To install one or more packages, simply pass their github\n  repo names as arguments to `component install`. Dependencies\n  are resolved and the component contents are downloaded into\n  `./components` by default. View `component help install` for details.\n\n```\n$ component install component/tip\n\n   install : component/tip@master\n       dep : component/emitter@master\n   install : component/emitter@master\n       dep : component/jquery@master\n   install : component/jquery@master\n     fetch : component/tip:index.js\n     fetch : component/tip:tip.css\n     fetch : component/tip:tip.html\n     fetch : component/emitter:index.js\n     fetch : component/jquery:index.js\n  complete : component/emitter\n  complete : component/jquery\n  complete : component/tip\n```\n\n## Searching for components\n\n  By adding your component to the [Components List](https://github.com/component/component/wiki/Components) wiki page it will become automatically available to `component-search(1)`. When invoked with no query all components are displayed, otherwise a filtered search, ordered by the number of github "stars":\n\n```\n$ component search ui\n\n  component/dialog\n  url: https://github.com/component/dialog\n  desc: Dialog component\n  ★ 12\n\n  component/notification\n  url: https://github.com/component/notification\n  desc: Notification component\n  ★ 10\n\n  component/overlay\n  url: https://github.com/component/overlay\n  desc: Overlay component\n  ★ 7\n\n```\n\n## Using GitHub as a registry\n\n  By using GitHub as the registry, `component(1)` is automatically\n  available to you without further explicit knowledge or work\n  creating a registry account etc.\n\n  A nice side-effect of this namespaced world is that dependencies\n  are explicit and self-documenting. No longer do you need to query\n  the registry for a "repo" property that may not exist, it\'s simply\n  built in to the package name, for example ["visionmedia/page.js"](https://github.com/visionmedia/page.js) rather\n  than the unclear "page".\n\n  Another benefit of this is that there are zero name collisions, for example\n  you may use "component/tip" for a dependency of "foo", and "someuser/tip"\n  as a dependency of "bar", providing `require(\'tip\')` in each. This prevents\n  obscure or irrelevant naming such as "progress", "progress2", "progress-bar",\n  "progress-component" found in npm.\n\n## Creating a component\n\n  The `component-create(1)` command can create a component\n  project skeleton for you by filling out the prompts. Once\n  this repo is published to GitHub, you\'re all done!\n\n```\nname: popover\ndescription: Popover UI component\ndoes this component have js? yes\ndoes this component have css? yes\ndoes this component have html? yes\n\n     create : popover\n     create : popover/index.js\n     create : popover/template.html\n     create : popover/popover.css\n     create : popover/Makefile\n     create : popover/Readme.md\n     create : popover/.gitignore\n     create : popover/component.json\n\n```\n\n  A `Makefile` is created for you in order to create a build of the component,\n  complete with installed dependencies simply execute `make`.\n\n## Templates\n\n  Because `component(1)` has no notion of a "template", even simple HTML files\n  should be converted to a `require()`-able module. It is recommended that public\n  components shared within the community use regular HTML templates, and regular\n  CSS stylesheets to maximize contributions, however if you wish to use alternate\n  technologies just make sure to compile them before publishing them to GitHub.\n\n  For the recommended use-case of regular HTML, the `component-convert(1)` command\n  will translate a regular HTML file to its `require()`-able JavaScript counterpart.\n\n## Developing component(1) sub-commands\n\n  `component(1)` and sub-commands are structured much like `git(1)`,\n  in that sub-commands are simply separate executables. For example\n  `$ component info pkg` and `$ component-info pkg` are equivalent.\n\n  Because of this you\'ll likely want `PATH="./bin:$PATH"` in your\n  profile or session while developing component, otherwise `./bin/component`\n  will have a hard time finding the sub-commands.\n\n## Using private components\n\n  `component(1)` uses [~/.netrc](http://man.cx/netrc(4)), like other tools such as [curl](http://man.cx/curl) and [git](http://git-scm.com/), to specify credentials for remote hosts. Simply create a `~/.netrc` file in the home directory:\n\n```\nmachine raw.github.com\n  login visionmedia\n  password pass123\n```\n\n## Running tests\n\nMake sure dependencies are installed:\n\n```\n$ npm install\n```\n\nThen run:\n\n```\n$ make test\n```\n\n## Contributors\n\n  - TJ Holowaychuk\n  - Guillermo Rauch\n  - Garrett Johnson\n  - Amir Abu Shareb\n  - Adam Sanderson\n  - Matt Mueller\n  - Forbes Lindesay\n  - Arpad Borsos\n  - Dan Williams\n  - Damián Suárez\n  - Tim Oxley\n  - Jeremy Worboys\n  - Nick Jackson\n  - Cameron Bytheway\n\n## Example applications\n\n  Open source application examples:\n\n  - Example using [script tags](https://github.com/component/script-tag-example) for integrating component with existing non-commonjs applications or frameworks\n  - [Todo list](https://github.com/component/todo) example comprised of private and public components\n  - [Component.io](https://github.com/component/component.io) website\n  - [Posty](https://github.com/visionmedia/posty)\n  - [NoFlo](noflojs.org) flow-based programming environment\n\n## Extensions\n\n - [component-graph(1)](https://github.com/component/component-graph) dependency graphs for component projects\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2014 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+39 silly resolved     readmeFilename: 'Readme.md',
+39 silly resolved     bugs: { url: 'https://github.com/component/component/issues' },
+39 silly resolved     homepage: 'https://github.com/component/component',
+39 silly resolved     _id: 'component@0.19.9',
+39 silly resolved     _shasum: '998df9d86a24ae1d696786e101ac26744f6ed4b0',
+39 silly resolved     _from: 'component@',
+39 silly resolved     _resolved: 'https://registry.npmjs.org/component/-/component-0.19.9.tgz' } ]
+40 info install component@0.19.9 into /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI
+41 info installOne component@0.19.9
+42 info /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component unbuild
+43 verbose tar unpack /Users/wmease/.npm/component/0.19.9/package.tgz
+44 silly lockFile 41a6ef54-llab-MIDI-node-modules-component tar:///Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component
+45 verbose lock tar:///Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component /Users/wmease/.npm/41a6ef54-llab-MIDI-node-modules-component.lock
+46 silly lockFile 5eac8413-npm-component-0-19-9-package-tgz tar:///Users/wmease/.npm/component/0.19.9/package.tgz
+47 verbose lock tar:///Users/wmease/.npm/component/0.19.9/package.tgz /Users/wmease/.npm/5eac8413-npm-component-0-19-9-package-tgz.lock
+48 silly gunzTarPerm modes [ '755', '644' ]
+49 silly gunzTarPerm extractEntry package.json
+50 silly gunzTarPerm extractEntry .npmignore
+51 silly gunzTarPerm extractEntry index.js
+52 silly gunzTarPerm extractEntry .travis.yml
+53 silly gunzTarPerm extractEntry History.md
+54 silly gunzTarPerm extractEntry Makefile
+55 silly gunzTarPerm extractEntry Readme.md
+56 silly gunzTarPerm extractEntry bin/component-help
+57 silly gunzTarPerm extractEntry bin/component
+58 silly gunzTarPerm extractEntry bin/component-changes
+59 silly gunzTarPerm extractEntry bin/component-convert
+60 silly gunzTarPerm extractEntry bin/component-create
+61 silly gunzTarPerm extractEntry bin/component-build
+62 silly gunzTarPerm extractEntry bin/component-info
+63 silly gunzTarPerm extractEntry bin/component-install
+64 silly gunzTarPerm extractEntry bin/component-ls
+65 silly gunzTarPerm extractEntry bin/component-search
+66 silly gunzTarPerm extractEntry bin/component-wiki
+67 silly gunzTarPerm extractEntry lib/Package.js
+68 silly gunzTarPerm extractEntry lib/component.js
+69 silly gunzTarPerm extractEntry lib/utils.js
+70 silly gunzTarPerm extractEntry templates/readme.js
+71 silly gunzTarPerm extractEntry templates/readme.md
+72 silly lockFile 41a6ef54-llab-MIDI-node-modules-component tar:///Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component
+73 silly lockFile 41a6ef54-llab-MIDI-node-modules-component tar:///Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component
+74 silly lockFile 5eac8413-npm-component-0-19-9-package-tgz tar:///Users/wmease/.npm/component/0.19.9/package.tgz
+75 silly lockFile 5eac8413-npm-component-0-19-9-package-tgz tar:///Users/wmease/.npm/component/0.19.9/package.tgz
+76 info preinstall component@0.19.9
+77 verbose readDependencies using package.json deps
+78 verbose readDependencies using package.json deps
+79 verbose cache add [ 'mkdirp@~0.3.4', null ]
+80 verbose cache add name=undefined spec="mkdirp@~0.3.4" args=["mkdirp@~0.3.4",null]
+81 verbose parsed url { protocol: null,
+81 verbose parsed url   slashes: null,
+81 verbose parsed url   auth: null,
+81 verbose parsed url   host: null,
+81 verbose parsed url   port: null,
+81 verbose parsed url   hostname: null,
+81 verbose parsed url   hash: null,
+81 verbose parsed url   search: null,
+81 verbose parsed url   query: null,
+81 verbose parsed url   pathname: 'mkdirp@~0.3.4',
+81 verbose parsed url   path: 'mkdirp@~0.3.4',
+81 verbose parsed url   href: 'mkdirp@~0.3.4' }
+82 verbose cache add name="mkdirp" spec="~0.3.4" args=["mkdirp","~0.3.4"]
+83 verbose parsed url { protocol: null,
+83 verbose parsed url   slashes: null,
+83 verbose parsed url   auth: null,
+83 verbose parsed url   host: null,
+83 verbose parsed url   port: null,
+83 verbose parsed url   hostname: null,
+83 verbose parsed url   hash: null,
+83 verbose parsed url   search: null,
+83 verbose parsed url   query: null,
+83 verbose parsed url   pathname: '~0.3.4',
+83 verbose parsed url   path: '~0.3.4',
+83 verbose parsed url   href: '~0.3.4' }
+84 verbose addNamed [ 'mkdirp', '~0.3.4' ]
+85 verbose addNamed [ null, '>=0.3.4-0 <0.4.0-0' ]
+86 silly lockFile f185e6bf-mkdirp-0-3-4 mkdirp@~0.3.4
+87 verbose lock mkdirp@~0.3.4 /Users/wmease/.npm/f185e6bf-mkdirp-0-3-4.lock
+88 verbose cache add [ 'component-builder@0.10.1', null ]
+89 verbose cache add name=undefined spec="component-builder@0.10.1" args=["component-builder@0.10.1",null]
+90 verbose parsed url { protocol: null,
+90 verbose parsed url   slashes: null,
+90 verbose parsed url   auth: null,
+90 verbose parsed url   host: null,
+90 verbose parsed url   port: null,
+90 verbose parsed url   hostname: null,
+90 verbose parsed url   hash: null,
+90 verbose parsed url   search: null,
+90 verbose parsed url   query: null,
+90 verbose parsed url   pathname: 'component-builder@0.10.1',
+90 verbose parsed url   path: 'component-builder@0.10.1',
+90 verbose parsed url   href: 'component-builder@0.10.1' }
+91 verbose cache add name="component-builder" spec="0.10.1" args=["component-builder","0.10.1"]
+92 verbose parsed url { protocol: null,
+92 verbose parsed url   slashes: null,
+92 verbose parsed url   auth: null,
+92 verbose parsed url   host: null,
+92 verbose parsed url   port: null,
+92 verbose parsed url   hostname: null,
+92 verbose parsed url   hash: null,
+92 verbose parsed url   search: null,
+92 verbose parsed url   query: null,
+92 verbose parsed url   pathname: '0.10.1',
+92 verbose parsed url   path: '0.10.1',
+92 verbose parsed url   href: '0.10.1' }
+93 verbose addNamed [ 'component-builder', '0.10.1' ]
+94 verbose addNamed [ '0.10.1', '0.10.1' ]
+95 silly lockFile c6ab06ee-component-builder-0-10-1 component-builder@0.10.1
+96 verbose lock component-builder@0.10.1 /Users/wmease/.npm/c6ab06ee-component-builder-0-10-1.lock
+97 verbose cache add [ 'superagent@~0.15.4', null ]
+98 verbose cache add name=undefined spec="superagent@~0.15.4" args=["superagent@~0.15.4",null]
+99 verbose parsed url { protocol: null,
+99 verbose parsed url   slashes: null,
+99 verbose parsed url   auth: null,
+99 verbose parsed url   host: null,
+99 verbose parsed url   port: null,
+99 verbose parsed url   hostname: null,
+99 verbose parsed url   hash: null,
+99 verbose parsed url   search: null,
+99 verbose parsed url   query: null,
+99 verbose parsed url   pathname: 'superagent@~0.15.4',
+99 verbose parsed url   path: 'superagent@~0.15.4',
+99 verbose parsed url   href: 'superagent@~0.15.4' }
+100 verbose cache add name="superagent" spec="~0.15.4" args=["superagent","~0.15.4"]
+101 verbose parsed url { protocol: null,
+101 verbose parsed url   slashes: null,
+101 verbose parsed url   auth: null,
+101 verbose parsed url   host: null,
+101 verbose parsed url   port: null,
+101 verbose parsed url   hostname: null,
+101 verbose parsed url   hash: null,
+101 verbose parsed url   search: null,
+101 verbose parsed url   query: null,
+101 verbose parsed url   pathname: '~0.15.4',
+101 verbose parsed url   path: '~0.15.4',
+101 verbose parsed url   href: '~0.15.4' }
+102 verbose addNamed [ 'superagent', '~0.15.4' ]
+103 verbose addNamed [ null, '>=0.15.4-0 <0.16.0-0' ]
+104 silly lockFile bd8a8c7f-superagent-0-15-4 superagent@~0.15.4
+105 verbose lock superagent@~0.15.4 /Users/wmease/.npm/bd8a8c7f-superagent-0-15-4.lock
+106 verbose cache add [ 'string-to-js@0.0.1', null ]
+107 verbose cache add name=undefined spec="string-to-js@0.0.1" args=["string-to-js@0.0.1",null]
+108 verbose parsed url { protocol: null,
+108 verbose parsed url   slashes: null,
+108 verbose parsed url   auth: null,
+108 verbose parsed url   host: null,
+108 verbose parsed url   port: null,
+108 verbose parsed url   hostname: null,
+108 verbose parsed url   hash: null,
+108 verbose parsed url   search: null,
+108 verbose parsed url   query: null,
+108 verbose parsed url   pathname: 'string-to-js@0.0.1',
+108 verbose parsed url   path: 'string-to-js@0.0.1',
+108 verbose parsed url   href: 'string-to-js@0.0.1' }
+109 verbose cache add name="string-to-js" spec="0.0.1" args=["string-to-js","0.0.1"]
+110 verbose parsed url { protocol: null,
+110 verbose parsed url   slashes: null,
+110 verbose parsed url   auth: null,
+110 verbose parsed url   host: null,
+110 verbose parsed url   port: null,
+110 verbose parsed url   hostname: null,
+110 verbose parsed url   hash: null,
+110 verbose parsed url   search: null,
+110 verbose parsed url   query: null,
+110 verbose parsed url   pathname: '0.0.1',
+110 verbose parsed url   path: '0.0.1',
+110 verbose parsed url   href: '0.0.1' }
+111 verbose addNamed [ 'string-to-js', '0.0.1' ]
+112 verbose addNamed [ '0.0.1', '0.0.1' ]
+113 silly lockFile f0af9ee2-string-to-js-0-0-1 string-to-js@0.0.1
+114 verbose lock string-to-js@0.0.1 /Users/wmease/.npm/f0af9ee2-string-to-js-0-0-1.lock
+115 verbose cache add [ 'jog@0.4.0', null ]
+116 verbose cache add name=undefined spec="jog@0.4.0" args=["jog@0.4.0",null]
+117 verbose parsed url { protocol: null,
+117 verbose parsed url   slashes: null,
+117 verbose parsed url   auth: null,
+117 verbose parsed url   host: null,
+117 verbose parsed url   port: null,
+117 verbose parsed url   hostname: null,
+117 verbose parsed url   hash: null,
+117 verbose parsed url   search: null,
+117 verbose parsed url   query: null,
+117 verbose parsed url   pathname: 'jog@0.4.0',
+117 verbose parsed url   path: 'jog@0.4.0',
+117 verbose parsed url   href: 'jog@0.4.0' }
+118 verbose cache add name="jog" spec="0.4.0" args=["jog","0.4.0"]
+119 verbose parsed url { protocol: null,
+119 verbose parsed url   slashes: null,
+119 verbose parsed url   auth: null,
+119 verbose parsed url   host: null,
+119 verbose parsed url   port: null,
+119 verbose parsed url   hostname: null,
+119 verbose parsed url   hash: null,
+119 verbose parsed url   search: null,
+119 verbose parsed url   query: null,
+119 verbose parsed url   pathname: '0.4.0',
+119 verbose parsed url   path: '0.4.0',
+119 verbose parsed url   href: '0.4.0' }
+120 verbose addNamed [ 'jog', '0.4.0' ]
+121 verbose addNamed [ '0.4.0', '0.4.0' ]
+122 silly lockFile 04396bc1-jog-0-4-0 jog@0.4.0
+123 verbose lock jog@0.4.0 /Users/wmease/.npm/04396bc1-jog-0-4-0.lock
+124 verbose cache add [ 'batch@~0.5.0', null ]
+125 verbose cache add name=undefined spec="batch@~0.5.0" args=["batch@~0.5.0",null]
+126 verbose parsed url { protocol: null,
+126 verbose parsed url   slashes: null,
+126 verbose parsed url   auth: null,
+126 verbose parsed url   host: null,
+126 verbose parsed url   port: null,
+126 verbose parsed url   hostname: null,
+126 verbose parsed url   hash: null,
+126 verbose parsed url   search: null,
+126 verbose parsed url   query: null,
+126 verbose parsed url   pathname: 'batch@~0.5.0',
+126 verbose parsed url   path: 'batch@~0.5.0',
+126 verbose parsed url   href: 'batch@~0.5.0' }
+127 verbose cache add name="batch" spec="~0.5.0" args=["batch","~0.5.0"]
+128 verbose parsed url { protocol: null,
+128 verbose parsed url   slashes: null,
+128 verbose parsed url   auth: null,
+128 verbose parsed url   host: null,
+128 verbose parsed url   port: null,
+128 verbose parsed url   hostname: null,
+128 verbose parsed url   hash: null,
+128 verbose parsed url   search: null,
+128 verbose parsed url   query: null,
+128 verbose parsed url   pathname: '~0.5.0',
+128 verbose parsed url   path: '~0.5.0',
+128 verbose parsed url   href: '~0.5.0' }
+129 verbose addNamed [ 'batch', '~0.5.0' ]
+130 verbose addNamed [ null, '>=0.5.0-0 <0.6.0-0' ]
+131 silly lockFile 4a096c92-batch-0-5-0 batch@~0.5.0
+132 verbose lock batch@~0.5.0 /Users/wmease/.npm/4a096c92-batch-0-5-0.lock
+133 verbose cache add [ 'win-fork@~1.1.1', null ]
+134 verbose cache add name=undefined spec="win-fork@~1.1.1" args=["win-fork@~1.1.1",null]
+135 verbose parsed url { protocol: null,
+135 verbose parsed url   slashes: null,
+135 verbose parsed url   auth: null,
+135 verbose parsed url   host: null,
+135 verbose parsed url   port: null,
+135 verbose parsed url   hostname: null,
+135 verbose parsed url   hash: null,
+135 verbose parsed url   search: null,
+135 verbose parsed url   query: null,
+135 verbose parsed url   pathname: 'win-fork@~1.1.1',
+135 verbose parsed url   path: 'win-fork@~1.1.1',
+135 verbose parsed url   href: 'win-fork@~1.1.1' }
+136 verbose cache add name="win-fork" spec="~1.1.1" args=["win-fork","~1.1.1"]
+137 verbose parsed url { protocol: null,
+137 verbose parsed url   slashes: null,
+137 verbose parsed url   auth: null,
+137 verbose parsed url   host: null,
+137 verbose parsed url   port: null,
+137 verbose parsed url   hostname: null,
+137 verbose parsed url   hash: null,
+137 verbose parsed url   search: null,
+137 verbose parsed url   query: null,
+137 verbose parsed url   pathname: '~1.1.1',
+137 verbose parsed url   path: '~1.1.1',
+137 verbose parsed url   href: '~1.1.1' }
+138 verbose addNamed [ 'win-fork', '~1.1.1' ]
+139 verbose addNamed [ null, '>=1.1.1-0 <1.2.0-0' ]
+140 silly lockFile e26f2367-win-fork-1-1-1 win-fork@~1.1.1
+141 verbose lock win-fork@~1.1.1 /Users/wmease/.npm/e26f2367-win-fork-1-1-1.lock
+142 silly addNameRange { name: 'mkdirp', range: '>=0.3.4-0 <0.4.0-0', hasData: false }
+143 verbose cache add [ 'archy@0.0.2', null ]
+144 verbose cache add name=undefined spec="archy@0.0.2" args=["archy@0.0.2",null]
+145 verbose parsed url { protocol: null,
+145 verbose parsed url   slashes: null,
+145 verbose parsed url   auth: null,
+145 verbose parsed url   host: null,
+145 verbose parsed url   port: null,
+145 verbose parsed url   hostname: null,
+145 verbose parsed url   hash: null,
+145 verbose parsed url   search: null,
+145 verbose parsed url   query: null,
+145 verbose parsed url   pathname: 'archy@0.0.2',
+145 verbose parsed url   path: 'archy@0.0.2',
+145 verbose parsed url   href: 'archy@0.0.2' }
+146 verbose cache add name="archy" spec="0.0.2" args=["archy","0.0.2"]
+147 verbose parsed url { protocol: null,
+147 verbose parsed url   slashes: null,
+147 verbose parsed url   auth: null,
+147 verbose parsed url   host: null,
+147 verbose parsed url   port: null,
+147 verbose parsed url   hostname: null,
+147 verbose parsed url   hash: null,
+147 verbose parsed url   search: null,
+147 verbose parsed url   query: null,
+147 verbose parsed url   pathname: '0.0.2',
+147 verbose parsed url   path: '0.0.2',
+147 verbose parsed url   href: '0.0.2' }
+148 verbose addNamed [ 'archy', '0.0.2' ]
+149 verbose addNamed [ '0.0.2', '0.0.2' ]
+150 silly lockFile c97e9070-archy-0-0-2 archy@0.0.2
+151 verbose lock archy@0.0.2 /Users/wmease/.npm/c97e9070-archy-0-0-2.lock
+152 verbose cache add [ 'netrc@~0.1.3', null ]
+153 verbose cache add name=undefined spec="netrc@~0.1.3" args=["netrc@~0.1.3",null]
+154 verbose parsed url { protocol: null,
+154 verbose parsed url   slashes: null,
+154 verbose parsed url   auth: null,
+154 verbose parsed url   host: null,
+154 verbose parsed url   port: null,
+154 verbose parsed url   hostname: null,
+154 verbose parsed url   hash: null,
+154 verbose parsed url   search: null,
+154 verbose parsed url   query: null,
+154 verbose parsed url   pathname: 'netrc@~0.1.3',
+154 verbose parsed url   path: 'netrc@~0.1.3',
+154 verbose parsed url   href: 'netrc@~0.1.3' }
+155 verbose cache add name="netrc" spec="~0.1.3" args=["netrc","~0.1.3"]
+156 verbose parsed url { protocol: null,
+156 verbose parsed url   slashes: null,
+156 verbose parsed url   auth: null,
+156 verbose parsed url   host: null,
+156 verbose parsed url   port: null,
+156 verbose parsed url   hostname: null,
+156 verbose parsed url   hash: null,
+156 verbose parsed url   search: null,
+156 verbose parsed url   query: null,
+156 verbose parsed url   pathname: '~0.1.3',
+156 verbose parsed url   path: '~0.1.3',
+156 verbose parsed url   href: '~0.1.3' }
+157 verbose addNamed [ 'netrc', '~0.1.3' ]
+158 verbose addNamed [ null, '>=0.1.3-0 <0.2.0-0' ]
+159 silly lockFile 4e3bdcf8-netrc-0-1-3 netrc@~0.1.3
+160 verbose lock netrc@~0.1.3 /Users/wmease/.npm/4e3bdcf8-netrc-0-1-3.lock
+161 verbose cache add [ 'debug@*', null ]
+162 verbose cache add name=undefined spec="debug@*" args=["debug@*",null]
+163 verbose parsed url { protocol: null,
+163 verbose parsed url   slashes: null,
+163 verbose parsed url   auth: null,
+163 verbose parsed url   host: null,
+163 verbose parsed url   port: null,
+163 verbose parsed url   hostname: null,
+163 verbose parsed url   hash: null,
+163 verbose parsed url   search: null,
+163 verbose parsed url   query: null,
+163 verbose parsed url   pathname: 'debug@*',
+163 verbose parsed url   path: 'debug@*',
+163 verbose parsed url   href: 'debug@*' }
+164 verbose cache add name="debug" spec="*" args=["debug","*"]
+165 verbose parsed url { protocol: null,
+165 verbose parsed url   slashes: null,
+165 verbose parsed url   auth: null,
+165 verbose parsed url   host: null,
+165 verbose parsed url   port: null,
+165 verbose parsed url   hostname: null,
+165 verbose parsed url   hash: null,
+165 verbose parsed url   search: null,
+165 verbose parsed url   query: null,
+165 verbose parsed url   pathname: '*',
+165 verbose parsed url   path: '*',
+165 verbose parsed url   href: '*' }
+166 verbose addNamed [ 'debug', '*' ]
+167 verbose addNamed [ null, '*' ]
+168 silly lockFile 3ac45eff-debug debug@*
+169 verbose lock debug@* /Users/wmease/.npm/3ac45eff-debug.lock
+170 verbose cache add [ 'rimraf@~2.2.6', null ]
+171 verbose cache add name=undefined spec="rimraf@~2.2.6" args=["rimraf@~2.2.6",null]
+172 verbose parsed url { protocol: null,
+172 verbose parsed url   slashes: null,
+172 verbose parsed url   auth: null,
+172 verbose parsed url   host: null,
+172 verbose parsed url   port: null,
+172 verbose parsed url   hostname: null,
+172 verbose parsed url   hash: null,
+172 verbose parsed url   search: null,
+172 verbose parsed url   query: null,
+172 verbose parsed url   pathname: 'rimraf@~2.2.6',
+172 verbose parsed url   path: 'rimraf@~2.2.6',
+172 verbose parsed url   href: 'rimraf@~2.2.6' }
+173 verbose cache add name="rimraf" spec="~2.2.6" args=["rimraf","~2.2.6"]
+174 verbose parsed url { protocol: null,
+174 verbose parsed url   slashes: null,
+174 verbose parsed url   auth: null,
+174 verbose parsed url   host: null,
+174 verbose parsed url   port: null,
+174 verbose parsed url   hostname: null,
+174 verbose parsed url   hash: null,
+174 verbose parsed url   search: null,
+174 verbose parsed url   query: null,
+174 verbose parsed url   pathname: '~2.2.6',
+174 verbose parsed url   path: '~2.2.6',
+174 verbose parsed url   href: '~2.2.6' }
+175 verbose addNamed [ 'rimraf', '~2.2.6' ]
+176 verbose addNamed [ null, '>=2.2.6-0 <2.3.0-0' ]
+177 silly lockFile e79df6f6-rimraf-2-2-6 rimraf@~2.2.6
+178 verbose lock rimraf@~2.2.6 /Users/wmease/.npm/e79df6f6-rimraf-2-2-6.lock
+179 verbose cache add [ 'proxy-agent@~1.1.0', null ]
+180 verbose cache add name=undefined spec="proxy-agent@~1.1.0" args=["proxy-agent@~1.1.0",null]
+181 verbose parsed url { protocol: null,
+181 verbose parsed url   slashes: null,
+181 verbose parsed url   auth: null,
+181 verbose parsed url   host: null,
+181 verbose parsed url   port: null,
+181 verbose parsed url   hostname: null,
+181 verbose parsed url   hash: null,
+181 verbose parsed url   search: null,
+181 verbose parsed url   query: null,
+181 verbose parsed url   pathname: 'proxy-agent@~1.1.0',
+181 verbose parsed url   path: 'proxy-agent@~1.1.0',
+181 verbose parsed url   href: 'proxy-agent@~1.1.0' }
+182 verbose cache add name="proxy-agent" spec="~1.1.0" args=["proxy-agent","~1.1.0"]
+183 verbose parsed url { protocol: null,
+183 verbose parsed url   slashes: null,
+183 verbose parsed url   auth: null,
+183 verbose parsed url   host: null,
+183 verbose parsed url   port: null,
+183 verbose parsed url   hostname: null,
+183 verbose parsed url   hash: null,
+183 verbose parsed url   search: null,
+183 verbose parsed url   query: null,
+183 verbose parsed url   pathname: '~1.1.0',
+183 verbose parsed url   path: '~1.1.0',
+183 verbose parsed url   href: '~1.1.0' }
+184 verbose addNamed [ 'proxy-agent', '~1.1.0' ]
+185 verbose addNamed [ null, '>=1.1.0-0 <1.2.0-0' ]
+186 silly lockFile e0b30bb8-proxy-agent-1-1-0 proxy-agent@~1.1.0
+187 verbose lock proxy-agent@~1.1.0 /Users/wmease/.npm/e0b30bb8-proxy-agent-1-1-0.lock
+188 verbose cache add [ 'superagent-proxy@~0.3.0', null ]
+189 verbose cache add name=undefined spec="superagent-proxy@~0.3.0" args=["superagent-proxy@~0.3.0",null]
+190 verbose parsed url { protocol: null,
+190 verbose parsed url   slashes: null,
+190 verbose parsed url   auth: null,
+190 verbose parsed url   host: null,
+190 verbose parsed url   port: null,
+190 verbose parsed url   hostname: null,
+190 verbose parsed url   hash: null,
+190 verbose parsed url   search: null,
+190 verbose parsed url   query: null,
+190 verbose parsed url   pathname: 'superagent-proxy@~0.3.0',
+190 verbose parsed url   path: 'superagent-proxy@~0.3.0',
+190 verbose parsed url   href: 'superagent-proxy@~0.3.0' }
+191 verbose cache add name="superagent-proxy" spec="~0.3.0" args=["superagent-proxy","~0.3.0"]
+192 verbose parsed url { protocol: null,
+192 verbose parsed url   slashes: null,
+192 verbose parsed url   auth: null,
+192 verbose parsed url   host: null,
+192 verbose parsed url   port: null,
+192 verbose parsed url   hostname: null,
+192 verbose parsed url   hash: null,
+192 verbose parsed url   search: null,
+192 verbose parsed url   query: null,
+192 verbose parsed url   pathname: '~0.3.0',
+192 verbose parsed url   path: '~0.3.0',
+192 verbose parsed url   href: '~0.3.0' }
+193 verbose addNamed [ 'superagent-proxy', '~0.3.0' ]
+194 verbose addNamed [ null, '>=0.3.0-0 <0.4.0-0' ]
+195 silly lockFile 612713a6-superagent-proxy-0-3-0 superagent-proxy@~0.3.0
+196 verbose lock superagent-proxy@~0.3.0 /Users/wmease/.npm/612713a6-superagent-proxy-0-3-0.lock
+197 verbose cache add [ 'open@0.0.4', null ]
+198 verbose cache add name=undefined spec="open@0.0.4" args=["open@0.0.4",null]
+199 verbose parsed url { protocol: null,
+199 verbose parsed url   slashes: null,
+199 verbose parsed url   auth: null,
+199 verbose parsed url   host: null,
+199 verbose parsed url   port: null,
+199 verbose parsed url   hostname: null,
+199 verbose parsed url   hash: null,
+199 verbose parsed url   search: null,
+199 verbose parsed url   query: null,
+199 verbose parsed url   pathname: 'open@0.0.4',
+199 verbose parsed url   path: 'open@0.0.4',
+199 verbose parsed url   href: 'open@0.0.4' }
+200 verbose cache add name="open" spec="0.0.4" args=["open","0.0.4"]
+201 verbose parsed url { protocol: null,
+201 verbose parsed url   slashes: null,
+201 verbose parsed url   auth: null,
+201 verbose parsed url   host: null,
+201 verbose parsed url   port: null,
+201 verbose parsed url   hostname: null,
+201 verbose parsed url   hash: null,
+201 verbose parsed url   search: null,
+201 verbose parsed url   query: null,
+201 verbose parsed url   pathname: '0.0.4',
+201 verbose parsed url   path: '0.0.4',
+201 verbose parsed url   href: '0.0.4' }
+202 verbose addNamed [ 'open', '0.0.4' ]
+203 verbose addNamed [ '0.0.4', '0.0.4' ]
+204 silly lockFile 03f97a6d-open-0-0-4 open@0.0.4
+205 verbose lock open@0.0.4 /Users/wmease/.npm/03f97a6d-open-0-0-4.lock
+206 verbose cache add [ 'component-installer@~0.0.8', null ]
+207 verbose cache add name=undefined spec="component-installer@~0.0.8" args=["component-installer@~0.0.8",null]
+208 verbose parsed url { protocol: null,
+208 verbose parsed url   slashes: null,
+208 verbose parsed url   auth: null,
+208 verbose parsed url   host: null,
+208 verbose parsed url   port: null,
+208 verbose parsed url   hostname: null,
+208 verbose parsed url   hash: null,
+208 verbose parsed url   search: null,
+208 verbose parsed url   query: null,
+208 verbose parsed url   pathname: 'component-installer@~0.0.8',
+208 verbose parsed url   path: 'component-installer@~0.0.8',
+208 verbose parsed url   href: 'component-installer@~0.0.8' }
+209 verbose cache add name="component-installer" spec="~0.0.8" args=["component-installer","~0.0.8"]
+210 verbose parsed url { protocol: null,
+210 verbose parsed url   slashes: null,
+210 verbose parsed url   auth: null,
+210 verbose parsed url   host: null,
+210 verbose parsed url   port: null,
+210 verbose parsed url   hostname: null,
+210 verbose parsed url   hash: null,
+210 verbose parsed url   search: null,
+210 verbose parsed url   query: null,
+210 verbose parsed url   pathname: '~0.0.8',
+210 verbose parsed url   path: '~0.0.8',
+210 verbose parsed url   href: '~0.0.8' }
+211 verbose addNamed [ 'component-installer', '~0.0.8' ]
+212 verbose addNamed [ null, '>=0.0.8-0 <0.1.0-0' ]
+213 silly lockFile de4dda5d-component-installer-0-0-8 component-installer@~0.0.8
+214 verbose lock component-installer@~0.0.8 /Users/wmease/.npm/de4dda5d-component-installer-0-0-8.lock
+215 verbose cache add [ 'component-package@~0.0.4', null ]
+216 verbose cache add name=undefined spec="component-package@~0.0.4" args=["component-package@~0.0.4",null]
+217 verbose parsed url { protocol: null,
+217 verbose parsed url   slashes: null,
+217 verbose parsed url   auth: null,
+217 verbose parsed url   host: null,
+217 verbose parsed url   port: null,
+217 verbose parsed url   hostname: null,
+217 verbose parsed url   hash: null,
+217 verbose parsed url   search: null,
+217 verbose parsed url   query: null,
+217 verbose parsed url   pathname: 'component-package@~0.0.4',
+217 verbose parsed url   path: 'component-package@~0.0.4',
+217 verbose parsed url   href: 'component-package@~0.0.4' }
+218 verbose cache add name="component-package" spec="~0.0.4" args=["component-package","~0.0.4"]
+219 verbose parsed url { protocol: null,
+219 verbose parsed url   slashes: null,
+219 verbose parsed url   auth: null,
+219 verbose parsed url   host: null,
+219 verbose parsed url   port: null,
+219 verbose parsed url   hostname: null,
+219 verbose parsed url   hash: null,
+219 verbose parsed url   search: null,
+219 verbose parsed url   query: null,
+219 verbose parsed url   pathname: '~0.0.4',
+219 verbose parsed url   path: '~0.0.4',
+219 verbose parsed url   href: '~0.0.4' }
+220 verbose addNamed [ 'component-package', '~0.0.4' ]
+221 verbose addNamed [ null, '>=0.0.4-0 <0.1.0-0' ]
+222 silly lockFile 19dc90a5-component-package-0-0-4 component-package@~0.0.4
+223 verbose lock component-package@~0.0.4 /Users/wmease/.npm/19dc90a5-component-package-0-0-4.lock
+224 verbose cache add [ 'commander@1.0.5', null ]
+225 verbose cache add name=undefined spec="commander@1.0.5" args=["commander@1.0.5",null]
+226 verbose parsed url { protocol: null,
+226 verbose parsed url   slashes: null,
+226 verbose parsed url   auth: null,
+226 verbose parsed url   host: null,
+226 verbose parsed url   port: null,
+226 verbose parsed url   hostname: null,
+226 verbose parsed url   hash: null,
+226 verbose parsed url   search: null,
+226 verbose parsed url   query: null,
+226 verbose parsed url   pathname: 'commander@1.0.5',
+226 verbose parsed url   path: 'commander@1.0.5',
+226 verbose parsed url   href: 'commander@1.0.5' }
+227 verbose cache add name="commander" spec="1.0.5" args=["commander","1.0.5"]
+228 verbose parsed url { protocol: null,
+228 verbose parsed url   slashes: null,
+228 verbose parsed url   auth: null,
+228 verbose parsed url   host: null,
+228 verbose parsed url   port: null,
+228 verbose parsed url   hostname: null,
+228 verbose parsed url   hash: null,
+228 verbose parsed url   search: null,
+228 verbose parsed url   query: null,
+228 verbose parsed url   pathname: '1.0.5',
+228 verbose parsed url   path: '1.0.5',
+228 verbose parsed url   href: '1.0.5' }
+229 verbose addNamed [ 'commander', '1.0.5' ]
+230 verbose addNamed [ '1.0.5', '1.0.5' ]
+231 silly lockFile c1db8845-commander-1-0-5 commander@1.0.5
+232 verbose lock commander@1.0.5 /Users/wmease/.npm/c1db8845-commander-1-0-5.lock
+233 silly addNameRange { name: 'superagent',
+233 silly addNameRange   range: '>=0.15.4-0 <0.16.0-0',
+233 silly addNameRange   hasData: false }
+234 silly addNameRange { name: 'win-fork', range: '>=1.1.1-0 <1.2.0-0', hasData: false }
+235 silly addNameRange { name: 'batch', range: '>=0.5.0-0 <0.6.0-0', hasData: false }
+236 silly addNameRange { name: 'debug', range: '*', hasData: false }
+237 silly addNameRange { name: 'netrc', range: '>=0.1.3-0 <0.2.0-0', hasData: false }
+238 silly addNameRange { name: 'rimraf', range: '>=2.2.6-0 <2.3.0-0', hasData: false }
+239 silly addNameRange { name: 'proxy-agent',
+239 silly addNameRange   range: '>=1.1.0-0 <1.2.0-0',
+239 silly addNameRange   hasData: false }
+240 silly addNameRange { name: 'component-package',
+240 silly addNameRange   range: '>=0.0.4-0 <0.1.0-0',
+240 silly addNameRange   hasData: false }
+241 silly addNameRange { name: 'superagent-proxy',
+241 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+241 silly addNameRange   hasData: false }
+242 silly addNameRange { name: 'component-installer',
+242 silly addNameRange   range: '>=0.0.8-0 <0.1.0-0',
+242 silly addNameRange   hasData: false }
+243 verbose url raw mkdirp
+244 verbose url resolving [ 'https://registry.npmjs.org/', './mkdirp' ]
+245 verbose url resolved https://registry.npmjs.org/mkdirp
+246 info trying registry request attempt 1 at 17:35:20
+247 verbose etag "5FARIAAE0490H7WN5U9SWG9X0"
+248 http GET https://registry.npmjs.org/mkdirp
+249 verbose url raw jog
+250 verbose url resolving [ 'https://registry.npmjs.org/', './jog' ]
+251 verbose url resolved https://registry.npmjs.org/jog
+252 info trying registry request attempt 1 at 17:35:20
+253 verbose etag "C4LBV3VC3KBY3WN9PGCNKYBZL"
+254 http GET https://registry.npmjs.org/jog
+255 verbose url raw string-to-js
+256 verbose url resolving [ 'https://registry.npmjs.org/', './string-to-js' ]
+257 verbose url resolved https://registry.npmjs.org/string-to-js
+258 info trying registry request attempt 1 at 17:35:20
+259 verbose etag "A4V32APBY95BJ4SJNC54B70RD"
+260 http GET https://registry.npmjs.org/string-to-js
+261 verbose url raw netrc
+262 verbose url resolving [ 'https://registry.npmjs.org/', './netrc' ]
+263 verbose url resolved https://registry.npmjs.org/netrc
+264 info trying registry request attempt 1 at 17:35:20
+265 verbose etag "353WCJNWQKFW4LQF6RPHVZYMU"
+266 http GET https://registry.npmjs.org/netrc
+267 verbose url raw archy
+268 verbose url resolving [ 'https://registry.npmjs.org/', './archy' ]
+269 verbose url resolved https://registry.npmjs.org/archy
+270 info trying registry request attempt 1 at 17:35:20
+271 verbose etag "1896SOVEFOO0AU9N6HHSVIPJK"
+272 http GET https://registry.npmjs.org/archy
+273 verbose url raw win-fork
+274 verbose url resolving [ 'https://registry.npmjs.org/', './win-fork' ]
+275 verbose url resolved https://registry.npmjs.org/win-fork
+276 info trying registry request attempt 1 at 17:35:20
+277 verbose etag "8Z2I8YGI5YJANKUGKY37517EN"
+278 http GET https://registry.npmjs.org/win-fork
+279 verbose url raw debug
+280 verbose url resolving [ 'https://registry.npmjs.org/', './debug' ]
+281 verbose url resolved https://registry.npmjs.org/debug
+282 info trying registry request attempt 1 at 17:35:20
+283 verbose etag "A99WHPT94RD1HIGY4BNMUSPWP"
+284 http GET https://registry.npmjs.org/debug
+285 verbose url raw component-builder
+286 verbose url resolving [ 'https://registry.npmjs.org/', './component-builder' ]
+287 verbose url resolved https://registry.npmjs.org/component-builder
+288 info trying registry request attempt 1 at 17:35:20
+289 verbose etag "9XED40O3H27PBKBP6U8LLC3JY"
+290 http GET https://registry.npmjs.org/component-builder
+291 verbose url raw open
+292 verbose url resolving [ 'https://registry.npmjs.org/', './open' ]
+293 verbose url resolved https://registry.npmjs.org/open
+294 info trying registry request attempt 1 at 17:35:20
+295 verbose etag "92J2QC9RIL0L6QRTT2NNZT99S"
+296 http GET https://registry.npmjs.org/open
+297 verbose url raw superagent
+298 verbose url resolving [ 'https://registry.npmjs.org/', './superagent' ]
+299 verbose url resolved https://registry.npmjs.org/superagent
+300 info trying registry request attempt 1 at 17:35:20
+301 verbose etag "4RLER9A9KBHS3XLLZV7N0GXU9"
+302 http GET https://registry.npmjs.org/superagent
+303 verbose url raw component-package
+304 verbose url resolving [ 'https://registry.npmjs.org/', './component-package' ]
+305 verbose url resolved https://registry.npmjs.org/component-package
+306 info trying registry request attempt 1 at 17:35:20
+307 verbose etag "BK7SMFIMZZ17J5OKR34SA20JR"
+308 http GET https://registry.npmjs.org/component-package
+309 verbose url raw superagent-proxy
+310 verbose url resolving [ 'https://registry.npmjs.org/', './superagent-proxy' ]
+311 verbose url resolved https://registry.npmjs.org/superagent-proxy
+312 info trying registry request attempt 1 at 17:35:20
+313 verbose etag "1EWSNA2PM7VZ3R4EHGQOPPFS7"
+314 http GET https://registry.npmjs.org/superagent-proxy
+315 verbose url raw proxy-agent
+316 verbose url resolving [ 'https://registry.npmjs.org/', './proxy-agent' ]
+317 verbose url resolved https://registry.npmjs.org/proxy-agent
+318 info trying registry request attempt 1 at 17:35:20
+319 verbose etag "7QOQYAXTN9YUWSVZGMX1K9FX8"
+320 http GET https://registry.npmjs.org/proxy-agent
+321 verbose url raw component-installer
+322 verbose url resolving [ 'https://registry.npmjs.org/', './component-installer' ]
+323 verbose url resolved https://registry.npmjs.org/component-installer
+324 info trying registry request attempt 1 at 17:35:20
+325 verbose etag "2NJ8QPBVZNQRQT2F9XD349DUM"
+326 http GET https://registry.npmjs.org/component-installer
+327 verbose url raw batch
+328 verbose url resolving [ 'https://registry.npmjs.org/', './batch' ]
+329 verbose url resolved https://registry.npmjs.org/batch
+330 info trying registry request attempt 1 at 17:35:20
+331 verbose etag "8QMSSQCKOCL03GNZ6QPXA7QBM"
+332 http GET https://registry.npmjs.org/batch
+333 verbose url raw commander
+334 verbose url resolving [ 'https://registry.npmjs.org/', './commander' ]
+335 verbose url resolved https://registry.npmjs.org/commander
+336 info trying registry request attempt 1 at 17:35:20
+337 verbose etag "80TWCRDG30TEIOWOFWRI4Z1ZF"
+338 http GET https://registry.npmjs.org/commander
+339 verbose url raw rimraf
+340 verbose url resolving [ 'https://registry.npmjs.org/', './rimraf' ]
+341 verbose url resolved https://registry.npmjs.org/rimraf
+342 info trying registry request attempt 1 at 17:35:20
+343 verbose etag "3BZXUSY7GWEZRC32CAV03PQ3K"
+344 http GET https://registry.npmjs.org/rimraf
+345 http 304 https://registry.npmjs.org/mkdirp
+346 silly registry.get cb [ 304,
+346 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+346 silly registry.get     server: 'Apache',
+346 silly registry.get     via: '1.1 varnish',
+346 silly registry.get     'last-modified': 'Sat, 19 Jul 2014 00:35:20 GMT',
+346 silly registry.get     'cache-control': 'max-age=60',
+346 silly registry.get     etag: '"5FARIAAE0490H7WN5U9SWG9X0"',
+346 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+346 silly registry.get     'x-cache': 'HIT',
+346 silly registry.get     'x-cache-hits': '1',
+346 silly registry.get     'x-timer': 'S1405730120.770300,VS0,VE0',
+346 silly registry.get     vary: 'Accept',
+346 silly registry.get     'content-length': '0',
+346 silly registry.get     'keep-alive': 'timeout=10, max=50',
+346 silly registry.get     connection: 'Keep-Alive' } ]
+347 verbose etag mkdirp from cache
+348 silly addNameRange number 2 { name: 'mkdirp', range: '>=0.3.4-0 <0.4.0-0', hasData: true }
+349 silly addNameRange versions [ 'mkdirp',
+349 silly addNameRange   [ '0.0.1',
+349 silly addNameRange     '0.0.2',
+349 silly addNameRange     '0.0.3',
+349 silly addNameRange     '0.0.4',
+349 silly addNameRange     '0.0.5',
+349 silly addNameRange     '0.0.6',
+349 silly addNameRange     '0.0.7',
+349 silly addNameRange     '0.1.0',
+349 silly addNameRange     '0.2.0',
+349 silly addNameRange     '0.2.1',
+349 silly addNameRange     '0.2.2',
+349 silly addNameRange     '0.3.0',
+349 silly addNameRange     '0.3.1',
+349 silly addNameRange     '0.3.2',
+349 silly addNameRange     '0.3.3',
+349 silly addNameRange     '0.3.4',
+349 silly addNameRange     '0.3.5',
+349 silly addNameRange     '0.4.0',
+349 silly addNameRange     '0.4.1',
+349 silly addNameRange     '0.4.2',
+349 silly addNameRange     '0.5.0' ] ]
+350 verbose addNamed [ 'mkdirp', '0.3.5' ]
+351 verbose addNamed [ '0.3.5', '0.3.5' ]
+352 silly lockFile 67d2df2a-mkdirp-0-3-5 mkdirp@0.3.5
+353 verbose lock mkdirp@0.3.5 /Users/wmease/.npm/67d2df2a-mkdirp-0-3-5.lock
+354 http 200 https://registry.npmjs.org/string-to-js
+355 silly registry.get cb [ 200,
+355 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+355 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+355 silly registry.get     etag: '"2WFPSBIL5ALZ425YMHR1REPQA"',
+355 silly registry.get     'content-type': 'application/json',
+355 silly registry.get     'cache-control': 'max-age=60',
+355 silly registry.get     'content-length': '3066',
+355 silly registry.get     'accept-ranges': 'bytes',
+355 silly registry.get     via: '1.1 varnish',
+355 silly registry.get     age: '0',
+355 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+355 silly registry.get     'x-cache': 'MISS',
+355 silly registry.get     'x-cache-hits': '0',
+355 silly registry.get     'x-timer': 'S1405730120.772565,VS0,VE34',
+355 silly registry.get     vary: 'Accept',
+355 silly registry.get     'keep-alive': 'timeout=10, max=50',
+355 silly registry.get     connection: 'Keep-Alive' } ]
+356 silly lockFile 67d2df2a-mkdirp-0-3-5 mkdirp@0.3.5
+357 silly lockFile 67d2df2a-mkdirp-0-3-5 mkdirp@0.3.5
+358 silly lockFile f185e6bf-mkdirp-0-3-4 mkdirp@~0.3.4
+359 silly lockFile f185e6bf-mkdirp-0-3-4 mkdirp@~0.3.4
+360 silly lockFile 4c6bd93b-ing-to-js-string-to-js-0-0-1-tgz https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz
+361 verbose lock https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz /Users/wmease/.npm/4c6bd93b-ing-to-js-string-to-js-0-0-1-tgz.lock
+362 verbose addRemoteTarball [ 'https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz',
+362 verbose addRemoteTarball   'bf153c760636faa30769b804a0195552ba7ad80f' ]
+363 http 304 https://registry.npmjs.org/debug
+364 silly registry.get cb [ 304,
+364 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+364 silly registry.get     server: 'Apache',
+364 silly registry.get     via: '1.1 varnish',
+364 silly registry.get     'last-modified': 'Sat, 19 Jul 2014 00:35:20 GMT',
+364 silly registry.get     'cache-control': 'max-age=60',
+364 silly registry.get     etag: '"A99WHPT94RD1HIGY4BNMUSPWP"',
+364 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+364 silly registry.get     'x-cache': 'HIT',
+364 silly registry.get     'x-cache-hits': '1',
+364 silly registry.get     'x-timer': 'S1405730120.825421,VS0,VE0',
+364 silly registry.get     vary: 'Accept',
+364 silly registry.get     'content-length': '0',
+364 silly registry.get     'keep-alive': 'timeout=10, max=49',
+364 silly registry.get     connection: 'Keep-Alive' } ]
+365 verbose etag debug from cache
+366 info retry fetch attempt 1 at 17:35:20
+367 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz
+368 http GET https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz
+369 silly addNameRange number 2 { name: 'debug', range: '*', hasData: true }
+370 silly addNameRange versions [ 'debug',
+370 silly addNameRange   [ '0.0.1',
+370 silly addNameRange     '0.1.0',
+370 silly addNameRange     '0.2.0',
+370 silly addNameRange     '0.3.0',
+370 silly addNameRange     '0.4.0',
+370 silly addNameRange     '0.4.1',
+370 silly addNameRange     '0.5.0',
+370 silly addNameRange     '0.6.0',
+370 silly addNameRange     '0.7.0',
+370 silly addNameRange     '0.7.1',
+370 silly addNameRange     '0.7.2',
+370 silly addNameRange     '0.7.3',
+370 silly addNameRange     '0.7.4',
+370 silly addNameRange     '0.8.0',
+370 silly addNameRange     '0.8.1',
+370 silly addNameRange     '1.0.0',
+370 silly addNameRange     '1.0.1',
+370 silly addNameRange     '1.0.2',
+370 silly addNameRange     '1.0.3',
+370 silly addNameRange     '1.0.4' ] ]
+371 verbose addNamed [ 'debug', '1.0.4' ]
+372 verbose addNamed [ '1.0.4', '1.0.4' ]
+373 silly lockFile 4b7cd263-debug-1-0-4 debug@1.0.4
+374 verbose lock debug@1.0.4 /Users/wmease/.npm/4b7cd263-debug-1-0-4.lock
+375 http 200 https://registry.npmjs.org/archy
+376 silly registry.get cb [ 200,
+376 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+376 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+376 silly registry.get     etag: '"CLWAX1P7BQ61VJID95MZ1410H"',
+376 silly registry.get     'content-type': 'application/json',
+376 silly registry.get     'cache-control': 'max-age=60',
+376 silly registry.get     'content-length': '3508',
+376 silly registry.get     'accept-ranges': 'bytes',
+376 silly registry.get     via: '1.1 varnish',
+376 silly registry.get     age: '807',
+376 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+376 silly registry.get     'x-cache': 'HIT',
+376 silly registry.get     'x-cache-hits': '1',
+376 silly registry.get     'x-timer': 'S1405730120.774303,VS0,VE60',
+376 silly registry.get     vary: 'Accept',
+376 silly registry.get     'keep-alive': 'timeout=10, max=50',
+376 silly registry.get     connection: 'Keep-Alive' } ]
+377 silly lockFile 9669d216--npmjs-org-debug-debug-1-0-4-tgz https://registry.npmjs.org/debug/-/debug-1.0.4.tgz
+378 verbose lock https://registry.npmjs.org/debug/-/debug-1.0.4.tgz /Users/wmease/.npm/9669d216--npmjs-org-debug-debug-1-0-4-tgz.lock
+379 http 200 https://registry.npmjs.org/jog
+380 silly registry.get cb [ 200,
+380 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+380 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+380 silly registry.get     etag: '"ESGWXCQYLCQQQFTEPWB662ZHA"',
+380 silly registry.get     'content-type': 'application/json',
+380 silly registry.get     'cache-control': 'max-age=60',
+380 silly registry.get     'content-length': '16186',
+380 silly registry.get     'accept-ranges': 'bytes',
+380 silly registry.get     via: '1.1 varnish',
+380 silly registry.get     age: '0',
+380 silly registry.get     'x-served-by': 'cache-sjc3127-SJC',
+380 silly registry.get     'x-cache': 'MISS',
+380 silly registry.get     'x-cache-hits': '0',
+380 silly registry.get     'x-timer': 'S1405730120.771121,VS0,VE58',
+380 silly registry.get     vary: 'Accept',
+380 silly registry.get     'keep-alive': 'timeout=10, max=50',
+380 silly registry.get     connection: 'Keep-Alive' } ]
+381 verbose addRemoteTarball [ 'https://registry.npmjs.org/debug/-/debug-1.0.4.tgz',
+381 verbose addRemoteTarball   '5b9c256bd54b6ec02283176fa8a0ede6d154cbf8' ]
+382 info retry fetch attempt 1 at 17:35:20
+383 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120848-0.26997757237404585/tmp.tgz
+384 silly lockFile b56fcc29--npmjs-org-archy-archy-0-0-2-tgz https://registry.npmjs.org/archy/-/archy-0.0.2.tgz
+385 verbose lock https://registry.npmjs.org/archy/-/archy-0.0.2.tgz /Users/wmease/.npm/b56fcc29--npmjs-org-archy-archy-0-0-2-tgz.lock
+386 http GET https://registry.npmjs.org/debug/-/debug-1.0.4.tgz
+387 silly lockFile e1fcdbd6-stry-npmjs-org-jog-jog-0-4-0-tgz https://registry.npmjs.org/jog/-/jog-0.4.0.tgz
+388 verbose lock https://registry.npmjs.org/jog/-/jog-0.4.0.tgz /Users/wmease/.npm/e1fcdbd6-stry-npmjs-org-jog-jog-0-4-0-tgz.lock
+389 verbose addRemoteTarball [ 'https://registry.npmjs.org/archy/-/archy-0.0.2.tgz',
+389 verbose addRemoteTarball   '910f43bf66141fc335564597abc189df44b3d35e' ]
+390 info retry fetch attempt 1 at 17:35:20
+391 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120855-0.3766130139119923/tmp.tgz
+392 verbose addRemoteTarball [ 'https://registry.npmjs.org/jog/-/jog-0.4.0.tgz',
+392 verbose addRemoteTarball   '47993fb238b5f46afe8863e84a6833ec8fa485c0' ]
+393 http GET https://registry.npmjs.org/archy/-/archy-0.0.2.tgz
+394 info retry fetch attempt 1 at 17:35:20
+395 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120857-0.570621605264023/tmp.tgz
+396 http GET https://registry.npmjs.org/jog/-/jog-0.4.0.tgz
+397 http 200 https://registry.npmjs.org/netrc
+398 silly registry.get cb [ 200,
+398 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+398 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+398 silly registry.get     etag: '"DLNBRYSLXHDKJ8Q8HE2410CKC"',
+398 silly registry.get     'content-type': 'application/json',
+398 silly registry.get     'cache-control': 'max-age=60',
+398 silly registry.get     'content-length': '4401',
+398 silly registry.get     'accept-ranges': 'bytes',
+398 silly registry.get     via: '1.1 varnish',
+398 silly registry.get     age: '189',
+398 silly registry.get     'x-served-by': 'cache-sjc3126-SJC',
+398 silly registry.get     'x-cache': 'HIT',
+398 silly registry.get     'x-cache-hits': '1',
+398 silly registry.get     'x-timer': 'S1405730120.775752,VS0,VE82',
+398 silly registry.get     vary: 'Accept',
+398 silly registry.get     'keep-alive': 'timeout=10, max=50',
+398 silly registry.get     connection: 'Keep-Alive' } ]
+399 silly addNameRange number 2 { name: 'netrc', range: '>=0.1.3-0 <0.2.0-0', hasData: true }
+400 silly addNameRange versions [ 'netrc', [ '0.1.0', '0.1.1', '0.1.2', '0.1.3' ] ]
+401 verbose addNamed [ 'netrc', '0.1.3' ]
+402 verbose addNamed [ '0.1.3', '0.1.3' ]
+403 silly lockFile 326d50e8-netrc-0-1-3 netrc@0.1.3
+404 verbose lock netrc@0.1.3 /Users/wmease/.npm/326d50e8-netrc-0-1-3.lock
+405 silly lockFile 326d50e8-netrc-0-1-3 netrc@0.1.3
+406 silly lockFile 326d50e8-netrc-0-1-3 netrc@0.1.3
+407 silly lockFile 4e3bdcf8-netrc-0-1-3 netrc@~0.1.3
+408 silly lockFile 4e3bdcf8-netrc-0-1-3 netrc@~0.1.3
+409 http 200 https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz
+410 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz
+411 silly lockFile 4eae67d7-e-npm-string-to-js-0-0-1-package tar:///Users/wmease/.npm/string-to-js/0.0.1/package
+412 verbose lock tar:///Users/wmease/.npm/string-to-js/0.0.1/package /Users/wmease/.npm/4eae67d7-e-npm-string-to-js-0-0-1-package.lock
+413 silly lockFile 01e6aaa0-20830-0-3342480808496475-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz
+414 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz /Users/wmease/.npm/01e6aaa0-20830-0-3342480808496475-tmp-tgz.lock
+415 http 200 https://registry.npmjs.org/debug/-/debug-1.0.4.tgz
+416 http 200 https://registry.npmjs.org/archy/-/archy-0.0.2.tgz
+417 http 200 https://registry.npmjs.org/jog/-/jog-0.4.0.tgz
+418 http 200 https://registry.npmjs.org/win-fork
+419 silly registry.get cb [ 200,
+419 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+419 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+419 silly registry.get     etag: '"BW33QFRWBH8AN8IQEQED5JAL6"',
+419 silly registry.get     'content-type': 'application/json',
+419 silly registry.get     'cache-control': 'max-age=60',
+419 silly registry.get     'content-length': '9865',
+419 silly registry.get     'accept-ranges': 'bytes',
+419 silly registry.get     via: '1.1 varnish',
+419 silly registry.get     age: '189',
+419 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+419 silly registry.get     'x-cache': 'HIT',
+419 silly registry.get     'x-cache-hits': '1',
+419 silly registry.get     'x-timer': 'S1405730120.788453,VS0,VE138',
+419 silly registry.get     vary: 'Accept',
+419 silly registry.get     'keep-alive': 'timeout=10, max=49',
+419 silly registry.get     connection: 'Keep-Alive' } ]
+420 http 200 https://registry.npmjs.org/component-builder
+421 silly registry.get cb [ 200,
+421 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+421 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+421 silly registry.get     etag: '"27CDTXEQLFVU92FU1AA7DHT1A"',
+421 silly registry.get     'content-type': 'application/json',
+421 silly registry.get     'cache-control': 'max-age=60',
+421 silly registry.get     'content-length': '77792',
+421 silly registry.get     'accept-ranges': 'bytes',
+421 silly registry.get     via: '1.1 varnish',
+421 silly registry.get     age: '7034',
+421 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+421 silly registry.get     'x-cache': 'HIT',
+421 silly registry.get     'x-cache-hits': '1',
+421 silly registry.get     'x-timer': 'S1405730120.841819,VS0,VE32',
+421 silly registry.get     vary: 'Accept',
+421 silly registry.get     'keep-alive': 'timeout=10, max=48',
+421 silly registry.get     connection: 'Keep-Alive' } ]
+422 silly gunzTarPerm modes [ '755', '644' ]
+423 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120855-0.3766130139119923/tmp.tgz
+424 silly lockFile 56a2853c-s-wmease-npm-archy-0-0-2-package tar:///Users/wmease/.npm/archy/0.0.2/package
+425 verbose lock tar:///Users/wmease/.npm/archy/0.0.2/package /Users/wmease/.npm/56a2853c-s-wmease-npm-archy-0-0-2-package.lock
+426 silly lockFile 11ba7430-20855-0-3766130139119923-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120855-0.3766130139119923/tmp.tgz
+427 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120855-0.3766130139119923/tmp.tgz /Users/wmease/.npm/11ba7430-20855-0-3766130139119923-tmp-tgz.lock
+428 silly addNameRange number 2 { name: 'win-fork', range: '>=1.1.1-0 <1.2.0-0', hasData: true }
+429 silly addNameRange versions [ 'win-fork', [ '1.0.0', '1.0.1', '1.0.2', '1.1.0', '1.1.1' ] ]
+430 verbose addNamed [ 'win-fork', '1.1.1' ]
+431 verbose addNamed [ '1.1.1', '1.1.1' ]
+432 silly lockFile 2f911a78-win-fork-1-1-1 win-fork@1.1.1
+433 verbose lock win-fork@1.1.1 /Users/wmease/.npm/2f911a78-win-fork-1-1-1.lock
+434 silly lockFile d70d5620-der-component-builder-0-10-1-tgz https://registry.npmjs.org/component-builder/-/component-builder-0.10.1.tgz
+435 verbose lock https://registry.npmjs.org/component-builder/-/component-builder-0.10.1.tgz /Users/wmease/.npm/d70d5620-der-component-builder-0-10-1-tgz.lock
+436 silly gunzTarPerm extractEntry package.json
+437 verbose addRemoteTarball [ 'https://registry.npmjs.org/component-builder/-/component-builder-0.10.1.tgz',
+437 verbose addRemoteTarball   'd29c7ab70241a678e3f8dbea4d1759c68b6f8f9b' ]
+438 info retry fetch attempt 1 at 17:35:20
+439 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120965-0.9441719537135214/tmp.tgz
+440 http GET https://registry.npmjs.org/component-builder/-/component-builder-0.10.1.tgz
+441 silly gunzTarPerm extractEntry .npmignore
+442 silly gunzTarPerm extractEntry index.js
+443 silly gunzTarPerm modes [ '755', '644' ]
+444 silly gunzTarPerm extractEntry History.md
+445 silly gunzTarPerm extractEntry Makefile
+446 silly gunzTarPerm extractEntry index.js
+447 silly gunzTarPerm extractEntry package.json
+448 silly gunzTarPerm extractEntry README.markdown
+449 silly gunzTarPerm extractEntry Readme.md
+450 silly gunzTarPerm extractEntry .travis.yml
+451 silly gunzTarPerm extractEntry examples/beep.js
+452 silly gunzTarPerm extractEntry examples/multi_line.js
+453 silly gunzTarPerm extractEntry test/non_unicode.js
+454 silly gunzTarPerm extractEntry test/beep.js
+455 silly gunzTarPerm extractEntry test/multi_line.js
+456 http 200 https://registry.npmjs.org/proxy-agent
+457 silly registry.get cb [ 200,
+457 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+457 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+457 silly registry.get     etag: '"BFD4EGB4OLMEC196XE7TTNNUM"',
+457 silly registry.get     'content-type': 'application/json',
+457 silly registry.get     'cache-control': 'max-age=60',
+457 silly registry.get     'content-length': '23786',
+457 silly registry.get     'accept-ranges': 'bytes',
+457 silly registry.get     via: '1.1 varnish',
+457 silly registry.get     age: '11484',
+457 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+457 silly registry.get     'x-cache': 'HIT',
+457 silly registry.get     'x-cache-hits': '1',
+457 silly registry.get     'x-timer': 'S1405730120.955555,VS0,VE30',
+457 silly registry.get     vary: 'Accept',
+457 silly registry.get     'keep-alive': 'timeout=10, max=47',
+457 silly registry.get     connection: 'Keep-Alive' } ]
+458 http 200 https://registry.npmjs.org/open
+459 silly registry.get cb [ 200,
+459 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+459 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+459 silly registry.get     etag: '"D472O3TZGENWCX6VVC3Z6AGIZ"',
+459 silly registry.get     'content-type': 'application/json',
+459 silly registry.get     'cache-control': 'max-age=30',
+459 silly registry.get     'content-length': '6751',
+459 silly registry.get     'accept-ranges': 'bytes',
+459 silly registry.get     via: '1.1 varnish',
+459 silly registry.get     age: '214',
+459 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+459 silly registry.get     'x-cache': 'HIT',
+459 silly registry.get     'x-cache-hits': '1',
+459 silly registry.get     'x-timer': 'S1405730120.855937,VS0,VE137',
+459 silly registry.get     vary: 'Accept',
+459 silly registry.get     'keep-alive': 'timeout=10, max=49',
+459 silly registry.get     connection: 'Keep-Alive' } ]
+460 http 200 https://registry.npmjs.org/superagent
+461 silly registry.get cb [ 200,
+461 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:20 GMT',
+461 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+461 silly registry.get     etag: '"5J9CNBHGK4NOW4ZI7CXDEA7Z6"',
+461 silly registry.get     'content-type': 'application/json',
+461 silly registry.get     'cache-control': 'max-age=60',
+461 silly registry.get     'content-length': '69451',
+461 silly registry.get     'accept-ranges': 'bytes',
+461 silly registry.get     via: '1.1 varnish',
+461 silly registry.get     age: '2165',
+461 silly registry.get     'x-served-by': 'cache-sjc3127-SJC',
+461 silly registry.get     'x-cache': 'HIT',
+461 silly registry.get     'x-cache-hits': '1',
+461 silly registry.get     'x-timer': 'S1405730120.862679,VS0,VE83',
+461 silly registry.get     vary: 'Accept',
+461 silly registry.get     'keep-alive': 'timeout=10, max=49',
+461 silly registry.get     connection: 'Keep-Alive' } ]
+462 http 200 https://registry.npmjs.org/component-package
+463 silly registry.get cb [ 200,
+463 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+463 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+463 silly registry.get     etag: '"140ZBFMALXI9SE5SEJY4LA1TF"',
+463 silly registry.get     'content-type': 'application/json',
+463 silly registry.get     'cache-control': 'max-age=60',
+463 silly registry.get     'content-length': '6164',
+463 silly registry.get     'accept-ranges': 'bytes',
+463 silly registry.get     via: '1.1 varnish',
+463 silly registry.get     age: '189',
+463 silly registry.get     'x-served-by': 'cache-sjc3126-SJC',
+463 silly registry.get     'x-cache': 'HIT',
+463 silly registry.get     'x-cache-hits': '1',
+463 silly registry.get     'x-timer': 'S1405730120.875933,VS0,VE134',
+463 silly registry.get     vary: 'Accept',
+463 silly registry.get     'keep-alive': 'timeout=10, max=49',
+463 silly registry.get     connection: 'Keep-Alive' } ]
+464 http 304 https://registry.npmjs.org/batch
+465 silly registry.get cb [ 304,
+465 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+465 silly registry.get     server: 'Apache',
+465 silly registry.get     via: '1.1 varnish',
+465 silly registry.get     'last-modified': 'Sat, 19 Jul 2014 00:35:21 GMT',
+465 silly registry.get     'cache-control': 'max-age=60',
+465 silly registry.get     etag: '"8QMSSQCKOCL03GNZ6QPXA7QBM"',
+465 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+465 silly registry.get     'x-cache': 'HIT',
+465 silly registry.get     'x-cache-hits': '1',
+465 silly registry.get     'x-timer': 'S1405730121.013655,VS0,VE0',
+465 silly registry.get     vary: 'Accept',
+465 silly registry.get     'content-length': '0',
+465 silly registry.get     'keep-alive': 'timeout=10, max=48',
+465 silly registry.get     connection: 'Keep-Alive' } ]
+466 verbose etag batch from cache
+467 http 304 https://registry.npmjs.org/commander
+468 silly registry.get cb [ 304,
+468 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+468 silly registry.get     server: 'Apache',
+468 silly registry.get     via: '1.1 varnish',
+468 silly registry.get     'last-modified': 'Sat, 19 Jul 2014 00:35:21 GMT',
+468 silly registry.get     'cache-control': 'max-age=60',
+468 silly registry.get     etag: '"80TWCRDG30TEIOWOFWRI4Z1ZF"',
+468 silly registry.get     'x-served-by': 'cache-sjc3127-SJC',
+468 silly registry.get     'x-cache': 'HIT',
+468 silly registry.get     'x-cache-hits': '1',
+468 silly registry.get     'x-timer': 'S1405730121.016157,VS0,VE0',
+468 silly registry.get     vary: 'Accept',
+468 silly registry.get     'content-length': '0',
+468 silly registry.get     'keep-alive': 'timeout=10, max=48',
+468 silly registry.get     connection: 'Keep-Alive' } ]
+469 verbose etag commander from cache
+470 http 304 https://registry.npmjs.org/rimraf
+471 silly registry.get cb [ 304,
+471 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+471 silly registry.get     server: 'Apache',
+471 silly registry.get     via: '1.1 varnish',
+471 silly registry.get     'last-modified': 'Sat, 19 Jul 2014 00:35:21 GMT',
+471 silly registry.get     'cache-control': 'max-age=60',
+471 silly registry.get     etag: '"3BZXUSY7GWEZRC32CAV03PQ3K"',
+471 silly registry.get     'x-served-by': 'cache-sjc3126-SJC',
+471 silly registry.get     'x-cache': 'HIT',
+471 silly registry.get     'x-cache-hits': '1',
+471 silly registry.get     'x-timer': 'S1405730121.027191,VS0,VE0',
+471 silly registry.get     vary: 'Accept',
+471 silly registry.get     'content-length': '0',
+471 silly registry.get     'keep-alive': 'timeout=10, max=48',
+471 silly registry.get     connection: 'Keep-Alive' } ]
+472 verbose etag rimraf from cache
+473 silly lockFile 2f911a78-win-fork-1-1-1 win-fork@1.1.1
+474 silly lockFile 2f911a78-win-fork-1-1-1 win-fork@1.1.1
+475 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120857-0.570621605264023/tmp.tgz
+476 silly lockFile 84deb59a-ers-wmease-npm-jog-0-4-0-package tar:///Users/wmease/.npm/jog/0.4.0/package
+477 verbose lock tar:///Users/wmease/.npm/jog/0.4.0/package /Users/wmease/.npm/84deb59a-ers-wmease-npm-jog-0-4-0-package.lock
+478 silly lockFile 060d3bfd-120857-0-570621605264023-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120857-0.570621605264023/tmp.tgz
+479 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120857-0.570621605264023/tmp.tgz /Users/wmease/.npm/060d3bfd-120857-0-570621605264023-tmp-tgz.lock
+480 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120848-0.26997757237404585/tmp.tgz
+481 silly lockFile 5fdd49de-s-wmease-npm-debug-1-0-4-package tar:///Users/wmease/.npm/debug/1.0.4/package
+482 verbose lock tar:///Users/wmease/.npm/debug/1.0.4/package /Users/wmease/.npm/5fdd49de-s-wmease-npm-debug-1-0-4-package.lock
+483 silly lockFile 91861efe-0848-0-26997757237404585-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120848-0.26997757237404585/tmp.tgz
+484 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120848-0.26997757237404585/tmp.tgz /Users/wmease/.npm/91861efe-0848-0-26997757237404585-tmp-tgz.lock
+485 http 200 https://registry.npmjs.org/component-builder/-/component-builder-0.10.1.tgz
+486 silly lockFile e26f2367-win-fork-1-1-1 win-fork@~1.1.1
+487 silly lockFile e26f2367-win-fork-1-1-1 win-fork@~1.1.1
+488 silly gunzTarPerm modes [ '755', '644' ]
+489 silly addNameRange number 2 { name: 'proxy-agent',
+489 silly addNameRange   range: '>=1.1.0-0 <1.2.0-0',
+489 silly addNameRange   hasData: true }
+490 silly addNameRange versions [ 'proxy-agent', [ '0.0.1', '0.0.2', '1.0.0', '1.1.0' ] ]
+491 verbose addNamed [ 'proxy-agent', '1.1.0' ]
+492 verbose addNamed [ '1.1.0', '1.1.0' ]
+493 silly lockFile 9a4c97ee-proxy-agent-1-1-0 proxy-agent@1.1.0
+494 verbose lock proxy-agent@1.1.0 /Users/wmease/.npm/9a4c97ee-proxy-agent-1-1-0.lock
+495 silly lockFile d7948e36-ry-npmjs-org-open-open-0-0-4-tgz https://registry.npmjs.org/open/-/open-0.0.4.tgz
+496 verbose lock https://registry.npmjs.org/open/-/open-0.0.4.tgz /Users/wmease/.npm/d7948e36-ry-npmjs-org-open-open-0-0-4-tgz.lock
+497 silly addNameRange number 2 { name: 'superagent',
+497 silly addNameRange   range: '>=0.15.4-0 <0.16.0-0',
+497 silly addNameRange   hasData: true }
+498 silly addNameRange versions [ 'superagent',
+498 silly addNameRange   [ '0.1.1',
+498 silly addNameRange     '0.1.2',
+498 silly addNameRange     '0.1.3',
+498 silly addNameRange     '0.2.0',
+498 silly addNameRange     '0.3.0',
+498 silly addNameRange     '0.4.0',
+498 silly addNameRange     '0.4.1',
+498 silly addNameRange     '0.4.2',
+498 silly addNameRange     '0.4.3',
+498 silly addNameRange     '0.5.0',
+498 silly addNameRange     '0.5.1',
+498 silly addNameRange     '0.6.0',
+498 silly addNameRange     '0.7.0',
+498 silly addNameRange     '0.8.0',
+498 silly addNameRange     '0.8.1',
+498 silly addNameRange     '0.8.2',
+498 silly addNameRange     '0.9.0',
+498 silly addNameRange     '0.9.1',
+498 silly addNameRange     '0.9.2',
+498 silly addNameRange     '0.9.3',
+498 silly addNameRange     '0.9.4',
+498 silly addNameRange     '0.9.5',
+498 silly addNameRange     '0.9.6',
+498 silly addNameRange     '0.9.7',
+498 silly addNameRange     '0.9.8',
+498 silly addNameRange     '0.9.9',
+498 silly addNameRange     '0.9.10',
+498 silly addNameRange     '0.10.0',
+498 silly addNameRange     '0.11.0',
+498 silly addNameRange     '0.12.0',
+498 silly addNameRange     '0.12.1',
+498 silly addNameRange     '0.12.2',
+498 silly addNameRange     '0.12.3',
+498 silly addNameRange     '0.12.4',
+498 silly addNameRange     '0.13.0',
+498 silly addNameRange     '0.14.0',
+498 silly addNameRange     '0.14.1',
+498 silly addNameRange     '0.14.2',
+498 silly addNameRange     '0.14.3',
+498 silly addNameRange     '0.14.4',
+498 silly addNameRange     '0.14.5',
+498 silly addNameRange     '0.14.6',
+498 silly addNameRange     '0.14.7',
+498 silly addNameRange     '0.14.8',
+498 silly addNameRange     '0.14.9',
+498 silly addNameRange     '0.15.0',
+498 silly addNameRange     '0.15.1',
+498 silly addNameRange     '0.15.2',
+498 silly addNameRange     '0.15.3',
+498 silly addNameRange     '0.15.4',
+498 silly addNameRange     '0.15.5',
+498 silly addNameRange     '0.15.6',
+498 silly addNameRange     '0.15.7',
+498 silly addNameRange     '0.16.0',
+498 silly addNameRange     '0.17.0',
+498 silly addNameRange     '0.18.0',
+498 silly addNameRange     '0.18.1',
+498 silly addNameRange     '0.18.2' ] ]
+499 verbose addNamed [ 'superagent', '0.15.7' ]
+500 verbose addNamed [ '0.15.7', '0.15.7' ]
+501 silly lockFile 45a10515-superagent-0-15-7 superagent@0.15.7
+502 verbose lock superagent@0.15.7 /Users/wmease/.npm/45a10515-superagent-0-15-7.lock
+503 silly addNameRange number 2 { name: 'component-package',
+503 silly addNameRange   range: '>=0.0.4-0 <0.1.0-0',
+503 silly addNameRange   hasData: true }
+504 silly addNameRange versions [ 'component-package', [ '0.0.1', '0.0.2', '0.0.3', '0.0.4' ] ]
+505 verbose addNamed [ 'component-package', '0.0.4' ]
+506 verbose addNamed [ '0.0.4', '0.0.4' ]
+507 silly lockFile d579db57-component-package-0-0-4 component-package@0.0.4
+508 verbose lock component-package@0.0.4 /Users/wmease/.npm/d579db57-component-package-0-0-4.lock
+509 silly addNameRange number 2 { name: 'batch', range: '>=0.5.0-0 <0.6.0-0', hasData: true }
+510 silly addNameRange versions [ 'batch',
+510 silly addNameRange   [ '0.0.1',
+510 silly addNameRange     '0.0.2',
+510 silly addNameRange     '0.0.3',
+510 silly addNameRange     '0.1.0',
+510 silly addNameRange     '0.1.1',
+510 silly addNameRange     '0.2.0',
+510 silly addNameRange     '0.2.1',
+510 silly addNameRange     '0.3.0',
+510 silly addNameRange     '0.3.1',
+510 silly addNameRange     '0.3.2',
+510 silly addNameRange     '0.4.0',
+510 silly addNameRange     '0.5.0',
+510 silly addNameRange     '0.5.1' ] ]
+511 verbose addNamed [ 'batch', '0.5.1' ]
+512 verbose addNamed [ '0.5.1', '0.5.1' ]
+513 silly lockFile 27f38a14-batch-0-5-1 batch@0.5.1
+514 verbose lock batch@0.5.1 /Users/wmease/.npm/27f38a14-batch-0-5-1.lock
+515 silly addNameRange number 2 { name: 'rimraf', range: '>=2.2.6-0 <2.3.0-0', hasData: true }
+516 silly addNameRange versions [ 'rimraf',
+516 silly addNameRange   [ '1.0.0',
+516 silly addNameRange     '1.0.1',
+516 silly addNameRange     '1.0.2',
+516 silly addNameRange     '1.0.4',
+516 silly addNameRange     '1.0.5',
+516 silly addNameRange     '1.0.6',
+516 silly addNameRange     '1.0.7',
+516 silly addNameRange     '1.0.8',
+516 silly addNameRange     '1.0.9',
+516 silly addNameRange     '2.0.0',
+516 silly addNameRange     '2.0.1',
+516 silly addNameRange     '2.0.2',
+516 silly addNameRange     '2.0.3',
+516 silly addNameRange     '2.1.0',
+516 silly addNameRange     '2.1.1',
+516 silly addNameRange     '2.1.2',
+516 silly addNameRange     '2.1.3',
+516 silly addNameRange     '2.1.4',
+516 silly addNameRange     '2.2.0',
+516 silly addNameRange     '2.2.1',
+516 silly addNameRange     '2.2.2',
+516 silly addNameRange     '2.2.3',
+516 silly addNameRange     '2.2.4',
+516 silly addNameRange     '2.2.5',
+516 silly addNameRange     '2.2.6',
+516 silly addNameRange     '2.2.8' ] ]
+517 verbose addNamed [ 'rimraf', '2.2.8' ]
+518 verbose addNamed [ '2.2.8', '2.2.8' ]
+519 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+520 verbose lock rimraf@2.2.8 /Users/wmease/.npm/b87241a4-rimraf-2-2-8.lock
+521 http 200 https://registry.npmjs.org/superagent-proxy
+522 silly registry.get cb [ 200,
+522 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+522 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+522 silly registry.get     etag: '"6FVO16M3Y9R1UTUE6LRKHGFY7"',
+522 silly registry.get     'content-type': 'application/json',
+522 silly registry.get     'cache-control': 'max-age=60',
+522 silly registry.get     'content-length': '22146',
+522 silly registry.get     'accept-ranges': 'bytes',
+522 silly registry.get     via: '1.1 varnish',
+522 silly registry.get     age: '18194',
+522 silly registry.get     'x-served-by': 'cache-sjc3133-SJC',
+522 silly registry.get     'x-cache': 'HIT',
+522 silly registry.get     'x-cache-hits': '1',
+522 silly registry.get     'x-timer': 'S1405730120.945829,VS0,VE82',
+522 silly registry.get     vary: 'Accept',
+522 silly registry.get     'keep-alive': 'timeout=10, max=48',
+522 silly registry.get     connection: 'Keep-Alive' } ]
+523 verbose addRemoteTarball [ 'https://registry.npmjs.org/open/-/open-0.0.4.tgz',
+523 verbose addRemoteTarball   '5de46a0858b9f49f9f211aa8f26628550657f262' ]
+524 http 200 https://registry.npmjs.org/component-installer
+525 silly registry.get cb [ 200,
+525 silly registry.get   { date: 'Sat, 19 Jul 2014 00:35:21 GMT',
+525 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+525 silly registry.get     etag: '"1T8IUTYEWX4REWBG5L8Y89B9E"',
+525 silly registry.get     'content-type': 'application/json',
+525 silly registry.get     'cache-control': 'max-age=60',
+525 silly registry.get     'content-length': '11838',
+525 silly registry.get     'accept-ranges': 'bytes',
+525 silly registry.get     via: '1.1 varnish',
+525 silly registry.get     age: '189',
+525 silly registry.get     'x-served-by': 'cache-sjc3124-SJC',
+525 silly registry.get     'x-cache': 'HIT',
+525 silly registry.get     'x-cache-hits': '1',
+525 silly registry.get     'x-timer': 'S1405730121.004100,VS0,VE90',
+525 silly registry.get     vary: 'Accept',
+525 silly registry.get     'keep-alive': 'timeout=10, max=46',
+525 silly registry.get     connection: 'Keep-Alive' } ]
+526 silly lockFile 4eae67d7-e-npm-string-to-js-0-0-1-package tar:///Users/wmease/.npm/string-to-js/0.0.1/package
+527 silly lockFile 4eae67d7-e-npm-string-to-js-0-0-1-package tar:///Users/wmease/.npm/string-to-js/0.0.1/package
+528 info retry fetch attempt 1 at 17:35:21
+529 verbose fetch to= /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730121053-0.4258693449664861/tmp.tgz
+530 silly lockFile 01e6aaa0-20830-0-3342480808496475-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz
+531 silly lockFile 01e6aaa0-20830-0-3342480808496475-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120830-0.3342480808496475/tmp.tgz
+532 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120965-0.9441719537135214/tmp.tgz
+533 silly lockFile 2d06e704-component-builder-0-10-1-package tar:///Users/wmease/.npm/component-builder/0.10.1/package
+534 verbose lock tar:///Users/wmease/.npm/component-builder/0.10.1/package /Users/wmease/.npm/2d06e704-component-builder-0-10-1-package.lock
+535 silly lockFile 7af1b216-20965-0-9441719537135214-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120965-0.9441719537135214/tmp.tgz
+536 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730120965-0.9441719537135214/tmp.tgz /Users/wmease/.npm/7af1b216-20965-0-9441719537135214-tmp-tgz.lock
+537 http GET https://registry.npmjs.org/open/-/open-0.0.4.tgz
+538 silly gunzTarPerm extractEntry package.json
+539 silly lockFile c1db8845-commander-1-0-5 commander@1.0.5
+540 silly lockFile c1db8845-commander-1-0-5 commander@1.0.5
+541 silly addNameRange number 2 { name: 'superagent-proxy',
+541 silly addNameRange   range: '>=0.3.0-0 <0.4.0-0',
+541 silly addNameRange   hasData: true }
+542 silly addNameRange versions [ 'superagent-proxy',
+542 silly addNameRange   [ '0.0.1', '0.0.2', '0.1.0', '0.2.0', '0.3.0' ] ]
+543 verbose addNamed [ 'superagent-proxy', '0.3.0' ]
+544 verbose addNamed [ '0.3.0', '0.3.0' ]
+545 silly lockFile 8de7df81-superagent-proxy-0-3-0 superagent-proxy@0.3.0
+546 verbose lock superagent-proxy@0.3.0 /Users/wmease/.npm/8de7df81-superagent-proxy-0-3-0.lock
+547 http 200 https://registry.npmjs.org/open/-/open-0.0.4.tgz
+548 silly lockFile 45a10515-superagent-0-15-7 superagent@0.15.7
+549 silly lockFile 45a10515-superagent-0-15-7 superagent@0.15.7
+550 silly lockFile 4c6bd93b-ing-to-js-string-to-js-0-0-1-tgz https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz
+551 silly lockFile 4c6bd93b-ing-to-js-string-to-js-0-0-1-tgz https://registry.npmjs.org/string-to-js/-/string-to-js-0.0.1.tgz
+552 silly gunzTarPerm extractEntry .npmignore
+553 silly gunzTarPerm extractEntry node.js
+554 silly addNameRange number 2 { name: 'component-installer',
+554 silly addNameRange   range: '>=0.0.8-0 <0.1.0-0',
+554 silly addNameRange   hasData: true }
+555 silly addNameRange versions [ 'component-installer',
+555 silly addNameRange   [ '0.0.1',
+555 silly addNameRange     '0.0.2',
+555 silly addNameRange     '0.0.3',
+555 silly addNameRange     '0.0.4',
+555 silly addNameRange     '0.0.5',
+555 silly addNameRange     '0.0.6',
+555 silly addNameRange     '0.0.7',
+555 silly addNameRange     '0.0.8' ] ]
+556 verbose addNamed [ 'component-installer', '0.0.8' ]
+557 verbose addNamed [ '0.0.8', '0.0.8' ]
+558 silly lockFile c1ba0779-component-installer-0-0-8 component-installer@0.0.8
+559 verbose lock component-installer@0.0.8 /Users/wmease/.npm/c1ba0779-component-installer-0-0-8.lock
+560 silly lockFile 27f38a14-batch-0-5-1 batch@0.5.1
+561 silly lockFile 27f38a14-batch-0-5-1 batch@0.5.1
+562 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+563 silly lockFile b87241a4-rimraf-2-2-8 rimraf@2.2.8
+564 silly lockFile bd8a8c7f-superagent-0-15-4 superagent@~0.15.4
+565 silly lockFile bd8a8c7f-superagent-0-15-4 superagent@~0.15.4
+566 silly lockFile f0af9ee2-string-to-js-0-0-1 string-to-js@0.0.1
+567 silly lockFile f0af9ee2-string-to-js-0-0-1 string-to-js@0.0.1
+568 silly lockFile d579db57-component-package-0-0-4 component-package@0.0.4
+569 silly lockFile d579db57-component-package-0-0-4 component-package@0.0.4
+570 silly lockFile 9a4c97ee-proxy-agent-1-1-0 proxy-agent@1.1.0
+571 silly lockFile 9a4c97ee-proxy-agent-1-1-0 proxy-agent@1.1.0
+572 silly lockFile 4a096c92-batch-0-5-0 batch@~0.5.0
+573 silly lockFile 4a096c92-batch-0-5-0 batch@~0.5.0
+574 silly lockFile e79df6f6-rimraf-2-2-6 rimraf@~2.2.6
+575 silly lockFile e79df6f6-rimraf-2-2-6 rimraf@~2.2.6
+576 silly gunzTarPerm modes [ '755', '644' ]
+577 silly lockFile 19dc90a5-component-package-0-0-4 component-package@~0.0.4
+578 silly lockFile 19dc90a5-component-package-0-0-4 component-package@~0.0.4
+579 silly lockFile e0b30bb8-proxy-agent-1-1-0 proxy-agent@~1.1.0
+580 silly lockFile e0b30bb8-proxy-agent-1-1-0 proxy-agent@~1.1.0
+581 verbose about to build /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component
+582 info /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/component unbuild
+583 info preuninstall component@0.19.9
+584 info uninstall component@0.19.9
+585 verbose tar unpack /Users/wmease/tmp/npm-1354-DxSNFq3R/1405730121053-0.4258693449664861/tmp.tgz
+586 silly lockFile c4870984-rs-wmease-npm-open-0-0-4-package tar:///Users/wmease/.npm/open/0.0.4/package
+587 verbose lock tar:///Users/wmease/.npm/open/0.0.4/package /Users/wmease/.npm/c4870984-rs-wmease-npm-open-0-0-4-package.lock
+588 silly lockFile b6946cc7-21053-0-4258693449664861-tmp-tgz tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730121053-0.4258693449664861/tmp.tgz
+589 verbose lock tar:///Users/wmease/tmp/npm-1354-DxSNFq3R/1405730121053-0.4258693449664861/tmp.tgz /Users/wmease/.npm/b6946cc7-21053-0-4258693449664861-tmp-tgz.lock
+590 silly gunzTarPerm modes [ '755', '644' ]
+591 verbose true,/Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules,/Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules unbuild component@0.19.9
+592 verbose /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/node_modules/.bin,[object Object] binRoot
+593 silly lockFile 8de7df81-superagent-proxy-0-3-0 superagent-proxy@0.3.0
+594 silly lockFile 8de7df81-superagent-proxy-0-3-0 superagent-proxy@0.3.0
+595 silly gunzTarPerm extractEntry package.json
+596 silly lockFile c1ba0779-component-installer-0-0-8 component-installer@0.0.8
+597 silly lockFile c1ba0779-component-installer-0-0-8 component-installer@0.0.8
+598 info postuninstall component@0.19.9
+599 silly gunzTarPerm extractEntry debug.js
+600 silly gunzTarPerm extractEntry browser.js
+601 silly lockFile 612713a6-superagent-proxy-0-3-0 superagent-proxy@~0.3.0
+602 silly lockFile 612713a6-superagent-proxy-0-3-0 superagent-proxy@~0.3.0
+603 silly lockFile de4dda5d-component-installer-0-0-8 component-installer@~0.0.8
+604 silly lockFile de4dda5d-component-installer-0-0-8 component-installer@~0.0.8
+605 silly gunzTarPerm extractEntry package.json
+606 silly gunzTarPerm extractEntry .npmignore
+607 silly gunzTarPerm extractEntry index.js
+608 silly gunzTarPerm extractEntry .npmignore
+609 silly gunzTarPerm extractEntry index.js
+610 silly gunzTarPerm modes [ '755', '644' ]
+611 silly gunzTarPerm extractEntry Readme.md
+612 silly gunzTarPerm extractEntry component.json
+613 silly gunzTarPerm extractEntry Makefile
+614 silly gunzTarPerm extractEntry History.md
+615 silly gunzTarPerm extractEntry .jshintrc
+616 error Failed to parse json
+616 error Unexpected token g
+617 error File: /Users/wmease/.npm/rimraf/2.2.8/package/package.json
+618 error Failed to parse package.json data.
+618 error package.json must be actual JSON, not just JavaScript.
+618 error
+618 error This is not a bug in npm.
+618 error Tell the package author to fix their package.json file. JSON.parse
+619 error System Darwin 13.1.0
+620 error command "node" "/usr/local/bin/npm" "install" "component"
+621 error cwd /Users/wmease/Desktop/JellyVibes/MIDI/collab/MIDI/realcopy
+622 error node -v v0.10.28
+623 error npm -v 1.4.9
+624 error file /Users/wmease/.npm/rimraf/2.2.8/package/package.json
+625 error code EJSONPARSE
+626 verbose exit [ 1, true ]

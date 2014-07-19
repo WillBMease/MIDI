@@ -1,10 +1,26 @@
 var noteNode = [];
 
+
+var filter = []
+var delay = []
+
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
 }
 
 for (var i = 0 ; i < userLimit ; i++) {
+
+delay[i] = context.createDelay()
+delay[i].delayTime = 100
+
+filter[i] = context.createBiquadFilter();
+// Note: the Web Audio spec is moving from constants to strings.
+// filter.type = 'lowpass';
+filter[i].type = filter.LOWPASS;
+filter[i].frequency.value = 10000;
+// Connect the source to it, and the filter to the destination.
+
+	delay[i].connect(context.destination)
 	// cabinet[i].connect(overdrive[i].input)
 	// overdrive[i].connect(compressor[i].input)
 	// compressor[i].connect(tremolo[i].input)
@@ -63,28 +79,17 @@ function generateNotes(index, presetInstrument){
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
 
-<<<<<<< HEAD
 
 // if (noteNode[0] != 0){
 // 	for (var i = 0 ; i < presetInstrument.notes ; i++)
 // 		noteNode[i].disconnect()
 // }
 
-for (var i = 0 ; i < presetInstrument.notes ; i++)
-{
-
-	// noteNode[i] = context.createMediaElementSource(notes[i])
-
-	// noteNode[i].connect(cabinet[index].input)
-
-
-
-
-=======
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			noteNode[i] = context.createMediaElementSource(notes[i])
-			noteNode[i].connect(cabinet[index].input)
->>>>>>> 97aa935252b00e247192651093f075f5a2cd3f65
+			noteNode[i].connect(delay[index])
+			// noteNode[i].connect(cabinet[index].input)
+
 		}
 	}
 
