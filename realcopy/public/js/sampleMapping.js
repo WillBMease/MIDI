@@ -5,17 +5,17 @@ for (var i = 0 ; i < 120 ; i++) {
 }
 
 for (var i = 0 ; i < userLimit ; i++) {
-	cabinet[i].connect(overdrive[i].input)
-	overdrive[i].connect(compressor[i].input)
-	compressor[i].connect(tremolo[i].input)
-	tremolo[i].connect(chorus[i].input)
-	chorus[i].connect(phaser[i].input)
-	phaser[i].connect(convolver[i].input)
-	convolver[i].connect(delay[i].input)
-	delay[i].connect(filter[i].input)
-	filter[i].connect(wahwah[i].input)
+	// cabinet[i].connect(overdrive[i].input)
+	// overdrive[i].connect(compressor[i].input)
+	// compressor[i].connect(tremolo[i].input)
+	// tremolo[i].connect(chorus[i].input)
+	// chorus[i].connect(phaser[i].input)
+	// phaser[i].connect(convolver[i].input)
+	// convolver[i].connect(delay[i].input)
+	// delay[i].connect(filter[i].input)
+	// filter[i].connect(wahwah[i].input)
 
-	wahwah[i].connect(context.destination);
+	// wahwah[i].connect(context.destination);
 }
 
 function loadInstrument(index, instr)
@@ -71,9 +71,9 @@ function generateNotes(index, presetInstrument){
 for (var i = 0 ; i < presetInstrument.notes ; i++)
 {
 
-	noteNode[i] = context.createMediaElementSource(notes[i])
+	// noteNode[i] = context.createMediaElementSource(notes[i])
 
-	noteNode[i].connect(cabinet[index].input)
+	// noteNode[i].connect(cabinet[index].input)
 
 
 
