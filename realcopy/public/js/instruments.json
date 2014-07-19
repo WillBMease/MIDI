@@ -118,6 +118,13 @@
 		"octaveNum" : 8,
 		"notes" : 96,
 		"path" : "sounds/old_strings"
+	} ,
+
+	"metronome" : {
+		"name" : "metronome",
+		"octaveNum" : 0,
+		"notes" : 12,
+		"path" : "sounds/metronome"
 	}
 
 }

@@ -19,7 +19,23 @@ else if (metroActive) {
 }
 
 function playMetronome() {
-		triggerSample(0, metroMsg)
+		// triggerSample(0, metroMsg)
+		var notes = [];
+
+
+	var noteWrap = $('.audioBin' + 4 + ' li');
+
+	notes = noteWrap.find('audio');
+
+	console.log(noteWrap)
+
+	for (var i = 1 ; i < 12 ; i++)
+		console.log(notes[i])
+
+		notes[3].pause();
+		notes[3].currentTime = 0
+		notes[3].volume = 0.1
+		notes[3].play(0)
 }
 
 function startMetronome() {

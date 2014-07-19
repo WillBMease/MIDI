@@ -45,6 +45,9 @@ function loadInstrument(index, instr)
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
 
+if (presetInstrument.name == "metronome")
+	index = 4
+
 	var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var target = $('.audioBin' + index + ' li');
 	sampleActive = true;
@@ -52,8 +55,20 @@ function generateNotes(index, presetInstrument){
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
+	if (presetInstrument.name == "metronome") {
+		for(var i = 1 ; i < 13 ; i++) {
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+			octave = 1;
+		}
+	}
+
 	/////////for bass guitar////////////////////	
-	if(presetInstrument.name == "bass"){
+	else if(presetInstrument.name == "bass"){
 		for(var i = 27; i <presetInstrument.notes + 27 +1; i++){
 			target.append(instrument);
 			console.log(i);
