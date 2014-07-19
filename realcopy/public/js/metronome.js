@@ -29,9 +29,6 @@ function playMetronome() {
 
 	console.log(noteWrap)
 
-	for (var i = 1 ; i < 12 ; i++)
-		console.log(notes[i])
-
 		notes[3].pause();
 		notes[3].currentTime = 0
 		notes[3].volume = 0.1
