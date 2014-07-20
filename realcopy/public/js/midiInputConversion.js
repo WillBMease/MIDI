@@ -185,6 +185,8 @@ function masterConversion(midiInput){
 		}
 	}
 
+	//else if (midiInput[2])
+
 	else if (midiInput[2] == 89)
 	{	
 		output = 200 ;
