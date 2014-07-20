@@ -125,6 +125,13 @@
 		"octaveNum" : 0,
 		"notes" : 12,
 		"path" : "sounds/metronome"
+	} ,
+
+	"numb" : {
+		"name" : "numb",
+		"octaveNum" : 0,
+		"notes" : 5,
+		"path" : "sounds/numb"
 	}
 
 }

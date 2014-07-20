@@ -21,6 +21,7 @@ for (var i = 0 ; i < userLimit ; i++) {
 // // Connect the source to it, and the filter to the destination.
 
 // 	delay[i].connect(context.destination)
+
 	// cabinet[i].connect(overdrive[i].input)
 	// overdrive[i].connect(compressor[i].input)
 	// compressor[i].connect(tremolo[i].input)
@@ -30,6 +31,16 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// convolver[i].connect(delay[i].input)
 	// delay[i].connect(filter[i].input)
 	// filter[i].connect(wahwah[i].input)
+
+	// 	cabinet[i].connect(context.destination)
+	// overdrive[i].connect(context.destination)
+	// compressor[i].connect(context.destination)
+	// tremolo[i].connect(context.destination)
+	chorus[i].connect(context.destination)
+	// phaser[i].connect(context.destination)
+	// convolver[i].connect(context.destination)
+	// delay[i].connect(context.destination)
+	// filter[i].connect(context.destination)
 
 	// wahwah[i].connect(context.destination);
 }
