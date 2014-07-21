@@ -2,7 +2,22 @@ var setController = false
 var setVolumeParameter = false 
 var controllerArray = []
 
-function assignControllers(){
+// function assignControllers(){
+// 	if (!log){
+// 		log = document.getElementById("log");
+// 	}
+// 	if(midi == null){
+// 		log.innerText = ('No midi device found!!');
+// 		console.log('No midi device found!!')
+// 	}
+// 	else{
+// 		log.innerText = ('Please move your desired controller')
+// 		setController = true;
+// 		console.log('setcontroller has been set to: ' + setController)
+// 	}
+// }
+
+function assignControllers(parameter){
 	if (!log){
 		log = document.getElementById("log");
 	}
@@ -11,11 +26,18 @@ function assignControllers(){
 		console.log('No midi device found!!')
 	}
 	else{
-		log.innerText = ('Please move your desired controller')
+		log.innerText = ('Please move your desired controller for: ' + parameter)
 		setController = true;
+		switch(parameter){
+			case 'volume' : log.innerText = "Setting Volume as controller parameter"
+			setVolumeParameter = true;
+			break;
+		}
+		
 		console.log('setcontroller has been set to: ' + setController)
 	}
 }
+
 
 function setControls(midiInput){
 	log.innerText = ('Midimsg 2 : ' + midiInput[2])
@@ -42,6 +64,11 @@ function setControls(midiInput){
 	controllerArray[controllerArray.length - 1].ID = midiInput[3]
 	controllerArray[controllerArray.length - 1].controllerNum = controllerArray.length - 1;
 	controllerArray[controllerArray.length - 1].velocity = midiInput[4]
+	if(setVolumeParameter){
+		controllerArray[controllerArray.length - 1].parameter = 'volume'
+		setVolumeParameter = false
+	}
+	//controllerArray[controllerArray.length - 1].parameter = mappedParameter
 	console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
 
 	for(var i = 0;i<controllerArray.length;i++){
@@ -53,37 +80,6 @@ function setControls(midiInput){
 	console.log('Number of controllers: ' + controllerArray.length)	
 	setController = false;
 }
-
-
-function assignVolume(midiInput){
-	console.log('assignVolume has been called')
-	if(controllerArray.length < 1){
-		log.innerText = ('No registered Controllers!')
-		return
-	}
-	for(var i = 0;i<controllerArray.length;i++){
-		if(midiInput[2] == controllerArray[i].type && midiInput[3] == controllerArray[i].ID){
-			controllerArray[i].parameter = 'volume'
-			controllerArray[i].velocity = midiInput[4]
-			setVolumeParameter = false
-			return;
-		}
-	}
-}
-
-function noteVolume(midiInput){
-	var volumeOutput = 0.5;
-	console.log('called noteVolume')
-	for(var i = 0;i<controllerArray.length;i++){
-		console.log(controllerArray[i].parameter)
-		if(controllerArray[i].parameter == 'volume'){
-			volumeOutput = controllerArray[i].velocity
-		}
-	}
-	return volumeOutput;
-}
-
-
 
 function assignControllerParameters(){
 	if (!log){
@@ -100,44 +96,42 @@ function assignControllerParameters(){
 	}
 }
 
+// function assignVolume(midiInput){
+// 	console.log('assignVolume has been called')
+// 	if(controllerArray.length < 1){
+// 		log.innerText = ('No registered Controllers!')
+// 		setVolumeParameter = false
+// 		return
+// 	}
+// 	for(var i = 0;i<controllerArray.length;i++){
+// 		if(midiInput[2] == controllerArray[i].type && midiInput[3] == controllerArray[i].ID){
+// 			controllerArray[i].parameter = 'volume'
+// 			controllerArray[i].velocity = midiInput[4]
+// 			setVolumeParameter = false
+// 			return;
+// 		}
+// 	}
+// }
+
+function noteVolume(midiInput){
+	var volumeOutput = 0.5;
+	// console.log('called noteVolume')	
+	for(var i = 0;i<controllerArray.length;i++){
+		// console.log(controllerArray[i].parameter)
+		if(controllerArray[i].parameter == 'volume'){
+			volumeOutput = ConversionScale(controllerArray[i],0,1)
+			console.log(volumeOutput)
+		}
+	}
+	return volumeOutput;
+}
+
+
+
+
 function ConversionScale(controller, min, max){
 	var y = (((max-min)*controller.velocity)/127) + min
 	console.log(y)
 	return y;
 }
 
-// function ConversionScale1(controller){
-// 	var y = controller.velocity/127
-// 	console.log(y)
-// 	return y;
-// }
-
-// function ConversionScale10(controller){
-// 	var y = (10*controller.velocity)/127
-// 	console.log(y)
-// 	return y;
-// }
-
-// function ConversionScale100(controller){
-// 	var y = (100*controller.velocity)/127
-// 	console.log(y)
-// 	return y;
-// }
-
-// function ConversionScale1k(controller){
-// 	var y = (1000*controller.velocity)/127
-// 	console.log(y)
-// 	return y;
-// }
-
-// function ConversionScale10k(controller){
-// 	var y = (10000*controller.velocity)/127
-// 	console.log(y)
-// 	return y;
-// }
-
-// function ConversionScale20k(controller){
-// 	var y = (20000*controller.velocity)/127
-// 	console.log(y)
-// 	return y;
-// }

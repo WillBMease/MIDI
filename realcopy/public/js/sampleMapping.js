@@ -156,14 +156,14 @@ function triggerMidiDevice(index, midiData){
 		setControls(midiData);
 		
 	}
-	else if(setVolumeParameter){
-		assignVolume(midiData)
-	}
+	// else if(setVolumeParameter){
+	// 	assignVolume(midiData)
+	// }
 	else{
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
-				controllerArray[i].velocity = midiData[4]/127          
-				ConversionScale(controllerArray[i],0,1)
+				controllerArray[i].velocity = midiData[4]        
+				// ConversionScale(controllerArray[i],0,1)
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
