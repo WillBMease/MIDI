@@ -40,8 +40,8 @@ function assignControllers(parameter){
 
 
 function setControls(midiInput){
-	log.innerText = ('Midimsg 2 : ' + midiInput[2])
-	log.innerText = ('Midimsg 3 : ' + midiInput[3])
+	// log.innerText = ('Midimsg 2 : ' + midiInput[2])
+	// log.innerText = ('Midimsg 3 : ' + midiInput[3])
 	if(controllerArray.length !=0){
 		for(var i = 0;i<controllerArray.length;i++){
 			if(controllerArray[i].ID == midiInput[3] && controllerArray[i].type == midiInput[2]){
@@ -64,37 +64,50 @@ function setControls(midiInput){
 	controllerArray[controllerArray.length - 1].ID = midiInput[3]
 	controllerArray[controllerArray.length - 1].controllerNum = controllerArray.length - 1;
 	controllerArray[controllerArray.length - 1].velocity = midiInput[4]
+
+
+
+	///////////Setting Parameters//////////////////////
 	if(setVolumeParameter){
+		for(var i = 0;i<controllerArray.length;i++){
+			if(controllerArray[i].parameter == 'volume'){
+				controllerArray[i].parameter = "";
+				console.log('overriding the volume parameter for controller: ' + controllerArray[i].controllerNum)
+				log.innerText = ('overriding the volume parameter for controller: ' + controllerArray[i].controllerNum)
+			}
+		}
 		controllerArray[controllerArray.length - 1].parameter = 'volume'
 		setVolumeParameter = false
 	}
+
+
 	//controllerArray[controllerArray.length - 1].parameter = mappedParameter
 	console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
 
-	for(var i = 0;i<controllerArray.length;i++){
-		console.log('the controller id for ' + i + ' is: ' + controllerArray[i].ID + ' The type is for ' + i + ' is: ' + controllerArray[i].type)
-		console.log('the controllerNum is: ' + controllerArray[i].controllerNum)
-	}
+	// for(var i = 0;i<controllerArray.length;i++){
+	// 	console.log('the controller id for ' + i + ' is: ' + controllerArray[i].ID + ' The type is for ' + i + ' is: ' + controllerArray[i].type)
+	// 	console.log('the controllerNum is: ' + controllerArray[i].controllerNum)
+	// }
 
 	log.innerText = ('the controller number is: ' + controllerArray[controllerArray.length - 1].controllerNum)
 	console.log('Number of controllers: ' + controllerArray.length)	
 	setController = false;
 }
 
-function assignControllerParameters(){
-	if (!log){
-		log = document.getElementById("log");
-	}
-	if(midi == null){
-		log.innerText = ('No midi device found!!');
-		console.log('No midi device found!!')
-	}
-	else{
-		log.innerText = ('Please move your desired controller for Volume')
-		setVolumeParameter = true;
-		console.log('setVolumeParameter has been set to: ' + setVolumeParameter )
-	}
-}
+// function assignControllerParameters(){
+// 	if (!log){
+// 		log = document.getElementById("log");
+// 	}
+// 	if(midi == null){
+// 		log.innerText = ('No midi device found!!');
+// 		console.log('No midi device found!!')
+// 	}
+// 	else{
+// 		log.innerText = ('Please move your desired controller for Volume')
+// 		setVolumeParameter = true;
+// 		console.log('setVolumeParameter has been set to: ' + setVolumeParameter )
+// 	}
+// }
 
 // function assignVolume(midiInput){
 // 	console.log('assignVolume has been called')
