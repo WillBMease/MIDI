@@ -10,6 +10,10 @@ function dataProcess(index, c){
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
+if (data[1] = null){
+  console.log('received')
+}
+
       if (data[1] == '0' && data[2] == '0') {
 
         console.log('I received the ping: ' + data[2]);
