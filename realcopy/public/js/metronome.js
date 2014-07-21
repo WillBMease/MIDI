@@ -3,12 +3,14 @@ var refreshMetronome
 var metroMsg = []
 metroMsg[1] = '6' ;
 metroMsg[2] = 100 ;
+var setDrum 
+var beatCt = 0
 
 function metronome() {
 
 if (!metroActive) {
 	metroActive = true
-refreshMetronome = setInterval(playMetronome, 1000);
+refreshMetronome = setInterval(playDrums, 350);
 }
 
 else if (metroActive) {
@@ -16,6 +18,32 @@ else if (metroActive) {
 	clearInterval(refreshMetronome)
 }
 
+}
+
+function playDrums() {
+			// triggerSample(0, metroMsg)
+		var notes = [];
+
+
+	var noteWrap = $('.audioBin' + 4 + ' li');
+
+	notes = noteWrap.find('audio');
+
+	console.log(noteWrap)
+
+	if (beatCt % 4 == 0)
+		setDrum = 5
+	else if (beatCt % 2 == 0)
+		setDrum = 10
+	else
+		setDrum = 3
+
+		notes[setDrum].pause();
+		notes[setDrum].currentTime = 0
+		notes[setDrum].volume = 0.1
+		notes[setDrum].play(0)
+
+		beatCt++
 }
 
 function playMetronome() {
