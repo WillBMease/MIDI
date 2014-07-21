@@ -1,10 +1,27 @@
 var noteNode = [];
 
+
+var filter = []
+var delay = []
+
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
 }
 
 for (var i = 0 ; i < userLimit ; i++) {
+
+// delay[i] = context.createDelay()
+// delay[i].delayTime = 100
+
+// filter[i] = context.createBiquadFilter();
+// // Note: the Web Audio spec is moving from constants to strings.
+// // filter.type = 'lowpass';
+// filter[i].type = filter.LOWPASS;
+// filter[i].frequency.value = 10000;
+// // Connect the source to it, and the filter to the destination.
+
+// 	delay[i].connect(context.destination)
+
 	// cabinet[i].connect(overdrive[i].input)
 	// overdrive[i].connect(compressor[i].input)
 	// compressor[i].connect(tremolo[i].input)
@@ -14,6 +31,16 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// convolver[i].connect(delay[i].input)
 	// delay[i].connect(filter[i].input)
 	// filter[i].connect(wahwah[i].input)
+
+	// 	cabinet[i].connect(context.destination)
+	// overdrive[i].connect(context.destination)
+	// compressor[i].connect(context.destination)
+	// tremolo[i].connect(context.destination)
+	chorus[i].connect(context.destination)
+	// phaser[i].connect(context.destination)
+	// convolver[i].connect(context.destination)
+	// delay[i].connect(context.destination)
+	// filter[i].connect(context.destination)
 
 	// wahwah[i].connect(context.destination);
 }
@@ -29,6 +56,9 @@ function loadInstrument(index, instr)
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
 
+if (presetInstrument.name == "metronome")
+	index = 4
+
 	var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var target = $('.audioBin' + index + ' li');
 	sampleActive = true;
@@ -36,8 +66,20 @@ function generateNotes(index, presetInstrument){
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
+	if (presetInstrument.name == "metronome") {
+		for(var i = 1 ; i < 13 ; i++) {
+			target.append(instrument);
+			console.log(i);
+			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
+			var newInstrument = target.find("audio:last-child");
+			newInstrument.attr("src", instrumentPath);
+			newInstrument.attr("id", i);
+			octave = 1;
+		}
+	}
+
 	/////////for bass guitar////////////////////	
-	if(presetInstrument.name == "bass"){
+	else if(presetInstrument.name == "bass"){
 		for(var i = 27; i <presetInstrument.notes + 27 +1; i++){
 			target.append(instrument);
 			console.log(i);
@@ -69,6 +111,7 @@ function generateNotes(index, presetInstrument){
 // 		noteNode[i].disconnect()
 // }
 
+<<<<<<< HEAD
 	for (var i = 0 ; i < presetInstrument.notes ; i++)
 	{
 
@@ -78,6 +121,12 @@ function generateNotes(index, presetInstrument){
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			noteNode[i] = context.createMediaElementSource(notes[i])
 			noteNode[i].connect(cabinet[index].input)
+=======
+		for (var i = 0 ; i < presetInstrument.notes ; i++){
+			// noteNode[i] = context.createMediaElementSource(notes[i])
+			// noteNode[i].connect(delay[index])
+			// //noteNode[i].connect(cabinet[index].input)
+>>>>>>> 9dfe8ebf20e5e29da5bd5509135d721e099486e3
 
 		}
 	}

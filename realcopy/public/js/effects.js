@@ -12,18 +12,18 @@ var compressor = []
 var effectMsg = []
 effectMsg[1] = 8
 
-// for (var i = 0 ; i < userLimit ; i++) {
-// 	chorus[i] = 0
-// 	delay[i] = 0
-// 	overdrive[i] = 0
-// 	phaser[i] = 0
-// 	cabinet[i] = 0
-// 	wahwah[i] = 0
-// 	tremolo[i] = 0
-// 	filter[i] = 0
-// 	convolver[i] = 0
-// 	compressor[i] = 0
-// }
+for (var i = 0 ; i < userLimit ; i++) {
+	chorus[i] = 0
+	delay[i] = 0
+	overdrive[i] = 0
+	phaser[i] = 0
+	cabinet[i] = 0
+	wahwah[i] = 0
+	tremolo[i] = 0
+	filter[i] = 0
+	convolver[i] = 0
+	compressor[i] = 0
+}
 
 
 for (var i = 0 ; i < userLimit ; i++) {
