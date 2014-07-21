@@ -63,28 +63,22 @@ function generateNotes(index, presetInstrument){
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
 
-<<<<<<< HEAD
 
 // if (noteNode[0] != 0){
 // 	for (var i = 0 ; i < presetInstrument.notes ; i++)
 // 		noteNode[i].disconnect()
 // }
 
-for (var i = 0 ; i < presetInstrument.notes ; i++)
-{
+	for (var i = 0 ; i < presetInstrument.notes ; i++)
+	{
 
 	// noteNode[i] = context.createMediaElementSource(notes[i])
 
 	// noteNode[i].connect(cabinet[index].input)
-
-
-
-
-=======
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			noteNode[i] = context.createMediaElementSource(notes[i])
 			noteNode[i].connect(cabinet[index].input)
->>>>>>> 97aa935252b00e247192651093f075f5a2cd3f65
+
 		}
 	}
 
@@ -109,13 +103,7 @@ function triggerSample(index, key) {
 		notes[mappedKey].volume = 0.1
 		notes[mappedKey].play(0)
 	}
-	// else{
-	// notes[mappedKey].pause();
-	// notes[mappedKey].currentTime = 0
-	// notes[mappedKey].volume = 0.1
-	// notes[mappedKey].play(0)
-	// //noteNode[mappedKey].start(0)
-	// }
+
 }
 
 function triggerMidiDevice(index, midiData){
