@@ -111,10 +111,22 @@ if (presetInstrument.name == "metronome")
 // 		noteNode[i].disconnect()
 // }
 
+<<<<<<< HEAD
+	for (var i = 0 ; i < presetInstrument.notes ; i++)
+	{
+
+	// noteNode[i] = context.createMediaElementSource(notes[i])
+
+	// noteNode[i].connect(cabinet[index].input)
+		for (var i = 0 ; i < presetInstrument.notes ; i++){
+			noteNode[i] = context.createMediaElementSource(notes[i])
+			noteNode[i].connect(cabinet[index].input)
+=======
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			// noteNode[i] = context.createMediaElementSource(notes[i])
 			// noteNode[i].connect(delay[index])
 			// //noteNode[i].connect(cabinet[index].input)
+>>>>>>> 9dfe8ebf20e5e29da5bd5509135d721e099486e3
 
 		}
 	}
@@ -140,13 +152,7 @@ function triggerSample(index, key) {
 		notes[mappedKey].volume = 0.1
 		notes[mappedKey].play(0)
 	}
-	// else{
-	// notes[mappedKey].pause();
-	// notes[mappedKey].currentTime = 0
-	// notes[mappedKey].volume = 0.1
-	// notes[mappedKey].play(0)
-	// //noteNode[mappedKey].start(0)
-	// }
+
 }
 
 function triggerMidiDevice(index, midiData){
