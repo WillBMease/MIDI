@@ -103,10 +103,10 @@
 			  addEvent(plugin(),'passBufferToScript',
 			      function getBufferFromPlugin(bufferAsString,bufferSize){
 				      // PROCESS BUFFER HERE
-				      //console.log(bufferAsString)
+				      console.log(bufferAsString)
 					  document.sjForm.dropout.value = bufferAsString;
 				      console.log('buffer: ', bufferAsString);
-				      console.log('dropout: ', bufferSize);
+				      console.log('size: ', bufferSize);
 				  });
 		}
 		
