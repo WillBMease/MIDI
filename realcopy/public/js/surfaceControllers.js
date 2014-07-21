@@ -1,4 +1,5 @@
 var setController = false
+var setVolumeParameter = false 
 var controllerArray = []
 
 function assignControllers(){
@@ -31,7 +32,8 @@ function setControls(midiInput){
 			id:"",
 			type:"",
 			velocity:"",
-			controllerNum:""
+			controllerNum:"",
+			parameter:""
 	};
 
 	controllerArray.push(controller);
@@ -52,8 +54,50 @@ function setControls(midiInput){
 	setController = false;
 }
 
+
 function assignVolume(midiInput){
-	//adfa
+	console.log('assignVolume has been called')
+	if(controllerArray.length < 1){
+		log.innerText = ('No registered Controllers!')
+		return
+	}
+	for(var i = 0;i<controllerArray.length;i++){
+		if(midiInput[2] == controllerArray[i].type && midiInput[3] == controllerArray[i].ID){
+			controllerArray[i].parameter = 'volume'
+			controllerArray[i].velocity = midiInput[4]
+			setVolumeParameter = false
+			return;
+		}
+	}
+}
+
+function noteVolume(midiInput){
+	var volumeOutput = 0.5;
+	console.log('called noteVolume')
+	for(var i = 0;i<controllerArray.length;i++){
+		console.log(controllerArray[i].parameter)
+		if(controllerArray[i].parameter == 'volume'){
+			volumeOutput = controllerArray[i].velocity
+		}
+	}
+	return volumeOutput;
+}
+
+
+
+function assignControllerParameters(){
+	if (!log){
+		log = document.getElementById("log");
+	}
+	if(midi == null){
+		log.innerText = ('No midi device found!!');
+		console.log('No midi device found!!')
+	}
+	else{
+		log.innerText = ('Please move your desired controller for Volume')
+		setVolumeParameter = true;
+		console.log('setVolumeParameter has been set to: ' + setVolumeParameter )
+	}
 }
 
 function ConversionScale(controller, min, max){

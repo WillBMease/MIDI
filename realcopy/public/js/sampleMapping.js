@@ -20,7 +20,7 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// filter[i].frequency.value = 10000;
 	// // Connect the source to it, and the filter to the destination.
 
-	// 	delay[i].connect(context.destination)
+	// 	filter[i].connect(context.destination)
 
 		// cabinet[i].connect(overdrive[i].input)
 		// overdrive[i].connect(compressor[i].input)
@@ -156,10 +156,13 @@ function triggerMidiDevice(index, midiData){
 		setControls(midiData);
 		
 	}
+	else if(setVolumeParameter){
+		assignVolume(midiData)
+	}
 	else{
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
-				controllerArray[i].velocity = midiData[4]
+				controllerArray[i].velocity = midiData[4]/127          
 				ConversionScale(controllerArray[i],0,1)
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
@@ -180,9 +183,10 @@ function triggerMidiDevice(index, midiData){
 				// 	velocity = velocity - 27
 			// notes[key].volume = (velocity * .01)
 
-			console.log('volume: ' + midiData[4]/127)
+			console.log('volume: ' + noteVolume(midiData))
 			//filter.frequency = controllerArray[0].velocity
-			notes[key].volume = midiData[4]/127
+			notes[key].volume = noteVolume(midiData)
+			//notes[key].volume = midiData[4]/127
 			notes[key].play(0);
 		}
 	}
