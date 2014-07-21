@@ -52,7 +52,9 @@ function setControls(midiInput){
 	setController = false;
 }
 
-
+function assignVolume(midiInput){
+	//adfa
+}
 
 function ConversionScale(controller, min, max){
 	var y = (((max-min)*controller.velocity)/127) + min
