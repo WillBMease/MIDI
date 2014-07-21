@@ -1,5 +1,6 @@
 var setController = false
 var setVolumeParameter = false 
+var setFilterParameter = false
 var controllerArray = []
 
 // function assignControllers(){
@@ -32,6 +33,10 @@ function assignControllers(parameter){
 			case 'volume' : log.innerText = "Setting Volume as controller parameter"
 			setVolumeParameter = true;
 			break;
+
+			case 'filter' : log.innerText = "Setting filter as controller parameter"
+			setFilterParameter = true;
+			break;
 		}
 		
 		console.log('setcontroller has been set to: ' + setController)
@@ -46,6 +51,18 @@ function setControls(midiInput){
 		for(var i = 0;i<controllerArray.length;i++){
 			if(controllerArray[i].ID == midiInput[3] && controllerArray[i].type == midiInput[2]){
 				log.innerText = ('You have already registered this controller!!!')
+				if(setController){
+					setController = false
+				}
+
+				if(setVolumeParameter){
+					setVolumeParameter = false
+				}
+
+				if(setFilterParameter){
+					setFilterParameter = false
+				}
+
 				return
 			}
 		}
@@ -65,21 +82,30 @@ function setControls(midiInput){
 	controllerArray[controllerArray.length - 1].controllerNum = controllerArray.length - 1;
 	controllerArray[controllerArray.length - 1].velocity = midiInput[4]
 
-
-
 	///////////Setting Parameters//////////////////////
 	if(setVolumeParameter){
 		for(var i = 0;i<controllerArray.length;i++){
 			if(controllerArray[i].parameter == 'volume'){
 				controllerArray[i].parameter = "";
-				console.log('overriding the volume parameter for controller: ' + controllerArray[i].controllerNum)
-				log.innerText = ('overriding the volume parameter for controller: ' + controllerArray[i].controllerNum)
+				console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+				log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
 			}
 		}
 		controllerArray[controllerArray.length - 1].parameter = 'volume'
 		setVolumeParameter = false
 	}
 
+	if(setFilterParameter){
+		for(var i = 0;i<controllerArray.length;i++){
+			if(controllerArray[i].parameter = 'filter'){
+				controllerArray[i].parameter = "";
+				console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+				log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+			}
+		}
+		controllerArray[controllerArray.length - 1].parameter = 'filter'
+		setFilterParameter = false
+	}
 
 	//controllerArray[controllerArray.length - 1].parameter = mappedParameter
 	console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
@@ -129,18 +155,31 @@ function setControls(midiInput){
 function noteVolume(midiInput){
 	var volumeOutput = 0.5;
 	// console.log('called noteVolume')	
-	for(var i = 0;i<controllerArray.length;i++){
-		// console.log(controllerArray[i].parameter)
-		if(controllerArray[i].parameter == 'volume'){
-			volumeOutput = ConversionScale(controllerArray[i],0,1)
-			console.log(volumeOutput)
+	if(midiInput[4] != 0){
+		for(var i = 0;i<controllerArray.length;i++){
+			// console.log(controllerArray[i].parameter)
+			if(controllerArray[i].parameter == 'volume'){
+				volumeOutput = ConversionScale(controllerArray[i],0,1)
+				console.log(volumeOutput)
+			}
 		}
+	}
+	else{
+		volumeOutput =0;
 	}
 	return volumeOutput;
 }
 
-
-
+function setFilterFreq(midiInput){
+	var frequency = 500
+	for(var i = 0;i<controllerArray.length;i++){
+		if(controllerArray[i].parameter == 'filter'){
+			frequency = ConversionScale(controllerArray[i],0,20000)
+			console.log(frequency)
+			return frequency;
+		}
+	}
+}
 
 function ConversionScale(controller, min, max){
 	var y = (((max-min)*controller.velocity)/127) + min

@@ -164,21 +164,21 @@ function handleMIDIMessage( ev ) {
 
 		console.log('msg 2 is: ' + midiMsg[2])
 		console.log('msg 3 is: ' + midiMsg[3])
+		console.log('msg 4 is: ' + midiMsg[4])
 		// console.log('velocity is: ' + midiMsg[4])
 		//console.log(ev.data[2])
 
-console.log('detect midi')
+	console.log('detect midi')
 
-	triggerMidiDevice(0, midiMsg)
+		triggerMidiDevice(0, midiMsg)
 
-for (var i = 1 ; i < userLimit ; i++ )
-{
-		if (user[i] != 0)
-		{
-		user[i].send(midiMsg);
-		console.log("send to " + user[i].peer);
+	for (var i = 1 ; i < userLimit ; i++ )
+	{
+		if (user[i] != 0){
+			user[i].send(midiMsg);
+			console.log("send to " + user[i].peer);
+		}
 	}
-}
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	// if (output)

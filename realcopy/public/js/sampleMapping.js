@@ -13,14 +13,14 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// delay[i] = context.createDelay()
 	// delay[i].delayTime = 100
 
-	// filter[i] = context.createBiquadFilter();
-	// // Note: the Web Audio spec is moving from constants to strings.
-	// // filter.type = 'lowpass';
-	// filter[i].type = filter.LOWPASS;
-	// filter[i].frequency.value = 10000;
-	// // Connect the source to it, and the filter to the destination.
+	filter[i] = context.createBiquadFilter();
+	// Note: the Web Audio spec is moving from constants to strings.
+	// filter.type = 'lowpass';
+	filter[i].type = filter.LOWPASS;
+	filter[i].frequency.value = 1000;
+	// Connect the source to it, and the filter to the destination.
 
-	// 	filter[i].connect(context.destination)
+		filter[i].connect(context.destination)
 
 		// cabinet[i].connect(overdrive[i].input)
 		// overdrive[i].connect(compressor[i].input)
@@ -164,6 +164,7 @@ function triggerMidiDevice(index, midiData){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
 				controllerArray[i].velocity = midiData[4]        
 				// ConversionScale(controllerArray[i],0,1)
+				//filter[0].frequency.value = setFilterFreq(midiData);
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
@@ -173,21 +174,20 @@ function triggerMidiDevice(index, midiData){
 		notes = noteWrap.find('audio');
 		key = masterConversion(midiData);
 
-		if(key != 200){
+		if(key != 200 && midiData[4] != 0){
 			//console.log('midi key input is: ' + key);
-			notes[key].currentTime = 0;
 			// var velocity = parseInt(midiData[4]) ;
 			// var velocity = midiData[4] ;
 			// console.log('velocity is: ' + velocity)
 			// if (velocity > 100)
 				// 	velocity = velocity - 27
 			// notes[key].volume = (velocity * .01)
-
+			notes[key].currentTime = 0;
 			console.log('volume: ' + noteVolume(midiData))
 			//filter.frequency = controllerArray[0].velocity
 			notes[key].volume = noteVolume(midiData)
-			//notes[key].volume = midiData[4]/127
 			notes[key].play(0);
+			//notes[key].volume = midiData[4]/127
 		}
 	}
 }
