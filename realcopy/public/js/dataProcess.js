@@ -66,6 +66,7 @@ if (data[1] = null){
 
      else if (data[1] == 6) {           // metronome changes
       metronome()
+      console.log('received metro start')
      }
 
      else if (data[1] == 7) {           // octave changes
