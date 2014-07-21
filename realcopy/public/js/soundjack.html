@@ -103,8 +103,14 @@
 			  addEvent(plugin(),'passBufferToScript',
 			      function getBufferFromPlugin(bufferAsString,bufferSize){
 				      // PROCESS BUFFER HERE
+<<<<<<< HEAD
 				      //console.log(bufferAsString)
 					  document.sjForm.dropout.value = bufferAsString;
+=======
+					  document.sjForm.dropout.value = bufferAsString;
+				      console.log('buffer: ' + bufferAsString)
+				      console.log('dropout: ' + document.sjForm.dropout.value)
+>>>>>>> 89feb45209f60dc33074e8bd31cf08b030443b6b
 				  });
 		}
 		
