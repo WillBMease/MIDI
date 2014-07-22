@@ -132,6 +132,20 @@
 		"octaveNum" : 0,
 		"notes" : 5,
 		"path" : "sounds/numb"
+	} ,
+
+	"brass_hits" : {
+		"name" : "brass_hits",
+		"octaveNum" : 7,
+		"notes" : 84,
+		"path" : "sounds/brass_hits"
+	} , 
+		
+	"gospel_organ" : {
+		"name" : "gospel_organ",
+		"octaveNum" : 7,
+		"notes" : 84,
+		"path" : "sounds/gospel_organ"
 	}
 
 }
