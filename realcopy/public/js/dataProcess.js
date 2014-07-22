@@ -7,7 +7,7 @@ function dataProcess(index, c){
 
           // Receive the incoming message and play it calling midi function
               $('#messages').append('<br>Now chatting with ' + user[index].peer);
-              generateNotes(index, 'gPiano')
+              generateNotes(index, firstInst)
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 

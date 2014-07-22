@@ -3,8 +3,9 @@ var noteNode = [];
 
 var filter = []
 var delay = []
+var firstInst = 'gPiano'
 
-generateNotes(0, 'gPiano')
+generateNotes(0, firstInst)
 
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
