@@ -5,12 +5,13 @@ metroMsg[1] = '6' ;
 metroMsg[2] = 100 ;
 var setDrum 
 var beatCt = 0
+var bpm = 350
 
 function metronome() {
 
 if (!metroActive) {
 	metroActive = true
-refreshMetronome = setInterval(playDrums, 800);
+refreshMetronome = setInterval(playDrums, bpm);
 }
 
 else if (metroActive) {
@@ -71,4 +72,13 @@ function startMetronome() {
 		}
 	}
 		metronome()
+}
+
+function toggleBPM() {
+	if (bpm == 350)
+		bpm += 100
+	else if (bpm == 450)
+		bpm += 100
+	else if (bpm == 550)
+		bpm = 350
 }
