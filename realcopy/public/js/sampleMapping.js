@@ -5,8 +5,6 @@ var filter = []
 var delay = []
 var firstInst = 'gPiano'
 
-generateNotes(0, firstInst)
-
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
 }
@@ -194,3 +192,5 @@ function triggerMidiDevice(index, midiData){
 		}
 	}
 }
+
+generateNotes(0, firstInst)
