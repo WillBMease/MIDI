@@ -164,9 +164,9 @@ function handleMIDIMessage( ev ) {
 		// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
 		// log.innerText += 'velocity is: ' + midiMsg[4]
 
-		console.log('msg 2 is: ' + midiMsg[2])
-		console.log('msg 3 is: ' + midiMsg[3])
-		console.log('msg 4 is: ' + midiMsg[4])
+		// console.log('msg 2 is: ' + midiMsg[2])
+		// console.log('msg 3 is: ' + midiMsg[3])
+		// console.log('msg 4 is: ' + midiMsg[4])
 		// console.log('velocity is: ' + midiMsg[4])
 		//console.log(ev.data[2])
 

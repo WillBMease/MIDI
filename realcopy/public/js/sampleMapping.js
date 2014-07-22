@@ -51,12 +51,10 @@ for (var i = 0 ; i < userLimit ; i++) {
 		 wahwah[i].connect(context.destination);
 }
 
-function loadInstrument(index, instr)
-{
+function loadInstrument(index, instr){
 	$.getJSON("js/instruments.json", function(json){
         generateNotes(index, json[instr])
 	});
-
 }
 
 function generateNotes(index, presetInstrument){
@@ -86,7 +84,7 @@ function generateNotes(index, presetInstrument){
 
 	/////////for bass guitar////////////////////	
 	else if(presetInstrument.name == "bass"){
-		for(var i = 27; i <= presetInstrument.notes + 27 +1; i++){
+		for(var i = 27; i <= presetInstrument.notes + 27; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -110,6 +108,7 @@ function generateNotes(index, presetInstrument){
 		var notes = [];
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
+<<<<<<< HEAD
 
 
 if (noteNode[0] != 0){
@@ -131,6 +130,17 @@ if (noteNode[0] != 0){
 			// //noteNode[i].connect(cabinet[index].input)
 
 		}
+=======
+		// for (var i = 0 ; i < presetInstrument.notes ; i++)
+		// {
+		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
+		// 	// noteNode[i].connect(cabinet[index].input)
+		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
+		// 	// noteNode[i].connect(delay[index])
+		// 	// //noteNode[i].connect(cabinet[index].input)
+
+		// }
+>>>>>>> 58a4e7be837b87a1af9994206083bc000b60cdbf
 	}
 
 
