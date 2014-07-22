@@ -65,6 +65,7 @@ function dataProcess(index, c){
      }
 
      else if (data[1] == 6) {           // metronome changes
+      bpm = data[2]
       metronome()
       console.log('received metro start')
      }

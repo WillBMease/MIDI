@@ -7,6 +7,8 @@ var setDrum
 var beatCt = 0
 var bpm = 350
 
+//metroMsg[]
+
 function metronome() {
 
 if (!metroActive) {
@@ -81,4 +83,10 @@ function toggleBPM() {
 		bpm += 100
 	else if (bpm == 550)
 		bpm = 350
+
+	metroMsg[2] = bpm
+
+	clearInterval(refreshMetronome)
+	metroActive = false
+	startMetronome()
 }
