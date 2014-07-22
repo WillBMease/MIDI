@@ -78,9 +78,9 @@ function startMetronome() {
 		metronome()
 }
 
-function incomingMetro() {
+// function incomingMetro() {
 
-}
+// }
 
 function toggleBPM() {
 	if (bpm == 350)

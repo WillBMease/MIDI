@@ -66,7 +66,7 @@ function dataProcess(index, c){
 
      else if (data[1] == 6) {           // metronome changes
 
-            //bpm = data[3]
+            bpm = data[3]
 
       if (data[2] == 0)
         metronome()
