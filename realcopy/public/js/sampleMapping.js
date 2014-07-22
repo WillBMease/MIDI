@@ -1,32 +1,13 @@
 var noteNode = [];
 
-
-
-var firstInst = 'gPiano'
-// var meter
-
-loadInstrument(0, firstInst)
-
-	// meter = createAudioMeter(context.destination);
-
 for (var i = 0 ; i < 120 ; i++) {
-	noteNode[i] = 0
+	noteNode[i] = null
 }
 
+var firstInst = 'gPiano'
+
+
 for (var i = 0 ; i < userLimit ; i++) {
-
-
-	// delay[i] = context.createDelay()
-	// delay[i].delayTime = 100
-
-	// filter[i] = context.createBiquadFilter();
-	// // Note: the Web Audio spec is moving from constants to strings.
-	// // filter.type = 'lowpass';
-	// filter[i].type = filter.LOWPASS;
-	// filter[i].frequency.value = 1000;
-	// // Connect the source to it, and the filter to the destination.
-
-	// 	filter[i].connect(context.destination)
 
 		cabinet[i].connect(overdrive[i].input)
 		overdrive[i].connect(compressor[i].input)
@@ -38,18 +19,11 @@ for (var i = 0 ; i < userLimit ; i++) {
 		delay[i].connect(filter[i].input)
 		filter[i].connect(wahwah[i].input)
 
-		// 	cabinet[i].connect(context.destination)
-		// overdrive[i].connect(context.destination)
-		// compressor[i].connect(context.destination)
-		// tremolo[i].connect(context.destination)
-		//chorus[i].connect(context.destination)
-		// phaser[i].connect(context.destination)
-		// convolver[i].connect(context.destination)
-		// delay[i].connect(context.destination)
-		// filter[i].connect(context.destination)
-
-		 wahwah[i].connect(context.destination);
+		wahwah[i].connect(context.destination);
 }
+
+// Initialize your own instrument on startup
+loadInstrument(0, firstInst)
 
 function loadInstrument(index, instr){
 	$.getJSON("js/instruments.json", function(json){
@@ -111,40 +85,23 @@ function generateNotes(index, presetInstrument){
 
 
 
-if (noteNode[0] != 0){
-	for (var i = 0 ; i < presetInstrument.notes ; i++)
-		noteNode[i].disconnect()
+
+	for (var i = 0 ; i < presetInstrument.notes ; i++) {
+		if (noteNode[i] != null)
+			noteNode[i].disconnect()
 }
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++)
 		{
 
-	// noteNode[i] = context.createMediaStreamSource(notes[i]);
-
- //    // Create a new volume meter and connect it.
-	// noteNode[i].connect(meter);
 			 noteNode[i] = context.createMediaElementSource(notes[i])
 			 noteNode[i].connect(cabinet[index].input)
-			// noteNode[i] = context.createMediaElementSource(notes[i])
-			// noteNode[i].connect(delay[index])
-			// //noteNode[i].connect(cabinet[index].input)
 
-		}
+		} // end for loop
 
-		// for (var i = 0 ; i < presetInstrument.notes ; i++)
-		// {
-		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
-		// 	// noteNode[i].connect(cabinet[index].input)
-		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
-		// 	// noteNode[i].connect(delay[index])
-		// 	// //noteNode[i].connect(cabinet[index].input)
+	} // end else
 
-		// }
-
-	}
-
-
-}
+} // end function
 
 
 function triggerSample(index, key) {
