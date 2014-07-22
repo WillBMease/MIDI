@@ -6,7 +6,8 @@ var beatCt = 0
 var bpm = 350
 
 metroMsg[1] = '6' ;
-metroMsg[2] = bpm ;
+metroMsg[2] = 0
+metroMsg[3] = bpm ;
 
 //metroMsg[]
 
@@ -77,6 +78,10 @@ function startMetronome() {
 		metronome()
 }
 
+function incomingMetro() {
+
+}
+
 function toggleBPM() {
 	if (bpm == 350)
 		bpm += 100
@@ -85,7 +90,8 @@ function toggleBPM() {
 	else if (bpm == 550)
 		bpm = 350
 
-	metroMsg[2] = bpm
+	metroMsg[2] = 1
+	metroMsg[3] = bpm
 
 	clearInterval(refreshMetronome)
 	metroActive = false
