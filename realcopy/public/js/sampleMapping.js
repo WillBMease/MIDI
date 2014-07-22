@@ -13,14 +13,14 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// delay[i] = context.createDelay()
 	// delay[i].delayTime = 100
 
-	filter[i] = context.createBiquadFilter();
-	// Note: the Web Audio spec is moving from constants to strings.
-	// filter.type = 'lowpass';
-	filter[i].type = filter.LOWPASS;
-	filter[i].frequency.value = 1000;
-	// Connect the source to it, and the filter to the destination.
+	// filter[i] = context.createBiquadFilter();
+	// // Note: the Web Audio spec is moving from constants to strings.
+	// // filter.type = 'lowpass';
+	// filter[i].type = filter.LOWPASS;
+	// filter[i].frequency.value = 1000;
+	// // Connect the source to it, and the filter to the destination.
 
-		filter[i].connect(context.destination)
+	// 	filter[i].connect(context.destination)
 
 		// cabinet[i].connect(overdrive[i].input)
 		// overdrive[i].connect(compressor[i].input)
