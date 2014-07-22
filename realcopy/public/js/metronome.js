@@ -1,11 +1,12 @@
 var metroActive = false
 var refreshMetronome
 var metroMsg = []
-metroMsg[1] = '6' ;
-metroMsg[2] = 100 ;
 var setDrum 
 var beatCt = 0
 var bpm = 350
+
+metroMsg[1] = '6' ;
+metroMsg[2] = bpm ;
 
 //metroMsg[]
 
