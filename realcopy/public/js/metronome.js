@@ -10,7 +10,7 @@ function metronome() {
 
 if (!metroActive) {
 	metroActive = true
-refreshMetronome = setInterval(playDrums, 350);
+refreshMetronome = setInterval(playDrums, 800);
 }
 
 else if (metroActive) {
