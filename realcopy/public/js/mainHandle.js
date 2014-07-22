@@ -36,7 +36,11 @@ midiMsg[2] = null ;
 midiMsg[3] = null ;
 midiMsg[4] = null ;
 
-var octave = 1;
+var octave = []
+
+for (var i = 0 ; i < userLimit ; i++)
+octave[i] = 1;
+
 var globalOctave;
 
 //variable used to 
