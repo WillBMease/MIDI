@@ -165,7 +165,7 @@ function noteVolume(midiInput){
 		}
 	}
 	else{
-		volumeOutput =0;
+		volumeOutput = 0;
 	}
 	return volumeOutput;
 }

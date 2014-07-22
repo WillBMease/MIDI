@@ -81,7 +81,7 @@ function generateNotes(index, presetInstrument){
 
 	/////////for bass guitar////////////////////	
 	else if(presetInstrument.name == "bass"){
-		for(var i = 27; i <= presetInstrument.notes + 27 +1; i++){
+		for(var i = 27; i <= presetInstrument.notes + 27; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
