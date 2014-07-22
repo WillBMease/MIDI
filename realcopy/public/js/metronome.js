@@ -65,8 +65,10 @@ function playMetronome() {
 
 function startMetronome() {
 	for (var i = 1 ; i < userLimit ; i++) {
-		if (user[i] != 0)
+		if (user[i] != 0) {
 			user[i].send(metroMsg)
+			console.log('sent metro start to ' + user[i].peer)
+		}
 	}
 		metronome()
 }
