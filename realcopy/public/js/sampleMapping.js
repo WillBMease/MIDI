@@ -130,7 +130,7 @@ if (noteNode[0] != 0){
 			// //noteNode[i].connect(cabinet[index].input)
 
 		}
-=======
+
 		// for (var i = 0 ; i < presetInstrument.notes ; i++)
 		// {
 		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
@@ -140,7 +140,7 @@ if (noteNode[0] != 0){
 		// 	// //noteNode[i].connect(cabinet[index].input)
 
 		// }
->>>>>>> 58a4e7be837b87a1af9994206083bc000b60cdbf
+
 	}
 
 
