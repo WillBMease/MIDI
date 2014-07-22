@@ -45,12 +45,10 @@ for (var i = 0 ; i < userLimit ; i++) {
 		// wahwah[i].connect(context.destination);
 }
 
-function loadInstrument(index, instr)
-{
+function loadInstrument(index, instr){
 	$.getJSON("js/instruments.json", function(json){
         generateNotes(index, json[instr])
 	});
-
 }
 
 function generateNotes(index, presetInstrument){
@@ -104,22 +102,15 @@ function generateNotes(index, presetInstrument){
 		var notes = [];
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
+		// for (var i = 0 ; i < presetInstrument.notes ; i++)
+		// {
+		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
+		// 	// noteNode[i].connect(cabinet[index].input)
+		// 	// noteNode[i] = context.createMediaElementSource(notes[i])
+		// 	// noteNode[i].connect(delay[index])
+		// 	// //noteNode[i].connect(cabinet[index].input)
 
-
-// if (noteNode[0] != 0){
-// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
-// 		noteNode[i].disconnect()
-// }
-
-		for (var i = 0 ; i < presetInstrument.notes ; i++)
-		{
-			// noteNode[i] = context.createMediaElementSource(notes[i])
-			// noteNode[i].connect(cabinet[index].input)
-			// noteNode[i] = context.createMediaElementSource(notes[i])
-			// noteNode[i].connect(delay[index])
-			// //noteNode[i].connect(cabinet[index].input)
-
-		}
+		// }
 	}
 
 

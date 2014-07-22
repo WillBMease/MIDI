@@ -160,7 +160,7 @@ function noteVolume(midiInput){
 			// console.log(controllerArray[i].parameter)
 			if(controllerArray[i].parameter == 'volume'){
 				volumeOutput = ConversionScale(controllerArray[i],0,1)
-				console.log(volumeOutput)
+				//console.log(volumeOutput)
 			}
 		}
 	}
@@ -183,7 +183,7 @@ function setFilterFreq(midiInput){
 
 function ConversionScale(controller, min, max){
 	var y = (((max-min)*controller.velocity)/127) + min
-	console.log(y)
+	//console.log(y)
 	return y;
 }
 
