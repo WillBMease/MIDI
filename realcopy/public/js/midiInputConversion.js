@@ -1,3 +1,16 @@
+
+function transpose(index, noteInput){
+	// 1
+	if(noteInput == 49 && octave[index] < globalOctave){
+		octave[index] = octave[index] + 1;
+	}
+	// ~
+	if(noteInput == 96 && octave[index] != 0){
+		octave[index] = octave[index] - 1;
+	}
+}
+
+
 function keyboardMap(keyInput){
 	var output;
 
@@ -134,6 +147,9 @@ function keyboardMap(keyInput){
 	else if (keyInput == 93) {
 		output = 32;
 	}
+
+	else
+		output = 200
 
 	return output;
 }
