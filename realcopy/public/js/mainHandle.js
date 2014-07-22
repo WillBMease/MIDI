@@ -103,19 +103,19 @@ var octaveMsg = []
 octaveMsg[1] = 7
 
 
-function transpose(noteInput){
+function transpose(index, noteInput){
 	var octaveTrue = false
 
 	// 1
-	if(noteInput == 49 && octave < globalOctave){
-		octave = octave + 1;
-		octaveMsg[2] = octave
+	if(noteInput == 49 && octave[index] < globalOctave){
+		octave[index] = octave[index] + 1;
+		octaveMsg[2] = octave[index]
 		octaveTrue = true
 	}
 	// ~
-	if(noteInput == 96 && octave != 0){
-		octave = octave - 1;
-		octaveMsg[2] = octave
+	if(noteInput == 96 && octave[index] != 0){
+		octave[index] = octave[index] - 1;
+		octaveMsg[2] = octave[index]
 		octaveTrue = true
 	}
 
