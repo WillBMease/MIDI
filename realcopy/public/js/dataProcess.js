@@ -77,7 +77,7 @@ function dataProcess(index, c){
      }
 
      else if (data[1] == 7) {           // octave changes
-      octave = data[2]
+      octave[index] = data[2]
      }
 
      else if (data[1] == 8) {           // effect changes
