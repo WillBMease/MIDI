@@ -9,11 +9,11 @@
   <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 		 <script src="js/WebMIDIAPI.js"></script>
-		 <!-- <script src="js/tuna.js"></script> -->
+		 <script src="js/tuna.js"></script>
 		 <script src="js/webrtc.js"></script>
 		 <script src="js/mainHandle.js"></script>
 		 <script src="js/dataProcess.js"></script>
-		 <!-- <script src="js/effects.js"></script> -->
+		 <script src="js/effects.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
@@ -24,11 +24,14 @@
 		 <script src="js/midiInputConversion.js"></script>
 		 <script src="js/surfaceControllers.js"></script>
 		 <script src="js/controllerConversion.js"></script>
+		 <!-- <script src="js/volumeMeter.js" /> -->
+		 <!-- <script src="js/mainVis.js" /> -->
 
 
 	</head>
 
 	<body>
+
 
 <a class = "inavibe">
 inavibe</a>
@@ -135,8 +138,8 @@ inavibe</a>
 		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 
 
-  Your PeerJS id is : <span id="pid"></span><br><br>
-  Connect to peer: <input type="text" id="rid" placeholder="Someone else's id" style="align: center">
+  Your ID is : <span id="pid"></span><br><br>
+  Connect to musician: <input type="text" id="rid" placeholder="Other musician's id" style="align: center">
                    <input type="button" value="Connect" id="connect" style="align: center"><br><br>
   
   
@@ -157,6 +160,9 @@ inavibe</a>
   <div id="videos"></div>
 
 
+
+<!-- 
+			<canvas id="meter" width="500" height="50"></canvas> -->
 
 
 

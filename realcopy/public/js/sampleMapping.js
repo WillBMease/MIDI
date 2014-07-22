@@ -1,17 +1,20 @@
 var noteNode = [];
 
 
-var filter = []
-var delay = []
+
 var firstInst = 'gPiano'
+// var meter
 
 loadInstrument(0, firstInst)
+
+	// meter = createAudioMeter(context.destination);
 
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
 }
 
 for (var i = 0 ; i < userLimit ; i++) {
+
 
 	// delay[i] = context.createDelay()
 	// delay[i].delayTime = 100
@@ -25,15 +28,15 @@ for (var i = 0 ; i < userLimit ; i++) {
 
 	// 	filter[i].connect(context.destination)
 
-		// cabinet[i].connect(overdrive[i].input)
-		// overdrive[i].connect(compressor[i].input)
-		// compressor[i].connect(tremolo[i].input)
-		// tremolo[i].connect(chorus[i].input)
-		// chorus[i].connect(phaser[i].input)
-		// phaser[i].connect(convolver[i].input)
-		// convolver[i].connect(delay[i].input)
-		// delay[i].connect(filter[i].input)
-		// filter[i].connect(wahwah[i].input)
+		cabinet[i].connect(overdrive[i].input)
+		overdrive[i].connect(compressor[i].input)
+		compressor[i].connect(tremolo[i].input)
+		tremolo[i].connect(chorus[i].input)
+		chorus[i].connect(phaser[i].input)
+		phaser[i].connect(convolver[i].input)
+		convolver[i].connect(delay[i].input)
+		delay[i].connect(filter[i].input)
+		filter[i].connect(wahwah[i].input)
 
 		// 	cabinet[i].connect(context.destination)
 		// overdrive[i].connect(context.destination)
@@ -45,7 +48,7 @@ for (var i = 0 ; i < userLimit ; i++) {
 		// delay[i].connect(context.destination)
 		// filter[i].connect(context.destination)
 
-		// wahwah[i].connect(context.destination);
+		 wahwah[i].connect(context.destination);
 }
 
 function loadInstrument(index, instr)
@@ -109,15 +112,20 @@ function generateNotes(index, presetInstrument){
 		notes = noteWrap.find('audio');
 
 
-// if (noteNode[0] != 0){
-// 	for (var i = 0 ; i < presetInstrument.notes ; i++)
-// 		noteNode[i].disconnect()
-// }
+if (noteNode[0] != 0){
+	for (var i = 0 ; i < presetInstrument.notes ; i++)
+		noteNode[i].disconnect()
+}
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++)
 		{
-			// noteNode[i] = context.createMediaElementSource(notes[i])
-			// noteNode[i].connect(cabinet[index].input)
+
+	// noteNode[i] = context.createMediaStreamSource(notes[i]);
+
+ //    // Create a new volume meter and connect it.
+	// noteNode[i].connect(meter);
+			 noteNode[i] = context.createMediaElementSource(notes[i])
+			 noteNode[i].connect(cabinet[index].input)
 			// noteNode[i] = context.createMediaElementSource(notes[i])
 			// noteNode[i].connect(delay[index])
 			// //noteNode[i].connect(cabinet[index].input)
@@ -144,7 +152,7 @@ function triggerSample(index, key) {
 	if(check != 200  && check != 49 && check != 96){
 		notes[mappedKey].pause();
 		notes[mappedKey].currentTime = 0
-		notes[mappedKey].volume = 0.1
+		notes[mappedKey].volume = 0.9
 		notes[mappedKey].play(0)
 	}
 

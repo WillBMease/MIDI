@@ -43,6 +43,8 @@ var globalOctave;
 var midiActive = false;
 var sampleActive = false;
 
+// var	canvasContext = document.getElementById( "meter" ).getContext("2d");
+
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext ||  
 	window.mozAudioContext || 
@@ -50,7 +52,7 @@ var context = new (window.AudioContext || window.webkitAudioContext ||
     window.msAudioContext)();
 if (context) {
   // Web Audio API is available.
-  // var tuna = new Tuna(context)
+  var tuna = new Tuna(context)
 } else {
   alert('browser not supported') ;
 }
