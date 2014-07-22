@@ -95,7 +95,7 @@ function generateNotes(index, presetInstrument){
 	}
 
 	else{
-		for(var i = 0; i <presetInstrument.notes +1; i++){
+		for(var i = 1; i <presetInstrument.notes; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
