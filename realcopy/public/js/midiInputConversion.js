@@ -12,7 +12,7 @@ function transpose(index, noteInput){
 
 
 function keyboardMap(keyInput){
-	var output;
+	var output = 200;
 
 	// z
 	if(keyInput == 122){
