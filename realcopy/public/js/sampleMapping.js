@@ -108,7 +108,7 @@ function generateNotes(index, presetInstrument){
 		var notes = [];
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
-<<<<<<< HEAD
+
 
 
 if (noteNode[0] != 0){
