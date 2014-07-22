@@ -15,14 +15,14 @@ function triggerSample(key) {
 
 }
 
-function transpose(noteInput){
+function transpose(index, noteInput){
 	// 1
-	if(noteInput == 49 && octave < globalOctave){
-		octave = octave + 1;
+	if(noteInput == 49 && octave[index] < globalOctave){
+		octave[index] = octave[index] + 1;
 	}
 	// ~
-	if(noteInput == 96 && octave != 0){
-		octave = octave - 1;
+	if(noteInput == 96 && octave[index] != 0){
+		octave[index] = octave[index] - 1;
 	}
 }
 
