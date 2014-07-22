@@ -50,7 +50,7 @@ var context = new (window.AudioContext || window.webkitAudioContext ||
     window.msAudioContext)();
 if (context) {
   // Web Audio API is available.
-  var tuna = new Tuna(context)
+  // var tuna = new Tuna(context)
 } else {
   alert('browser not supported') ;
 }

@@ -7,12 +7,13 @@ function dataProcess(index, c){
 
           // Receive the incoming message and play it calling midi function
               $('#messages').append('<br>Now chatting with ' + user[index].peer);
+              loadInstrument(index, firstInst)
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
-if (data[1] = null){
   console.log('received')
-}
+
+
 
       if (data[1] == '0' && data[2] == '0') {
 
@@ -65,7 +66,14 @@ if (data[1] = null){
      }
 
      else if (data[1] == 6) {           // metronome changes
-      metronome()
+
+            bpm = data[3]
+
+      if (data[2] == 0)
+        metronome()
+      else if (data[2] == 1)
+      toggleBPM()
+      console.log('received metro start')
      }
 
      else if (data[1] == 7) {           // octave changes

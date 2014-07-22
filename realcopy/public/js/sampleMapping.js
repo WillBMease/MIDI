@@ -3,6 +3,9 @@ var noteNode = [];
 
 var filter = []
 var delay = []
+var firstInst = 'gPiano'
+
+loadInstrument(0, firstInst)
 
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = 0
@@ -13,14 +16,14 @@ for (var i = 0 ; i < userLimit ; i++) {
 	// delay[i] = context.createDelay()
 	// delay[i].delayTime = 100
 
-	filter[i] = context.createBiquadFilter();
-	// Note: the Web Audio spec is moving from constants to strings.
-	// filter.type = 'lowpass';
-	filter[i].type = filter.LOWPASS;
-	filter[i].frequency.value = 1000;
-	// Connect the source to it, and the filter to the destination.
+	// filter[i] = context.createBiquadFilter();
+	// // Note: the Web Audio spec is moving from constants to strings.
+	// // filter.type = 'lowpass';
+	// filter[i].type = filter.LOWPASS;
+	// filter[i].frequency.value = 1000;
+	// // Connect the source to it, and the filter to the destination.
 
-		filter[i].connect(context.destination)
+	// 	filter[i].connect(context.destination)
 
 		// cabinet[i].connect(overdrive[i].input)
 		// overdrive[i].connect(compressor[i].input)
@@ -78,7 +81,7 @@ function generateNotes(index, presetInstrument){
 
 	/////////for bass guitar////////////////////	
 	else if(presetInstrument.name == "bass"){
-		for(var i = 27; i <presetInstrument.notes + 27 +1; i++){
+		for(var i = 27; i <= presetInstrument.notes + 27 +1; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -90,7 +93,7 @@ function generateNotes(index, presetInstrument){
 	}
 
 	else{
-		for(var i = 0; i <presetInstrument.notes +1; i++){
+		for(var i = 1; i <= presetInstrument.notes; i++){
 			target.append(instrument);
 			console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
