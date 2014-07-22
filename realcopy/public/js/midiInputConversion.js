@@ -3,8 +3,8 @@ function keyboardMap(keyInput){
 
 	// z
 	if(keyInput == 122){
-		// output = 1;
-		audioTest()
+		output = 1;
+		// audioTest()
 	}
 	// s
 	else if (keyInput == 115) {
@@ -138,17 +138,16 @@ function keyboardMap(keyInput){
 	return output;
 }
 
-
+// We need to look at this... I'm not sure the Id's of other keys on the keyboards match the axiom////////
 function masterConversion(midiInput){
 
-	var output;
+	var output = 200;
 
-	if(midiInput[4] == 0 && midiInput[2] == 'e0'){
+	if(midiInput[4] == 0 && midiInput[2] == 'e0' || midiInput[2] ==89){
 		output = 200;
 	} 
 	///// for drums ////////////
-	else if(midiInput[2] == 99)
-	{
+	else if(midiInput[2] == 99){
 		switch (midiInput[3]){
 
 			case '26': log.innerText = "Snare" ;
@@ -184,15 +183,10 @@ function masterConversion(midiInput){
 			break ;
 		}
 	}
-
-	//else if (midiInput[2])
-
-	else if (midiInput[2] == 89)
-	{	
-		output = 200 ;
-	}
-
-	//else if (midiInput[2] != 89){
+	// else if (midiInput[2] == 89)
+	// {	
+	// 	output = 200 ;
+	// }
 	else if (midiInput[2] == 90){
 		switch (midiInput[3]){
 		
@@ -627,8 +621,6 @@ function masterConversion(midiInput){
 			case '83' : log.innerText = "B9" ;
 			output = '108';
 			break;		}
-
 	}
-
 	return output;
 }

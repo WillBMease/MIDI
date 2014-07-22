@@ -120,40 +120,8 @@ function setControls(midiInput){
 	setController = false;
 }
 
-// function assignControllerParameters(){
-// 	if (!log){
-// 		log = document.getElementById("log");
-// 	}
-// 	if(midi == null){
-// 		log.innerText = ('No midi device found!!');
-// 		console.log('No midi device found!!')
-// 	}
-// 	else{
-// 		log.innerText = ('Please move your desired controller for Volume')
-// 		setVolumeParameter = true;
-// 		console.log('setVolumeParameter has been set to: ' + setVolumeParameter )
-// 	}
-// }
-
-// function assignVolume(midiInput){
-// 	console.log('assignVolume has been called')
-// 	if(controllerArray.length < 1){
-// 		log.innerText = ('No registered Controllers!')
-// 		setVolumeParameter = false
-// 		return
-// 	}
-// 	for(var i = 0;i<controllerArray.length;i++){
-// 		if(midiInput[2] == controllerArray[i].type && midiInput[3] == controllerArray[i].ID){
-// 			controllerArray[i].parameter = 'volume'
-// 			controllerArray[i].velocity = midiInput[4]
-// 			setVolumeParameter = false
-// 			return;
-// 		}
-// 	}
-// }
-
 function noteVolume(midiInput){
-	var volumeOutput = 0.5;
+	var volumeOutput = midiInput[4]/127;
 	// console.log('called noteVolume')	
 	if(midiInput[4] != 0){
 		for(var i = 0;i<controllerArray.length;i++){

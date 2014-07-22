@@ -6,7 +6,7 @@ for (var i = 0 ; i < 120 ; i++) {
 
 var firstInst = 'gPiano'
 
-
+/// you are 0
 for (var i = 0 ; i < userLimit ; i++) {
 
 		cabinet[i].connect(overdrive[i].input)
@@ -47,20 +47,7 @@ function generateNotes(index, presetInstrument){
 	if (presetInstrument.name == "metronome") {
 		for(var i = 1 ; i < 13 ; i++) {
 			target.append(instrument);
-			console.log(i);
-			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-			var newInstrument = target.find("audio:last-child");
-			newInstrument.attr("src", instrumentPath);
-			newInstrument.attr("id", i);
-			octave = 1;
-		}
-	}
-
-	/////////for bass guitar////////////////////	
-	else if(presetInstrument.name == "bass"){
-		for(var i = 27; i <= presetInstrument.notes + 27; i++){
-			target.append(instrument);
-			console.log(i);
+			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
@@ -72,7 +59,7 @@ function generateNotes(index, presetInstrument){
 	else{
 		for(var i = 1; i <= presetInstrument.notes; i++){
 			target.append(instrument);
-			console.log(i);
+			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
@@ -82,18 +69,12 @@ function generateNotes(index, presetInstrument){
 		var notes = [];
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
+		for (var i = 0 ; i < presetInstrument.notes ; i++) {
+			if (noteNode[i] != null)
+				noteNode[i].disconnect()
+		}	
 
-
-
-
-	for (var i = 0 ; i < presetInstrument.notes ; i++) {
-		if (noteNode[i] != null)
-			noteNode[i].disconnect()
-}
-
-		for (var i = 0 ; i < presetInstrument.notes ; i++)
-		{
-
+		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			 noteNode[i] = context.createMediaElementSource(notes[i])
 			 noteNode[i].connect(cabinet[index].input)
 
@@ -110,11 +91,12 @@ function triggerSample(index, key) {
 	var noteWrap = $('.audioBin' + index + ' li');
 
 	notes = noteWrap.find('audio');
-	console.log('key is: ' + key[2]) ;
+	// console.log('key is: ' + key[2]) ;
 	transpose(key[2]);
 	var check = keyboardMap(key[2]) ;
-	console.log('check is: ' + check) ;
-	var mappedKey = keyboardMap(key[2]) + (octave*12);
+	// console.log('check is: ' + check) ;
+	var mappedKey = check + (octave*12);
+	// var mappedKey = keyboardMap(key[2]) + (octave*12);
 
 	if(check != 200  && check != 49 && check != 96){
 		notes[mappedKey].pause();
@@ -122,50 +104,33 @@ function triggerSample(index, key) {
 		notes[mappedKey].volume = 0.9
 		notes[mappedKey].play(0)
 	}
-
 }
 
 function triggerMidiDevice(index, midiData){
 	var notes = [];
-
 	var noteWrap = $('.audioBin' + index + ' li');
-	
 	if(setController){
-		setControls(midiData);
-		
+		setControls(midiData);		
 	}
-	// else if(setVolumeParameter){
-	// 	assignVolume(midiData)
-	// }
 	else{
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
 				controllerArray[i].velocity = midiData[4]        
-				// ConversionScale(controllerArray[i],0,1)
 				//filter[0].frequency.value = setFilterFreq(midiData);
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
 			}
 		}
-
 		notes = noteWrap.find('audio');
 		key = masterConversion(midiData);
-
 		if(key != 200 && midiData[4] != 0){
-			//console.log('midi key input is: ' + key);
-			// var velocity = parseInt(midiData[4]) ;
-			// var velocity = midiData[4] ;
-			// console.log('velocity is: ' + velocity)
-			// if (velocity > 100)
-				// 	velocity = velocity - 27
-			// notes[key].volume = (velocity * .01)
+
 			notes[key].currentTime = 0;
 			console.log('volume: ' + noteVolume(midiData))
 			//filter.frequency = controllerArray[0].velocity
 			notes[key].volume = noteVolume(midiData)
 			notes[key].play(0);
-			//notes[key].volume = midiData[4]/127
 		}
 	}
 }
