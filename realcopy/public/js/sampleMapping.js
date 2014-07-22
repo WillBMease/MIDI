@@ -52,7 +52,7 @@ function generateNotes(index, presetInstrument){
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
-			octave = 1;
+			octave[index] = 1;
 		}
 	}
 
@@ -92,11 +92,11 @@ function triggerSample(index, key) {
 
 	notes = noteWrap.find('audio');
 	// console.log('key is: ' + key[2]) ;
-	transpose(key[2]);
+	transpose(index, key[2]);
 	var check = keyboardMap(key[2]) ;
 	// console.log('check is: ' + check) ;
-	var mappedKey = check + (octave*12);
-	// var mappedKey = keyboardMap(key[2]) + (octave*12);
+	//var mappedKey = check + (octave[index]*12);
+	 var mappedKey = keyboardMap(key[2]) + (octave[index]*12);
 
 	if(check != 200  && check != 49 && check != 96){
 		notes[mappedKey].pause();
