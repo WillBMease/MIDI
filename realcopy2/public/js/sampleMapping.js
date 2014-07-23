@@ -1,8 +1,11 @@
 var noteNode = [];
+var tempNode = []
 
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = null
+	tempNode[i] = null
 }
+
 
 var firstInst = 'gPiano'
 
@@ -70,9 +73,26 @@ function generateNotes(index, presetInstrument){
 		var noteWrap = $('.audioBin' + index + ' li');
 		notes = noteWrap.find('audio');
 		for (var i = 0 ; i < presetInstrument.notes ; i++) {
-			if (noteNode[i] != null)
+			if (noteNode[i] != null) {
+				console.log('before: ' + noteNode[i])
 				noteNode[i].disconnect()
-		}	
+				noteNode[i].remove()
+				console.log('after: ' + noteNode[i])
+			}
+		}
+		noteNode = tempNode
+
+		// cabinet[index].connect(overdrive[index].input)
+		// overdrive[index].connect(compressor[index].input)
+		// compressor[index].connect(tremolo[index].input)
+		// tremolo[index].connect(chorus[index].input)
+		// chorus[index].connect(phaser[index].input)
+		// phaser[index].connect(reverb[index].input)
+		// reverb[index].connect(delay[index].input)
+		// delay[index].connect(filter[index].input)
+		// filter[index].connect(wahwah[index].input)
+
+		// wahwah[index].connect(context.destination);	
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			 noteNode[i] = context.createMediaElementSource(notes[i])

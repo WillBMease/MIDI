@@ -1,6 +1,7 @@
 var setController = false
 var setVolumeParameter = false 
 var setReverbWetLevelParameter = false
+var setFilterFrequencyParameter = false
 var controllerArray = []
 
 // function assignControllers(){
@@ -37,6 +38,10 @@ function assignControllers(parameter){
 			case 'reverbWetLevel' : log.innerText = "Setting ReverbWetLevel as controller parameter"
 			setReverbWetLevelParameter = true;
 			break;
+
+			case 'filterFrequency' : log.innerText =  "Setting filterFrequency as controller parameter"
+			setFilterFrequencyParameter = true;
+			break;
 		}
 		
 		console.log('setcontroller has been set to: ' + setController)
@@ -61,6 +66,10 @@ function setControls(midiInput){
 
 				if(setReverbWetLevelParameter){
 					setReverbWetLevelParameter = false
+				}
+
+				if(setFilterFrequencyParameter){
+					setFilterFrequencyParameter = false
 				}
 
 				return
