@@ -116,8 +116,21 @@ function setControls(midiInput){
 		setReverbWetLevelParameter = false
 	}
 
+	if(setFilterFrequencyParameter){
+		for(var i = 0; i<controllerArray.length;i++){
+			if(controllerArray[i].parameter == 'filterFrequency'){
+				controllerArray[i].parameter = "";
+				console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+				log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+			}
+		}
+		controllerArray[controllerArray.length - 1].parameter = 'filterFrequency'
+		setFilterFrequencyParameter = false
+	}
+
+
 	//controllerArray[controllerArray.length - 1].parameter = mappedParameter
-	console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
+	// console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
 
 	// for(var i = 0;i<controllerArray.length;i++){
 	// 	console.log('the controller id for ' + i + ' is: ' + controllerArray[i].ID + ' The type is for ' + i + ' is: ' + controllerArray[i].type)
@@ -158,6 +171,7 @@ console.log('setReverbWetLevel called')
 		}
 	}
 }
+
 
 
 
