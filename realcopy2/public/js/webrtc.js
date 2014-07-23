@@ -98,7 +98,8 @@ $(document).ready(function() {
     $('.outgoingEffect').click(function(){
       var chosenEffect = $(this).attr('id')
       effectMsg[1] = 8
-      effectMsg[2] = 0
+      effectMsg[2] = chosenEffect
+      effectMsg[3] = 0
       outgoingEffectChange(effectMsg)
     })
 

@@ -171,7 +171,7 @@ for (var i = 0 ; i < 1 ; i++) {
 
 function reverbEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (reverb[index].bypass == 0)
 		reverb[index].bypass = 1
 	else if (reverb[index].bypass == 1)
@@ -216,7 +216,7 @@ if (effectMsg[3] == 0) {
 
 function overdriveEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (overdrive[index].bypass == 0)
 		overdrive[index].bypass = 1
 	else if (overdrive[index].bypass == 1)
@@ -235,7 +235,7 @@ if (effectMsg[2] == 0) {
 
 function chorusEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (chorus[index].bypass == 0)
 		chorus[index].bypass = 1
 	else if (chorus[index].bypass == 1)
@@ -252,7 +252,7 @@ if (effectMsg[2] == 0) {
 
 function phaserEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (phaser[index].bypass == 0)
 		phaser[index].bypass = 1
 	else if (phaser[index].bypass == 1)
@@ -280,7 +280,7 @@ function cabinetEffect(index, effectMsg) {
 
 function tremoloEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (tremolo[index].bypass == 0)
 		tremolo[index].bypass = 1
 	else if (tremolo[index].bypass == 1)
@@ -297,7 +297,7 @@ if (effectMsg[2] == 0) {
 
 function delayEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (delay[index].bypass == 0)
 		delay[index].bypass = 1
 	else if (delay[index].bypass == 1)
@@ -318,7 +318,7 @@ if (effectMsg[2] == 0) {
 
 function compressorEffect(index, effectMsg) {
 
-if (effectMsg[2] == 0) {
+if (effectMsg[3] == 0) {
 	if (compressor[index].bypass == 0)
 		compressor[index].bypass = 1
 	else if (compressor[index].bypass == 1)
