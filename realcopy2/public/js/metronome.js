@@ -1,7 +1,14 @@
 var metroActive = false
 var refreshMetronome
 var metroMsg = []
-var setDrum 
+var kick = 4
+var snare = 12
+var hihat = 0
+var ride = 8
+var crash = 2
+var hiTom = 14
+var medTom = 16
+var lowTom = 15 
 var beatCt = 0
 var bpm = 350
 
@@ -10,6 +17,8 @@ metroMsg[2] = 0
 metroMsg[3] = bpm ;
 
 //metroMsg[]
+
+loadInstrument(4, 'metronome')
 
 function metronome() {
 
@@ -36,17 +45,24 @@ function playDrums() {
 
 	console.log(noteWrap)
 
-	if (beatCt % 4 == 0)
-		setDrum = 5
-	else if (beatCt % 2 == 0)
-		setDrum = 10
-	else
-		setDrum = 3
+	if (beatCt % 4 == 0) {
+		notes[ride].pause();
+		notes[ride].currentTime = 0
+		notes[ride].volume = 0.1
+		notes[ride].play(0)
+}
 
-		notes[setDrum].pause();
-		notes[setDrum].currentTime = 0
-		notes[setDrum].volume = 0.1
-		notes[setDrum].play(0)
+	if ( (beatCt) % 2 == 0) {
+		notes[snare].pause();
+		notes[snare].currentTime = 0
+		notes[snare].volume = 0.1
+		notes[snare].play(0)
+	}
+
+		notes[kick].pause();
+		notes[kick].currentTime = 0
+		notes[kick].volume = 0.1
+		notes[kick].play(0)
 
 		beatCt++
 }

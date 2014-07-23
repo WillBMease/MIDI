@@ -81,7 +81,7 @@ wahwah[i] = new tuna.WahWah({
                  automode: true,                //true/false
                  baseFrequency: 0.5,            //0 to 1
                  excursionOctaves: 4,           //1 to 6
-                 sweep: 0.3,                    //0 to 1
+                 sweep: 0.8,                    //0 to 1
                  resonance: 80,                 //1 to 100
                  sensitivity: 0.8,              //-1 to 1
                  bypass: 1
@@ -118,15 +118,55 @@ compressor[i] = new tuna.Compressor({
 }
 
 for (var i = 0 ; i < 1 ; i++) {
+		// reverb[i].highCut = $("#reverb-highCut").val()
+		// reverb[i].lowCut = $("#reverb-lowCut").val()
+		// reverb[i].dryLevel = $("#reverb-dryLevel").val()
+		// reverb[i].wetLevel = $("#reverb-wetLevel").val()
+		// reverb[i].level = $("#reverb-level").val()
 
-		chorus[i].rate = $("#chorus-rate").val()/10;
-		chorus[i].feedback = $("#chorus-feedback").val()/10;
-		chorus[i].delay = $("#chorus-delay").val()/100;
-		delay[i].feedback = $("#delay-feedback").val()/100;
-		delay[i].delayTime = $("#delay-delayTime").val();
-		delay[i].wetLevel = $("#delay-wetLevel").val()/10;
-		delay[i].dryLevel = $("#delay-dryLevel").val()/10;
-		delay[i].cutoff = $("#delay-cutoff").val();
+		// chorus[i].rate = $("#chorus-rate").val()/10;
+		// chorus[i].feedback = $("#chorus-feedback").val()/10;
+		// chorus[i].delay = $("#chorus-delay").val()/100;
+
+		// delay[i].feedback = $("#delay-feedback").val()/100;
+		// delay[i].delayTime = $("#delay-delayTime").val();
+		// delay[i].wetLevel = $("#delay-wetLevel").val()/10;
+		// delay[i].dryLevel = $("#delay-dryLevel").val()/10;
+		// delay[i].cutoff = $("#delay-cutoff").val();
+
+		// phaser[i].rate = $("#phaser-rate").val()
+		// phaser[i].depth = $("#phaser-depth").val()
+		// phaser[i].feedback = $("#phaser-feedback").val()
+		// phaser[i].stereoPhase = $("#phaser-stereo").val()
+		// phaser[i].baseModulationFrequency = $("#phaser-bmf").val()
+
+		// overdrive[i].outputGain = $("#overdrive-outputGain").val()
+		// overdrive[i].drive = $("#overdrive-drive").val()
+		// overdrive[i].curveAmount = $("#overdrive-curveLevel").val()
+		// overdrive[i].algorithmIndex = $("#overdrive-algorithm").val()
+
+		// compressor[i].threshold = $("#compressor-threshold").val()
+		// compressor[i].makeupGain = $("#compressor-makeGain").val()
+		// compressor[i].attack = $("#compressor-attack").val()
+		// compressor[i].release = $("#compressor-release").val()
+		// compressor[i].ratio = $("#compressor-ratio").val()
+		// compressor[i].knee = $("#compressor-knee").val()
+
+		// filter[i].frequency = $("#filter-frequency").val()
+		// filter[i].Q = $("#filter-q").val()
+		// filter[i].gain = $("#filter-gain").val()
+		// filter[i].filterType = $("#filter-type").val()
+
+		// tremolo[i].intensity = $("#tremolo-intensity").val()
+		// tremolo[i].rate = $("#tremolo-rate").val()
+		// tremolo[i].stereoPhase = $("#tremolo-phase").val()
+
+		// wahwah[i].automode = $("#wahwah-auto").val()
+		// wahwah[i].baseFrequency = $("#wahwah-base").val()
+		// wahwah[i].excursionOctaves = $("#wahwah-excursion").val()
+		// wahwah[i].sweep = $("#wahwah-sweep").val()
+		// wahwah[i].resonance = $("#wahwah-resonance").val()
+		// wahwah[i].sensitivity = $("#wahwah-sensitivity").val()
 }
 
 function reverbEffect(index) {
@@ -219,7 +259,7 @@ function incomingEffect(index, effectName) {
 		tremoloEffect(index)
 	else if (effectName == 'filter')
 		filterEffect(index)
-	else if (effectName == 'convolver')
+	else if (effectName == 'reverb')
 		reverbEffect(index)
 	else if (effectName == 'compressor')
 		compressorEffect(index)

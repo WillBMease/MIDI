@@ -34,9 +34,6 @@ function loadInstrument(index, instr){
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
 
-	if (presetInstrument.name == "metronome")
-		index = 4
-
 	var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var target = $('.audioBin' + index + ' li');
 	sampleActive = true;
@@ -44,15 +41,14 @@ function generateNotes(index, presetInstrument){
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
-	if (presetInstrument.name == "metronome") {
-		for(var i = 1 ; i < 13 ; i++) {
+	if (presetInstrument.name == "metronome" || index == 4) {
+		for(var i = 1 ; i < 18 ; i++) {
 			target.append(instrument);
 			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
-			octave[4] = 1;
 		}
 	}
 
@@ -102,7 +98,7 @@ function triggerSample(index, key) {
 	if(check != 200  && check != 49 && check != 96){
 		notes[mappedKey].pause();
 		notes[mappedKey].currentTime = 0
-		notes[mappedKey].volume = 0.9
+		notes[mappedKey].volume = 0.2
 		notes[mappedKey].play(0)
 	}
 }

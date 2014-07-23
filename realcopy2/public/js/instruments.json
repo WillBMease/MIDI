@@ -122,8 +122,8 @@
 
 	"metronome" : {
 		"name" : "metronome",
-		"octaveNum" : 0,
-		"notes" : 12,
+		"octaveNum" : 3,
+		"notes" : 18,
 		"path" : "sounds/metronome"
 	} ,
 

@@ -183,7 +183,7 @@ $("#overdrive-curveLevel").knob({
     'release' : function (v) { overdrive[0].curveAmount = v }
 })
 
-$("#overdrive-algorithim").knob({
+$("#overdrive-algorithm").knob({
 	width:40,
 	height:40,
 	min:1,
@@ -281,7 +281,7 @@ $("#filter-type").knob({
     'release' : function (v) { filter[0].filterType = v }
 })
 
-$("#tremelo-intensity").knob({
+$("#tremolo-intensity").knob({
 	width:40,
 	height:40,
 	min:0,
@@ -290,7 +290,7 @@ $("#tremelo-intensity").knob({
     'release' : function (v) { tremolo[0].intensity = v }
 })
 
-$("#tremelo-rate").knob({
+$("#tremolo-rate").knob({
 	width:40,
 	height:40,
 	min:1,
@@ -299,7 +299,7 @@ $("#tremelo-rate").knob({
     'release' : function (v) { tremolo[0].rate = v }
 })
 
-$("#tremelo-phase").knob({
+$("#tremolo-phase").knob({
 	width:40,
 	height:40,
 	min:0,
