@@ -1,3 +1,6 @@
+
+
+
 function keyboardMap(keyInput){
 	var output = 200;
 
@@ -134,6 +137,9 @@ function keyboardMap(keyInput){
 	else if (keyInput == 93) {
 		output = 32;
 	}
+
+	else
+		output = 200
 
 	return output;
 }

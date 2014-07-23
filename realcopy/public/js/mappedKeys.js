@@ -1,19 +1,4 @@
-function triggerSample(key) {
-	var notes = [];
-	var noteWrap = $('.audioBin li');
-	notes = noteWrap.find('audio');
-	transpose(key);
-	var check = keyboardMap(key) ;
-	var keyTrue = keyboardMap(key) + (octave*12);
-	console.log(notes[keyTrue]);
-		//notes[keyTrue].onloadedmetadata = function(){notes[keyTrue].currentTime = 0;}
 
-	// else{
-		notes[keyTrue].currentTime = 0;
-		notes[keyTrue].play();
-	// }
-
-}
 
 function transpose(index, noteInput){
 	// 1
