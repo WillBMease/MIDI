@@ -18,7 +18,7 @@ metroMsg[3] = bpm ;
 
 //metroMsg[]
 
-loadInstrument(4, 'metronome')
+//loadInstrument(4, 'metronome')
 
 function metronome() {
 
