@@ -84,7 +84,7 @@ function generateNotes(index, presetInstrument){
 			// 	notesLoad[i].remove()
 			// 	//notesLoad[i].clear
 			// 	//notesLoad[i].disconnect
-				noteNode[i].disconnect(cabinet[index])
+				noteNode[i].disconnect()//(cabinet[index])
 				//noteNode[i].context = null
 				console.log(noteNode[i])
 			// 	// noteNode[i].remove()
@@ -115,6 +115,7 @@ function generateNotes(index, presetInstrument){
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
 			 noteNode[i] = context.createMediaElementSource(notesLoad[i])
+			 // noteNode[i] = context.createScriptProcessor(notesLoad[i])
 			 noteNode[i].connect(cabinet[index].input)
 		} // end for loop
 
@@ -155,8 +156,9 @@ function triggerMidiDevice(index, midiData){
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
 				controllerArray[i].velocity = midiData[4];
-				$("#reverb-wetLevel").val(setReverbWetLevel(midiData))
-				.trigger('change');
+				setReverbWetLevel(midiData)
+				// $("#reverb-wetLevel").val(setReverbWetLevel(midiData))
+				// .trigger('change');
 				//console.log(reverb[0].wetLevel)        
 				//filter[0].frequency.value = setFilterFreq(midiData);
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])

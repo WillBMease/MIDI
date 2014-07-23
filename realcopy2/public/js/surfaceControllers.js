@@ -161,18 +161,19 @@ function noteVolume(midiInput){
 }
 
 function setReverbWetLevel(midiInput){
-	var level = 1
+	//var level = 1
 console.log('setReverbWetLevel called')
 	for(var i = 0;i<controllerArray.length;i++){
 		if(controllerArray[i].parameter == 'reverbWetLevel'){
-			level = ConversionScale(controllerArray[i],0,10)
-			
-			return level;
+			//level = ConversionScale(controllerArray[i],0,10)
+			$("#reverb-wetLevel").val(ConversionScale(controllerArray[i],0,10))
+			.trigger('change');
+			//return level;
 		}
 	}
 }
 
-
+// function setFilterFrequency()
 
 
 function ConversionScale(controller, min, max){
