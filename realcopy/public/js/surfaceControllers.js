@@ -3,21 +3,6 @@ var setVolumeParameter = false
 var setFilterParameter = false
 var controllerArray = []
 
-// function assignControllers(){
-// 	if (!log){
-// 		log = document.getElementById("log");
-// 	}
-// 	if(midi == null){
-// 		log.innerText = ('No midi device found!!');
-// 		console.log('No midi device found!!')
-// 	}
-// 	else{
-// 		log.innerText = ('Please move your desired controller')
-// 		setController = true;
-// 		console.log('setcontroller has been set to: ' + setController)
-// 	}
-// }
-
 function assignControllers(parameter){
 	if (!log){
 		log = document.getElementById("log");
@@ -42,7 +27,6 @@ function assignControllers(parameter){
 		console.log('setcontroller has been set to: ' + setController)
 	}
 }
-
 
 function setControls(midiInput){
 	// log.innerText = ('Midimsg 2 : ' + midiInput[2])

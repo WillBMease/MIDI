@@ -1,6 +1,4 @@
 
-
-
 function keyboardMap(keyInput){
 	var output = 200;
 

@@ -39,6 +39,7 @@ function generateNotes(index, presetInstrument){
 
 	var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var target = $('.audioBin' + index + ' li');
+
 	sampleActive = true;
 	target.empty();
 	globalOctave = presetInstrument.octaveNum;
@@ -58,6 +59,7 @@ function generateNotes(index, presetInstrument){
 
 	else{
 		for(var i = 1; i <= presetInstrument.notes; i++){
+
 			target.append(instrument);
 			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
