@@ -97,7 +97,9 @@ $(document).ready(function() {
 
     $('.outgoingEffect').click(function(){
       var chosenEffect = $(this).attr('id')
-      outgoingEffectChange(chosenEffect)
+      effectMsg[1] = 8
+      effectMsg[2] = 0
+      outgoingEffectChange(effectMsg)
     })
 
     $('#audio-test').click(function(){
