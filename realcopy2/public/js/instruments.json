@@ -1,0 +1,147 @@
+{
+
+
+	"harp" : { 
+		"name" : "harp", 
+		"octaveNum": 8, 
+		"notes": 96, 
+		"path" : "sounds/Harp"
+	} ,
+
+	"bass" : { 
+		"name": "bass", 
+		"octaveNum": 4, 
+		"notes" : 48, 
+		"path" : "sounds/E-Bass_Guitar"
+	} ,
+
+	"brass": {
+		"name" : "Brass", 
+		"octaveNum": 8, 
+		"notes" : 96, 
+		"path" : "sounds/Brass"
+ 	} ,
+
+	"gPiano" : { 
+		"name" : "gPiano", 
+		"octaveNum": 8, 
+		"notes": 96, 
+		"path" : "sounds/Grand_Piano"
+	} ,
+
+	"jazzdrums" : { 
+		"name" : "drums", 
+		"octaveNum": 2, 
+		"notes": 17, 
+		"path" : "sounds/jazzdrums"
+	} ,
+
+	"organ" : {
+		"name" : "organ",
+		"octaveNum" : 5,
+		"notes" : 47,
+		"path" : "sounds/organ"
+	} ,
+
+	"bells" : {
+		"name" : "bells",
+		"octaveNum" : 7,
+		"notes" : 80,
+		"path" : "sounds/bells"
+	}	,
+
+	"flute" : {
+		"name" : "flute",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/flute"
+	} ,
+
+	"violin" : {
+		"name" : "violin",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/Violin"
+	} ,
+
+	"alto_sax" : {
+		"name" : "alto_sax",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/alto_sax"
+	} ,
+
+	"western_piano" : {
+		"name" : "western_piano",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/western_piano"
+	} ,
+
+	"ballad_guitar" : {
+		"name" : "ballad_guitar",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/ballad_guitar"
+	} ,
+	
+	"blown_bottles" : {
+		"name" : "blown_bottles",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/blown_bottles"
+	} ,
+
+	"soft_voices" : {
+		"name" : "soft_voices",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/soft_voices"
+	} ,
+
+	"electric_guitar" : {
+		"name" : "electric_guitar",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/electric_guitar"
+	} ,
+
+	"pizzicato" : {
+		"name" : "pizzicato",
+		"octaveNum" : 6,
+		"notes" : 72,
+		"path" : "sounds/pizzicato"
+	} ,
+
+	"old_strings" : {
+		"name" : "old_strings",
+		"octaveNum" : 8,
+		"notes" : 96,
+		"path" : "sounds/old_strings"
+	} ,
+
+	"metronome" : {
+		"name" : "metronome",
+		"octaveNum" : 0,
+		"notes" : 12,
+		"path" : "sounds/metronome"
+	} ,
+
+	"numb" : {
+		"name" : "numb",
+		"octaveNum" : 0,
+		"notes" : 5,
+		"path" : "sounds/numb"
+	} ,
+
+	"gospel_organ" : {
+		"name" : "gospel_organ",
+		"octaveNum" : 7,
+		"notes" : 84,
+		"path" : "sounds/gospel_organ"
+	}
+
+}
+
+
+

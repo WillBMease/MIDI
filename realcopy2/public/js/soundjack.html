@@ -1,0 +1,427 @@
+<!-- 145.253.112.242 -->
+
+<html>
+<head>
+<title>Soundjack</title>
+<link href="soundjack.css" rel="stylesheet" type="text/css" />
+</head>
+    <script type="text/javascript">
+        
+		/// EVENTS DEFINIEREN / SOCKET AKTIVIEREN / KARTE CHECKEN / CONFIG LADEN
+		function soundcardProbe(){	
+		    setReceiverBufferOptions();
+			
+			addSJEvents();
+		    bind();
+		    alert(plugin().soundcardProbe());	
+		    plugin().readConfig();
+			setTimeout("restartSoundcard()",1000);
+		    plugin().getExternalIPAndPort();
+		}
+		
+		function addSJEvents(){
+            addEvent(plugin(), 'floatMonitor',
+			  function floatMonitor(d1){
+				  alert(d1);
+			  });          
+		   
+		    addEvent(plugin(), 'dataMonitor',
+			  function dataDisplay(d1,d2,d3,d4,d5,d6){
+				  alert(d1+" "+d2+" "+" "+d3+" "+d4+" "+d5+" "+d6);
+			  });
+			
+			/// ANZAHL DER VERFÜGBAREN DEVICES IN INTERFACE ANPASSEN
+			addEvent(plugin(), 'setNumberOfOptions', 
+		      function setNumberOfOptions(count){	
+			      //alert("Devices: "+count);
+				  document.sjForm.soundcardInput.options.length = count; 	   
+		          document.sjForm.soundcardOutput.options.length = count;
+			  });
+			  
+			/// GEFUNDENE AUDIO DEVICES IN DAS INTERFACE EINSETZEN  
+			addEvent(plugin(), 'newSoundcardList', 
+		      function insertSoundcardNames(count,name){	   
+		          document.sjForm.soundcardInput.options[count].text = name;  
+	              document.sjForm.soundcardOutput.options[count].text = name;    
+              });
+        
+		    /// AUS FILE GELESENE WERTE IN DAS INTERFACE EINSETZEN UND SOUNDJACK-WERTE SETZEN
+			addEvent(plugin(), 'tellConfig',
+			  function applyConfig(inputDevice,outputDevice,bufferSize,channels,localVolume,remoteVolume,codecQuality,networkBufferSize){
+			      document.sjForm.soundcardInput.selectedIndex = inputDevice;
+				  document.sjForm.soundcardOutput.selectedIndex = outputDevice;
+							  
+				  for (i=0;i<document.sjForm.soundcardBufferSize.length; i++){
+					  if (document.sjForm.soundcardBufferSize.options[i].text == bufferSize){
+						  document.sjForm.soundcardBufferSize.selectedIndex = i;
+					      break;
+					  }
+				  }
+				  
+				  networkPacketChanger();
+				  
+				  for (i=0;i<document.sjForm.audioChannels.length;i++){ 
+				      if (document.sjForm.audioChannels.options[i].text == channels){
+					      document.sjForm.audioChannels.selectedIndex = i;
+						  break;
+					  }
+				  } 
+				 
+				  document.sjForm.localVolume.value = localVolume;
+				  document.sjForm.remoteVolume.value = remoteVolume;
+				  document.sjForm.codecQuality.selectedIndex = codecQuality;
+				  document.sjForm.networkBufferSize.selectedIndex = networkBufferSize-1;
+			
+			      /// SOUNDJACK-WERTE SETZEN
+				  setLocalVolume(localVolume);
+		   	      setRemoteVolume(remoteVolume);
+			      changeStreamSettings();
+			      setReceiverBufferSize();
+			  });
+			  
+			  addEvent(plugin(),'tellLatency',
+			      function getLatency(latencyString){
+				      document.sjForm.delay.value = latencyString+" ms";
+					  document.sjForm.dropout.value = "";
+				  });
+		    
+		      addEvent(plugin(),'tellIP',
+		          function getIP(IPString){
+				      document.sjForm.localIP.value = "IP="+IPString;
+				  });
+				  
+		      addEvent(plugin(),'tellPort',
+			      function getPort(portString){
+			           document.sjForm.localPort.value = "Port="+portString;
+				  });
+		
+		      addEvent(plugin(),'tellDropout',
+			      function getDropout(dropoutString){
+				      document.sjForm.dropout.value = dropoutString;
+				  });
+				  
+			  addEvent(plugin(),'passBufferToScript',
+			      function getBufferFromPlugin(bufferAsString,bufferSize){
+				      // PROCESS BUFFER HERE
+				      console.log(bufferAsString[0])
+					  document.sjForm.dropout.value = bufferAsString;
+				      console.log('buffer: ', bufferAsString[1]);
+				      console.log('size: ', bufferSize);
+				  });
+		}
+		
+		/// NATIVE FUNCTIONS
+		function plugin0(){
+            return document.getElementById('plugin0');
+        }
+        plugin = plugin0;
+       
+	    function addEvent(obj, name, func){
+            if (obj.attachEvent) {
+                obj.attachEvent("on"+name, func);
+            } else {
+                obj.addEventListener(name, func, false); 
+            }
+        }
+        
+        function load(){
+            addEvent(plugin(), 'test', function(){
+                alert("Received a test event from the plugin.")
+            });
+        }
+        
+		function pluginLoaded() {
+            //alert("Plugin loaded!");
+        }
+        
+        function addTestEvent(){
+            addEvent(plugin(), 'echo', function(txt,count){
+                alert(txt+count);
+            });
+        }
+        
+        function testEvent(){
+            plugin().testEvent();
+        }
+        
+		
+		/// OWN FUNCTIONS
+        function pluginValid(){
+            if(plugin().valid){
+                alert(plugin().echo("The Soundjack plugin seems to be working !"));
+            } else {
+                alert("The Soundjack Plugin is not working :(");
+            }
+        }
+				
+		/// SOUNDKARTE STOPPEN UND STARTEN
+		function stopAudioDevice(){	
+		  plugin().stopAudioDevice();
+		}
+		
+		/// SOUNDCARD NEU STARTEN / CONFIG SCHREIBEN
+		function restartSoundcard(){			
+			/// ERST KARTE EVTL. STOPPEN
+			stopAudioDevice();
+	
+			/// SOUNDKARTE STARTEN
+		    inputIndex  = document.sjForm.soundcardInput.selectedIndex;
+		    outputIndex = document.sjForm.soundcardOutput.selectedIndex;
+		  
+		    a = document.sjForm.audioChannels.selectedIndex;
+		    channels = document.sjForm.audioChannels.options[a].text;
+		  
+		    a = document.sjForm.soundcardBufferSize.selectedIndex;
+		    frameSize = document.sjForm.soundcardBufferSize.options[a].text;
+		  
+		    bitDepth = 16;
+		    sampleRate = 48000; 
+		    
+		    alert(plugin().startAudioDevice(inputIndex,outputIndex,channels,frameSize,bitDepth,sampleRate));		
+		    
+			/// PARAMETER IN CONFIG SICHERN
+			plugin().writeConfig();
+		}
+		
+		/// NETWORK PACKET GRÖßE AUDIOBUFFER GLEICH SETZEN
+		function networkPacketChanger(){
+			index = document.sjForm.soundcardBufferSize.selectedIndex;
+		    document.sjForm.IP.selectedIndex = index;
+		    document.sjForm.IP.selectedIndex;
+		}
+		
+		/// LOOPBACK LAUTSTÄRKE SETZEN
+		function setLocalVolume(level){	  
+		    plugin().setLocalVolume(level);	
+		    plugin().writeConfig();
+		}
+			
+		/// LOOPBACK MUTEN
+		function muteLocalSound(){	  
+		    plugin().muteLocalSound();	
+		}	
+		
+		/// LOOPBACK UNMUTEN
+		function unmuteLocalSound(){	  
+		    plugin().unmuteLocalSound();	
+		}	
+			
+		/// AUDIO DEVICE LIST REFRESHEN	
+		function refreshAudioDeviceList(){	
+		  /// VORHER HIER OPTIONS LÖSCHEN
+		  alert(plugin().soundcardProbe());	
+		}
+		
+		function bind(){
+		    //IPAddress = document.sjForm.bindIP.value;
+		    IPAddress = "0.0.0.0";
+		    Port = "4401";//document.sjForm.bindPort.value;	
+		    alert(plugin().bind(IPAddress,Port));
+		}
+		
+		function goForExternalIPAndPort(){
+		    //alert("HIER OK");
+			plugin().getExternalIPAndPort();	
+		}
+		
+		function startNetStream(){
+	        IP = document.sjForm.sendIPAddress.value;
+		    port = document.sjForm.sendPort.value;
+		  
+		    alert(plugin().startStream(IP,port));	
+		}
+		
+		function stopNetStream(){
+	      IP = 4;//document.sjForm.sendIPAddress.value;
+		  port = document.sjForm.sendPort.value;
+		  
+		  alert(plugin().stopStream(IP,port));	
+		}
+		
+		function changeStreamSettings(){
+		    i = document.sjForm.codecQuality.selectedIndex;
+		    plugin().setStreamQuality(i);
+		    plugin().writeConfig();
+		}
+		
+		/// RECEIVE SECTION
+		function setReceiverBufferOptions(){
+		    for (i=0;i<100;i++){
+				document.sjForm.networkBufferSize.options[i] = new Option(i+1) //replace 1st option with a new one
+			    //document.sjForm.networkBufferSize.options[i].text = i+1;	
+			}
+		}
+		
+		function setReceiverBufferSize(){
+			buf = document.sjForm.networkBufferSize.selectedIndex;
+			plugin().setReceiverBufferSize(buf+1);	
+		    plugin().writeConfig();
+		}
+		
+		function setRemoteVolume(level){	  
+		  plugin().setRemoteVolume(level);
+		  plugin().writeConfig();	
+		}
+    </script>
+    
+<!------------------------------- HIER WIRD DAS PLUGIN GELADEN ------------------>    
+<body onLoad="load()">
+<object id="plugin0" type="application/x-sjc" width="0" height="0">
+    <param name="onload" value="soundcardProbe" />
+</object><br />
+
+<form name="sjForm"> 
+<h2>Local soundcard and network section</h2>
+<table>
+  <tr>
+    <td width="180">Soundcard-Input: </td>
+      <td width="300"><select name="soundcardInput" onChange="restartSoundcard()">
+            <option></option>
+          </select>
+        <input name="mute" type="button" value="mute" onClick="javascript:muteLocalSound()">
+        <input name="unmute" type="button" value="unmute" onClick="javascript:unmuteLocalSound()">
+        <br></td>
+  </tr>
+  <tr>
+    <td>Soundcard-Output:</td>
+    <td><select name="soundcardOutput" onChange="restartSoundcard()">
+          <option></option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="audioRefresh" type="button" value="Refresh list" onClick="javascript:refreshAudioDeviceList()"></td>
+  </tr>
+  <tr>
+    <td>Audio-Channels:</td>
+    <td><select name="audioChannels" onChange="restartSoundcard()">
+          <option selected="selected">1</option>
+          <option>2</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Soundcardbuffer size:</td>
+    <td><select name="soundcardBufferSize" size="1" onChange="networkPacketChanger(),restartSoundcard()"><!--UNOBTRUSIVE JS !-->
+          <option>64</option>
+          <option>128</option>
+          <option>256</option>
+          <option selected="selected">512</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Level:</td>
+    <!-- <td><input type="range" name="localVolume" min="0" max="10" /></td> -->
+    <td><input type="range" name="localVolume" min="0" max="1" value="0" step="0.1" onChange="setLocalVolume(this.value)" />
+  </tr>
+    
+  <tr>
+     <td>&nbsp;</td>
+    <td><input name="audioStart" type="button" value="Restart" onClick="javascript:restartSoundcard()">
+      <input name="audioStop" type="button" value="Stop" onClick="javascript:stopAudioDevice()"></td>
+  </tr>
+
+  <tr>
+     <td><input name="getExternalIPAndPort" type="button" value="External IP and Port" onClick="javascript:goForExternalIPAndPort()"></td>
+     <td><input type="text" name="localIP" value="IP=127.0.0.1" disabled/></td>
+  </tr>
+   
+  <tr>
+     <td>&nbsp;</td>
+     <td><input type="text" name="localPort" value="Port=4401" disabled/></td>
+  </tr>
+</table>
+
+<br>
+
+<!--LOCAL NETWORK SECTION
+<table width="400" border="1"/>
+  <tr>
+    <td>bind to port:</td>
+    <td><input type="text" name="bindPort" value="4401"/></td>
+  </tr>
+    <tr>
+      <td><input name="bindButton" type="button" value="bind" onClick="javascript:bind()"/></td>
+      <td></td>
+  </tr>
+</table>
+
+<br>
+-->
+
+<h2>Sender section</h2>
+<table>
+  <tr>
+    <td width=180>UDP/IP Packetsize: </td>
+    <td width=300><select name="IP" size="1" disabled>
+          <option>64</option>
+          <option>128</option>
+          <option>256</option>
+          <option selected="selected">512</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Codec quality:</td>
+    <td><select name="codecQuality" onChange="javascript:changeStreamSettings()">
+          <option>OPUS 24 kbps</option>
+          <option>OPUS 48 kbps</option>
+          <option selected="selected">OPUS 96 kbps</option>
+          <option>OPUS 192 kbps</option>
+          <option>linear 768 kbps</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>IP-Address:</td>
+      <td><input type="text" name="sendIPAddress" value="127.0.0.1"/></td>
+  </tr>
+  <tr>
+    <td>Port:</td>
+    <td><input type="text" name="sendPort" value="4401"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="netStreamStart" type="button" value="Start Net Stream" onClick="javascript:startNetStream()" />
+      <input name="netStreamStop" type="button" value="Stop Net Stream" onClick="javascript:stopNetStream()" /></td>
+  </tr>
+</table>
+
+<br>
+
+<h2>Receiver section</h2>
+<table>
+  <tr>
+    <td width=180>Buffersize: </td>
+    <td width=300>
+        <select name="networkBufferSize" onChange="javascript:setReceiverBufferSize()">
+          <option>1</option>
+          <option selected="selected">2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+         <input type="text" width=50 name="dropout" id="dropout" disabled>
+    </td>   
+  </tr>
+ 
+  <tr>
+    <td>Delay:</td>
+    <td><input type="text" name="delay" id="delay" disabled></td>
+  </tr>
+ 
+  <tr>
+    <td>Level:</td>
+    <td><input name="remoteVolume" type="range" min="0" max="1" value="0" step="0.1" onChange="setRemoteVolume(this.value)" /></td> 
+  </tr>
+  <tr>
+</table>
+
+</form>
+
+<br>
+
+<!-- HIER WERDEN DIE FB-STANDARD FUNKTIONEN VERLINKT    
+<a href="#" onClick="javascript:pluginValid()">Click me!</a> <br />
+<a href="#" onClick="javascript:addTestEvent()">Activate click counter</a> <br />
+<a href="#" onClick="javascript:testEvent()">Fire a test event</a> <br />
+--> 
+
+</body>
+</html>

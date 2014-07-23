@@ -1,0 +1,590 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Socket.IO chat </title>
+
+	 	<link rel="stylesheet" href="js/jui/jquery-ui.theme.css" />
+	 	<link rel="js/jui/jquery-ui.css" />
+
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/fancy.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script type="text/javascript" src="http://cdn.peerjs.com/0.3/peer.js"></script>
+
+
+
+<link rel="stylesheet" href="js/jui/jquery-ui.min.css">
+<script src="js/jui/external/jquery/jquery.js"></script>
+<script src="js/jui/jquery-ui.min.js"></script>
+<script src="js/jui/jquery.knob.js"></script>
+
+
+		 <script src="js/WebMIDIAPI.js"></script>
+		 <script src="js/tuna.js"></script>
+		 <script src="js/webrtc.js"></script>
+		 <script src="js/mainHandle.js"></script>
+		 <script src="js/dataProcess.js"></script>
+		 <script src="js/effects.js"></script>
+		 <script src="js/video.js"></script>
+		 <script src="js/instrumentChange.js"></script>
+		 <script src="js/ping.js"></script>
+		 <script src="js/audioTest.js"></script>
+		 <script src="js/sampleMapping.js"></script>
+		 <script src="js/metronome.js"></script>
+		 <script src="js/audioTest.js"></script>
+		 <script src="js/midiInputConversion.js"></script>
+		 <script src="js/surfaceControllers.js"></script>
+		 <script src="js/knobLoader.js"></script>
+		 <!-- <script src="js/volumeMeter.js" /> -->
+		 <!-- <script src="js/mainVis.js" /> -->
+
+
+	</head>
+
+	<body>
+
+
+<a class = "inavibe">
+inavibe</a>
+
+<h2>
+<div class="row1">
+<a id="bass" class="changeInstrument"><i>bass</i>
+<a id="harp" class="changeInstrument"><i>harp</i></a>
+<a id="gPiano" class="changeInstrument"><i>piano</i></a>
+<a id="jazzdrums" class="changeInstrument"><i>drums</i><a>
+<a id="brass" class="changeInstrument"><i>brass</i></a>
+<a id="organ" class="changeInstrument"><i>organ</i></a>
+</div>
+<div class="row2">
+<a id="bells" class="changeInstrument"><i>bells</i></a>
+<a id="flute" class="changeInstrument"><i>flute</i></a>
+<a id="violin" class="changeInstrument"><i>violin</i></a>
+<a id="alto_sax" class="changeInstrument"><i>alto sax</i></a>
+<a id="western_piano" class="changeInstrument"><i>western piano</i></a>
+<a id="ballad_guitar" class="changeInstrument"><i>ballad guitar</i></a>
+</div>
+<div class="row3">
+<a id="blown_bottles" class="changeInstrument"><i>blown bottles</i></a>
+<a id="soft_voices" class="changeInstrument"><i>soft voices</i></a>
+<a id="electric_guitar" class="changeInstrument"><i>electric guitar</i></a>
+<a id="pizzicato" class="changeInstrument"><i>pizzicato</i></a>
+<a id="old_strings" class="changeInstrument"><i>oldstrings</i></a> 
+<a id="numb" class="changeInstrument"><i>numb</i></a>
+
+<a id="gospel_organ" class="changeInstrument"><i>Gospel Organ</i></a>
+<a id="metronome" class="changeInstrument"><i>loadMetro</i></a>
+ 
+<a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
+<a class = "controller-pos" onclick = "assignControllers('');" ><i>Assign Controller</i></a>
+<a class = "controller-pos" onclick = "assignControllers('volume');" ><i>Assign Volume</i></a>
+<!-- <a class = "controller-pos" onclick = "assignControllers('filter');" ><i>Assign Filter</i></a> -->
+<!-- <a class = "assignVolume" onclick = "assignControllerParameters();"><i>assign volume</i></a>
+ -->
+
+</div>
+</h2>
+
+<h6>
+<a id="convolver" class = "outgoingEffect" ><i>Reverb</i></a>
+<a id="wahwah" class = "outgoingEffect" ><i>WahWah</i></a>
+<a id="overdrive" class = "outgoingEffect" ><i>Overdrive</i></a>
+<a id="chorus" class = "outgoingEffect" ><i>Chorus</i></a>
+<a id="phaser" class = "outgoingEffect" ><i>Phaser</i></a>
+<a id="cabinet" class = "outgoingEffect" ><i>Cabinet</i></a>
+<a id="tremolo" class = "outgoingEffect" ><i>Tremolo</i></a>
+<a id="delay" class = "outgoingEffect" ><i>Delay</i></a>
+<a id="compressor" class = "outgoingEffect" ><i>Compressor</i></a>
+<a id="filter" class = "outgoingEffect" ><i>filter</i></a>
+<a onclick = "startMetronome()" ><i>Metronome</i></a>
+<a onclick ="toggleBPM()"><i>BPM</i></a>
+</h6>
+
+
+</h2>
+<!-- <h3><a class = "midi-pos-download" href = "http://jazz-soft.net/"> download MIDI support</a></h3> -->
+<h4>
+	<pre id="log">
+	</pre>
+	<div class = "midi-pos" id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
+
+	<pre id="log">
+	</pre>
+	<div class = "controller-pos" id="MIDIController" style="position:absolute; visibility:hidden"></div>
+</h4>
+
+
+</div>
+<!--//// Audio samples for you ////////////////////////// -->
+
+	<ul class="audioBin0">
+	<li></li>
+
+	</ul>
+<!--//// Audio samples for 1st connection//////////////// -->
+	<ul class="audioBin1">
+	<li></li>
+
+	</ul>
+<!--//// Audio Samples for 2nd connection//////////////// -->
+
+	<ul class="audioBin2">
+	<li></li>
+
+	</ul>
+<!--//// Audio samples for 3rd connection//////////////// -->
+	<ul class="audioBin3">
+	<li></li>
+
+	</ul>
+
+<!-- Metronome -->
+	<ul class="audioBin4">
+	<li></li>
+
+	</ul>
+</div> 
+
+
+<!-- 		// <script src = "/socket.io/socket.io.js"></script> -->
+		<script src = "http://code.jquery.com/jquery-1.11.1.js"></script>
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+
+
+  Your ID is : <span id="pid"></span><br><br>
+  Connect to musician: <input type="text" id="rid" placeholder="Other musician's id" style="align: center">
+                   <input type="button" value="Connect" id="connect" style="align: center"><br><br>
+  
+  
+  <div id="chat_area" style="display: none; align: center">
+    <div id="messages"></div>
+    <input type="text" id="text" placeholder="Enter message">
+    <input type="button" value="Ping" id="send-ping">
+    <input type="button" value="Audio" id="audio-test">
+  </div>
+  
+  <center>
+    <h1>Video Chat Room</h1>
+
+    <button id="call" type="button">Video On</button>
+    <button id="end" type="button">Video Off</button>
+  </center>
+
+  <div id="videos"></div>
+
+
+
+<!-- 
+			<canvas id="meter" width="500" height="50"></canvas> -->
+
+
+
+
+
+
+
+
+<div class="filterContainer">
+	<div class="closeBttn">
+	</div>
+		<div id="reverb" class="filterDiv">
+		<p>Reverb
+		</p>
+
+			<div class="filterDivSeperator" id="rev-highCut-container">
+				<input type="text" class="knob" id="reverb-highCut" value="0">
+				<p>high cut
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="rev-lowCut-container">
+				<input type="text" class="knob" id="reverb-lowCut" value="0">
+
+				<p>low cut
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="rev-dryLev-container">
+				<input type="text" class="knob" id="reverb-dryLevel" value="1">
+
+				<p>dry level
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="rev-wetlev-container">
+				<input type="text" class="knob" id="reverb-wetLevel" value="1">
+
+				<p>wet level
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="rev-lev-container">
+
+				<input type="text" class="knob" id="reverb-level" value="0">
+
+				<p>Reverb Level
+				</p>
+
+			</div>
+
+
+
+		</div>
+
+				<div id="chrous" class="filterDiv">
+		<p>Chorus
+		</p>
+
+			<div class="filterDivSeperator" id="cho-feedBack-container">
+				<input type="text" class="knob" id="chorus-feedback" value="0">
+				<p>Feedback
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="cho-rate-container">
+				<input type="text" class="knob" id="chorus-rate" value="50">
+
+				<p>Rate
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="cho-delay-container">
+				<input type="text" class="knob" id="chorus-delay" value="1">
+
+				<p>Delay
+				</p>
+
+			</div>
+
+
+
+		</div>
+
+				<div id="delay" class="filterDiv">
+		<p>Delay
+		</p>
+
+			<div class="filterDivSeperator" id="del-feedback-container">
+				<input type="text" class="knob" id="delay-feedback" value="40">
+				<p>Feedback
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="del-delTime-container">
+				<input type="text" class="knob" id="delay-time" value="150">
+
+				<p>Time in<br> miliseconds
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="del-wetLevel-container">
+				<input type="text" class="knob" id="delay-wetLevel" value="2">
+
+				<p>Wet level
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="cho-wetlev-container">
+				<input type="text" class="knob" id="delay-dryLevel" value="10">
+
+				<p>Dry level
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="cho-lev-container">
+
+				<input type="text" class="knob" id="delay-cutoff" value="20">
+
+				<p>Cutoff<br> Frequency
+				</p>
+
+			</div>
+
+
+
+		</div>
+
+				<div id="phaser" class="filterDiv">
+		<p>Phaser
+		</p>
+
+			<div class="filterDivSeperator" id="pha-rate-container">
+				<input type="text" class="knob" id="phaser-rate" value="12">
+				<p>Rate
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="pha-depth-container">
+				<input type="text" class="knob" id="phaser-depth" value="3">
+
+				<p>Depth
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="pha-feedback-container">
+				<input type="text" class="knob" id="phaser-feedback" value="2">
+
+				<p>Feedback
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="pha-stereoPhase-container">
+				<input type="text" class="knob" id="phaser-stereo" value="30">
+
+				<p>Stereo Phase
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="pha-BMF-container">
+
+				<input type="text" class="knob" id="phaser-bmf" value="500">
+				<p>Base Modulation<br> Frequency
+				</p>
+
+			</div>
+
+
+
+		</div>
+
+		<div id="reverb" class="filterDiv">
+			<p>Overdrive  
+			</p>
+
+			<div class="filterDivSeperator" id="ove-highCut-container">
+				<input type="text" class="knob" id="overdrive-outputGain" value="5">
+				<p>Output Gain
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="ove-lowCut-container">
+				<input type="text" class="knob" id="overdrive-drive" value="7">
+
+				<p>Drive
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="ove-cyrve-container">
+				<input type="text" class="knob" id="overdrive-curveLevel" value="1">
+
+				<p>Curve Level
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="ove-wetlev-container">
+				<input type="text" class="knob" id="overdrive-algorithim" value="0">
+
+				<p>Overdrive<br>Algorithm 1-6
+				</p>
+
+			</div>
+			</div>
+
+
+
+
+
+		
+
+				<div id="Filter" class="filterDiv">
+			<p  class="genText">Compressor
+			</p>
+
+			<div class="filterDivSeperator" id="com-thresh-container">
+				<input type="text" class="knob" id="compressor-threshold" value="5">
+				<p>Threshold
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="com-mkgain-container">
+				<input type="text" class="knob" id="compressor-makeGain" value="0">
+
+				<p>Makeup Gain
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="com-attk-container">
+				<input type="text" class="knob" id="compressor-attack" value="1">
+
+				<p>Attack
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="com-rel-container">
+				<input type="text" class="knob" id="compressor-release" value="0">
+
+				<p>Release
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="com-rat-container">
+
+				<input type="text" class="knob" id="compressor-ratio" value="4">
+
+				<p>Ratio
+				</p>
+
+			</div>
+
+				<div class="filterDivSeperator" id="com-kne-container">
+
+				<input type="text" class="knob" id="compressor-knee" value="5">
+
+				<p>Knee
+				</p>
+
+			</div>
+
+
+		</div>
+
+
+		
+
+				<div id="Filter" class="filterDiv">
+			<p>Filter
+			</p>
+
+			<div class="filterDivSeperator" id="fil-thresh-container">
+				<input type="text" class="knob" id="filter-frequency" value="1">
+				<p>Frequency
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="fil-mkgain-container">
+				<input type="text" class="knob" id="filter-q" value="1">
+
+				<p>Q
+				</p>
+
+			</div>
+
+				<div class="filterDivSeperator" id="fil-mkgaisn-container">
+				<input type="text" class="knob" id="filter-gain" value="1">
+
+				<p>Gain
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="fil-attk-container">
+				<input type="text" class="knob" id="filter-type" value="1">
+
+				<p>Type 1-8
+				</p>
+
+			</div>
+
+		</div>
+
+
+		<div id="Tremelo" class="filterDiv">
+			<p  class="genText">Tremelo
+			</p>
+
+			<div class="filterDivSeperator" id="tre-thresh-container">
+				<input type="text" class="knob" id="tremelo-intensity" value="3">
+				<p>Intensity
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="tre-mkgain-container">
+				<input type="text" class="knob" id="tremelo-rate" value="1">
+
+				<p>Rate
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="tre-attk-container">
+				<input type="text" class="knob" id="tremelo-phase" value="1">
+
+				<p>Stereo Phase
+				</p>
+
+			</div>
+
+		</div>
+
+		<div id="Filter" class="filterDiv">
+			<p  class="genText">Wahwah
+			</p>
+
+			<div class="filterDivSeperator" id="wah-thresh-container">
+				<input type="text" class="knob" id="wahwah-auto" value="0">
+				<p>Auto Mode <br> Toggle
+				</p>
+			</div>
+
+			<div class="filterDivSeperator" id="wah-mkgain-container">
+				<input type="text" class="knob" id="wahwah-base" value="5">
+
+				<p>Base Frequency
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="wah-attk-container">
+				<input type="text" class="knob" id="wahwah-excursion" value="2">
+
+				<p>Excursion<br> Octaves
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="wah-rel-container">
+				<input type="text" class="knob" id="wahwah-sweep" value="2">
+
+				<p>Sweep
+				</p>
+
+			</div>
+
+			<div class="filterDivSeperator" id="wah-rat-container">
+
+				<input type="text" class="knob" id="wahwah-resonance" value="10">
+
+				<p>Resonance
+				</p>
+
+			</div>
+
+				<div class="filterDivSeperator" id="wah-kne-container">
+
+				<input type="text" class="knob" id="wahwah-sensitivity" value="5">
+
+				<p>Sensitivity
+				</p>
+
+			</div>
+
+
+		</div>
+
+
+
+
+
+
+	</div>
+
+
+
+	</body>
+</html>
