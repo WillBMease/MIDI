@@ -6,7 +6,7 @@ var cabinet = []
 var wahwah = []
 var tremolo = []
 var filter = []
-var convolver = []
+var reverb = []
 var compressor = []
 
 var effectMsg = []
@@ -21,12 +21,22 @@ for (var i = 0 ; i < userLimit ; i++) {
 	wahwah[i] = 0
 	tremolo[i] = 0
 	filter[i] = 0
-	convolver[i] = 0
+	reverb[i] = 0
 	compressor[i] = 0
 }
 
 
 for (var i = 0 ; i < userLimit ; i++) {
+
+reverb[i] = new tuna.Convolver({
+                    highCut: 22050,                         //20 to 22050
+                    lowCut: 20,                             //20 to 22050
+                    dryLevel: 1,                            //0 to 1+
+                    wetLevel: 1,                            //0 to 1+
+                    level: 1,                               //0 to 1+, adjusts total output of both wet and dry
+                    impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
+                    bypass: 1
+                });
 
 chorus[i] = new tuna.Chorus({
                  rate: 1.5,         //0.01 to 8+
@@ -94,16 +104,6 @@ filter[i] = new tuna.Filter({
                  bypass: 1
              });
 
-convolver[i] = new tuna.Convolver({
-                    highCut: 22050,                         //20 to 22050
-                    lowCut: 20,                             //20 to 22050
-                    dryLevel: 1,                            //0 to 1+
-                    wetLevel: 1,                            //0 to 1+
-                    level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-                    impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
-                    bypass: 1
-                });
-
 compressor[i] = new tuna.Compressor({
                      threshold: 0.5,    //-100 to 0
                      makeupGain: 1,     //0 and up
@@ -117,14 +117,25 @@ compressor[i] = new tuna.Compressor({
 
 }
 
+for (var i = 0 ; i < 1 ; i++) {
 
-
+		chorus[i].rate = $("#chorus-rate").val()/10;
+		chorus[i].feedback = $("#chorus-feedback").val()/10;
+		chorus[i].delay = $("#chorus-delay").val()/100;
+		delay[i].feedback = $("#delay-feedback").val()/100;
+		delay[i].delayTime = $("#delay-delayTime").val();
+		delay[i].wetLevel = $("#delay-wetLevel").val()/10;
+		delay[i].dryLevel = $("#delay-dryLevel").val()/10;
+		delay[i].cutoff = $("#delay-cutoff").val();
+}
 
 function reverbEffect(index) {
-	if (convolver[index].bypass == 0)
-		convolver[index].bypass = 1
-	else if (convolver[index].bypass == 1)
-		convolver[index].bypass = 0
+	if (reverb[index].bypass == 0)
+		reverb[index].bypass = 1
+	else if (reverb[index].bypass == 1)
+		reverb[index].bypass = 0
+
+	console.log(reverb[index].highCut)
 }
 
 function wahEffect(index) {
@@ -183,6 +194,7 @@ function compressorEffect(index) {
 		compressor[index].bypass = 0
 }
 
+
 function filterEffect(index) {
 	if (filter[index].bypass == 0)
 		filter[index].bypass = 1
@@ -208,7 +220,7 @@ function incomingEffect(index, effectName) {
 	else if (effectName == 'filter')
 		filterEffect(index)
 	else if (effectName == 'convolver')
-		convolverEffect(index)
+		reverbEffect(index)
 	else if (effectName == 'compressor')
 		compressorEffect(index)
 }

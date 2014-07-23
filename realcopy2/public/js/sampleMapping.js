@@ -14,8 +14,8 @@ for (var i = 0 ; i < userLimit ; i++) {
 		compressor[i].connect(tremolo[i].input)
 		tremolo[i].connect(chorus[i].input)
 		chorus[i].connect(phaser[i].input)
-		phaser[i].connect(convolver[i].input)
-		convolver[i].connect(delay[i].input)
+		phaser[i].connect(reverb[i].input)
+		reverb[i].connect(delay[i].input)
 		delay[i].connect(filter[i].input)
 		filter[i].connect(wahwah[i].input)
 
