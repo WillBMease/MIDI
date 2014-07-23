@@ -101,8 +101,8 @@
 
 	"electric_guitar" : {
 		"name" : "electric_guitar",
-		"octaveNum" : 8,
-		"notes" : 96,
+		"octaveNum" : 6,
+		"notes" : 72,
 		"path" : "sounds/electric_guitar"
 	} ,
 

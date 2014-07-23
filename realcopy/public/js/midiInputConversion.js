@@ -1,6 +1,4 @@
 
-
-
 function keyboardMap(keyInput){
 	var output = 200;
 
@@ -150,7 +148,7 @@ function masterConversion(midiInput){
 	var output = 200;
 
 	if(midiInput[4] == 0 && midiInput[2] == 'e0' || midiInput[2] ==89){
-		output = 200;
+		// output = 200;
 	} 
 	///// for drums ////////////
 	else if(midiInput[2] == 99){
@@ -189,10 +187,7 @@ function masterConversion(midiInput){
 			break ;
 		}
 	}
-	// else if (midiInput[2] == 89)
-	// {	
-	// 	output = 200 ;
-	// }
+
 	else if (midiInput[2] == 90){
 		switch (midiInput[3]){
 		
