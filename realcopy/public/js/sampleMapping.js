@@ -52,7 +52,7 @@ function generateNotes(index, presetInstrument){
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
-			octave[index] = 1;
+			octave[4] = 1;
 		}
 	}
 

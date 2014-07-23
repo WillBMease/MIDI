@@ -104,27 +104,18 @@ octaveMsg[1] = 7
 
 
 function transpose(index, noteInput){
-	var octaveTrue = false
 
 	// 1
 	if(noteInput == 49 && octave[index] < globalOctave){
 		octave[index] = octave[index] + 1;
 		octaveMsg[2] = octave[index]
-		octaveTrue = true
 	}
 	// ~
 	if(noteInput == 96 && octave[index] != 0){
 		octave[index] = octave[index] - 1;
 		octaveMsg[2] = octave[index]
-		octaveTrue = true
 	}
 
-	if (octaveTrue) {
-		for (var i = 1 ; i < userLimit ; i++) {
-		if (user[i] != 0)
-			user[i].send(octaveMsg)
-		}
-	}
 }
 
 function keyGlow(cssClass){
