@@ -1,6 +1,7 @@
 var setController = false
 var setVolumeParameter = false 
-var setFilterParameter = false
+var setReverbWetLevelParameter = false
+var setFilterFrequencyParameter = false
 var controllerArray = []
 
 // function assignControllers(){
@@ -34,8 +35,12 @@ function assignControllers(parameter){
 			setVolumeParameter = true;
 			break;
 
-			case 'filter' : log.innerText = "Setting filter as controller parameter"
-			setFilterParameter = true;
+			case 'reverbWetLevel' : log.innerText = "Setting ReverbWetLevel as controller parameter"
+			setReverbWetLevelParameter = true;
+			break;
+
+			case 'filterFrequency' : log.innerText =  "Setting filterFrequency as controller parameter"
+			setFilterFrequencyParameter = true;
 			break;
 		}
 		
@@ -59,8 +64,12 @@ function setControls(midiInput){
 					setVolumeParameter = false
 				}
 
-				if(setFilterParameter){
-					setFilterParameter = false
+				if(setReverbWetLevelParameter){
+					setReverbWetLevelParameter = false
+				}
+
+				if(setFilterFrequencyParameter){
+					setFilterFrequencyParameter = false
 				}
 
 				return
@@ -95,20 +104,33 @@ function setControls(midiInput){
 		setVolumeParameter = false
 	}
 
-	if(setFilterParameter){
+	if(setReverbWetLevelParameter){
 		for(var i = 0;i<controllerArray.length;i++){
-			if(controllerArray[i].parameter = 'filter'){
+			if(controllerArray[i].parameter = 'reverbWetLevel'){
 				controllerArray[i].parameter = "";
 				console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
 				log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
 			}
 		}
-		controllerArray[controllerArray.length - 1].parameter = 'filter'
-		setFilterParameter = false
+		controllerArray[controllerArray.length - 1].parameter = 'reverbWetLevel'
+		setReverbWetLevelParameter = false
 	}
 
+	if(setFilterFrequencyParameter){
+		for(var i = 0; i<controllerArray.length;i++){
+			if(controllerArray[i].parameter == 'filterFrequency'){
+				controllerArray[i].parameter = "";
+				console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+				log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
+			}
+		}
+		controllerArray[controllerArray.length - 1].parameter = 'filterFrequency'
+		setFilterFrequencyParameter = false
+	}
+
+
 	//controllerArray[controllerArray.length - 1].parameter = mappedParameter
-	console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
+	// console.log('the controller id is: ' + controllerArray[controllerArray.length - 1].ID)
 
 	// for(var i = 0;i<controllerArray.length;i++){
 	// 	console.log('the controller id for ' + i + ' is: ' + controllerArray[i].ID + ' The type is for ' + i + ' is: ' + controllerArray[i].type)
@@ -138,16 +160,21 @@ function noteVolume(midiInput){
 	return volumeOutput;
 }
 
-function setFilterFreq(midiInput){
-	var frequency = 500
+function setReverbWetLevel(midiInput){
+	//var level = 1
+console.log('setReverbWetLevel called')
 	for(var i = 0;i<controllerArray.length;i++){
-		if(controllerArray[i].parameter == 'filter'){
-			frequency = ConversionScale(controllerArray[i],0,20000)
-			console.log(frequency)
-			return frequency;
+		if(controllerArray[i].parameter == 'reverbWetLevel'){
+			//level = ConversionScale(controllerArray[i],0,10)
+			$("#reverb-wetLevel").val(ConversionScale(controllerArray[i],0,10))
+			.trigger('change');
+			//return level;
 		}
 	}
 }
+
+// function setFilterFrequency()
+
 
 function ConversionScale(controller, min, max){
 	var y = (((max-min)*controller.velocity)/127) + min

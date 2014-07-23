@@ -1,8 +1,12 @@
 var noteNode = [];
+var tempNode = []
+		var notesLoad = [];
 
 for (var i = 0 ; i < 120 ; i++) {
 	noteNode[i] = null
+	tempNode[i] = null
 }
+
 
 var firstInst = 'gPiano'
 
@@ -61,19 +65,54 @@ function generateNotes(index, presetInstrument){
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
 		}
-
-		var notes = [];
-		var noteWrap = $('.audioBin' + index + ' li');
-		notes = noteWrap.find('audio');
+			// if (noteNode[3] != null) {
+			// 	//console.log('before: ' + noteNode[i])
+			// 	notesLoad.remove()
+			// 	//notesLoad[i].clear
+			// 	//notesLoad[i].disconnect
+			// 	// noteNode.disconnect()
+			// 	// noteNode[i].remove()
+			// 	//console.log('after: ' + noteNode[i])
+			// }
 		for (var i = 0 ; i < presetInstrument.notes ; i++) {
-			if (noteNode[i] != null)
-				noteNode[i].disconnect()
-		}	
+			if (noteNode[i] != null) {
+			// 	//console.log('before: ' + noteNode[i])
+			// 	notesLoad[i].remove()
+			// 	//notesLoad[i].clear
+			// 	//notesLoad[i].disconnect
+				noteNode[i].disconnect()//(cabinet[index])
+				//noteNode[i].context = null
+				console.log(noteNode[i])
+			// 	// noteNode[i].remove()
+			// 	//console.log('after: ' + noteNode[i])
+			}
+		}
+
+// console.log(noteNode)
+
+// wahwah[index].disconnect()
+
+		var noteWrap = $('.audioBin' + index + ' li');
+		notesLoad = noteWrap.find('audio');
+
+		//noteNode = tempNode
+
+		// cabinet[index].connect(overdrive[index].input)
+		// overdrive[index].connect(compressor[index].input)
+		// compressor[index].connect(tremolo[index].input)
+		// tremolo[index].connect(chorus[index].input)
+		// chorus[index].connect(phaser[index].input)
+		// phaser[index].connect(reverb[index].input)
+		// reverb[index].connect(delay[index].input)
+		// delay[index].connect(filter[index].input)
+		// filter[index].connect(wahwah[index].input)
+
+		// wahwah[index].connect(context.destination);	
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
-			 noteNode[i] = context.createMediaElementSource(notes[i])
+			 noteNode[i] = context.createMediaElementSource(notesLoad[i])
+			 // noteNode[i] = context.createScriptProcessor(notesLoad[i])
 			 noteNode[i].connect(cabinet[index].input)
-
 		} // end for loop
 
 	} // end else
@@ -112,7 +151,11 @@ function triggerMidiDevice(index, midiData){
 	else{
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
-				controllerArray[i].velocity = midiData[4]        
+				controllerArray[i].velocity = midiData[4];
+				setReverbWetLevel(midiData)
+				// $("#reverb-wetLevel").val(setReverbWetLevel(midiData))
+				// .trigger('change');
+				//console.log(reverb[0].wetLevel)        
 				//filter[0].frequency.value = setFilterFreq(midiData);
 				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
