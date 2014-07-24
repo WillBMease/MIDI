@@ -414,6 +414,17 @@ function incomingEffect(index, effectMsg) {
       incomingEffect(0, effectMsg)
     })
 
+// function effectsMain(index, effectMsg) {
+// 	var mainctl = []
+
+// 	if (effectMsg[2] == 'reverb')
+// 		mainctl = effectMsg
+// 	else if (effectMsg[2] == 'reverb')
+// 		mainctl = effectMsg
+
+// 	mainctl
+// }
+
 function outgoingEffectChange(effectMsg) {
 	//effectMsg[2] = chosenEffect
 	for (var i = 1 ; i < userLimit ; i++) {
