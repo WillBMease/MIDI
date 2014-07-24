@@ -81,7 +81,7 @@ function dataProcess(index, c){
      }
 
      else if (data[1] == 8) {           // effect changes
-      incomingEffect(index, data)
+      effectsMain(index, data)
      }
 
     });

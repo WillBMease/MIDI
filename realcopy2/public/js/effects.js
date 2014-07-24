@@ -124,8 +124,8 @@ for (var i = 0 ; i < 1 ; i++) {
 		reverb[i].wetLevel = $("#reverb-wetLevel").val() / 101
 		reverb[i].level = $("#reverb-level").val() / 101
 
-		chorus[i].rate = $("#chorus-rate").val()/10;
-		chorus[i].feedback = $("#chorus-feedback").val()/10;
+		chorus[i].rate = $("#chorus-rate").val()/800;
+		chorus[i].feedback = $("#chorus-feedback").val()/100;
 		chorus[i].delay = $("#chorus-delay").val()/100;
 
 		delay[i].feedback = $("#delay-feedback").val()/100;
@@ -565,6 +565,40 @@ switch (effectMsg[2]) {
 		break ;
 }
 
+
+switch (effectMsg[2]) {
+
+	case 'reverb' :
+		reverb[index] = mainctl
+		break ;
+	case 'chorus' :
+		chorus[index] = mainctl
+		break ;
+	case 'delay' :
+		delay[index] = mainctl
+		break ;
+	case 'overdrive' :
+		overdrive[index] = mainctl
+		break ;
+	case 'phaser' :
+		phaser[index] = mainctl
+		break ;
+	case 'cabinet' :
+		cabinet[index] = mainctl
+		break ;
+	case 'tremolo' :
+		tremolo[index] = mainctl
+		break ;
+	case 'filter' :
+		filter[index] = mainctl
+		break ;
+	case 'compressor' :
+		compressor[index] = mainctl
+		break ;
+	case 'wahwah' :
+		wahwah[index] = mainctl
+		break ;
+}
 
 }
 
