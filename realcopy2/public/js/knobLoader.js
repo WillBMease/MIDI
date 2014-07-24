@@ -3,7 +3,7 @@ $("#reverb-highCut").knob({
 	height:40,
 	min:20,
 	max:22050,
-	step:20,
+	step:1,
     'release' : function (v) { 
     	reverb[0].highCut = v
     	effectMsg[1] = 8
@@ -12,6 +12,14 @@ $("#reverb-highCut").knob({
     	effectMsg[4] = v
     	outgoingEffectChange(effectMsg)
      }
+      // 'change' : function(v) {
+      // 	//v = 1111
+      // 	//this.i = 1111
+      // 	//this.o
+      // 	//this.xy = 1111
+      // 	//this.w2 = 1111
+      // 	// reverb[0].highCut = v
+      // }
 })
 
 $("#reverb-lowCut").knob({
@@ -19,7 +27,7 @@ $("#reverb-lowCut").knob({
 	height:40,
 	min:20,
 	max:22050,
-	step:20,
+	step:1,
     'release' : function (v) { 
     	reverb[0].lowCut = v 
     	effectMsg[1] = 8
@@ -34,14 +42,14 @@ $("#reverb-dryLevel").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	reverb[0].dryLevel = v 
+    	reverb[0].dryLevel = v / 100
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'dryLevel'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 100
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -50,14 +58,14 @@ $("#reverb-wetLevel").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	reverb[0].wetLevel = v
+    	reverb[0].wetLevel = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'wetLevel'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -65,14 +73,14 @@ $("#reverb-level").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	reverb[0].level = v 
+    	reverb[0].level = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'level'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -81,14 +89,14 @@ $("#chorus-rate").knob({
 	width:40,
 	height:40,
 	min:1,
-	max:150,
+	max:800,
 	step:1,
     'release' : function (v) { 
-    	chorus[0].rate = v 
+    	chorus[0].rate = v/800
     	effectMsg[1] = 8
     	effectMsg[2] = 'chorus'
     	effectMsg[3] = 'rate'
-    	effectMsg[4] = v
+    	effectMsg[4] = v/800
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -97,14 +105,14 @@ $("#chorus-feedback").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:15,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	chorus[0].feedback = v 
+    	chorus[0].feedback = v/101
     	effectMsg[1] = 8
     	effectMsg[2] = 'chorus'
     	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v
+    	effectMsg[4] = v/101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -116,11 +124,11 @@ $("#chorus-delay").knob({
 	max:100,
 	step:1,
     'release' : function (v) { 
-    	chorus[0].delay = v 
+    	chorus[0].delay = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'chorus'
     	effectMsg[3] = 'delay'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -132,11 +140,11 @@ $("#delay-feedback").knob({
 	max:100,
 	step:1,
     'release' : function (v) { 
-    	delay[0].feedback = v 
+    	delay[0].feedback = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'delay'
     	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -144,7 +152,7 @@ $("#delay-time").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:500,
+	max:1000,
 	step:1,
     'release' : function (v) { 
     	delay[0].delayTime = v 
@@ -163,11 +171,11 @@ $("#delay-wetLevel").knob({
 	max:100,
 	step:1,
     'release' : function (v) { 
-    	delay[0].wetLevel = v 
+    	delay[0].wetLevel = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'delay'
     	effectMsg[3] = 'wetLevel'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -178,11 +186,11 @@ $("#delay-dryLevel").knob({
 	max:100,
 	step:1,
     'release' : function (v) { 
-    	delay[0].dryLevel = v 
+    	delay[0].dryLevel = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'delay'
     	effectMsg[3] = 'dryLevel'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -191,7 +199,7 @@ $("#delay-cutoff").knob({
 	height:40,
 	min:20,
 	max:22050,
-	step:50,
+	step:1,
     'release' : function (v) { 
     	delay[0].cutoff = v 
     	effectMsg[1] = 8
@@ -207,13 +215,13 @@ $("#phaser-rate").knob({
 	height:40,
 	min:1,
 	max:800,
-	step:5,
+	step:1,
     'release' : function (v) { 
-    	phaser[0].rate = v 
+    	phaser[0].rate = v / 801
     	effectMsg[1] = 8
     	effectMsg[2] = 'phaser'
     	effectMsg[3] = 'rate'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 801
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -222,14 +230,14 @@ $("#phaser-depth").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	phaser[0].depth = v 
+    	phaser[0].depth = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'phaser'
     	effectMsg[3] = 'depth'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -238,14 +246,14 @@ $("#phaser-feedback").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:15,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	phaser[0].feedback = v 
+    	phaser[0].feedback = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'phaser'
     	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -257,7 +265,7 @@ $("#phaser-stereo").knob({
 	max:180,
 	step:1,
     'release' : function (v) { 
-    	phaser[0].stereoPhase = v 
+    	phaser[0].stereoPhase = v
     	effectMsg[1] = 8
     	effectMsg[2] = 'phaser'
     	effectMsg[3] = 'stereoPhase'
@@ -271,7 +279,7 @@ $("#phaser-bmf").knob({
 	height:40,
 	min:500,
 	max:1500,
-	step:5,
+	step:1,
     'release' : function (v) { 
     	phaser[0].baseModulationFrequency = v 
     	effectMsg[1] = 8
@@ -286,14 +294,14 @@ $("#overdrive-outputGain").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:15,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	overdrive[0].outputGain = v 
+    	overdrive[0].outputGain = v /101
     	effectMsg[1] = 8
     	effectMsg[2] = 'overdrive'
     	effectMsg[3] = 'outputGain'
-    	effectMsg[4] = v
+    	effectMsg[4] = v/101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -302,14 +310,14 @@ $("#overdrive-drive").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	overdrive[0].drive = v 
+    	overdrive[0].drive = v /101
     	effectMsg[1] = 8
     	effectMsg[2] = 'overdrive'
     	effectMsg[3] = 'drive'
-    	effectMsg[4] = v
+    	effectMsg[4] = v /101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -318,14 +326,14 @@ $("#overdrive-curveLevel").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	overdrive[0].curveAmount = v 
+    	overdrive[0].curveAmount = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'overdrive'
     	effectMsg[3] = 'curveAmount'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -349,8 +357,8 @@ $("#overdrive-algorithm").knob({
 $("#compressor-threshold").knob({
 	width:40,
 	height:40,
-	min:0,
-	max:100,
+	min:-100,
+	max:0,
 	step:1,
     'release' : function (v) { 
     	compressor[0].threshold = v 
@@ -446,7 +454,7 @@ $("#filter-frequency").knob({
 	height:40,
 	min:20,
 	max:22050,
-	step:20,
+	step:1,
     'release' : function (v) { 
     	filter[0].frequency = v 
     	effectMsg[1] = 8
@@ -461,7 +469,7 @@ $("#filter-q").knob({
 	width:40,
 	height:40,
 	min:1,
-	max:40,
+	max:100,
 	step:1,
     'release' : function (v) { 
     	filter[0].Q = v 
@@ -509,14 +517,14 @@ $("#tremolo-intensity").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	tremolo[0].intensity = v 
+    	tremolo[0].intensity = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'tremolo'
     	effectMsg[3] = 'intensity'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -528,11 +536,11 @@ $("#tremolo-rate").knob({
 	max:80,
 	step:1,
     'release' : function (v) { 
-    	tremolo[0].rate = v 
+    	tremolo[0].rate = v / 80
     	effectMsg[1] = 8
     	effectMsg[2] = 'tremolo'
     	effectMsg[3] = 'rate'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 80
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -573,14 +581,14 @@ $("#wahwah-base").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	wahwah[0].baseFrequency = v 
+    	wahwah[0].baseFrequency = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'wahwah'
     	effectMsg[3] = 'baseFrequency'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })
@@ -605,14 +613,14 @@ $("#wahwah-sweep").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:10,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	wahwah[0].sweep = v 
+    	wahwah[0].sweep = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'wahwah'
     	effectMsg[3] = 'sweep'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
 	}
 })
@@ -637,15 +645,15 @@ $("#wahwah-resonance").knob({
 $("#wahwah-sensitivity").knob({
 	width:40,
 	height:40,
-	min:-10,
-	max:10,
+	min:-100,
+	max:100,
 	step:1,
     'release' : function (v) { 
-    	wahwah[0].sensitivity = v 
+    	wahwah[0].sensitivity = v / 101
     	effectMsg[1] = 8
     	effectMsg[2] = 'wahwah'
     	effectMsg[3] = 'sensitivity'
-    	effectMsg[4] = v
+    	effectMsg[4] = v / 101
     	outgoingEffectChange(effectMsg)
     }
 })

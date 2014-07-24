@@ -17,20 +17,20 @@ for (var i = 0 ; i < userLimit ; i++) {
   // the key connects the peer to the server that does the handshake
   //var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
-//var peer = new Peer(randID, {key: 'lwjd5qra8257b9'});
+var peer = new Peer(randID, {key: 'lwjd5qra8257b9'});
 
-    var peer = new Peer(randID, {
-            host: "54.191.34.54",
-            port: 9000,
-            path: '/peerjs-server',
-            config: {
-              'iceServers': [
-              { url: 'stun:54.186.225.6:3478?proto=udp' },
-              { url: 'turn:jvtest1@54.186.225.6:3478?proto=udp',
-                credential: 'jvsecretkey'
-              }]},
-            debug: 3
-  });
+  //   var peer = new Peer(randID, {
+  //           host: "54.191.34.54",
+  //           port: 9000,
+  //           path: '/peerjs-server',
+  //           config: {
+  //             'iceServers': [
+  //             { url: 'stun:54.186.225.6:3478?proto=udp' },
+  //             { url: 'turn:jvtest1@54.186.225.6:3478?proto=udp',
+  //               credential: 'jvsecretkey'
+  //             }]},
+  //           debug: 3
+  // });
  
   // Open the peer using the randID "label" we assigned
   peer.on('open', function(label){
@@ -95,13 +95,13 @@ $(document).ready(function() {
       instrumentChange(instr)
     })
 
-    $('.outgoingEffect').click(function(){
-      var chosenEffect = $(this).attr('id')
-      effectMsg[1] = 8
-      effectMsg[2] = chosenEffect
-      effectMsg[3] = 0
-      outgoingEffectChange(effectMsg)
-    })
+    // $('.outgoingEffect').click(function(){
+    //   var chosenEffect = $(this).attr('id')
+    //   effectMsg[1] = 8
+    //   effectMsg[2] = chosenEffect
+    //   effectMsg[3] = 0
+    //   outgoingEffectChange(effectMsg)
+    // })
 
     $('#audio-test').click(function(){
       audioTest()
