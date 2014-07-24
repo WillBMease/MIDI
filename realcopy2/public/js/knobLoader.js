@@ -12,14 +12,6 @@ $("#reverb-highCut").knob({
     	effectMsg[4] = v
     	outgoingEffectChange(effectMsg)
      }
-      // 'change' : function(v) {
-      // 	//v = 1111
-      // 	//this.i = 1111
-      // 	//this.o
-      // 	//this.xy = 1111
-      // 	//this.w2 = 1111
-      // 	// reverb[0].highCut = v
-      // }
 })
 
 $("#reverb-lowCut").knob({
@@ -58,14 +50,14 @@ $("#reverb-wetLevel").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:100,
+	max:10,
 	step:1,
     'release' : function (v) { 
-    	reverb[0].wetLevel = v / 101
+    	reverb[0].wetLevel = v / 10
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'wetLevel'
-    	effectMsg[4] = v / 101
+    	effectMsg[4] = v / 10
     	outgoingEffectChange(effectMsg)
     }
 })

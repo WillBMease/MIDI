@@ -112,11 +112,11 @@ for (var i = 0 ; i < 120 ; i++) {
 // 			}
 // 	}
 
-
+	// var notesLoad = []
 		var noteWrap = $('.audioBin' + index + ' li');
 		notesLoad = noteWrap.find('audio');
 
-
+// var tempNode = []
 
 
 
@@ -128,16 +128,16 @@ if (noteNode[3] != null) {
 				//noteNode[i].pause()
 				//cabinet[index].disconnect(noteNode[i])
 				//noteNode[i].disconnect(notesLoad[i])//(cabinet[index])
-			    //noteNode[i].disconnect()
+			    noteNode[i].disconnect()
 				// noteNode[i].clear
 				// notesLoad[i].disconnect
 				//noteNode[i].context = null
 				 // console.log(notesLoad[i])
 				//console.log(paths[i])
-				// noteNode[i].mediaElement.source = notesLoad[i]
-				console.log('1st ' + noteNode[i].src)
-				noteNode[i].src = notesLoad[i]
-				console.log('2nd ' + noteNode[i].src)
+				// // noteNode[i].mediaElement.source = notesLoad[i]
+				// console.log('1st ' + noteNode[i].src)
+				// noteNode[i].src = notesLoad[i]
+				// console.log('2nd ' + noteNode[i].src)
 				// noteNode[i].mediaElement = notesLoad[i]
 				// // noteNode[i].mediaElement.outerHTML = notesLoad[i]
 				// console.log(noteNode[i])
@@ -150,7 +150,7 @@ if (noteNode[3] != null) {
 	}
 
 
-		//noteNode = tempNode
+		// noteNode = tempNode
 
 		// cabinet[index].connect(overdrive[index].input)
 		// overdrive[index].connect(compressor[index].input)
@@ -163,7 +163,7 @@ if (noteNode[3] != null) {
 		// filter[index].connect(wahwah[index].input)
 
 		// wahwah[index].connect(context.destination);	
-else {
+// else {
 
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
@@ -178,7 +178,7 @@ else {
 			// wahwah[index].connect(context.destination)
 		} // end for loop
 
-	} // end else
+	// } // end else
 } // end bigger else
 
 

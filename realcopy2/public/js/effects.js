@@ -411,19 +411,162 @@ function incomingEffect(index, effectMsg) {
       effectMsg[2] = chosenEffect
       effectMsg[3] = "bypass"
       outgoingEffectChange(effectMsg)
-      incomingEffect(0, effectMsg)
+      //incomingEffect(0, effectMsg)
+      effectsMain(0, effectMsg)
     })
 
-// function effectsMain(index, effectMsg) {
-// 	var mainctl = []
+function effectsMain(index, effectMsg) {
+	var mainctl
 
-// 	if (effectMsg[2] == 'reverb')
-// 		mainctl = effectMsg
-// 	else if (effectMsg[2] == 'reverb')
-// 		mainctl = effectMsg
+switch (effectMsg[2]) {
 
-// 	mainctl
-// }
+	case 'reverb' :
+		mainctl = reverb[index]
+		break ;
+	case 'chorus' :
+		mainctl = chorus[index]
+		break ;
+	case 'delay' :
+		mainctl = delay[index]
+		break ;
+	case 'overdrive' :
+		mainctl = overdrive[index]
+		break ;
+	case 'phaser' :
+		mainctl = phaser[index]
+		break ;
+	case 'cabinet' :
+		mainctl = cabinet[index]
+		break ;
+	case 'tremolo' :
+		mainctl = tremolo[index]
+		break ;
+	case 'filter' :
+		mainctl = filter[index]
+		break ;
+	case 'compressor' :
+		mainctl = compressor[index]
+		break ;
+	case 'wahwah' :
+		mainctl = wahwah[index]
+		break ;
+}
+
+	switch (effectMsg[3]) {
+
+	case 'bypass' :
+		if (mainctl.bypass == 1)
+			mainctl.bypass = 0
+		else if (mainctl.bypass == 0)
+			mainctl.bypass = 1
+		break ;
+
+	case 'highCut' :
+		mainctl.highCut = effectMsg[4]
+		break ;
+	case 'lowCut' :
+		mainctl.lowCut = effectMsg[4]
+		break ;
+	case 'dryLevel' :
+		mainctl.dryLevel = effectMsg[4]
+		break ;
+	case 'wetLevel' :
+		mainctl.wetLevel = effectMsg[4]
+		break ;
+	case 'level' :
+		mainctl.level = effectMsg[4]
+		break ;
+	case 'rate' :
+		mainctl.rate = effectMsg[4]
+		break ;
+	case 'feedback' :
+		mainctl.feedback = effectMsg[4]
+		break ;
+	case 'delay' :
+		mainctl.delay = effectMsg[4]
+		break ;
+	case 'delayTime' :
+		mainctl.delayTime = effectMsg[4]
+		break ;
+	case 'cutoff' :
+		mainctl.cutoff = effectMsg[4]
+		break ;
+	case 'depth' :
+		mainctl.depth = effectMsg[4]
+		break ;
+	case 'stereoPhase' :
+		mainctl.stereoPhase = effectMsg[4]
+		break ;
+	case 'baseModulationFrequency' :
+		mainctl.baseModulationFrequency = effectMsg[4]
+		break ;
+	case 'outputGain' :
+		mainctl.outputGain = effectMsg[4]
+		break ;
+	case 'drive' :
+		mainctl.drive = effectMsg[4]
+		break ;
+	case 'curveAmount' :
+		mainctl.curveAmount = effectMsg[4]
+		break ;
+	case 'algorithmIndex' :
+		mainctl.algorithmIndex = effectMsg[4]
+		break ;
+	case 'threshold' :
+		mainctl.threshold = effectMsg[4]
+		break ;
+	case 'makeupGain' :
+		mainctl.makeupGain = effectMsg[4]
+		break ;
+	case 'attack' :
+		mainctl.attack = effectMsg[4]
+		break ;
+	case 'release' :
+		mainctl.release = effectMsg[4]
+		break ;
+	case 'ratio' :
+		mainctl.ratio = effectMsg[4]
+		break ;
+	case 'knee' :
+		mainctl.knee = effectMsg[4]
+		break ;
+	case 'frequency' :
+		mainctl.frequency = effectMsg[4]
+		break ;
+	case 'Q' :
+		mainctl.Q = effectMsg[4]
+		break ;
+	case 'gain' :
+		mainctl.gain = effectMsg[4]
+		break ;
+	case 'filterType' :
+		mainctl.filterType = effectMsg[4]
+		break ;
+	case 'intensity' :
+		mainctl.intensity = effectMsg[4]
+		break ;
+	case 'automode' :
+		mainctl.automode = effectMsg[4]
+		break ;
+	case 'baseFrequency' :
+		mainctl.baseFrequency = effectMsg[4]
+		break ;
+	case 'excursionOctaves' :
+		mainctl.excursionOctaves = effectMsg[4]
+		break ;
+	case 'sweep' :
+		mainctl.sweep = effectMsg[4]
+		break ;
+	case 'resonance' :
+		mainctl.resonance = effectMsg[4]
+		break ;
+	case 'sensitivity' :
+		mainctl.sensitivity = effectMsg[4]
+		break ;
+}
+
+
+}
 
 function outgoingEffectChange(effectMsg) {
 	//effectMsg[2] = chosenEffect
