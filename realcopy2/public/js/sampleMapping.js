@@ -1,9 +1,13 @@
 var noteNode = [];
 var tempNode = []
 		var notesLoad = [];
+		var paths = []
 
 for (var i = 0 ; i < 120 ; i++) {
+	//notesLoad[i] = null
+	//noteNode[i] = context.createMediaElementSource(notesLoad[i])
 	noteNode[i] = null
+	// noteNode[i].connect(cabinet[i].input)
 	tempNode[i] = null
 }
 
@@ -38,8 +42,9 @@ function loadInstrument(index, instr){
 function generateNotes(index, presetInstrument){
 	$(window).unbind();
 
-	if (presetInstrument.name == "metronome")
-		index = 4
+for (var i = 0 ; i < 120 ; i++) {
+		paths[i] = 'http://localhost:8888/'
+}
 
 	var instrument = '<audio id="" preload="auto">' + '</audio>';
 	var target = $('.audioBin' + index + ' li');
@@ -48,15 +53,14 @@ function generateNotes(index, presetInstrument){
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
-	if (presetInstrument.name == "metronome") {
-		for(var i = 1 ; i < 13 ; i++) {
+	if (presetInstrument.name == "metronome" || index == 4) {
+		for(var i = 1 ; i < 18 ; i++) {
 			target.append(instrument);
 			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
-			octave[4] = 1;
 		}
 	}
 
@@ -68,6 +72,7 @@ function generateNotes(index, presetInstrument){
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
 			newInstrument.attr("id", i);
+			paths[i] += instrumentPath
 		}
 			// if (noteNode[3] != null) {
 			// 	//console.log('before: ' + noteNode[i])
@@ -78,26 +83,72 @@ function generateNotes(index, presetInstrument){
 			// 	// noteNode[i].remove()
 			// 	//console.log('after: ' + noteNode[i])
 			// }
-		for (var i = 0 ; i < presetInstrument.notes ; i++) {
-			if (noteNode[i] != null) {
-			// 	//console.log('before: ' + noteNode[i])
-			// 	notesLoad[i].remove()
-			// 	//notesLoad[i].clear
-			// 	//notesLoad[i].disconnect
-				noteNode[i].disconnect()//(cabinet[index])
-				//noteNode[i].context = null
-				console.log(noteNode[i])
-			// 	// noteNode[i].remove()
-			// 	//console.log('after: ' + noteNode[i])
-			}
-		}
 
 // console.log(noteNode)
 
 // wahwah[index].disconnect()
 
+
+// if (noteNode[3] != null) {
+// 		for (var i = 0 ; i < presetInstrument.notes ; i++) {
+// // 			// 	//console.log('before: ' + noteNode[i])
+// 				notesLoad[i].remove()
+// 				// notesLoad[i].disconnect(noteNode[i])
+// // 				//noteNode[i].pause()
+// // 				//cabinet[index].disconnect(noteNode[i])
+// // 				//noteNode[i].disconnect(notesLoad[i])//(cabinet[index])
+// 			    noteNode[i].disconnect()
+// // 				// noteNode[i].clear
+// // 				// notesLoad[i].disconnect
+// // 				//noteNode[i].context = null
+// // 				 // console.log(notesLoad[i])
+// // 				//console.log(paths[i])
+// // 				noteNode[i].mediaElement.source = notesLoad[i]
+// // 				console.log(noteNode[i].mediaElement.source)
+// // 				console.log(noteNode[i].mediaElement)
+// // 				//console.log(noteNode[i])
+// // 			// 	// noteNode[i].remove()
+// // 			// 	//console.log('after: ' + noteNode[i])
+// 			}
+// 	}
+
+
 		var noteWrap = $('.audioBin' + index + ' li');
 		notesLoad = noteWrap.find('audio');
+
+
+
+
+
+if (noteNode[3] != null) {
+		for (var i = 0 ; i < presetInstrument.notes ; i++) {
+			// 	//console.log('before: ' + noteNode[i])
+			// 	notesLoad[i].remove()
+				//notesLoad[i].disconnect(noteNode[i])
+				//noteNode[i].pause()
+				//cabinet[index].disconnect(noteNode[i])
+				//noteNode[i].disconnect(notesLoad[i])//(cabinet[index])
+			    //noteNode[i].disconnect()
+				// noteNode[i].clear
+				// notesLoad[i].disconnect
+				//noteNode[i].context = null
+				 // console.log(notesLoad[i])
+				//console.log(paths[i])
+				// noteNode[i].mediaElement.source = notesLoad[i]
+				console.log('1st ' + noteNode[i].src)
+				noteNode[i].src = notesLoad[i]
+				console.log('2nd ' + noteNode[i].src)
+				// noteNode[i].mediaElement = notesLoad[i]
+				// // noteNode[i].mediaElement.outerHTML = notesLoad[i]
+				// console.log(noteNode[i])
+				// console.log(noteNode[i].mediaElement.source)
+				// console.log(noteNode[i].mediaElement)
+				//console.log(noteNode[i])
+			// 	// noteNode[i].remove()
+			// 	//console.log('after: ' + noteNode[i])
+			}
+	}
+
 
 		//noteNode = tempNode
 
@@ -112,14 +163,25 @@ function generateNotes(index, presetInstrument){
 		// filter[index].connect(wahwah[index].input)
 
 		// wahwah[index].connect(context.destination);	
+else {
+
 
 		for (var i = 0 ; i < presetInstrument.notes ; i++){
-			 noteNode[i] = context.createMediaElementSource(notesLoad[i])
-			 // noteNode[i] = context.createScriptProcessor(notesLoad[i])
-			 noteNode[i].connect(cabinet[index].input)
+		// 	if (noteNode[i]) {
+		// 	noteNode[i].disconnect(wahwah[index])
+		// }
+		// console.log ('in here')
+		 noteNode[i] = context.createMediaElementSource(notesLoad[i])
+		// 	 // noteNode[i] = context.createScriptProcessor(notesLoad[i])
+		// 	 //noteNode[i].mediaElement.currentSrc = notesLoad[i]
+			noteNode[i].connect(cabinet[index].input)
+			// wahwah[index].connect(context.destination)
 		} // end for loop
 
 	} // end else
+} // end bigger else
+
+
 
 } // end function
 
@@ -141,7 +203,7 @@ function triggerSample(index, key) {
 	if(check != 200  && check != 49 && check != 96){
 		notes[mappedKey].pause();
 		notes[mappedKey].currentTime = 0
-		notes[mappedKey].volume = 0.9
+		notes[mappedKey].volume = 0.2
 		notes[mappedKey].play(0)
 	}
 }

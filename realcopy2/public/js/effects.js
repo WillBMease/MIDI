@@ -29,36 +29,36 @@ for (var i = 0 ; i < userLimit ; i++) {
 for (var i = 0 ; i < userLimit ; i++) {
 
 reverb[i] = new tuna.Convolver({
-                    highCut: 22050,                         //20 to 22050
-                    lowCut: 20,                             //20 to 22050
-                    dryLevel: 1,                            //0 to 1+
-                    wetLevel: 1,                            //0 to 1+
-                    level: 1,                               //0 to 1+, adjusts total output of both wet and dry
+                    highCut: 15000,                         //20 to 22050
+                    lowCut: 10000,                             //20 to 22050
+                    dryLevel: .4,                            //0 to 1+
+                    wetLevel: .9,                            //0 to 1+
+                    level: .8,                               //0 to 1+, adjusts total output of both wet and dry
                     impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
                     bypass: 1
                 });
 
 chorus[i] = new tuna.Chorus({
-                 rate: 1.5,         //0.01 to 8+
-                 feedback: 0.2,     //0 to 1+
-                 delay: 0.5,     //0 to 1
+                 rate: 5,         //0.01 to 8+
+                 feedback: 0.8,     //0 to 1+
+                 delay: 0.8,     //0 to 1
                  bypass: 1          //the value 1 starts the effect as bypassed, 0 or 1
              });
 
 delay[i] = new tuna.Delay({
-                feedback: 0.4,    //0 to 1+
-                delayTime: 125,    //how many milliseconds should the wet signal be delayed? 
-                wetLevel: 0.25,    //0 to 1+
-                dryLevel: 1,       //0 to 1+
+                feedback: 0.8,    //0 to 1+
+                delayTime: 100,    //how many milliseconds should the wet signal be delayed? 
+                wetLevel: 0.5,    //0 to 1+
+                dryLevel: 0.4,       //0 to 1+
                 cutoff: 13000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
                 bypass: 1
             });
 
 overdrive[i] = new tuna.Overdrive({
-                    outputGain: 0.4,         //0 to 1+
+                    outputGain: 0.1,         //0 to 1+
                     drive: 0.1,              //0 to 1
-                    curveAmount: 0.3,          //0 to 1
-                    algorithmIndex: 2,       //0 to 5, selects one of our drive algorithms
+                    curveAmount: 0.1,          //0 to 1
+                    algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
                     bypass: 1
                 });
 
@@ -81,7 +81,7 @@ wahwah[i] = new tuna.WahWah({
                  automode: true,                //true/false
                  baseFrequency: 0.5,            //0 to 1
                  excursionOctaves: 4,           //1 to 6
-                 sweep: 0.3,                    //0 to 1
+                 sweep: 0.8,                    //0 to 1
                  resonance: 80,                 //1 to 100
                  sensitivity: 0.8,              //-1 to 1
                  bypass: 1
@@ -105,7 +105,7 @@ filter[i] = new tuna.Filter({
              });
 
 compressor[i] = new tuna.Compressor({
-                     threshold: 0.5,    //-100 to 0
+                     threshold: -0.5,    //-100 to 0
                      makeupGain: 1,     //0 and up
                      attack: 1,         //0 to 1000
                      release: 0,        //0 to 3000
@@ -118,118 +118,318 @@ compressor[i] = new tuna.Compressor({
 }
 
 for (var i = 0 ; i < 1 ; i++) {
+		 reverb[i].highCut = $("#reverb-highCut").val()
+		reverb[i].lowCut = $("#reverb-lowCut").val()
+		reverb[i].dryLevel = $("#reverb-dryLevel").val() / 101
+		reverb[i].wetLevel = $("#reverb-wetLevel").val() / 101
+		reverb[i].level = $("#reverb-level").val() / 101
 
 		chorus[i].rate = $("#chorus-rate").val()/10;
 		chorus[i].feedback = $("#chorus-feedback").val()/10;
 		chorus[i].delay = $("#chorus-delay").val()/100;
+
 		delay[i].feedback = $("#delay-feedback").val()/100;
-		delay[i].delayTime = $("#delay-delayTime").val();
+		delay[i].delayTime = $("#delay-time").val();
 		delay[i].wetLevel = $("#delay-wetLevel").val()/10;
 		delay[i].dryLevel = $("#delay-dryLevel").val()/10;
 		delay[i].cutoff = $("#delay-cutoff").val();
+
+		phaser[i].rate = $("#phaser-rate").val() / 801
+		phaser[i].depth = $("#phaser-depth").val() / 101
+		phaser[i].feedback = $("#phaser-feedback").val() / 101
+		phaser[i].stereoPhase = $("#phaser-stereo").val()
+		phaser[i].baseModulationFrequency = $("#phaser-bmf").val()
+
+		overdrive[i].outputGain = $("#overdrive-outputGain").val() / 101
+		overdrive[i].drive = $("#overdrive-drive").val() / 101
+		overdrive[i].curveAmount = $("#overdrive-curveLevel").val() / 101
+		overdrive[i].algorithmIndex = $("#overdrive-algorithm").val()
+
+		compressor[i].threshold = $("#compressor-threshold").val()
+		compressor[i].makeupGain = $("#compressor-makeGain").val()
+		compressor[i].attack = $("#compressor-attack").val()
+		compressor[i].release = $("#compressor-release").val()
+		compressor[i].ratio = $("#compressor-ratio").val()
+		compressor[i].knee = $("#compressor-knee").val()
+
+		filter[i].frequency = $("#filter-frequency").val()
+		filter[i].Q = $("#filter-q").val()
+		filter[i].gain = $("#filter-gain").val()
+		filter[i].filterType = $("#filter-type").val()
+
+		tremolo[i].intensity = $("#tremolo-intensity").val() / 101
+		tremolo[i].rate = $("#tremolo-rate").val() / 80
+		tremolo[i].stereoPhase = $("#tremolo-phase").val()
+
+		wahwah[i].automode = $("#wahwah-auto").val()
+		wahwah[i].baseFrequency = $("#wahwah-base").val() / 101
+		wahwah[i].excursionOctaves = $("#wahwah-excursion").val()
+		wahwah[i].sweep = $("#wahwah-sweep").val() / 101
+		wahwah[i].resonance = $("#wahwah-resonance").val()
+		wahwah[i].sensitivity = $("#wahwah-sensitivity").val() / 101
+
+
 }
 
-function reverbEffect(index) {
+
+function reverbEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (reverb[index].bypass == 0)
 		reverb[index].bypass = 1
 	else if (reverb[index].bypass == 1)
 		reverb[index].bypass = 0
-
-	console.log(reverb[index].highCut)
 }
 
-function wahEffect(index) {
+	else if (effectMsg[3] == 'highCut')
+		reverb[index].highCut = effectMsg[4]
+	else if (effectMsg[3] == 'lowCut')
+		reverb[index].lowCut = effectMsg[4]
+	else if (effectMsg[3] == 'dryLevel')
+		reverb[index].dryLevel = effectMsg[4]
+	else if (effectMsg[3] == 'wetLevel')
+		reverb[index].wetLevel = effectMsg[4]
+	else if (effectMsg[3] == 'level')
+		reverb[index].level = effectMsg[4]
+
+}
+
+function wahEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (wahwah[index].bypass == 0)
 		wahwah[index].bypass = 1
 	else if (wahwah[index].bypass == 1)
 		wahwah[index].bypass = 0
 }
 
-function overdriveEffect(index) {
+// var test2 = effectMsg[2]
+// var test3 = effectMsg[3]
+
+// if (effectMsg[3] == 0) {
+// 	if (wahwah[index].bypass == 0)
+// 		wahwah[index].bypass = 1
+// 	else if (wahwah[index].bypass == 1)
+// 		wahwah[index].bypass = 0
+// }
+
+
+	else if (effectMsg[3] == 'automode')
+		wahwah[index].automode = effectMsg[4]
+	else if (effectMsg[3] == 'baseFrequency')
+		wahwah[index].baseFrequency = effectMsg[4]
+	else if (effectMsg[3] == 'excursionOctaves')
+		wahwah[index].excursionOctaves = effectMsg[4]
+	else if (effectMsg[3] == 'sweep')
+		wahwah[index].sweep = effectMsg[4]
+	else if (effectMsg[3] == 'resonance')
+		wahwah[index].resonance = effectMsg[4]
+	else if (effectMsg[3] == 'sensitivity')
+		wahwah[index] = effectMsg[4]
+}
+
+function overdriveEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (overdrive[index].bypass == 0)
 		overdrive[index].bypass = 1
 	else if (overdrive[index].bypass == 1)
 		overdrive[index].bypass = 0
 }
 
-function chorusEffect(index) {
+
+	else if (effectMsg[3] == 'outputGain')
+		overdrive[index].outputGain = effectMsg[4]
+	else if (effectMsg[3] == 'drive')
+		overdrive[index].drive = effectMsg[4]
+	else if (effectMsg[3] == 'curveAmount')
+		overdrive[index].curveAmount = effectMsg[4]
+	else if (effectMsg[3] == 'algorithmIndex')
+		overdrive[index].algorithmIndex = effectMsg[4]
+}
+
+function chorusEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (chorus[index].bypass == 0)
 		chorus[index].bypass = 1
 	else if (chorus[index].bypass == 1)
 		chorus[index].bypass = 0
 }
 
-function phaserEffect(index) {
+	else if (effectMsg[3] == 'rate')
+		chorus[index].rate = effectMsg[4]
+	else if (effectMsg[3] == 'feedback')
+		chorus[index].feedback = effectMsg[4]
+	else if (effectMsg[3] == 'delay')
+		chorus[index].delay = effectMsg[4]
+}
+
+function phaserEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (phaser[index].bypass == 0)
 		phaser[index].bypass = 1
 	else if (phaser[index].bypass == 1)
 		phaser[index].bypass = 0
 }
 
-function cabinetEffect(index) {
+	else if (effectMsg[3] == 'rate')
+		phaser[index].rate = effectMsg[4]
+	else if (effectMsg[3] == 'depth')
+		phaser[index].depth = effectMsg[4]
+	else if (effectMsg[3] == 'feedback')
+		phaser[index].feedback = effectMsg[4]
+	else if (effectMsg[3] == 'stereoPhase')
+		phaser[index].stereoPhase = effectMsg[4]
+	else if (effectMsg[3] = 'baseModulationFrequency')
+		phaser[index].baseModulationFrequency = effectMsg[4]
+}
+
+function cabinetEffect(index, effectMsg) {
 	if (cabinet[index].bypass == 0)
 		cabinet[index].bypass = 1
 	else if (cabinet[index].bypass == 1)
 		cabinet[index].bypass = 0
 }
 
-function tremoloEffect(index) {
+function tremoloEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (tremolo[index].bypass == 0)
 		tremolo[index].bypass = 1
 	else if (tremolo[index].bypass == 1)
 		tremolo[index].bypass = 0
 }
 
-function delayEffect(index) {
+	else if (effectMsg[3] == 'intensity')
+		tremolo[index].intensity = effectMsg[4]
+	else if (effectMsg[3] == 'rate')
+		tremolo[index].rate = effectMsg[4]
+	else if (effectMsg[3] == 'stereoPhase')
+		tremolo[index].stereoPhase = effectMsg[4]
+}
+
+function delayEffect(index, effectMsg) {
+
+
+if (effectMsg[3] == 'bypass') {
 	if (delay[index].bypass == 0)
 		delay[index].bypass = 1
 	else if (delay[index].bypass == 1)
 		delay[index].bypass = 0
 }
 
-function compressorEffect(index) {
+// else{
+
+// effectMsg[2][index][effectMsg[3]] = effectMsg[4]
+// console.log('sup')
+// }
+
+	else if (effectMsg[3] == 'feedback')
+		delay[index].feedback = effectMsg[4]
+	else if (effectMsg[3] == 'delayTime')
+		delay[index].delayTime = effectMsg[4]
+	else if (effectMsg[3] == 'wetLevel')
+		delay[index].wetLevel = effectMsg[4]
+	else if (effectMsg[3] == 'dryLevel')
+		delay[index].dryLevel = effectMsg[4]
+	else if (effectMsg[3] == 'cutoff')
+		delay[index].cutoff = effectMsg[4]
+}
+
+function compressorEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (compressor[index].bypass == 0)
 		compressor[index].bypass = 1
 	else if (compressor[index].bypass == 1)
 		compressor[index].bypass = 0
 }
 
+	else if (effectMsg[3] == 'threshold')
+		compressor[index].threshold = effectMsg[4]
+	else if (effectMsg[3] == 'makeupGain')
+		compressor[index].makeupGain = effectMsg[4]
+	else if (effectMsg[3] == 'attack')
+		compressor[index].attack = effectMsg[4]
+	else if (effectMsg[3] == 'release')
+		compressor[index].release = effectMsg[4]
+	else if (effectMsg[3] == 'ratio')
+		compressor[index].ratio = effectMsg[4]
+	else if (effectMsg[3] == 'knee')
+		compressor[index].knee = effectMsg[4]
+}
 
-function filterEffect(index) {
+
+function filterEffect(index, effectMsg) {
+
+if (effectMsg[3] == 'bypass') {
 	if (filter[index].bypass == 0)
 		filter[index].bypass = 1
 	else if (filter[index].bypass == 1)
 		filter[index].bypass = 0
 }
 
-function incomingEffect(index, effectName) {
-	if (effectName == 'chorus')
-		chorusEffect(index)
-	else if (effectName == 'delay')
-		delayEffect(index)
-	else if (effectName == 'overdrive')
-		overdriveEffect(index)
-	else if (effectName == 'phaser')
-		phaserEffect(index)
-	else if (effectName == 'cabinet')
-		cabinetEffect(index)
-	else if (effectName == 'wahwah')
-		wahEffect(index)
-	else if (effectName == 'tremolo')
-		tremoloEffect(index)
-	else if (effectName == 'filter')
-		filterEffect(index)
-	else if (effectName == 'convolver')
-		reverbEffect(index)
-	else if (effectName == 'compressor')
-		compressorEffect(index)
+	else if (effectMsg[3] == 'frequency')
+		filter[index].frequency = effectMsg[4]
+	else if (effectMsg[3] == 'Q')
+		filter[index].Q = effectMsg[4]
+	else if (effectMsg[3] == 'gain')
+		filter[index].gain = effectMsg[4]
+	else if (effectMsg[3] == 'filterType')
+		filter[index].filterType = effectMsg[4]
 }
 
-function outgoingEffectChange(chosenEffect) {
-	effectMsg[2] = chosenEffect
+function incomingEffect(index, effectMsg) {	
+
+	if (effectMsg[2] == 'chorus')
+		chorusEffect(index, effectMsg)
+	else if (effectMsg[2] == 'delay')
+		delayEffect(index, effectMsg)
+	else if (effectMsg[2] == 'overdrive')
+		overdriveEffect(index, effectMsg)
+	else if (effectMsg[2] == 'phaser')
+		phaserEffect(index, effectMsg)
+	else if (effectMsg[2] == 'cabinet')
+		cabinetEffect(index, effectMsg)
+	else if (effectMsg[2] == 'wahwah')
+		wahEffect(index, effectMsg)
+	else if (effectMsg[2] == 'tremolo')
+		tremoloEffect(index, effectMsg)
+	else if (effectMsg[2] == 'filter')
+		filterEffect(index, effectMsg)
+	else if (effectMsg[2] == 'reverb')
+		reverbEffect(index, effectMsg)
+	else if (effectMsg[2] == 'compressor')
+		compressorEffect(index, effectMsg)
+}
+
+    $('.outgoingEffect').click(function(){
+      var chosenEffect = $(this).attr('id')
+      effectMsg[1] = 8
+      effectMsg[2] = chosenEffect
+      effectMsg[3] = "bypass"
+      outgoingEffectChange(effectMsg)
+      incomingEffect(0, effectMsg)
+    })
+
+// function effectsMain(index, effectMsg) {
+// 	var mainctl = []
+
+// 	if (effectMsg[2] == 'reverb')
+// 		mainctl = effectMsg
+// 	else if (effectMsg[2] == 'reverb')
+// 		mainctl = effectMsg
+
+// 	mainctl
+// }
+
+function outgoingEffectChange(effectMsg) {
+	//effectMsg[2] = chosenEffect
 	for (var i = 1 ; i < userLimit ; i++) {
 		if (user[i] != 0)
 			user[i].send(effectMsg)
 	}
-	incomingEffect(0, chosenEffect)
+	// incomingEffect(0, effectMsg)
 }
