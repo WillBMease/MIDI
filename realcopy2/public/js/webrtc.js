@@ -90,10 +90,6 @@ $(document).ready(function() {
       Ping()
     });
 
-    $('.changeInstrument').click(function(){
-      var instr = $(this).attr('id')
-      instrumentChange(instr)
-    })
 
     $('.outgoingEffect').click(function(){
       var chosenEffect = $(this).attr('id')

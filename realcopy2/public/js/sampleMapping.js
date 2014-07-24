@@ -156,12 +156,9 @@ function triggerMidiDevice(index, midiData){
 		for(var i = 0;i<controllerArray.length;i++){
 			if(midiData[2] == controllerArray[i].type && midiData[3] == controllerArray[i].ID){
 				controllerArray[i].velocity = midiData[4];
-				setReverbWetLevel(midiData)
-				// $("#reverb-wetLevel").val(setReverbWetLevel(midiData))
-				// .trigger('change');
-				//console.log(reverb[0].wetLevel)        
-				//filter[0].frequency.value = setFilterFreq(midiData);
-				console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
+				// console.log('surface controller ' + controllerArray[i].controllerNum + ' detected! velocity is: ' + midiData[4])
+				// console.log(controllerArray[i].parameter)
+				effectControllers(controllerArray[i], midiData)
 				log.innerText = ('controller: ' + controllerArray[i].controllerNum)
 				return;
 			}

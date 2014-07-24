@@ -7,6 +7,7 @@ $("#reverb-highCut").knob({
     'release' : function (v) { reverb[0].highCut = v }
 })
 
+
 $("#reverb-lowCut").knob({
 	width:40,
 	height:40,
@@ -33,6 +34,8 @@ $("#reverb-wetLevel").knob({
 	step:1,
     'release' : function (v) { reverb[0].wetLevel = v }
 })
+
+
 $("#reverb-level").knob({
 	width:40,
 	height:40,
@@ -41,6 +44,8 @@ $("#reverb-level").knob({
 	step:1,
     'release' : function (v) { reverb[0].level = v }
 })
+
+
 
 $("#chorus-rate").knob({
 	width:40,
@@ -55,8 +60,8 @@ $("#chorus-feedback").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:15,
-	step:1,
+	max:1,
+	step:.1,
     'release' : function (v) { chorus[0].feedback = v }
 })
 
@@ -64,8 +69,8 @@ $("#chorus-delay").knob({
 	width:40,
 	height:40,
 	min:0,
-	max:100,
-	step:1,
+	max:1,
+	step:.1,
     'release' : function (v) { chorus[0].delay = v }
 })
 
@@ -365,6 +370,17 @@ $("#wahwah-sensitivity").knob({
 
 
 
+$(".knob").each(function(){
+	var dataRel = $(this).attr('data-release')
+	$(this).knob({
+		width: '40',
+		height: '40',
+		min: parseInt($(this).attr('data-min')),
+		max:  parseInt($(this).attr('data-max')),
+		step: parseInt($(this).attr('data-step')),
+		'release': function(v) { dataRel = v}
+	})
+})
 
 
 
