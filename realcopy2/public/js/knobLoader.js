@@ -14,6 +14,7 @@ $("#reverb-highCut").knob({
      }
 })
 
+
 $("#reverb-lowCut").knob({
 	width:40,
 	height:40,
@@ -61,6 +62,8 @@ $("#reverb-wetLevel").knob({
     	outgoingEffectChange(effectMsg)
     }
 })
+
+
 $("#reverb-level").knob({
 	width:40,
 	height:40,
@@ -76,6 +79,8 @@ $("#reverb-level").knob({
     	outgoingEffectChange(effectMsg)
     }
 })
+
+
 
 $("#chorus-rate").knob({
 	width:40,
@@ -97,6 +102,7 @@ $("#chorus-feedback").knob({
 	width:40,
 	height:40,
 	min:0,
+
 	max:100,
 	step:1,
     'release' : function (v) { 
@@ -652,6 +658,17 @@ $("#wahwah-sensitivity").knob({
 
 
 
+$(".knob").each(function(){
+	var dataRel = $(this).attr('data-release')
+	$(this).knob({
+		width: '40',
+		height: '40',
+		min: parseInt($(this).attr('data-min')),
+		max:  parseInt($(this).attr('data-max')),
+		step: parseInt($(this).attr('data-step')),
+		'release': function(v) { dataRel = v}
+	})
+})
 
 
 

@@ -59,10 +59,34 @@ inavibe</a>
 <a id="metronome" class="changeInstrument"><i>loadMetro</i></a>
  
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
-<a class = "controller-pos" onclick = "assignControllers('');" ><i>Assign Controller</i></a>
+<a class = "controller-pos" onclick = "assignControllers('',triggerMidiDevice(index, midiData);" ><i>Assign Controller</i></a>
 <a class = "controller-pos" onclick = "assignControllers('volume');" ><i>Assign Volume</i></a>
-<a class = "controller-pos" onclick = "assignControllers('reverbWetLevel');" ><i>Reverb Wet Level</i></a>
-<!-- <a class = "controller-pos" onclick= "assignControllers('filterFrequency');"><i>Filter Frequency</i></a> -->
+<a class = "controller-pos" onclick = "assignControllers('#reverb-level');" ><i>Reverb Lvl</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#reverb-wetLevel');" ><i>Reverb Wet Level</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#reverb-highCut');"><i>Reverb HighCut</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#reverb-lowCut');"><i>Reverb lowCut</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#reverb-dryLevel');"><i>Reverb dryLevel</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#filter-q');"><i>Filter Q</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#filter-gain');"><i>Filter gain</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></a>
+
+<a class = "controller-pos" onclick= "assignControllers('#chorus-rate');"><i>chorus rate</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#chorus-feedback');"><i>chorus feedback</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#chorus-dealy');"><i>chorus dealy</i></a>
+
+
+<a class = "controller-pos" onclick= "assignControllers('#tremelo-intensity');"><i>tremelo intensity</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#tremelo-rate');"><i>tremelo rate</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#tremelo-phase');"><i>tremelo phase</i></a>
+
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-base');"><i>wahwah base</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-excursion');"><i>wahwah excursion</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-sweep');"><i>wahwah sweep</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-resonance');"><i>wahwah resonance</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#wahwah-sensitivity');"><i>wahwah sensitivity</i></a>
+
 <!-- <a class = "assignVolume" onclick = "assignControllerParameters();"><i>assign volume</i></a>
  -->
 
@@ -96,6 +120,50 @@ inavibe</a>
 	</pre>
 	<div class = "controller-pos" id="MIDIController" style="position:absolute; visibility:hidden"></div>
 </h4>
+
+
+
+
+
+<div>
+	<input class = "knob" id ="y" data-min = "min" data-max = "max"/>
+<!-- ///////////////Reverb Mapping////////////////// -->
+	<input class="knob" id="reverb-level" data-min="0" data-max="10" data-step="1" data-release="reverb[0].level"/>
+ 	<input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel"/>
+ 	<input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut"/>
+ 	<input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut"/>
+ 	<input class="knob" id="reverb-dryLevel" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].dryLevel"/>
+
+///////////////chorus Mapping//////////////////
+	<input class="knob" id="chorus-rate" data-min="1" data-max="150" data-step="1" data-release="chorus[0].rate"/>
+	<input class="knob" id="chorus-feedback" data-min="0" data-max="1" data-step=".1" data-release="chorus[0].feedback"/>
+	<input class="knob" id="chorus-delay" data-min="0" data-max="1" data-step=".1" data-release="chorus[0].delay"/>	
+
+///////////////filter Mapping//////////////////
+ 	<input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency"/>
+	<input class="knob" id="filter-q" data-min="1" data-max="40" data-step="1" data-release="filter[0].Q"/>
+	<!-- /////need to address the -40 to 40 aspect... this won't work if it is negative/////////////////////
+ 	--><input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="filter[0].gain"/>
+ 	<input class="knob" id="filter-type" data-min="1" data-max="8" data-step="1" data-release="filter[0].filterType"/>
+
+/////////////////tremelo Mappimg//////////////////
+	<input class="knob" id="tremelo-intensity" data-min="0" data-max="10" data-step="1" data-release="tremelo[0].intensity"/>
+	<input class="knob" id="tremelo-rate" data-min="1" data-max="80" data-step="1" data-release="tremelo[0].rate"/>
+ 	<input class="knob" id="tremelo-phase" data-min="0" data-max="180" data-step="1" data-release="tremelo[0].stereoPhase"/>
+
+/////////////////wahwah Mapping//////////////////
+ 	<input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="wahwah[0].automode"/>
+	<input class="knob" id="wahwah-base" data-min="0" data-max="10" data-step="1" data-release="wahwah[0].baseFrequency"/>
+	<input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="wahwah[0].excursionOctaves"/>
+	<input class="knob" id="wahwah-sweep" data-min="0" data-max="10" data-step="1" data-release="wahwah[0].sweep"/>
+	<input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="wahwah[0].resonance"/>
+	<!-- /////need to address the -10 to 10 aspect... this won't work if it is negative/////////////////////-->
+	<input class="knob" id="wahwah-sensitivity" data-min="-10" data-max="10" data-step="1" data-release="wahwah[0].sensitivity"/>
+
+</div>
+
+
+
 
 
 </div>
@@ -166,9 +234,7 @@ inavibe</a>
 
 
 
-
-
-<div class="filterContainer">
+<!-- <div class="filterContainer">
 	<div class="closeBttn">
 	</div>
 		<div id="reverb" class="filterDiv">
@@ -574,7 +640,7 @@ inavibe</a>
 
 
 
-	</div>
+	</div> -->
 
 <script src="jui/external/jquery/jquery.js"></script>
 <script src="jui/jquery-ui.min.js"></script>

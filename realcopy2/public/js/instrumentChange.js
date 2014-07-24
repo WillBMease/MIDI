@@ -12,3 +12,8 @@ function instrumentChange(instr){
 	      }
 	}
 } // end function
+
+    $('.changeInstrument').click(function(){
+      var instr = $(this).attr('id')
+      instrumentChange(instr)
+    })
