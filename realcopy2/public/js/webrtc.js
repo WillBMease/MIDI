@@ -23,6 +23,13 @@ var peer = new Peer(randID, {key: 'lwjd5qra8257b9'});
   //           host: "54.191.34.54",
   //           port: 9000,
   //           path: '/peerjs-server',
+  //           debug: 3
+  // });
+
+  //   var peer = new Peer(randID, {
+  //           host: "54.191.34.54",
+  //           port: 9000,
+  //           path: '/peerjs-server',
   //           config: {
   //             'iceServers': [
   //             { url: 'stun:54.186.225.6:3478?proto=udp' },
