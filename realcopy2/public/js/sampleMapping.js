@@ -66,8 +66,8 @@ for (var i = 0 ; i < 120 ; i++) {
 		var noteWrap = $('.audioBin' + index + ' li');
 		notesLoad = noteWrap.find('audio');
 
-		noteNode[index][7] = context.createMediaElementSource(notesLoad[7])
-		noteNode[index][7].connect(cabinet[index].input)
+		// noteNode[index][7] = context.createMediaElementSource(notesLoad[7])
+		// noteNode[index][7].connect(cabinet[index].input)
 
 		for (var i = 0 ; i <  presetInstrument.notes  ; i++)
 		 		noteNode[index][i] = null
