@@ -138,7 +138,7 @@ function triggerMidiDevice(index, midiData){
 		key = masterConversion(midiData);
 		if(key != 200 && midiData[4] != 0){
 
-			if (noteNode[index][mappedKey] == null) {		
+			if (noteNode[index][key] == null) {		
 		noteNode[index][key] = context.createMediaElementSource(notes[key])
 		noteNode[index][key].connect(cabinet[index].input)
 	}
