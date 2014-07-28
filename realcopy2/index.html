@@ -63,33 +63,64 @@ inavibe</a>
 <a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
 <a class = "controller-pos" onclick = "assignControllers('',triggerMidiDevice(index, midiData);" ><i>Assign Controller</i></a>
 <a class = "controller-pos" onclick = "assignControllers('volume');" ><i>Assign Volume</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#reverb-level');" ><i>Reverb Lvl</i></a>
+
+<!-- <a class = "controller-pos" onclick = "assignControllers('#reverb-level');" ><i>Reverb Lvl</i></a>
 <a class = "controller-pos" onclick = "assignControllers('#reverb-wetLevel');" ><i>Reverb Wet Level</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#reverb-highCut');"><i>Reverb HighCut</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#reverb-lowCut');"><i>Reverb lowCut</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#reverb-dryLevel');"><i>Reverb dryLevel</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#reverb-dryLevel');"><i>Reverb dryLevel</i></a> -->
+
+
+<!-- <a class = "controller-pos" onclick= "assignControllers('#chorus-rate');"><i>chorus rate</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#chorus-feedback');"><i>chorus feedback</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#chorus-delay');"><i>chorus delay</i></a> -->
+
+
+<!-- <a class = "controller-pos" onclick="assignControllers('#delay-feedback');" ><i>Delay Feedback</i></a>
+<a class = "controller-pos" onclick="assignControllers('#delay-time');"><i>delay time</i></a>
+<a class = "controller-pos" onclick="assignControllers('#delay-wetLevel');"><i>delay wetLevel</i></a>
+<a class = "controller-pos" onclick="assignControllers('#delay-dryLevel');"><i>delay dryLevel</i></a>
+<a class = "controller-pos" onclick="assignControllers('#delay-cutoff');"><i>delay cutoff</i></a> -->
+
+
+<!-- <a class = "controller-pos" onclick = "assignControllers('#phaser-rate');" ><i>Phaser Rate</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#phaser-depth');" ><i>Phaser depth</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#phaser-feedback');" ><i>Phaser Feedback</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#phaser-stereo');" ><i>Phaser stereo</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#phaser-bmf');" ><i>Phaser bmf</i></a> -->
+
+
+<!-- <a class = "controller-pos" onclick = "assignControllers('#overdrive-outputGain');" ><i>Overdrive outputGain</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#overdrive-drive');" ><i>Overdrive drive</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#overdrive-curveLevel');" ><i>Overdrive curveLevel</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#overdrive-algorithm');" ><i>Overdrive algorithm</i></a> -->
+
+
+<!-- <a class = "controller-pos" onclick = "assignControllers('#compressor-threshold');" ><i>compressor threshold</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#compressor-makeGain');" ><i>compressor makeGain</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#compressor-attack');" ><i>compressor attack</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#compressor-release');" ><i>compressor release</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#compressor-ratio');" ><i>compressor ratio</i></a>
+<a class = "controller-pos" onclick = "assignControllers('#compressor-knee');" ><i>compressor knee</i></a> -->
+
+
 <a class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#filter-q');"><i>Filter Q</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#filter-gain');"><i>Filter gain</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></a>
 
-<a class = "controller-pos" onclick= "assignControllers('#chorus-rate');"><i>chorus rate</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#chorus-feedback');"><i>chorus feedback</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#chorus-dealy');"><i>chorus dealy</i></a>
+
+<!-- <a class = "controller-pos" onclick= "assignControllers('#tremolo-intensity');"><i>tremolo intensity</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#tremolo-rate');"><i>tremolo rate</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#tremolo-phase');"><i>tremolo phase</i></a> -->
 
 
-<a class = "controller-pos" onclick= "assignControllers('#tremelo-intensity');"><i>tremelo intensity</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#tremelo-rate');"><i>tremelo rate</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#tremelo-phase');"><i>tremelo phase</i></a>
-
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
+<!-- <a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-base');"><i>wahwah base</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-excursion');"><i>wahwah excursion</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-sweep');"><i>wahwah sweep</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-resonance');"><i>wahwah resonance</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-sensitivity');"><i>wahwah sensitivity</i></a>
-
-<!-- <a class = "assignVolume" onclick = "assignControllerParameters();"><i>assign volume</i></a>
  -->
 
 </div>
@@ -98,7 +129,7 @@ inavibe</a>
 <h6>
 <a id="reverb" class = "outgoingEffect" ><i>Reverb</i></a>
 <a id="wahwah" class = "outgoingEffect" ><i>WahWah</i></a>
-<a id="overdrive" class = "outgoingEffect" ><i>Overdrive</i></a>
+<a id="overdsrive" class = "outgoingEffect" ><i>Overdrive</i></a>
 <a id="chorus" class = "outgoingEffect" ><i>Chorus</i></a>
 <a id="phaser" class = "outgoingEffect" ><i>Phaser</i></a>
 <a id="cabinet" class = "outgoingEffect" ><i>Cabinet</i></a>
@@ -128,39 +159,271 @@ inavibe</a>
 
 
 <div>
-<!-- 	<input class = "knob" id ="y" data-min = "min" data-max = "max"/> -->
-<!-- ///////////////Reverb Mapping////////////////// -->
-<!-- 	<input class="knob" id="reverb-level" data-min="0" data-max="10" data-step="1" data-release="reverb[0].level"/>
- 	<input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel"/>
- 	<input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut"/>
- 	<input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut"/>
- 	<input class="knob" id="reverb-dryLevel" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].dryLevel"/>
-
+	<input class = "knob" id ="y" data-min = "min" data-max = "max" data-value = "value"/>
+///////////////Reverb Mapping//////////////////
+ 	<input class="knob" id="reverb-level" data-min="0" data-max="100" data-step="1" data-release="reverb[0].level = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'reverb'
+    	effectMsg[3] = 'level'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="90"/>
+ 	<input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel = v / 10
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'reverb'
+    	effectMsg[3] = 'wetLevel'
+    	effectMsg[4] = v / 10
+    	outgoingEffectChange(effectMsg)" value="90"/>
+ 	<input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="everb[0].dryLevel = v / 100
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'reverb'
+    	effectMsg[3] = 'dryLevel'
+    	effectMsg[4] = v / 100
+    	outgoingEffectChange(effectMsg)" value="40"/>
+ 	<input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut = v
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'reverb'
+    	effectMsg[3] = 'highCut'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="15000"/>
+ 	<input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'reverb'
+    	effectMsg[3] = 'lowCut'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="10000"/>
+ 	
 ///////////////chorus Mapping//////////////////
-	<input class="knob" id="chorus-rate" data-min="1" data-max="150" data-step="1" data-release="chorus[0].rate"/>
-	<input class="knob" id="chorus-feedback" data-min="0" data-max="1" data-step=".1" data-release="chorus[0].feedback"/>
-	<input class="knob" id="chorus-delay" data-min="0" data-max="1" data-step=".1" data-release="chorus[0].delay"/>	
+	<input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="chorus[0].rate = v/800
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'chorus'
+    	effectMsg[3] = 'rate'
+    	effectMsg[4] = v/800
+    	outgoingEffectChange(effectMsg)" value ="500"/>
+	<input class="knob" id="chorus-feedback" data-min="0" data-max="100" data-step="1" data-release="chorus[0].feedback = v/101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'chorus'
+    	effectMsg[3] = 'feedback'
+    	effectMsg[4] = v/101
+    	outgoingEffectChange(effectMsg)" value="80"/>
+	<input class="knob" id="chorus-delay" data-min="0" data-max="100" data-step="1" data-release="chorus[0].delay = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'chorus'
+    	effectMsg[3] = 'delay'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="80"/>	
+
+////////////////Delay Mapping///////////////////////
+	<input class="knob" id="delay-feedback" data-min="0" data-max="100" data-step="1" data-release="delay[0].feedback = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'delay'
+    	effectMsg[3] = 'feedback'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="80"/>
+    <input class="knob" id="delay-time" data-min="0" data-max="1000" data-step="1" data-release="delay[0].delayTime = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'delay'
+    	effectMsg[3] = 'delayTime'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="500"/>
+    <input class="knob" id="delay-wetLevel" data-min="0" data-max="100" data-step="1" data-release="delay[0].wetLevel = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'delay'
+    	effectMsg[3] = 'wetLevel'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="50"/> 
+     <input class="knob" id="delay-dryLevel" data-min="0" data-max="100" data-step="1" data-release="delay[0].dryLevel = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'delay'
+    	effectMsg[3] = 'dryLevel'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="40"/>
+    <input class="knob" id="delay-cutoff" data-min="20" data-max="22050" data-step="1" data-release="delay[0].cutoff = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'delay'
+    	effectMsg[3] = 'cutoff'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="20000"/> 
+
+///////////////phaser Mapping//////////////////
+  <input class="knob" id="phaser-rate" data-min="1" data-max="800" data-step="1" data-release="phaser[0].rate = v / 801
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'phaser'
+    	effectMsg[3] = 'rate'
+    	effectMsg[4] = v / 801
+    	outgoingEffectChange(effectMsg)" value="400"/>  		      
+ <input class="knob" id="phaser-depth" data-min="0" data-max="100" data-step="1" data-release="phaser[0].depth = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'phaser'
+    	effectMsg[3] = 'depth'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="40"/>
+ <input class="knob" id="phaser-feedback" data-min="0" data-max="100" data-step="1" data-release="phaser[0].feedback = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'phaser'
+    	effectMsg[3] = 'feedback'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="20"/>
+  <input class="knob" id="phaser-stereo" data-min="1" data-max="180" data-step="1" data-release="phaser[0].stereoPhase = v
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'phaser'
+    	effectMsg[3] = 'stereoPhase'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="30"/>
+ <input class="knob" id="phaser-bmf" data-min="500" data-max="1500" data-step="1" data-release="phaser[0].baseModulationFrequency = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'phaser'
+    	effectMsg[3] = 'baseModulationFrequency'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="500"/>   	
+
+///////////////ovedride Mapping//////////////////
+ 	<input class="knob" id="overdrive-outputGain" data-min="0" data-max="100" data-step="1" data-release="overdrive[0].outputGain = v /101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'overdrive'
+    	effectMsg[3] = 'outputGain'
+    	effectMsg[4] = v/101
+    	outgoingEffectChange(effectMsg)" value="80"/>  
+  	<input class="knob" id="overdrive-drive" data-min="0" data-max="100" data-step="1" data-release="overdrive[0].drive = v /101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'overdrive'
+    	effectMsg[3] = 'drive'
+    	effectMsg[4] = v /101
+    	outgoingEffectChange(effectMsg)" value="80"/>
+	<input class="knob" id="overdrive-curveLevel" data-min="0" data-max="100" data-step="1" data-release="overdrive[0].curveAmount = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'overdrive'
+    	effectMsg[3] = 'curveAmount'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="80"/>
+	<input class="knob" id="overdrive-curveLevel" data-min="1" data-max="6" data-step="1" data-release="overdrive[0].algorithmIndex = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'overdrive'
+    	effectMsg[3] = 'algorithmIndex'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg))" value="3"/>
+
+///////////////Compressor Mapping//////////////////
+	<input class="knob" id="compressor-threshold" data-min="-100" data-max="0" data-step="1" data-release="compressor[0].threshold = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'threshold'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="-10"/>
+     <input class="knob" id="compressor-makeGain" data-min="1" data-max="10" data-step="1" data-release="compressor[0].makeupGain = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'makeupGain'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="0"/>
+    <input class="knob" id="compressor-attack" data-min="0" data-max="1000" data-step="1" data-release="compressor[0].attack = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'attack'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="1"/>
+   	<input class="knob" id="compressor-release" data-min="0" data-max="3000" data-step="1" data-release="compressor[0].release = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'release'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="0"/>
+   	<input class="knob" id="compressor-ratio" data-min="1" data-max="20" data-step="1" data-release="compressor[0].ratio = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'ratio'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="4"/>
+   	<input class="knob" id="compressor-knee" data-min="0" data-max="40" data-step="1" data-release="compressor[0].knee = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'compressor'
+    	effectMsg[3] = 'knee'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="5"/>
 
 ///////////////filter Mapping//////////////////
- 	<input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency"/>
-	<input class="knob" id="filter-q" data-min="1" data-max="40" data-step="1" data-release="filter[0].Q"/> -->
-	<!-- /////need to address the -40 to 40 aspect... this won't work if it is negative/////////////////////
- 	--><!-- <input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="filter[0].gain"/>
- 	<input class="knob" id="filter-type" data-min="1" data-max="8" data-step="1" data-release="filter[0].filterType"/>
+ 	<input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency = v; 		effectMsg[1] = 8;
+    	effectMsg[2] = 'filter';
+    	effectMsg[3] = 'frequency';
+    	effectMsg[4] = v;
+    	" value="1000"/>
+<!--     <input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="v" value="1000"/> -->
 
-/////////////////tremelo Mappimg//////////////////
-	<input class="knob" id="tremelo-intensity" data-min="0" data-max="10" data-step="1" data-release="tremelo[0].intensity"/>
-	<input class="knob" id="tremelo-rate" data-min="1" data-max="80" data-step="1" data-release="tremelo[0].rate"/>
- 	<input class="knob" id="tremelo-phase" data-min="0" data-max="180" data-step="1" data-release="tremelo[0].stereoPhase"/>
+	<input class="knob" id="filter-q" data-min="1" data-max="100" data-step="1" data-release="   	filter[0].Q = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'filter'
+    	effectMsg[3] = 'Q'
+    	effectMsg[4] = v
+    	" value="9"/> 
+	<input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="	filter[0].gain = v;
+    	effectMsg[1] = 8;
+    	effectMsg[2] = 'filter';
+    	effectMsg[3] = 'gain';
+    	effectMsg[4] = v;
+    	" value="20"/>
+ 	<input class="knob" id="filter-type" data-min="1" data-max="8" data-step="1" data-release="	filter[0].filterType = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'filter'
+    	effectMsg[3] = 'filterType'
+    	effectMsg[4] = v
+    	" value="1"/>
+
+/////////////////tremolo Mappimg//////////////////
+	<input class="knob" id="tremolo-intensity" data-min="0" data-max="100" data-step="1" data-release="tremolo[0].intensity = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'tremolo'
+    	effectMsg[3] = 'intensity'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="50"/>
+	<input class="knob" id="tremolo-rate" data-min="1" data-max="80" data-step="1" data-release="tremolo[0].rate = v / 80
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'tremolo'
+    	effectMsg[3] = 'rate'
+    	effectMsg[4] = v / 80
+    	outgoingEffectChange(effectMsg)" value="60"/>
+ 	<input class="knob" id="tremolo-phase" data-min="0" data-max="180" data-step="1" data-release="tremolo[0].stereoPhase = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'tremolo'
+    	effectMsg[3] = 'stereoPhase'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="120"/>
 
 /////////////////wahwah Mapping//////////////////
- 	<input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="wahwah[0].automode"/>
-	<input class="knob" id="wahwah-base" data-min="0" data-max="10" data-step="1" data-release="wahwah[0].baseFrequency"/>
-	<input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="wahwah[0].excursionOctaves"/>
-	<input class="knob" id="wahwah-sweep" data-min="0" data-max="10" data-step="1" data-release="wahwah[0].sweep"/>
-	<input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="wahwah[0].resonance"/> -->
-	<!-- /////need to address the -10 to 10 aspect... this won't work if it is negative/////////////////////-->
-	<!-- <input class="knob" id="wahwah-sensitivity" data-min="-10" data-max="10" data-step="1" data-release="wahwah[0].sensitivity"/> -->
+ 	<input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="wahwah[0].automode = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'automode'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="0"/>
+	<input class="knob" id="wahwah-base" data-min="0" data-max="100" data-step="1" data-release="wahwah[0].baseFrequency = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'baseFrequency'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="50"/>
+	<input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="wahwah[0].excursionOctaves = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'excursionOctaves'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="4"/>
+	<input class="knob" id="wahwah-sweep" data-min="0" data-max="100" data-step="1" data-release="wahwah[0].sweep = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'sweep'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="80"/>
+	<input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="wahwah[0].resonance = v 
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'resonance'
+    	effectMsg[4] = v
+    	outgoingEffectChange(effectMsg)" value="50"/>
+	<input class="knob" id="wahwah-sensitivity" data-min="-100" data-max="100" data-step="1" data-release="wahwah[0].sensitivity = v / 101
+    	effectMsg[1] = 8
+    	effectMsg[2] = 'wahwah'
+    	effectMsg[3] = 'sensitivity'
+    	effectMsg[4] = v / 101
+    	outgoingEffectChange(effectMsg)" value="80"/>
 
 </div>
 
@@ -236,10 +499,10 @@ inavibe</a>
 
 
 
-<div class="filterContainer">
-	<div class="closeBttn">
-	</div>
-		<div id="reverb" class="filterDiv">
+<!-- <div class="filterContainer"> -->
+	<!-- <div class="closeBttn">
+	</div>-->
+		<!-- <div id="reverb" class="filterDiv">
 		<p>Reverb
 		</p>
 
@@ -284,9 +547,9 @@ inavibe</a>
 
 
 
-		</div>
+		</div> -->
 
-				<div id="chrous" class="filterDiv">
+		<!-- 		<div id="chrous" class="filterDiv">
 		<p>Chorus
 		</p>
 
@@ -310,13 +573,13 @@ inavibe</a>
 				<p>Delay
 				</p>
 
-			</div>
+			</div> -->
 
 
 
-		</div>
+		<!-- </div> -->
 
-				<div id="delay" class="filterDiv">
+				<!-- <div id="delay" class="filterDiv">
 		<p>Delay
 		</p>
 
@@ -361,9 +624,9 @@ inavibe</a>
 
 
 
-		</div>
+		</div> -->
 
-				<div id="phaser" class="filterDiv">
+<!-- 				<div id="phaser" class="filterDiv">
 		<p>Phaser
 		</p>
 
@@ -405,11 +668,9 @@ inavibe</a>
 
 			</div>
 
+		</div> -->
 
-
-		</div>
-
-		<div id="reverb" class="filterDiv">
+	<!-- 	<div id="reverb" class="filterDiv">
 			<p>Overdrive  
 			</p>
 
@@ -442,7 +703,7 @@ inavibe</a>
 				</p>
 
 			</div>
-			</div>
+			</div> -->
 
 
 
@@ -450,9 +711,9 @@ inavibe</a>
 
 		
 
-				<div id="Filter" class="filterDiv">
-			<p  class="genText">Compressor
-			</p>
+		<!-- <div id="Filter" class="filterDiv">
+		<p  class="genText">Compressor
+		</p>
 
 			<div class="filterDivSeperator" id="com-thresh-container">
 				<input type="text" class="knob" id="compressor-threshold" value="5">
@@ -503,14 +764,14 @@ inavibe</a>
 			</div>
 
 
-		</div>
+		</div> -->
 
 
 
-		<!-- Filter
+		Filter
 		
 
-				<div id="Filter" class="filterDiv">
+<!-- 				<div id="Filter" class="filterDiv">
 			<p>Filter
 			</p>
 
@@ -544,13 +805,14 @@ inavibe</a>
 
 			</div>
 
-		</div>
+		</div> -->
 
 
-		<!-- Tremolo -->
 
 
-		<div id="Tremolo" class="filterDiv">
+
+<!-- 		<div id="Tremolo" class="filterDiv">
+
 			<p  class="genText">Tremolo
 			</p>
 
@@ -576,13 +838,13 @@ inavibe</a>
 
 			</div>
 
-		</div>
+		</div> -->
 
 
-     <!-- WAHWAH -->
+     WAHWAH
 
 
-		<div id="Filter" class="filterDiv">
+		<!-- <div id="Filter" class="filterDiv">
 			<p  class="genText">Wahwah
 			</p>
 
@@ -635,15 +897,15 @@ inavibe</a>
 			</div>
 
 
-		</div>
+		</div> -->
 
 
 
 
 
 
-	</div> -->
-
+	<!-- </div> 
+ -->
 <script src="jui/external/jquery/jquery.js"></script>
 <script src="jui/jquery-ui.min.js"></script>
 <script src="jui/jquery.knob.js"></script>
