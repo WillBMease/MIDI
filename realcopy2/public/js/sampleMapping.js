@@ -137,9 +137,13 @@ function triggerMidiDevice(index, midiData){
 		notes = noteWrap.find('audio');
 		key = masterConversion(midiData);
 		if(key != 200 && midiData[4] != 0){
+
+			if (noteNode[index][mappedKey] == null) {		
 		noteNode[index][key] = context.createMediaElementSource(notes[key])
 		noteNode[index][key].connect(cabinet[index].input)
-		console.log(noteNode[index][key])
+	}
+
+		console.log(noteNode[index][key]) 
 
 			notes[key].currentTime = 0;
 			console.log('volume: ' + noteVolume(midiData))
