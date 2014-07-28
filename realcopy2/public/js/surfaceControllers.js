@@ -1,8 +1,5 @@
 var setController = false
 var setVolumeParameter = false 
-// var setReverbLevelParameter = false
-// var setReverbWetLevelParameter = false
-// var setFilterFrequencyParameter = false
 var controllerArray = []
 var parameterToBeMapped = null;
 
@@ -57,54 +54,6 @@ function setControls(midiInput){
 	parameterToBeMapped = null;
 	console.log(controllerArray[controllerArray.length - 1].parameter)
 
-	// if(setVolumeParameter){
-	// 	for(var i = 0;i<controllerArray.length;i++){
-	// 		if(controllerArray[i].parameter == 'volume'){
-	// 			controllerArray[i].parameter = "";
-	// 			console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 			log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 		}
-	// 	}
-	// 	controllerArray[controllerArray.length - 1].parameter = 'volume'
-	// 	setVolumeParameter = false
-	// }
-
-	// if(setReverbLevelParameter){
-	// 	for(var i = 0;i<controllerArray.length;i++){
-	// 		if(controllerArray[i].parameter = 'reverbLevel'){
-	// 			controllerArray[i].parameter = "";
-	// 			console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 			log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 		}
-	// 	}
-	// 	controllerArray[controllerArray.length - 1].parameter = 'reverbLevel'
-	// 	setReverbLevelParameter = false
-	// }
-
-	// if(setReverbWetLevelParameter){
-	// 	for(var i = 0;i<controllerArray.length;i++){
-	// 		if(controllerArray[i].parameter = 'reverbWetLevel'){
-	// 			controllerArray[i].parameter = "";
-	// 			console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 			log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 		}
-	// 	}
-	// 	controllerArray[controllerArray.length - 1].parameter = 'reverbWetLevel'
-	// 	setReverbWetLevelParameter = false
-	// }
-
-	// if(setFilterFrequencyParameter){
-	// 	for(var i = 0; i<controllerArray.length;i++){
-	// 		if(controllerArray[i].parameter == 'filterFrequency'){
-	// 			controllerArray[i].parameter = "";
-	// 			console.log('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 			log.innerText = ('overriding the parameter for controller: ' + controllerArray[i].controllerNum)
-	// 		}
-	// 	}
-	// 	controllerArray[controllerArray.length - 1].parameter = 'filterFrequency'
-	// 	setFilterFrequencyParameter = false
-	// }
-
 	log.innerText = ('the controller number is: ' + controllerArray[controllerArray.length - 1].controllerNum)
 	console.log('Number of controllers: ' + controllerArray.length)	
 	setController = false;
@@ -131,37 +80,15 @@ function noteVolume(midiInput){
 function effectControllers(controller, midiInput){
 	var max = $(controller.parameter).attr('data-max')
 	var min = $(controller.parameter).attr('data-min')
-	console.log(max)
-	$(controller.parameter).val(ConversionScale(midiInput,min,max))
+	// console.log(sign)
+	var test = $(controller.parameter).attr('data-release3')
+	console.log(test)
+	$(controller.parameter).val(ConversionScale(midiInput,1*min,max))
 	.trigger('change');
-	console.log($(controller.parameter).val())
+	// console.log($(controller.parameter).val())
 }
 
-// function setReverbLevel(midiInput){
-// 	console.log('setReverbLevel called')
-// 	$("#reverb-level").val(ConversionScale(midiInput,0,10))
-// 	.trigger('change');
-// }
-
-// function setReverbWetLevel(midiInput){
-// 	console.log('setReverbWetLevel called')
-// 	$("#reverb-wetLevel").val(ConversionScale(controllerArray[i],0,10))
-// 	.trigger('change');
-// }
-
-// function setFilterFrequency(midiInput){
-// 	// console.log('setFilterFrequency called')
-// 	// for(var i = 0;i<controllerArray.length;i++){
-// 	// 	if(controllerArray[i].parameter == 'filterFrequency'){
-// 	// 		$("#filter-frequency").val(ConversionScale(controllerArray[i],20,22050))
-// 	// 		.trigger('change');
-// 	// 	}
-// 	// }
-// }
-
-
 function ConversionScale(midiInput, min, max){
-	//var absMin = Math.abs(min)
 	var y = (((max-min)*midiInput[4])/127) + min
 	console.log(y)
 	return y;

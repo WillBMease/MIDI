@@ -1,3 +1,27 @@
+$(".knob").each(function(){
+    var dataRel = $(this).attr('data-release')
+    var dataRel2 = parseInt($(this).attr('data-release2'))
+    var dataRel3 = $(this).attr('data-release3')
+    var dataRel4 = $(this).attr('data-release4')
+    var dataRel5 = $(this).attr('data-release5')
+
+    $(this).knob({
+        width: 40,
+        height: 40,
+        value: parseInt($(this).attr('data-value')),
+        // sign: parseInt($(this).attr('data-sign')),
+        min: parseInt($(this).attr('data-min')),
+        max:  parseInt($(this).attr('data-max')),
+        step: parseInt($(this).attr('data-step')),
+        'release': function(v) { dataRel = v
+            effectMsg[1] = dataRel2
+            effectMsg[2] = dataRel3
+            effectMsg[3] = dataRel4
+            effectMsg[4] = dataRel5
+            outgoingEffectChange(effectMsg)}
+    })
+})
+
 $("#reverb-highCut").knob({
 	width:40,
 	height:40,
@@ -102,7 +126,6 @@ $("#chorus-feedback").knob({
 	width:40,
 	height:40,
 	min:0,
-
 	max:100,
 	step:1,
     'release' : function (v) { 
@@ -658,17 +681,7 @@ $("#wahwah-sensitivity").knob({
 
 
 
-$(".knob").each(function(){
-	var dataRel = $(this).attr('data-release')
-	$(this).knob({
-		width: '40',
-		height: '40',
-		min: parseInt($(this).attr('data-min')),
-		max:  parseInt($(this).attr('data-max')),
-		step: parseInt($(this).attr('data-step')),
-		'release': function(v) { dataRel = v}
-	})
-})
+
 
 
 

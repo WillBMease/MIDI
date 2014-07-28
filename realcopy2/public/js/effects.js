@@ -153,6 +153,7 @@ for (var i = 0 ; i < 1 ; i++) {
 		compressor[i].knee = $("#compressor-knee").val()
 
 		filter[i].frequency = $("#filter-frequency").val()
+		// filter[i].frequency = testControllerOutput
 		filter[i].Q = $("#filter-q").val()
 		filter[i].gain = $("#filter-gain").val()
 		filter[i].filterType = $("#filter-type").val()
