@@ -30,6 +30,7 @@ function dataProcess(index, c){
             rttTime = (endTime - startTime) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
+       $('#messages').clear
        $('#messages').append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
           }
 
