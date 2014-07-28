@@ -27,6 +27,7 @@
 // only for midi
 //MIDI Velocity
 
+runTest()
 
 var midiMsg = [] ;
 
