@@ -83,7 +83,7 @@ for (var i = 0 ; i < 120 ; i++) {
 
 	else{
 		for(var i = 1; i <= presetInstrument.notes; i++){
-			testing[i].audioPointer = context.createBufferSource()
+			testing[i].audioPointer = new Audio()
 			target.append(instrument);
 			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -133,7 +133,7 @@ function triggerSample(index, key) {
 	// 	console.log(noteNode[index][mappedKey])
 	// }
 
-	console.log(testing[mappedKey])
+	console.log(testing[mappedKey].audioPointer)
 			if (testing[mappedKey].full == false) {
 			testing[mappedKey].activeVoice = context.createMediaElementSource(testing[mappedKey].audioPointer)
 			testing[mappedKey].activeVoice.connect(cabinet[index].input)
