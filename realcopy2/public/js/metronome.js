@@ -47,7 +47,7 @@ else if (metroActive) {
 
 function playDrums() {
 			// triggerSample(0, metroMsg)
-		var notes = [];
+		var loop = [];
 		var beat ;
 if (section)
 	beat = beatKids1[beatCt]
@@ -63,43 +63,43 @@ if (beat != 'x') {
 
 	var noteWrap = $('.audioBin' + 4 + ' li');
 
-	notes = noteWrap.find('audio');
+	loop = noteWrap.find('audio');
 
 	console.log(noteWrap)
 
 	// if ( beatCt % 4 == 0 || beatCt == 1) {
-	// 	notes[beatKids[0]].pause();
-	// 	notes[beatKids[0]].currentTime = 0
-	// 	notes[beatKids[0]].volume = 0.8
-	// 	notes[beatKids[0]].play(0)
+	// 	loop[beatKids[0]].pause();
+	// 	loop[beatKids[0]].currentTime = 0
+	// 	loop[beatKids[0]].volume = 0.8
+	// 	loop[beatKids[0]].play(0)
 	// }
 
 	// if ( (beatCt - 1) % 4 == 0 || beatCt == 2) {
-	// 	notes[beatKids[1]].pause();
-	// 	notes[beatKids[1]].currentTime = 0
-	// 	notes[beatKids[1]].volume = 0.8
-	// 	notes[beatKids[1]].play(0)
+	// 	loop[beatKids[1]].pause();
+	// 	loop[beatKids[1]].currentTime = 0
+	// 	loop[beatKids[1]].volume = 0.8
+	// 	loop[beatKids[1]].play(0)
 	// }
 	
 	// if ( (beatCt - 2) % 4 == 0 || beatCt == 3) {
-	// 	notes[beatKids[2]].pause();
-	// 	notes[beatKids[2]].currentTime = 0
-	// 	notes[beatKids[2]].volume = 0.8
-	// 	notes[beatKids[2]].play(0)
+	// 	loop[beatKids[2]].pause();
+	// 	loop[beatKids[2]].currentTime = 0
+	// 	loop[beatKids[2]].volume = 0.8
+	// 	loop[beatKids[2]].play(0)
 	// }
-	//console.log(notes[beatKids[beatCt]])
-	console.log(notes[1])
-		notes[beat].pause();
-		notes[beat].currentTime = 0
-		notes[beat].volume = 0.8
-		notes[beat].play(0)
+	//console.log(loop[beatKids[beatCt]])
+	console.log(loop[beat])
+		loop[beat].pause();
+		loop[beat].currentTime = 0
+		loop[beat].volume = 0.8
+		loop[beat].play(0)
 
 	// if ( (beatCt - 3) % 4 == 0 || beatCt == 4) {
 	// 	if (beat1[4] == '/')
-	// 	notes[beat1[3]].pause();
-	// 	notes[beat1[3]].currentTime = 0
-	// 	notes[beat1[3]].volume = 0.1
-	// 	notes[beat1[3]].play(0)
+	// 	loop[beat1[3]].pause();
+	// 	loop[beat1[3]].currentTime = 0
+	// 	loop[beat1[3]].volume = 0.1
+	// 	loop[beat1[3]].play(0)
 	// }
 }
 console.log(beatCt)
