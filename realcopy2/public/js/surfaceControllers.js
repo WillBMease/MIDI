@@ -68,10 +68,8 @@ function setControls(midiInput){
 
 function noteVolume(midiInput){
 	var volumeOutput = midiInput[4]/127;
-	// console.log('called noteVolume')	
 	if(midiInput[4] != 0){
 		for(var i = 0;i<controllerArray.length;i++){
-			// console.log(controllerArray[i].parameter)
 			if(controllerArray[i].parameter == 'volume'){
 				volumeOutput = ConversionScale(controllerArray[i],0,1)
 				//console.log(volumeOutput)
@@ -87,12 +85,10 @@ function noteVolume(midiInput){
 function effectControllers(controller, midiInput){
 	var max = $(controller.parameter).attr('data-max')
 	var min = $(controller.parameter).attr('data-min')
-	// console.log(sign)
-	var test = $(controller.parameter).attr('data-release3')
-	console.log(test)
+	// var test = $(controller.parameter).attr('data-release3')
+	// console.log(test)
 	$(controller.parameter).val(ConversionScale(midiInput,1*min,max))
 	.trigger('change');
-	// console.log($(controller.parameter).val())
 }
 
 function ConversionScale(midiInput, min, max){

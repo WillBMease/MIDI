@@ -47,9 +47,11 @@ for (var i = 0 ; i < userLimit ; i++) {
   // Await connections from others
   peer.on('connection', connect);
 
-  var startTime ;
+  var startTime = [] ;
   var endTime ;
   var rttTime ;
+
+  startTime[1] = 0
 
 
 function connect(c) {
