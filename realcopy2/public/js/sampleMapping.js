@@ -103,9 +103,10 @@ for (var i = 0 ; i < 120 ; i++) {
 
 		// noteNode[index][7] = context.createMediaElementSource(notesLoad[7])
 		// noteNode[index][7].connect(cabinet[index].input)
-
-		// for (var i = 0 ; i <  presetInstrument.notes  ; i++)
-		//  		noteNode[index][i] = null
+	if (index != 4) {
+		for (var i = 0 ; i <  presetInstrument.notes  ; i++)
+		 		noteNode[index][i] = null
+	}
 
 	// } // end bigger else
 firstRun = false
@@ -115,9 +116,9 @@ firstRun = false
 function triggerSample(index, key) {
 	var notes = [];
 
-	// var noteWrap = $('.audioBin' + index + ' li');
+	var noteWrap = $('.audioBin' + index + ' li');
 
-	// notes = noteWrap.find('audio');
+	notes = noteWrap.find('audio');
 
 	transpose(index, key[2]);
 	var check = keyboardMap(key[2]) ;
