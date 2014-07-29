@@ -1,6 +1,7 @@
 var setController = false
 var setVolumeParameter = false 
 var controllerArray = []
+var knobArray = []
 var parameterToBeMapped = null;
 
 function assignControllers(parameter){
@@ -42,6 +43,12 @@ function setControls(midiInput){
 			parameter:""
 	};
 
+	switch(parameterToBeMapped){
+		case '#filter-frequency' :
+		knobArray[0] = filter[0].frequency
+		break;
+	}
+	console.log(knobArray[0])
 	controllerArray.push(controller);
 	console.log("controllerArray length: " + controllerArray.length)
 	controllerArray[controllerArray.length - 1].type = midiInput[2]

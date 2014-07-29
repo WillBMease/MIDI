@@ -104,10 +104,10 @@ inavibe</a>
 <a class = "controller-pos" onclick = "assignControllers('#compressor-knee');" ><i>compressor knee</i></a> -->
 
 
-<!-- <a class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></a>
+<a class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#filter-q');"><i>Filter Q</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#filter-gain');"><i>Filter gain</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></a> -->
+<a class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></a>
 
 
 <!-- <a class = "controller-pos" onclick= "assignControllers('#tremolo-intensity');"><i>tremolo intensity</i></a>
@@ -115,13 +115,13 @@ inavibe</a>
 <a class = "controller-pos" onclick= "assignControllers('#tremolo-phase');"><i>tremolo phase</i></a> -->
 
 
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
+<!-- <a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-base');"><i>wahwah base</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-excursion');"><i>wahwah excursion</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-sweep');"><i>wahwah sweep</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-resonance');"><i>wahwah resonance</i></a>
 <a class = "controller-pos" onclick= "assignControllers('#wahwah-sensitivity');"><i>wahwah sensitivity</i></a>
-
+ -->
 
 </div>
 </h2>
@@ -346,7 +346,7 @@ inavibe</a>
     	effectMsg[3] = 'frequency';
     	effectMsg[4] = v;
     	" value="1000"/>
-<!--     <input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="v" value="1000"/> -->
+    <!-- <input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="filter[0].frequency" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="v" value="1000"/> -->
 
 	<input class="knob" id="filter-q" data-min="1" data-max="100" data-step="1" data-release="   	filter[0].Q = v 
     	effectMsg[1] = 8
@@ -354,6 +354,8 @@ inavibe</a>
     	effectMsg[3] = 'Q'
     	effectMsg[4] = v
     	" value="9"/> 
+    <!-- <input class="knob" d="filter-q" data-min="1" data-max="100" data-step="1" data-release="filter[0].Q" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="v" value="9"/> -->
+
 	<input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="	filter[0].gain = v;
     	effectMsg[1] = 8;
     	effectMsg[2] = 'filter';

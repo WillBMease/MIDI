@@ -9,11 +9,45 @@
 //         width: 40,
 //         height: 40,
 //         value: parseInt($(this).attr('data-value')),
-//         // sign: parseInt($(this).attr('data-sign')),
 //         min: parseInt($(this).attr('data-min')),
 //         max:  parseInt($(this).attr('data-max')),
 //         step: parseInt($(this).attr('data-step')),
-//         'release': function(v) { dataRel = v
+//         'release': function(v) { dataRel
+//             // console.log(knobArray[0])
+//             // knobArray[0] = v
+
+//             // console.log('knob works')
+//             dataRel = v
+//             switch(dataRel){
+//                 case 'filter[0].frequency' :
+//                 filter[0].frequency = v
+//                 break;
+
+//                 case 'filter[0].Q':
+//                 filter[0].Q = v
+                    // break;
+
+                    // case 'filter[0].gain' :
+                    // filter[0].gain = v
+                    // break;
+
+                    // case 'filter[0].filterType' :
+                    // filter[0].filterType = v
+                    // break;
+
+                    // case 'tremolo[0].intensity' :
+                    // tremolo[0].intensity = v
+                    // break;
+
+                    // case 'tremolo[0].rate':
+                    // tremolo[0].rate = v/180
+                    // break;
+
+                    // case 'tremolo[0].stereoPhase' :
+                    // tremolo[0].stereoPhase = v
+                    // break;
+
+//             }
 //             effectMsg[1] = dataRel2
 //             effectMsg[2] = dataRel3
 //             effectMsg[3] = dataRel4
@@ -21,6 +55,7 @@
 //             outgoingEffectChange(effectMsg)}
 //     })
 // })
+
 
 $("#reverb-highCut").knob({
 	width:40,
