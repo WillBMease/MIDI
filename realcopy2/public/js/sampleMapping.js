@@ -159,6 +159,8 @@ function triggerSample(index, key) {
 	}
 }
 
+
+
 function triggerMidiDevice(index, midiData){
 	var notes = [];
 	var noteWrap = $('.audioBin' + index + ' li');
@@ -179,6 +181,7 @@ function triggerMidiDevice(index, midiData){
 		notes = noteWrap.find('audio');
 		key = masterConversion(midiData);
 		if(key != 200 && midiData[4] != 0){
+
 
 			if (noteNode[index][key] == null) {		
 		noteNode[index][key] = context.createMediaElementSource(notes[key])

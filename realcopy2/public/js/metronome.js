@@ -26,7 +26,7 @@ metroMsg[3] = bpm ;
 
 //metroMsg[]
 
-loadInstrument(4, 'gPiano')
+// loadInstrument(4, 'gPiano')
 // loadInstrument(4, 'metronome')
 
 // console.log(beatKids[0])
