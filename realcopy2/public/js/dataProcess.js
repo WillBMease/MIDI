@@ -1,6 +1,9 @@
 var audioPrc = 0
 var receiveCt = 0
 
+var pingCheck = []
+
+
 function dataProcess(index, c){
 
         user[index] = c 
@@ -26,12 +29,20 @@ function dataProcess(index, c){
       }
 
       else if (data[1] == '0' && data[2] == '1') {
+        var calculate = true
+           for (var x = 0 ; x < pingCheck.length ; x++){
+            if (pingCheck[x] == data[3])
+              calculate = false
+           }
+           if (calculate) {
             endTime = new Date();
-            rttTime = (endTime - startTime) / 2 ;
+            rttTime = (endTime - startTime[data[3]]) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
+            pingCheck.push(data[3])
        $('#messages').clear
        $('#messages').append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
+     }
           }
 
           ////////// Audio packet testing
