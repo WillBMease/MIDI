@@ -103,10 +103,6 @@ for (var i = 0 ; i < 120 ; i++) {
 // }
 
 	if (index != 4) {
-<<<<<<< HEAD
-		for (var i = 0 ; i <  presetInstrument.notes  ; i++)
-		 	noteNode[index][i] = null
-=======
 		for (var i = 0 ; i <  presetInstrument.notes  ; i++) {
 			if (!firstRun) {
 				// notesLoad[i]
@@ -117,7 +113,7 @@ for (var i = 0 ; i < 120 ; i++) {
 		// 			noteNode[index][i] = context.createMediaElementSource(notesLoad[i])
 		// 			noteNode[index][i].connect(cabinet[index].input)
 		// }
->>>>>>> b7cb67ed0909d49a6181c4be5e2dccdaf2fe9413
+
 	}
 	firstRun = false
 } // end function
