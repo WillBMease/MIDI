@@ -9,6 +9,26 @@ var path = require('path');
 var createUser = require('./users.js');
 //var webrtc = require('./webrtc.js')
 
+// var assert = require('assert')
+// describe('Array', function(){
+//   describe('#indexOf()', function(){
+//     it('should return -1 when the value is not present', function(){
+//       assert.equal(-1, [1,2,3].indexOf(5));
+//       assert.equal(-1, [1,2,3].indexOf(0));
+//     })
+//   })
+// })
+
+module.exports = function(config) {
+  config.set({
+    frameworks: ['jasmine'],
+
+    files: [
+      'public/js/*.js'
+    ]
+  });
+};
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res){
 	res.sendfile('index.html');
