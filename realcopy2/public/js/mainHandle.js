@@ -14,6 +14,7 @@
 // 6 = Metronome
 // 7 = Octave Change
 // 8 = Effect Change
+// 9 = Beat Map
 
 // midiMsg[2]
 // actual data value

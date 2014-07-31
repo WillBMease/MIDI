@@ -55,9 +55,11 @@ function generateNotes(index, presetInstrument){
 // 		testing[i].full = false
 // 	}
 // }
+	// notesLoad.clear
+	// notesLoad.empty()
 
 for (var i = 0 ; i < 120 ; i++) {
-		// paths[i] = 'http://localhost:8888/'
+		paths[i] = 'http://localhost:8888/'
 		// notesLoad[i] = null
 }
 
@@ -81,19 +83,41 @@ for (var i = 0 ; i < 120 ; i++) {
 			// console.log(instrumentPath)
 			// testing[i].audioPointer.src = instrumentPath
 			// testing[i].audioPointer.type = "audio/ogg"
-			// paths[i] += instrumentPath
+			paths[i] += instrumentPath
 		}
 
 		var noteWrap = $('.audioBin' + index + ' li');
 		notesLoad = noteWrap.find('audio');
 
-		console.log(notesLoad[5])
+		// console.log(notesLoad[5])
 
 		// noteNode[index][7] = context.createMediaElementSource(notesLoad[7])
 		// noteNode[index][7].connect(cabinet[index].input)
+
+// cabinet[index].disconnect(overdrive[index].input)
+// cabinet[0].connect(overdrive[0].input)
+
+// if (firstRun){
+// 	noteNode[index][0] = context.createMediaElementSource(notesLoad[29])
+// 	noteNode[index][0].connect(cabinet[index].input)
+// }
+
 	if (index != 4) {
+<<<<<<< HEAD
 		for (var i = 0 ; i <  presetInstrument.notes  ; i++)
 		 	noteNode[index][i] = null
+=======
+		for (var i = 0 ; i <  presetInstrument.notes  ; i++) {
+			if (!firstRun) {
+				// notesLoad[i]
+		 		noteNode[index][i] = null
+			}
+		}
+		// for (var i = 0 ; i < presetInstrument.notes ; i++) {
+		// 			noteNode[index][i] = context.createMediaElementSource(notesLoad[i])
+		// 			noteNode[index][i].connect(cabinet[index].input)
+		// }
+>>>>>>> b7cb67ed0909d49a6181c4be5e2dccdaf2fe9413
 	}
 	firstRun = false
 } // end function
@@ -102,9 +126,9 @@ for (var i = 0 ; i < 120 ; i++) {
 function triggerSample(index, key) {
 	var notes = [];
 
-	var noteWrap = $('.audioBin' + index + ' li');
+	// var noteWrap = $('.audioBin' + index + ' li');
 
-	notes = noteWrap.find('audio');
+	// notes = noteWrap.find('audio');
 
 	transpose(index, key[2]);
 	var check = keyboardMap(key[2]) ;
@@ -114,11 +138,23 @@ function triggerSample(index, key) {
 	 console.log(mappedKey)
 	if(check != 200  && check != 49 && check != 96){
 		
+// noteNode[index][0].mediaElement.src = paths[mappedKey]
+// noteNode[index][0].mediaElement = notesLoad[mappedKey]
+// noteNode[index][0].mediaElement.id = mappedKey
+// noteNode[index][0].mediaElement.nextSibling.src = paths[mappedKey + 1]
+// noteNode[index][0].mediaElement.previousSibling.src = paths[mappedKey - 1]
+// noteNode[index][0].mediaElement.nextSibling = notesLoad[mappedKey + 1]
+// noteNode[index][0].mediaElement.previousSibling = notesLoad[mappedKey - 1]
 
+// console.log(noteNode[index][0].src)
+// console.log(noteNode[index][0])
+// console.log(noteNode[index][0].mediaElement.parentNode)
+// noteNode[index]
 	// 	if (noteNode[index][mappedKey] == null) {
-	// 	noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
-	// 	noteNode[index][mappedKey].connect(cabinet[index].input)
+	// 	noteNode[index][0] = context.createMediaElementSource(notes[mappedKey])
+	// 	noteNode[index][0].connect(cabinet[index].input)
 	// 	console.log(noteNode[index][mappedKey])
+	// 	noteNode[index][mappedKey] = 1
 	// }
 
 	// console.log(testing[mappedKey].audioPointer)
@@ -128,8 +164,14 @@ function triggerSample(index, key) {
 	// 	// console.log(noteNode[index][mappedKey])
 	// }
 
+<<<<<<< HEAD
 	if (noteNode[index][mappedKey] == null) {
 		noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
+=======
+		if (noteNode[index][mappedKey] == null) {
+			console.log(notes[mappedKey])
+		noteNode[index][mappedKey] = context.createMediaElementSource(notesLoad[mappedKey])
+>>>>>>> b7cb67ed0909d49a6181c4be5e2dccdaf2fe9413
 		noteNode[index][mappedKey].connect(cabinet[index].input)
 		console.log(noteNode[index][mappedKey])
 	}
@@ -151,11 +193,27 @@ function triggerSample(index, key) {
 	// noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey].play(0)
 
 	// console.log(noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey])
-
 		notesLoad[mappedKey].pause();
 		notesLoad[mappedKey].currentTime = 0
 		notesLoad[mappedKey].volume = 0.2
 		notesLoad[mappedKey].play(0)
+
+		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].pause();
+		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].currentTime = 0
+		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].volume = 0.2
+		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].play(0)
+
+		// noteNode[index][0].mediaElement.pause();
+		// noteNode[index][0].mediaElement.currentTime = 0
+		// noteNode[index][0].mediaElement.volume = 0.2
+		// noteNode[index][0].mediaElement.play(0)
+
+		// notes[mappedKey].pause();
+		// notes[mappedKey].currentTime = 0
+		// notes[mappedKey].volume = 0.2
+		// notes[mappedKey].play(0)
+		// notes[mappedKey].clear
+		// noteNode[mappedKey] = null
 		// testing[mappedKey].audioPointer.pause();
 		// testing[mappedKey].audioPointer.currentTime = 0
 		// testing[mappedKey].audioPointer.volume = 0.2

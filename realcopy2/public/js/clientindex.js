@@ -1,33 +1,20 @@
 	var numOfKey = 8
-	var rowX =4
-	var rowY =2 
+	var rowX = 4
+	var rowY = 2 
 	var configurationKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
 	//var filterKey = [];
+	var beatMsg = []
+	beatMsg[1] = 9
+
 	var jazzDrumList = {
 
-	kick:"sounds/jazzdrums/note-5.ogg",highHat:"sounds/jazzdrums/note-1.ogg",crash1:"sounds/jazzdrums/note-2.ogg",
-	crash2:"sounds/jazzdrums/note-3.ogg", crash3:"sounds/jazzdrums/note-4.ogg", openHH:"sounds/jazzdrums/note-6.ogg", phh:"sounds/jazzdrums/note-7.ogg",
-	ride1:"sounds/jazzdrums/note-8.ogg",ride2:"sounds/jazzdrums/note-9.ogg", ride3:"sounds/jazzdrums/note-10.ogg", ride4:"sounds/jazzdrums/note-11.ogg", sdst:"sounds/jazzdrums/note-12.ogg",
-	snare1:"sounds/jazzdrums/note-13.ogg", snare2:"sounds/jazzdrums/note-14.ogg", tomHi:"sounds/jazzdrums/note-14.ogg", tomLow:"sounds/jazzdrums/note-15.ogg",
-	tomMid:"sounds/jazzdrums/note-17.ogg"
+	kick:"../sounds/jazzdrums/note-5.ogg",highHat:"../sounds/jazzdrums/note-1.ogg",crash1:"../sounds/jazzdrums/note-2.ogg",
+	crash2:"../sounds/jazzdrums/note-3.ogg", crash3:"../sounds/jazzdrums/note-4.ogg", openHH:"../sounds/jazzdrums/note-6.ogg", phh:"../sounds/jazzdrums/note-7.ogg",
+	ride1:"../sounds/jazzdrums/note-8.ogg",ride2:"../sounds/jazzdrums/note-9.ogg", ride3:"../sounds/jazzdrums/note-10.ogg", ride4:"../sounds/jazzdrums/note-11.ogg", sdst:"../sounds/jazzdrums/note-12.ogg",
+	snare1:"../sounds/jazzdrums/note-13.ogg", snare2:"../sounds/jazzdrums/note-14.ogg", tomHi:"../sounds/jazzdrums/note-14.ogg", tomLow:"../sounds/jazzdrums/note-15.ogg",
+	tomMid:"../sounds/jazzdrums/note-17.ogg"
 
 	}
-
-	
-
-/////////////////////////////////////////////////////////////////////////////////
-	var context = new (window.AudioContext || window.webkitAudioContext ||  
-	window.mozAudioContext || 
-    window.oAudioContext || 
-    window.msAudioContext)();
-	if (context) {
-  			console.log("Web Audio is good to go")
-  			console.log(context)
-		} else {
-  			alert('browser not supported') ;
-	}
-
-	var tuna = new Tuna(context);
 
 
 
@@ -36,9 +23,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////
 $(function(){
-
-
-
 		//fill array with placeholder values
 		for (i = 0; i <= numOfKey-1; i++) {
 
@@ -79,8 +63,6 @@ $(function(){
 		// generate block container elements to #divcontainer
 	for (i = 0; i <= numOfKey-1; i++) {
 
-
-
 		$('<div/>', {
 	    'id':"btn" + i,
 	    'class':'genDiv',
@@ -94,21 +76,11 @@ $(function(){
 
 	}).appendTo("#btn"+i);
 
-
-
-
-
-
 	};
 
 	//generate mapping indicators to #btn elements
 
 	////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 	//Mouse Event Handlers
@@ -126,11 +98,23 @@ $(function(){
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
 		sampleID = configurationKey[arNum]
-		
+
+		beatMsg[2] = 'on'
+		beatMsg[3] = sampleID.sound
+		beatMsg[4] = sampleID.inst
+		beatMsg[5] = sampleID.insType
+		beatMsg[6] = sampleID.frequency
+		beatMsg[7] = sampleID.activeVoice
+		beatMsg[8] = sampleID.audioPointer
+
 		if (sampleID != 0) 
 		{
 			vel = 127;
 			startNote(sampleID, vel);
+			for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 			console.log("playSound called with " + sampleID)
 		}
 
@@ -149,10 +133,21 @@ $(function(){
 		soundOff = configurationKey[arNum]
 		console.log("mupID = " + soundOff)
 
+		beatMsg[2] = 'off'
+		beatMsg[3] = soundOff.sound
+		beatMsg[4] = soundOff.inst
+		beatMsg[5] = soundOff.insType
+		beatMsg[6] = soundOff.frequency
+		beatMsg[7] = soundOff.activeVoice
+		beatMsg[8] = soundOff.audioPointer
+
 		if (soundOff != 0){
 
 			endNote(soundOff);
-
+			for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 		}
 	})
 
@@ -173,13 +168,9 @@ $(function(){
 			endNote(soundOff);
 		}
 
-
 	})
 
 	$(".filterButton").click(function(){
-
-		
-
 
 		$("#dropcontainer ,#instruments,.filterButton").css({
 		   'filter'         : 'blur(5px)',
@@ -195,8 +186,6 @@ $(function(){
 			display:"inline"
 
 		})
-
-
 
 	})
 
@@ -330,9 +319,6 @@ $(function(){
 	  if ($(dragID).attr("data-instrument") == "JD")
 	  {
 
-
-
-
 	  	pathPointer = $(dragID).attr("data-sound")
 
 		configurationKey[arNum].audioPointer = new Audio()
@@ -347,7 +333,8 @@ $(function(){
 		configurationKey[arNum].activeVoice = context.createMediaElementSource(audioElement);
 		gainNode = context.createGain();
 		
-		gainNode.connect(context.destination)
+		// gainNode.connect(context.destination)
+		gainNode.connect(cabinet[0].input)
 		
 
 	  }
@@ -365,8 +352,6 @@ if ($(dragID).attr("data-class") == "filter"){
 
 
 
-
-
 }
 
 
@@ -377,84 +362,24 @@ if ($(dragID).attr("data-class") == "filter"){
 //  e   88 8    8 88  8 88  8 88   8    88   8 88    88  8 88    88   8 88   8   88  8    8 88   8 
 //  8eee88 8eeee8 88ee8 88  8 88eee8    88eee8 88eee 88  8 88eee 88   8 88   8   88  8eeee8 88   8 
 
-                                                                        
-var chorus = new tuna.Chorus({
-
-			});	
-var delay = new tuna.Delay({
-            });
+                                                                       
 
 
+function startNote(soundObj, vel) {
 
-function startNote(soundObj, vel)
-
-{
-	if ($("#chorusTog").is(":checked")){
-		chorus.bypass = 0;
-	}
-		else
-		{
-			chorus.bypass = 1;
-		}
-	if ($("delayTog").is(":checked")){
-		chorus.bypass = 0;
-	}
-		else
-		{
-			chorus.bypass = 1;
-		}
-
-
-
-if (soundObj.inst == "square synth")
-
-
-	{
-
-		console.log($("#chorus-rate").val());
-		chorus.rate = $("#chorus-rate").val()/10;
-		chorus.feedback = $("#chorus-feedback").val()/10;
-		chorus.delay = $("#chorus-delay").val()/100;
-		delay.feedback = $("#delay-feedback").val()/100;
-		delay.delayTime = $("#delay-delayTime").val();
-		delay.wetLevel = $("#delay-wetLevel").val()/10;
-		delay.dryLevel = $("#delay-dryLevel").val()/10;
-		delay.cutoff = $("#delay-cutoff").val();
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
+if (soundObj.inst == "square synth") {
 		soundObj.activeVoice = context.createOscillator();
 		gainNode = context.createGain();
-		soundObj.activeVoice.connect(chorus.input);
-		chorus.connect(context.destination);
-
-
-
-		// soundObj.activeVoice = context.createOscillator(); // Create bass guitar
-	 //     gainNode = context.createGain(); // Create boost pedal
-		// soundObj.activeVoice.connect(gainNode); // Connect bass guitar to boost pedal
-		// gainNode.connect(context.destination); // Connect boost pedal to amplifier
+		// soundObj.activeVoice.connect(context.destination);
+		soundObj.activeVoice.connect(cabinet[0].input);
 		gainNode.gain.value = vel/127; // compare velocity to maximum
-
-		
-
-		
+	
 		console.log("noteOn")
 		soundObj.activeVoice.frequency.value = soundObj.frequency // A
 		soundObj.activeVoice.start(0); 
 		// 	console.log(startNote)// Play bass guitar instantly
 	}
+
 if (soundObj.inst == "JD"){
 
 	audioElement = soundObj.audioPointer;
@@ -465,15 +390,7 @@ if (soundObj.inst == "JD"){
 	gainNode.gain.value = vel/127;
 	audioElement.play(0);
 
-	
-
-
-
 	}
-
-
-
-
 }
 
 function endNote(soundObj){
@@ -481,20 +398,12 @@ soundOffIns = soundObj.insType
 console.log(soundObj.sound)
 	if (soundOffIns == 'synth')
 	{
-
 		soundObj.activeVoice.stop(0);
 		soundObj.activeVoice.disconnect();
-
 	}
-
-
-
 }
 
  
-
-
-
 //            _     _ _ 
 //           (_)   | (_)
 //  _ __ ___  _  __| |_ 
@@ -502,10 +411,6 @@ console.log(soundObj.sound)
 // | | | | | | | (_| | |
 // |_| |_| |_|_|\__,_|_|
                       
- 
-
-                   
-
 
 var midi=null;
 var inputs=null;
@@ -520,15 +425,8 @@ var upPress = 0;
 var downKeyArray = [];
 
 
-
-
-
-
-
 function handleMIDIMessage(ev) 
 {
-
-
 	var pressArray = [];
 	pressArray[0] = ev.data[0]
 	pressArray[1] = ev.data[1] 
@@ -546,35 +444,23 @@ function handleMIDIMessage(ev)
 			console.log(noteUpArray)
 			buttonPress++;
 			upPress++;
-
 		}
-		else {
-			
-	
+		else {	
 			noteDownArray[downPress] = pressArray
 			console.log(noteDownArray)
 			buttonPress++;
 			downPress++;
-		}
-
-		
-		
+		}		
 	}
 	else
 	{
-
 		console.log(ev.data[2])
 		if (ev.data[2] > 0)
-		{
-
-			
+		{	
 			for(var x = 0; x < noteDownArray.length; x++){
-
-	 
 
 	      	if (noteDownArray[x][0] == pressArray[0] && noteDownArray[x][1] == pressArray[1])
 	      	{
-
 
 	      		$("#btn" + x).css({
 				backgroundColor:"#00FF01"
@@ -589,28 +475,16 @@ function handleMIDIMessage(ev)
 						startNote(sampleID, vel);
 						console.log("playSound called with " + sampleID)
 					}
-
 	      	}
 	      }
-
-
-
-
       	}
 
-      			if (ev.data[2] == 0)
-		{
+    if (ev.data[2] == 0) {	
+		for(var x = 0; x < noteDownArray.length; x++) {
 
-			
-			for(var x = 0; x < noteDownArray.length; x++){
-
-	 
-
-	      	if (noteUpArray[x][0] == pressArray[0] && noteUpArray[x][1] == pressArray[1])
+	       	if (noteUpArray[x][0] == pressArray[0] && noteUpArray[x][1] == pressArray[1])
 	      	{
-	      		
-
-	      		$("#btn" + x).css({
+		  		$("#btn" + x).css({
 				backgroundColor:"#FFFFFF"
 				});
 
@@ -618,38 +492,13 @@ function handleMIDIMessage(ev)
 				soundOff = configurationKey[arNum]
 				console.log("mupID = " + soundOff)
 				if (soundOff != 0){
-
 				endNote(soundOff);
 				}
-
-
-
 	      	}
 	      }
-
-
-
-
-      	}
-    
+      	}   
+	}		
 }
-
-
-		
-	}
-
-		
-
-
-
-
-
-
-	
-
-
-
-
 
 
 
@@ -662,13 +511,6 @@ function runTest() {
 
 function success (access)
 {
-
-
-
-
-
-
-
 	midi = access;
 	console.log("webmidi success")
 	inputs = midi.inputs();
@@ -677,23 +519,11 @@ function success (access)
 	if (inputs.length>0)
 	 {
 
-
-
-			
-			
-		
-
 		input = inputs[0];
 		input.onmessage = handleMIDIMessage;
 		input.addEventListener("midimessage", handleMIDIMessage);
 		console.log("input devices present")
-			
-
 	}
-	
-
-	
-
 }
 
 function failure( error ) {

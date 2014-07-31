@@ -1,5 +1,13 @@
 var audioPrc = 0
 var receiveCt = 0
+var tempObj = {
+      sound:"",
+      inst:"",
+      insType:"",
+      frequency: 0,
+      activeVoice:"",
+      audioPointer:"",
+    }
 
 var pingCheck = []
 
@@ -16,7 +24,9 @@ function dataProcess(index, c){
 
   console.log('received')
 
-
+// while (pingFirst < 20) {
+//   firstPinger()
+// }
 
       if (data[1] == '0' && data[2] == '0') {
 
@@ -95,6 +105,26 @@ function dataProcess(index, c){
      else if (data[1] == 8) {           // effect changes
       effectsMain(index, data)
      }
+
+     else if (data[1] == 9) {
+      console.log('hahahha!')
+
+      if (data[2] == 'on') {
+      tempObj.sound = data[3]
+      tempObj.inst = data[4]
+      tempObj.insType = data[5]
+      tempObj.frequency = data[6]
+      tempObj.activeVoice = data[7]
+      tempObj.audioPointer = data[8]
+      startNote(tempObj)
+    }
+
+      else if (data[2] == 'off') {
+        // endNote(tempObj)
+      tempObj.activeVoice.stop(0)
+      tempObj.activeVoice.disconnect()
+     }
+   }
 
     });
           user[index].on('close', function(err){ 
