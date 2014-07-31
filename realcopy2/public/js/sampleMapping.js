@@ -70,23 +70,10 @@ for (var i = 0 ; i < 120 ; i++) {
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
-	// if (presetInstrument.name == "metronome" || index == 4) {
-	// 	for(var i = 1 ; i < 18 ; i++) {
-	// 		target.append(instrument);
-	// 		// console.log(i);
-	// 		var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-	// 		var newInstrument = target.find("audio:last-child");
-	// 		newInstrument.attr("src", instrumentPath);
-	// 		newInstrument.attr("id", i);
-	// 	}
-	// }
-
-	// else{
 		for(var i = 1; i <= presetInstrument.notes; i++){
 			testing[i].audioPointer = new Audio()
 
 			target.append(instrument);
-			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
 			var newInstrument = target.find("audio:last-child");
 			newInstrument.attr("src", instrumentPath);
@@ -106,11 +93,9 @@ for (var i = 0 ; i < 120 ; i++) {
 		// noteNode[index][7].connect(cabinet[index].input)
 	if (index != 4) {
 		for (var i = 0 ; i <  presetInstrument.notes  ; i++)
-		 		noteNode[index][i] = null
+		 	noteNode[index][i] = null
 	}
-
-	// } // end bigger else
-firstRun = false
+	firstRun = false
 } // end function
 
 
@@ -143,7 +128,7 @@ function triggerSample(index, key) {
 	// 	// console.log(noteNode[index][mappedKey])
 	// }
 
-		if (noteNode[index][mappedKey] == null) {
+	if (noteNode[index][mappedKey] == null) {
 		noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
 		noteNode[index][mappedKey].connect(cabinet[index].input)
 		console.log(noteNode[index][mappedKey])

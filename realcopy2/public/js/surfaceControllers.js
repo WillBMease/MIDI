@@ -43,12 +43,6 @@ function setControls(midiInput){
 			parameter:""
 	};
 
-	switch(parameterToBeMapped){
-		case '#filter-frequency' :
-		knobArray[0] = filter[0].frequency
-		break;
-	}
-	console.log(knobArray[0])
 	controllerArray.push(controller);
 	console.log("controllerArray length: " + controllerArray.length)
 	controllerArray[controllerArray.length - 1].type = midiInput[2]
@@ -59,7 +53,7 @@ function setControls(midiInput){
 	///////////Setting Parameters//////////////////////
 	controllerArray[controllerArray.length - 1].parameter = String(parameterToBeMapped);
 	parameterToBeMapped = null;
-	console.log(controllerArray[controllerArray.length - 1].parameter)
+	// console.log(controllerArray[controllerArray.length - 1].parameter)
 
 	log.innerText = ('the controller number is: ' + controllerArray[controllerArray.length - 1].controllerNum)
 	console.log('Number of controllers: ' + controllerArray.length)	

@@ -8,9 +8,11 @@ var tremolo = []
 var filter = []
 var reverb = []
 var compressor = []
-
+var fxArray = []
 var effectMsg = []
 effectMsg[1] = 8
+
+
 
 for (var i = 0 ; i < userLimit ; i++) {
 	chorus[i] = 0
@@ -129,11 +131,8 @@ for (var i = 0 ; i < userLimit ; i++) {
 		reverb[i].connect(delay[i].input)
 		delay[i].connect(filter[i].input)
 		filter[i].connect(wahwah[i].input)
-
 		wahwah[i].connect(context.destination);
 }
-
-
 
 for (var i = 0 ; i < 1 ; i++) {
 		reverb[i].highCut = $("#reverb-highCut").val()
@@ -185,8 +184,6 @@ for (var i = 0 ; i < 1 ; i++) {
 		wahwah[i].sweep = $("#wahwah-sweep").val() / 101
 		wahwah[i].resonance = $("#wahwah-resonance").val()
 		wahwah[i].sensitivity = $("#wahwah-sensitivity").val() / 101
-
-
 }
 
     $('.outgoingEffect').click(function(){
