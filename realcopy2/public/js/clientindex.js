@@ -134,12 +134,12 @@ $(function(){
 		console.log("mupID = " + soundOff)
 
 		beatMsg[2] = 'off'
-		beatMsg[3] = soundOff.sound
-		beatMsg[4] = soundOff.inst
-		beatMsg[5] = soundOff.insType
-		beatMsg[6] = soundOff.frequency
-		beatMsg[7] = soundOff.activeVoice
-		beatMsg[8] = soundOff.audioPointer
+		// beatMsg[3] = soundOff.sound
+		// beatMsg[4] = soundOff.inst
+		// beatMsg[5] = soundOff.insType
+		// beatMsg[6] = soundOff.frequency
+		// beatMsg[7] = soundOff.activeVoice
+		// beatMsg[8] = soundOff.audioPointer
 
 		if (soundOff != 0){
 
