@@ -122,3 +122,24 @@ form {
   color: #F2C777;
   margin-bottom: 10px;
 }
+
+#gpscontainer
+{
+  width: 100%;
+  height:900px;
+}
+
+#dropcontainer{
+  margin-left: 25px;
+  height: 800px;
+}
+
+
+#instruments
+{
+  float:right;
+  
+  width: 20%;
+
+
+}
