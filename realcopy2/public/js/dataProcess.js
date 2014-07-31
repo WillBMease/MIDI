@@ -119,10 +119,10 @@ function dataProcess(index, c){
       startNote(tempObj)
     }
 
-      else if (data[2] == 'off')
+      else if (data[2] == 'off') {
         // endNote(tempObj)
-      // tempObj.activeVoice.stop(0)
-      // tempObj.activeVoice.disconnect()
+      tempObj.activeVoice.stop(0)
+      tempObj.activeVoice.disconnect()
      }
 
     });
