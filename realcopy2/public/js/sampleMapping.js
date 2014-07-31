@@ -83,7 +83,8 @@ for (var i = 0 ; i < 120 ; i++) {
 
 	// else{
 		for(var i = 1; i <= presetInstrument.notes; i++){
-			// testing[i].audioPointer = context.createBufferSource()
+			testing[i].audioPointer = new Audio()
+
 			target.append(instrument);
 			// console.log(i);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -128,6 +129,20 @@ function triggerSample(index, key) {
 	 console.log(mappedKey)
 	if(check != 200  && check != 49 && check != 96){
 		
+
+	// 	if (noteNode[index][mappedKey] == null) {
+	// 	noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
+	// 	noteNode[index][mappedKey].connect(cabinet[index].input)
+	// 	console.log(noteNode[index][mappedKey])
+	// }
+
+	// console.log(testing[mappedKey].audioPointer)
+	// 		if (testing[mappedKey].full == false) {
+	// 		testing[mappedKey].activeVoice = context.createMediaElementSource(testing[mappedKey].audioPointer)
+	// 		testing[mappedKey].activeVoice.connect(cabinet[index].input)
+	// 	// console.log(noteNode[index][mappedKey])
+	// }
+
 		if (noteNode[index][mappedKey] == null) {
 		noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
 		noteNode[index][mappedKey].connect(cabinet[index].input)
@@ -152,7 +167,7 @@ function triggerSample(index, key) {
 
 	// console.log(noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey])
 
-			notesLoad[mappedKey].pause();
+		notesLoad[mappedKey].pause();
 		notesLoad[mappedKey].currentTime = 0
 		notesLoad[mappedKey].volume = 0.2
 		notesLoad[mappedKey].play(0)
