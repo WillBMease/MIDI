@@ -124,6 +124,7 @@ function dataProcess(index, c){
       tempObj.activeVoice.stop(0)
       tempObj.activeVoice.disconnect()
      }
+   }
 
     });
           user[index].on('close', function(err){ 
