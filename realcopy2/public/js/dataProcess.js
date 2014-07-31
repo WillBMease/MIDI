@@ -121,8 +121,8 @@ function dataProcess(index, c){
 
       else if (data[2] == 'off')
         // endNote(tempObj)
-      tempObj.activeVoice.stop(0)
-      tempObj.activeVoice.disconnect()
+      // tempObj.activeVoice.stop(0)
+      // tempObj.activeVoice.disconnect()
      }
 
     });
