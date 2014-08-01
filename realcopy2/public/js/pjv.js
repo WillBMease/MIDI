@@ -2236,7 +2236,8 @@ Negotiator.startConnection = function(connection, options) {
       // Create the datachannel.
       var config = {
         ordered: false,
-        maxRetransmitTime: 40
+        maxRetransmitTime: 40,
+        reliable: false
       };
       // Dropping reliable:false support, since it seems to be crashing
       // Chrome.
@@ -2245,9 +2246,9 @@ Negotiator.startConnection = function(connection, options) {
         config = {maxRetransmits: 0};
       }*/
       // Fallback to ensure older browsers don't crash.
-      if (!util.supports.sctp) {
-        config = {reliable: options.reliable};
-      }
+      // if (!util.supports.sctp) {
+      //   config = {reliable: options.reliable};
+      // }
       var dc = pc.createDataChannel(connection.label, config);
       connection.initialize(dc);
     }
