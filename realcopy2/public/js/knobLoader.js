@@ -4,7 +4,7 @@ $(".knob").each(function(){
     var dataRel2 = parseInt($(this).attr('data-release2'))
     var dataRel3 = $(this).attr('data-release3')
     var dataRel4 = $(this).attr('data-release4')
-    var dataRel5 = $(this).attr('data-release5')
+    var dataRel5 = parseInt($(this).attr('data-release5'))
 
     $(this).knob({
         width: 40,
@@ -14,12 +14,124 @@ $(".knob").each(function(){
         max:  parseInt($(this).attr('data-max')),
         step: parseInt($(this).attr('data-step')),
         'release': function(v) { 
-            console.log('here: ' + dataRel)
+            // console.log('here: ' + dataRel5)
             // dataRel = v
             switch(dataRel){
                 case 'reverb[0].level' :
-                reverb[0].level = v/101
+                reverb[0].level = v/dataRel5
                 break;
+
+                case 'reverb[0].wetLevel' :
+                reverb[0].wetLevel = v/dataRel5
+                break;
+
+                case 'reverb[0].dryLevel' :
+                reverb[0].dryLevel = v/dataRel5
+                break;
+
+                case 'reverb[0].highCut' :
+                reverb[0].highCut = v
+                break;
+
+                case 'reverb[0].lowCut' :
+                reverb[0].lowCut = v
+                break;
+
+                case 'reverb[0].lowCut' :
+                reverb[0].lowCut = v
+                break;
+
+                case 'chorus[0].rate' :
+                chorus[0].rate = v/dataRel5
+                break;
+
+                case 'chorus[0].feedback' :
+                chorus[0].feedback = v/dataRel5
+                break;
+
+                case 'chorus[0].delay' :
+                chorus[0].delay = v/dataRel5
+                break;
+
+                case 'delay[0].feedback' :
+                delay[0].feedback = v/dataRel5
+                break;
+
+                case 'delay[0].delayTime' :
+                delay[0].delayTime = v/dataRel5
+                break;
+
+                case 'delay[0].wetLevel' :
+                delay[0].wetLevel = v/dataRel5
+                break;
+
+                case 'delay[0].dryLevel' :
+                delay[0].dryLevel = v/dataRel5
+                break;
+
+                case 'delay[0].cutoff' :
+                delay[0].cutoff = v/dataRel5
+                break;
+
+                case 'phaser[0].rate' :
+                phaser[0].rate =v/dataRel5
+                break;
+
+                case 'phaser[0].depth' :
+                phaser[0].depth =v/dataRel5
+                break;
+
+                case 'phaser[0].feedback' :
+                phaser[0].feedback =v/dataRel5
+                break;
+
+                case 'phaser[0].stereoPhase' :
+                phaser[0].stereoPhase =v/dataRel5
+                break;
+
+                case 'phaser[0].baseModulationFrequency' :
+                phaser[0].baseModulationFrequency =v/dataRel5
+                break;
+
+                case 'overdrive[0].outputGain' :
+                overdrive[0].outputGain = v/dataRel5
+                break;
+
+                case 'overdrive[0].drive' :
+                overdrive[0].drive = v/dataRel5
+                break;
+
+                case 'overdrive[0].curveLevel' :
+                overdrive[0].curveLevel = v/dataRel5
+                break;
+
+                case 'overdrive[0].algorithmIndex' :
+                overdrive[0].algorithmIndex = v/dataRel5
+                break;
+
+                case 'compressor[0].threshold' :
+                compressor[0].threshold = v/dataRel5
+                break; 
+
+                case 'compressor[0].makeupGain' :
+                compressor[0].makeupGain = v/dataRel5
+                break; 
+
+                case 'compressor[0].attack' :
+                compressor[0].attack = v/dataRel5
+                break; 
+
+                case 'compressor[0].release' :
+                compressor[0].release = v/dataRel5
+                break; 
+
+                case 'compressor[0].ratio' :
+                compressor[0].ratio = v/dataRel5
+                break; 
+
+                case 'compressor[0].knee' :
+                compressor[0].knee = v/dataRel5
+                break; 
 
                 case 'filter[0].Q':
                 filter[0].Q = v
@@ -38,11 +150,11 @@ $(".knob").each(function(){
                 break;
 
                 case 'tremolo[0].intensity' :
-                tremolo[0].intensity = v/101
+                tremolo[0].intensity = v/dataRel5
                 break;
 
                 case 'tremolo[0].rate':
-                tremolo[0].rate = v/80
+                tremolo[0].rate = v/dataRel5
                 break;
 
                 case 'tremolo[0].stereoPhase' :
@@ -54,7 +166,7 @@ $(".knob").each(function(){
                 break;
 
                 case 'wahwah[0].baseFrequency' :
-                wahwah[0].baseFrequency = v/101
+                wahwah[0].baseFrequency = v/dataRel5
                 break;
 
                 case 'wahwah[0].excursionOctaves' :
@@ -62,7 +174,7 @@ $(".knob").each(function(){
                 break;
 
                 case 'wahwah[0].sweep' :
-                wahwah[0].sweep = v/101
+                wahwah[0].sweep = v/dataRel5
                 break;
 
                 case 'wahwah[0].resonance' :
@@ -70,9 +182,8 @@ $(".knob").each(function(){
                 break;
 
                 case 'wahwah[0].sensitivity' :
-                wahwah[0].sensitivity = v/101
+                wahwah[0].sensitivity = v/dataRel5
                 break;
-
             }
             
             effectMsg[1] = dataRel2
@@ -80,458 +191,461 @@ $(".knob").each(function(){
             effectMsg[3] = dataRel4
             effectMsg[4] = v/dataRel5
             outgoingEffectChange(effectMsg)
+            // console.log(effectMsg[1])
+            // console.log(effectMsg[2])
+            // console.log(effectMsg[3])
+            // console.log(effectMsg[4])
+
         }
     })
 })
 
 
-$("#reverb-highCut").knob({
-	width:40,
-	height:40,
-	min:20,
-	max:22050,
-	step:1,
-    'release' : function (v) { 
-    	reverb[0].highCut = v
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'reverb'
-    	effectMsg[3] = 'highCut'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-     }
-})
+// $("#reverb-highCut").knob({
+// 	width:40,
+// 	height:40,
+// 	min:20,
+// 	max:22050,
+// 	step:1,
+//     'release' : function (v) { 
+//     	reverb[0].highCut = v
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'reverb'
+//     	effectMsg[3] = 'highCut'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//      }
+// })
 
+// $("#reverb-lowCut").knob({
+// 	width:40,
+// 	height:40,
+// 	min:20,
+// 	max:22050,
+// 	step:1,
+//     'release' : function (v) { 
+//     	reverb[0].lowCut = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'reverb'
+//     	effectMsg[3] = 'lowCut'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#reverb-lowCut").knob({
-	width:40,
-	height:40,
-	min:20,
-	max:22050,
-	step:1,
-    'release' : function (v) { 
-    	reverb[0].lowCut = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'reverb'
-    	effectMsg[3] = 'lowCut'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#reverb-dryLevel").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	reverb[0].dryLevel = v / 100
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'reverb'
+//     	effectMsg[3] = 'dryLevel'
+//     	effectMsg[4] = v / 100
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#reverb-dryLevel").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	reverb[0].dryLevel = v / 100
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'reverb'
-    	effectMsg[3] = 'dryLevel'
-    	effectMsg[4] = v / 100
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#reverb-wetLevel").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:10,
+// 	step:1,
+//     'release' : function (v) { 
+//     	reverb[0].wetLevel = v / 10
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'reverb'
+//     	effectMsg[3] = 'wetLevel'
+//     	effectMsg[4] = v / 10
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#reverb-wetLevel").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:10,
-	step:1,
-    'release' : function (v) { 
-    	reverb[0].wetLevel = v / 10
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'reverb'
-    	effectMsg[3] = 'wetLevel'
-    	effectMsg[4] = v / 10
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#reverb-level").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	reverb[0].level = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'reverb'
+//     	effectMsg[3] = 'level'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
+// $("#chorus-rate").knob({
+// 	width:40,
+// 	height:40,
+// 	min:1,
+// 	max:800,
+// 	step:1,
+//     'release' : function (v) { 
+//     	chorus[0].rate = v/800
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'chorus'
+//     	effectMsg[3] = 'rate'
+//     	effectMsg[4] = v/800
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#reverb-level").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	reverb[0].level = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'reverb'
-    	effectMsg[3] = 'level'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#chorus-feedback").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	chorus[0].feedback = v/101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'chorus'
+//     	effectMsg[3] = 'feedback'
+//     	effectMsg[4] = v/101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
+// $("#chorus-delay").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	chorus[0].delay = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'chorus'
+//     	effectMsg[3] = 'delay'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
+// $("#delay-feedback").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	delay[0].feedback = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'delay'
+//     	effectMsg[3] = 'feedback'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#chorus-rate").knob({
-	width:40,
-	height:40,
-	min:1,
-	max:800,
-	step:1,
-    'release' : function (v) { 
-    	chorus[0].rate = v/800
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'chorus'
-    	effectMsg[3] = 'rate'
-    	effectMsg[4] = v/800
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#delay-time").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:1000,
+// 	step:1,
+//     'release' : function (v) { 
+//     	delay[0].delayTime = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'delay'
+//     	effectMsg[3] = 'delayTime'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#chorus-feedback").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	chorus[0].feedback = v/101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'chorus'
-    	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v/101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#delay-wetLevel").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	delay[0].wetLevel = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'delay'
+//     	effectMsg[3] = 'wetLevel'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#chorus-delay").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	chorus[0].delay = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'chorus'
-    	effectMsg[3] = 'delay'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#delay-dryLevel").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	delay[0].dryLevel = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'delay'
+//     	effectMsg[3] = 'dryLevel'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
+// $("#delay-cutoff").knob({
+// 	width:40,
+// 	height:40,
+// 	min:20,
+// 	max:22050,
+// 	step:1,
+//     'release' : function (v) { 
+//     	delay[0].cutoff = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'delay'
+//     	effectMsg[3] = 'cutoff'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#delay-feedback").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	delay[0].feedback = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'delay'
-    	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
-$("#delay-time").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:1000,
-	step:1,
-    'release' : function (v) { 
-    	delay[0].delayTime = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'delay'
-    	effectMsg[3] = 'delayTime'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#phaser-rate").knob({
+// 	width:40,
+// 	height:40,
+// 	min:1,
+// 	max:800,
+// 	step:1,
+//     'release' : function (v) { 
+//     	phaser[0].rate = v / 801
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'phaser'
+//     	effectMsg[3] = 'rate'
+//     	effectMsg[4] = v / 801
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#delay-wetLevel").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	delay[0].wetLevel = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'delay'
-    	effectMsg[3] = 'wetLevel'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
-$("#delay-dryLevel").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	delay[0].dryLevel = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'delay'
-    	effectMsg[3] = 'dryLevel'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
-$("#delay-cutoff").knob({
-	width:40,
-	height:40,
-	min:20,
-	max:22050,
-	step:1,
-    'release' : function (v) { 
-    	delay[0].cutoff = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'delay'
-    	effectMsg[3] = 'cutoff'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#phaser-depth").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	phaser[0].depth = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'phaser'
+//     	effectMsg[3] = 'depth'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#phaser-rate").knob({
-	width:40,
-	height:40,
-	min:1,
-	max:800,
-	step:1,
-    'release' : function (v) { 
-    	phaser[0].rate = v / 801
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'phaser'
-    	effectMsg[3] = 'rate'
-    	effectMsg[4] = v / 801
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#phaser-feedback").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	phaser[0].feedback = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'phaser'
+//     	effectMsg[3] = 'feedback'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#phaser-depth").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	phaser[0].depth = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'phaser'
-    	effectMsg[3] = 'depth'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#phaser-stereo").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:180,
+// 	step:1,
+//     'release' : function (v) { 
+//     	phaser[0].stereoPhase = v
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'phaser'
+//     	effectMsg[3] = 'stereoPhase'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#phaser-feedback").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	phaser[0].feedback = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'phaser'
-    	effectMsg[3] = 'feedback'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#phaser-bmf").knob({
+// 	width:40,
+// 	height:40,
+// 	min:500,
+// 	max:1500,
+// 	step:1,
+//     'release' : function (v) { 
+//     	phaser[0].baseModulationFrequency = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'phaser'
+//     	effectMsg[3] = 'baseModulationFrequency'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#phaser-stereo").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:180,
-	step:1,
-    'release' : function (v) { 
-    	phaser[0].stereoPhase = v
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'phaser'
-    	effectMsg[3] = 'stereoPhase'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#overdrive-outputGain").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	overdrive[0].outputGain = v /101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'overdrive'
+//     	effectMsg[3] = 'outputGain'
+//     	effectMsg[4] = v/101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#phaser-bmf").knob({
-	width:40,
-	height:40,
-	min:500,
-	max:1500,
-	step:1,
-    'release' : function (v) { 
-    	phaser[0].baseModulationFrequency = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'phaser'
-    	effectMsg[3] = 'baseModulationFrequency'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#overdrive-drive").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	overdrive[0].drive = v /101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'overdrive'
+//     	effectMsg[3] = 'drive'
+//     	effectMsg[4] = v /101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#overdrive-outputGain").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	overdrive[0].outputGain = v /101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'overdrive'
-    	effectMsg[3] = 'outputGain'
-    	effectMsg[4] = v/101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#overdrive-curveLevel").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:100,
+// 	step:1,
+//     'release' : function (v) { 
+//     	overdrive[0].curveAmount = v / 101
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'overdrive'
+//     	effectMsg[3] = 'curveAmount'
+//     	effectMsg[4] = v / 101
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#overdrive-drive").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	overdrive[0].drive = v /101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'overdrive'
-    	effectMsg[3] = 'drive'
-    	effectMsg[4] = v /101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#overdrive-algorithm").knob({
+// 	width:40,
+// 	height:40,
+// 	min:1,
+// 	max:6,
+// 	step:1,
+//     'release' : function (v) { 
+//     	overdrive[0].algorithmIndex = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'overdrive'
+//     	effectMsg[3] = 'algorithmIndex'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#overdrive-curveLevel").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:100,
-	step:1,
-    'release' : function (v) { 
-    	overdrive[0].curveAmount = v / 101
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'overdrive'
-    	effectMsg[3] = 'curveAmount'
-    	effectMsg[4] = v / 101
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#compressor-threshold").knob({
+// 	width:40,
+// 	height:40,
+// 	min:-100,
+// 	max:0,
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].threshold = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'threshold'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
+// $("#compressor-makeGain").knob({
+// 	width:40,
+// 	height:40,
+// 	min:1,
+// 	max:10,
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].makeupGain = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'makeupGain'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#overdrive-algorithm").knob({
-	width:40,
-	height:40,
-	min:1,
-	max:6,
-	step:1,
-    'release' : function (v) { 
-    	overdrive[0].algorithmIndex = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'overdrive'
-    	effectMsg[3] = 'algorithmIndex'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#compressor-attack").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:1000,//10
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].attack = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'attack'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#compressor-threshold").knob({
-	width:40,
-	height:40,
-	min:-100,
-	max:0,
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].threshold = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'threshold'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
-$("#compressor-makeGain").knob({
-	width:40,
-	height:40,
-	min:1,
-	max:10,
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].makeupGain = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'makeupGain'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#compressor-release").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:3000,
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].release = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'release'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#compressor-attack").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:1000,//10
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].attack = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'attack'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#compressor-ratio").knob({
+// 	width:40,
+// 	height:40,
+// 	min:1,
+// 	max:20,
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].ratio = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'ratio'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
-$("#compressor-release").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:3000,
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].release = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'release'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
-
-$("#compressor-ratio").knob({
-	width:40,
-	height:40,
-	min:1,
-	max:20,
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].ratio = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'ratio'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
-
-$("#compressor-knee").knob({
-	width:40,
-	height:40,
-	min:0,
-	max:40,
-	step:1,
-    'release' : function (v) { 
-    	compressor[0].knee = v 
-    	effectMsg[1] = 8
-    	effectMsg[2] = 'compressor'
-    	effectMsg[3] = 'knee'
-    	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)
-    }
-})
+// $("#compressor-knee").knob({
+// 	width:40,
+// 	height:40,
+// 	min:0,
+// 	max:40,
+// 	step:1,
+//     'release' : function (v) { 
+//     	compressor[0].knee = v 
+//     	effectMsg[1] = 8
+//     	effectMsg[2] = 'compressor'
+//     	effectMsg[3] = 'knee'
+//     	effectMsg[4] = v
+//     	outgoingEffectChange(effectMsg)
+//     }
+// })
 
 // $("#filter-frequency").knob({
 // 	width:40,
