@@ -41,17 +41,19 @@ var sampleCheck = []
       }
 
       else if (data[1] == '0' && data[2] == '1') {
+        console.log(data[0])
+
         var calculate = true
            for (var x = 0 ; x < pingCheck.length ; x++){
-            if (pingCheck[x] == data[3])
+            if (pingCheck[x] == data[0])
               calculate = false
            }
            if (calculate) {
             endTime = new Date();
-            rttTime = (endTime - startTime[data[3]]) / 2 ;
+            rttTime = (endTime - startTime[data[0]]) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
-            pingCheck.push(data[3])
+            pingCheck.push(data[0])
        $('#messages').clear
        $('#messages').append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
      }
@@ -80,8 +82,8 @@ var sampleCheck = []
       else if (data[1] == 1) {          // midi play
        
          var calculate = true
-          for (var i = 0 ; i < sampleCheck.length ; i++){
-            if (sampleCheck[i] == data[0])
+          for (var i = 0 ; i < midiCheck.length ; i++){
+            if (midiCheck[i] == data[0])
               calculate = false
           }
 

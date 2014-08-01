@@ -2,7 +2,7 @@
 // Legend
 
 // midiMsg[0]
-// which user
+// Message ID for processing first to arrive
 
 // midiMsg[1]
 // 0 = ping
