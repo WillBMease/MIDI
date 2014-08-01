@@ -472,6 +472,17 @@ function handleMIDIMessage(ev)
 						if (sampleID != 0) {
 						startNote(sampleID, vel);
 						console.log("playSound called with " + sampleID)
+
+		beatMsg[2] = 'on'
+		beatMsg[3] = sampleID.sound
+		beatMsg[4] = sampleID.inst
+		beatMsg[5] = sampleID.insType
+		beatMsg[6] = sampleID.frequency
+
+				for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 					}
 	      	}
 	      }
@@ -491,6 +502,12 @@ function handleMIDIMessage(ev)
 				console.log("mupID = " + soundOff)
 				if (soundOff != 0){
 				endNote(soundOff);
+
+				beatMsg[2] = 'off'
+							for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 				}
 	      	}
 	      }
