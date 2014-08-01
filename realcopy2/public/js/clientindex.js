@@ -502,7 +502,7 @@ function handleMIDIMessage(ev)
 				console.log("mupID = " + soundOff)
 			
 				beatMsg[2] = 'off'
-			
+
 				if (soundOff != 0){
 				endNote(soundOff);
 				for (var i = 1 ; i < userLimit ; i++){
@@ -513,7 +513,8 @@ function handleMIDIMessage(ev)
 	      	}
 	      }
       	}   
-	}		
+	}	
+	console.log(buttonPress)	
 }
 
 
