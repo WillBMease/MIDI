@@ -3,9 +3,11 @@ var refreshPing
 var pingMsg = []
 var pingID = 0
 var pingFirst = 0
+var pingCt = 0
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
+pingMsg[3] = pingCt ;
 
 
 function Ping(){
@@ -38,6 +40,8 @@ for (var i = 1 ; i < userLimit ; i++)
             for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(pingMsg);
                   console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
+                  pingCt++
+                  pingMsg[3] = pingCt
             }
       }
 }  
@@ -47,8 +51,8 @@ for (var i = 1 ; i < userLimit ; i++)
 
 function firstPinger() {
       pingFirst++
+      pingMsg[0] = pingFirst
       pingMsg[2] = '0'
-      pingMsg[3] = pingCt
 
       for (var i = 1 ; i < userLimit ; i++)
 {

@@ -41,7 +41,7 @@ var sampleCheck = []
       }
 
       else if (data[1] == '0' && data[2] == '1') {
-        console.log(data[0])
+        console.log(data[3])
 
         var calculate = true
            for (var x = 0 ; x < pingCheck.length ; x++){
