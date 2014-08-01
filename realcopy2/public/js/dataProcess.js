@@ -1,5 +1,14 @@
 var audioPrc = 0
 var receiveCt = 0
+var tempOsc = {
+      sound:"",
+      inst:"",
+      insType:"",
+      frequency: 0,
+      activeVoice:"",
+      audioPointer:"",
+    }
+
 var tempObj = {
       sound:"",
       inst:"",
@@ -133,18 +142,28 @@ var sampleCheck = []
       console.log('hahahha!')
 
       if (data[2] == 'on') {
+      tempOsc.sound = data[3]
+      tempOsc.inst = data[4]
+      tempOsc.insType = data[5]
+      tempOsc.frequency = data[6]
+      startOsc(tempOsc)
+    }
+
+      else if (data[2] == 'off') {
+      tempOsc.activeVoice.stop(0)
+      tempOsc.activeVoice.disconnect()
+     }
+   }
+
+   else if (data[1] == 10) {
+
       tempObj.sound = data[3]
       tempObj.inst = data[4]
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
-      startNote(tempObj)
-    }
 
-      else if (data[2] == 'off') {
-        // endNote(tempObj)
-      tempObj.activeVoice.stop(0)
-      tempObj.activeVoice.disconnect()
-     }
+      
+
    }
 
     });

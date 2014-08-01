@@ -108,7 +108,7 @@ $(function(){
 		if (sampleID != 0) 
 		{
 			vel = 127;
-			startNote(sampleID, vel);
+			startOsc(sampleID, vel);
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
@@ -141,7 +141,7 @@ $(function(){
 
 		if (soundOff != 0){
 
-			endNote(soundOff);
+			endOsc(soundOff);
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
@@ -163,7 +163,7 @@ $(function(){
 
 		if (soundOff != 0){
 
-			endNote(soundOff);
+			endOsc(soundOff);
 		}
 
 	})
@@ -255,7 +255,7 @@ $(function(){
 //    _____  _____            _____   _ _   _   _____  _____   ____  _____  
 //   |  __ \|  __ \     /\   / ____| ( ) \ | | |  __ \|  __ \ / __ \|  __ \ 
 //   | |  | | |__) |   /  \ | |  __  |/|  \| | | |  | | |__) | |  | | |__) |
-//   | |  | |  _  /   / /\ \| | |_ |   | ` | | |  | |  _  /| |  | |  ___/ 
+//   | |  | |  _  /   / /\ \| | |_ |   | ` | | |  | | |  _  /| |  | |  ___/ 
 //   | |__| | | \ \  / ____ \ |__| |   | |\  | | |__| | | \ \| |__| | |     
 //   |_____/|_|  \_\/_/    \_\_____|   |_| \_| |_____/|_|  \_\\____/|_|     
 //                                                                          
@@ -360,23 +360,8 @@ if ($(dragID).attr("data-class") == "filter"){
 //  e   88 8    8 88  8 88  8 88   8    88   8 88    88  8 88    88   8 88   8   88  8    8 88   8 
 //  8eee88 8eeee8 88ee8 88  8 88eee8    88eee8 88eee 88  8 88eee 88   8 88   8   88  8eeee8 88   8 
 
-                                                                       
-
-
-function startNote(soundObj, vel) {
-
-if (soundObj.inst == "square synth") {
-		soundObj.activeVoice = context.createOscillator();
-		gainNode = context.createGain();
-		// soundObj.activeVoice.connect(context.destination);
-		soundObj.activeVoice.connect(cabinet[0].input);
-		gainNode.gain.value = vel/127; // compare velocity to maximum
-	
-		console.log("noteOn")
-		soundObj.activeVoice.frequency.value = soundObj.frequency // A
-		soundObj.activeVoice.start(0); 
-		// 	console.log(startNote)// Play bass guitar instantly
-	}
+  
+ function startSample(soundObj, vel) {
 
 if (soundObj.inst == "JD"){
 
@@ -389,9 +374,28 @@ if (soundObj.inst == "JD"){
 	audioElement.play(0);
 
 	}
+
+
+ }                                                                     
+
+
+function startOsc(soundObj, vel) {
+
+if (soundObj.inst == "square synth") {
+		soundObj.activeVoice = context.createOscillator();
+		gainNode = context.createGain();
+		// soundObj.activeVoice.connect(context.destination);
+		soundObj.activeVoice.connect(cabinet[0].input);
+		gainNode.gain.value = vel/127; // compare velocity to maximum
+	
+		console.log("noteOn")
+		soundObj.activeVoice.frequency.value = soundObj.frequency // A
+		soundObj.activeVoice.start(0); 
+		// 	console.log(startOsc)// Play bass guitar instantly
+	}
 }
 
-function endNote(soundObj){
+function endOsc(soundObj){
 soundOffIns = soundObj.insType
 console.log(soundObj.sound)
 	if (soundOffIns == 'synth')
@@ -470,7 +474,7 @@ function handleMIDIMessage(ev)
 						sampleID = configurationKey[arNum]
 		
 						if (sampleID != 0) {
-						startNote(sampleID, vel);
+						startOsc(sampleID, vel);
 						console.log("playSound called with " + sampleID)
 
 		beatMsg[2] = 'on'
@@ -504,7 +508,7 @@ function handleMIDIMessage(ev)
 				beatMsg[2] = 'off'
 
 				if (soundOff != 0){
-				endNote(soundOff);
+				endOsc(soundOff);
 				for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
