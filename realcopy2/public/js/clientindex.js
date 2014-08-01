@@ -104,8 +104,6 @@ $(function(){
 		beatMsg[4] = sampleID.inst
 		beatMsg[5] = sampleID.insType
 		beatMsg[6] = sampleID.frequency
-		beatMsg[7] = sampleID.activeVoice
-		beatMsg[8] = sampleID.audioPointer
 
 		if (sampleID != 0) 
 		{
@@ -134,12 +132,12 @@ $(function(){
 		console.log("mupID = " + soundOff)
 
 		beatMsg[2] = 'off'
-		beatMsg[3] = soundOff.sound
-		beatMsg[4] = soundOff.inst
-		beatMsg[5] = soundOff.insType
-		beatMsg[6] = soundOff.frequency
-		beatMsg[7] = soundOff.activeVoice
-		beatMsg[8] = soundOff.audioPointer
+		// beatMsg[3] = soundOff.sound
+		// beatMsg[4] = soundOff.inst
+		// beatMsg[5] = soundOff.insType
+		// beatMsg[6] = soundOff.frequency
+		// beatMsg[7] = soundOff.activeVoice
+		// beatMsg[8] = soundOff.audioPointer
 
 		if (soundOff != 0){
 
@@ -474,6 +472,17 @@ function handleMIDIMessage(ev)
 						if (sampleID != 0) {
 						startNote(sampleID, vel);
 						console.log("playSound called with " + sampleID)
+
+		beatMsg[2] = 'on'
+		beatMsg[3] = sampleID.sound
+		beatMsg[4] = sampleID.inst
+		beatMsg[5] = sampleID.insType
+		beatMsg[6] = sampleID.frequency
+
+				for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 					}
 	      	}
 	      }
@@ -491,13 +500,21 @@ function handleMIDIMessage(ev)
 	      		arNum = x;
 				soundOff = configurationKey[arNum]
 				console.log("mupID = " + soundOff)
+			
+				beatMsg[2] = 'off'
+
 				if (soundOff != 0){
 				endNote(soundOff);
+				for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0)
+					user[i].send(beatMsg)
+			}
 				}
 	      	}
 	      }
       	}   
-	}		
+	}	
+	console.log(buttonPress)	
 }
 
 
