@@ -1,7 +1,7 @@
 var pingActive = false
 var refreshPing
 var pingMsg = []
-var pingCt = 0
+var pingID = 0
 var pingFirst = 0
 
 pingMsg[0] = pingID ;
