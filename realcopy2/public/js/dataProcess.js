@@ -9,10 +9,12 @@ var tempObj = {
       audioPointer:"",
     }
 
-var pingCheck = []
-
 
 function dataProcess(index, c){
+
+var pingCheck = []
+var midiCheck = []
+var sampleCheck = []
 
         user[index] = c 
 
@@ -76,11 +78,30 @@ function dataProcess(index, c){
       ///////// End Audio packet testing
 
       else if (data[1] == 1) {          // midi play
-      triggerMidiDevice(index, data) ;
+       
+         var calculate = true
+          for (var i = 0 ; i < sampleCheck.length ; i++){
+            if (sampleCheck[i] == data[0])
+              calculate = false
+          }
+
+        if (calculate) {
+            triggerMidiDevice(index, data) ;
+            midiCheck.push(data[0])
+          }
      }
 
       else if (data[1] == 2) {          // keyboard play
-      triggerSample(index, data) ;
+        var calculate = true
+          for (var i = 0 ; i < sampleCheck.length ; i++){
+            if (sampleCheck[i] == data[0])
+              calculate = false
+          }
+
+        if (calculate) {
+            triggerSample(index, data) ;
+            sampleCheck.push(data[0])
+          }
      }
 
      else if (data[1] == 3) {           // instrument changes

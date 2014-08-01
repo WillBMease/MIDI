@@ -28,15 +28,23 @@
 // only for midi
 //MIDI Velocity
 
-runTest()
+var midiID = 0
+var sampleID = 0
 
 var midiMsg = [] ;
+var sampleMsg = [] ;
 
-midiMsg[0] = randID ; // defines which user
+midiMsg[0] = midiID ; // defines which message
 midiMsg[1] = null ; // defines what type of message
 midiMsg[2] = null ;
 midiMsg[3] = null ;
 midiMsg[4] = null ;
+
+sampleMsg[0] = sampleID ;
+sampleMsg[1] = null ;
+sampleMsg[2] = null ;
+sampleMsg[3] = null ;
+sampleMsg[4] = null ;
 
 var octave = []
 
@@ -80,16 +88,25 @@ if(!sampleActive){
 }
 
 else {
-	midiMsg[1] = '2' ;
-	midiMsg[2] = e.which ;
+	sampleMsg[0] = sampleID
+	sampleMsg[1] = '2' ;
+	sampleMsg[2] = e.which ;
 
-	triggerSample(0, midiMsg)
+	triggerSample(0, sampleMsg)
+
 
 for (var i = 1 ; i < userLimit ; i++) {
 	if (user[i] != 0) {
-		user[i].send(midiMsg);
+		for (var x = 0 ; x < 3 ; x++) {
+		user[i].send(sampleMsg);
+		}
 	}
 }
+
+	sampleID++
+
+	// if (sampleID > 30)
+	// 	sampleID = 0
 
 }
 
@@ -150,7 +167,7 @@ function h2d(h) {return parseInt(h,16);}
 
 function handleMIDIMessage( ev ) {
 	
-	
+		midiMsg[0] = midiID
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
@@ -174,10 +191,14 @@ function handleMIDIMessage( ev ) {
 	for (var i = 1 ; i < userLimit ; i++ )
 	{
 		if (user[i] != 0){
+			for (var x = 0 ; x < 3 ; x++) {
 			user[i].send(midiMsg);
 			console.log("send to " + user[i].peer);
+		} 
 		}
 	}
+
+	midiID++
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
 	// if (output)
