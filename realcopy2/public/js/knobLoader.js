@@ -21,6 +21,22 @@ $(".knob").each(function(){
                 reverb[0].level = v/101
                 break;
 
+                case 'reverb[0].wetLevel' :
+                reverb[0].wetLevel = v/10
+                break;
+
+                case 'reverb[0].dryLevel' :
+                reverb[0].dryLevel = v/100
+                break;
+
+                case 'reverb[0].highCut' :
+                reverb[0].highCut = v
+                break;
+
+                case 'reverb[0].lowCut' :
+                reverb[0].lowCut = v
+                break;
+
                 case 'filter[0].Q':
                 filter[0].Q = v
                 break;

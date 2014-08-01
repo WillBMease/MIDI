@@ -169,30 +169,37 @@ inavibe</a>
     	outgoingEffectChange(effectMsg)" value="90"/> -->
     <input class="knob"  id="reverb-level" data-min="0" data-max="100" data-step="1" data-release="reverb[0].level" data-release2="8" data-release3="'reverb'" data-release4="'level'" data-release5="101" value="90"/>
 
- 	<input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel = v / 10
+ 	<!-- <input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel = v / 10
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'wetLevel'
     	effectMsg[4] = v / 10
-    	outgoingEffectChange(effectMsg)" value="90"/>
- 	<input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="reverb[0].dryLevel = v / 100
+    	outgoingEffectChange(effectMsg)" value="90"/> -->
+    <input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="reverb[0].wetLevel"  data-release2="8" data-release3="'reverb'" data-release4="'wetLevel'" data-release5="10" value="90"/>
+
+ 	<!-- <input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="reverb[0].dryLevel = v / 100
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'dryLevel'
     	effectMsg[4] = v / 100
-    	outgoingEffectChange(effectMsg)" value="40"/>
- 	<input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut = v
+    	outgoingEffectChange(effectMsg)" value="40"/> -->
+    <input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="reverb[0].dryLevel" data-release2="8" data-release3="'reverb'" data-release4="'dryLevel'" data-release5="100" value="40"/>   
+
+ 	<!-- <input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut = v
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'highCut'
     	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)" value="15000"/>
- 	<input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut = v 
+    	outgoingEffectChange(effectMsg)" value="15000"/> -->
+    <input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].highCut" data-release2="8" data-release3="'reverb'" data-release4="'highCut'" data-release5="1" value="15000"/> 
+
+ 	<!-- <input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut = v 
     	effectMsg[1] = 8
     	effectMsg[2] = 'reverb'
     	effectMsg[3] = 'lowCut'
     	effectMsg[4] = v
-    	outgoingEffectChange(effectMsg)" value="10000"/>
+    	outgoingEffectChange(effectMsg)" value="10000"/> -->
+    <input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="reverb[0].lowCut" data-release2="8" data-release3="'reverb'" data-release4="'lowCut'" data-release5="1" value="10000"/>
  	
 ///////////////chorus Mapping//////////////////
 	<input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="chorus[0].rate = v/800

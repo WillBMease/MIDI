@@ -160,14 +160,9 @@ function triggerSample(index, key) {
 	// 	// console.log(noteNode[index][mappedKey])
 	// }
 
-<<<<<<< HEAD
-	if (noteNode[index][mappedKey] == null) {
-		noteNode[index][mappedKey] = context.createMediaElementSource(notes[mappedKey])
-=======
 		if (noteNode[index][mappedKey] == null) {
 			console.log(notes[mappedKey])
 		noteNode[index][mappedKey] = context.createMediaElementSource(notesLoad[mappedKey])
->>>>>>> b7cb67ed0909d49a6181c4be5e2dccdaf2fe9413
 		noteNode[index][mappedKey].connect(cabinet[index].input)
 		console.log(noteNode[index][mappedKey])
 	}
