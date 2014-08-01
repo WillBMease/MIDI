@@ -8,11 +8,9 @@ var tremolo = []
 var filter = []
 var reverb = []
 var compressor = []
-var fxArray = []
+// var fxArray = []
 var effectMsg = []
 effectMsg[1] = 8
-
-
 
 for (var i = 0 ; i < userLimit ; i++) {
 	chorus[i] = 0
