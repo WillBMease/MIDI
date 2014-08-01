@@ -114,8 +114,6 @@ function dataProcess(index, c){
       tempObj.inst = data[4]
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
-      tempObj.activeVoice = data[7]
-      tempObj.audioPointer = data[8]
       startNote(tempObj)
     }
 

@@ -104,8 +104,6 @@ $(function(){
 		beatMsg[4] = sampleID.inst
 		beatMsg[5] = sampleID.insType
 		beatMsg[6] = sampleID.frequency
-		beatMsg[7] = sampleID.activeVoice
-		beatMsg[8] = sampleID.audioPointer
 
 		if (sampleID != 0) 
 		{
