@@ -500,11 +500,12 @@ function handleMIDIMessage(ev)
 	      		arNum = x;
 				soundOff = configurationKey[arNum]
 				console.log("mupID = " + soundOff)
+			
+				beatMsg[2] = 'off'
+			
 				if (soundOff != 0){
 				endNote(soundOff);
-
-				beatMsg[2] = 'off'
-							for (var i = 1 ; i < userLimit ; i++){
+				for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
 			}
