@@ -1,8 +1,9 @@
 var audioMsg = []
 var audioActive = false
 var packetID = 1
+var packetCt = 0
 
-	audioMsg[0] = peer.label
+	audioMsg[0] = packetCt
 	audioMsg[1] = 5
 	audioMsg[2] = 2
 
@@ -26,6 +27,8 @@ else if (!audioActive) {
 	for (var y = 1 ; y < userLimit ; y++) {
 	
 	if (user[y] != 0) {
+	packetCt++
+	audioMsg[0] = packetCt
 	user[y].send(audioMsg)
 		}
 	}

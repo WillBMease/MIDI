@@ -41,7 +41,6 @@ var sampleCheck = []
       }
 
       else if (data[1] == '0' && data[2] == '1') {
-        console.log(data[3])
 
         var calculate = true
            for (var x = 0 ; x < pingCheck.length ; x++){
@@ -63,6 +62,7 @@ var sampleCheck = []
 
       else if (data[1] == '5' && data[2] == '2') {
         receiveCt++
+        console.log(data[0])
         //console.log('I received the packet: ' + data[3])
         data[2] = '3' 
         //data[3] = receiveCt
