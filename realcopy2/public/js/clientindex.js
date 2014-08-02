@@ -540,7 +540,7 @@ function handleMIDIMessage(ev)
 		beatMsg[7] = sampleID.pathPointer
 		// beatMsg[2]
 		mySample(sampleID)
-
+		console.log('hey hey hey!')
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
 					console.log('shit')
