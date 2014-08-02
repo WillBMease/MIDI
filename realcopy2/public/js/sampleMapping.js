@@ -184,6 +184,7 @@ function triggerSample(index, key) {
 	// noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey].play(0)
 
 	// console.log(noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey])
+	console.log(notesLoad[mappedKey])
 		notesLoad[mappedKey].pause();
 		notesLoad[mappedKey].currentTime = 0
 		notesLoad[mappedKey].volume = 0.2

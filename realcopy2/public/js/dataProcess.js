@@ -7,6 +7,7 @@ var tempOsc = {
       frequency: 0,
       activeVoice:"",
       audioPointer:"",
+      pathPointer:""
     }
 
 var tempObj = {
@@ -16,6 +17,7 @@ var tempObj = {
       frequency: 0,
       activeVoice:"",
       audioPointer:"",
+      pathPointer:""
     }
 
 
@@ -146,6 +148,7 @@ var sampleCheck = []
       tempOsc.inst = data[4]
       tempOsc.insType = data[5]
       tempOsc.frequency = data[6]
+      // tempOsc.activeVoice = context.createOscillator()
       startOsc(tempOsc)
     }
 
@@ -161,8 +164,9 @@ var sampleCheck = []
       tempObj.inst = data[4]
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
-
-      
+      tempObj.pathPointer = data[7]
+ console.log('ass ass!')
+      startSample(tempObj)
 
    }
 

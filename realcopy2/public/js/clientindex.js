@@ -4,15 +4,14 @@
 	var configurationKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
 	//var filterKey = [];
 	var beatMsg = []
-	beatMsg[1] = 9
 
 	var jazzDrumList = {
 
-	kick:"../sounds/jazzdrums/note-5.ogg",highHat:"../sounds/jazzdrums/note-1.ogg",crash1:"../sounds/jazzdrums/note-2.ogg",
-	crash2:"../sounds/jazzdrums/note-3.ogg", crash3:"../sounds/jazzdrums/note-4.ogg", openHH:"../sounds/jazzdrums/note-6.ogg", phh:"../sounds/jazzdrums/note-7.ogg",
-	ride1:"../sounds/jazzdrums/note-8.ogg",ride2:"../sounds/jazzdrums/note-9.ogg", ride3:"../sounds/jazzdrums/note-10.ogg", ride4:"../sounds/jazzdrums/note-11.ogg", sdst:"../sounds/jazzdrums/note-12.ogg",
-	snare1:"../sounds/jazzdrums/note-13.ogg", snare2:"../sounds/jazzdrums/note-14.ogg", tomHi:"../sounds/jazzdrums/note-14.ogg", tomLow:"../sounds/jazzdrums/note-15.ogg",
-	tomMid:"../sounds/jazzdrums/note-17.ogg"
+	kick:"sounds/jazzdrums/note-5.ogg",highHat:"sounds/jazzdrums/note-1.ogg",crash1:"sounds/jazzdrums/note-2.ogg",
+	crash2:"sounds/jazzdrums/note-3.ogg", crash3:"sounds/jazzdrums/note-4.ogg", openHH:"sounds/jazzdrums/note-6.ogg", phh:"sounds/jazzdrums/note-7.ogg",
+	ride1:"sounds/jazzdrums/note-8.ogg",ride2:"sounds/jazzdrums/note-9.ogg", ride3:"sounds/jazzdrums/note-10.ogg", ride4:"sounds/jazzdrums/note-11.ogg", sdst:"sounds/jazzdrums/note-12.ogg",
+	snare1:"sounds/jazzdrums/note-13.ogg", snare2:"sounds/jazzdrums/note-14.ogg", tomHi:"sounds/jazzdrums/note-14.ogg", tomLow:"sounds/jazzdrums/note-15.ogg",
+	tomMid:"sounds/jazzdrums/note-17.ogg"
 
 	}
 
@@ -33,6 +32,7 @@ $(function(){
 			frequency: 0,
 			activeVoice:"",
 			audioPointer:"",
+			pathPointer:""
 		};
 
 			configurationKey[i] = soundObj;
@@ -99,11 +99,15 @@ $(function(){
 		arNum = parseInt(thisID.substr(3,3))
 		sampleID = configurationKey[arNum]
 
-		beatMsg[2] = 'on'
 		beatMsg[3] = sampleID.sound
 		beatMsg[4] = sampleID.inst
 		beatMsg[5] = sampleID.insType
 		beatMsg[6] = sampleID.frequency
+
+	if (sampleID.inst == 'square synth') {
+		beatMsg[1] = 9
+		beatMsg[2] = 'on'
+
 
 		if (sampleID != 0) 
 		{
@@ -115,6 +119,23 @@ $(function(){
 			}
 			console.log("playSound called with " + sampleID)
 		}
+	}
+
+	else if (sampleID.inst == "JD") {
+
+		beatMsg[1] = 10
+		beatMsg[7] = sampleID.pathPointer
+		// beatMsg[2]
+		mySample(sampleID)
+			for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0) {
+					console.log('shit')
+					user[i].send(beatMsg)
+				}
+			}
+
+
+	}
 
 	})
 
@@ -131,6 +152,8 @@ $(function(){
 		soundOff = configurationKey[arNum]
 		console.log("mupID = " + soundOff)
 
+if (configurationKey[arNum].inst == 'square synth') {
+		beatMsg[1] = 9
 		beatMsg[2] = 'off'
 		// beatMsg[3] = soundOff.sound
 		// beatMsg[4] = soundOff.inst
@@ -147,6 +170,7 @@ $(function(){
 					user[i].send(beatMsg)
 			}
 		}
+	}
 	})
 
 	$(".genDiv").mouseleave(function(){
@@ -319,6 +343,7 @@ $(function(){
 
 	  	pathPointer = $(dragID).attr("data-sound")
 
+	  	configurationKey[arNum].pathPointer = pathPointer
 		configurationKey[arNum].audioPointer = new Audio()
 		configurationKey[arNum].audioPointer.src = jazzDrumList[pathPointer]
 		configurationKey[arNum].audioPointer.type = "audio/ogg"
@@ -363,21 +388,36 @@ if ($(dragID).attr("data-class") == "filter"){
   
  function startSample(soundObj, vel) {
 
-if (soundObj.inst == "JD"){
+		soundObj.audioPointer = new Audio()
+		soundObj.audioPointer.src = jazzDrumList[soundObj.pathPointer]
+		soundObj.audioPointer.type = "audio/ogg"
+		soundObj.audioPointer.id = soundObj.sound + soundObj.inst
 
-	audioElement = soundObj.audioPointer;
+		soundObj.activeVoice = context.createMediaElementSource(soundObj.audioPointer);
+		gainNode = context.createGain();
+	soundObj.activeVoice.connect(context.destination);		
+		// gainNode.connect(context.destination)
+		// gainNode.connect(cabinet[1].input)
 
+		console.log(soundObj.audioPointer)
+
+	soundObj.audioPointer.pause();
+	//soundObj.audioPointer.currentTime = 0;
+	//gainNode.gain.value = vel/127;
+	soundObj.audioPointer.play(0);
+
+ }                                                                     
+
+function mySample(soundObj, vel){
+		audioElement = soundObj.audioPointer;
+
+	console.log(audioElement)
 	soundObj.activeVoice.connect(gainNode);
 	audioElement.pause();
 	audioElement.currentTime = 0;
 	gainNode.gain.value = vel/127;
 	audioElement.play(0);
-
-	}
-
-
- }                                                                     
-
+}
 
 function startOsc(soundObj, vel) {
 
@@ -475,20 +515,41 @@ function handleMIDIMessage(ev)
 						arNum = parseInt(thisID.substr(3,3))
 						sampleID = configurationKey[arNum]
 		
-						if (sampleID != 0) {
-						startOsc(sampleID, vel);
-						console.log("playSound called with " + sampleID)
 
-		beatMsg[2] = 'on'
 		beatMsg[3] = sampleID.sound
 		beatMsg[4] = sampleID.inst
 		beatMsg[5] = sampleID.insType
 		beatMsg[6] = sampleID.frequency
 
+		if (sampleID.inst == "square synth") {
+		beatMsg[1] = 9
+		beatMsg[2] = 'on'
 				for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
 			}
+			if (sampleID != 0) {
+			startOsc(sampleID, vel);
+			console.log("playSound called with " + sampleID)
+
+}
+
+				else if (sampleID.inst == "JD") {
+
+		beatMsg[1] = 10
+		beatMsg[7] = sampleID.pathPointer
+		// beatMsg[2]
+		mySample(sampleID)
+
+			for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0) {
+					console.log('shit')
+					user[i].send(beatMsg)
+				}
+			}
+
+
+	}
 					}
 	      	}
 	      }
