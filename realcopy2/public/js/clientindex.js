@@ -532,8 +532,8 @@ function handleMIDIMessage(ev)
 			startOsc(sampleID, vel);
 			console.log("playSound called with " + sampleID)
 
+	}
 }
-
 				else if (sampleID.inst == "JD") {
 
 		beatMsg[1] = 10
@@ -548,8 +548,6 @@ function handleMIDIMessage(ev)
 				}
 			}
 
-
-	}
 					}
 	      	}
 	      }
