@@ -445,9 +445,9 @@ if ($(dragID).attr("data-class") == "filter"){
 		soundObj.audioPointer.type = "audio/ogg"
 		soundObj.audioPointer.id = soundObj.sound + soundObj.inst
 
-		soundObj.activeVoice = context.createMediaElementSource(soundObj.audioPointer);
+		//soundObj.activeVoice = context.createMediaElementSource(soundObj.audioPointer);
 		gainNode = context.createGain();
-	soundObj.activeVoice.connect(context.destination);		
+	//soundObj.activeVoice.connect(context.destination);		
 		// gainNode.connect(context.destination)
 		// gainNode.connect(cabinet[1].input)
 
@@ -464,7 +464,7 @@ function mySample(soundObj, vel){
 		audioElement = soundObj.audioPointer;
 
 	console.log(audioElement)
-	soundObj.activeVoice.connect(gainNode);
+	//soundObj.activeVoice.connect(gainNode);
 	audioElement.pause();
 	audioElement.currentTime = 0;
 	gainNode.gain.value = vel/127;
