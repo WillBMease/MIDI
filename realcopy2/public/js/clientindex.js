@@ -588,7 +588,7 @@ function handleMIDIMessage(ev)
 }
 				else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
 console.log(ev.data)
-if (ev.data[2] != 0 || ev.data[0] != 143){
+if (ev.data[2] != 0 && ev.data[0] != 143){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
