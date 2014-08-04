@@ -3,6 +3,10 @@ var userLimit = 4
 var firstDate = 0
 var lastDate = 0
 
+  // var numOfKey 
+  // var rowX 
+  // var rowY 
+
 for (var i = 0 ; i < userLimit ; i++) {
       user[i] = 0
      // user[i].peer = 0

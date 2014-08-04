@@ -1,6 +1,7 @@
 	var numOfKey = 8
 	var rowX = 4
 	var rowY = 2 
+
 	var configurationKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
 	//var filterKey = [];
 	var beatMsg = []
@@ -13,6 +14,10 @@
 	snare1:"sounds/jazzdrums/note-13.ogg", snare2:"sounds/jazzdrums/note-14.ogg", tomHi:"sounds/jazzdrums/note-14.ogg", tomLow:"sounds/jazzdrums/note-15.ogg",
 	tomMid:"sounds/jazzdrums/note-17.ogg"
 
+	}
+
+	var numb = {
+		one:"sounds/numb/note-1.ogg", two:"sounds/numb/note-2.ogg", three:"sounds/numb/note-3.ogg", four:"sounds/numb/note-4.ogg", five:"sounds/numb/note-5.ogg"
 	}
 
 
@@ -56,10 +61,20 @@ $(function(){
 	//    \_____|_|  \_\_____|_____/   \_____|______|_| \_|______|_|  \_\/_/    \_\_|  |_____\____/|_| \_|
 	//                                                                                                    
 	//                                                                                                    
+    $('#generate-grid').click(function(){
+        rowX = parseInt($('#rowx').val())
+        rowY = parseInt($('#rowy').val())
+        gridGenerator()
+        console.log(rowX, rowY)
 
+    });
 
+function gridGenerator(){
 
-			
+	$('#dropcontainer').empty()
+	$('#btn').empty()
+			numOfKey = rowX * rowY
+			// console.log(numOfKey)
 		// generate block container elements to #divcontainer
 	for (i = 0; i <= numOfKey-1; i++) {
 
@@ -78,6 +93,30 @@ $(function(){
 
 	};
 
+
+	var setRow = function(clrRow)
+		{
+			widthCol = (99 / clrRow) - (12/clrRow);
+
+
+			finalStr = (widthCol.toString() + "%");
+			
+			console.log(finalStr);
+			return finalStr;
+
+
+
+		}
+
+
+	$(".genDiv").css({
+
+	height:setRow(rowY),
+	width:setRow(rowX),
+	}
+		)
+
+// }
 	//generate mapping indicators to #btn elements
 
 	////////////////////////////////////////////////////////////////////////////////////////
@@ -121,7 +160,7 @@ $(function(){
 		}
 	}
 
-	else if (sampleID.inst == "JD") {
+	else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
@@ -192,6 +231,9 @@ if (configurationKey[arNum].inst == 'square synth') {
 
 	})
 
+// } // end of generateGrid()
+
+
 	$(".filterButton").click(function(){
 
 		$("#dropcontainer ,#instruments,.filterButton").css({
@@ -232,32 +274,32 @@ if (configurationKey[arNum].inst == 'square synth') {
 	})
 
 
+
 ////dynamically sizing gendivs based on number of keys
 
 
 
-	var setRow = function(clrRow)
-		{
-			widthCol = (99 / clrRow) - (12/clrRow);
+	// var setRow = function(clrRow)
+	// 	{
+	// 		widthCol = (99 / clrRow) - (12/clrRow);
 
 
-			finalStr = (widthCol.toString() + "%");
+	// 		finalStr = (widthCol.toString() + "%");
 			
-			console.log(finalStr);
-			return finalStr;
+	// 		console.log(finalStr);
+	// 		return finalStr;
 
 
 
-		}
+	// 	}
 
 
-	$(".genDiv").css({
+	// $(".genDiv").css({
 
-	height:setRow(rowY),
-	width:setRow(rowX),
-	}
-		)
-
+	// height:setRow(rowY),
+	// width:setRow(rowX),
+	// }
+	// 	)
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -310,15 +352,13 @@ if (configurationKey[arNum].inst == 'square synth') {
 		
 	 });
 
-	
 
-
-
-
+} // end gridGenerator()
 
 });
 
 
+// }
 
 	function handleDropEvent( event, ui ) 
 {
@@ -338,14 +378,19 @@ if (configurationKey[arNum].inst == 'square synth') {
 	  $(des).text(draggable.find("p").text());
 	  console.log(configurationKey);
 
-	  if ($(dragID).attr("data-instrument") == "JD")
+	  if ($(dragID).attr("data-instrument") == "JD" || $(dragID).attr("data-instrument") == "numb")
 	  {
 
 	  	pathPointer = $(dragID).attr("data-sound")
 
 	  	configurationKey[arNum].pathPointer = pathPointer
 		configurationKey[arNum].audioPointer = new Audio()
-		configurationKey[arNum].audioPointer.src = jazzDrumList[pathPointer]
+
+		if (configurationKey[arNum].inst == "JD")
+			configurationKey[arNum].audioPointer.src = jazzDrumList[pathPointer]
+		else if (configurationKey[arNum].inst == "numb")
+			configurationKey[arNum].audioPointer.src = numb[pathPointer]
+
 		configurationKey[arNum].audioPointer.type = "audio/ogg"
 		configurationKey[arNum].audioPointer.id = configurationKey[arNum].sound + configurationKey[arNum].inst
 
@@ -389,7 +434,14 @@ if ($(dragID).attr("data-class") == "filter"){
  function startSample(soundObj, vel) {
 
 		soundObj.audioPointer = new Audio()
+
+		if (soundObj.inst == "JD")
 		soundObj.audioPointer.src = jazzDrumList[soundObj.pathPointer]
+		else if (soundObj.inst == "numb") {
+		soundObj.audioPointer.src = numb[soundObj.pathPointer]
+		console.log(numb[soundObj.pathPointer])
+	}
+
 		soundObj.audioPointer.type = "audio/ogg"
 		soundObj.audioPointer.id = soundObj.sound + soundObj.inst
 
@@ -534,7 +586,9 @@ function handleMIDIMessage(ev)
 
 	}
 }
-				else if (sampleID.inst == "JD") {
+				else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
+console.log(ev.data)
+if (ev.data[2] != 0){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
@@ -545,13 +599,13 @@ function handleMIDIMessage(ev)
 				if (user[i] != 0) {
 					console.log('shit')
 					user[i].send(beatMsg)
-				}
+			   }
+			  }
+			 }	
 			}
-
-					}
-	      	}
+	       }
 	      }
-      	}
+      	 }
 
     if (ev.data[2] == 0) {	
 		for(var x = 0; x < noteDownArray.length; x++) {
@@ -579,11 +633,19 @@ function handleMIDIMessage(ev)
 	      }
       	}   
 	}	
-	console.log(buttonPress)	
+	console.log(buttonPress)
+	console.log(noteUpArray[2])	
 
+var playActualMIDI = true
 
+for (var i = 0 ; i < numOfKey ; i++){
+	if (ev.data[0] == 153 || ev.data[0] == 143){
+		console.log('look in here!')
+		playActualMIDI = false
+	}
+}
 
-
+if (playActualMIDI){
 		midiMsg[0] = midiID
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
@@ -603,6 +665,8 @@ function handleMIDIMessage(ev)
 
 	console.log('detect midi')
 
+
+
 		triggerMidiDevice(0, midiMsg)
 
 	for (var i = 1 ; i < userLimit ; i++ )
@@ -617,7 +681,7 @@ function handleMIDIMessage(ev)
 
 	midiID++
 
-
+	}
 }
 
 
