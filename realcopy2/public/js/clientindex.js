@@ -527,6 +527,10 @@ function handleMIDIMessage(ev)
 	pressArray[0] = ev.data[0]
 	pressArray[1] = ev.data[1] 
 	console.log(pressArray)
+
+			console.log(ev.data[0])
+		console.log(ev.data[1])
+		console.log(ev.data[2])
 	if (buttonPress <= numOfKey * 2)
 	{
 		console.log(ev.data[0])

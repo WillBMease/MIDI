@@ -165,7 +165,7 @@ var sampleCheck = []
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
       tempObj.pathPointer = data[7]
- console.log('ass ass!')
+      console.log('ass ass!')
       startSample(tempObj)
 
    }
