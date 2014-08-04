@@ -587,7 +587,7 @@ function handleMIDIMessage(ev)
 	}
 }
 				else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
-console.log(ev.data)
+
 if (ev.data[2] != 0 && ev.data[0] != 143){
 
 		beatMsg[1] = 10
@@ -633,17 +633,13 @@ if (ev.data[2] != 0 && ev.data[0] != 143){
 	      }
       	}   
 	}	
-	console.log(buttonPress)
-	console.log(noteUpArray[2])	
 
 var playActualMIDI = true
 
-for (var i = 0 ; i < numOfKey ; i++){
 	if (ev.data[0] == 153 || ev.data[0] == 143){
 		console.log('look in here!')
 		playActualMIDI = false
 	}
-}
 
 if (playActualMIDI){
 		midiMsg[0] = midiID
