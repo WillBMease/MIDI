@@ -623,7 +623,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 	      		arNum = x;
 				soundOff = configurationKey[arNum]
 				console.log("mupID = " + soundOff)
-			
+		if (soundOff.inst == "square synth"){	
 				beatMsg[2] = 'off'
 
 				if (soundOff != 0){
@@ -633,6 +633,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 					user[i].send(beatMsg)
 			}
 				}
+			}
 	      	}
 	      }
       	}   
