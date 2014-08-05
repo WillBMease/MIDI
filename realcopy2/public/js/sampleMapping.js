@@ -398,23 +398,39 @@ function triggerMidiDevice(index, midiData){
 				return;
 			}
 		}
-		notes = noteWrap.find('audio');
-		key = masterConversion(midiData);
-		if(key != 200 && midiData[4] != 0){
+	 	key = masterConversion(midiData);
+	 var source1 = context.createBufferSource();
+    // var source2 = context.createBufferSource();
+    source1.buffer = noteNode[index][key];
+    // source2.buffer = bufferList[1];
+    
+    source1.connect(cabinet[0].input);
+    // source2.connect(cabinet[0].input);
+    source1.start(0);
+    // source2.start(0);
+
+    source1.onended = function() {
+    	source1.disconnect()
+    	source1.stop()
+    }
+
+	// 	notes = noteWrap.find('audio');
+
+	// 	if(key != 200 && midiData[4] != 0){
 
 
-			if (noteNode[index][key] == null) {		
-		noteNode[index][key] = context.createMediaElementSource(notes[key])
-		noteNode[index][key].connect(cabinet[index].input)
-	}
+	// 		if (noteNode[index][key] == null) {		
+	// 	noteNode[index][key] = context.createMediaElementSource(notes[key])
+	// 	noteNode[index][key].connect(cabinet[index].input)
+	// }
 
-		console.log(noteNode[index][key]) 
+	// 	console.log(noteNode[index][key]) 
 
-			notes[key].currentTime = 0;
-			console.log('volume: ' + noteVolume(midiData))
-			//filter.frequency = controllerArray[0].velocity
-			notes[key].volume = noteVolume(midiData)
-			notes[key].play(0);
-		}
-	}
+	// 		notes[key].currentTime = 0;
+	// 		console.log('volume: ' + noteVolume(midiData))
+	// 		//filter.frequency = controllerArray[0].velocity
+	// 		notes[key].volume = noteVolume(midiData)
+	// 		notes[key].play(0);
+	// 	}
+	// }
 }
