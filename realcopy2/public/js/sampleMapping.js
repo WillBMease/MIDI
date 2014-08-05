@@ -4,8 +4,8 @@ var paths = []
 var testing = []
 var firstRun = true
 
-var gainNode = context.createGain()
-gainNode.connect(cabinet[i].input)
+// var gainNode = context.createGain()
+// gainNode.connect(cabinet[i].input)
 
 		for (i = 0; i <= 120; i++) {
 
@@ -284,97 +284,17 @@ function triggerSample(index, key) {
     source1.buffer = noteNode[index][mappedKey];
     // source2.buffer = bufferList[1];
     
-    source1.connect(cabinet[0].input);
+    source1.connect(bus[index].input);
     // source2.connect(cabinet[0].input);
     source1.start(0);
     // source2.start(0);
 
     source1.onended = function() {
-    	source1.disconnect()
+    	// source1.disconnect()
     	source1.stop()
     }
 
-    // setTimeout(function(
-    // 	source1.stop(0)
-    // )}, 2000)
-
-// noteNode[index][0].mediaElement.src = paths[mappedKey]
-// noteNode[index][0].mediaElement = notesLoad[mappedKey]
-// noteNode[index][0].mediaElement.id = mappedKey
-// noteNode[index][0].mediaElement.nextSibling.src = paths[mappedKey + 1]
-// noteNode[index][0].mediaElement.previousSibling.src = paths[mappedKey - 1]
-// noteNode[index][0].mediaElement.nextSibling = notesLoad[mappedKey + 1]
-// noteNode[index][0].mediaElement.previousSibling = notesLoad[mappedKey - 1]
-
-// console.log(noteNode[index][0].src)
-// console.log(noteNode[index][0])
-// console.log(noteNode[index][0].mediaElement.parentNode)
-// noteNode[index]
-	// 	if (noteNode[index][mappedKey] == null) {
-	// 	noteNode[index][0] = context.createMediaElementSource(notes[mappedKey])
-	// 	noteNode[index][0].connect(cabinet[index].input)
-	// 	console.log(noteNode[index][mappedKey])
-	// 	noteNode[index][mappedKey] = 1
-	// }
-
-	// console.log(testing[mappedKey].audioPointer)
-	// 		if (testing[mappedKey].full == false) {
-	// 		testing[mappedKey].activeVoice = context.createMediaElementSource(testing[mappedKey].audioPointer)
-	// 		testing[mappedKey].activeVoice.connect(cabinet[index].input)
-	// 	// console.log(noteNode[index][mappedKey])
-	// }
-
-	// 	if (noteNode[index][mappedKey] == null) {
-	// 		console.log(notes[mappedKey])
-	// 	noteNode[index][mappedKey] = context.createMediaElementSource(notesLoad[mappedKey])
-	// 	noteNode[index][mappedKey].connect(cabinet[index].input)
-	// 	console.log(noteNode[index][mappedKey])
-	// }
-
-
-	// console.log(testing[mappedKey])
-	// 		if (testing[mappedKey].full == false) {
-	// 		testing[mappedKey].activeVoice = context.createMediaElementSource(testing[mappedKey].audioPointer)
-	// 		testing[mappedKey].activeVoice.connect(cabinet[index].input)
-	// 	// console.log(noteNode[index][mappedKey])
-	// }
-
-	// noteNode[index][7].mediaElement.src = noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey]
-	// console.log(noteNode[index][7].mediaElement.src)
-
-	// noteNode[index][7].connect(cabinet[index].input)
-
-	// noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey].pause()
-	// noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey].currentTime = 0
-	// noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey].play(0)
-
-	// console.log(noteNode[index][7].mediaElement.parentNode.childNodes[mappedKey])
-	// console.log(notesLoad[mappedKey])
-	// 	notesLoad[mappedKey].pause();
-	// 	notesLoad[mappedKey].currentTime = 0
-	// 	notesLoad[mappedKey].volume = 0.2
-	// 	notesLoad[mappedKey].play(0)
-
-		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].pause();
-		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].currentTime = 0
-		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].volume = 0.2
-		// noteNode[index][0].mediaElement.parentNode.childNodes[mappedKey].play(0)
-
-		// noteNode[index][0].mediaElement.pause();
-		// noteNode[index][0].mediaElement.currentTime = 0
-		// noteNode[index][0].mediaElement.volume = 0.2
-		// noteNode[index][0].mediaElement.play(0)
-
-		// notes[mappedKey].pause();
-		// notes[mappedKey].currentTime = 0
-		// notes[mappedKey].volume = 0.2
-		// notes[mappedKey].play(0)
-		// notes[mappedKey].clear
-		// noteNode[mappedKey] = null
-		// testing[mappedKey].audioPointer.pause();
-		// testing[mappedKey].audioPointer.currentTime = 0
-		// testing[mappedKey].audioPointer.volume = 0.2
-		// testing[mappedKey].audioPointer.play(0)
+ 
 
 	}
 }

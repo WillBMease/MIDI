@@ -1,110 +1,406 @@
-var chorus = []
-var delay = []
-var overdrive = []
-var phaser = []
-var cabinet = []
-var wahwah = []
-var tremolo = []
-var filter = []
-var reverb = []
-var compressor = []
+// var chorus = []
+// var delay = []
+// var overdrive = []
+// var phaser = []
+// var cabinet = []
+// var wahwah = []
+// var tremolo = []
+// var filter = []
+// var reverb = []
+// var compressor = []
 // var fxArray = []
 var effectMsg = []
 effectMsg[1] = 8
 
-for (var i = 0 ; i < userLimit ; i++) {
-	chorus[i] = 0
-	delay[i] = 0
-	overdrive[i] = 0
-	phaser[i] = 0
-	cabinet[i] = 0
-	wahwah[i] = 0
-	tremolo[i] = 0
-	filter[i] = 0
-	reverb[i] = 0
-	compressor[i] = 0
-}
+// for (var i = 0 ; i < userLimit ; i++) {
+// 	chorus[i] = 0
+// 	delay[i] = 0
+// 	overdrive[i] = 0
+// 	phaser[i] = 0
+// 	cabinet[i] = 0
+// 	wahwah[i] = 0
+// 	tremolo[i] = 0
+// 	filter[i] = 0
+// 	reverb[i] = 0
+// 	compressor[i] = 0
+// }
 
 
-for (var i = 0 ; i < userLimit ; i++) {
+// for (var i = 0 ; i < userLimit ; i++) {
 
-reverb[i] = new tuna.Convolver({
+// reverb[i] = new tuna.Convolver({
+//                     highCut: 15000,                         //20 to 22050
+//                     lowCut: 10000,                             //20 to 22050
+//                     dryLevel: .4,                            //0 to 1+
+//                     wetLevel: .9,                            //0 to 1+
+//                     level: .8,                               //0 to 1+, adjusts total output of both wet and dry
+//                     impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
+//                     bypass: 1
+//                 });
+
+// chorus[i] = new tuna.Chorus({
+//                  rate: 5,         //0.01 to 8+
+//                  feedback: 0.8,     //0 to 1+
+//                  delay: 0.8,     //0 to 1
+//                  bypass: 1          //the value 1 starts the effect as bypassed, 0 or 1
+//              });
+
+// delay[i] = new tuna.Delay({
+//                 feedback: 0.8,    //0 to 1+
+//                 delayTime: 100,    //how many milliseconds should the wet signal be delayed? 
+//                 wetLevel: 0.5,    //0 to 1+
+//                 dryLevel: 0.4,       //0 to 1+
+//                 cutoff: 13000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
+//                 bypass: 1
+//             });
+
+// overdrive[i] = new tuna.Overdrive({
+//                     outputGain: 0.1,         //0 to 1+
+//                     drive: 0.1,              //0 to 1
+//                     curveAmount: 0.1,          //0 to 1
+//                     algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
+//                     bypass: 1
+//                 });
+
+// phaser[i] = new tuna.Phaser({
+//                  rate: 1.2,                     //0.01 to 8 is a decent range, but higher values are possible
+//                  depth: 0.3,                    //0 to 1
+//                  feedback: 0.2,                 //0 to 1+
+//                  stereoPhase: 30,               //0 to 180
+//                  baseModulationFrequency: 700,  //500 to 1500
+//                  bypass: 1
+//              });
+
+// cabinet[i] = new tuna.Cabinet({
+//                   makeupGain: 15,                                 //0 to 20
+//                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
+//                   bypass: 1
+//               });
+
+// wahwah[i] = new tuna.WahWah({
+//                  automode: true,                //true/false
+//                  baseFrequency: 0.5,            //0 to 1
+//                  excursionOctaves: 4,           //1 to 6
+//                  sweep: 0.8,                    //0 to 1
+//                  resonance: 80,                 //1 to 100
+//                  sensitivity: 0.8,              //-1 to 1
+//                  bypass: 1
+//              });
+
+// tremolo[i] = new tuna.Tremolo({
+//                   intensity: 0.3,    //0 to 1
+//                   rate: 0.1,         //0.001 to 8
+//                   stereoPhase: 0,    //0 to 180
+//                   bypass: 1
+//               });
+
+// // basic filter
+// filter[i] = new tuna.Filter({
+//                  frequency: 20,         //20 to 22050
+//                  Q: 1,                  //0.001 to 100
+//                  gain: 0,               //-40 to 40
+//                  bypass: 1,             //0 to 1+
+//                  filterType: 0,         //0 to 7, corresponds to the filter types in the native filter node: lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass in that order
+//                  bypass: 1
+//              });
+
+// compressor[i] = new tuna.Compressor({
+//                      threshold: -0.5,    //-100 to 0
+//                      makeupGain: 1,     //0 and up
+//                      attack: 1,         //0 to 1000
+//                      release: 0,        //0 to 3000
+//                      ratio: 4,          //1 to 20
+//                      knee: 5,           //0 to 40
+//                      automakeup: true,  //true/false
+//                      bypass: 1
+//                  });
+
+// }
+
+
+// for (var i = 0 ; i < userLimit ; i++) {
+
+// 		cabinet[i].connect(overdrive[i].input)
+// 		overdrive[i].connect(compressor[i].input)
+// 		compressor[i].connect(tremolo[i].input)
+// 		tremolo[i].connect(chorus[i].input)
+// 		chorus[i].connect(phaser[i].input)
+// 		phaser[i].connect(reverb[i].input)
+// 		reverb[i].connect(delay[i].input)
+// 		delay[i].connect(filter[i].input)
+// 		filter[i].connect(wahwah[i].input)
+// 		wahwah[i].connect(context.destination);
+// }
+
+// var AudioBus = function()
+
+// var AudioBus = {}
+
+// for (var i = 0 ; i < userLimit ; i++) {
+
+// AudioBus[i] = function(){
+//     this.input = audioContext.createGain();
+//     var output = audioContext.createGain();
+
+//     //create effect nodes (Convolver and Equalizer are other custom effects from the library presented at the end of the article)
+//     // var delay = new SlapbackDelayNode(),
+//     //     convolver = new tuna.Convolver(),
+//     //     equalizer = new tuna.Equalizer();
+
+//     //route ‘em
+//     //equalizer -> delay -> convolver
+//     this.input.connect(cabinet[i].input);
+// 	cabinet[i].connect(overdrive[i].input)
+// 		overdrive[i].connect(compressor[i].input)
+// 		compressor[i].connect(tremolo[i].input)
+// 		tremolo[i].connect(chorus[i].input)
+// 		chorus[i].connect(phaser[i].input)
+// 		phaser[i].connect(reverb[i].input)
+// 		reverb[i].connect(delay[i].input)
+// 		delay[i].connect(filter[i].input)
+// 		filter[i].connect(wahwah[i].input)
+// 		wahwah[i].connect(output)
+
+//     this.connect = function(target){
+//        output.connect(target);
+//     };
+//   };
+
+// }
+
+// for (var i = 0 ; i < userLimit ; i++){
+// 	AudioBus[i].connect(context.destination)
+// }
+
+
+// var SlapbackDelayNode = function(){
+//     //create the nodes we’ll use
+//     this.input = audioContext.createGainNode();
+//     var output = audioContext.createGainNode(),
+//         delay = audioContext.createDelayNode(),
+//         feedback = audioContext.createGainNode(),
+//         wetLevel = audioContext.createGainNode();
+
+//     //set some decent values
+//     delay.delayTime.value = 0.15; //150 ms delay
+//     feedback.gain.value = 0.25;
+//     wetLevel.gain.value = 0.25;
+
+//     //set up the routing
+//     this.input.connect(delay);
+//     this.input.connect(output);
+//     delay.connect(feedback);
+//     delay.connect(wetLevel);
+//     feedback.connect(delay);
+//     wetLevel.connect(output);
+
+//     this.connect = function(target){
+//        output.connect(target);
+//     };
+// };
+
+
+// var AudioBus = function(){
+//     this.input = context.createGain();
+//     var output = context.createGain();
+
+//     //create effect nodes (Convolver and Equalizer are other custom effects from the library presented at the end of the article)
+
+//     // this[reverb] = nnytfjgfj
+
+// this[reverb] = new tuna.Convolver({
+//                     highCut: 15000,                         //20 to 22050
+//                     lowCut: 10000,                             //20 to 22050
+//                     dryLevel: .4,                            //0 to 1+
+//                     wetLevel: .9,                            //0 to 1+
+//                     level: .8,                               //0 to 1+, adjusts total output of both wet and dry
+//                     impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
+//                     bypass: true
+//                 });
+
+// this[chorus] = new tuna.Chorus({
+//                  rate: 5,         //0.01 to 8+
+//                  feedback: 0.8,     //0 to 1+
+//                  delay: 0.8,     //0 to 1
+//                  bypass: true          //the value 1 starts the effect as bypassed, 0 or 1
+//              });
+
+// this[delay] = new tuna.Delay({
+//                 feedback: 0.8,    //0 to 1+
+//                 delayTime: 100,    //how many milliseconds should the wet signal be delayed? 
+//                 wetLevel: 0.5,    //0 to 1+
+//                 dryLevel: 0.4,       //0 to 1+
+//                 cutoff: 13000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
+//                 bypass: true
+//             });
+
+// // this[overdrive] = new tuna.Overdrive({
+// //                     outputGain: 0.1,         //0 to 1+
+// //                     drive: 0.1,              //0 to 1
+// //                     curveAmount: 0.1,          //0 to 1
+// //                     algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
+// //                     bypass: true
+// //                 });
+
+// this[phaser] = new tuna.Phaser({
+//                  rate: 1.2,                     //0.01 to 8 is a decent range, but higher values are possible
+//                  depth: 0.3,                    //0 to 1
+//                  feedback: 0.2,                 //0 to 1+
+//                  stereoPhase: 30,               //0 to 180
+//                  baseModulationFrequency: 700,  //500 to 1500
+//                  bypass: true
+//              });
+
+// this[cabinet] = new tuna.Cabinet({
+//                   makeupGain: 15,                                 //0 to 20
+//                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
+//                   bypass: true
+//               });
+
+// this[wahwah] = new tuna.WahWah({
+//                  automode: true,                //true/false
+//                  baseFrequency: 0.5,            //0 to 1
+//                  excursionOctaves: 4,           //1 to 6
+//                  sweep: 0.8,                    //0 to 1
+//                  resonance: 80,                 //1 to 100
+//                  sensitivity: 0.8,              //-1 to 1
+//                  bypass: true
+//              });
+
+// this[tremolo] = new tuna.Tremolo({
+//                   intensity: 0.3,    //0 to 1
+//                   rate: 0.1,         //0.001 to 8
+//                   stereoPhase: 0,    //0 to 180
+//                   bypass: true
+//               });
+
+// // basic filter
+// this[filter] = new tuna.Filter({
+//                  frequency: 20,         //20 to 22050
+//                  Q: 1,                  //0.001 to 100
+//                  gain: 0,               //-40 to 40
+//                  bypass: true,             //0 to 1+
+//                  filterType: 0,         //0 to 7, corresponds to the filter types in the native filter node: lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass in that order
+//                  bypass: true
+//              });
+
+// this[compressor] = new tuna.Compressor({
+//                      threshold: -0.5,    //-100 to 0
+//                      makeupGain: 1,     //0 and up
+//                      attack: 1,         //0 to 1000
+//                      release: 0,        //0 to 3000
+//                      ratio: 4,          //1 to 20
+//                      knee: 5,           //0 to 40
+//                      automakeup: true,  //true/false
+//                      bypass: true
+//                  });
+
+
+//     this.input.connect(this[cabinet].input);
+// 	this[cabinet].connect(this[compressor].input)
+// 		// this[overdrive].connect(this[compressor].input)
+// 		this[compressor].connect(this[tremolo].input)
+// 		this[tremolo].connect(this[chorus].input)
+// 		this[chorus].connect(this[phaser].input)
+// 		this[phaser].connect(this[reverb].input)
+// 		this[reverb].connect(this[delay].input)
+// 		this[delay].connect(this[filter].input)
+// 		this[filter].connect(this[wahwah].input)
+// 		this[wahwah].connect(output) 
+
+
+//     this.connect = function(target){
+//        output.connect(target);
+//     };
+// };
+
+
+
+var AudioBus = function(){
+    this.input = context.createGain();
+    var output = context.createGain();
+
+    //create effect nodes (Convolver and Equalizer are other custom effects from the library presented at the end of the article)
+
+    // this[reverb] = nnytfjgfj
+
+this.reverb = new tuna.Convolver({
                     highCut: 15000,                         //20 to 22050
                     lowCut: 10000,                             //20 to 22050
                     dryLevel: .4,                            //0 to 1+
                     wetLevel: .9,                            //0 to 1+
                     level: .8,                               //0 to 1+, adjusts total output of both wet and dry
                     impulse: "js/impulses/impulse_rev.wav",    //the path to your impulse response
-                    bypass: 1
+                    bypass: true
                 });
 
-chorus[i] = new tuna.Chorus({
+this.chorus = new tuna.Chorus({
                  rate: 5,         //0.01 to 8+
                  feedback: 0.8,     //0 to 1+
                  delay: 0.8,     //0 to 1
-                 bypass: 1          //the value 1 starts the effect as bypassed, 0 or 1
+                 bypass: true          //the value 1 starts the effect as bypassed, 0 or 1
              });
 
-delay[i] = new tuna.Delay({
+this.delay = new tuna.Delay({
                 feedback: 0.8,    //0 to 1+
-                delayTime: 100,    //how many milliseconds should the wet signal be delayed? 
+                delayTime: 500,    //how many milliseconds should the wet signal be delayed? 
                 wetLevel: 0.5,    //0 to 1+
                 dryLevel: 0.4,       //0 to 1+
                 cutoff: 13000,        //cutoff frequency of the built in highpass-filter. 20 to 22050
-                bypass: 1
+                bypass: true
             });
 
-overdrive[i] = new tuna.Overdrive({
-                    outputGain: 0.1,         //0 to 1+
-                    drive: 0.1,              //0 to 1
-                    curveAmount: 0.1,          //0 to 1
-                    algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
-                    bypass: 1
-                });
+// overdrive] = new tuna.Overdrive({
+//                     outputGain: 0.1,         //0 to 1+
+//                     drive: 0.1,              //0 to 1
+//                     curveAmount: 0.1,          //0 to 1
+//                     algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
+//                     bypass: true
+//                 });
 
-phaser[i] = new tuna.Phaser({
+this.phaser = new tuna.Phaser({
                  rate: 1.2,                     //0.01 to 8 is a decent range, but higher values are possible
                  depth: 0.3,                    //0 to 1
                  feedback: 0.2,                 //0 to 1+
                  stereoPhase: 30,               //0 to 180
                  baseModulationFrequency: 700,  //500 to 1500
-                 bypass: 1
+                 bypass: true
              });
 
-cabinet[i] = new tuna.Cabinet({
+this.cabinet = new tuna.Cabinet({
                   makeupGain: 15,                                 //0 to 20
                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
-                  bypass: 1
+                  bypass: true
               });
 
-wahwah[i] = new tuna.WahWah({
+this.wahwah = new tuna.WahWah({
                  automode: true,                //true/false
                  baseFrequency: 0.5,            //0 to 1
                  excursionOctaves: 4,           //1 to 6
                  sweep: 0.8,                    //0 to 1
                  resonance: 80,                 //1 to 100
                  sensitivity: 0.8,              //-1 to 1
-                 bypass: 1
+                 bypass: true
              });
 
-tremolo[i] = new tuna.Tremolo({
+this.tremolo = new tuna.Tremolo({
                   intensity: 0.3,    //0 to 1
                   rate: 0.1,         //0.001 to 8
                   stereoPhase: 0,    //0 to 180
-                  bypass: 1
+                  bypass: true
               });
 
 // basic filter
-filter[i] = new tuna.Filter({
+this.filter = new tuna.Filter({
                  frequency: 20,         //20 to 22050
                  Q: 1,                  //0.001 to 100
                  gain: 0,               //-40 to 40
-                 bypass: 1,             //0 to 1+
+                 bypass: true,             //0 to 1+
                  filterType: 0,         //0 to 7, corresponds to the filter types in the native filter node: lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass in that order
-                 bypass: 1
+                 bypass: true
              });
 
-compressor[i] = new tuna.Compressor({
+this.compressor = new tuna.Compressor({
                      threshold: -0.5,    //-100 to 0
                      makeupGain: 1,     //0 and up
                      attack: 1,         //0 to 1000
@@ -112,76 +408,88 @@ compressor[i] = new tuna.Compressor({
                      ratio: 4,          //1 to 20
                      knee: 5,           //0 to 40
                      automakeup: true,  //true/false
-                     bypass: 1
+                     bypass: true
                  });
 
+
+    this.input.connect(this.cabinet.input);
+	this.cabinet.connect(this.compressor.input)
+		// overdrive].connect(compressor].input)
+		this.compressor.connect(this.tremolo.input)
+		this.tremolo.connect(this.chorus.input)
+		this.chorus.connect(this.phaser.input)
+		this.phaser.connect(this.reverb.input)
+		this.reverb.connect(this.delay.input)
+		this.delay.connect(this.filter.input)
+		this.filter.connect(this.wahwah.input)
+		this.wahwah.connect(output) 
+
+
+    this.connect = function(target){
+       output.connect(target);
+    };
+};
+
+
+var bus = []
+
+for (var i = 0 ; i < userLimit ; i++){
+	bus[i] = new AudioBus()
+	bus[i].connect(context.destination)
+	// bus[i].wahwah.bypass = 1
 }
 
-
-for (var i = 0 ; i < userLimit ; i++) {
-
-		cabinet[i].connect(overdrive[i].input)
-		overdrive[i].connect(compressor[i].input)
-		compressor[i].connect(tremolo[i].input)
-		tremolo[i].connect(chorus[i].input)
-		chorus[i].connect(phaser[i].input)
-		phaser[i].connect(reverb[i].input)
-		reverb[i].connect(delay[i].input)
-		delay[i].connect(filter[i].input)
-		filter[i].connect(wahwah[i].input)
-		wahwah[i].connect(context.destination);
-}
 
 for (var i = 0 ; i < 1 ; i++) {
-		reverb[i].highCut = $("#reverb-highCut").val()
-		reverb[i].lowCut = $("#reverb-lowCut").val()
-		reverb[i].dryLevel = $("#reverb-dryLevel").val() / 101
-		reverb[i].wetLevel = $("#reverb-wetLevel").val() / 101
-		reverb[i].level = $("#reverb-level").val() / 101
+		bus[i].reverb.highCut = $("#reverb-highCut").val()
+		bus[i].reverb.lowCut = $("#reverb-lowCut").val()
+		bus[i].reverb.dryLevel = $("#reverb-dryLevel").val() / 101
+		bus[i].reverb.wetLevel = $("#reverb-wetLevel").val() / 101
+		bus[i].reverb.level = $("#reverb-level").val() / 101
 
-		chorus[i].rate = $("#chorus-rate").val()/800;
-		chorus[i].feedback = $("#chorus-feedback").val()/100;
-		chorus[i].delay = $("#chorus-delay").val()/100;
+		bus[i].chorus.rate = $("#chorus-rate").val()/800;
+		bus[i].chorus.feedback = $("#chorus-feedback").val()/100;
+		bus[i].chorus.delay = $("#chorus-delay").val()/100;
 
-		delay[i].feedback = $("#delay-feedback").val()/100;
-		delay[i].delayTime = $("#delay-time").val();
-		delay[i].wetLevel = $("#delay-wetLevel").val()/10;
-		delay[i].dryLevel = $("#delay-dryLevel").val()/10;
-		delay[i].cutoff = $("#delay-cutoff").val();
+		bus[i].delay.feedback = $("#delay-feedback").val()/100;
+		bus[i].delay.delayTime = $("#delay-time").val();
+		bus[i].delay.wetLevel = $("#delay-wetLevel").val()/10;
+		bus[i].delay.dryLevel = $("#delay-dryLevel").val()/10;
+		bus[i].delay.cutoff = $("#delay-cutoff").val();
 
-		phaser[i].rate = $("#phaser-rate").val() / 801
-		phaser[i].depth = $("#phaser-depth").val() / 101
-		phaser[i].feedback = $("#phaser-feedback").val() / 101
-		phaser[i].stereoPhase = $("#phaser-stereo").val()
-		phaser[i].baseModulationFrequency = $("#phaser-bmf").val()
+		bus[i].phaser.rate = $("#phaser-rate").val() / 801
+		bus[i].phaser.depth = $("#phaser-depth").val() / 101
+		bus[i].phaser.feedback = $("#phaser-feedback").val() / 101
+		bus[i].phaser.stereoPhase = $("#phaser-stereo").val()
+		bus[i].phaser.baseModulationFrequency = $("#phaser-bmf").val()
 
-		overdrive[i].outputGain = $("#overdrive-outputGain").val() / 101
-		overdrive[i].drive = $("#overdrive-drive").val() / 101
-		overdrive[i].curveAmount = $("#overdrive-curveLevel").val() / 101
-		overdrive[i].algorithmIndex = $("#overdrive-algorithm").val()
+		// bus[i].overdrive.outputGain = $("#overdrive-outputGain").val() / 101
+		// bus[i].overdrive.drive = $("#overdrive-drive").val() / 101
+		// bus[i].overdrive.curveAmount = $("#overdrive-curveLevel").val() / 101
+		// bus[i].overdrive.algorithmIndex = $("#overdrive-algorithm").val()
 
-		compressor[i].threshold = $("#compressor-threshold").val()
-		compressor[i].makeupGain = $("#compressor-makeGain").val()
-		compressor[i].attack = $("#compressor-attack").val()
-		compressor[i].release = $("#compressor-release").val()
-		compressor[i].ratio = $("#compressor-ratio").val()
-		compressor[i].knee = $("#compressor-knee").val()
+		bus[i].compressor.threshold = $("#compressor-threshold").val()
+		bus[i].compressor.makeupGain = $("#compressor-makeGain").val()
+		bus[i].compressor.attack = $("#compressor-attack").val()
+		bus[i].compressor.release = $("#compressor-release").val()
+		bus[i].compressor.ratio = $("#compressor-ratio").val()
+		bus[i].compressor.knee = $("#compressor-knee").val()
 
-		filter[i].frequency = $("#filter-frequency").val()
-		filter[i].Q = $("#filter-q").val()
-		filter[i].gain = $("#filter-gain").val()
-		filter[i].filterType = $("#filter-type").val()
+		bus[i].filter.frequency = $("#filter-frequency").val()
+		bus[i].filter.Q = $("#filter-q").val()
+		bus[i].filter.gain = $("#filter-gain").val()
+		bus[i].filter.filterType = $("#filter-type").val()
 
-		tremolo[i].intensity = $("#tremolo-intensity").val() / 101
-		tremolo[i].rate = $("#tremolo-rate").val() / 80
-		tremolo[i].stereoPhase = $("#tremolo-phase").val()
+		bus[i].tremolo.intensity = $("#tremolo-intensity").val() / 101
+		bus[i].tremolo.rate = $("#tremolo-rate").val() / 80
+		bus[i].tremolo.stereoPhase = $("#tremolo-phase").val()
 
-		wahwah[i].automode = $("#wahwah-auto").val()
-		wahwah[i].baseFrequency = $("#wahwah-base").val() / 101
-		wahwah[i].excursionOctaves = $("#wahwah-excursion").val()
-		wahwah[i].sweep = $("#wahwah-sweep").val() / 101
-		wahwah[i].resonance = $("#wahwah-resonance").val()
-		wahwah[i].sensitivity = $("#wahwah-sensitivity").val() / 101
+		bus[i].wahwah.automode = $("#wahwah-auto").val()
+		bus[i].wahwah.baseFrequency = $("#wahwah-base").val() / 101
+		bus[i].wahwah.excursionOctaves = $("#wahwah-excursion").val()
+		bus[i].wahwah.sweep = $("#wahwah-sweep").val() / 101
+		bus[i].wahwah.resonance = $("#wahwah-resonance").val()
+		bus[i].wahwah.sensitivity = $("#wahwah-sensitivity").val() / 101
 }
 
     $('.outgoingEffect').click(function(){
@@ -200,34 +508,34 @@ function effectsMain(index, effectMsg) {
 switch (effectMsg[2]) {
 
 	case 'reverb' :
-		mainctl = reverb[index]
+		mainctl = bus[index].reverb
 		break ;
 	case 'chorus' :
-		mainctl = chorus[index]
+		mainctl = bus[index].chorus
 		break ;
 	case 'delay' :
-		mainctl = delay[index]
+		mainctl = bus[index].delay
 		break ;
 	case 'overdrive' :
-		mainctl = overdrive[index]
+		mainctl = bus[index].overdrive
 		break ;
 	case 'phaser' :
-		mainctl = phaser[index]
+		mainctl = bus[index].phaser
 		break ;
 	case 'cabinet' :
-		mainctl = cabinet[index]
+		mainctl = bus[index].cabinet
 		break ;
 	case 'tremolo' :
-		mainctl = tremolo[index]
+		mainctl = bus[index].tremolo
 		break ;
 	case 'filter' :
-		mainctl = filter[index]
+		mainctl = bus[index].filter
 		break ;
 	case 'compressor' :
-		mainctl = compressor[index]
+		mainctl = bus[index].compressor
 		break ;
 	case 'wahwah' :
-		mainctl = wahwah[index]
+		mainctl = bus[index].wahwah
 		break ;
 }
 
@@ -348,34 +656,34 @@ switch (effectMsg[2]) {
 switch (effectMsg[2]) {
 
 	case 'reverb' :
-		reverb[index] = mainctl
+		bus[index].reverb = mainctl
 		break ;
 	case 'chorus' :
-		chorus[index] = mainctl
+		bus[index].chorus = mainctl
 		break ;
 	case 'delay' :
-		delay[index] = mainctl
+		bus[index].delay = mainctl
 		break ;
 	case 'overdrive' :
-		overdrive[index] = mainctl
+		bus[index].overdrive = mainctl
 		break ;
 	case 'phaser' :
-		phaser[index] = mainctl
+		bus[index].phaser = mainctl
 		break ;
 	case 'cabinet' :
-		cabinet[index] = mainctl
+		bus[index].cabinet = mainctl
 		break ;
 	case 'tremolo' :
-		tremolo[index] = mainctl
+		bus[index].tremolo = mainctl
 		break ;
 	case 'filter' :
-		filter[index] = mainctl
+		bus[index].filter = mainctl
 		break ;
 	case 'compressor' :
-		compressor[index] = mainctl
+		bus[index].compressor = mainctl
 		break ;
 	case 'wahwah' :
-		wahwah[index] = mainctl
+		bus[index].wahwah = mainctl
 		break ;
 }
 

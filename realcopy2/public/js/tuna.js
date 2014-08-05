@@ -18,8 +18,8 @@
 (function (window) {
     var userContext, userInstance, Tuna = function (context) {
             if (! window.AudioContext) {
-		window.AudioContext = window.webkitAudioContext;
-   	    }
+        window.AudioContext = window.webkitAudioContext;
+        }
 
             if(!context) {
                 console.log("tuna.js: Missing audio context! Creating a new context for you.");
@@ -651,8 +651,8 @@
         this.buffer = properties.impulse || "../impulses/ir_rev_short.wav";
         this.lowCut = properties.lowCut || this.defaults.lowCut.value;
         this.level = properties.level || this.defaults.level.value;
-        this.filterHigh.type = 0;
-        this.filterLow.type = 1;
+        this.filterHigh.type = "lowpass";
+        this.filterLow.type = "highpass";
         this.bypass = properties.bypass || false;
     };
     Tuna.prototype.Convolver.prototype = Object.create(Super, {
@@ -795,7 +795,7 @@
         this.wetLevel = properties.wetLevel || this.defaults.wetLevel.value;
         this.dryLevel = properties.dryLevel || this.defaults.dryLevel.value;
         this.cutoff = properties.cutoff || this.defaults.cutoff.value;
-        this.filter.type = 0;
+        this.filter.type = "lowpass";
         this.bypass = properties.bypass || false;
     };
     Tuna.prototype.Delay.prototype = Object.create(Super, {
@@ -1077,8 +1077,8 @@
         while(i--) {
             this.filtersL[i] = userContext.createBiquadFilter();
             this.filtersR[i] = userContext.createBiquadFilter();
-            this.filtersL[i].type = 7;
-            this.filtersR[i].type = 7;
+            this.filtersL[i].type = "allpass";
+            this.filtersR[i].type = "allpass";
         }
         this.input.connect(this.splitter);
         this.input.connect(this.output);
@@ -1474,8 +1474,8 @@
         init: {
             value: function () {
                 this.output.gain.value = 1;
-                this.filterPeaking.type = 5;
-                this.filterBp.type = 2;
+                this.filterPeaking.type = "peaking";
+                this.filterBp.type = "bandpass";
                 this.filterPeaking.frequency.value = 100;
                 this.filterPeaking.gain.value = 20;
                 this.filterPeaking.Q.value = 5;
@@ -1490,8 +1490,8 @@
             properties = this.getDefaults();
         }
         this.input = userContext.createGain();
-        // this.jsNode = this.output = userContext.createJavaScriptNode(this.buffersize, 1, 1);
-        this.jsNode = this.output = userContext.createScriptProcessor();
+        this.jsNode = this.output = userContext.createScriptProcessor(this.buffersize, 1, 1);
+
         this.input.connect(this.output);
 
         this.attackTime = properties.attackTime || this.defaults.attackTime.value;
@@ -1624,8 +1624,7 @@
     });
     Tuna.prototype.LFO = function (properties) {
         //Instantiate AudioNode
-       // this.output = userContext.createJavaScriptNode(256, 1, 1);
-        this.output = userContext.createScriptProcessor();
+        this.output = userContext.createScriptProcessor(256, 1, 1);
         this.activateNode = userContext.destination;
 
         //Set Properties
