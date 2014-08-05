@@ -125,40 +125,25 @@ loadInstrument(0, firstInst)
 // var context;
 var bufferLoader;
 
-function loadSound(urls) {
-    // context = new webkitAudioContext();
-// if (bufferLoader){
+function loadSound(index, urls) {
+
     bufferLoader = new BufferLoader(
         context,
        urls,
         finishedLoading
     );
-// }
-// else{
-
-// }
 
 	console.log(bufferLoader)
 
     bufferLoader.load();
+
+var finishedLoading = function(bufferList) {
+	noteNode[index] = bufferList
 }
 
-function finishedLoading(bufferList) {
-    // Create two sources and play them both together.
-//    for (var i = 0 ; i < 90 ; i++) 
-noteNode[0] = bufferList
-console.log(bufferList)
-console.log(noteNode[0])
-    // var source1 = context.createBufferSource();
-    // var source2 = context.createBufferSource();
-    // source1.buffer = bufferList[0];
-    // source2.buffer = bufferList[1];
-    
-    // source1.connect(cabinet[0].input);
-    // source2.connect(cabinet[0].input);
-    // source1.start(0);
-    // source2.start(0);
 }
+
+
 
 
 
@@ -217,7 +202,7 @@ if (paths[0]){
 
 // console.log(paths)
 
-loadSound(paths)
+loadSound(index, paths)
 
 // console.log(paths[5])
 // 		bufferLoader = new BufferLoader(
