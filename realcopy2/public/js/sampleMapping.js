@@ -434,3 +434,4 @@ function triggerMidiDevice(index, midiData){
 	// 	}
 	// }
 }
+}
