@@ -31,6 +31,7 @@ var logRTT = []
 logRTT[0] = 0
 logRTT[1] = 0
 var randomChk = 0
+var fullChk = 0
 
         user[index] = c 
 
@@ -56,6 +57,7 @@ var randomChk = 0
         }
 
       else if (data[1] == '0' && data[2] == '1') {
+       fullChk++
         if (pingCheck[data[0]] != data[0]){
           randomChk++
             endTime = new Date();
@@ -70,9 +72,11 @@ var randomChk = 0
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          }
 
-         if (data[0] == 100)
+         if (data[0] == 100){
           console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
           console.log("randomChk " + randomChk)
+          console.log("fullChk " + fullChk)
+        }
 
           }
 
