@@ -45,7 +45,7 @@ var sampleCheck = []
       if (data[1] == '0' && data[2] == '0') {
         
         var calculate = true
-           for (var x = data[0] - 3 ; x < pingIncoming.length ; x++){
+           for (var x = data[0] - 1 ; x < pingIncoming.length ; x++){
             if (pingIncoming[x] == data[0])
               calculate = false
            }
@@ -64,7 +64,7 @@ var sampleCheck = []
         console.log(data[0])
 
         var calculate = true
-           for (var x = data[0] - 3 ; x < pingCheck.length ; x++){
+           for (var x = data[0] - 1 ; x < pingCheck.length ; x++){
             if (pingCheck[x] == data[0])
               calculate = false
            }
