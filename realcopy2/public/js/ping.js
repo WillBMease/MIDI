@@ -35,9 +35,9 @@ for (var i = 1 ; i < userLimit ; i++)
       if (user[i] != 0)
       {
       startTime[pingID] = new Date() ;
-            for (var x = 0 ; x < 3 ; x++) {
+            for (var x = 0 ; x < 10 ; x++) {
                   user[i].send(pingMsg);
-                  console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
+                  // console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
             }
       }
 }  
@@ -55,9 +55,9 @@ function firstPinger() {
       if (user[i] != 0)
       {
       startTime[pingCt] = new Date() ;
-            for (var x = 0 ; x < 50 ; x++) {
+            for (var x = 0 ; x < 10 ; x++) {
                   user[i].send(pingMsg);
-                  console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
+                  // console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
             }
       }
 }  
