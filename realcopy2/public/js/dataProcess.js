@@ -70,13 +70,16 @@ var fullChk = 0
             else
               logRTT[0]++
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
-         }
-
-         if (data[0] == 100){
+         
+          if (data[0] % 100 == 0){
           console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
           console.log("randomChk " + randomChk)
           console.log("fullChk " + fullChk)
+          randomChk = 0
+          fullChk = 0
         }
+
+         }
 
           }
 
