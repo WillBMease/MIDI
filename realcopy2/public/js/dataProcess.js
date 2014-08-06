@@ -50,10 +50,12 @@ var sampleCheck = []
               calculate = false
            }
            if (calculate) {
-        console.log('I received the ping: ' + data[2]);
+        //console.log('I received the ping: ' + data[2]);
         data[2] = '1' ;
+
+        for (var y = 0 ; y < 7 ; y++)
         user[index].send(data) ;
-        console.log('Now I sent the ping back: ' + data[2])
+        //console.log('Now I sent the ping back: ' + data[2])
         // $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
 }
       }
@@ -62,7 +64,7 @@ var sampleCheck = []
         console.log(data[0])
 
         var calculate = true
-           for (var x = 0 ; x < pingCheck.length ; x++){
+           for (var x = data[0] - 3 ; x < pingCheck.length ; x++){
             if (pingCheck[x] == data[0])
               calculate = false
            }
