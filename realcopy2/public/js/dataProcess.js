@@ -28,8 +28,10 @@ var pingIncoming = []
 var midiCheck = []
 var sampleCheck = []
 var logRTT = []
-logRTT[0] = 0
-logRTT[1] = 0
+  
+  for (var i = 0 ; i < 8 ; i++)
+    logRTT[i] = 0
+
 var randomChk = 0
 var fullChk = 0
 
@@ -65,14 +67,33 @@ var fullChk = 0
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
-            if (rttTime > 25)
+            if (rttTime > 50)
+              logRTT[7]++
+            else if (rttTime > 30)
+              logRTT[6]++
+            else if (rttTime > 25)
+              logRTT[5]++
+            else if (rttTime > 20)
+              logRTT[4]++
+            else if (rttTime > 15)
+              logRTT[3]++
+            else if (rttTime > 10)
+              logRTT[2]++
+            else if (rttTime > 5)
               logRTT[1]++
             else
               logRTT[0]++
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          
-          if (data[0] % 100 == 0){
-          console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
+          if (data[0] % 1000 == 0){
+          console.log("0 - 5ms: " + logRTT[0])
+          console.log("5 - 10ms: " + logRTT[1])
+          console.log("10 - 15ms: " + logRTT[2])
+          console.log("15 - 20ms: " + logRTT[3])
+          console.log("20 - 25ms: " + logRTT[4])
+          console.log("25 - 30ms: " + logRTT[5])
+          console.log("30 - 50ms: " + logRTT[6])
+          console.log(" > 50ms: " + logRTT[7])
           console.log("randomChk " + randomChk)
           console.log("fullChk " + fullChk)
           randomChk = 0
