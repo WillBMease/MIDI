@@ -13,7 +13,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(pinger, 500)
+      refreshPing = setInterval(pinger, 300)
 }
 
 else if (pingActive) {

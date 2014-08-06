@@ -68,7 +68,7 @@ logRTT[1] = 0
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          }
 
-         if (data[0] == 30)
+         if (data[0] == 100)
           console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
 
           }
