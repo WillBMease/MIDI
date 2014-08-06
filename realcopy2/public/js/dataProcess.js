@@ -47,7 +47,7 @@ var sampleCheck = []
         data[2] = '1' ;
         user[index].send(data) ;
         console.log('Now I sent the ping back: ' + data[2])
-        $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
+        // $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
 
       }
 
