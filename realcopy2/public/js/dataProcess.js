@@ -64,8 +64,7 @@ var sampleCheck = []
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
-       $('#messages').clear
-       $('#messages').append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
+       $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
      }
           }
 
