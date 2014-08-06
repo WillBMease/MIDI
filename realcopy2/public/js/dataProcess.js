@@ -24,6 +24,7 @@ var tempObj = {
 function dataProcess(index, c){
 
 var pingCheck = []
+var pingIncoming = []
 var midiCheck = []
 var sampleCheck = []
 
@@ -35,25 +36,31 @@ var sampleCheck = []
     user[index].on('data', function(data){
       // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
-  console.log('received')
+  //console.log('received')
 
 // while (pingFirst < 20) {
 //   firstPinger()
 // }
 
       if (data[1] == '0' && data[2] == '0') {
-
+        
+        var calculate = true
+           for (var x = 0 ; x < pingIncoming.length ; x++){
+            if (pingIncoming[x] == data[0])
+              calculate = false
+           }
+           if (calculate) {
         console.log('I received the ping: ' + data[2]);
         data[2] = '1' ;
         user[index].send(data) ;
         console.log('Now I sent the ping back: ' + data[2])
         // $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
-
+}
       }
 
       else if (data[1] == '0' && data[2] == '1') {
         console.log(data[0])
-        
+
         var calculate = true
            for (var x = 0 ; x < pingCheck.length ; x++){
             if (pingCheck[x] == data[0])
