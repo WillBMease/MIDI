@@ -700,7 +700,7 @@ function success (access)
 	console.log("webmidi success")
 	inputs = midi.inputs();
 	console.log(inputs)
-
+	console.log(midi)
 	if (inputs.length>0)
 	 {
 

@@ -57,6 +57,8 @@ var globalOctave;
 var midiActive = false;
 var sampleActive = false;
 
+var oscChecks = []
+
 // var	canvasContext = document.getElementById( "meter" ).getContext("2d");
 
 // initialize web audio api
@@ -74,26 +76,50 @@ if (context) {
 var soundOn ;
 var soundOff ;
 var isPlaying = false;
+var whichType
+var keypresses = []
 
 
+// $(document).keydown(function(e){
+// 	keypresses[e.which] = true
+// 	if()
+// }).keyup(function(e){
 
-$(document).keypress(function(e) { 
-if(!sampleActive){
+// })
+
+
+$(document).keydown(function(e) { 
+if(sampleActive){
+
+isPlaying = false
+
+for (var i = 0 ; i < oscChecks.length ; i++){
+	if (oscChecks[i] == e.which)
+		isPlaying = true
+}
+
+	sampleMsg[0] = sampleID
+	sampleMsg[1] = '2' ;
+	sampleMsg[2] = e.which;
+
+keypresses[e.which] = true
+
   if (isPlaying) {
   	return; }
-  
-  isPlaying = true;
-	on = e.which;
-	return false;
+else{	
+whichType = 'synth'
+	oscChecks.push(e.which);
+	playSynth(0, 0, sampleMsg)
+	return false
+}
 }
 
 else {
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
-
-	triggerSample(0, sampleMsg)
-
+whichType = 'sample'
+	triggerSample(0, sampleMsg, whichType)
 
 for (var i = 1 ; i < userLimit ; i++) {
 	if (user[i] != 0) {
