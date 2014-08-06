@@ -43,40 +43,25 @@ var sampleCheck = []
 // }
 
       if (data[1] == '0' && data[2] == '0') {
-        
-        var calculate = true
-           for (var x = data[0] - 1 ; x < pingIncoming.length ; x++){
-            if (pingIncoming[x] == data[0])
-              calculate = false
-           }
-           if (calculate) {
-        //console.log('I received the ping: ' + data[2]);
-        data[2] = '1' ;
-
-        for (var y = 0 ; y < 20 ; y++)
+        if (!pingIncoming[data[0]]){
+          data[2] = '1' ;
+        for (var y = 0 ; y < 10 ; y++)
         user[index].send(data) ;
-        //console.log('Now I sent the ping back: ' + data[2])
-        // $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
-  pingIncoming.push(data[0])
-}       
+        pingIncoming.push(data[0])
+          }       
+        }
+
       }
 
       else if (data[1] == '0' && data[2] == '1') {
-        console.log(data[0])
-
-        var calculate = true
-           for (var x = data[0] - 1 ; x < pingCheck.length ; x++){
-            if (pingCheck[x] == data[0])
-              calculate = false
-           }
-           if (calculate) {
+        if (!pingCheck[data[0]]){
             endTime = new Date();
             rttTime = (endTime - startTime[data[0]]) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
-     }
+         }
           }
 
           ////////// Audio packet testing

@@ -1,8 +1,8 @@
 var pingActive = false
 var refreshPing
 var pingMsg = []
-var pingID = 1
-var pingFirst = 1
+var pingID = 0
+var pingFirst = 0
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -26,7 +26,6 @@ else if (pingActive) {
 
 function pinger() {
 
-pingID++
 pingMsg[0] = pingID
 pingMsg[2] = '0' ;
 
@@ -35,13 +34,13 @@ for (var i = 1 ; i < userLimit ; i++)
       if (user[i] != 0)
       {
       startTime[pingID] = new Date() ;
-            for (var x = 0 ; x < 20 ; x++) {
+            for (var x = 0 ; x < 10 ; x++) {
                   user[i].send(pingMsg);
-                  // console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
             }
       }
 }  
 
+pingID++
 
 }
 
