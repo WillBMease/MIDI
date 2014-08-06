@@ -13,7 +13,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(pinger, 150)
+      refreshPing = setInterval(pinger, 300)
 }
 
 else if (pingActive) {
@@ -34,7 +34,7 @@ for (var i = 1 ; i < userLimit ; i++)
       if (user[i] != 0)
       {
       startTime[pingID] = new Date() ;
-            for (var x = 0 ; x < 1 ; x++) {
+            for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(pingMsg);
             }
       }
