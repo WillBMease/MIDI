@@ -27,6 +27,9 @@ var pingCheck = []
 var pingIncoming = []
 var midiCheck = []
 var sampleCheck = []
+var logRTT = [
+logRTT[0] = 0
+logRTT[1] = 0
 
         user[index] = c 
 
@@ -58,8 +61,16 @@ var sampleCheck = []
             console.log('Latency is ' + rttTime + 'ms');
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
+            if (rttTime > 25)
+              logRTT[1]++
+            else
+              logRTT[0]++
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          }
+
+         if (data[0] == 30)
+          console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
+
           }
 
           ////////// Audio packet testing
