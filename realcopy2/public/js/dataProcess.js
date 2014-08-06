@@ -30,6 +30,7 @@ var sampleCheck = []
 var logRTT = []
 logRTT[0] = 0
 logRTT[1] = 0
+var randomChk = 0
 
         user[index] = c 
 
@@ -56,6 +57,7 @@ logRTT[1] = 0
 
       else if (data[1] == '0' && data[2] == '1') {
         if (pingCheck[data[0]] != data[0]){
+          randomChk++
             endTime = new Date();
             rttTime = (endTime - startTime[data[0]]) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
@@ -70,6 +72,7 @@ logRTT[1] = 0
 
          if (data[0] == 100)
           console.log("Under 25ms: " + logRTT[0] + " || Over 25ms: " + logRTT[1])
+          console.log("randomChk " + randomChk)
 
           }
 
