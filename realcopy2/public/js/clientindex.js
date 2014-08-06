@@ -646,7 +646,7 @@ var playActualMIDI = true
 		playActualMIDI = false
 	}
 
-if (playActualMIDI){
+if (playActualMIDI && ev.data[2] != 0){
 		midiMsg[0] = midiID
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
