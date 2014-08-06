@@ -45,7 +45,7 @@ var sampleCheck = []
       if (data[1] == '0' && data[2] == '0') {
         
         var calculate = true
-           for (var x = 0 ; x < pingIncoming.length ; x++){
+           for (var x = data[0] - 3 ; x < pingIncoming.length ; x++){
             if (pingIncoming[x] == data[0])
               calculate = false
            }
@@ -53,7 +53,7 @@ var sampleCheck = []
         //console.log('I received the ping: ' + data[2]);
         data[2] = '1' ;
 
-        for (var y = 0 ; y < 7 ; y++)
+        for (var y = 0 ; y < 13 ; y++)
         user[index].send(data) ;
         //console.log('Now I sent the ping back: ' + data[2])
         // $('#messages').empty().append('<br>' + 'sent ping back to ' + user[index].peer);
