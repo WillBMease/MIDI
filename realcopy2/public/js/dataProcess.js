@@ -27,7 +27,7 @@ var pingCheck = []
 var pingIncoming = []
 var midiCheck = []
 var sampleCheck = []
-var logRTT = [
+var logRTT = []
 logRTT[0] = 0
 logRTT[1] = 0
 
