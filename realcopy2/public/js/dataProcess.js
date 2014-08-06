@@ -51,8 +51,6 @@ var sampleCheck = []
           }       
         }
 
-      }
-
       else if (data[1] == '0' && data[2] == '1') {
         if (!pingCheck[data[0]]){
             endTime = new Date();
