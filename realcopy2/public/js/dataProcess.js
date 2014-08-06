@@ -43,7 +43,7 @@ var sampleCheck = []
 // }
 
       if (data[1] == '0' && data[2] == '0') {
-        if (!pingIncoming[data[0]]){
+        if (pingIncoming[data[0]] != data[0]){
           data[2] = '1' ;
         for (var y = 0 ; y < 10 ; y++)
         user[index].send(data) ;
@@ -52,7 +52,7 @@ var sampleCheck = []
         }
 
       else if (data[1] == '0' && data[2] == '1') {
-        if (!pingCheck[data[0]]){
+        if (pingCheck[data[0]] != data[0]){
             endTime = new Date();
             rttTime = (endTime - startTime[data[0]]) / 2 ;
             console.log('Latency is ' + rttTime + 'ms');
