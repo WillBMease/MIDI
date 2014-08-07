@@ -199,7 +199,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 10) {
-      startSample(index, userPad[index][data[8]])
+      startSample(index, data[8])
    }
 
    else if (data[1] == 11){

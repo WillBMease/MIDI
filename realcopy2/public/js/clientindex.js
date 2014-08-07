@@ -406,10 +406,10 @@ var createTheBuffer = function(thePath){
   
 // need to add velocity measure
 
- function startSample(index, soundObj, vel) {
+ function startSample(index, arNum, vel) {
 
 var source = context.createBufferSource()
-source.buffer = soundObj.activeVoice[0]
+source.buffer = userPad[index][arNum].activeVoice[0]
 
 source.connect(bus[index].input)
 source.start(0)
