@@ -23,7 +23,8 @@ $(function(){
 			frequency: 0,
 			activeVoice:"",
 			audioPointer:"",
-			pathPointer:"",
+			instPointer:"",
+			pathPointer:[],
 			noteIndex:0
 		};
 
@@ -143,7 +144,7 @@ function gridGenerator(){
 	else if (sampleID.inst == "jazzdrums" || sampleID.inst == "numb") {
 
 		beatMsg[1] = 10
-		beatMsg[7] = sampleID.activeVoice
+		beatMsg[7] = sampleID.pathPointer
 
 		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
@@ -371,7 +372,7 @@ var createTheBuffer = function(thePath){
 
 		bufferLoading = new BufferLoader(
 			context,
-			pathLink,
+			thePath,
 			loadedBuffer
 		);
 
@@ -379,9 +380,10 @@ var createTheBuffer = function(thePath){
 	}
 
 	$.getJSON("js/instruments.json", function(json){
-        configurationKey[arNum].pathPointer = json[configurationKey[arNum].inst]
-		pathLink[0] = String(configurationKey[arNum].pathPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
-		createTheBuffer(pathLink)
+        configurationKey[arNum].instPointer = json[configurationKey[arNum].inst].path
+		// pathLink[0] = String(configurationKey[arNum].instPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
+		configurationKey[arNum].pathPointer[0] = String(configurationKey[arNum].instPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
+		createTheBuffer(configurationKey[arNum].pathPointer)
 	});
 
   }

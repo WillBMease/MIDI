@@ -204,8 +204,27 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       tempObj.inst = data[4]
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
-      tempObj.activeVoice = data[7]
-      console.log('ass ass!')
+      tempObj.pathPointer = data[7]
+
+createTheBuffer = function(tempObj.pathPointer)
+
+var createTheBuffer = function(thePath){
+  var loadedBuffer = function(bufferList) {
+      tempObj.activeVoice = bufferList
+    }
+
+    myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
+
+    bufferLoading = new BufferLoader(
+      context,
+      thePath,
+      loadedBuffer
+    );
+
+    bufferLoading.load()
+  }
+
+
       startSample(tempObj)
 
    }
