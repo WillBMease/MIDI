@@ -200,12 +200,6 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
    else if (data[1] == 10) {
 
-      configKey[data[8]].sound = data[3]
-      configKey[data[8]].inst = data[4]
-      configKey[data[8]].insType = data[5]
-      configKey[data[8]].frequency = data[6]
-      configKey[data[8]].pathPointer = data[7]
-
       startSample(configKey[data[8]])
 // var createTheBuffer = function(thePath){
 //   var loadedBuffer = function(bufferList) {
@@ -230,6 +224,11 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 11){
+          configKey[data[8]].sound = data[3]
+      configKey[data[8]].inst = data[4]
+      configKey[data[8]].insType = data[5]
+      configKey[data[8]].frequency = data[6]
+      configKey[data[8]].pathPointer = data[7]
     loadDropInstr(data[8])
    }
 
