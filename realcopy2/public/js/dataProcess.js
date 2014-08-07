@@ -209,6 +209,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 var createTheBuffer = function(thePath){
   var loadedBuffer = function(bufferList) {
       tempObj.activeVoice = bufferList
+      console.log(tempObj.activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)

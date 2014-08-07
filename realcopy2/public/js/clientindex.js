@@ -366,6 +366,7 @@ if (configurationKey[arNum].inst == 'square synth') {
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
       configurationKey[arNum].activeVoice = bufferList
+      console.log(configurationKey[arNum].activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
@@ -381,7 +382,6 @@ var createTheBuffer = function(thePath){
 
 	$.getJSON("js/instruments.json", function(json){
         configurationKey[arNum].instPointer = json[configurationKey[arNum].inst].path
-		// pathLink[0] = String(configurationKey[arNum].instPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
 		configurationKey[arNum].pathPointer[0] = String(configurationKey[arNum].instPointer + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
 		createTheBuffer(configurationKey[arNum].pathPointer)
 	});
