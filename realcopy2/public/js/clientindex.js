@@ -1,6 +1,7 @@
-	var numOfKey = 8
-	var rowX = 4
-	var rowY = 2 
+	var numOfKey = []
+	// numOfKey[0] = 8
+	var rowX
+	var rowY
 	var pathLink = []
 	// var userPad[0] = []  // Saves soundObj in each index in relation to the order of generated button divs,
 	var userPad = {}
@@ -10,29 +11,14 @@
 		userPad[i] = []
 	}
 
-		soundObj = {
-			sound:"",
-			inst:"",
-			insType:"",
-			frequency: 0,
-			activeVoice:"",
-			audioPointer:"",
-			instPointer:"",
-			pathPointer:[],
-			noteIndex:0
-		};
+
 
 
 
 
 //////////////////////////////////////////////////////////////////////////////////
 $(function(){
-		//fill array with placeholder values
-		for (i = 0; i <= numOfKey-1; i++) {
 
-			userPad[0][i] = soundObj;
-		
-		}
 
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -60,10 +46,10 @@ function gridGenerator(){
 
 	$('#dropcontainer').empty()
 	$('#btn').empty()
-			numOfKey = rowX * rowY
-			// console.log(numOfKey)
+			numOfKey[0] = rowX * rowY
+			// console.log(numOfKey[0])
 		// generate block container elements to #divcontainer
-	for (i = 0; i <= numOfKey-1; i++) {
+	for (i = 0; i <= numOfKey[0]-1; i++) {
 
 		$('<div/>', {
 	    'id':"btn" + i,
@@ -104,6 +90,31 @@ function gridGenerator(){
 	//generate mapping indicators to #btn elements
 
 	////////////////////////////////////////////////////////////////////////////////////////
+
+
+		//fill array with placeholder values
+		for (i = 0; i <= numOfKey[0]-1; i++) {
+		console.log('its here!')
+		soundObj = {
+			sound:"",
+			inst:"",
+			insType:"",
+			frequency: 0,
+			activeVoice:"",
+			audioPointer:"",
+			instPointer:"",
+			pathPointer:[],
+			noteIndex:0
+		};
+			userPad[0][i] = soundObj;
+
+			console.log(userPad[0][i])
+		
+		}
+
+
+
+
 
 
 	//Mouse Event Handlers
@@ -148,7 +159,7 @@ function gridGenerator(){
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
 
-		startSample(sampleID)
+		startSample(0, arNum)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
 					user[i].send(beatMsg)
@@ -334,6 +345,7 @@ function loadDropInstr(index, arNum){
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
       userPad[index][arNum].activeVoice = bufferList
+      console.log('activeVoice')
       console.log(userPad[index][arNum].activeVoice)
     }
 
@@ -406,7 +418,7 @@ var createTheBuffer = function(thePath){
   
 // need to add velocity measure
 
- function startSample(index, arNum, vel) {
+ function startSample(index, arNum) {
 
 var source = context.createBufferSource()
 source.buffer = userPad[index][arNum].activeVoice[0]
@@ -485,7 +497,7 @@ if (mappingActive) {
 			console.log(ev.data[0])
 		console.log(ev.data[1])
 		console.log(ev.data[2])
-	if (buttonPress <= numOfKey * 2)
+	if (buttonPress <= numOfKey[0] * 2)
 	{
 		console.log(ev.data[0])
 		console.log(ev.data[1])
@@ -510,7 +522,7 @@ if (mappingActive) {
 			downPress++;
 		}	
 
-		if (buttonPress > numOfKey * 2) {
+		if (buttonPress > numOfKey[0] * 2) {
 			
 			setTimeout(function(){
 			  for (var i = 0 ; i <= upPress ; i++){
@@ -598,7 +610,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
 		beatMsg[8] = arNum
-		startSample(sampleID)
+		startSample(0, arNum)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
 					user[i].send(beatMsg)
