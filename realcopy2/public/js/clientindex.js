@@ -10,15 +10,7 @@
 		userPad[i] = []
 	}
 
-
-
-
-//////////////////////////////////////////////////////////////////////////////////
-$(function(){
-		//fill array with placeholder values
-		for (i = 0; i <= numOfKey-1; i++) {
-
-			soundObj = {
+	var	soundObj = {
 			sound:"",
 			inst:"",
 			insType:"",
@@ -29,6 +21,14 @@ $(function(){
 			pathPointer:[],
 			noteIndex:0
 		};
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+$(function(){
+		//fill array with placeholder values
+		for (i = 0; i <= numOfKey-1; i++) {
 
 			userPad[0][i] = soundObj;
 		
@@ -375,12 +375,12 @@ var createTheBuffer = function(thePath){
 	  $(des).text(draggable.find("p").text());
 
 	loadDropInstr(0, arNum)
-
+		
+		beatMsg[1] = 11
 		beatMsg[3] = userPad[0][arNum].sound
 		beatMsg[4] = userPad[0][arNum].inst
 		beatMsg[5] = userPad[0][arNum].insType
 		beatMsg[6] = userPad[0][arNum].frequency
-		beatMsg[1] = 11
 		beatMsg[7] = userPad[0][arNum].pathPointer
 		beatMsg[8] = arNum
 		beatMsg[9] = userPad[0][arNum].noteIndex

@@ -203,7 +203,11 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 11){
-          userPad[index][data[8]].sound = data[3]
+
+    if (userPad[index][data[8]] == null)
+      userPad[index][data[8]] = soundObj
+      
+      userPad[index][data[8]].sound = data[3]
       userPad[index][data[8]].inst = data[4]
       userPad[index][data[8]].insType = data[5]
       userPad[index][data[8]].frequency = data[6]
