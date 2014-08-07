@@ -384,6 +384,7 @@ var createTheBuffer = function(thePath){
 		beatMsg[1] = 11
 		beatMsg[7] = configKey[arNum].pathPointer
 		beatMsg[8] = arNum
+		beatMsg[9] = configKey[arNum].noteIndex
 
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {

@@ -199,28 +199,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 10) {
-
       startSample(configKey[data[8]])
-// var createTheBuffer = function(thePath){
-//   var loadedBuffer = function(bufferList) {
-//       tempObj.activeVoice = bufferList
-//       startSample(tempObj)
-//     }
-
-//     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
-
-//     bufferLoading = new BufferLoader(
-//       context,
-//       thePath,
-//       loadedBuffer
-//     );
-
-//     bufferLoading.load()
-//   }
-
-// console.log(tempObj.pathPointer)
-// createTheBuffer(tempObj.pathPointer)
-
    }
 
    else if (data[1] == 11){
@@ -229,6 +208,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       configKey[data[8]].insType = data[5]
       configKey[data[8]].frequency = data[6]
       configKey[data[8]].pathPointer = data[7]
+      configKey[data[8]].noteIndex = data[9]
     loadDropInstr(data[8])
    }
 
