@@ -406,14 +406,12 @@ var createTheBuffer = function(thePath){
   
 // need to add velocity measure
 
- function startSample(soundObj, vel) {
-
-console.log(soundObj.activeVoice[0])
+ function startSample(index, soundObj, vel) {
 
 var source = context.createBufferSource()
 source.buffer = soundObj.activeVoice[0]
 
-source.connect(bus[0].input)
+source.connect(bus[index].input)
 source.start(0)
 
 source.onended = function(){
