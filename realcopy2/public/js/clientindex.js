@@ -362,8 +362,7 @@ var createTheBuffer = function(thePath){
 		createTheBuffer(userPad[index][arNum].pathPointer)
 	});
 
-  }
-}
+ }
 
 
 	function handleDropEvent( event, ui ) 
