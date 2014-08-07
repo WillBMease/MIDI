@@ -118,7 +118,37 @@ var draw = function(){
 		yPos = timeData[i]*0.5 + 10;
 
 		$("#freq2").drawRect({
-			fillStyle:"#FF00FF",
+			fillStyle:"#FF0000",
+			x:xPos, y:(yPos),
+			width:4,height:4,
+
+		})
+
+	}
+
+		ansT[3].fftSize = 512;
+	ansT[3].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[3].frequencyBinCount; i++){
+		xPos = (i*1.171875);
+		yPos = timeData[i]*0.5 + 10;
+
+		$("#freq3").drawRect({
+			fillStyle:"#0000FF",
+			x:xPos, y:(yPos),
+			width:4,height:4,
+
+		})
+
+	}
+
+		ansT[4].fftSize = 512;
+	ansT[4].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[4].frequencyBinCount; i++){
+		xPos = (i*1.171875);
+		yPos = timeData[i]*0.5 + 10;
+
+		$("#freq4").drawRect({
+			fillStyle:"#F0F0F0",
 			x:xPos, y:(yPos),
 			width:4,height:4,
 
