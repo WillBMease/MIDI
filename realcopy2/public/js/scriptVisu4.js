@@ -126,9 +126,9 @@ var draw = function(){
 
 	}
 
-		ansT[3].fftSize = 512;
-	ansT[3].getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT[3].frequencyBinCount; i++){
+		ansT[2].fftSize = 512;
+	ansT[2].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[2].frequencyBinCount; i++){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
@@ -141,14 +141,14 @@ var draw = function(){
 
 	}
 
-		ansT[4].fftSize = 512;
-	ansT[4].getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT[4].frequencyBinCount; i++){
+		ansT[3].fftSize = 512;
+	ansT[3].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[3].frequencyBinCount; i++){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
 		$("#freq4").drawRect({
-			fillStyle:"#F0F0F0",
+			fillStyle:"#0F0F0F",
 			x:xPos, y:(yPos),
 			width:4,height:4,
 
