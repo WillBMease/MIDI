@@ -2,14 +2,13 @@
 	var rowX = 4
 	var rowY = 2 
 	var pathLink = []
-
-	var configKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
-	var userPad = {
-
-	}
+	// var userPad[0] = []  // Saves soundObj in each index in relation to the order of generated button divs,
+	var userPad = {}
 	var beatMsg = []
 
-
+	for (var i = 0 ; i < userLimit ; i++){
+		userPad[i] = []
+	}
 
 
 
@@ -31,7 +30,7 @@ $(function(){
 			noteIndex:0
 		};
 
-			configKey[i] = soundObj;
+			userPad[0][i] = soundObj;
 		
 		}
 
@@ -121,7 +120,7 @@ function gridGenerator(){
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		sampleID = configKey[arNum]
+		sampleID = userPad[0][arNum]
 
 		beatMsg[3] = sampleID.sound
 		beatMsg[4] = sampleID.inst
@@ -171,10 +170,10 @@ function gridGenerator(){
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		soundOff = configKey[arNum]
+		soundOff = userPad[0][arNum]
 		console.log("mupID = " + soundOff)
 
-if (configKey[arNum].inst == 'square synth') {
+if (userPad[0][arNum].inst == 'square synth') {
 		beatMsg[1] = 9
 		beatMsg[2] = 'off'
 
@@ -198,7 +197,7 @@ if (configKey[arNum].inst == 'square synth') {
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		soundOff = configKey[arNum]
+		soundOff = userPad[0][arNum]
 		console.log("mupID = " + soundOff)
 
 		if (soundOff != 0){
@@ -330,12 +329,12 @@ if (configKey[arNum].inst == 'square synth') {
 
 function loadDropInstr(arNum){
 
-  if (configKey[arNum].inst == "jazzdrums" || configKey[arNum].inst == "numb"){
+  if (userPad[0][arNum].inst == "jazzdrums" || userPad[0][arNum].inst == "numb"){
 
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
-      configKey[arNum].activeVoice = bufferList
-      console.log(configKey[arNum].activeVoice)
+      userPad[0][arNum].activeVoice = bufferList
+      console.log(userPad[0][arNum].activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
@@ -350,9 +349,9 @@ var createTheBuffer = function(thePath){
 	}
 
 	$.getJSON("js/instruments.json", function(json){
-        configKey[arNum].instPointer = json[configKey[arNum].inst].path
-		configKey[arNum].pathPointer[0] = String(configKey[arNum].instPointer + "/note-" + configKey[arNum].noteIndex + ".ogg")
-		createTheBuffer(configKey[arNum].pathPointer)
+        userPad[0][arNum].instPointer = json[userPad[0][arNum].inst].path
+		userPad[0][arNum].pathPointer[0] = String(userPad[0][arNum].instPointer + "/note-" + userPad[0][arNum].noteIndex + ".ogg")
+		createTheBuffer(userPad[0][arNum].pathPointer)
 	});
 
   }
@@ -367,24 +366,24 @@ var createTheBuffer = function(thePath){
 
   if ($(dragID).attr("data-class") == "instrument"){
 	  arNum = parseInt($(dropID).attr('id').substr(3,3))
-	  configKey[arNum].sound = $(dragID).attr("data-sound");
-	  configKey[arNum].inst = $(dragID).attr("data-instrument");
-	  configKey[arNum].insType = $(dragID).attr("data-type");
-	  configKey[arNum].frequency = $(dragID).attr("data-frequency");
-	  configKey[arNum].noteIndex = $(dragID).attr("data-noteIndex");
+	  userPad[0][arNum].sound = $(dragID).attr("data-sound");
+	  userPad[0][arNum].inst = $(dragID).attr("data-instrument");
+	  userPad[0][arNum].insType = $(dragID).attr("data-type");
+	  userPad[0][arNum].frequency = $(dragID).attr("data-frequency");
+	  userPad[0][arNum].noteIndex = $(dragID).attr("data-noteIndex");
 	  des = $(this).find("p");
 	  $(des).text(draggable.find("p").text());
 
 	loadDropInstr(arNum)
 
-		beatMsg[3] = configKey[arNum].sound
-		beatMsg[4] = configKey[arNum].inst
-		beatMsg[5] = configKey[arNum].insType
-		beatMsg[6] = configKey[arNum].frequency
+		beatMsg[3] = userPad[0][arNum].sound
+		beatMsg[4] = userPad[0][arNum].inst
+		beatMsg[5] = userPad[0][arNum].insType
+		beatMsg[6] = userPad[0][arNum].frequency
 		beatMsg[1] = 11
-		beatMsg[7] = configKey[arNum].pathPointer
+		beatMsg[7] = userPad[0][arNum].pathPointer
 		beatMsg[8] = arNum
-		beatMsg[9] = configKey[arNum].noteIndex
+		beatMsg[9] = userPad[0][arNum].noteIndex
 
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
@@ -574,7 +573,7 @@ if (mappingActive) {
 
 						thisID = $("#btn" + x).attr("id");
 						arNum = parseInt(thisID.substr(3,3))
-						sampleID = configKey[arNum]
+						sampleID = userPad[0][arNum]
 		
 
 		beatMsg[3] = sampleID.sound
@@ -623,7 +622,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 				});
 
 	      		arNum = x;
-				soundOff = configKey[arNum]
+				soundOff = userPad[0][arNum]
 				console.log("mupID = " + soundOff)
 		if (soundOff.inst == "square synth"){	
 				beatMsg[2] = 'off'
