@@ -206,8 +206,6 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       tempObj.frequency = data[6]
       tempObj.pathPointer = data[7]
 
-createTheBuffer(tempObj.pathPointer)
-
 var createTheBuffer = function(thePath){
   var loadedBuffer = function(bufferList) {
       tempObj.activeVoice = bufferList
@@ -224,6 +222,7 @@ var createTheBuffer = function(thePath){
     bufferLoading.load()
   }
 
+createTheBuffer(tempObj.pathPointer)
 
       startSample(tempObj)
 
