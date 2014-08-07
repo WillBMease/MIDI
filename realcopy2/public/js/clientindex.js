@@ -330,7 +330,7 @@ if (configKey[arNum].inst == 'square synth') {
 
 function loadDropInstr(arNum){
 
-  if (configKey[arNum].inst == "jazzdrums" || $(dragID).attr("data-instrument") == "numb"){
+  if (configKey[arNum].inst == "jazzdrums" || configKey[arNum].inst == "numb"){
 
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
