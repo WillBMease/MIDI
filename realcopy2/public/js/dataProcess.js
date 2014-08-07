@@ -199,17 +199,17 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 10) {
-      startSample(userPad[0][data[8]])
+      startSample(userPad[index][data[8]])
    }
 
    else if (data[1] == 11){
-          userPad[0][data[8]].sound = data[3]
-      userPad[0][data[8]].inst = data[4]
-      userPad[0][data[8]].insType = data[5]
-      userPad[0][data[8]].frequency = data[6]
-      userPad[0][data[8]].pathPointer = data[7]
-      userPad[0][data[8]].noteIndex = data[9]
-    loadDropInstr(data[8])
+          userPad[index][data[8]].sound = data[3]
+      userPad[index][data[8]].inst = data[4]
+      userPad[index][data[8]].insType = data[5]
+      userPad[index][data[8]].frequency = data[6]
+      userPad[index][data[8]].pathPointer = data[7]
+      userPad[index][data[8]].noteIndex = data[9]
+    loadDropInstr(index, data[8])
    }
 
     });

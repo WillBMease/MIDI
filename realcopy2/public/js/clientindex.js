@@ -327,14 +327,14 @@ if (userPad[0][arNum].inst == 'square synth') {
 });
 
 
-function loadDropInstr(arNum){
+function loadDropInstr(index, arNum){
 
-  if (userPad[0][arNum].inst == "jazzdrums" || userPad[0][arNum].inst == "numb"){
+  if (userPad[index][arNum].inst == "jazzdrums" || userPad[index][arNum].inst == "numb"){
 
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
-      userPad[0][arNum].activeVoice = bufferList
-      console.log(userPad[0][arNum].activeVoice)
+      userPad[index][arNum].activeVoice = bufferList
+      console.log(userPad[index][arNum].activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
@@ -349,9 +349,9 @@ var createTheBuffer = function(thePath){
 	}
 
 	$.getJSON("js/instruments.json", function(json){
-        userPad[0][arNum].instPointer = json[userPad[0][arNum].inst].path
-		userPad[0][arNum].pathPointer[0] = String(userPad[0][arNum].instPointer + "/note-" + userPad[0][arNum].noteIndex + ".ogg")
-		createTheBuffer(userPad[0][arNum].pathPointer)
+        userPad[index][arNum].instPointer = json[userPad[index][arNum].inst].path
+		userPad[index][arNum].pathPointer[0] = String(userPad[index][arNum].instPointer + "/note-" + userPad[index][arNum].noteIndex + ".ogg")
+		createTheBuffer(userPad[index][arNum].pathPointer)
 	});
 
   }
@@ -374,7 +374,7 @@ var createTheBuffer = function(thePath){
 	  des = $(this).find("p");
 	  $(des).text(draggable.find("p").text());
 
-	loadDropInstr(arNum)
+	loadDropInstr(0, arNum)
 
 		beatMsg[3] = userPad[0][arNum].sound
 		beatMsg[4] = userPad[0][arNum].inst
