@@ -10,7 +10,7 @@
 		userPad[i] = []
 	}
 
-	var	soundObj = {
+		soundObj = {
 			sound:"",
 			inst:"",
 			insType:"",
