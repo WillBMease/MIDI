@@ -73,8 +73,13 @@ if (context) {
   alert('browser not supported') ;
 }
 
-var ans = context.createAnalyser();
-var ansT = context.createAnalyser();
+var ans = []
+var ansT = []
+
+for (var i = 0 ; i < userLimit ; i++){
+	ans[i] = context.createAnalyser();
+	ansT[i] = context.createAnalyser();
+}
 
 var soundOn ;
 var soundOff ;

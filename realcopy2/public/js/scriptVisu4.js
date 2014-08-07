@@ -4,10 +4,10 @@ $(window).load(function(){
 //visualizer
 
 
-ans.smoothingTimeConstant = 0.85;
-console.log(ans);
-var soundData = new Uint8Array(ans.frequencyBinCount);
-var  timeData = new Uint8Array(ansT.frequencyBinCount);
+ans[0].smoothingTimeConstant = 0.85;
+console.log(ans[0]);
+var soundData = new Uint8Array(ans[0].frequencyBinCount);
+var  timeData = new Uint8Array(ansT[0].frequencyBinCount);
 
 var frameSkip = 4;
 
@@ -30,9 +30,9 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	ans.fftSize = 128;
-	ans.getByteFrequencyData(soundData);
-	for (var i = 3; i<ans.frequencyBinCount; i++){
+	ans[0].fftSize = 128;
+	ans[0].getByteFrequencyData(soundData);
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
 		zX = (((i-3) * 7) +3)
 		$('#visualizer').drawLine({
 		  strokeStyle: "#0008FF",
@@ -42,7 +42,7 @@ var draw = function(){
 		});
 	}
 
-	for (var i = 3; i<ans.frequencyBinCount; i++){
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
 			var xX1 = Math.cos((i-2)*5.25)
 			var x1 = 150 + 0.1*xX1
@@ -56,21 +56,17 @@ var draw = function(){
 		$("#spiral").drawLine({
 
 
-
-
 			strokeStyle: "#FF0000",
 			strokeWidth:5,
 			x1: x1, y1: z1, x2:x2,y2:z2,
 
 
-
 		})
-
 
 
 	}
 
-	for (var i = 3; i<ans.frequencyBinCount; i++){
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
 			var xX1 = Math.cos((i-2)/5.25)
 			var x1 = 150 + 10*xX1
@@ -82,7 +78,7 @@ var draw = function(){
 			var zZ2 = Math.sin((i-2)/5.25)
 			var z2 = 75+ (10+(soundData[i]*0.2))*zZ2
 
-			var hue = i/ans.frequencyBinCount * 360;
+			var hue = i/ans[0].frequencyBinCount * 360;
 			var hueS = hue.toString();
 		$("#cut").drawLine({
 
@@ -100,14 +96,29 @@ var draw = function(){
 
 
 	}
-	ansT.fftSize = 512;
-	ansT.getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT.frequencyBinCount; i++){
+	ansT[0].fftSize = 512;
+	ansT[0].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[0].frequencyBinCount; i++){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
-		$("#freq").drawRect({
-			fillStyle:"#FFFFFF",
+		$("#freq1").drawRect({
+			fillStyle:"#00FF00",
+			x:xPos, y:(yPos),
+			width:4,height:4,
+
+		})
+
+	}
+
+	ansT[1].fftSize = 512;
+	ansT[1].getByteTimeDomainData(timeData);
+	for (var i = 0; i< ansT[1].frequencyBinCount; i++){
+		xPos = (i*1.171875);
+		yPos = timeData[i]*0.5 + 10;
+
+		$("#freq2").drawRect({
+			fillStyle:"#FF00FF",
 			x:xPos, y:(yPos),
 			width:4,height:4,
 
@@ -115,19 +126,11 @@ var draw = function(){
 
 	}
 	
-	
-
-
-
 
 }
 frameSwitch();
 
-
-
 var osc = {};
-
-
 
 $(document).keydown(function(event){
 	if (event.which == 81){
@@ -138,8 +141,8 @@ $("body").append(audio);
 
 	console.log(audio.readyState)
 	playing = context.createMediaElementSource(audio);
-	playing.connect(ans);
-	playing.connect(ansT);
+	playing.connect(ans[0]);
+	playing.connect(ansT[0]);
 	playing.connect(context.destination);
 	
 
@@ -154,8 +157,8 @@ $("body").append(audio);
 
 	console.log(audio.readyState)
 	playing = context.createMediaElementSource(audio);
-	playing.connect(ans);
-	playing.connect(ansT)
+	playing.connect(ans[0]);
+	playing.connect(ansT[0])
 	playing.connect(context.destination);
 	
 
@@ -164,8 +167,8 @@ $("body").append(audio);
 
 	if (event.which == 69){
 		osc = context.createOscillator();
-		osc.connect(ans);
-		osc.connect(ansT);
+		osc.connect(ans[0]);
+		osc.connect(ansT[0]);
 		osc.connect(context.destination)
 		osc.frequency.value = 440.0;
 		osc.start(0);
