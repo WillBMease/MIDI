@@ -41,13 +41,7 @@ var fullChk = 0
               $('#messages').append('<br>Now chatting with ' + user[index].peer);
               loadInstrument(index, firstInst)
     user[index].on('data', function(data){
-      // $('#messages').append('<br>' /* + conn[x].peer + ':<br>' */ + data[0] + ": " + data[1] + " " + data[2] + " " + data[3] + " " + data[4] + " " + 'from x sender');
 
-  //console.log('received')
-
-// while (pingFirst < 20) {
-//   firstPinger()
-// }
 
       if (data[1] == '0' && data[2] == '0') {
         if (pingIncoming[data[0]] != data[0]){
@@ -114,11 +108,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       else if (data[1] == '5' && data[2] == '2') {
         receiveCt++
         console.log(data[0])
-        //console.log('I received the packet: ' + data[3])
         data[2] = '3' 
-        //data[3] = receiveCt
-        //user[index].send(data) 
-        //console.log('Now I sent the packet back: ' + data[3])
         if (receiveCt % 100 == 0) {
         $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
           }
@@ -206,25 +196,19 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
     if (userPad[index][data[8]] == null){
       soundObj = {
-      sound:data[3],
-      inst:data[4],
-      insType:data[5],
+      sound: data[3],
+      inst: data[4],
+      insType: data[5],
       frequency: data[6],
-      activeVoice:"",
-      audioPointer:"",
-      instPointer:"",
-      pathPointer:data[7],
-      noteIndex:data[9]
+      activeVoice: "",
+      audioPointer: "",
+      instPointer: "",
+      pathPointer: data[7],
+      noteIndex: data[9]
     };
       userPad[index][data[8]] = soundObj
     }
 
-      // userPad[index][data[8]].sound = data[3]
-      // userPad[index][data[8]].inst = data[4]
-      // userPad[index][data[8]].insType = data[5]
-      // userPad[index][data[8]].frequency = data[6]
-      // userPad[index][data[8]].pathPointer = data[7]
-      // userPad[index][data[8]].noteIndex = data[9]
     loadDropInstr(index, data[8])
    }
 

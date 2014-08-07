@@ -32,10 +32,6 @@ $(function(){
 
 	//////////////////////////////////////////////////////////////////////////////////
 
-
-		
-
-
 	//     _____ _____  _____ _____     _____ ______ _   _ ______ _____         _______ _____ ____  _   _ 
 	//    / ____|  __ \|_   _|  __ \   / ____|  ____| \ | |  ____|  __ \     /\|__   __|_   _/ __ \| \ | |
 	//   | |  __| |__) | | | | |  | | | |  __| |__  |  \| | |__  | |__) |   /  \  | |    | || |  | |  \| |
@@ -101,7 +97,6 @@ function gridGenerator(){
 
 	////////////////////////////////////////////////////////////////////////////////////////
 
-
 		//fill array with placeholder values
 		for (i = 0; i <= numOfKey[0]-1; i++) {
 		console.log('its here!')
@@ -121,11 +116,6 @@ function gridGenerator(){
 			console.log(userPad[0][i])
 		
 		}
-
-
-
-
-
 
 	//Mouse Event Handlers
 		
@@ -350,13 +340,9 @@ if (userPad[0][arNum].inst == 'square synth') {
 
 function loadDropInstr(index, arNum){
 
-  if (userPad[index][arNum].inst == "jazzdrums" || userPad[index][arNum].inst == "numb"){
-
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
       userPad[index][arNum].activeVoice = bufferList
-      console.log('activeVoice')
-      console.log(userPad[index][arNum].activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
@@ -386,7 +372,7 @@ var createTheBuffer = function(thePath){
   dropID = "#" + $(this).attr('id');
   dragID ="#" + draggable.attr('id');
 
-  if ($(dragID).attr("data-class") == "instrument"){
+  if ($(dragID).attr("data-class") == "sample"){
 	  arNum = parseInt($(dropID).attr('id').substr(3,3))
 	  userPad[0][arNum].sound = $(dragID).attr("data-sound");
 	  userPad[0][arNum].inst = $(dragID).attr("data-instrument");
@@ -395,8 +381,6 @@ var createTheBuffer = function(thePath){
 	  userPad[0][arNum].noteIndex = $(dragID).attr("data-noteIndex");
 	  des = $(this).find("p");
 	  $(des).text(draggable.find("p").text());
-
-	loadDropInstr(0, arNum)
 		
 		beatMsg[1] = 11
 		beatMsg[3] = userPad[0][arNum].sound
@@ -413,6 +397,7 @@ var createTheBuffer = function(thePath){
 				}
 			}
 
+	loadDropInstr(0, arNum)
 
   }
 }
@@ -751,105 +736,4 @@ $('#testMap').click(function(){
 	upPress = 0;
 	}
 })
-
-
-
-
-
-
-	
-
-// var midi=null;
-// var inputs=null;
-// var outputs=null;
-// var input=null;
-// var output=null;
-// var log=null;
-
-// function runTest() {
-// 	if (!log)
-// 		log = document.getElementById("log");
-// 	 log.innerText = "Starting up MIDI...\n";
-// 	navigator.requestMIDIAccess().then( success, failure );
-// }
-
-
-// function handleMIDIMessage( ev ) {
-	
-	// 	midiMsg[0] = midiID
-	// 	midiMsg[1] = 1 ;
-	// 	midiMsg[2] = ev.data[0].toString(16) ;
-	// 	midiMsg[3] = ev.data[1].toString(16) ;
-	// 	//console.log('ev raw data : ' + ev.data[2])
-	// 	//midiMsg[4] = h2d(ev.data[2]);
-	// 	midiMsg[4] = ev.data[2];//.toString(16)  ;
-	// 	// log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
-	// 	// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
-	// 	// log.innerText += 'velocity is: ' + midiMsg[4]
-
-	// 	// console.log('msg 2 is: ' + midiMsg[2])
-	// 	// console.log('msg 3 is: ' + midiMsg[3])
-	// 	// console.log('msg 4 is: ' + midiMsg[4])
-	// 	// console.log('velocity is: ' + midiMsg[4])
-	// 	//console.log(ev.data[2])
-
-	// console.log('detect midi')
-
-	// 	triggerMidiDevice(0, midiMsg)
-
-	// for (var i = 1 ; i < userLimit ; i++ )
-	// {
-	// 	if (user[i] != 0){
-	// 		for (var x = 0 ; x < 3 ; x++) {
-	// 		user[i].send(midiMsg);
-	// 		console.log("send to " + user[i].peer);
-	// 	} 
-	// 	}
-	// }
-
-	// midiID++
-
-// Plays the drum note through MIDI output (Apple DLS Synth)
-// 	if (output)
-// 		output.send( ev.data );
-
-
-
-
-
-	
-// }
-
-// function success( midiAccess ) {
-// 	 log.innerText += "MIDI ready!\n";
-// 	midi = midiAccess;
-
-// 	inputs = midi.inputs();
-// 	log.innerText += inputs.length+" inputs:\n";
-// 	for (var i=0;i<inputs.length;i++)
-// 		log.innerText += i + ": " + inputs[i].name + "\n";
-
-// 	if (inputs.length>0) {
-// 		input = inputs[0];
-// 		input.onmessage = handleMIDIMessage;
-// 		input.addEventListener("midimessage", handleMIDIMessage);
-// 		log.innerText += inputs[0] + "Hooked up first input.\n";
-// 	}
-
-// 	outputs = midi.outputs();
-// 	log.innerText += outputs.length+" outputs:\n";
-// 	for (var i=0;i<outputs.length;i++)
-// 		log.innerText += i + ": " + outputs[i].name + "\n";
-
-// 	if (outputs.length) {
-// 		output = outputs[0];
-// 		output.send( [0xb0, 0x00, 0x7f] );	// If the first device is a Novation Launchpad, this will light it up!
-// 	}
-// }
-
-// function failure( error ) {
-// 	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
-// }
-
-
 
