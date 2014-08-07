@@ -1,9 +1,7 @@
 	var numOfKey = []
-	// numOfKey[0] = 8
 	var rowX
 	var rowY
 	var pathLink = []
-	// var userPad[0] = []  // Saves soundObj in each index in relation to the order of generated button divs,
 	var userPad = {}
 	var beatMsg = []
 
@@ -11,17 +9,6 @@
 		userPad[i] = []
 	}
 
-	// var	soundObj = {
-	// 		sound:"",
-	// 		inst:"",
-	// 		insType:"",
-	// 		frequency: 0,
-	// 		activeVoice:"",
-	// 		audioPointer:"",
-	// 		instPointer:"",
-	// 		pathPointer:[],
-	// 		noteIndex:0
-	// 	};
 
 
 
@@ -71,6 +58,9 @@ function gridGenerator(){
 	}).appendTo("#btn"+i);
 
 	};
+
+
+////dynamically sizing gendivs based on number of keys
 
 
 	var setRow = function(clrRow)
@@ -262,33 +252,6 @@ if (userPad[0][arNum].inst == 'square synth') {
 
 
 
-////dynamically sizing gendivs based on number of keys
-
-
-
-	// var setRow = function(clrRow)
-	// 	{
-	// 		widthCol = (99 / clrRow) - (12/clrRow);
-
-
-	// 		finalStr = (widthCol.toString() + "%");
-			
-	// 		console.log(finalStr);
-	// 		return finalStr;
-
-
-
-	// 	}
-
-
-	// $(".genDiv").css({
-
-	// height:setRow(rowY),
-	// width:setRow(rowX),
-	// }
-	// 	)
-
-
 //////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -308,8 +271,6 @@ if (userPad[0][arNum].inst == 'square synth') {
 //   |_____/|_|  \_\/_/    \_\_____|   |_| \_| |_____/|_|  \_\\____/|_|     
 //                                                                          
 //  
-
-
 
 	$("#instruments").accordion({
 		heightStyle: "content",
