@@ -123,6 +123,8 @@ var bus = []
 
 for (var i = 0 ; i < userLimit ; i++){
 	bus[i] = new AudioBus()
+	bus[i].connect(ans)
+	bus[i].connect(ansT)
 	bus[i].connect(context.destination)
 }
 

@@ -103,15 +103,6 @@ $(document).ready(function() {
       Ping()
     });
 
-
-    // $('.outgoingEffect').click(function(){
-    //   var chosenEffect = $(this).attr('id')
-    //   effectMsg[1] = 8
-    //   effectMsg[2] = chosenEffect
-    //   effectMsg[3] = 0
-    //   outgoingEffectChange(effectMsg)
-    // })
-
     $('#audio-test').click(function(){
       audioTest()
     })

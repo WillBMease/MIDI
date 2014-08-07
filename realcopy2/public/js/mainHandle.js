@@ -73,6 +73,9 @@ if (context) {
   alert('browser not supported') ;
 }
 
+var ans = context.createAnalyser();
+var ansT = context.createAnalyser();
+
 var soundOn ;
 var soundOff ;
 var isPlaying = false;
@@ -89,7 +92,7 @@ var keypresses = []
 
 
 $(document).keydown(function(e) { 
-if(sampleActive){
+if(!sampleActive){
 
 isPlaying = false
 
@@ -169,101 +172,3 @@ function keyGlow(cssClass){
 	$('.button').click(function(){
 	})
 }
-
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-// MIDI
-//////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////
-
-// var midi=null;
-// var inputs=null;
-// var outputs=null;
-// var input=null;
-// var output=null;
-// var log=null;
-
-// function runTest() {
-// 	if (!log)
-// 		log = document.getElementById("log");
-// 	 log.innerText = "Starting up MIDI...\n";
-// 	navigator.requestMIDIAccess().then( success, failure );
-// }
-// function h2d(h) {return parseInt(h,16);}
-
-// function handleMIDIMessage( ev ) {
-	
-// 		midiMsg[0] = midiID
-// 		midiMsg[1] = 1 ;
-// 		midiMsg[2] = ev.data[0].toString(16) ;
-// 		midiMsg[3] = ev.data[1].toString(16) ;
-// 		//console.log('ev raw data : ' + ev.data[2])
-// 		//midiMsg[4] = h2d(ev.data[2]);
-// 		midiMsg[4] = ev.data[2];//.toString(16)  ;
-// 		// log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
-// 		// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
-// 		// log.innerText += 'velocity is: ' + midiMsg[4]
-
-// 		// console.log('msg 2 is: ' + midiMsg[2])
-// 		// console.log('msg 3 is: ' + midiMsg[3])
-// 		// console.log('msg 4 is: ' + midiMsg[4])
-// 		// console.log('velocity is: ' + midiMsg[4])
-// 		//console.log(ev.data[2])
-
-// 	console.log('detect midi')
-
-// 		triggerMidiDevice(0, midiMsg)
-
-// 	for (var i = 1 ; i < userLimit ; i++ )
-// 	{
-// 		if (user[i] != 0){
-// 			for (var x = 0 ; x < 3 ; x++) {
-// 			user[i].send(midiMsg);
-// 			console.log("send to " + user[i].peer);
-// 		} 
-// 		}
-// 	}
-
-// 	midiID++
-
-// // Plays the drum note through MIDI output (Apple DLS Synth)
-// 	// if (output)
-// 	// 	output.send( ev.data );
-
-
-
-
-
-	
-// }
-
-// function success( midiAccess ) {
-// 	 log.innerText += "MIDI ready!\n";
-// 	midi = midiAccess;
-
-// 	inputs = midi.inputs();
-// 	log.innerText += inputs.length+" inputs:\n";
-// 	for (var i=0;i<inputs.length;i++)
-// 		log.innerText += i + ": " + inputs[i].name + "\n";
-
-// 	if (inputs.length>0) {
-// 		input = inputs[0];
-// 		input.onmessage = handleMIDIMessage;
-// 		input.addEventListener("midimessage", handleMIDIMessage);
-// 		log.innerText += inputs[0] + "Hooked up first input.\n";
-// 	}
-
-// 	outputs = midi.outputs();
-// 	log.innerText += outputs.length+" outputs:\n";
-// 	for (var i=0;i<outputs.length;i++)
-// 		log.innerText += i + ": " + outputs[i].name + "\n";
-
-// 	if (outputs.length) {
-// 		output = outputs[0];
-// 		output.send( [0xb0, 0x00, 0x7f] );	// If the first device is a Novation Launchpad, this will light it up!
-// 	}
-// }
-
-// function failure( error ) {
-// 	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
-// }

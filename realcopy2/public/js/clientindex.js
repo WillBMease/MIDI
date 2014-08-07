@@ -103,9 +103,6 @@ function gridGenerator(){
 			
 			console.log(finalStr);
 			return finalStr;
-
-
-
 		}
 
 
@@ -156,7 +153,6 @@ function gridGenerator(){
 				if (user[i] != 0)
 					user[i].send(beatMsg)
 			}
-			console.log("playSound called with " + sampleID)
 		}
 	}
 
@@ -164,11 +160,10 @@ function gridGenerator(){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
-		// beatMsg[2]
+
 		mySample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
-					console.log('shit')
 					user[i].send(beatMsg)
 				}
 			}
@@ -321,7 +316,7 @@ if (configurationKey[arNum].inst == 'square synth') {
 //    _____  _____            _____   _ _   _   _____  _____   ____  _____  
 //   |  __ \|  __ \     /\   / ____| ( ) \ | | |  __ \|  __ \ / __ \|  __ \ 
 //   | |  | | |__) |   /  \ | |  __  |/|  \| | | |  | | |__) | |  | | |__) |
-//   | |  | |  _  /   / /\ \| | |_ |   | ` | | |  | | |  _  /| |  | |  ___/ 
+//   | |  | |  _  /   / /\ \| | |_ |   | ` | | | |  | |  _  /| |  | |  ___/ 
 //   | |__| | | \ \  / ____ \ |__| |   | |\  | | |__| | | \ \| |__| | |     
 //   |_____/|_|  \_\/_/    \_\_____|   |_| \_| |_____/|_|  \_\\____/|_|     
 //                                                                          
@@ -347,8 +342,6 @@ if (configurationKey[arNum].inst == 'square synth') {
 	$(".genDiv").droppable({
 		
 		drop: handleDropEvent
-
-		
 		
 	 });
 
@@ -401,8 +394,7 @@ if (configurationKey[arNum].inst == 'square synth') {
 		configurationKey[arNum].activeVoice = context.createMediaElementSource(audioElement);
 		gainNode = context.createGain();
 		
-		// gainNode.connect(context.destination)
-		gainNode.connect(cabinet[0].input)
+		gainNode.connect(bus[0].cabinet.input)
 		
 
 	  }
@@ -410,8 +402,6 @@ if (configurationKey[arNum].inst == 'square synth') {
 }
 
 if ($(dragID).attr("data-class") == "filter"){
-
-
 
 
 
@@ -445,11 +435,7 @@ if ($(dragID).attr("data-class") == "filter"){
 		soundObj.audioPointer.type = "audio/ogg"
 		soundObj.audioPointer.id = soundObj.sound + soundObj.inst
 
-		//soundObj.activeVoice = context.createMediaElementSource(soundObj.audioPointer);
 		gainNode = context.createGain();
-	//soundObj.activeVoice.connect(context.destination);		
-		// gainNode.connect(context.destination)
-		// gainNode.connect(cabinet[1].input)
 
 		console.log(soundObj.audioPointer)
 
@@ -517,12 +503,16 @@ var buttonPress = 1;
 var downPress = 0;
 var upPress = 0;
 var downKeyArray = [];
+var mappingActive = false
 
 
 function h2d(h) {return parseInt(h,16);}
 
 function handleMIDIMessage(ev) 
 {
+
+if (mappingActive) {
+
 	var pressArray = [];
 	pressArray[0] = ev.data[0]
 	pressArray[1] = ev.data[1] 
@@ -542,6 +532,10 @@ function handleMIDIMessage(ev)
 		{
 			noteUpArray[upPress] = ev.data
 			console.log(noteUpArray)
+				$("#btn" + upPress).css({
+				backgroundColor:"#00FF01"
+				});
+
 			buttonPress++;
 			upPress++;
 		}
@@ -550,8 +544,50 @@ function handleMIDIMessage(ev)
 			console.log(noteDownArray)
 			buttonPress++;
 			downPress++;
-		}		
+		}	
+
+		if (buttonPress > numOfKey * 2) {
+			
+			for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
+				backgroundColor:"#FFFFFF"
+				});
+			}
+
+			setTimeout(function(){
+			  for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
+				backgroundColor:"#00FF01"
+				});
+			  }
+			}, 300)
+
+			setTimeout(function(){
+				for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
+				backgroundColor:"#FFFFFF"
+				});
+			}
+			}, 600)
+
+			setTimeout(function(){
+				for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
+				backgroundColor:"#00FF01"
+				});
+			}
+			}, 900)
+
+			setTimeout(function(){
+				for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
+				backgroundColor:"#FFFFFF"
+				});
+			}
+			}, 1200)	
 	}
+}
+
 	else
 	{
 		console.log(ev.data[2])
@@ -586,7 +622,6 @@ function handleMIDIMessage(ev)
 			}
 			if (sampleID != 0) {
 			startOsc(sampleID, vel);
-			console.log("playSound called with " + sampleID)
 
 	}
 }
@@ -596,12 +631,9 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
-		// beatMsg[2]
 		mySample(sampleID)
-		console.log('hey hey hey!')
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
-					console.log('shit')
 					user[i].send(beatMsg)
 			   }
 			  }
@@ -639,6 +671,9 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
       	}   
 	}	
 
+} // mappingActive
+
+
 var playActualMIDI = true
 
 	if (ev.data[0] == 153 || ev.data[0] == 143){
@@ -651,22 +686,9 @@ if (playActualMIDI && ev.data[2] != 0){
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
-		//console.log('ev raw data : ' + ev.data[2])
-		//midiMsg[4] = h2d(ev.data[2]);
-		midiMsg[4] = ev.data[2];//.toString(16)  ;
-		// log.innerText += 'msg 2 is: ' + midiMsg[2] + '  '
-		// log.innerText += 'msg 3 is: ' + midiMsg[3] + '  '
-		// log.innerText += 'velocity is: ' + midiMsg[4]
-
-		// console.log('msg 2 is: ' + midiMsg[2])
-		// console.log('msg 3 is: ' + midiMsg[3])
-		// console.log('msg 4 is: ' + midiMsg[4])
-		// console.log('velocity is: ' + midiMsg[4])
-		//console.log(ev.data[2])
+		midiMsg[4] = ev.data[2];
 
 	console.log('detect midi')
-
-
 
 		triggerMidiDevice(0, midiMsg)
 
@@ -715,11 +737,31 @@ function failure( error ) {
 	alert( "Failed to initialize MIDI - " + ((error.code==1) ? "permission denied" : ("error code " + error.code)) );
 }
 
+
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+// START MIDI
+
 runTest();
+/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
 
 
 
+$('#testMap').click(function(){
+	if (!mappingActive){
+		console.log('works')
+		mappingActive = true
+	}
 
+	else if (mappingActive){
+	noteUpArray = [];
+	noteDownArray = [];
+ 	buttonPress = 1;
+	downPress = 0;
+	upPress = 0;
+	}
+})
 
 
 
@@ -779,8 +821,8 @@ runTest();
 	// midiID++
 
 // Plays the drum note through MIDI output (Apple DLS Synth)
-	// if (output)
-	// 	output.send( ev.data );
+// 	if (output)
+// 		output.send( ev.data );
 
 
 

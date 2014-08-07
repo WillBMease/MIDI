@@ -56,7 +56,6 @@ function firstPinger() {
       startTime[pingCt] = new Date() ;
             for (var x = 0 ; x < 10 ; x++) {
                   user[i].send(pingMsg);
-                  // console.log('I sent the ping: ' + pingMsg[2] + " to " + user[i].peer);
             }
       }
 }  

@@ -14,175 +14,175 @@ $(".knob").each(function(){
         max:  parseInt($(this).attr('data-max')),
         step: parseInt($(this).attr('data-step')),
         'release': function(v) { 
-            // console.log('here: ' + dataRel5)
+             console.log('here: ' + dataRel5)
             // dataRel = v
             switch(dataRel){
-                case 'bin[0].reverb.level' :
-                bin[0].reverb.level = v/dataRel5
+                case 'bus[0].reverb.level' :
+                bus[0].reverb.level = v/dataRel5
                 break;
 
-                case 'bin[0].reverb.wetLevel' :
-                bin[0].reverb.wetLevel = v/dataRel5
+                case 'bus[0].reverb.wetLevel' :
+                bus[0].reverb.wetLevel = v/dataRel5
                 break;
 
-                case 'bin[0].reverb.dryLevel' :
-                bin[0].reverb.dryLevel = v/dataRel5
+                case 'bus[0].reverb.dryLevel' :
+                bus[0].reverb.dryLevel = v/dataRel5
                 break;
 
-                case 'bin[0].reverb.highCut' :
-                bin[0].reverb.highCut = v
+                case 'bus[0].reverb.highCut' :
+                bus[0].reverb.highCut = v
                 break;
 
-                case 'bin[0].reverb.lowCut' :
-                bin[0].reverb.lowCut = v
+                case 'bus[0].reverb.lowCut' :
+                bus[0].reverb.lowCut = v
                 break;
 
-                case 'bin[0].reverb.lowCut' :
-                bin[0].reverb.lowCut = v
+                case 'bus[0].reverb.lowCut' :
+                bus[0].reverb.lowCut = v
                 break;
 
-                case 'bin[0].chorus.rate' :
-                bin[0].chorus.rate = v/dataRel5
+                case 'bus[0].chorus.rate' :
+                bus[0].chorus.rate = v/dataRel5
                 break;
 
-                case 'bin[0].chorus.feedback' :
-                bin[0].chorus.feedback = v/dataRel5
+                case 'bus[0].chorus.feedback' :
+                bus[0].chorus.feedback = v/dataRel5
                 break;
 
-                case 'bin[0].chorus.delay' :
-                bin[0].chorus.delay = v/dataRel5
+                case 'bus[0].chorus.delay' :
+                bus[0].chorus.delay = v/dataRel5
                 break;
 
-                case 'bin[0].delay.feedback' :
-                bin[0].delay.feedback = v/dataRel5
+                case 'bus[0].delay.feedback' :
+                bus[0].delay.feedback = v/dataRel5
                 break;
 
-                case 'bin[0].delay.delayTime' :
-                bin[0].delay.delayTime = v/dataRel5
+                case 'bus[0].delay.delayTime' :
+                bus[0].delay.delayTime = v/dataRel5
                 break;
 
-                case 'bin[0].delay.wetLevel' :
-                bin[0].delay.wetLevel = v/dataRel5
+                case 'bus[0].delay.wetLevel' :
+                bus[0].delay.wetLevel = v/dataRel5
                 break;
 
-                case 'bin[0].delay.dryLevel' :
-                bin[0].delay.dryLevel = v/dataRel5
+                case 'bus[0].delay.dryLevel' :
+                bus[0].delay.dryLevel = v/dataRel5
                 break;
 
-                case 'bin[0].delay.cutoff' :
-                bin[0].delay.cutoff = v/dataRel5
+                case 'bus[0].delay.cutoff' :
+                bus[0].delay.cutoff = v/dataRel5
                 break;
 
-                case 'bin[0].phaser.rate' :
-                bin[0].phaser.rate =v/dataRel5
+                case 'bus[0].phaser.rate' :
+                bus[0].phaser.rate =v/dataRel5
                 break;
 
-                case 'bin[0].phaser.depth' :
-                bin[0].phaser.depth =v/dataRel5
+                case 'bus[0].phaser.depth' :
+                bus[0].phaser.depth =v/dataRel5
                 break;
 
-                case 'bin[0].phaser.feedback' :
-                bin[0].phaser.feedback =v/dataRel5
+                case 'bus[0].phaser.feedback' :
+                bus[0].phaser.feedback =v/dataRel5
                 break;
 
-                case 'bin[0].phaser.stereoPhase' :
-                bin[0].phaser.stereoPhase =v/dataRel5
+                case 'bus[0].phaser.stereoPhase' :
+                bus[0].phaser.stereoPhase =v/dataRel5
                 break;
 
-                case 'bin[0].phaser.baseModulationFrequency' :
-                bin[0].phaser.baseModulationFrequency =v/dataRel5
+                case 'bus[0].phaser.baseModulationFrequency' :
+                bus[0].phaser.baseModulationFrequency =v/dataRel5
                 break;
 
-                case 'bin[0].overdrive.outputGain' :
-                bin[0].overdrive.outputGain = v/dataRel5
+                case 'bus[0].overdrive.outputGain' :
+                bus[0].overdrive.outputGain = v/dataRel5
                 break;
 
-                case 'bin[0].overdrive.drive' :
-                bin[0].overdrive.drive = v/dataRel5
+                case 'bus[0].overdrive.drive' :
+                bus[0].overdrive.drive = v/dataRel5
                 break;
 
-                case 'bin[0].overdrive.curveLevel' :
-                bin[0].overdrive.curveLevel = v/dataRel5
+                case 'bus[0].overdrive.curveLevel' :
+                bus[0].overdrive.curveLevel = v/dataRel5
                 break;
 
-                case 'bin[0].overdrive.algorithmIndex' :
-                bin[0].overdrive.algorithmIndex = v/dataRel5
+                case 'bus[0].overdrive.algorithmIndex' :
+                bus[0].overdrive.algorithmIndex = v/dataRel5
                 break;
 
-                case 'bin[0].compressor.threshold' :
-                bin[0].compressor.threshold = v/dataRel5
+                case 'bus[0].compressor.threshold' :
+                bus[0].compressor.threshold = v/dataRel5
                 break; 
 
-                case 'bin[0].compressor.makeupGain' :
-                bin[0].compressor.makeupGain = v/dataRel5
+                case 'bus[0].compressor.makeupGain' :
+                bus[0].compressor.makeupGain = v/dataRel5
                 break; 
 
-                case 'bin[0].compressor.attack' :
-                bin[0].compressor.attack = v/dataRel5
+                case 'bus[0].compressor.attack' :
+                bus[0].compressor.attack = v/dataRel5
                 break; 
 
-                case 'bin[0].compressor.release' :
-                bin[0].compressor.release = v/dataRel5
+                case 'bus[0].compressor.release' :
+                bus[0].compressor.release = v/dataRel5
                 break; 
 
-                case 'bin[0].compressor.ratio' :
-                bin[0].compressor.ratio = v/dataRel5
+                case 'bus[0].compressor.ratio' :
+                bus[0].compressor.ratio = v/dataRel5
                 break; 
 
-                case 'bin[0].compressor.knee' :
-                bin[0].compressor.knee = v/dataRel5
+                case 'bus[0].compressor.knee' :
+                bus[0].compressor.knee = v/dataRel5
                 break; 
 
-                case 'bin[0].filter.Q':
-                bin[0].filter.Q = v
+                case 'bus[0].filter.Q':
+                bus[0].filter.Q = v
                 break;
 
-                case 'bin[0].filter.frequency' :
-                bin[0].filter.frequency = v
+                case 'bus[0].filter.frequency' :
+                bus[0].filter.frequency = v
                 break;
 
-                case 'bin[0].filter.gain' :
-                bin[0].filter.gain = v
+                case 'bus[0].filter.gain' :
+                bus[0].filter.gain = v
                 break;
 
-                case 'bin[0].filter.filterType' :
-                bin[0].filter.filterType = v
+                case 'bus[0].filter.filterType' :
+                bus[0].filter.filterType = v
                 break;
 
-                case 'bin[0].tremolo.intensity' :
-                bin[0].tremolo.intensity = v/dataRel5
+                case 'bus[0].tremolo.intensity' :
+                bus[0].tremolo.intensity = v/dataRel5
                 break;
 
                 case 'tremolo.rate':
                 tremolo.rate = v/dataRel5
                 break;
 
-                case 'bin[0].tremolo.stereoPhase' :
-                bin[0].tremolo.stereoPhase = v
+                case 'bus[0].tremolo.stereoPhase' :
+                bus[0].tremolo.stereoPhase = v
                 break;
 
-                case 'bin[0].wahwah.automode' :
-                bin[0].wahwah.automode = v
+                case 'bus[0].wahwah.automode' :
+                bus[0].wahwah.automode = v
                 break;
 
-                case 'bin[0].wahwah.baseFrequency' :
-                bin[0].wahwah.baseFrequency = v/dataRel5
+                case 'bus[0].wahwah.baseFrequency' :
+                bus[0].wahwah.baseFrequency = v/dataRel5
                 break;
 
-                case 'bin[0].wahwah.excursionOctaves' :
-                bin[0].wahwah.excursionOctaves = v 
+                case 'bus[0].wahwah.excursionOctaves' :
+                bus[0].wahwah.excursionOctaves = v 
                 break;
 
-                case 'bin[0].wahwah.sweep' :
-                bin[0].wahwah.sweep = v/dataRel5
+                case 'bus[0].wahwah.sweep' :
+                bus[0].wahwah.sweep = v/dataRel5
                 break;
 
-                case 'bin[0].wahwah.resonance' :
-                bin[0].wahwah.resonance = v
+                case 'bus[0].wahwah.resonance' :
+                bus[0].wahwah.resonance = v
                 break;
 
-                case 'bin[0].wahwah.sensitivity' :
-                bin[0].wahwah.sensitivity = v/dataRel5
+                case 'bus[0].wahwah.sensitivity' :
+                bus[0].wahwah.sensitivity = v/dataRel5
                 break;
             }
             

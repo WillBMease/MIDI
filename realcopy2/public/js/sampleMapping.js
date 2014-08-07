@@ -27,15 +27,10 @@ for (var i = 0 ; i < userLimit ; i++) {
 	noteNode[i] = []
 }
 
-
 /// you are 0
 
 // Initialize your own instrument on startup
 loadInstrument(0, firstInst)
-
-
-
-
 
 
 function loadInstrument(index, instr){
@@ -51,22 +46,13 @@ if (paths[0]){
 	paths = []
 }
 
-	var instrument = '<audio id="" preload="auto">' + '</audio>';
-	var target = $('.audioBin' + index + ' li');
 	sampleActive = true;
-	target.empty();
 	globalOctave = presetInstrument.octaveNum;
 	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
 		for(var i = 1; i <= presetInstrument.notes; i++){
-			target.append(instrument);
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
-			var newInstrument = target.find("audio:last-child");
-			newInstrument.attr("src", instrumentPath);
-			newInstrument.attr("id", i);
-
 			paths.push(instrumentPath)
-
 }
 
     var finishedLoading = function(bufferList) {
@@ -89,19 +75,11 @@ if (paths[0]){
 
 
 function triggerSample(index, key, whichSound) {
-	var notes = [];
-
-	var noteWrap = $('.audioBin' + index + ' li');
-
-	notes = noteWrap.find('audio');
 
 	transpose(index, key[2]);
 	var check = keyboardMap(key[2]) ;
-	// console.log(check)
 
 	 var mappedKey = keyboardMap(key[2]) + (octave[index]*12);
-	 // console.log('key: ' + check)
-	 // console.log('sound: ' + whichSound)
 
 if(check != 200  && check != 49 && check != 96){
 
@@ -119,21 +97,15 @@ if(check != 200  && check != 49 && check != 96){
 
 else if (whichSound == 'synth'){
 
-// console.log('here')
-
 	instrument1 = context.createOscillator(),
     instrument2 = context.createOscillator(),
     instrument3 = context.createOscillator();
 
     var freq = 32.703 * Math.pow(1.059463094359, mappedKey - 12)
 
-    // console.log(freq)
-
     instrument1.frequency.value = parseFloat(freq)
     instrument2.frequency.value = parseFloat(freq)
     instrument3.frequency.value = parseFloat(freq)
-
-    // console.log(instrument1.frequency)
 
     instrument1.connect(bus[index].input)
     instrument2.connect(bus[index].input)
@@ -185,22 +157,17 @@ function endNote(instrument1, instrument2, instrument3){
 function playSynth(index, choose, keyTest){
 	var testSynth = processSynth(choose)
 
-	console.log(testSynth)
-
 	transpose(index, keyTest[2]);
 	var check = keyboardMap(keyTest[2]) ;
-	// console.log(check)
 
 	 var mappedKey = keyboardMap(keyTest[2]) + (octave[index]*12);
-	 // console.log('key: ' + check)
-	 // console.log('sound: ' + whichSound)
 
 if(check != 200  && check != 49 && check != 96){
 
     var freq = 32.703 * Math.pow(1.059463094359, mappedKey - 12)
 	
     testSynth.frequency.value = parseFloat(freq)
-console.log('yup')
+
     testSynth.start(0)
 
     // setTimeout(function(){
@@ -227,8 +194,7 @@ function processSynth(choose){
 
 
 function triggerMidiDevice(index, midiData){
-	var notes = [];
-	var noteWrap = $('.audioBin' + index + ' li');
+
 	if(setController){
 		setControls(midiData);		
 	}
@@ -266,7 +232,6 @@ function triggerOsc(index, keyNote){
     instrument2 = context.createOscillator(),
     instrument3 = context.createOscillator();
 
-    // var freq = keyboardMapOsc(keyNote)
     var mappedKey = keyboardMap(keyNote) + (octave[index]*12)
 
     var freq = 32.703 * pow(1.059463094359, mappedKey - 12)
@@ -278,8 +243,6 @@ function triggerOsc(index, keyNote){
     instrument1.frequency.value = parseFloat(freq)
     instrument2.frequency.value = parseFloat(freq)
     instrument3.frequency.value = parseFloat(freq)
-
-    // console.log(instrument1.frequency)
 
     instrument1.connect(bus[index].input)
     instrument2.connect(bus[index].input)
