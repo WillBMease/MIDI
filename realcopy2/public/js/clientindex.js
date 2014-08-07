@@ -603,7 +603,7 @@ if (mappingActive) {
 if (ev.data[2] != 0 && ev.data[0] == 153){
 
 		beatMsg[1] = 10
-		beatMsg[7] = sampleID.activeVoice
+		beatMsg[7] = sampleID.pathPointer
 		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
