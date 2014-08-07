@@ -11,7 +11,17 @@
 		userPad[i] = []
 	}
 
-
+		soundObj = {
+			sound:"",
+			inst:"",
+			insType:"",
+			frequency: 0,
+			activeVoice:"",
+			audioPointer:"",
+			instPointer:"",
+			pathPointer:[],
+			noteIndex:0
+		};
 
 
 
@@ -95,17 +105,17 @@ function gridGenerator(){
 		//fill array with placeholder values
 		for (i = 0; i <= numOfKey[0]-1; i++) {
 		console.log('its here!')
-		soundObj = {
-			sound:"",
-			inst:"",
-			insType:"",
-			frequency: 0,
-			activeVoice:"",
-			audioPointer:"",
-			instPointer:"",
-			pathPointer:[],
-			noteIndex:0
-		};
+		// soundObj = {
+		// 	sound:"",
+		// 	inst:"",
+		// 	insType:"",
+		// 	frequency: 0,
+		// 	activeVoice:"",
+		// 	audioPointer:"",
+		// 	instPointer:"",
+		// 	pathPointer:[],
+		// 	noteIndex:0
+		// };
 			userPad[0][i] = soundObj;
 
 			console.log(userPad[0][i])

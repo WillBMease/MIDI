@@ -204,8 +204,8 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
    else if (data[1] == 11){
 
-    // if (userPad[index][data[8]] == null)
-    //   userPad[index][data[8]] = soundObj
+    if (userPad[index][data[8]] == null)
+      userPad[index][data[8]] = soundObj
       
       userPad[index][data[8]].sound = data[3]
       userPad[index][data[8]].inst = data[4]
