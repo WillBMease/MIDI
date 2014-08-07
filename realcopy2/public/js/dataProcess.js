@@ -204,7 +204,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       tempObj.inst = data[4]
       tempObj.insType = data[5]
       tempObj.frequency = data[6]
-      tempObj.pathPointer = data[7]
+      tempObj.activeVoice = data[7]
       console.log('ass ass!')
       startSample(tempObj)
 

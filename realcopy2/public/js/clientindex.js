@@ -143,7 +143,7 @@ function gridGenerator(){
 	else if (sampleID.inst == "jazzdrums" || sampleID.inst == "numb") {
 
 		beatMsg[1] = 10
-		beatMsg[7] = sampleID.pathPointer
+		beatMsg[7] = sampleID.activeVoice
 
 		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
@@ -601,7 +601,7 @@ if (mappingActive) {
 if (ev.data[2] != 0 && ev.data[0] == 153){
 
 		beatMsg[1] = 10
-		beatMsg[7] = sampleID.pathPointer
+		beatMsg[7] = sampleID.activeVoice
 		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
