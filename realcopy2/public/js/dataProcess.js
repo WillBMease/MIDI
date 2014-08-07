@@ -206,27 +206,31 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       tempObj.frequency = data[6]
       tempObj.pathPointer = data[7]
 
-var createTheBuffer = function(thePath){
-  var loadedBuffer = function(bufferList) {
-      tempObj.activeVoice = bufferList
-      startSample(tempObj)
-    }
+      startSample(configKey[data[8]])
+// var createTheBuffer = function(thePath){
+//   var loadedBuffer = function(bufferList) {
+//       tempObj.activeVoice = bufferList
+//       startSample(tempObj)
+//     }
 
-    myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
+//     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
 
-    bufferLoading = new BufferLoader(
-      context,
-      thePath,
-      loadedBuffer
-    );
+//     bufferLoading = new BufferLoader(
+//       context,
+//       thePath,
+//       loadedBuffer
+//     );
 
-    bufferLoading.load()
-  }
+//     bufferLoading.load()
+//   }
 
-console.log(tempObj.pathPointer)
-createTheBuffer(tempObj.pathPointer)
+// console.log(tempObj.pathPointer)
+// createTheBuffer(tempObj.pathPointer)
 
+   }
 
+   else if (data[1] == 11){
+    loadDropInstr(data[8])
    }
 
     });

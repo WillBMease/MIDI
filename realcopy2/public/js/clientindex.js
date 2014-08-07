@@ -287,11 +287,6 @@ if (configKey[arNum].inst == 'square synth') {
 
 
 
-
-
-
-
-
 /////////////////////////////////////////////////////////////
 //initalize jquery.ui elements
 
@@ -382,6 +377,21 @@ var createTheBuffer = function(thePath){
 
 	loadDropInstr(arNum)
 
+		beatMsg[3] = configKey[arNum].sound
+		beatMsg[4] = configKey[arNum].inst
+		beatMsg[5] = configKey[arNum].insType
+		beatMsg[6] = configKey[arNum].frequency
+		beatMsg[1] = 11
+		beatMsg[7] = configKey[arNum].pathPointer
+		beatMsg[8] = arNum
+
+			for (var i = 1 ; i < userLimit ; i++){
+				if (user[i] != 0) {
+					user[i].send(beatMsg)
+				}
+			}
+
+
   }
 }
 
@@ -419,7 +429,7 @@ if (soundObj.inst == "square synth") {
 		soundObj.activeVoice = context.createOscillator();
 		gainNode = context.createGain();
 		// soundObj.activeVoice.connect(context.destination);
-		soundObj.activeVoice.connect(bus[0].cabinet.input);
+		soundObj.activeVoice.connect(bus[0].input);
 		gainNode.gain.value = vel/127; // compare velocity to maximum
 	
 		console.log("noteOn")
@@ -589,6 +599,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
+		beatMsg[8] = arNum
 		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
