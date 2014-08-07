@@ -222,6 +222,7 @@ var createTheBuffer = function(thePath){
     bufferLoading.load()
   }
 
+console.log(tempObj.pathPointer)
 createTheBuffer(tempObj.pathPointer)
 
       startSample(tempObj)
