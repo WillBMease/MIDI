@@ -382,7 +382,7 @@ var createTheBuffer = function(thePath){
 	$.getJSON("js/instruments.json", function(json){
         configurationKey[arNum].instPointer = json[configurationKey[arNum].inst].path
 		// pathLink[0] = String(configurationKey[arNum].instPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
-		configurationKey[arNum].pathPointer[0] = String(configurationKey[arNum].instPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
+		configurationKey[arNum].pathPointer[0] = String(configurationKey[arNum].instPointer + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
 		createTheBuffer(configurationKey[arNum].pathPointer)
 	});
 
