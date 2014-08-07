@@ -3,7 +3,7 @@ var notesLoad = [];
 var paths = []
 var testing = []
 var bufferLoader;
-var sampleRate = 48000
+var sampleRate = 44100
 var firstInst = 'gPiano'
 var firstRun = true
 
@@ -48,7 +48,6 @@ if (paths[0]){
 
 	sampleActive = true;
 	globalOctave = presetInstrument.octaveNum;
-	console.log("generateNotes was initiated for " + presetInstrument.name + "!!!");
 	
 		for(var i = 1; i <= presetInstrument.notes; i++){
 			var instrumentPath = String(presetInstrument.path + "/note-" + i + ".ogg");
@@ -59,7 +58,7 @@ if (paths[0]){
       noteNode[index] = bufferList
     }
     
-    myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
+    // myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
 
     bufferLoader = new BufferLoader(
         context,
@@ -85,6 +84,7 @@ if(check != 200  && check != 49 && check != 96){
 
 		if (whichSound == 'sample') {
 	 var source1 = context.createBufferSource();
+	 console.log(noteNode[index][mappedKey])
     source1.buffer = noteNode[index][mappedKey];
     
     source1.connect(bus[index].input);
@@ -133,14 +133,8 @@ $(document).keyup(function(e){
 	return false;
 });
 
-// $(document).focus(function(e) { 
-//   stillActive = false;
-//   return false
-// });
-
 	}
  
-
 	}
 
 }
@@ -169,10 +163,6 @@ if(check != 200  && check != 49 && check != 96){
     testSynth.frequency.value = parseFloat(freq)
 
     testSynth.start(0)
-
-    // setTimeout(function(){
-    // 	testSynth.noteOff(0)
-    // }, 1000)
 
 	}
 

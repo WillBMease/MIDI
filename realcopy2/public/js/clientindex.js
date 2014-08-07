@@ -1,24 +1,10 @@
 	var numOfKey = 8
 	var rowX = 4
 	var rowY = 2 
+	var pathLink = []
 
 	var configurationKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
-	//var filterKey = [];
 	var beatMsg = []
-
-	var jazzDrumList = {
-
-	kick:"sounds/jazzdrums/note-5.ogg",highHat:"sounds/jazzdrums/note-1.ogg",crash1:"sounds/jazzdrums/note-2.ogg",
-	crash2:"sounds/jazzdrums/note-3.ogg", crash3:"sounds/jazzdrums/note-4.ogg", openHH:"sounds/jazzdrums/note-6.ogg", phh:"sounds/jazzdrums/note-7.ogg",
-	ride1:"sounds/jazzdrums/note-8.ogg",ride2:"sounds/jazzdrums/note-9.ogg", ride3:"sounds/jazzdrums/note-10.ogg", ride4:"sounds/jazzdrums/note-11.ogg", sdst:"sounds/jazzdrums/note-12.ogg",
-	snare1:"sounds/jazzdrums/note-13.ogg", snare2:"sounds/jazzdrums/note-14.ogg", tomHi:"sounds/jazzdrums/note-14.ogg", tomLow:"sounds/jazzdrums/note-15.ogg",
-	tomMid:"sounds/jazzdrums/note-17.ogg"
-
-	}
-
-	var numb = {
-		one:"sounds/numb/note-1.ogg", two:"sounds/numb/note-2.ogg", three:"sounds/numb/note-3.ogg", four:"sounds/numb/note-4.ogg", five:"sounds/numb/note-5.ogg"
-	}
 
 
 
@@ -37,15 +23,13 @@ $(function(){
 			frequency: 0,
 			activeVoice:"",
 			audioPointer:"",
-			pathPointer:""
+			pathPointer:"",
+			noteIndex:0
 		};
 
 			configurationKey[i] = soundObj;
 		
 		}
-
-		console.log(configurationKey);
-
 
 	//////////////////////////////////////////////////////////////////////////////////
 
@@ -156,12 +140,12 @@ function gridGenerator(){
 		}
 	}
 
-	else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
+	else if (sampleID.inst == "jazzdrums" || sampleID.inst == "numb") {
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
 
-		mySample(sampleID)
+		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
 					user[i].send(beatMsg)
@@ -353,6 +337,11 @@ if (configurationKey[arNum].inst == 'square synth') {
 
 // }
 
+
+// function loadDropInstr(instr){
+
+// }
+
 	function handleDropEvent( event, ui ) 
 {
   var draggable = ui.draggable;
@@ -361,44 +350,41 @@ if (configurationKey[arNum].inst == 'square synth') {
 
   if ($(dragID).attr("data-class") == "instrument"){
 	  arNum = parseInt($(dropID).attr('id').substr(3,3))
-	  console.log(arNum)
-	  console.log(configurationKey[arNum])
 	  configurationKey[arNum].sound = $(dragID).attr("data-sound");
 	  configurationKey[arNum].inst = $(dragID).attr("data-instrument");
 	  configurationKey[arNum].insType = $(dragID).attr("data-type");
-	  configurationKey[arNum].frequency = $(dragID).attr("data-frequency")
+	  configurationKey[arNum].frequency = $(dragID).attr("data-frequency");
+	  configurationKey[arNum].noteIndex = $(dragID).attr("data-noteIndex");
 	  des = $(this).find("p");
 	  $(des).text(draggable.find("p").text());
-	  console.log(configurationKey);
 
-	  if ($(dragID).attr("data-instrument") == "JD" || $(dragID).attr("data-instrument") == "numb")
+	  if (configurationKey[arNum].inst == "jazzdrums" || $(dragID).attr("data-instrument") == "numb")
 	  {
 
-	  	pathPointer = $(dragID).attr("data-sound")
 
-	  	configurationKey[arNum].pathPointer = pathPointer
-		configurationKey[arNum].audioPointer = new Audio()
+var createTheBuffer = function(thePath){
+	var loadedBuffer = function(bufferList) {
+      configurationKey[arNum].activeVoice = bufferList
+    }
 
-		if (configurationKey[arNum].inst == "JD")
-			configurationKey[arNum].audioPointer.src = jazzDrumList[pathPointer]
-		else if (configurationKey[arNum].inst == "numb")
-			configurationKey[arNum].audioPointer.src = numb[pathPointer]
+    myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
 
-		configurationKey[arNum].audioPointer.type = "audio/ogg"
-		configurationKey[arNum].audioPointer.id = configurationKey[arNum].sound + configurationKey[arNum].inst
+		bufferLoading = new BufferLoader(
+			context,
+			pathLink,
+			loadedBuffer
+		);
 
-		$(dropID).append(configurationKey[arNum]);
-		console.log(configurationKey[arNum].audioPointer)
+		bufferLoading.load()
+	}
 
-		audioElement = configurationKey[arNum].audioPointer
-		configurationKey[arNum].activeVoice = context.createMediaElementSource(audioElement);
-		gainNode = context.createGain();
-		
-		gainNode.connect(bus[0].cabinet.input)
-		
+	$.getJSON("js/instruments.json", function(json){
+        configurationKey[arNum].pathPointer = json[configurationKey[arNum].inst]
+		pathLink[0] = String(configurationKey[arNum].pathPointer.path + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
+		createTheBuffer(pathLink)
+	});
 
-	  }
-
+  }
 }
 
 if ($(dragID).attr("data-class") == "filter"){
@@ -421,41 +407,24 @@ if ($(dragID).attr("data-class") == "filter"){
 //  8eee88 8eeee8 88ee8 88  8 88eee8    88eee8 88eee 88  8 88eee 88   8 88   8   88  8eeee8 88   8 
 
   
+// need to add velocity measure
+
  function startSample(soundObj, vel) {
 
-		soundObj.audioPointer = new Audio()
+console.log(soundObj.activeVoice[0])
 
-		if (soundObj.inst == "JD")
-		soundObj.audioPointer.src = jazzDrumList[soundObj.pathPointer]
-		else if (soundObj.inst == "numb") {
-		soundObj.audioPointer.src = numb[soundObj.pathPointer]
-		console.log(numb[soundObj.pathPointer])
-	}
+var source = context.createBufferSource()
+source.buffer = soundObj.activeVoice[0]
 
-		soundObj.audioPointer.type = "audio/ogg"
-		soundObj.audioPointer.id = soundObj.sound + soundObj.inst
+source.connect(bus[0].input)
+source.start(0)
 
-		gainNode = context.createGain();
+source.onended = function(){
+	source.stop()
+  }
 
-		console.log(soundObj.audioPointer)
+}                                                                     
 
-	soundObj.audioPointer.pause();
-	//soundObj.audioPointer.currentTime = 0;
-	//gainNode.gain.value = vel/127;
-	soundObj.audioPointer.play(0);
-
- }                                                                     
-
-function mySample(soundObj, vel){
-		audioElement = soundObj.audioPointer;
-
-	console.log(audioElement)
-	//soundObj.activeVoice.connect(gainNode);
-	audioElement.pause();
-	audioElement.currentTime = 0;
-	gainNode.gain.value = vel/127;
-	audioElement.play(0);
-}
 
 function startOsc(soundObj, vel) {
 
@@ -463,7 +432,7 @@ if (soundObj.inst == "square synth") {
 		soundObj.activeVoice = context.createOscillator();
 		gainNode = context.createGain();
 		// soundObj.activeVoice.connect(context.destination);
-		soundObj.activeVoice.connect(cabinet[0].input);
+		soundObj.activeVoice.connect(bus[0].cabinet.input);
 		gainNode.gain.value = vel/127; // compare velocity to maximum
 	
 		console.log("noteOn")
@@ -548,11 +517,13 @@ if (mappingActive) {
 
 		if (buttonPress > numOfKey * 2) {
 			
-			for (var i = 0 ; i <= upPress ; i++){
+			setTimeout(function(){
+			  for (var i = 0 ; i <= upPress ; i++){
 				$("#btn" + i).css({
 				backgroundColor:"#FFFFFF"
 				});
-			}
+			  }
+			}, 300)
 
 			setTimeout(function(){
 			  for (var i = 0 ; i <= upPress ; i++){
@@ -560,20 +531,12 @@ if (mappingActive) {
 				backgroundColor:"#00FF01"
 				});
 			  }
-			}, 300)
-
-			setTimeout(function(){
-				for (var i = 0 ; i <= upPress ; i++){
-				$("#btn" + i).css({
-				backgroundColor:"#FFFFFF"
-				});
-			}
 			}, 600)
 
 			setTimeout(function(){
 				for (var i = 0 ; i <= upPress ; i++){
 				$("#btn" + i).css({
-				backgroundColor:"#00FF01"
+				backgroundColor:"#FFFFFF"
 				});
 			}
 			}, 900)
@@ -581,10 +544,18 @@ if (mappingActive) {
 			setTimeout(function(){
 				for (var i = 0 ; i <= upPress ; i++){
 				$("#btn" + i).css({
+				backgroundColor:"#00FF01"
+				});
+			}
+			}, 1200)
+
+			setTimeout(function(){
+				for (var i = 0 ; i <= upPress ; i++){
+				$("#btn" + i).css({
 				backgroundColor:"#FFFFFF"
 				});
 			}
-			}, 1200)	
+			}, 1500)	
 	}
 }
 
@@ -625,13 +596,13 @@ if (mappingActive) {
 
 	}
 }
-				else if (sampleID.inst == "JD" || sampleID.inst == "numb") {
+				else if (sampleID.inst == "jazzdrums" || sampleID.inst == "numb") {
 
 if (ev.data[2] != 0 && ev.data[0] == 153){
 
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
-		mySample(sampleID)
+		startSample(sampleID)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
 					user[i].send(beatMsg)
