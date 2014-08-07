@@ -117,9 +117,9 @@ var draw = function(){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
-		$("#freq2").drawRect({
+		$("#freq1").drawRect({
 			fillStyle:"#FF0000",
-			x:xPos, y:(yPos),
+			x:xPos+20, y:(yPos+20),
 			width:4,height:4,
 
 		})
@@ -132,9 +132,9 @@ var draw = function(){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
-		$("#freq3").drawRect({
+		$("#freq1").drawRect({
 			fillStyle:"#0000FF",
-			x:xPos, y:(yPos),
+			x:xPos-20, y:(yPos-20),
 			width:4,height:4,
 
 		})
@@ -147,9 +147,9 @@ var draw = function(){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
 
-		$("#freq4").drawRect({
+		$("#freq1").drawRect({
 			fillStyle:"#F0F0F0",
-			x:xPos, y:(yPos),
+			x:xPos+20, y:(yPos-20),
 			width:4,height:4,
 
 		})
