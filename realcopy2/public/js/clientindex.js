@@ -3,7 +3,10 @@
 	var rowY = 2 
 	var pathLink = []
 
-	var configurationKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
+	var configKey = [];// Saves soundObj in each index in relation to the order of generated button divs,
+	var userPad = {
+
+	}
 	var beatMsg = []
 
 
@@ -28,7 +31,7 @@ $(function(){
 			noteIndex:0
 		};
 
-			configurationKey[i] = soundObj;
+			configKey[i] = soundObj;
 		
 		}
 
@@ -118,7 +121,7 @@ function gridGenerator(){
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		sampleID = configurationKey[arNum]
+		sampleID = configKey[arNum]
 
 		beatMsg[3] = sampleID.sound
 		beatMsg[4] = sampleID.inst
@@ -168,18 +171,12 @@ function gridGenerator(){
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		soundOff = configurationKey[arNum]
+		soundOff = configKey[arNum]
 		console.log("mupID = " + soundOff)
 
-if (configurationKey[arNum].inst == 'square synth') {
+if (configKey[arNum].inst == 'square synth') {
 		beatMsg[1] = 9
 		beatMsg[2] = 'off'
-		// beatMsg[3] = soundOff.sound
-		// beatMsg[4] = soundOff.inst
-		// beatMsg[5] = soundOff.insType
-		// beatMsg[6] = soundOff.frequency
-		// beatMsg[7] = soundOff.activeVoice
-		// beatMsg[8] = soundOff.audioPointer
 
 		if (soundOff != 0){
 
@@ -201,7 +198,7 @@ if (configurationKey[arNum].inst == 'square synth') {
 
 		thisID = $(this).attr("id");
 		arNum = parseInt(thisID.substr(3,3))
-		soundOff = configurationKey[arNum]
+		soundOff = configKey[arNum]
 		console.log("mupID = " + soundOff)
 
 		if (soundOff != 0){
@@ -336,37 +333,14 @@ if (configurationKey[arNum].inst == 'square synth') {
 });
 
 
-// }
+function loadDropInstr(arNum){
 
-
-// function loadDropInstr(instr){
-
-// }
-
-	function handleDropEvent( event, ui ) 
-{
-  var draggable = ui.draggable;
-  dropID = "#" + $(this).attr('id');
-  dragID ="#" + draggable.attr('id');
-
-  if ($(dragID).attr("data-class") == "instrument"){
-	  arNum = parseInt($(dropID).attr('id').substr(3,3))
-	  configurationKey[arNum].sound = $(dragID).attr("data-sound");
-	  configurationKey[arNum].inst = $(dragID).attr("data-instrument");
-	  configurationKey[arNum].insType = $(dragID).attr("data-type");
-	  configurationKey[arNum].frequency = $(dragID).attr("data-frequency");
-	  configurationKey[arNum].noteIndex = $(dragID).attr("data-noteIndex");
-	  des = $(this).find("p");
-	  $(des).text(draggable.find("p").text());
-
-	  if (configurationKey[arNum].inst == "jazzdrums" || $(dragID).attr("data-instrument") == "numb")
-	  {
-
+  if (configKey[arNum].inst == "jazzdrums" || $(dragID).attr("data-instrument") == "numb"){
 
 var createTheBuffer = function(thePath){
 	var loadedBuffer = function(bufferList) {
-      configurationKey[arNum].activeVoice = bufferList
-      console.log(configurationKey[arNum].activeVoice)
+      configKey[arNum].activeVoice = bufferList
+      console.log(configKey[arNum].activeVoice)
     }
 
     myArrayBuffer = context.createBuffer(2,sampleRate*2,sampleRate)
@@ -381,23 +355,34 @@ var createTheBuffer = function(thePath){
 	}
 
 	$.getJSON("js/instruments.json", function(json){
-        configurationKey[arNum].instPointer = json[configurationKey[arNum].inst].path
-		configurationKey[arNum].pathPointer[0] = String(configurationKey[arNum].instPointer + "/note-" + configurationKey[arNum].noteIndex + ".ogg")
-		createTheBuffer(configurationKey[arNum].pathPointer)
+        configKey[arNum].instPointer = json[configKey[arNum].inst].path
+		configKey[arNum].pathPointer[0] = String(configKey[arNum].instPointer + "/note-" + configKey[arNum].noteIndex + ".ogg")
+		createTheBuffer(configKey[arNum].pathPointer)
 	});
 
   }
 }
 
-if ($(dragID).attr("data-class") == "filter"){
 
+	function handleDropEvent( event, ui ) 
+{
+  var draggable = ui.draggable;
+  dropID = "#" + $(this).attr('id');
+  dragID ="#" + draggable.attr('id');
 
+  if ($(dragID).attr("data-class") == "instrument"){
+	  arNum = parseInt($(dropID).attr('id').substr(3,3))
+	  configKey[arNum].sound = $(dragID).attr("data-sound");
+	  configKey[arNum].inst = $(dragID).attr("data-instrument");
+	  configKey[arNum].insType = $(dragID).attr("data-type");
+	  configKey[arNum].frequency = $(dragID).attr("data-frequency");
+	  configKey[arNum].noteIndex = $(dragID).attr("data-noteIndex");
+	  des = $(this).find("p");
+	  $(des).text(draggable.find("p").text());
 
+	loadDropInstr(arNum)
 
-}
-
-
-
+  }
 }
 
 
@@ -578,7 +563,7 @@ if (mappingActive) {
 
 						thisID = $("#btn" + x).attr("id");
 						arNum = parseInt(thisID.substr(3,3))
-						sampleID = configurationKey[arNum]
+						sampleID = configKey[arNum]
 		
 
 		beatMsg[3] = sampleID.sound
@@ -626,7 +611,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 				});
 
 	      		arNum = x;
-				soundOff = configurationKey[arNum]
+				soundOff = configKey[arNum]
 				console.log("mupID = " + soundOff)
 		if (soundOff.inst == "square synth"){	
 				beatMsg[2] = 'off'
