@@ -4,18 +4,25 @@
 //visualizer
 
 
-ans[0].smoothingTimeConstant = 0.85;
+ans[0].smoothingTimeConstant = 0.7;
 console.log(ans[0]);
 var soundData = new Uint8Array(ans[0].frequencyBinCount);
 var  timeData = new Uint8Array(ansT[0].frequencyBinCount);
 
+var frameSize = 256
+
 var frameSkip = 4;
 
+var yJit = 1
+
+var	changePos = false
+var	changeNeg = false
+
 var frameSwitch = function() {
-	if (frameSkip % 4 === 0){
-		setTimeout(function(){
+	if (frameSkip % 2 === 0){
+		// setTimeout(function(){
 		draw();
-		}, 10)
+		// }, 10)
 		
 		frameSkip ++;
 	}
@@ -32,15 +39,59 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	ans[0].fftSize = 256;
+	ans[0].fftSize = frameSize;
 	ans[0].getByteFrequencyData(soundData);
-	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
+		zX = (((i-3) * 7) +3)
+		$('#visualizer1').drawLine({
+		  strokeStyle: "#00FF00",
+		  strokeWidth: 6,
+		  x1: zX, y1:300,
+		  x2: zX, y2:300-soundData[i]*1.17,
+		  beginPath: true
+		});
+	}
+
+
+		ans[1].fftSize = frameSize;
+	ans[1].getByteFrequencyData(soundData);
+	for (var i = 3; i<ans[1].frequencyBinCount; i++){
+		zX = (((i-3) * 7) +3)
+		$('#visualizer2').drawLine({
+		  strokeStyle: "#FF0000",
+		  strokeWidth: 6,
+		  x1: zX, y1:300,
+		  x2: zX, y2:300-soundData[i]*1.17,
+		  beginPath: true
+		});
+	}
+
+
+	// 	ans[2].fftSize = frameSize;
+	// ans[2].getByteFrequencyData(soundData);
+	// for (var i = 3; i<ans[2].frequencyBinCount; i++){
 	// 	zX = (((i-3) * 7) +3)
-	// 	$('#visualizer').drawLine({
-	// 	  strokeStyle: "#0008FF",
-	// 	  strokeWidth: 7,
+	// 	$('#visualizer3').drawLine({
+	// 	  strokeStyle: "#0000FF",
+	// 	  strokeWidth: 6,
 	// 	  x1: zX, y1:300,
 	// 	  x2: zX, y2:300-soundData[i]*1.17,
+		// beginPath: true
+	// 	});
+	// }
+
+
+
+	// 	ans[3].fftSize = frameSize;
+	// ans[3].getByteFrequencyData(soundData);
+	// for (var i = 3; i<ans[3].frequencyBinCount; i++){
+	// 	zX = (((i-3) * 7) +3)
+	// 	$('#visualizer4').drawLine({
+	// 	  strokeStyle: "#F0F0F0",
+	// 	  strokeWidth: 6,
+	// 	  x1: zX, y1:300,
+	// 	  x2: zX, y2:300-soundData[i]*1.17,
+	//	  beginPath: true
 	// 	});
 	// }
 
@@ -55,17 +106,13 @@ var draw = function(){
 	// 		var x2 = 150 +(0.1+(soundData[i]*0.4))*xX2
 	// 		var zZ2 = Math.sin((i-2)*5.25)
 	// 		var z2 = 75+ (0.1+(soundData[i]*0.4))*zZ2
+	
 	// 	$("#spiral").drawLine({
-
-
 	// 		strokeStyle: "#FF0000",
 	// 		strokeWidth:5,
 	// 		x1: x1, y1: z1, x2:x2,y2:z2,
-
-
+	// 		beginPath: true
 	// 	})
-
-
 	// }
 
 	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
@@ -84,88 +131,113 @@ var draw = function(){
 	// 		var hueS = hue.toString();
 	// 	$("#cut").drawLine({
 
-
-
-
-			// strokeStyle: "#000000",
-			// strokeWidth:2,
-			// x1: x1, y1: z1, x2:x2,y2:z2,
-
-
-
+	// 		strokeStyle: "#000000",
+	// 		strokeWidth:2,
+	// 		x1: x1, y1: z1, x2:x2,y2:z2,
+	//		beginPath: true
 	// 	})
-
-
-
 	// }
-	ansT[0].fftSize = 256;
-	ansT[0].getByteTimeDomainData(timeData);
-
-
-	for (var i = 0; i< ansT[0].frequencyBinCount; i++){
-		xPos = (i*1.171875);
-		yPos = timeData[i]*0.5 + 10;
-
-		$("#freq1").drawRect({
-			fillStyle:"#00FF00",
-			x:xPos-50, y:(yPos+50),
-			width:4,height:4,
-
-		})
-
-	}
-
-
-	ansT[1].fftSize = 256;
-	ansT[1].getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT[1].frequencyBinCount; i++){
-		xPos = (i*1.171875);
-		yPos = timeData[i]*0.5 + 10;
-
-
-
-		$("#freq1").drawRect({
-			fillStyle:"#FF0000",
-			x:xPos+100, y:(yPos+50),
-			width:4,height:4,
-
-		})
-
-	}
-
-		ansT[2].fftSize = 256;
-	ansT[2].getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT[2].frequencyBinCount; i++){
-		xPos = (i*1.171875);
-		yPos = timeData[i]*0.5 + 10;
-
-		$("#freq1").drawRect({
-			fillStyle:"#0000FF",
-			x:xPos-50, y:(yPos-50),
-			width:4,height:4,
-
-		})
-
-	}
-
-		ansT[3].fftSize = 256;
-	ansT[3].getByteTimeDomainData(timeData);
-	for (var i = 0; i< ansT[3].frequencyBinCount; i++){
-		xPos = (i*1.171875);
-		yPos = timeData[i]*0.5 + 10;
-
-		$("#freq1").drawRect({
-			fillStyle:"#F0F0F0",
-			x:xPos+100, y:(yPos-50),
-			width:4,height:4,
-
-		})
-
-	}
 	
 
+// 	ansT[0].fftSize = frameSize;
+// 	ansT[0].getByteTimeDomainData(timeData);
+// 	for (var i = 0; i< ansT[0].frequencyBinCount; i++){
+// 		xPos = (i*1.171875);
+// 		yPos = timeData[i]*0.5 + 10;
+
+// if (yJit == 1){
+// 	changePos = true
+// 	changeNeg = false
+// 	wait = true
+// }
+// else if (yJit == -1){
+// 	changePos = false
+// 	changeNeg = true
+// 	wait = true
+// }
+// else if (wait == true && changePos){
+// 	wait = false
+// 	yJit--
+// }
+// else if (wait == true && changeNeg){
+// 	wait = false
+// 	yJit++
+// }
+// else if (changePos){
+// 	yJit--
+// }
+// else if (changeNeg){
+// 	yJit++
+// }
+
+// 		$("#freq1").drawRect({
+// 			fillStyle:"#00FF00",
+// 			x:xPos, y:(yPos+yJit),
+// 			width:4,height:2,
+// 			shadowBlur:1,
+// 			shadowColor:"#00FF00",
+// 			beginPath: true
+// 		})
+
+// 	}
+
+
+// 	 ansT[1].fftSize = frameSize;
+// 	 ansT[1].getByteTimeDomainData(timeData);
+// 	 for (var i = 0; i< ansT[1].frequencyBinCount; i++){
+// 	 	xPos = (i*1.171875);
+// 	 	yPos = timeData[i]*0.5 + 10;
+
+
+
+// 	 	$("#freq2").drawRect({
+// 	 		fillStyle:"#FF0000",
+// 			x:xPos, y:(yPos+yJit),
+// 			width:4,height:2,
+// 			shadowBlur:1,
+// 			shadowColor:"#FF0000",
+// 			beginPath: true
+// 	 	})
+
+// 	 }
+
+	 	ansT[2].fftSize = frameSize;
+	 ansT[2].getByteTimeDomainData(timeData);
+	 for (var i = 0; i< ansT[2].frequencyBinCount; i++){
+	 	xPos = (i*1.171875);
+	 	yPos = timeData[i]*0.5 + 10;
+
+	 	$("#freq3").drawRect({
+	 		fillStyle:"#0000FF",
+			x:xPos, y:(yPos+yJit),
+			width:4,height:2,
+			shadowBlur:2,
+			shadowColor:"#0000FF",
+			beginPath: true
+	 	})
+
+	 }
+
+	 	ansT[3].fftSize = frameSize;
+	 ansT[3].getByteTimeDomainData(timeData);
+	 for (var i = 0; i< ansT[3].frequencyBinCount; i++){
+	 	xPos = (i*1.171875);
+	 	yPos = timeData[i]*0.5 + 10;
+
+	 	$("#freq4").drawRect({
+	 		fillStyle:"#F0F0F0",
+			x:xPos, y:(yPos+yJit),
+			width:4,height:2,
+			shadowBlur:2,
+			shadowColor:"#F0F0F0",
+			beginPath: true
+	 	})
+
+	 }
+
 }
-// frameSwitch();
+ // calls the function to draw the frames
+frameSwitch();
 
 var osc = {};
 
@@ -180,6 +252,12 @@ $("body").append(audio);
 	playing = context.createMediaElementSource(audio);
 	playing.connect(ans[0]);
 	playing.connect(ansT[0]);
+	playing.connect(ans[1]);
+	playing.connect(ansT[1])
+	playing.connect(ans[2]);
+	playing.connect(ansT[2])
+	playing.connect(ans[3]);
+	playing.connect(ansT[3])
 	playing.connect(context.destination);
 	
 
@@ -196,7 +274,14 @@ $("body").append(audio);
 	playing = context.createMediaElementSource(audio);
 	playing.connect(ans[0]);
 	playing.connect(ansT[0])
-	playing.connect(context.destination);
+	playing.connect(ans[1]);
+	playing.connect(ansT[1])
+	playing.connect(ans[2]);
+	playing.connect(ansT[2])
+	playing.connect(ans[3]);
+	playing.connect(ansT[3])
+
+	playing.connect(bus[0].input);
 	
 
 	audio.play(0);

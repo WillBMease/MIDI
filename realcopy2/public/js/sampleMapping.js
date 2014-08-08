@@ -88,6 +88,9 @@ if(check != 200  && check != 49 && check != 96){
     source1.buffer = noteNode[index][mappedKey];
     
     source1.connect(bus[index].input);
+    source1.connect(bus[1].input);
+    source1.connect(bus[2].input);
+    source1.connect(bus[3].input);
     source1.start(0);
 
     source1.onended = function() {

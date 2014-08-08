@@ -156,13 +156,14 @@ octaveMsg[1] = 7
 
 function transpose(index, noteInput){
 
+console.log(noteInput)
 	// 1
 	if(noteInput == 49 && octave[index] < globalOctave){
 		octave[index] = octave[index] + 1;
 		octaveMsg[2] = octave[index]
 	}
 	// ~
-	if(noteInput == 96 && octave[index] != 0){
+	if(noteInput == 192 && octave[index] != 0){
 		octave[index] = octave[index] - 1;
 		octaveMsg[2] = octave[index]
 	}
