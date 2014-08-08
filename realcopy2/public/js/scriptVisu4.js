@@ -12,10 +12,10 @@ var  timeData = new Uint8Array(ansT[0].frequencyBinCount);
 var frameSkip = 4;
 
 var frameSwitch = function() {
-	if (frameSkip % 2 === 0){
+	if (frameSkip % 4 === 0){
 		setTimeout(function(){
 		draw();
-		}, 3)
+		}, 10)
 		
 		frameSkip ++;
 	}

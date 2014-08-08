@@ -139,8 +139,6 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 	sampleID++
 
-	// if (sampleID > 30)
-	// 	sampleID = 0
 
 }
 
