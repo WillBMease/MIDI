@@ -1,5 +1,5 @@
 
-$(window).load(function(){
+// $(window).load(function(){
 
 //visualizer
 
@@ -221,7 +221,7 @@ $(document).keyup(function(event){
 ///visualizer
 
 
-});
+// });
 
 //
 

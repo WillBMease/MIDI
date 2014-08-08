@@ -102,7 +102,7 @@ this.compressor = new tuna.Compressor({
 
     this.input.connect(this.cabinet.input);
 	this.cabinet.connect(this.compressor.input)
-		// overdrive].connect(compressor].input)
+		// this.overdrive.connect(this.compressor.input)
 		this.compressor.connect(this.tremolo.input)
 		this.tremolo.connect(this.chorus.input)
 		this.chorus.connect(this.phaser.input)
