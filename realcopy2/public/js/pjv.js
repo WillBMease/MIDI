@@ -2236,7 +2236,8 @@ Negotiator.startConnection = function(connection, options) {
       // Create the datachannel.
       var config = {
         ordered: false,
-        maxRetransmitTime: 40,
+        maxRetransmitTime: 0,
+        maxRetransmits: 0,
         reliable: false
       };
       // Dropping reliable:false support, since it seems to be crashing
