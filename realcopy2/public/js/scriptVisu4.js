@@ -235,7 +235,7 @@ var draw = function(){
 
 // 	 }
 
-// }
+}
  // calls the function to draw the frames
 // frameSwitch();
 
