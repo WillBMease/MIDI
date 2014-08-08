@@ -104,7 +104,7 @@ var draw = function(){
 
 		$("#freq1").drawRect({
 			fillStyle:"#00FF00",
-			x:xPos, y:(yPos),
+			x:xPos-200, y:(yPos+100),
 			width:4,height:4,
 
 		})
@@ -119,7 +119,7 @@ var draw = function(){
 
 		$("#freq1").drawRect({
 			fillStyle:"#FF0000",
-			x:xPos+20, y:(yPos+20),
+			x:xPos+200, y:(yPos+100),
 			width:4,height:4,
 
 		})
@@ -134,7 +134,7 @@ var draw = function(){
 
 		$("#freq1").drawRect({
 			fillStyle:"#0000FF",
-			x:xPos-20, y:(yPos-20),
+			x:xPos-200, y:(yPos-100),
 			width:4,height:4,
 
 		})
@@ -149,7 +149,7 @@ var draw = function(){
 
 		$("#freq1").drawRect({
 			fillStyle:"#F0F0F0",
-			x:xPos+20, y:(yPos-20),
+			x:xPos+200, y:(yPos-100),
 			width:4,height:4,
 
 		})
