@@ -2236,7 +2236,7 @@ Negotiator.startConnection = function(connection, options) {
       // Create the datachannel.
       var config = {
         ordered: false,
-        maxRetransmitTime: 25,
+        maxRetransmitTime: 0,
         //maxRetransmits: 0,
         reliable: false
       };
