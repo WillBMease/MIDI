@@ -12,8 +12,10 @@ var  timeData = new Uint8Array(ansT[0].frequencyBinCount);
 var frameSkip = 4;
 
 var frameSwitch = function() {
-	if (frameSkip % 1 === 0){
+	if (frameSkip % 2 === 0){
+		setTimeout(function(){
 		draw();
+		}, 3)
 		
 		frameSkip ++;
 	}
@@ -30,7 +32,7 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	ans[0].fftSize = 128;
+	ans[0].fftSize = 256;
 	ans[0].getByteFrequencyData(soundData);
 	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
 	// 	zX = (((i-3) * 7) +3)
@@ -96,8 +98,10 @@ var draw = function(){
 
 
 	// }
-	ansT[0].fftSize = 128;
+	ansT[0].fftSize = 256;
 	ansT[0].getByteTimeDomainData(timeData);
+
+
 	for (var i = 0; i< ansT[0].frequencyBinCount; i++){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
@@ -111,11 +115,14 @@ var draw = function(){
 
 	}
 
-	ansT[1].fftSize = 128;
+
+	ansT[1].fftSize = 256;
 	ansT[1].getByteTimeDomainData(timeData);
 	for (var i = 0; i< ansT[1].frequencyBinCount; i++){
 		xPos = (i*1.171875);
 		yPos = timeData[i]*0.5 + 10;
+
+
 
 		$("#freq1").drawRect({
 			fillStyle:"#FF0000",
@@ -126,7 +133,7 @@ var draw = function(){
 
 	}
 
-		ansT[2].fftSize = 128;
+		ansT[2].fftSize = 256;
 	ansT[2].getByteTimeDomainData(timeData);
 	for (var i = 0; i< ansT[2].frequencyBinCount; i++){
 		xPos = (i*1.171875);
@@ -141,7 +148,7 @@ var draw = function(){
 
 	}
 
-		ansT[3].fftSize = 128;
+		ansT[3].fftSize = 256;
 	ansT[3].getByteTimeDomainData(timeData);
 	for (var i = 0; i< ansT[3].frequencyBinCount; i++){
 		xPos = (i*1.171875);
