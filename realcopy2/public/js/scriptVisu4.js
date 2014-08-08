@@ -165,7 +165,7 @@ var draw = function(){
 	
 
 }
-frameSwitch();
+// frameSwitch();
 
 var osc = {};
 
