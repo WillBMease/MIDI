@@ -142,7 +142,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
           }
 
         if (calculate) {
-            triggerSample(index, data) ;
+            triggerSample(index, data, 'sample') ;
             sampleCheck.push(data[0])
           }
      }
