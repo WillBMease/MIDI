@@ -30,8 +30,8 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	// ans[0].fftSize = 128;
-	// ans[0].getByteFrequencyData(soundData);
+	ans[0].fftSize = 128;
+	ans[0].getByteFrequencyData(soundData);
 	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
 	// 	zX = (((i-3) * 7) +3)
 	// 	$('#visualizer').drawLine({
@@ -85,9 +85,9 @@ var draw = function(){
 
 
 
-	// 		strokeStyle: "#000000",
-	// 		strokeWidth:2,
-	// 		x1: x1, y1: z1, x2:x2,y2:z2,
+			// strokeStyle: "#000000",
+			// strokeWidth:2,
+			// x1: x1, y1: z1, x2:x2,y2:z2,
 
 
 
