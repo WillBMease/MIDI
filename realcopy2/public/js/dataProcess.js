@@ -79,7 +79,7 @@ var fullChk = 0
               logRTT[0]++
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          
-          if (data[0] % 1000 == 0){
+          if (data[0] % 500 == 0){
 
 var under25 = logRTT[0] + logRTT[1] + logRTT[2] + logRTT[3] + logRTT[4]
 var over25 = logRTT[5] + logRTT[6] + logRTT[7]
