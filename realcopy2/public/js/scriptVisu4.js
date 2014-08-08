@@ -30,72 +30,72 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	ans[0].fftSize = 128;
-	ans[0].getByteFrequencyData(soundData);
-	for (var i = 3; i<ans[0].frequencyBinCount; i++){
-		zX = (((i-3) * 7) +3)
-		$('#visualizer').drawLine({
-		  strokeStyle: "#0008FF",
-		  strokeWidth: 7,
-		  x1: zX, y1:300,
-		  x2: zX, y2:300-soundData[i]*1.17,
-		});
-	}
+	// ans[0].fftSize = 128;
+	// ans[0].getByteFrequencyData(soundData);
+	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
+	// 	zX = (((i-3) * 7) +3)
+	// 	$('#visualizer').drawLine({
+	// 	  strokeStyle: "#0008FF",
+	// 	  strokeWidth: 7,
+	// 	  x1: zX, y1:300,
+	// 	  x2: zX, y2:300-soundData[i]*1.17,
+	// 	});
+	// }
 
-	for (var i = 3; i<ans[0].frequencyBinCount; i++){
+	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
-			var xX1 = Math.cos((i-2)*5.25)
-			var x1 = 150 + 0.1*xX1
-			var zZ1 = Math.sin((i-2)*5.25)
-			var z1 = 75 + 0.1*zZ1
+	// 		var xX1 = Math.cos((i-2)*5.25)
+	// 		var x1 = 150 + 0.1*xX1
+	// 		var zZ1 = Math.sin((i-2)*5.25)
+	// 		var z1 = 75 + 0.1*zZ1
 
-			var xX2 = Math.cos((i-2)*5.25)
-			var x2 = 150 +(0.1+(soundData[i]*0.4))*xX2
-			var zZ2 = Math.sin((i-2)*5.25)
-			var z2 = 75+ (0.1+(soundData[i]*0.4))*zZ2
-		$("#spiral").drawLine({
-
-
-			strokeStyle: "#FF0000",
-			strokeWidth:5,
-			x1: x1, y1: z1, x2:x2,y2:z2,
+	// 		var xX2 = Math.cos((i-2)*5.25)
+	// 		var x2 = 150 +(0.1+(soundData[i]*0.4))*xX2
+	// 		var zZ2 = Math.sin((i-2)*5.25)
+	// 		var z2 = 75+ (0.1+(soundData[i]*0.4))*zZ2
+	// 	$("#spiral").drawLine({
 
 
-		})
+	// 		strokeStyle: "#FF0000",
+	// 		strokeWidth:5,
+	// 		x1: x1, y1: z1, x2:x2,y2:z2,
 
 
-	}
-
-	for (var i = 3; i<ans[0].frequencyBinCount; i++){
-
-			var xX1 = Math.cos((i-2)/5.25)
-			var x1 = 150 + 10*xX1
-			var zZ1 = Math.sin((i-2)/5.25)
-			var z1 = 75 + 10*zZ1
-
-			var xX2 = Math.cos((i-2)/5.25)
-			var x2 = 150 +(10+(soundData[i]*0.2))*xX2
-			var zZ2 = Math.sin((i-2)/5.25)
-			var z2 = 75+ (10+(soundData[i]*0.2))*zZ2
-
-			var hue = i/ans[0].frequencyBinCount * 360;
-			var hueS = hue.toString();
-		$("#cut").drawLine({
+	// 	})
 
 
+	// }
 
+	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
-			strokeStyle: "#000000",
-			strokeWidth:2,
-			x1: x1, y1: z1, x2:x2,y2:z2,
+	// 		var xX1 = Math.cos((i-2)/5.25)
+	// 		var x1 = 150 + 10*xX1
+	// 		var zZ1 = Math.sin((i-2)/5.25)
+	// 		var z1 = 75 + 10*zZ1
+
+	// 		var xX2 = Math.cos((i-2)/5.25)
+	// 		var x2 = 150 +(10+(soundData[i]*0.2))*xX2
+	// 		var zZ2 = Math.sin((i-2)/5.25)
+	// 		var z2 = 75+ (10+(soundData[i]*0.2))*zZ2
+
+	// 		var hue = i/ans[0].frequencyBinCount * 360;
+	// 		var hueS = hue.toString();
+	// 	$("#cut").drawLine({
 
 
 
-		})
+
+	// 		strokeStyle: "#000000",
+	// 		strokeWidth:2,
+	// 		x1: x1, y1: z1, x2:x2,y2:z2,
 
 
 
-	}
+	// 	})
+
+
+
+	// }
 	ansT[0].fftSize = 256;
 	ansT[0].getByteTimeDomainData(timeData);
 	for (var i = 0; i< ansT[0].frequencyBinCount; i++){
