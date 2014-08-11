@@ -24,7 +24,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(pinger, 1000)
+      refreshPing = setInterval(quantTest, 1000)
 }
 
 else if (pingActive) {
@@ -59,7 +59,7 @@ pingID++
 function quantTest(){
       quantMsg[0] = quantID
       quantMsg[1] = '12'
-      quantMsg[2] = +new Date()
+      quantMsg[2] = new Date()
 
     for (var i = 1 ; i < userLimit ; i++)
 {
