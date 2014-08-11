@@ -24,7 +24,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(quantTest, 1000)
+      refreshPing = setInterval(pinger, 1000)
 }
 
 else if (pingActive) {
@@ -87,7 +87,7 @@ function quantizer(data){
 
 
 else {
-      // console.log(data[0])
+      console.log(data[0])
 
       // benchmark[2] = new Date()
       // var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
