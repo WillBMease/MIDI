@@ -217,12 +217,9 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == '13' && data[2] == '0'){
-      if (pingIncoming[data[0]] != data[0]){
           data[2] = '1' ;
-        for (var y = 0 ; y < 3 ; y++)
+        for (var y = 0 ; y < 1 ; y++)
         user[index].send(data) ;
-        pingIncoming.push(data[0])
-          }    
    }
 
    else if (data[1] == '13' && data[2] == '1'){
