@@ -5,6 +5,7 @@ var pingID = 0
 var pingFirst = 0
 var benchmark = []
 var prevMsg
+var increment = false
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -120,8 +121,12 @@ setTimeout(function(){
             if (user[i] != 0)
                   user[i].send(pingMsg);
       }
-            x++
+      increment = true
 }, 10)
+if (increment){
+            x++
+            increment = false
+      }
 }  
 console.log('<br>')
 }
