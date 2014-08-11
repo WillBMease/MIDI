@@ -111,8 +111,6 @@ function firstPinger() {
 var x = 0
 
 while (x < 20) {
-      
-setTimeout(function(){
 
       startTime[x] = new Date() ;
       pingMsg[0] = x
@@ -121,12 +119,8 @@ setTimeout(function(){
             if (user[i] != 0)
                   user[i].send(pingMsg);
       }
-      increment = true
-}, 10)
-if (increment){
-            x++
-            increment = false
-      }
+      x++
+
 }  
 console.log('<br>')
 }
