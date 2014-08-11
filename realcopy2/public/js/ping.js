@@ -114,13 +114,9 @@ for (var x = 0 ; x < 10 ; x++) {
       pingMsg[0] = x
 
       for (var i = 1 ; i < userLimit ; i++)
-{
-            if (user[i] != 0)
       {
-                  setTimeout(function(){
-                        user[i].send(pingMsg);
-                  }, 10)
-            }
+            if (user[i] != 0)
+                  user[i].send(pingMsg);
       }
 }  
 }
