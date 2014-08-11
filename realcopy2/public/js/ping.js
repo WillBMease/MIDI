@@ -66,7 +66,7 @@ function quantTest(){
 {
       if (user[i] != 0)
       {
-            for (var x = 0 ; x < 1 ; x++) {
+            for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(quantMsg);
             }
       }
@@ -84,7 +84,7 @@ function quantizer(data){
       }
 
 
-if (data[0] != 0){
+else {
 
       benchmark[1] = new Date()
 

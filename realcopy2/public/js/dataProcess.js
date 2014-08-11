@@ -29,6 +29,7 @@ var midiCheck = []
 var sampleCheck = []
 var logRTT = []
 var lowRtt = 1000
+var quantCt = []
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -214,7 +215,10 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 12){
+      if (quantCt[data[0]] != data[0]){
       quantizer(data)
+      quantCt[data[0]] = data[0]
+    }
    }
 
    else if (data[1] == '13' && data[2] == '0'){
