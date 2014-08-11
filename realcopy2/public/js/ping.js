@@ -111,9 +111,10 @@ var x = 0
 
 while (x < 10) {
       
+setTimeout(function(){
+
       startTime[x] = new Date() ;
       pingMsg[0] = x
-setTimeout(function(){
       for (var i = 1 ; i < userLimit ; i++)
       {
             if (user[i] != 0)
