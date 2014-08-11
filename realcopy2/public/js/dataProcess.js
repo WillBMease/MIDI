@@ -229,7 +229,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
             if (rttTime < lowRtt)
               lowRtt = rttTime
             console.log('Latency is ' + rttTime + 'ms');
-
+console.log(data[0])
             if (data[0] == '18')
               console.log('Low RTT is ' + lowRtt)
             // var rttString = rttTime.toString() ;
