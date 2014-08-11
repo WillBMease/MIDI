@@ -60,8 +60,6 @@ function quantTest(){
       quantMsg[1] = '12'
       quantMsg[2] = +new Date()
 
-      console.log(quantMsg[2])
-
     for (var i = 1 ; i < userLimit ; i++)
 {
       if (user[i] != 0)
@@ -111,7 +109,7 @@ else {
 
 }
       
-      prevMsg = data[2]
+      // prevMsg = data[2]
 
 }
 
