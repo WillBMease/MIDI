@@ -87,7 +87,7 @@ function quantizer(data){
 
 
 else {
-      console.log(data[0])
+      console.log('ID: ' + data[0])
 
       // benchmark[2] = new Date()
       // var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
@@ -115,9 +115,9 @@ else {
       var benchDiff = benchmark[2] - benchmark[1]
       var realDiff = data[2] - benchmark[0]
       var comparison = realDiff - benchDiff
-      console.log(benchDiff)
-      console.log(realDiff)
-      console.log(comparison)
+      console.log('receiving side: ' + benchDiff)
+      console.log('sending side: ' + realDiff)
+      console.log('sending - receiving: ' + comparison)
       console.log('')
 
 }
