@@ -216,8 +216,21 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       quantizer(data)
    }
 
-   else if (data[1] == 13){
+   else if (data[1] == '13' && data[2] == '0'){
+      if (pingIncoming[data[0]] != data[0]){
+          data[2] = '1' ;
+        for (var y = 0 ; y < 3 ; y++)
+        user[index].send(data) ;
+        pingIncoming.push(data[0])
+          }    
+   }
 
+   else if (data[1] == '13' && data[2] == '1'){
+            endTime = new Date();
+            rttTime = (endTime - startTime[data[0]]) / 2 ;
+            console.log('Latency is ' + rttTime + 'ms');
+            var rttString = rttTime.toString() ;
+            // pingCheck.push(data[0])
    }
 
     });
