@@ -107,17 +107,20 @@ if (data[0] != 0){
 function firstPinger() {
       pingMsg[1] = 13
       pingMsg[2] = '0'
+var x = 0
 
-for (var x = 0 ; x < 10 ; x++) {
+while (x < 10) {
       
       startTime[x] = new Date() ;
       pingMsg[0] = x
-
+setTimeout(function(){
       for (var i = 1 ; i < userLimit ; i++)
       {
             if (user[i] != 0)
                   user[i].send(pingMsg);
       }
+}, 10)
+      x++
 }  
 }
 
