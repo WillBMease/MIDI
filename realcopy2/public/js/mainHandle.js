@@ -46,6 +46,7 @@ sampleMsg[2] = null ;
 sampleMsg[3] = null ;
 sampleMsg[4] = null ;
 
+
 var octave = []
 
 for (var i = 0 ; i < userLimit ; i++)
@@ -122,7 +123,7 @@ whichType = 'synth'
 }
 }
 
-else {
+else if (!sampleActive){     // make sure to disable this part
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
@@ -136,11 +137,10 @@ for (var i = 1 ; i < userLimit ; i++) {
 		}
 	}
 }
-
 	sampleID++
-
-
 }
+
+// else if ()
 
 });
 

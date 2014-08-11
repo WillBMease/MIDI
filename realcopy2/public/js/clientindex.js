@@ -115,7 +115,8 @@ function gridGenerator(){
 
 		$(this).css({
 
-			backgroundColor:"#00FF01"
+			// backgroundColor:"#00FF01"
+			backgroundColor: "#92F5FD"
 
 		});
 
@@ -464,7 +465,7 @@ if (mappingActive) {
 			noteUpArray[upPress] = ev.data
 			console.log(noteUpArray)
 				$("#btn" + upPress).css({
-				backgroundColor:"#00FF01"
+				backgroundColor:"#92F5FD"
 				});
 
 			buttonPress++;
@@ -490,7 +491,7 @@ if (mappingActive) {
 			setTimeout(function(){
 			  for (var i = 0 ; i <= upPress ; i++){
 				$("#btn" + i).css({
-				backgroundColor:"#00FF01"
+				backgroundColor:"#92F5FD"
 				});
 			  }
 			}, 600)
@@ -506,7 +507,7 @@ if (mappingActive) {
 			setTimeout(function(){
 				for (var i = 0 ; i <= upPress ; i++){
 				$("#btn" + i).css({
-				backgroundColor:"#00FF01"
+				backgroundColor:"#92F5FD"
 				});
 			}
 			}, 1200)
@@ -532,7 +533,7 @@ if (mappingActive) {
 	      	{
 
 	      		$("#btn" + x).css({
-				backgroundColor:"#00FF01"
+				backgroundColor:"#92F5FD"
 				});
 	      				var vel = ev.data[2]
 

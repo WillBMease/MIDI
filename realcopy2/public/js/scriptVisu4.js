@@ -39,32 +39,32 @@ var frameSwitch = function() {
 
 var draw = function(){
 	$("canvas").clearCanvas();
-	// ans[0].fftSize = frameSize;
-	// ans[0].getByteFrequencyData(soundData);
-	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
-	// 	zX = (((i-3) * 7) +3)
-	// 	$('#visualizer1').drawLine({
-	// 	  strokeStyle: "#00FF00",
-	// 	  strokeWidth: 6,
-	// 	  x1: zX, y1:300,
-	// 	  x2: zX, y2:300-soundData[i]*1.17,
-	// 	  beginPath: true
-	// 	});
-	// }
+	ans[0].fftSize = frameSize;
+	ans[0].getByteFrequencyData(soundData);
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
+		zX = (((i-3) * 7) +3)
+		$('#visualizer1').drawLine({
+		  strokeStyle: "#00FF00",
+		  strokeWidth: 6,
+		  x1: zX, y1:300,
+		  x2: zX, y2:300-soundData[i]*1.17,
+		  beginPath: true
+		});
+	}
 
 
-	// 	ans[1].fftSize = frameSize;
-	// ans[1].getByteFrequencyData(soundData);
-	// for (var i = 3; i<ans[1].frequencyBinCount; i++){
-	// 	zX = (((i-3) * 7) +3)
-	// 	$('#visualizer2').drawLine({
-	// 	  strokeStyle: "#FF0000",
-	// 	  strokeWidth: 6,
-	// 	  x1: zX, y1:300,
-	// 	  x2: zX, y2:300-soundData[i]*1.17,
-	// 	  beginPath: true
-	// 	});
-	// }
+		ans[1].fftSize = frameSize;
+	ans[1].getByteFrequencyData(soundData);
+	for (var i = 3; i<ans[1].frequencyBinCount; i++){
+		zX = (((i-3) * 7) +3)
+		$('#visualizer2').drawLine({
+		  strokeStyle: "#FF0000",
+		  strokeWidth: 6,
+		  x1: zX, y1:300,
+		  x2: zX, y2:300-soundData[i]*1.17,
+		  beginPath: true
+		});
+	}
 
 
 	// 	ans[2].fftSize = frameSize;
@@ -95,48 +95,48 @@ var draw = function(){
 	// 	});
 	// }
 
-	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
-	// 		var xX1 = Math.cos((i-2)*5.25)
-	// 		var x1 = 150 + 0.1*xX1
-	// 		var zZ1 = Math.sin((i-2)*5.25)
-	// 		var z1 = 75 + 0.1*zZ1
+			var xX1 = Math.cos((i-2)*5.25)
+			var x1 = 150 + 0.1*xX1
+			var zZ1 = Math.sin((i-2)*5.25)
+			var z1 = 75 + 0.1*zZ1
 
-	// 		var xX2 = Math.cos((i-2)*5.25)
-	// 		var x2 = 150 +(0.1+(soundData[i]*0.4))*xX2
-	// 		var zZ2 = Math.sin((i-2)*5.25)
-	// 		var z2 = 75+ (0.1+(soundData[i]*0.4))*zZ2
+			var xX2 = Math.cos((i-2)*5.25)
+			var x2 = 150 +(0.1+(soundData[i]*0.4))*xX2
+			var zZ2 = Math.sin((i-2)*5.25)
+			var z2 = 75+ (0.1+(soundData[i]*0.4))*zZ2
 	
-	// 	$("#spiral").drawLine({
-	// 		strokeStyle: "#FF0000",
-	// 		strokeWidth:5,
-	// 		x1: x1, y1: z1, x2:x2,y2:z2,
-	// 		beginPath: true
-	// 	})
-	// }
+		$("#spiral").drawLine({
+			strokeStyle: "#FF0000",
+			strokeWidth:5,
+			x1: x1, y1: z1, x2:x2,y2:z2,
+			beginPath: true
+		})
+	}
 
-	// for (var i = 3; i<ans[0].frequencyBinCount; i++){
+	for (var i = 3; i<ans[0].frequencyBinCount; i++){
 
-	// 		var xX1 = Math.cos((i-2)/5.25)
-	// 		var x1 = 150 + 10*xX1
-	// 		var zZ1 = Math.sin((i-2)/5.25)
-	// 		var z1 = 75 + 10*zZ1
+			var xX1 = Math.cos((i-2)/5.25)
+			var x1 = 150 + 10*xX1
+			var zZ1 = Math.sin((i-2)/5.25)
+			var z1 = 75 + 10*zZ1
 
-	// 		var xX2 = Math.cos((i-2)/5.25)
-	// 		var x2 = 150 +(10+(soundData[i]*0.2))*xX2
-	// 		var zZ2 = Math.sin((i-2)/5.25)
-	// 		var z2 = 75+ (10+(soundData[i]*0.2))*zZ2
+			var xX2 = Math.cos((i-2)/5.25)
+			var x2 = 150 +(10+(soundData[i]*0.2))*xX2
+			var zZ2 = Math.sin((i-2)/5.25)
+			var z2 = 75+ (10+(soundData[i]*0.2))*zZ2
 
-	// 		var hue = i/ans[0].frequencyBinCount * 360;
-	// 		var hueS = hue.toString();
-	// 	$("#cut").drawLine({
+			var hue = i/ans[0].frequencyBinCount * 360;
+			var hueS = hue.toString();
+		$("#cut").drawLine({
 
-	// 		strokeStyle: "#000000",
-	// 		strokeWidth:2,
-	// 		x1: x1, y1: z1, x2:x2,y2:z2,
-	//		beginPath: true
-	// 	})
-	// }
+			strokeStyle: "#000000",
+			strokeWidth:2,
+			x1: x1, y1: z1, x2:x2,y2:z2,
+			beginPath: true
+		})
+	}
 	
 
 // 	ansT[0].fftSize = frameSize;
@@ -145,30 +145,30 @@ var draw = function(){
 // 		xPos = (i*1.171875);
 // 		yPos = timeData[i]*0.5 + 10;
 
-// if (yJit == 1){
-// 	changePos = true
-// 	changeNeg = false
-// 	wait = true
-// }
-// else if (yJit == -1){
-// 	changePos = false
-// 	changeNeg = true
-// 	wait = true
-// }
-// else if (wait == true && changePos){
-// 	wait = false
-// 	yJit--
-// }
-// else if (wait == true && changeNeg){
-// 	wait = false
-// 	yJit++
-// }
-// else if (changePos){
-// 	yJit--
-// }
-// else if (changeNeg){
-// 	yJit++
-// }
+if (yJit == 1){
+	changePos = true
+	changeNeg = false
+	wait = true
+}
+else if (yJit == -1){
+	changePos = false
+	changeNeg = true
+	wait = true
+}
+else if (wait == true && changePos){
+	wait = false
+	yJit--
+}
+else if (wait == true && changeNeg){
+	wait = false
+	yJit++
+}
+else if (changePos){
+	yJit--
+}
+else if (changeNeg){
+	yJit++
+}
 
 // 		$("#freq1").drawRect({
 // 			fillStyle:"#00FF00",
@@ -201,43 +201,43 @@ var draw = function(){
 
 // 	 }
 
-// 	 	ansT[2].fftSize = frameSize;
-// 	 ansT[2].getByteTimeDomainData(timeData);
-// 	 for (var i = 0; i< ansT[2].frequencyBinCount; i++){
-// 	 	xPos = (i*1.171875);
-// 	 	yPos = timeData[i]*0.5 + 10;
+	 	ansT[2].fftSize = frameSize;
+	 ansT[2].getByteTimeDomainData(timeData);
+	 for (var i = 0; i< ansT[2].frequencyBinCount; i++){
+	 	xPos = (i*1.171875);
+	 	yPos = timeData[i]*0.5 + 10;
 
-// 	 	$("#freq3").drawRect({
-// 	 		fillStyle:"#0000FF",
-// 			x:xPos, y:(yPos+yJit),
-// 			width:4,height:2,
-// 			shadowBlur:2,
-// 			shadowColor:"#0000FF",
-// 			beginPath: true
-// 	 	})
+	 	$("#freq3").drawRect({
+	 		fillStyle:"#0000FF",
+			x:xPos, y:(yPos+yJit),
+			width:4,height:2,
+			shadowBlur:2,
+			shadowColor:"#0000FF",
+			beginPath: true
+	 	})
 
-// 	 }
+	 }
 
-// 	 	ansT[3].fftSize = frameSize;
-// 	 ansT[3].getByteTimeDomainData(timeData);
-// 	 for (var i = 0; i< ansT[3].frequencyBinCount; i++){
-// 	 	xPos = (i*1.171875);
-// 	 	yPos = timeData[i]*0.5 + 10;
+	 	ansT[3].fftSize = frameSize;
+	 ansT[3].getByteTimeDomainData(timeData);
+	 for (var i = 0; i< ansT[3].frequencyBinCount; i++){
+	 	xPos = (i*1.171875);
+	 	yPos = timeData[i]*0.5 + 10;
 
-// 	 	$("#freq4").drawRect({
-// 	 		fillStyle:"#F0F0F0",
-// 			x:xPos, y:(yPos+yJit),
-// 			width:4,height:2,
-// 			shadowBlur:2,
-// 			shadowColor:"#F0F0F0",
-// 			beginPath: true
-// 	 	})
+	 	$("#freq4").drawRect({
+	 		fillStyle:"#F0F0F0",
+			x:xPos, y:(yPos+yJit),
+			width:4,height:2,
+			// shadowBlur:2,
+			// shadowColor:"#F0F0F0",
+			beginPath: true
+	 	})
 
-// 	 }
+	 }
 
 }
  // calls the function to draw the frames
-// frameSwitch();
+frameSwitch();
 
 var osc = {};
 
