@@ -79,16 +79,17 @@ quantID++
 function quantizer(data){
       if (data[0] == 0) {
             benchmark[0] = data[2]
-            benchmark[2] = new Date()
+            benchmark[1] = new Date()
+            benchmark[3] = 0
             prevMsg = data[2]
       }
 
 
 else {
 
-      benchmark[1] = new Date()
-
-      var benchDiff = benchmark[1] - benchmark[2]
+      benchmark[2] = new Date()
+      var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
+      benchmark[3] += benchDiff
       var benchSt = benchDiff.toString()
 
       console.log("bench diff is " + benchSt)
@@ -104,8 +105,6 @@ else {
       console.log ('variance is ' + latSt)
 
       console.log('')
-
-      benchmark[2] = benchmark[1]
 
 }
       
