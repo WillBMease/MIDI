@@ -86,28 +86,35 @@ function quantizer(data){
 
 
 else {
-      console.log(data[0])
+      // console.log(data[0])
+
+      // benchmark[2] = new Date()
+      // var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
+      // benchmark[3] += benchDiff
+      // var benchSt = benchDiff.toString()
+
+      // console.log(benchmark[3])
+
+      // console.log("bench diff is " + benchSt)
+
+      // var diff = data[2] - prevMsg
+      // var diffSt = diff.toString()
+
+      // console.log("difference is " + diffSt)
+
+      // var latVar = benchDiff - diff
+      // var latSt = latVar.toString()
+
+      // console.log ('variance is ' + latSt)
+
+      // console.log('')
 
       benchmark[2] = new Date()
-      var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
-      benchmark[3] += benchDiff
-      var benchSt = benchDiff.toString()
 
-      console.log(benchmark[3])
-
-      console.log("bench diff is " + benchSt)
-
-      var diff = data[2] - prevMsg
-      var diffSt = diff.toString()
-
-      console.log("difference is " + diffSt)
-
-      var latVar = benchDiff - diff
-      var latSt = latVar.toString()
-
-      console.log ('variance is ' + latSt)
-
-      console.log('')
+      var benchDiff = benchmark[2] - benchmark[1]
+      var realDiff = data[2] - benchmark[0]
+      console.log(benchDiff)
+      console.log(realDiff)
 
 }
       
