@@ -109,7 +109,7 @@ function firstPinger() {
       pingMsg[2] = '0'
 var x = 0
 
-while (x < 10) {
+while (x < 20) {
       
 setTimeout(function(){
 

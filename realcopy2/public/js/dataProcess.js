@@ -28,6 +28,7 @@ var pingIncoming = []
 var midiCheck = []
 var sampleCheck = []
 var logRTT = []
+var lowRtt = 1000
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -225,8 +226,14 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    else if (data[1] == '13' && data[2] == '1'){
             endTime = new Date();
             rttTime = (endTime - startTime[data[0]]) / 2 ;
+
+            if (rttTime < lowRtt)
+              lowRtt = rttTime
             console.log('Latency is ' + rttTime + 'ms');
-            var rttString = rttTime.toString() ;
+
+            if (data[0] == 19)
+              console.log('Low RTT is ' + lowRtt)
+            // var rttString = rttTime.toString() ;
             // pingCheck.push(data[0])
    }
 
