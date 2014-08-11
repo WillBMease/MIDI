@@ -24,7 +24,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(quantTest, 1000)
+      refreshPing = setInterval(pinger, 1000)
 }
 
 else if (pingActive) {
