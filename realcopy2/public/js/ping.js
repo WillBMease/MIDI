@@ -40,11 +40,12 @@ function pinger() {
 pingMsg[0] = pingID
 pingMsg[2] = '0' ;
 
+      startTime[pingID] = new Date() ;
+
 for (var i = 1 ; i < userLimit ; i++)
 {
       if (user[i] != 0)
       {
-      startTime[pingID] = new Date() ;
             for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(pingMsg);
             }
@@ -113,8 +114,11 @@ else {
 
       var benchDiff = benchmark[2] - benchmark[1]
       var realDiff = data[2] - benchmark[0]
+      var comparison = realDiff - benchDiff
       console.log(benchDiff)
       console.log(realDiff)
+      console.log(comparison)
+      console.log('')
 
 }
       
