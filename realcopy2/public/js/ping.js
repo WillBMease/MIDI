@@ -94,6 +94,7 @@ else {
       benchmark[3] += benchDiff
       var benchSt = benchDiff.toString()
 
+      console.log(data[0])
       console.log("bench diff is " + benchSt)
 
       var diff = data[2] - prevMsg

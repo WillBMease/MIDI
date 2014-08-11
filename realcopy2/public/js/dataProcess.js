@@ -60,7 +60,9 @@ var fullChk = 0
           singleChk++
             endTime = new Date();
             rttTime = (endTime - startTime[data[0]]) / 2 ;
+            console.log(data[0])
             console.log('Latency is ' + rttTime + 'ms');
+            console.log('')
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
             if (rttTime > 50)
