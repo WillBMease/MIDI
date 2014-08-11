@@ -231,7 +231,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
    else if (data[1] == '13' && data[2] == '1'){
             endTime = new Date();
-            rttTime = (endTime - startTime[data[0]]) / 2 ;
+            rttTime = (endTime - startTime[data[0]]) ;
             if (rttTime < lowRtt)
               lowRtt = rttTime
             console.log('Latency is ' + rttTime + 'ms');
