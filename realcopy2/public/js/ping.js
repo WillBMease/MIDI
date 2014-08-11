@@ -109,7 +109,7 @@ else {
 
 }
       
-      // prevMsg = data[2]
+      prevMsg = data[2]
 
 }
 
