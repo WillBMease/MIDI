@@ -6,6 +6,7 @@ var pingFirst = 0
 var benchmark = []
 var prevMsg
 var increment = false
+var firstPing = true
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -23,7 +24,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(firstPinger, 1000)
+      refreshPing = setInterval(quantTest, 250)
 }
 
 else if (pingActive) {
@@ -96,6 +97,13 @@ if (data[0] != 0){
       var diffSt = diff.toString()
 
       console.log("difference is " + diffSt)
+
+      var latVar = benchDiff - diff
+      var latSt = latVar.toString()
+
+      console.log ('variance is ' + latSt)
+
+      console.log('')
 
       benchmark[2] = benchmark[1]
 
