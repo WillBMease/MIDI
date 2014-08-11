@@ -46,7 +46,7 @@ var fullChk = 0
       if (data[1] == '0' && data[2] == '0') {
         if (pingIncoming[data[0]] != data[0]){
           data[2] = '1' ;
-        for (var y = 0 ; y < 1 ; y++)
+        for (var y = 0 ; y < 3 ; y++)
         user[index].send(data) ;
         pingIncoming.push(data[0])
           }       

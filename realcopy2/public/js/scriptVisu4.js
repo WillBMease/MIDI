@@ -237,7 +237,7 @@ else if (changeNeg){
 
 }
  // calls the function to draw the frames
-frameSwitch();
+// frameSwitch();
 
 var osc = {};
 
