@@ -30,6 +30,7 @@ var sampleCheck = []
 var logRTT = []
 var lowRtt = 1000
 var quantCt = []
+var beatChk = []
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -193,7 +194,10 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == 10) {
+    if (data[9] != beatChk[data[9]]){
       startSample(index, data[8])
+      beatChk[data[9]] = data[9]
+    }
    }
 
    else if (data[1] == 11){

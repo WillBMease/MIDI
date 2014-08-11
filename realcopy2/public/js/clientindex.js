@@ -4,6 +4,7 @@
 	var pathLink = []
 	var userPad = {}
 	var beatMsg = []
+	var beatID = 0
 
 	for (var i = 0 ; i < userLimit ; i++){
 		userPad[i] = []
@@ -566,13 +567,16 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 		beatMsg[1] = 10
 		beatMsg[7] = sampleID.pathPointer
 		beatMsg[8] = arNum
+		beatMsg[9] = beatID
 		startSample(0, arNum)
 			for (var i = 1 ; i < userLimit ; i++){
 				if (user[i] != 0) {
+					for (var x = 0 ; x < 3 ; x++)
 					user[i].send(beatMsg)
 			   }
 			  }
 			 }	
+			 beatID++
 			}
 	       }
 	      }
