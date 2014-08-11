@@ -230,7 +230,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
               lowRtt = rttTime
             console.log('Latency is ' + rttTime + 'ms');
 console.log(data[0])
-            if (data[0] == '18')
+            if (data[0] == '19')
               console.log('Low RTT is ' + lowRtt)
             // var rttString = rttTime.toString() ;
             // pingCheck.push(data[0])

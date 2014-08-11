@@ -120,8 +120,8 @@ setTimeout(function(){
             if (user[i] != 0)
                   user[i].send(pingMsg);
       }
+            x++
 }, 10)
-      x++
 }  
 console.log('<br>')
 }
