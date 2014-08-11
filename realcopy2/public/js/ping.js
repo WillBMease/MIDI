@@ -122,5 +122,6 @@ setTimeout(function(){
 }, 10)
       x++
 }  
+console.log('<br>')
 }
 
