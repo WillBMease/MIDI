@@ -8,6 +8,7 @@ var prevMsg
 var increment = false
 var firstPing = true
 var recentPing = 100
+var doQuant = false
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -58,9 +59,34 @@ pingID++
 }
 
 function quantTest(){
+
+if (recentPing > 25){
+      pinger()
+}
+
+else if (recentPing <= 25){
+      var setPing = []
+      setPing[1] = 15
+      setPing[2] = recentPing
+      doQuant = true
+
+      for (var i = 1 ; i < userLimit ; i++){
+         if (user[i] != 0){
+            for (var x = 0 ; x < 3 ; x++)
+            user[i].send(setPing)
+          }
+      }
+}
+
+else if (doQuant) {     
       quantMsg[0] = quantID
       quantMsg[1] = '12'
       quantMsg[2] = +new Date()
+      quantMsg[3] = null
+
+      if (quantID == 0){
+            quantMsg[3] = recentPing
+      }
 
     for (var i = 1 ; i < userLimit ; i++)
 {
@@ -74,8 +100,7 @@ function quantTest(){
 
 quantID++
 
-if (recentPing > 50)
-pinger()
+}
 
 }
 
@@ -84,12 +109,14 @@ function quantizer(data){
             benchmark[0] = data[2]
             benchmark[1] = new Date()
             benchmark[3] = 0
+            benchmark[4] = data[3]
             prevMsg = data[2]
       }
 
 
 else {
       console.log('ID: ' + data[0])
+      console.log('recent ping: ' + benchmark[4])
 
       // benchmark[2] = new Date()
       // var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
