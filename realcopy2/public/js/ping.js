@@ -7,6 +7,7 @@ var benchmark = []
 var prevMsg
 var increment = false
 var firstPing = true
+var recentPing = 100
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
