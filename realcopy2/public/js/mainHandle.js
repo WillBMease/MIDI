@@ -137,6 +137,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 $(document).keyup(function(e){
 	stopSynth(0, e.which)
+	oscID++
 	
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
