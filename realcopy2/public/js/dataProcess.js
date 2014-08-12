@@ -31,6 +31,7 @@ var logRTT = []
 var lowRtt = 1000
 var quantCt = []
 var beatChk = []
+var oscChk = []
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -129,27 +130,25 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       else if (data[1] == 1) {          // midi play
        
          var calculate = true
-          for (var i = 0 ; i < midiCheck.length ; i++){
-            if (midiCheck[i] == data[0])
+
+            if (midiCheck[data[0]] == data[0])
               calculate = false
-          }
 
         if (calculate) {
             triggerMidiDevice(index, data) ;
-            midiCheck.push(data[0])
+            midiCheck[data[0]] = data[0]
           }
      }
 
       else if (data[1] == 2) {          // keyboard play
         var calculate = true
-          for (var i = 0 ; i < sampleCheck.length ; i++){
-            if (sampleCheck[i] == data[0])
+            
+            if (sampleCheck[data[0]] == data[0])
               calculate = false
-          }
 
         if (calculate) {
             triggerSample(index, data, 'sample') ;
-            sampleCheck.push(data[0])
+            sampleCheck[data[0]] = data[0]
           }
      }
 
@@ -253,10 +252,20 @@ console.log(data[0])
    }
 
    else if (data[1] == '16'){
-    if (data[3] == '1')
-      playSynth(index, data[2])
-    else if (data[3] == '0')
-      stopSynth(index, data[2])
+     var calculate = true
+       
+        if (oscChk[data[0]] == data[0])
+             calculate = false
+
+        if (calculate) {
+          if (data[3] == '1')
+            playSynth(index, data[2])
+          else if (data[3] == '0')
+            stopSynth(index, data[2])
+
+          oscChk[data[0]] = data[0]
+          }
+
    }
 
 

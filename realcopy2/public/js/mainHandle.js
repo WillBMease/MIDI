@@ -30,6 +30,7 @@
 
 var midiID = 0
 var sampleID = 0
+var oscID = 0
 
 var midiMsg = [] ;
 var sampleMsg = [] ;
@@ -97,7 +98,7 @@ var keypresses = []
 $(document).keydown(function(e) { 
 if(!sampleActive){
 
-	oscMsg[0] = sampleID
+	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;
 	oscMsg[3] = '1'
