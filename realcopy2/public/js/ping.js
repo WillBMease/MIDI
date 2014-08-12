@@ -67,11 +67,11 @@ pingID++
 
 function quantTest(){
 
-if (recentPing > 15 && doQuant == false){
+if (recentPing > 10 && doQuant == false){
       pinger()
 }
 
-else if (recentPing <= 15 && doQuant == false){
+else if (recentPing <= 10 && doQuant == false){
       var setPing = []
       setPing[1] = '15'
       setPing[2] = recentPing / 2
@@ -171,7 +171,7 @@ else {
 //       setTimeout(function(){
 //       triggerSample(0, hardNote, theType)
 // }, delayed)
-      
+
 //       }
 //       else
       triggerSample(0, hardNote, theType)
