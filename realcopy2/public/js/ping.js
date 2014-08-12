@@ -61,11 +61,11 @@ pingID++
 
 function quantTest(){
 
-if (recentPing > 25 && doQuant == false){
+if (recentPing > 15 && doQuant == false){
       pinger()
 }
 
-else if (recentPing <= 25 && doQuant == false){
+else if (recentPing <= 15 && doQuant == false){
       var setPing = []
       setPing[1] = '15'
       setPing[2] = recentPing / 2
@@ -154,7 +154,7 @@ else {
 
       var benchDiff = benchmark[2] - benchmark[1]
       var realDiff = data[2] - benchmark[0]
-      var comparison = realDiff - benchDiff
+      var comparison = benchDiff - realDiff
       console.log('receiving side: ' + benchDiff)
       console.log('sending side: ' + realDiff)
       console.log('sending - receiving: ' + comparison)
