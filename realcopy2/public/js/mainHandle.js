@@ -104,8 +104,11 @@ if(!sampleActive){
 
 	playSynth(0, e.which)
 	for (var i = 1 ; i < userLimit ; i++){
-		if (user[i] != 0)
-			user[i].send(oscMsg)
+		if (user[i] != 0) {
+			for (var x = 0 ; x < 3 ; x++) {
+				user[i].send(oscMsg);
+		}
+	}
 	}
 
 
@@ -135,14 +138,17 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 $(document).keyup(function(e){
 	stopSynth(0, e.which)
+	
 	oscMsg[0] = sampleID
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;
 	oscMsg[3] = '0'
 
 	for (var i = 1 ; i < userLimit ; i++){
-		if (user[i] != 0)
-			user[i].send(oscMsg)
+		if (user[i] != 0) {
+			for (var x = 0 ; x < 3 ; x++) {
+				user[i].send(oscMsg);
+		}
 	}
 })
 
