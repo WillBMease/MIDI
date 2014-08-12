@@ -247,6 +247,8 @@ console.log(data[0])
             // pingCheck.push(data[0])
    }
 
+   else if (data[1] == '15')
+            
     });
           user[index].on('close', function(err){ 
           $('#messages').append('<br>' + user[index].peer + ' has left the chat.'); 
