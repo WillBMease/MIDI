@@ -163,7 +163,7 @@ else {
       var hardNote = []
       hardNote[0] = 0
       hardNote[1] = 0
-      hardNote[2] = 45
+      hardNote[2] = 80
       var theType = 'sample'
       triggerSample(0, hardNote, theType)
 

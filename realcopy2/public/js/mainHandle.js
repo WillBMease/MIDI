@@ -128,7 +128,6 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
 whichType = 'sample'
-console.log(e.which)
 	triggerSample(0, sampleMsg, whichType)
 
 for (var i = 1 ; i < userLimit ; i++) {
