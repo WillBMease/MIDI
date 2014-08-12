@@ -222,9 +222,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
    }
 
    else if (data[1] == '12'){
-    console.log(' in here ')
       if (quantCt[data[0]] != data[0]){
-        console.log(' where you want')
       quantizer(data)
       quantCt[data[0]] = data[0]
     }
@@ -251,6 +249,7 @@ console.log(data[0])
 
    else if (data[1] == '15'){
         benchmark[4] = data[2]
+        doQuant = true
    }
 
     });

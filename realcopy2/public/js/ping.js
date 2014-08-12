@@ -9,7 +9,7 @@ var increment = false
 var firstPing = true
 var recentPing = 100
 var doQuant = false
-var firstQuant = true
+var firstQuant = false
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -70,6 +70,7 @@ else if (recentPing <= 25 && doQuant == false){
       setPing[1] = '15'
       setPing[2] = recentPing / 2
       doQuant = true
+      firstQuant = true
 
       for (var i = 1 ; i < userLimit ; i++){
          if (user[i] != 0){
@@ -81,9 +82,13 @@ else if (recentPing <= 25 && doQuant == false){
 
 if (doQuant == false || doQuant == true) {     
       quantMsg[0] = quantID
-      quantMsg[1] = '12'
       quantMsg[2] = +new Date()
       quantMsg[3] = null
+
+     if (firstQuant){
+            quantMsg[1] = '100'
+            firstQuant = false
+     }
 
       if (quantID == 0){
             quantMsg[3] = recentPing
