@@ -67,7 +67,7 @@ if (recentPing > 25 && doQuant == false){
 
 else if (recentPing <= 25 && doQuant == false){
       var setPing = []
-      setPing[1] = 15
+      setPing[1] = '15'
       setPing[2] = recentPing / 2
       doQuant = true
 
@@ -113,10 +113,10 @@ function quantizer(data){
             prevMsg = data[2]
       }
 
-      else if (doQuant && firstQuant){
-            firstQuant = false
-            benchmark[4] = data[3]
-      }
+      // else if (doQuant && firstQuant){
+      //       firstQuant = false
+      //       benchmark[4] = data[3]
+      // }
 
 
 else {

@@ -250,8 +250,7 @@ console.log(data[0])
    }
 
    else if (data[1] == '15'){
-
-
+        benchmark[4] = data[2]
    }
 
     });
