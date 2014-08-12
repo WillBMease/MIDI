@@ -9,6 +9,7 @@ var increment = false
 var firstPing = true
 var recentPing = 100
 var doQuant = false
+var firstQuant = true
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -67,7 +68,7 @@ if (recentPing > 25 && doQuant == false){
 else if (recentPing <= 25 && doQuant == false){
       var setPing = []
       setPing[1] = 15
-      setPing[2] = recentPing
+      setPing[2] = recentPing / 2
       doQuant = true
 
       for (var i = 1 ; i < userLimit ; i++){
@@ -78,7 +79,7 @@ else if (recentPing <= 25 && doQuant == false){
       }
 }
 
-else if (doQuant) {     
+if (doQuant == false || doQuant == true) {     
       quantMsg[0] = quantID
       quantMsg[1] = '12'
       quantMsg[2] = +new Date()
@@ -105,12 +106,16 @@ quantID++
 }
 
 function quantizer(data){
-      if (data[0] == 0) {
+      if (doQuant == false) {
             benchmark[0] = data[2]
             benchmark[1] = new Date()
             benchmark[3] = 0
-            benchmark[4] = data[3]
             prevMsg = data[2]
+      }
+
+      else if (doQuant && firstQuant){
+            firstQuant = false
+            benchmark[4] = data[3]
       }
 
 
