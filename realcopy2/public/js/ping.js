@@ -82,6 +82,7 @@ else if (recentPing <= 25 && doQuant == false){
 
 if (doQuant == false || doQuant == true) {     
       quantMsg[0] = quantID
+      quantMsg[1] = '12'
       quantMsg[2] = +new Date()
       quantMsg[3] = null
 
