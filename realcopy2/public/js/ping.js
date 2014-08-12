@@ -22,6 +22,12 @@ quantMsg[2] = null
 quantMsg[3] = null
 quantMsg[4] = null
 
+      var hardNote = []
+      hardNote[0] = 0
+      hardNote[1] = 0
+      hardNote[2] = 80
+      var theType = 'sample'
+
 function Ping(){
 	
 
@@ -154,17 +160,20 @@ else {
 
       var benchDiff = benchmark[2] - benchmark[1]
       var realDiff = data[2] - benchmark[0]
-      var comparison = benchDiff - realDiff
+      var variance = benchDiff - realDiff
       console.log('receiving side: ' + benchDiff)
       console.log('sending side: ' + realDiff)
-      console.log('sending - receiving: ' + comparison)
+      console.log('sending - receiving: ' + variance)
       console.log('')
 
-      var hardNote = []
-      hardNote[0] = 0
-      hardNote[1] = 0
-      hardNote[2] = 80
-      var theType = 'sample'
+      if (variance < 25){
+            var delayed = 25 - variance
+      setTimeout(function(){
+      triggerSample(0, hardNote, theType)
+}, delayed)
+      
+      }
+      else
       triggerSample(0, hardNote, theType)
 
 }
