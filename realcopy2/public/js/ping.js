@@ -73,6 +73,7 @@ function quantTest(){
 
 quantID++
 
+if (recentPing > 50)
 pinger()
 
 }

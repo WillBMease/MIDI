@@ -31,6 +31,7 @@ var logRTT = []
 var lowRtt = 1000
 var quantCt = []
 var beatChk = []
+var recentPing = 100
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -64,6 +65,7 @@ var fullChk = 0
             console.log(data[0])
             console.log('Latency is ' + rttTime + 'ms');
             console.log('')
+            recentPing = rttTime
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
             if (rttTime > 50)
