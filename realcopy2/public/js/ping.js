@@ -160,6 +160,10 @@ else {
       console.log('sending - receiving: ' + comparison)
       console.log('')
 
+      var hardNote = []
+      hardNote[2] = 30
+      triggerSample(0, hardNote, 'sample')
+
 }
       
       prevMsg = data[2]
