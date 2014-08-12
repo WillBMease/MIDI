@@ -123,7 +123,7 @@ whichType = 'synth'
 }
 }
 
-else if (!sampleActive){     // make sure to disable this part
+else if (sampleActive){     // make sure to disable this part
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
