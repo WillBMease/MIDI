@@ -105,10 +105,9 @@ if(!sampleActive){
 	playSynth(0, e.which)
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
-			for (var x = 0 ; x < 3 ; x++) {
+			for (var x = 0 ; x < 3 ; x++)
 				user[i].send(oscMsg);
 		}
-	}
 	}
 
 
@@ -123,9 +122,8 @@ whichType = 'sample'
 
 for (var i = 1 ; i < userLimit ; i++) {
 	if (user[i] != 0) {
-		for (var x = 0 ; x < 3 ; x++) {
+		for (var x = 0 ; x < 3 ; x++)
 		user[i].send(sampleMsg);
-		}
 	}
 }
 	sampleID++
@@ -146,7 +144,7 @@ $(document).keyup(function(e){
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
-			for (var x = 0 ; x < 3 ; x++) {
+			for (var x = 0 ; x < 3 ; x++)
 				user[i].send(oscMsg);
 		}
 	}
