@@ -60,11 +60,11 @@ pingID++
 
 function quantTest(){
 
-if (recentPing > 25){
+if (recentPing > 25 && doQuant == false){
       pinger()
 }
 
-else if (recentPing <= 25){
+else if (recentPing <= 25 && doQuant == false){
       var setPing = []
       setPing[1] = 15
       setPing[2] = recentPing
