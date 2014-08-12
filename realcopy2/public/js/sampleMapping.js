@@ -32,6 +32,11 @@ for (var i = 0 ; i < userLimit ; i++) {
 // Initialize your own instrument on startup
 loadInstrument(0, firstInst)
 
+$('#synth').click(function(){
+	sampleActive = false
+	console.log('synth is here!')
+})
+
 
 function loadInstrument(index, instr){
 	$.getJSON("js/instruments.json", function(json){
@@ -151,24 +156,64 @@ function endNote(instrument1, instrument2, instrument3){
     	instrument3.disconnect()
 }
 
-function playSynth(index, choose, keyTest){
-	var testSynth = processSynth(choose)
+function playSynth(index, key){
 
-	transpose(index, keyTest[2]);
-	var check = keyboardMap(keyTest[2]) ;
+if (synthKey[index][key] == null){
+	soundObj = {
+			isActive: false,
+			osc1:"",
+			osc2:"",
+			osc3:"",
+		};
+		synthKey[index][key] = soundObj
+}
 
-	 var mappedKey = keyboardMap(keyTest[2]) + (octave[index]*12);
+if (!synthKey[index][key].isActive){
+
+synthKey[index][key].osc1 = context.createOscillator()
+synthKey[index][key].osc2 = context.createOscillator()
+synthKey[index][key].osc3 = context.createOscillator()
+
+synthKey[index][key].osc1.type = 'triangle'
+synthKey[index][key].osc2.type = 'sine'
+synthKey[index][key].osc3.type = 'sawtooth'
+
+synthKey[index][key].osc1.connect(bus[index].input)
+synthKey[index][key].osc2.connect(bus[index].input)
+synthKey[index][key].osc3.connect(bus[index].input)
+
+
+	transpose(index, key);
+	var check = keyboardMap(key) ;
+
+	 var mappedKey = keyboardMap(key) + (octave[index]*12);
 
 if(check != 200  && check != 49 && check != 96){
 
     var freq = 32.703 * Math.pow(1.059463094359, mappedKey - 12)
 	
-    testSynth.frequency.value = parseFloat(freq)
+    synthKey[index][key].osc1.frequency.value = parseFloat(freq)
+    synthKey[index][key].osc2.frequency.value = parseFloat(freq)
+    synthKey[index][key].osc3.frequency.value = parseFloat(freq)
 
-    testSynth.start(0)
+    synthKey[index][key].osc1.start(0)
+    synthKey[index][key].osc2.start(0)
+    synthKey[index][key].osc3.start(0)
+
+    synthKey[index][key].isActive = true
 
 	}
 
+} // isActive
+
+}
+
+function stopSynth(index, key){
+	synthKey[index][key].osc1.stop()
+	synthKey[index][key].osc2.stop()
+	synthKey[index][key].osc3.stop()
+
+	synthKey[index][key].isActive = false
 }
 
 function processSynth(choose){

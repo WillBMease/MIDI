@@ -252,6 +252,14 @@ console.log(data[0])
         doQuant = true
    }
 
+   else if (data[1] == '16'){
+    if (data[3] == '1')
+      playSynth(index, data[2])
+    else if (data[3] == '0')
+      stopSynth(index, data[2])
+   }
+
+
     });
           user[index].on('close', function(err){ 
           $('#messages').append('<br>' + user[index].peer + ' has left the chat.'); 

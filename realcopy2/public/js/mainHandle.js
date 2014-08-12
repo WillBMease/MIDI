@@ -33,6 +33,7 @@ var sampleID = 0
 
 var midiMsg = [] ;
 var sampleMsg = [] ;
+var oscMsg = []
 
 midiMsg[0] = midiID ; // defines which message
 midiMsg[1] = null ; // defines what type of message
@@ -46,6 +47,11 @@ sampleMsg[2] = null ;
 sampleMsg[3] = null ;
 sampleMsg[4] = null ;
 
+var synthKey = []
+
+for (var i = 0 ; i < userLimit ; i++){
+	synthKey[i] = []
+}
 
 var octave = []
 
@@ -88,39 +94,21 @@ var isPlaying = false;
 var whichType
 var keypresses = []
 
-
-// $(document).keydown(function(e){
-// 	keypresses[e.which] = true
-// 	if()
-// }).keyup(function(e){
-
-// })
-
-
 $(document).keydown(function(e) { 
 if(!sampleActive){
 
-isPlaying = false
+	oscMsg[0] = sampleID
+	oscMsg[1] = '16' ;
+	oscMsg[2] = e.which;
+	oscMsg[3] = '1'
 
-for (var i = 0 ; i < oscChecks.length ; i++){
-	if (oscChecks[i] == e.which)
-		isPlaying = true
-}
+	playSynth(0, e.which)
+	for (var i = 1 ; i < userLimit ; i++){
+		if (user[i] != 0)
+			user[i].send(oscMsg)
+	}
 
-	sampleMsg[0] = sampleID
-	sampleMsg[1] = '2' ;
-	sampleMsg[2] = e.which;
 
-keypresses[e.which] = true
-
-  if (isPlaying) {
-  	return; }
-else{	
-whichType = 'synth'
-	oscChecks.push(e.which);
-	playSynth(0, 0, sampleMsg)
-	return false
-}
 }
 
 else if (sampleActive){     // make sure to disable this part
@@ -143,6 +131,20 @@ for (var i = 1 ; i < userLimit ; i++) {
 // else if ()
 
 });
+
+
+$(document).keyup(function(e){
+	stopSynth(0, e.which)
+	oscMsg[0] = sampleID
+	oscMsg[1] = '16' ;
+	oscMsg[2] = e.which;
+	oscMsg[3] = '0'
+
+	for (var i = 1 ; i < userLimit ; i++){
+		if (user[i] != 0)
+			user[i].send(oscMsg)
+	}
+})
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
