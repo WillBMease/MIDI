@@ -97,7 +97,7 @@ var keypresses = []
 
 $(document).keydown(function(e) { 
 if(!sampleActive){
-
+	oscID++
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;
@@ -153,11 +153,10 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 
 $(document).keyup(function(e){
-	
+	oscID++	
 if (!sampleActive && e.which != 49 && e.which != 192){
 	stopSynth(0, e.which)
 	oscID++
-
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;
