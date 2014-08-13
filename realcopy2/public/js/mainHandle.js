@@ -113,7 +113,8 @@ if (synthKey[0][e.which] == null){
 		synthKey[0][e.which] = soundObj
 }
 
-if (!synthKey[0][e.which].isActive){
+if (!synthKey[0][e.which].isActive && e.which != 49 && e.which != 192){
+
 
 	playSynth(0, e.which)
 	for (var i = 1 ; i < userLimit ; i++){
