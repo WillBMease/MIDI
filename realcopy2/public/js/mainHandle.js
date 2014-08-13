@@ -116,7 +116,7 @@ if (synthKey[0][e.which] == null){
 if (!synthKey[0][e.which].isActive){
 	playSynth(0, e.which)
 
-	if (e.which != 49 && e.which != 192){
+	// if (e.which != 49 && e.which != 192){
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
@@ -124,7 +124,7 @@ if (!synthKey[0][e.which].isActive){
 				user[i].send(oscMsg);
 		}
 	}
-}	
+// }	
 
 oscID++
 }
