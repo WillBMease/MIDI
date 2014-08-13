@@ -182,9 +182,6 @@ synthKey[index][key].osc1.connect(bus[index].input)
 synthKey[index][key].osc2.connect(bus[index].input)
 synthKey[index][key].osc3.connect(bus[index].input)
 
-    if (index == 0)
-    oscID++
-
 	transpose(index, key);
 
 	var check = keyboardMap(key) ;

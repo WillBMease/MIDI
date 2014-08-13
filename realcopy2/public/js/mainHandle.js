@@ -125,6 +125,8 @@ if (!synthKey[0][e.which].isActive){
 		}
 	}
 }	
+
+oscID++
 }
 
 }
