@@ -185,10 +185,7 @@ synthKey[index][key].osc3.connect(bus[index].input)
     if (index == 0)
     oscID++
 
-
-if (key == 49 || key == 192){
 	transpose(index, key);
-}
 
 	var check = keyboardMap(key) ;
 
