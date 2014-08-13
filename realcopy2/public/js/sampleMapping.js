@@ -92,7 +92,7 @@ if(check != 200  && check != 49 && check != 96){
 	 console.log(noteNode[index][mappedKey])
     source1.buffer = noteNode[index][mappedKey];
    
-source1.playbackRate.value = 440
+source1.playbackRate.value = 30
 
     source1.connect(bus[index].input);
     source1.connect(bus[1].input);
