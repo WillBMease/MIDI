@@ -103,6 +103,18 @@ if(!sampleActive){
 	oscMsg[2] = e.which;
 	oscMsg[3] = '1'
 
+if (synthKey[0][key] == null){
+	soundObj = {
+			isActive: false,
+			osc1:"",
+			osc2:"",
+			osc3:"",
+		};
+		synthKey[0][key] = soundObj
+}
+
+if (!synthKey[0][key].isActive){
+
 	playSynth(0, e.which)
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
@@ -110,7 +122,7 @@ if(!sampleActive){
 				user[i].send(oscMsg);
 		}
 	}
-
+}
 
 }
 
@@ -138,7 +150,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 $(document).keyup(function(e){
 	stopSynth(0, e.which)
 	oscID++
-	
+
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;

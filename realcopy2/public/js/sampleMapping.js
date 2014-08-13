@@ -182,6 +182,8 @@ synthKey[index][key].osc1.connect(bus[index].input)
 synthKey[index][key].osc2.connect(bus[index].input)
 synthKey[index][key].osc3.connect(bus[index].input)
 
+    if (index == 0)
+    oscID++
 
 	transpose(index, key);
 	var check = keyboardMap(key) ;
@@ -201,9 +203,7 @@ if(check != 200  && check != 49 && check != 96){
     synthKey[index][key].osc3.start(0)
 
     synthKey[index][key].isActive = true
-    
-    if (index == 0)
-    oscID++
+
 
 	}
 
