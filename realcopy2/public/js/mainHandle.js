@@ -103,17 +103,17 @@ if(!sampleActive){
 	oscMsg[2] = e.which;
 	oscMsg[3] = '1'
 
-if (synthKey[0][key] == null){
+if (synthKey[0][e.which] == null){
 	soundObj = {
 			isActive: false,
 			osc1:"",
 			osc2:"",
 			osc3:"",
 		};
-		synthKey[0][key] = soundObj
+		synthKey[0][e.which] = soundObj
 }
 
-if (!synthKey[0][key].isActive){
+if (!synthKey[0][e.which].isActive){
 
 	playSynth(0, e.which)
 	for (var i = 1 ; i < userLimit ; i++){
