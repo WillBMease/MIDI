@@ -254,17 +254,17 @@ console.log(data[0])
    else if (data[1] == '16'){
      var calculate = true
        
-        if (oscChk[data[0]] == data[0])
-             calculate = false
+        // if (oscChk[data[0]] == data[0])
+        //      calculate = false
 
-        if (calculate) {
+        // if (calculate) {
           if (data[3] == '1')
             playSynth(index, data[2])
           else if (data[3] == '0')
             stopSynth(index, data[2])
 
           oscChk[data[0]] = data[0]
-          }
+          // }
 
    }
 
