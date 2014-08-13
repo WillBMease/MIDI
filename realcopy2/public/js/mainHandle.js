@@ -102,7 +102,7 @@ if(!sampleActive){
 	oscMsg[1] = '16' ;
 	oscMsg[2] = e.which;
 	oscMsg[3] = '1'
-
+console.log(e.which)
 if (synthKey[0][e.which] == null){
 	soundObj = {
 			isActive: false,
