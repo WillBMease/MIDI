@@ -148,6 +148,8 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 
 $(document).keyup(function(e){
+	
+if (!sampleActive){
 	stopSynth(0, e.which)
 	oscID++
 
@@ -162,6 +164,7 @@ $(document).keyup(function(e){
 				user[i].send(oscMsg);
 		}
 	}
+}
 })
 
 //////////////////////////////////////////////////////////////////
