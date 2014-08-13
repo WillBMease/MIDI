@@ -113,16 +113,18 @@ if (synthKey[0][e.which] == null){
 		synthKey[0][e.which] = soundObj
 }
 
-if (!synthKey[0][e.which].isActive && e.which != 49 && e.which != 192){
-
-
+if (!synthKey[0][e.which].isActive){
 	playSynth(0, e.which)
+
+	if (e.which != 49 && e.which != 192){
+
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
 			for (var x = 0 ; x < 3 ; x++)
 				user[i].send(oscMsg);
 		}
 	}
+}	
 }
 
 }
@@ -150,7 +152,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 $(document).keyup(function(e){
 	
-if (!sampleActive){
+if (!sampleActive && e.which != 49 && e.which != 192){
 	stopSynth(0, e.which)
 	oscID++
 
