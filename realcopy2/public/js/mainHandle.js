@@ -85,8 +85,8 @@ if (context) {
   alert('browser not supported') ;
 }
 
-// var ans = []
-// var ansT = []
+var ans = []
+var ansT = []
 
 // for (var i = 0 ; i < userLimit ; i++){
 // 	ans[i] = context.createAnalyser();
