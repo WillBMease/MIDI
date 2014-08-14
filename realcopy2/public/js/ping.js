@@ -26,7 +26,6 @@ quantMsg[4] = null
       hardNote[0] = 0
       hardNote[1] = 0
       hardNote[2] = 80
-      var theType = 'sample'
 
 function Ping(){
 	
@@ -174,7 +173,7 @@ else {
 
 //       }
 //       else
-      triggerSample(0, hardNote, theType)
+      triggerSample(0, hardNote)
 
 }
       
