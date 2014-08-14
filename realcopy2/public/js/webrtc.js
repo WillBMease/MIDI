@@ -14,16 +14,16 @@ for (var i = 0 ; i < userLimit ; i++) {
   // Connect to PeerJS, have server assign an ID instead of providing one
   
   // Generate random ID between 1 and 999 for the user
-  var randID = Math.floor(Math.random() * 9999) + 1 ;
+  var userID = Math.floor(Math.random() * 9999) + 1 ;
 
   // Create a new peer, and assign the randID as "label" in peer
   // the label is assigned automatically by how i passed it in
   // the key connects the peer to the server that does the handshake
   //var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
-// var peer = new Peer(randID, {key: 'lwjd5qra8257b9'});
+// var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
 
-  //   var peer = new Peer(randID, {
+  //   var peer = new Peer(userID, {
   //           host: "54.191.34.54",
   //           port: 9000,
   //           path: '/peerjs-server',
@@ -44,7 +44,7 @@ var peer = new Peer(userID, {
             }]}
 });
 
-  //   var peer = new Peer(randID, {
+  //   var peer = new Peer(userID, {
   //           host: "54.191.34.54",
   //           port: 9000,
   //           path: '/peerjs-server',

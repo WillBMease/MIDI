@@ -8,6 +8,19 @@ var AudioBus = function(){
     this.input = context.createGain();
     var output = context.createGain();
 
+    this.pregain = context.createGain()
+    this.postgain = context.createGain()
+
+//     var envelope = ADSR(context)
+//     envelope.connect(pregain.gain)
+
+// envelope.attack = 0.01 // seconds
+// envelope.decay = 0.4 // seconds
+// envelope.sustain = 0.6 // multiply gain.gain.value
+// envelope.release = 0.4 // seconds
+
+// envelope.start(context.currentTime)
+
     //create effect nodes (Convolver and Equalizer are other custom effects from the library presented at the end of the article)
 
     // this[reverb] = nnytfjgfj
@@ -38,13 +51,13 @@ this.delay = new tuna.Delay({
                 bypass: true
             });
 
-// overdrive] = new tuna.Overdrive({
-//                     outputGain: 0.1,         //0 to 1+
-//                     drive: 0.1,              //0 to 1
-//                     curveAmount: 0.1,          //0 to 1
-//                     algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
-//                     bypass: true
-//                 });
+this.overdrive = new tuna.Overdrive({
+                    outputGain: 0.1,         //0 to 1+
+                    drive: 0.1,              //0 to 1
+                    curveAmount: 0.1,          //0 to 1
+                    algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
+                    bypass: true
+                });
 
 this.phaser = new tuna.Phaser({
                  rate: 1.2,                     //0.01 to 8 is a decent range, but higher values are possible
@@ -80,7 +93,7 @@ this.tremolo = new tuna.Tremolo({
 
 // basic filter
 this.filter = new tuna.Filter({
-                 frequency: 20,         //20 to 22050
+                 frequency: 2000,         //20 to 22050
                  Q: 1,                  //0.001 to 100
                  gain: 0,               //-40 to 40
                  bypass: true,             //0 to 1+
@@ -100,9 +113,10 @@ this.compressor = new tuna.Compressor({
                  });
 
 
-    this.input.connect(this.cabinet.input);
-	this.cabinet.connect(this.compressor.input)
-		// this.overdrive.connect(this.compressor.input)
+    this.input.connect(this.pregain);
+    this.pregain.connect(this.cabinet.input)
+	this.cabinet.connect(this.overdrive.input)
+		this.overdrive.connect(this.compressor.input)
 		this.compressor.connect(this.tremolo.input)
 		this.tremolo.connect(this.chorus.input)
 		this.chorus.connect(this.phaser.input)
@@ -110,7 +124,8 @@ this.compressor = new tuna.Compressor({
 		this.reverb.connect(this.delay.input)
 		this.delay.connect(this.filter.input)
 		this.filter.connect(this.wahwah.input)
-		this.wahwah.connect(output) 
+		this.wahwah.connect(this.postgain)
+		this.postgain.connect(output)
 
 
     this.connect = function(target){
@@ -123,8 +138,8 @@ var bus = []
 
 for (var i = 0 ; i < userLimit ; i++){
 	bus[i] = new AudioBus()
-	bus[i].connect(ans[i])
-	bus[i].connect(ansT[i])
+	// bus[i].connect(ans[i])
+	// bus[i].connect(ansT[i])
 	bus[i].connect(context.destination)
 }
 
@@ -152,10 +167,10 @@ for (var i = 0 ; i < 1 ; i++) {
 		bus[i].phaser.stereoPhase = $("#phaser-stereo").val()
 		bus[i].phaser.baseModulationFrequency = $("#phaser-bmf").val()
 
-		// bus[i].overdrive.outputGain = $("#overdrive-outputGain").val() / 101
-		// bus[i].overdrive.drive = $("#overdrive-drive").val() / 101
-		// bus[i].overdrive.curveAmount = $("#overdrive-curveLevel").val() / 101
-		// bus[i].overdrive.algorithmIndex = $("#overdrive-algorithm").val()
+		bus[i].overdrive.outputGain = $("#overdrive-outputGain").val() / 101
+		bus[i].overdrive.drive = $("#overdrive-drive").val() / 101
+		bus[i].overdrive.curveAmount = $("#overdrive-curveLevel").val() / 101
+		bus[i].overdrive.algorithmIndex = $("#overdrive-algorithm").val()
 
 		bus[i].compressor.threshold = $("#compressor-threshold").val()
 		bus[i].compressor.makeupGain = $("#compressor-makeGain").val()

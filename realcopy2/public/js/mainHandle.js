@@ -50,6 +50,10 @@ sampleMsg[4] = null ;
 
 var synthKey = []
 
+var osc1 = 'triangle'
+var osc2 = 'sine'
+var osc3 = 'sawtooth'
+
 for (var i = 0 ; i < userLimit ; i++){
 	synthKey[i] = []
 }
@@ -59,7 +63,7 @@ var octave = []
 for (var i = 0 ; i < userLimit ; i++)
 octave[i] = 1;
 
-var globalOctave;
+var globalOctave = 5;
 
 //variable used to 
 var midiActive = false;
@@ -81,13 +85,13 @@ if (context) {
   alert('browser not supported') ;
 }
 
-var ans = []
-var ansT = []
+// var ans = []
+// var ansT = []
 
-for (var i = 0 ; i < userLimit ; i++){
-	ans[i] = context.createAnalyser();
-	ansT[i] = context.createAnalyser();
-}
+// for (var i = 0 ; i < userLimit ; i++){
+// 	ans[i] = context.createAnalyser();
+// 	ansT[i] = context.createAnalyser();
+// }
 
 var soundOn ;
 var soundOff ;
@@ -100,31 +104,42 @@ if(!sampleActive){
 	oscID++
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
-	oscMsg[2] = e.which;
-	oscMsg[3] = '1'
+	oscMsg[2] = null;
+	oscMsg[3] = e.which
+	oscMsg[4] = null
+	oscMsg[5] = '1'
 console.log(e.which)
+
 if (synthKey[0][e.which] == null){
 	soundObj = {
 			isActive: false,
+			tailActive: false,
 			osc1:"",
 			osc2:"",
 			osc3:"",
+			gain:"",
+			decay:"",
 		};
 		synthKey[0][e.which] = soundObj
 }
 
 if (!synthKey[0][e.which].isActive){
-	playSynth(0, e.which)
 
-	// if (e.which != 49 && e.which != 192){
+	if (synthKey[0][e.which].tailActive){
+		synthKey[0][e.which].osc1.stop()
+		synthKey[0][e.which].osc2.stop()
+		synthKey[0][e.which].osc3.stop()
+		synthKey[0][e.which].gain.disconnect()
+	}
+
+	playSynth(0, oscMsg, false)
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
 			for (var x = 0 ; x < 3 ; x++)
 				user[i].send(oscMsg);
 		}
-	}
-// }	
+	}	
 
 oscID++
 }
@@ -135,8 +150,7 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
-whichType = 'sample'
-	triggerSample(0, sampleMsg, whichType)
+	triggerSample(0, sampleMsg)
 
 for (var i = 1 ; i < userLimit ; i++) {
 	if (user[i] != 0) {
@@ -147,20 +161,20 @@ for (var i = 1 ; i < userLimit ; i++) {
 	sampleID++
 }
 
-// else if ()
-
 });
 
 
 $(document).keyup(function(e){
 	oscID++	
 if (!sampleActive && e.which != 49 && e.which != 192){
-	stopSynth(0, e.which)
 	oscID++
 	oscMsg[0] = oscID
 	oscMsg[1] = '16' ;
-	oscMsg[2] = e.which;
-	oscMsg[3] = '0'
+	oscMsg[2] = null
+	oscMsg[3] = e.which;
+	oscMsg[4] = null
+	oscMsg[5] = '0'
+	stopSynth(0, oscMsg)
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
@@ -186,11 +200,13 @@ function transpose(index, noteInput){
 console.log(noteInput)
 	// 1
 	if(noteInput == 49 && octave[index] < globalOctave){
+		console.log('octave up!')
 		octave[index] = octave[index] + 1;
 		octaveMsg[2] = octave[index]
 	}
 	// ~
 	if(noteInput == 192 && octave[index] != 0){
+		console.log('octave down!')
 		octave[index] = octave[index] - 1;
 		octaveMsg[2] = octave[index]
 	}

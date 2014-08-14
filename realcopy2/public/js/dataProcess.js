@@ -147,7 +147,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
               calculate = false
 
         if (calculate) {
-            triggerSample(index, data, 'sample') ;
+            triggerSample(index, data) ;
             sampleCheck[data[0]] = data[0]
           }
      }
@@ -255,10 +255,10 @@ console.log(data[0])
 
     if (oscChk[data[0]] != data[0]){
          
-          if (data[3] == '1')
-            playSynth(index, data[2])
-          else if (data[3] == '0')
-            stopSynth(index, data[2])
+          if (data[5] == '1')
+            playSynth(index, data, data[6])
+          else if (data[5] == '0')
+            stopSynth(index, data)
           
           oscChk[data[0]] = data[0]
       }

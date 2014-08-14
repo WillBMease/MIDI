@@ -1,6 +1,6 @@
 function instrumentChange(instr){
 
-      midiMsg[0] = randID ;
+      midiMsg[0] = userID ;
       midiMsg[1] = '3' ;
       midiMsg[2] = instr ;
 

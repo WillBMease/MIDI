@@ -620,7 +620,49 @@ var playActualMIDI = true
 		playActualMIDI = false
 	}
 
-if (playActualMIDI && ev.data[2] != 0){
+if (playActualMIDI){
+
+	if (!sampleActive){
+		oscID++
+		oscMsg[0] = oscID
+		oscMsg[1] = '16'
+		oscMsg[2] = ev.data[0].toString(16)
+		oscMsg[3] = ev.data[1].toString(16)
+		oscMsg[4] = ev.data[2]
+		oscMsg[6] = true
+
+if (synthKey[0][oscMsg[3]] == null){
+	soundObj = {
+			isActive: false,
+			tailActive: false,
+			osc1:"",
+			osc2:"",
+			osc3:"",
+			gain:"",
+			decay:"",
+		};
+		synthKey[0][oscMsg[3]] = soundObj
+}
+
+if (ev.data[2] != 0){
+		oscMsg[5] = '1'
+		playSynth(0, oscMsg, true)
+}
+
+else if (ev.data[2] == 0){
+	stopSynth(0, oscMsg)
+	oscMsg[5] = '0'
+}
+	for (var i = 1 ; i < userLimit ; i++){
+		if (user[i] != 0) {
+			for (var x = 0 ; x < 3 ; x++)
+				user[i].send(oscMsg);
+		}
+	}
+
+}
+
+	else if (sampleActive && ev.data[2] != 0){
 		midiMsg[0] = midiID
 		midiMsg[1] = 1 ;
 		midiMsg[2] = ev.data[0].toString(16) ;
@@ -642,8 +684,8 @@ if (playActualMIDI && ev.data[2] != 0){
 	}
 
 	midiID++
-
 	}
+  }
 }
 
 
@@ -689,7 +731,6 @@ runTest();
 
 $('#testMap').click(function(){
 	if (!mappingActive){
-		console.log('works')
 		mappingActive = true
 	}
 

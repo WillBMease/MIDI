@@ -195,6 +195,7 @@ function masterConversion(midiInput){
 	// {	
 	// 	output = 200 ;
 	// }
+
 	else if (midiInput[2] == 90){
 		switch (midiInput[3]){
 		

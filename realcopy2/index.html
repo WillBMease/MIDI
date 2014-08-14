@@ -129,7 +129,25 @@ jellyvibes</a>
 <a id="filter" class = "outgoingEffect" ><i>filter</i></a>
 <a onclick = "startMetronome()" ><i>Metronome</i></a>
 <a onclick ="toggleBPM()"><i>BPM</i></a>
+
+
 <a id="synth"><i>Synth</i></a>
+<!-- Osc 1 -->
+<a class="changeSynth1" id="sine"><i>Sine1</i></a>
+<a class="changeSynth1" id="square"><i>Square1</i></a>
+<a class="changeSynth1" id="triangle"><i>Triangle1</i></a>
+<a class="changeSynth1" id="sawtooth"><i>Sawtooth1</i></a>
+<!-- Osc 2 -->
+<a class="changeSynth2" id="sine"><i>Sine2</i></a>
+<a class="changeSynth2" id="square"><i>Square2</i></a>
+<a class="changeSynth2" id="triangle"><i>Triangle2</i></a>
+<a class="changeSynth2" id="sawtooth"><i>Sawtooth2</i></a>
+<!-- Osc 3 -->
+<a class="changeSynth3" id="sine"><i>Sine3</i></a>
+<a class="changeSynth3" id="square"><i>Square3</i></a>
+<a class="changeSynth3" id="triangle"><i>Triangle3</i></a>
+<a class="changeSynth3" id="sawtooth"><i>Sawtooth3</i></a>
+
 </h6>
 
 
@@ -152,363 +170,107 @@ jellyvibes</a>
 <div>
 	<input class = "knob" id ="y" data-min = "min" data-max = "max" data-value = "value"/>
     ///////////////Reverb Mapping//////////////////
-     	<!-- <input class="knob" id="reverb-level" data-min="0" data-max="100" data-step="1" data-release="bus[0].reverb.level = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'reverb'
-        	effectMsg[3] = 'level'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="90"/> -->
+
         <input class="knob"  id="reverb-level" data-min="0" data-max="100" data-step="1" data-release="bus[0].reverb.level" data-release2="8" data-release3="'reverb'" data-release4="'level'" data-release5="101" value="90"/>
 
-     	<!-- <input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="bus[0].reverb.wetLevel = v / 10
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'reverb'
-        	effectMsg[3] = 'wetLevel'
-        	effectMsg[4] = v / 10
-        	outgoingEffectChange(effectMsg)" value="90"/> -->
         <input class="knob" id="reverb-wetLevel" data-min="0" data-max="10" data-step="1" data-release="bus[0].reverb.wetLevel"  data-release2="8" data-release3="'reverb'" data-release4="'wetLevel'" data-release5="10" value="90"/>
 
-     	<!-- <input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].reverb.dryLevel = v / 100
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'reverb'
-        	effectMsg[3] = 'dryLevel'
-        	effectMsg[4] = v / 100
-        	outgoingEffectChange(effectMsg)" value="40"/> -->
         <input class="knob" id="reverb-dryLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].reverb.dryLevel" data-release2="8" data-release3="'reverb'" data-release4="'dryLevel'" data-release5="100" value="40"/>   
-
-     	<!-- <input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="bus[0].reverb.highCut = v
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'reverb'
-        	effectMsg[3] = 'highCut'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="15000"/> -->
+ 
         <input class="knob" id="reverb-highCut" data-min="20" data-max="22050" data-step="20" data-release="bus[0].reverb.highCut" data-release2="8" data-release3="'reverb'" data-release4="'highCut'" data-release5="1" value="15000"/> 
 
-     	<!-- <input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="bus[0].reverb.lowCut = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'reverb'
-        	effectMsg[3] = 'lowCut'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="10000"/> -->
         <input class="knob" id="reverb-lowCut" data-min="20" data-max="22050" data-step="20" data-release="bus[0].reverb.lowCut" data-release2="8" data-release3="'reverb'" data-release4="'lowCut'" data-release5="1" value="10000"/>
      	
     ///////////////chorus Mapping//////////////////
-    	<!-- <input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].chorus.rate = v/800
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'chorus'
-        	effectMsg[3] = 'rate'
-        	effectMsg[4] = v/800
-        	outgoingEffectChange(effectMsg)" value ="500"/> -->
+
         <input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].chorus.rate" data-release2="8" data-release3="'chorus'" data-release4="'rate'" data-release5="800" value="500"/>
 
-    	<!-- <input class="knob" id="chorus-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].chorus.feedback = v/101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'chorus'
-        	effectMsg[3] = 'feedback'
-        	effectMsg[4] = v/101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
-
         <input class="knob" id="chorus-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].chorus.feedback" data-release2="8" data-release3="'chorus'" data-release4="'feedback'" data-release5="101" value="80"/>
-
-    	<!-- <input class="knob" id="chorus-delay" data-min="0" data-max="100" data-step="1" data-release="bus[0].chorus.delay = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'chorus'
-        	effectMsg[3] = 'delay'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->	
+	
         <input class="knob" id="chorus-delay" data-min="0" data-max="100" data-step="1" data-release="bus[0].chorus.delay" data-release2="8" data-release3="'chorus'" data-release4="'delay'" data-release5="101" value="80"/>
              
     ////////////////Delay Mapping///////////////////////
-    	<!-- <input class="knob" id="delay-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.feedback = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'delay'
-        	effectMsg[3] = 'feedback'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
+
         <input class="knob" id="delay-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.feedback" data-release2="8" data-release3="'delay'" data-release4="'feedback'" data-release5="101" value="80"/> 
 
-        <!-- <input class="knob" id="delay-time" data-min="0" data-max="1000" data-step="1" data-release="bus[0].delay.delayTime = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'delay'
-        	effectMsg[3] = 'delayTime'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="500"/> -->
         <input class="knob" id="delay-time" data-min="0" data-max="1000" data-step="1" data-release="bus[0].delay.delayTime" data-release2="8" data-release3="'delay'" data-release4="'delayTime'" data-release5="1" value="500"/>
 
-        <!-- <input class="knob" id="delay-wetLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.wetLevel = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'delay'
-        	effectMsg[3] = 'wetLevel'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="50"/> -->
+
         <input class="knob" id="delay-wetLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.wetLevel" data-release2="8" data-release3="'delay'" data-release4="'wetLevel'" data-release5="101" value="50"/>
-        <!-- <input class="knob" id="delay-dryLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.dryLevel = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'delay'
-        	effectMsg[3] = 'dryLevel'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="40"/> -->
+
         <input class="knob" id="delay-dryLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.dryLevel" data-release2="8" data-release3="'delay'" data-release4="'dryLevel'" data-release5="101" value="40"/>    
-        <!-- <input class="knob" id="delay-cutoff" data-min="20" data-max="22050" data-step="1" data-release="bus[0].delay.cutoff = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'delay'
-        	effectMsg[3] = 'cutoff'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="20000"/> --> 
+  
         <input class="knob" id="delay-cutoff" data-min="20" data-max="22050" data-step="1" data-release="bus[0].delay.cutoff" data-release2="8" data-release3="'delay'" data-release4="'cutoff'" data-release5="1" value="20000"/>
         
     ///////////////phaser Mapping//////////////////
-      <!-- <input class="knob" id="phaser-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].phaser.rate = v / 801
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'phaser'
-        	effectMsg[3] = 'rate'
-        	effectMsg[4] = v / 801
-        	outgoingEffectChange(effectMsg)" value="400"/> -->
+
         <input class="knob" id="phaser-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].phaser.rate" data-release2="8" data-release3="'phaser'" data-release4="'rate'" data-release5="801" value="400"/>  		      
-     <!-- <input class="knob" id="phaser-depth" data-min="0" data-max="100" data-step="1" data-release="bus[0].phaser.depth = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'phaser'
-        	effectMsg[3] = 'depth'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="40"/> -->
+
         <input class="knob" id="phaser-depth" data-min="0" data-max="100" data-step="1" data-release="bus[0].phaser.depth" data-release2="8" data-release3="'phaser'" data-release4="'depth'" data-release5="101" value="40"/>
-     <!-- <input class="knob" id="phaser-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].phaser.feedback = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'phaser'
-        	effectMsg[3] = 'feedback'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="20"/> -->
+
         <input class="knob" id="phaser-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].phaser.feedback" data-release2="8" data-release3="'phaser'" data-release4="'feedback'" data-release5="101" value="20"/>
-      <!-- <input class="knob" id="phaser-stereo" data-min="1" data-max="180" data-step="1" data-release="bus[0].phaser.stereoPhase = v
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'phaser'
-        	effectMsg[3] = 'stereoPhase'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="30"/> -->
+
         <input class="knob" id="phaser-stereo" data-min="1" data-max="180" data-step="1" data-release="bus[0].phaser.stereoPhase" data-release2="8" data-release3="'phaser'" data-release4="'stereoPhase'" data-release5="1" value="30"/>
-     <!-- <input class="knob" id="phaser-bmf" data-min="500" data-max="1500" data-step="1" data-release="bus[0].phaser.baseModulationFrequency = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'phaser'
-        	effectMsg[3] = 'baseModulationFrequency'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="500"/>  -->  	
+ 	
         <input class="knob" id="phaser-bmf" data-min="500" data-max="1500" data-step="1" data-release="bus[0].phaser.baseModulationFrequency" data-release2="8" data-release3="'phaser'" data-release4="'baseModulationFrequency'" data-release5="1" value="500"/>    
 
-    ///////////////ovedride Mapping//////////////////
-     	<!-- <input class="knob" id="overdrive-outputGain" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.outputGain = v /101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'overdrive'
-        	effectMsg[3] = 'outputGain'
-        	effectMsg[4] = v/101
-        	outgoingEffectChange(effectMsg)" value="80"/>  -->
+    ///////////////ovedrive Mapping//////////////////
+
         <input class="knob" id="overdrive-outputGain" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.outputGain" data-release2="8" data-release3="'overdrive'" data-release4="'outputGain'" data-release5="101" value="80"/> 
-      	<!-- <input class="knob" id="overdrive-drive" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.drive = v /101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'overdrive'
-        	effectMsg[3] = 'drive'
-        	effectMsg[4] = v /101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
+
         <input class="knob" id="overdrive-drive" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.drive" data-release2="8" data-release3="'overdrive'" data-release4="'drive'" data-release5="101" value="80"/>
-    	<!-- <input class="knob" id="overdrive-curveLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.curveAmount = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'overdrive'
-        	effectMsg[3] = 'curveAmount'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
+
         <input class="knob" id="overdrive-curveLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].overdrive.curveAmount" data-release2="8" data-release3="'overdrive'" data-release4="'curveAmount'" data-release5="101" value="80"/>
-    	<!-- <input class="knob" id="overdrive-algorithmIndex" data-min="1" data-max="6" data-step="1" data-release="bus[0].overdrive.algorithmIndex = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'overdrive'
-        	effectMsg[3] = 'algorithmIndex'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg))" value="3"/> -->
+
         <input class="knob" id="overdrive-algorithmIndex" data-min="1" data-max="6" data-step="1" data-release="bus[0].overdrive.algorithmIndex" data-release2="8" data-release3="'overdrive'" data-release4="'algorithmIndex'" data-release5="1" value="3"/>    
 
     ///////////////Compressor Mapping//////////////////
-    	<!-- <input class="knob" id="compressor-threshold" data-min="-100" data-max="0" data-step="1" data-release="bus[0].compressor.threshold = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'threshold'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="-10"/> -->
+
         <input class="knob" id="compressor-threshold" data-min="-100" data-max="0" data-step="1" data-release="bus[0].compressor.threshold" data-release2="8" data-release3="'compressor'" data-release4="'threshold'" data-release5="1" value="-10"/>     
 
-         <!-- <input class="knob" id="compressor-makeGain" data-min="1" data-max="10" data-step="1" data-release="bus[0].compressor.makeupGain = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'makeupGain'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="0"/> -->
         <input class="knob" id="compressor-makeGain" data-min="1" data-max="10" data-step="1" data-release="bus[0].compressor.makeupGain" data-release2="8" data-release3="'compressor'" data-release4="'makeupGain'" data-release5="1" value="0"/>
 
-        <!-- <input class="knob" id="compressor-attack" data-min="0" data-max="1000" data-step="1" data-release="bus[0].compressor.attack = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'attack'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="1"/> -->
         <input class="knob" id="compressor-attack" data-min="0" data-max="1000" data-step="1" data-release="bus[0].compressor.attack" data-release2="8" data-release3="'compressor'" data-release4="'attack'" data-release5="1" value="1"/>
 
-       	<!-- <input class="knob" id="compressor-release" data-min="0" data-max="3000" data-step="1" data-release="bus[0].compressor.release = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'release'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="0"/> -->
         <input class="knob" id="compressor-release" data-min="0" data-max="3000" data-step="1" data-release="bus[0].compressor.release" data-release2="8" data-release3="'compressor'" data-release4="'release'" data-release5="1" value="0"/>    
 
-       	<!-- <input class="knob" id="compressor-ratio" data-min="1" data-max="20" data-step="1" data-release="bus[0].compressor.ratio = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'ratio'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="4"/> -->
         <input class="knob" id="compressor-ratio" data-min="1" data-max="20" data-step="1" data-release="bus[0].compressor.ratio" data-release2="8" data-release3="'compressor'" data-release4="'ratio'" data-release5="1" value="4"/>
 
-       <!-- 	<input class="knob" id="compressor-knee" data-min="0" data-max="40" data-step="1" data-release="bus[0].compressor.knee = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'compressor'
-        	effectMsg[3] = 'knee'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="5"/> -->
         <input class="knob" id="compressor-knee" data-min="0" data-max="40" data-step="1" data-release="bus[0].compressor.knee" data-release2="8" data-release3="'compressor'" data-release4="'knee'" data-release5="1" value="5"/>
 
     ///////////////filter Mapping//////////////////
-        <!--  	<input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="bus[0].filter.frequency = v; 		effectMsg[1] = 8;
-        	effectMsg[2] = 'filter';
-        	effectMsg[3] = 'frequency';
-        	effectMsg[4] = v;
-        	" value="1000"/> -->
-        
 
-        <input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="bus[0].filter.frequency" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="1" value="1000"/>
+        <input class="knob" id="filter-frequency" data-min="20" data-max="22050" data-step="20" data-release="bus[0].filter.frequency" data-release2="8" data-release3="'filter'" data-release4="'frequency'" data-release5="1" value="2000"/>
 
-        <!-- 	<input class="knob" id="filter-q" data-min="1" data-max="100" data-step="1" data-release="   	bus[0].filter.Q = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'filter'
-        	effectMsg[3] = 'Q'
-        	effectMsg[4] = v
-        	" value="9"/> --> 
         <input class="knob" id="filter-q" data-min="1" data-max="100" data-step="1" data-release="bus[0].filter.Q" data-release2="8" data-release3="'filter'" data-release4="'Q'" data-release5="1" value="9"/>
 
-        <!-- 	<input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="	bus[0].filter.gain = v;
-        	effectMsg[1] = 8;
-        	effectMsg[2] = 'filter';
-        	effectMsg[3] = 'gain';
-        	effectMsg[4] = v;
-        	" value="20"/> -->
         <input class="knob" id="filter-gain" data-min="-40" data-max="40" data-step="1" data-release="bus[0].filter.gain" data-release2="8" data-release3="'filter'" data-release4="'gain'" data-release5="1" value="20"/>    
 
-        <!--  	<input class="knob" id="filter-type" data-min="1" data-max="8" data-step="1" data-release="	bus[0].filter.filterType = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'filter'
-        	effectMsg[3] = 'filterType'
-        	effectMsg[4] = v
-        	" value="1"/> -->
         <input class="knob" id="filter-type" data-min="1" data-max="8" data-step="1" data-release="bus[0].filter.filterType" data-release2="8" data-release3="'filter'" data-release4="'filterType'" data-release5="1" value="1"/>
 
     /////////////////tremolo Mappimg//////////////////
-        <!-- 	<input class="knob" id="tremolo-intensity" data-min="0" data-max="100" data-step="1" data-release="bus[0].tremolo.intensity = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'tremolo'
-        	effectMsg[3] = 'intensity'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="50"/> -->
+
         <input class="knob"  id="tremolo-intensity" data-min="0" data-max="100" data-step="1" data-release="bus[0].tremolo.intensity" data-release2="8" data-release3="'tremolo'" data-release4="'intensity'" data-release5="101" value="50"/>
-    	<!-- <input class="knob" id="tremolo-rate" data-min="1" data-max="80" data-step="1" data-release="bus[0].tremolo.rate = v / 80
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'tremolo'
-        	effectMsg[3] = 'rate'
-        	effectMsg[4] = v / 80
-        	outgoingEffectChange(effectMsg)" value="60"/> -->
+
         <input class="knob" id="tremolo-rate" data-min="1" data-max="80" data-step="1" data-release="bus[0].tremolo.rate" data-release2="8" data-release3="'tremolo'" data-release4="'rate'" data-release5="80" value="60"/>
-     	<!-- <input class="knob" id="tremolo-phase" data-min="0" data-max="180" data-step="1" data-release="bus[0].tremolo.stereoPhase = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'tremolo'
-        	effectMsg[3] = 'stereoPhase'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="120"/> -->
+
         <input class="knob" id="tremolo-phase" data-min="0" data-max="180" data-step="1" data-release="bus[0].tremolo.stereoPhase" data-release2="8" data-release3="'tremolo'" data-release4="'stereoPhase'" data-release5="1" value="120"/>
 
     /////////////////wahwah Mapping//////////////////
-     	<!-- <input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="bus[0].wahwah.automode = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'automode'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="0"/> -->
+
         <input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="bus[0].wahwah.automode" data-release2="8" data-release3="'wahwah'" data-release4="'automode'" data-release5="1" value="1"/>
-    	<!-- <input class="knob" id="wahwah-base" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.baseFrequency = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'baseFrequency'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="50"/> -->
+
         <input class="knob" id="wahwah-base" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.baseFrequency" data-release2="8" data-release3="'wahwah'" data-release4="'baseFrequency'" data-release5="101" value="50"/>
-    	<!-- <input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="bus[0].wahwah.excursionOctaves = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'excursionOctaves'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="4"/> -->
+
         <input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="bus[0].wahwah.excursionOctaves" data-release2="8" data-release3="'wahwah'" data-release4="'excursionOctaves'" data-release5="1" value="4"/>    
-    	<!-- <input class="knob" id="wahwah-sweep" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.sweep = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'sweep'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
+
         <input class="knob" id="wahwah-sweep" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.sweep" data-release2="8" data-release3="'wahwah'" data-release4="'sweep'" data-release5="101" value="80"/>     
-    	<!-- <input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="bus[0].wahwah.resonance = v 
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'resonance'
-        	effectMsg[4] = v
-        	outgoingEffectChange(effectMsg)" value="50"/> -->
+
         <input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="bus[0].wahwah.resonance" data-release2="8" data-release3="'wahwah'" data-release4="'resonance'" data-release5="1" value="50"/>
-    	<!-- <input class="knob" id="wahwah-sensitivity" data-min="-100" data-max="100" data-step="1" data-release="bus[0].wahwah.sensitivity = v / 101
-        	effectMsg[1] = 8
-        	effectMsg[2] = 'wahwah'
-        	effectMsg[3] = 'sensitivity'
-        	effectMsg[4] = v / 101
-        	outgoingEffectChange(effectMsg)" value="80"/> -->
+
         <input class="knob" id="wahwah-sensitivity" data-min="-100" data-max="100" data-step="1" data-release="bus[0].wahwah.sensitivity" data-release2="8" data-release3="'wahwah'" data-release4="'sensitivity'" data-release5="101" value="80"/>    
 </div>
 
-
-
-
-
-</div>
-<!--//// Audio samples for you ////////////////////////// -->
-
-	<ul class="audioBin0">
-	<li></li>
-
-	</ul>
-<!--//// Audio samples for 1st connection//////////////// -->
-	<ul class="audioBin1">
-	<li></li>
-
-	</ul>
-<!--//// Audio Samples for 2nd connection//////////////// -->
-
-	<ul class="audioBin2">
-	<li></li>
-
-	</ul>
-<!--//// Audio samples for 3rd connection//////////////// -->
-	<ul class="audioBin3">
-	<li></li>
-
-	</ul>
-
-<!-- Metronome -->
-	<ul class="audioBin4">
-	<li></li>
-
-	</ul>
-</div> 
 
 
 <!-- 		// <script src = "/socket.io/socket.io.js"></script> -->
@@ -682,6 +444,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 		 <script src="js/clientindex.js"></script>
 		 <script src="js/scriptVisu4.js"></script>
 		 <script src="js/dataProcess.js"></script>
+		 <script src="js/synth.js"></script>
 		 <script src="js/effects.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
