@@ -88,10 +88,10 @@ if (context) {
 var ans = []
 var ansT = []
 
-// for (var i = 0 ; i < userLimit ; i++){
-// 	ans[i] = context.createAnalyser();
-// 	ansT[i] = context.createAnalyser();
-// }
+for (var i = 0 ; i < userLimit ; i++){
+	ans[i] = context.createAnalyser();
+	ansT[i] = context.createAnalyser();
+}
 
 var soundOn ;
 var soundOff ;
