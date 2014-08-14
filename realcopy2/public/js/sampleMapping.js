@@ -28,7 +28,7 @@ for (var i = 0 ; i < userLimit ; i++) {
 }
 
 // Initialize your own instrument on startup
-// loadInstrument(0, firstInst)
+loadInstrument(0, firstInst)
 
 
 function loadInstrument(index, instr){
