@@ -167,13 +167,13 @@ synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTim
 
 setTimeout(function(){
 	if (synthKey[index][key[3]].tailActive){
-		synthKey[index][e.which].osc1.stop()
-		synthKey[index][e.which].osc2.stop()
-		synthKey[index][e.which].osc3.stop()
-		synthKey[index][e.which].gain1.disconnect()
-		synthKey[index][e.which].gain2.disconnect()
-		synthKey[index][e.which].gain3.disconnect()
-		synthKey[index][e.which].tailActive = false
+		synthKey[index][key[3]].osc1.stop()
+		synthKey[index][key[3]].osc2.stop()
+		synthKey[index][key[3]].osc3.stop()
+		synthKey[index][key[3]].gain1.disconnect()
+		synthKey[index][key[3]].gain2.disconnect()
+		synthKey[index][key[3]].gain3.disconnect()
+		synthKey[index][key[3]].tailActive = false
 	}
 }, highDecay)
 

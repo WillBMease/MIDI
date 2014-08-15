@@ -106,6 +106,7 @@ if(!sampleActive){
 	oscMsg[3] = e.which
 	oscMsg[4] = null
 	oscMsg[5] = '1'
+	oscMsg[6] = false
 console.log(e.which)
 
 if (synthKey[0][e.which] == null){
