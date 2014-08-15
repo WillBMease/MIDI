@@ -50,9 +50,15 @@ sampleMsg[4] = null ;
 
 var synthKey = []
 
-var osc1 = 'triangle'
-var osc2 = 'sine'
-var osc3 = 'sawtooth'
+var osc1 = []
+var osc2 = []
+var osc3 = []
+
+for (var i = 0 ; i < userLimit ; i++){
+osc1[i] = 'triangle'
+osc2[i] = 'sine'
+osc3[i] = 'sawtooth'
+}
 
 for (var i = 0 ; i < userLimit ; i++){
 	synthKey[i] = []
