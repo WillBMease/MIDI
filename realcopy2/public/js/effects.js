@@ -430,7 +430,7 @@ switch (effectMsg[2]) {
 	case 'oscVol2' :
 		oscVol2[index] = effectMsg[4]
 		break;
-	case 'oscVol3' ;
+	case 'oscVol3' :
 		oscVol3[index] = effectMsg[4]
 		break;
 }
