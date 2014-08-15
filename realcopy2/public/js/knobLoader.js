@@ -14,8 +14,6 @@ $(".knob").each(function(){
         max:  parseInt($(this).attr('data-max')),
         step: parseInt($(this).attr('data-step')),
         'release': function(v) { 
-             console.log('here: ' + dataRel5)
-            // dataRel = v
             switch(dataRel){
                 case 'bus[0].reverb.level' :
                 bus[0].reverb.level = v/dataRel5
@@ -239,45 +237,9 @@ $(".knob").each(function(){
             effectMsg[3] = dataRel4
             effectMsg[4] = v/dataRel5
             outgoingEffectChange(effectMsg)
-            // console.log(effectMsg[1])
-            // console.log(effectMsg[2])
-            // console.log(effectMsg[3])
-            // console.log(effectMsg[4])
 
         }
     })
-})
-
-$("#attack").knob({
- width:40,
- height:40,
- min:0,
- max:1000,
- step:1,
-    'release' : function (v) { 
-     attack = v
-     // effectMsg[1] = 8
-     // effectMsg[2] = 'reverb'
-     // effectMsg[3] = 'highCut'
-     // effectMsg[4] = v
-     // outgoingEffectChange(effectMsg)
-     }
-})
-
-$("#decay").knob({
- width:40,
- height:40,
- min:0,
- max:1000,
- step:1,
-    'release' : function (v) { 
-     decay = v
-     // effectMsg[1] = 8
-     // effectMsg[2] = 'reverb'
-     // effectMsg[3] = 'highCut'
-     // effectMsg[4] = v
-     // outgoingEffectChange(effectMsg)
-     }
 })
 
 
