@@ -183,6 +183,7 @@ if (!sampleActive && e.which != 49 && e.which != 192){
 	oscMsg[3] = e.which;
 	oscMsg[4] = null
 	oscMsg[5] = '0'
+	oscMSg[6] = false
 	stopSynth(0, oscMsg)
 
 	for (var i = 1 ; i < userLimit ; i++){
