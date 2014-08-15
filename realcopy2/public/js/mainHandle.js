@@ -141,7 +141,7 @@ if (!synthKey[0][e.which].isActive){
 		synthKey[0][e.which].tailActive = false
 	}
 
-	playSynth(0, oscMsg, false)
+	playSynth(0, oscMsg)
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
