@@ -50,29 +50,42 @@ $('.changeSynth3').click(function(){
 
 
 function createOscillator(index, freq, key) {
-    var attack = 100
-    synthKey[index][key[3]].decay = 150
-    synthKey[index][key[3]].gain = context.createGain()
+
+    synthKey[index][key[3]].gain1 = context.createGain()
+    synthKey[index][key[3]].gain2 = context.createGain()
+    synthKey[index][key[3]].gain3 = context.createGain()
 
     synthKey[index][key[3]].osc1 = context.createOscillator();
 	synthKey[index][key[3]].osc2 = context.createOscillator()
 	synthKey[index][key[3]].osc3 = context.createOscillator()
         
-    synthKey[index][key[3]].gain.connect(bus[index].input);
-    synthKey[index][key[3]].gain.gain.setValueAtTime(0, context.currentTime);
-    synthKey[index][key[3]].gain.gain.linearRampToValueAtTime(1, context.currentTime + attack / 1000);
+    synthKey[index][key[3]].gain1.connect(bus[index].input);
+    synthKey[index][key[3]].gain2.connect(bus[index].input);
+    synthKey[index][key[3]].gain3.connect(bus[index].input);
+
+    synthKey[index][key[3]].gain1.value = oscVol1
+    synthKey[index][key[3]].gain2.value = oscVol2
+    synthKey[index][key[3]].gain3.value = oscVol3
+
+    synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
+    synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
+    synthKey[index][key[3]].gain3.gain.setValueAtTime(0, context.currentTime);
+
+    synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(1, context.currentTime + attack1 / 1000);
+    synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(1, context.currentTime + attack2 / 1000);
+    synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(1, context.currentTime + attack3 / 1000);
 
 	synthKey[index][key[3]].osc1.type = osc1
 	synthKey[index][key[3]].osc2.type = osc2
 	synthKey[index][key[3]].osc3.type = osc3
 
-	synthKey[index][key[3]].osc1.connect(synthKey[index][key[3]].gain)
-	synthKey[index][key[3]].osc2.connect(synthKey[index][key[3]].gain)
-	synthKey[index][key[3]].osc3.connect(synthKey[index][key[3]].gain)
+	synthKey[index][key[3]].osc1.connect(synthKey[index][key[3]].gain1)
+	synthKey[index][key[3]].osc2.connect(synthKey[index][key[3]].gain2)
+	synthKey[index][key[3]].osc3.connect(synthKey[index][key[3]].gain3)
    
-    synthKey[index][key[3]].osc1.frequency.value = freq
-    synthKey[index][key[3]].osc2.frequency.value = freq
-    synthKey[index][key[3]].osc3.frequency.value = freq
+    synthKey[index][key[3]].osc1.frequency.value = freq[1] - detune1
+    synthKey[index][key[3]].osc2.frequency.value = freq[2] - detune2
+    synthKey[index][key[3]].osc3.frequency.value = freq[3] - detune3
 
     synthKey[index][key[3]].osc1.start(0)
     synthKey[index][key[3]].osc2.start(0)
@@ -93,13 +106,23 @@ if (synthKey[index][key[3]] == null){
 			osc1:"",
 			osc2:"",
 			osc3:"",
-			gain:"",
-			decay:"",
+			gain1:"",
+			gain2:"",
+			gain3:"",
 		};
 		synthKey[index][key[3]] = soundObj
 }
 
 if (!synthKey[index][key[3]].isActive){
+	if (synthKey[index][key[3]].tailActive){
+		synthKey[index][e.which].osc1.stop()
+		synthKey[index][e.which].osc2.stop()
+		synthKey[index][e.which].osc3.stop()
+		synthKey[index][e.which].gain1.disconnect()
+		synthKey[index][e.which].gain2.disconnect()
+		synthKey[index][e.which].gain3.disconnect()
+		synthKey[index][e.which].tailActive = false
+	}
 
 	if (midi){
 		mappedkey = masterConversion(key)
@@ -110,14 +133,16 @@ if (!synthKey[index][key[3]].isActive){
 	transpose(index, key[3]);
 
 	var check = keyboardMap(key[3]) ;
-
 	mappedKey = keyboardMap(key[3]) + (octave[index]*12);
 }
 
 if(check != 200  && check != 49 && check != 192){
 
-    var freq = 32.703 * Math.pow(1.059463094359, mappedKey - 12)
-console.log(mappedKey)
+	var frequency = 32.703 * Math.pow(1.059463094359, mappedKey - 12)
+    var freq = []
+    freq[1] = frequency
+    freq[2] = frequency
+    freq[3] = frequency
 	createOscillator(index, freq, key)
 
 	}
@@ -127,18 +152,30 @@ console.log(mappedKey)
 }
 
 function stopSynth(index, key){
-	
-synthKey[index][key[3]].gain.gain.linearRampToValueAtTime(0, context.currentTime + synthKey[index][key[3]].decay / 1000);
+
+var checkActive = new Date()
+var highDecay = decay1
+
+if (highDecay < decay2)
+	highDecay = decay2
+if (highDecay < decay3)
+	highDecay = decay3
+
+synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTime + decay1 / 1000);
+synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2 / 1000);
+synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTime + decay3 / 1000);
 
 setTimeout(function(){
-if(synthKey[index][key[3]].tailActive){
-	synthKey[index][key[3]].osc1.stop()
-	synthKey[index][key[3]].osc2.stop()
-	synthKey[index][key[3]].osc3.stop()
-	synthKey[index][key[3]].gain.disconnect()
-	synthKey[index][key[3]].tailActive = false
+	if (synthKey[index][key[3]].tailActive){
+		synthKey[index][e.which].osc1.stop()
+		synthKey[index][e.which].osc2.stop()
+		synthKey[index][e.which].osc3.stop()
+		synthKey[index][e.which].gain1.disconnect()
+		synthKey[index][e.which].gain2.disconnect()
+		synthKey[index][e.which].gain3.disconnect()
+		synthKey[index][e.which].tailActive = false
 	}
-}, synthKey[index][key[3]].decay)
+}, highDecay)
 
 	synthKey[index][key[3]].isActive = false
 }

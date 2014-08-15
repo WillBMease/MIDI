@@ -71,8 +71,6 @@ var sampleActive = false;
 
 var oscChecks = []
 
-// var	canvasContext = document.getElementById( "meter" ).getContext("2d");
-
 // initialize web audio api
 var context = new (window.AudioContext || window.webkitAudioContext ||  
 	window.mozAudioContext || 
@@ -117,8 +115,9 @@ if (synthKey[0][e.which] == null){
 			osc1:"",
 			osc2:"",
 			osc3:"",
-			gain:"",
-			decay:"",
+			gain1:"",
+			gain2:"",
+			gain3:"",
 		};
 		synthKey[0][e.which] = soundObj
 }
@@ -129,7 +128,10 @@ if (!synthKey[0][e.which].isActive){
 		synthKey[0][e.which].osc1.stop()
 		synthKey[0][e.which].osc2.stop()
 		synthKey[0][e.which].osc3.stop()
-		synthKey[0][e.which].gain.disconnect()
+		synthKey[0][e.which].gain1.disconnect()
+		synthKey[0][e.which].gain2.disconnect()
+		synthKey[0][e.which].gain3.disconnect()
+		synthKey[0][e.which].tailActive = false
 	}
 
 	playSynth(0, oscMsg, false)

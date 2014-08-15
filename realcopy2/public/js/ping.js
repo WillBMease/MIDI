@@ -124,36 +124,10 @@ function quantizer(data){
             prevMsg = data[2]
       }
 
-      // else if (doQuant && firstQuant){
-      //       firstQuant = false
-      //       benchmark[4] = data[3]
-      // }
-
 
 else {
       console.log('ID: ' + data[0])
       console.log('recent ping: ' + benchmark[4])
-
-      // benchmark[2] = new Date()
-      // var benchDiff = benchmark[2] - benchmark[1] - benchmark[3]
-      // benchmark[3] += benchDiff
-      // var benchSt = benchDiff.toString()
-
-      // console.log(benchmark[3])
-
-      // console.log("bench diff is " + benchSt)
-
-      // var diff = data[2] - prevMsg
-      // var diffSt = diff.toString()
-
-      // console.log("difference is " + diffSt)
-
-      // var latVar = benchDiff - diff
-      // var latSt = latVar.toString()
-
-      // console.log ('variance is ' + latSt)
-
-      // console.log('')
 
       benchmark[2] = new Date()
 
@@ -169,16 +143,13 @@ else {
             var delayed = 40 - variance
       setTimeout(function(){
       triggerSample(0, hardNote)
-}, delayed)
-
+      }, delayed)
       }
+
       else
       triggerSample(0, hardNote)
-
 }
-      
       prevMsg = data[2]
-
 }
 
 function firstPinger() {

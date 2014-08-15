@@ -1,6 +1,18 @@
 var effectMsg = []
 effectMsg[1] = 8
 
+var attack1 = 150,
+	attack2 = 150,
+	attack3 = 150,
+	decay1 = 750,
+	decay2 = 750,
+	decay3 = 750,
+	detune1 = 0,
+	detune2 = 0,
+	detune3 = 0,
+	oscVol1 = 0.7,
+	oscVol2 = 0.7,
+	oscVol3 = 0.7
 
 
 
@@ -71,7 +83,7 @@ this.phaser = new tuna.Phaser({
 this.cabinet = new tuna.Cabinet({
                   makeupGain: 15,                                 //0 to 20
                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
-                  bypass: true
+                  bypass: false
               });
 
 this.wahwah = new tuna.WahWah({
@@ -138,8 +150,8 @@ var bus = []
 
 for (var i = 0 ; i < userLimit ; i++){
 	bus[i] = new AudioBus()
-	// bus[i].connect(ans[i])
-	// bus[i].connect(ansT[i])
+	bus[i].connect(ans[i])
+	bus[i].connect(ansT[i])
 	bus[i].connect(context.destination)
 }
 
@@ -194,6 +206,22 @@ for (var i = 0 ; i < 1 ; i++) {
 		bus[i].wahwah.sweep = $("#wahwah-sweep").val() / 101
 		bus[i].wahwah.resonance = $("#wahwah-resonance").val()
 		bus[i].wahwah.sensitivity = $("#wahwah-sensitivity").val() / 101
+
+		attack1 = $('#attack1').val()
+		attack2 = $('#attack2').val()
+		attack3 = $('#attack3').val()
+		
+		decay1 = $('#decay1').val()
+		decay2 = $('#decay2').val()
+		decay3 = $('#decay3').val()
+
+		detune1 = $('#detune1').val()
+		detune2 = $('#detune2').val()
+		detune3 = $('#detune3').val()
+
+		oscVol1 = $('#oscVol1').val() / 100
+		oscVol2 = $('#oscVol2').val() / 100
+		oscVol3 = $('#oscVol3').val() / 100
 }
 
     $('.outgoingEffect').click(function(){
