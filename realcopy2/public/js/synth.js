@@ -153,7 +153,6 @@ if(check != 200  && check != 49 && check != 192){
 
 function stopSynth(index, key){
 
-var checkActive = new Date()
 var highDecay = decay1[index]
 
 if (highDecay < decay2[index])
