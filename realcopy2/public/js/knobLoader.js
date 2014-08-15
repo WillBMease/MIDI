@@ -184,51 +184,51 @@ $(".knob").each(function(){
                 break;
 
                 case 'attack1' :
-                attack1 = v
+                attack1[0] = v
                 break;
 
                 case 'attack2' :
-                attack2 = v
+                attack2[0] = v
                 break;
 
                 case 'attack3' :
-                attack3 = v
+                attack3[0] = v
                 break;
 
                 case 'decay1' :
-                decay1 = v
+                decay1[0] = v
                 break;
 
                 case 'decay2' :
-                decay2 = v
+                decay2[0] = v
                 break;
 
                 case 'decay3' :
-                decay3 = v
+                decay3[0] = v
                 break;
 
                 case 'detune1' :
-                detune1 = v
+                detune1[0] = v
                 break;
 
                 case 'detune2' :
-                detune2 = v
+                detune2[0] = v
                 break;
 
                 case 'detune3' :
-                detune3 = v
+                detune3[0] = v
                 break;
 
                 case 'oscVol1' :
-                oscVol1 = v / dataRel5
+                oscVol1[0] = v / dataRel5
                 break;
 
                 case 'oscVol2' :
-                oscVol2 = v / dataRel5
+                oscVol2[0] = v / dataRel5
                 break;
 
                 case 'oscVol3' :
-                oscVol3 = v / dataRel5
+                oscVol3[0] = v / dataRel5
                 break;
             }
             

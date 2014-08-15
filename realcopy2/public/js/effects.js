@@ -1,18 +1,33 @@
 var effectMsg = []
 effectMsg[1] = 8
 
-var attack1 = 150,
-	attack2 = 150,
-	attack3 = 150,
-	decay1 = 750,
-	decay2 = 750,
-	decay3 = 750,
-	detune1 = 0,
-	detune2 = 0,
-	detune3 = 0,
-	oscVol1 = 0.7,
-	oscVol2 = 0.7,
-	oscVol3 = 0.7
+var attack1 = [],
+	attack2 = [],
+	attack3 = [],
+	decay1 = [],
+	decay2 = [],
+	decay3 = [],
+	detune1 = [],
+	detune2 = [],
+	detune3 = [],
+	oscVol1 = [],
+	oscVol2 = [],
+	oscVol3 = []
+
+for (var i = 0 ; i < userLimit ; i++){
+	attack1[i] = 150
+	attack2[i] = 150
+	attack3[i] = 150
+	decay1[i] = 750
+	decay2[i] = 750
+	decay3[i] = 750
+	detune1[i] = 0
+	detune2[i] = 0
+	detune3[i] = 0
+	oscVol1[i] = 0.7
+	oscVol2[i] = 0.7
+	oscVol3[i] = 0.7
+}
 
 
 
@@ -207,21 +222,21 @@ for (var i = 0 ; i < 1 ; i++) {
 		bus[i].wahwah.resonance = $("#wahwah-resonance").val()
 		bus[i].wahwah.sensitivity = $("#wahwah-sensitivity").val() / 101
 
-		attack1 = $('#attack1').val()
-		attack2 = $('#attack2').val()
-		attack3 = $('#attack3').val()
+		attack1[i] = $('#attack1').val()
+		attack2[i] = $('#attack2').val()
+		attack3[i] = $('#attack3').val()
 		
-		decay1 = $('#decay1').val()
-		decay2 = $('#decay2').val()
-		decay3 = $('#decay3').val()
+		decay1[i] = $('#decay1').val()
+		decay2[i] = $('#decay2').val()
+		decay3[i] = $('#decay3').val()
 
-		detune1 = $('#detune1').val()
-		detune2 = $('#detune2').val()
-		detune3 = $('#detune3').val()
+		detune1[i] = $('#detune1').val()
+		detune2[i] = $('#detune2').val()
+		detune3[i] = $('#detune3').val()
 
-		oscVol1 = $('#oscVol1').val() / 100
-		oscVol2 = $('#oscVol2').val() / 100
-		oscVol3 = $('#oscVol3').val() / 100
+		oscVol1[i] = $('#oscVol1').val() / 100
+		oscVol2[i] = $('#oscVol2').val() / 100
+		oscVol3[i] = $('#oscVol3').val() / 100
 }
 
     $('.outgoingEffect').click(function(){
@@ -382,6 +397,42 @@ switch (effectMsg[2]) {
 	case 'sensitivity' :
 		mainctl.sensitivity = effectMsg[4]
 		break ;
+	case 'attack1' :
+		attack1[index] = effectMsg[4]
+		break;
+	case 'attack2' :
+		attack2[index] = effectMsg[4]
+		break;
+	case 'attack3' :
+		attack3[index] = effectMsg[4]
+		break;
+	case 'decay1' :
+		decay1[index] = effectMsg[4]
+		break;
+	case 'decay2' :
+		decay2[index] = effectMsg[4]
+		break;
+	case 'decay3' :
+		decay3[index] = effectMsg[4]
+		break;
+	case 'detune1' :
+		detune1[index] = effectMsg[4]
+		break;
+	case 'detune2' :
+		detune2[index] = effectMsg[4]
+		break;
+	case 'detune3' :
+		detune3[index] = effectMsg[4]
+		break;
+	case 'oscVol1' :
+		oscVol1[index] = effectMsg[4]
+		break;
+	case 'oscVol2' :
+		oscVol2[index] = effectMsg[4]
+		break;
+	case 'oscVol3' ;
+		oscVol3[index] = effectMsg[4]
+		break;
 }
 
 

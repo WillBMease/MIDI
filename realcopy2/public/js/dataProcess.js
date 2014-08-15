@@ -183,7 +183,6 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
       tempOsc.inst = data[4]
       tempOsc.insType = data[5]
       tempOsc.frequency = data[6]
-      // tempOsc.activeVoice = context.createOscillator()
       startOsc(tempOsc)
     }
 

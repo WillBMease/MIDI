@@ -63,29 +63,29 @@ function createOscillator(index, freq, key) {
     synthKey[index][key[3]].gain2.connect(bus[index].input);
     synthKey[index][key[3]].gain3.connect(bus[index].input);
 
-    synthKey[index][key[3]].gain1.value = oscVol1
-    synthKey[index][key[3]].gain2.value = oscVol2
-    synthKey[index][key[3]].gain3.value = oscVol3
+    synthKey[index][key[3]].gain1.value = oscVol1[index]
+    synthKey[index][key[3]].gain2.value = oscVol2[index]
+    synthKey[index][key[3]].gain3.value = oscVol3[index]
 
     synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
     synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
     synthKey[index][key[3]].gain3.gain.setValueAtTime(0, context.currentTime);
 
-    synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(1, context.currentTime + attack1 / 1000);
-    synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(1, context.currentTime + attack2 / 1000);
-    synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(1, context.currentTime + attack3 / 1000);
+    synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(1, context.currentTime + attack1[index] / 1000);
+    synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(1, context.currentTime + attack2[index] / 1000);
+    synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(1, context.currentTime + attack3[index] / 1000);
 
-	synthKey[index][key[3]].osc1.type = osc1
-	synthKey[index][key[3]].osc2.type = osc2
-	synthKey[index][key[3]].osc3.type = osc3
+	synthKey[index][key[3]].osc1.type = osc1[index]
+	synthKey[index][key[3]].osc2.type = osc2[index]
+	synthKey[index][key[3]].osc3.type = osc3[index]
 
 	synthKey[index][key[3]].osc1.connect(synthKey[index][key[3]].gain1)
 	synthKey[index][key[3]].osc2.connect(synthKey[index][key[3]].gain2)
 	synthKey[index][key[3]].osc3.connect(synthKey[index][key[3]].gain3)
    
-    synthKey[index][key[3]].osc1.frequency.value = freq[1] - detune1
-    synthKey[index][key[3]].osc2.frequency.value = freq[2] - detune2
-    synthKey[index][key[3]].osc3.frequency.value = freq[3] - detune3
+    synthKey[index][key[3]].osc1.frequency.value = freq[1] - detune1[index]
+    synthKey[index][key[3]].osc2.frequency.value = freq[2] - detune2[index]
+    synthKey[index][key[3]].osc3.frequency.value = freq[3] - detune3[index]
 
     synthKey[index][key[3]].osc1.start(0)
     synthKey[index][key[3]].osc2.start(0)
@@ -115,13 +115,13 @@ if (synthKey[index][key[3]] == null){
 
 if (!synthKey[index][key[3]].isActive){
 	if (synthKey[index][key[3]].tailActive){
-		synthKey[index][e.which].osc1.stop()
-		synthKey[index][e.which].osc2.stop()
-		synthKey[index][e.which].osc3.stop()
-		synthKey[index][e.which].gain1.disconnect()
-		synthKey[index][e.which].gain2.disconnect()
-		synthKey[index][e.which].gain3.disconnect()
-		synthKey[index][e.which].tailActive = false
+		synthKey[index][key[3]].osc1.stop()
+		synthKey[index][key[3]].osc2.stop()
+		synthKey[index][key[3]].osc3.stop()
+		synthKey[index][key[3]].gain1.disconnect()
+		synthKey[index][key[3]].gain2.disconnect()
+		synthKey[index][key[3]].gain3.disconnect()
+		synthKey[index][key[3]].tailActive = false
 	}
 
 	if (midi){
@@ -154,16 +154,16 @@ if(check != 200  && check != 49 && check != 192){
 function stopSynth(index, key){
 
 var checkActive = new Date()
-var highDecay = decay1
+var highDecay = decay1[index]
 
-if (highDecay < decay2)
-	highDecay = decay2
-if (highDecay < decay3)
-	highDecay = decay3
+if (highDecay < decay2[index])
+	highDecay = decay2[index]
+if (highDecay < decay3[index])
+	highDecay = decay3[index]
 
-synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTime + decay1 / 1000);
-synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2 / 1000);
-synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTime + decay3 / 1000);
+synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTime + decay1[index] / 1000);
+synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2[index] / 1000);
+synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTime + decay3[index] / 1000);
 
 setTimeout(function(){
 	if (synthKey[index][key[3]].tailActive){
