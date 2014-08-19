@@ -23,7 +23,7 @@ var firstRun = true
 		
 		}
 
-for (var i = 0 ; i < userLimit ; i++) {
+for (var i = 0 ; i < userLimit + 1 ; i++) {
 	noteNode[i] = []
 }
 
@@ -79,17 +79,12 @@ function triggerSample(index, key) {
 	 var mappedKey = keyboardMap(key[2]) + (octave[index]*12);
 
 if(check != 200  && check != 49 && check != 96){
-console.log(mappedKey)
-	 var source1 = context.createBufferSource();
-	 console.log(noteNode[index][mappedKey])
+	var source1 = context.createBufferSource();
     source1.buffer = noteNode[index][mappedKey];
    
 // source1.playbackRate.value = 5
 
     source1.connect(bus[index].input);
-    source1.connect(bus[1].input);
-    source1.connect(bus[2].input);
-    source1.connect(bus[3].input);
     source1.start(0);
 
     source1.onended = function() {

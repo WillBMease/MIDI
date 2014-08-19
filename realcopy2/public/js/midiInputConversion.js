@@ -631,6 +631,7 @@ function masterConversion(midiInput){
 			output = 108-1;
 			break;		}
 	}
+	// console.log(output)
 	return output;
 }
 

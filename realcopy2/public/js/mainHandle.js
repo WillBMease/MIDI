@@ -113,7 +113,6 @@ if(!sampleActive){
 	oscMsg[4] = null
 	oscMsg[5] = '1'
 	oscMsg[6] = false
-console.log(e.which)
 
 if (synthKey[0][e.which] == null){
 	soundObj = {
@@ -141,7 +140,7 @@ if (!synthKey[0][e.which].isActive){
 		synthKey[0][e.which].tailActive = false
 	}
 
-	playSynth(0, oscMsg)
+	playSynth(0, oscMsg, false)
 
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {

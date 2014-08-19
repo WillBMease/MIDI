@@ -5,46 +5,46 @@ $('#synth').click(function(){
 
 $('.changeSynth1').click(function(){
 	if ($(this).attr('id') == 'sine'){
-		osc1 = 'sine'
+		osc1[0] = 'sine'
 	}
 	else if ($(this).attr('id') == 'square'){
-		osc1 = 'square'
+		osc1[0] = 'square'
 	}
 	else if($(this).attr('id') == 'triangle'){
-		osc1 = 'triangle'
+		osc1[0] = 'triangle'
 	}
 	else if($(this).attr('id') == 'sawtooth'){
-		osc1 = 'sawtooth'
+		osc1[0] = 'sawtooth'
 	}
 })
 
 $('.changeSynth2').click(function(){
 	if ($(this).attr('id') == 'sine'){
-		osc2 = 'sine'
+		osc2[0] = 'sine'
 	}
 	else if ($(this).attr('id') == 'square'){
-		osc2 = 'square'
+		osc2[0] = 'square'
 	}
 	else if($(this).attr('id') == 'triangle'){
-		osc2 = 'triangle'
+		osc2[0] = 'triangle'
 	}
 	else if($(this).attr('id') == 'sawtooth'){
-		osc2 = 'sawtooth'
+		osc2[0] = 'sawtooth'
 	}
 })
 
 $('.changeSynth3').click(function(){
 	if ($(this).attr('id') == 'sine'){
-		osc3 = 'sine'
+		osc3[0] = 'sine'
 	}
 	else if ($(this).attr('id') == 'square'){
-		osc3 = 'square'
+		osc3[0] = 'square'
 	}
 	else if($(this).attr('id') == 'triangle'){
-		osc3 = 'triangle'
+		osc3[0] = 'triangle'
 	}
 	else if($(this).attr('id') == 'sawtooth'){
-		osc3 = 'sawtooth'
+		osc3[0] = 'sawtooth'
 	}
 })
 
@@ -63,9 +63,9 @@ function createOscillator(index, freq, key) {
     synthKey[index][key[3]].gain2.connect(bus[index].input);
     synthKey[index][key[3]].gain3.connect(bus[index].input);
 
-    synthKey[index][key[3]].gain1.value = oscVol1[index]
-    synthKey[index][key[3]].gain2.value = oscVol2[index]
-    synthKey[index][key[3]].gain3.value = oscVol3[index]
+    synthKey[index][key[3]].gain1.gain.value = 0 //oscVol1[index]
+    synthKey[index][key[3]].gain2.gain.value = 0 //oscVol2[index]
+    synthKey[index][key[3]].gain3.gain.value = 0 //oscVol3[index]
 
     synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
     synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
@@ -97,8 +97,7 @@ function createOscillator(index, freq, key) {
 
 
 function playSynth(index, key, midi){
-	var mappedKey
-
+ var mappedKey
 if (synthKey[index][key[3]] == null){
 	soundObj = {
 			isActive: false,
@@ -124,10 +123,13 @@ if (!synthKey[index][key[3]].isActive){
 		synthKey[index][key[3]].tailActive = false
 	}
 
-	if (midi){
-		mappedkey = masterConversion(key)
+	if (key[1] == 100){
+		mappedKey = key[3]
+	}
+
+	else if (midi){
+		mappedKey = masterConversion(key)
 		console.log(mappedKey)
-		console.log(key)
 	}
 	else if (!midi){
 	transpose(index, key[3]);
@@ -164,17 +166,17 @@ synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTim
 synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2[index] / 1000);
 synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTime + decay3[index] / 1000);
 
-setTimeout(function(){
-	if (synthKey[index][key[3]].tailActive){
-		synthKey[index][key[3]].osc1.stop()
-		synthKey[index][key[3]].osc2.stop()
-		synthKey[index][key[3]].osc3.stop()
-		synthKey[index][key[3]].gain1.disconnect()
-		synthKey[index][key[3]].gain2.disconnect()
-		synthKey[index][key[3]].gain3.disconnect()
-		synthKey[index][key[3]].tailActive = false
-	}
-}, highDecay)
+// setTimeout(function(){
+// 	if (synthKey[index][key[3]].tailActive){
+// 		synthKey[index][key[3]].osc1.stop()
+// 		synthKey[index][key[3]].osc2.stop()
+// 		synthKey[index][key[3]].osc3.stop()
+// 		synthKey[index][key[3]].gain1.disconnect()
+// 		synthKey[index][key[3]].gain2.disconnect()
+// 		synthKey[index][key[3]].gain3.disconnect()
+// 		synthKey[index][key[3]].tailActive = false
+// 	}
+// }, highDecay)
 
 	synthKey[index][key[3]].isActive = false
 }

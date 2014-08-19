@@ -15,12 +15,12 @@ var attack1 = [],
 	oscVol3 = []
 
 for (var i = 0 ; i < userLimit ; i++){
-	attack1[i] = 150
-	attack2[i] = 150
-	attack3[i] = 150
-	decay1[i] = 750
-	decay2[i] = 750
-	decay3[i] = 750
+	attack1[i] = 15
+	attack2[i] = 15
+	attack3[i] = 15
+	decay1[i] = 100
+	decay2[i] = 100
+	decay3[i] = 100
 	detune1[i] = 0
 	detune2[i] = 0
 	detune3[i] = 0
@@ -98,7 +98,7 @@ this.phaser = new tuna.Phaser({
 this.cabinet = new tuna.Cabinet({
                   makeupGain: 15,                                 //0 to 20
                   impulsePath: "js/impulses/impulse_guitar.wav",    //path to your speaker impulse
-                  bypass: false
+                  bypass: true
               });
 
 this.wahwah = new tuna.WahWah({
@@ -140,9 +140,9 @@ this.compressor = new tuna.Compressor({
                  });
 
 
-    this.input.connect(this.pregain);
-    this.pregain.connect(this.cabinet.input)
-	this.cabinet.connect(this.overdrive.input)
+    	this.input.connect(this.pregain);
+    	this.pregain.connect(this.cabinet.input)
+		this.cabinet.connect(this.overdrive.input)
 		this.overdrive.connect(this.compressor.input)
 		this.compressor.connect(this.tremolo.input)
 		this.tremolo.connect(this.chorus.input)
@@ -163,10 +163,10 @@ this.compressor = new tuna.Compressor({
 
 var bus = []
 
-for (var i = 0 ; i < userLimit ; i++){
+for (var i = 0 ; i < userLimit + 1 ; i++){
 	bus[i] = new AudioBus()
-	bus[i].connect(ans[i])
-	bus[i].connect(ansT[i])
+	// bus[i].connect(ans[i])
+	// bus[i].connect(ansT[i])
 	bus[i].connect(context.destination)
 }
 

@@ -27,6 +27,7 @@ metroMsg[3] = bpm ;
 //metroMsg[]
 
 // loadInstrument(4, 'gPiano')
+sampleActive = false
 // loadInstrument(4, 'metronome')
 
 // console.log(beatKids[0])
@@ -48,25 +49,37 @@ else if (metroActive) {
 function playDrums() {
 			// triggerSample(0, metroMsg)
 		var loop = [];
-		var beat ;
+		var beat = [] ;
+		beat[1] = 100
 if (section)
-	beat = beatKids1[beatCt]
+	beat[3] = beatKids1[beatCt]
 else
-	beat = beatKids2[beatCt]
+	beat[3] = beatKids2[beatCt]
 // if (section)
 	// beat = beat1[beatCt]
 // else
 	// beat = beat2[beatCt]
 
+console.log(beat)
 
-if (beat != 'x') {
+if (beat[3] != 'x') {
 
-	var noteWrap = $('.audioBin' + 4 + ' li');
+		// var source1 = context.createBufferSource()
+		// source1.buffer = noteNode[4][beat]
 
-	loop = noteWrap.find('audio');
+		// source1.connect(bus[0].input)
+		// source1.start(0)
 
-	console.log(noteWrap)
+		// source1.onended = function(){
+		// 	source1.stop()
+		// }
 
+		playSynth(0, beat, false)
+		setTimeout(function(){
+			stopSynth(0, beat)
+		}, 100)
+
+	// triggerSample(4, beat[2])
 	// if ( beatCt % 4 == 0 || beatCt == 1) {
 	// 	loop[beatKids[0]].pause();
 	// 	loop[beatKids[0]].currentTime = 0
@@ -88,11 +101,6 @@ if (beat != 'x') {
 	// 	loop[beatKids[2]].play(0)
 	// }
 	//console.log(loop[beatKids[beatCt]])
-	console.log(loop[beat])
-		loop[beat].pause();
-		loop[beat].currentTime = 0
-		loop[beat].volume = 0.8
-		loop[beat].play(0)
 
 	// if ( (beatCt - 3) % 4 == 0 || beatCt == 4) {
 	// 	if (beat1[4] == '/')
@@ -118,19 +126,16 @@ console.log(beatCt)
 
 function playMetronome() {
 		// triggerSample(0, metroMsg)
-		var notes = [];
 
+		var source1 = context.createBufferSource()
+		source1.buffer = noteNode[4][30]
 
-	var noteWrap = $('.audioBin' + 4 + ' li');
+		source1.connect(context.destination)
+		source1.start(0)
 
-	notes = noteWrap.find('audio');
-
-	console.log(noteWrap)
-
-		notes[3].pause();
-		notes[3].currentTime = 0
-		notes[3].volume = 0.1
-		notes[3].play(0)
+		source1.onended = function(){
+			source1.stop()
+		}
 }
 
 function startMetronome() {
@@ -142,10 +147,6 @@ function startMetronome() {
 	}
 		metronome()
 }
-
-// function incomingMetro() {
-
-// }
 
 function toggleBPM() {
 	if (bpm == 350)
