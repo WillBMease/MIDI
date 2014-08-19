@@ -36,6 +36,7 @@ function metronome() {
 
 if (!metroActive) {
 	metroActive = true
+	startMetronome()
 refreshMetronome = setInterval(playDrums, bpm);
 }
 
