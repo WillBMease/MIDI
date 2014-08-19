@@ -263,6 +263,19 @@ console.log(data[0])
       }
    }
 
+   else if (data[1] == '17'){
+    if (data[2] == 'type'){
+      if (data[3] == '1')
+        osc1[index] = data[4]
+      else if (data[3] == '2')
+        osc2[index] = data[4]
+      else if (data[3] == '3')
+        osc3[index] = data[4]
+    }
+
+
+   }
+
 
     });
           user[index].on('close', function(err){ 
