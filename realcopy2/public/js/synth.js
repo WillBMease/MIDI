@@ -8,6 +8,7 @@ var oscChg = []
 
 $('#synth').click(function(){
 	sampleActive = false
+	globalOctave = 5
 	console.log('synth is here!')
 })
 
@@ -94,9 +95,9 @@ function createOscillator(index, freq, key) {
     synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
     synthKey[index][key[3]].gain3.gain.setValueAtTime(0, context.currentTime);
 
-    synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(1, context.currentTime + attack1[index] / 1000);
-    synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(1, context.currentTime + attack2[index] / 1000);
-    synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(1, context.currentTime + attack3[index] / 1000);
+    synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(oscVol1[index], context.currentTime + attack1[index] / 1000);
+    synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(oscVol2[index], context.currentTime + attack2[index] / 1000);
+    synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(oscVol3[index], context.currentTime + attack3[index] / 1000);
 
 	synthKey[index][key[3]].osc1.type = osc1[index]
 	synthKey[index][key[3]].osc2.type = osc2[index]
@@ -195,7 +196,7 @@ if (highDecay < decay3[index])
 	synthKey[index][key[3]].gain1.gain.cancelScheduledValues(1, context.currentTime);
     synthKey[index][key[3]].gain2.gain.cancelScheduledValues(1, context.currentTime);
     synthKey[index][key[3]].gain3.gain.cancelScheduledValues(1, context.currentTime);
-    
+
 synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTime + decay1[index] / 1000);
 synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2[index] / 1000);
 synthKey[index][key[3]].gain3.gain.linearRampToValueAtTime(0, context.currentTime + decay3[index] / 1000);

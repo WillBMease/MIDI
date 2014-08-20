@@ -443,6 +443,9 @@ function h2d(h) {return parseInt(h,16);}
 
 function handleMIDIMessage(ev) 
 {
+	console.log(ev.data[0])
+	console.log(ev.data[1])
+	console.log(ev.data[2])
 
 if (mappingActive) {
 
@@ -582,7 +585,7 @@ if (ev.data[2] != 0 && ev.data[0] == 153){
 	      }
       	 }
 
-    if (ev.data[2] == 0) {	
+    if (ev.data[2] == 0 || ev.data[0] == 137) {	
 		for(var x = 0; x < noteDownArray.length; x++) {
 
 	       	if (noteUpArray[x][0] == pressArray[0] && noteUpArray[x][1] == pressArray[1])
@@ -617,7 +620,7 @@ var playActualMIDI = true
 
 	if (ev.data[0] == 153 || ev.data[0] == 143){
 		console.log('look in here!')
-		playActualMIDI = false
+		// playActualMIDI = false
 	}
 
 if (playActualMIDI){
@@ -644,12 +647,12 @@ if (synthKey[0][oscMsg[3]] == null){
 		synthKey[0][oscMsg[3]] = soundObj
 }
 
-if (ev.data[2] != 0){
+if (ev.data[2] != 0 && ev.data[2] != 64){
 		oscMsg[5] = '1'
 		playSynth(0, oscMsg, true)
 }
 
-else if (ev.data[2] == 0){
+else if (ev.data[2] == 0 || ev.data[2] == 64){
 	stopSynth(0, oscMsg)
 	oscMsg[5] = '0'
 }

@@ -78,7 +78,7 @@ function triggerSample(index, key) {
 
 	 var mappedKey = keyboardMap(key[2]) + (octave[index]*12);
 
-if(check != 200  && check != 49 && check != 96){
+if(check != 200  && check != 49 && check != 192){
 	var source1 = context.createBufferSource();
     source1.buffer = noteNode[index][mappedKey];
    
