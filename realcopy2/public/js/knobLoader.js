@@ -324,12 +324,14 @@ $(".knob").each(function(){
                 break;
             }
             
+            if (!synth){
             effectMsg[1] = dataRel2
             effectMsg[2] = dataRel3
             effectMsg[3] = dataRel4
             effectMsg[4] = v/dataRel5
-            if (!synth)
+            
             outgoingEffectChange(effectMsg)
+            }
             else if (synth)
             outgoingSynthChange(oscChg)
 

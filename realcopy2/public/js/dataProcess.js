@@ -272,6 +272,30 @@ console.log(data[0])
       else if (data[3] == '3')
         osc3[index] = data[4]
     }
+    else if (data[2] == 'attack'){
+      if (data[3] == '1')
+        attack1[index] = data[4]
+      else if (data[3] == '2')
+        attack2[index] = data[4]
+      else if (data[3] == '3')
+        attack3[index] = data[4]
+    }
+    else if (data[2] == 'decay'){
+      if (data[3] == '1')
+        decay1[index] = data[4]
+      else if (data[3] == '2')
+        decay2[index] = data[4]
+      else if (data[3] == '3')
+        decay3[index] = data[4]
+    }
+    else if (data[2] == 'vol'){
+      if (data[3] == '1')
+        oscVol1[index] = data[4]
+      else if (data[3] == '2')
+        oscVol2[index] = data[4]
+      else if (data[3] == '3')
+        oscVol3[index] = data[4]
+    }
 
 
    }
