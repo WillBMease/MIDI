@@ -27,7 +27,7 @@ $(function(){
 
 // Call/Video Management
 function getLocalVideo() {
-  navigator.getUserMedia({audio: false, video: true}, function(stream){
+  navigator.getUserMedia({audio: true, video: true}, function(stream){
 
     $(document).keydown(function(e){
       if (e.which == 32){
