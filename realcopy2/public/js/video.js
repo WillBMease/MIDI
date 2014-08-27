@@ -32,22 +32,20 @@ function getLocalVideo(audioBool) {
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
-navigator.getUserMedia({audio: true, video: true}, function(stream))
-
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
 
 
-//     $(document).keydown(function(e){
-//       if (e.which == 32){
-//         getLocalVideo(true)
-//       }
-//     })
-//     $(document).keyup(function(e){
-//       if (e.which == 32){
-//         getLocalVideo(false)
-// }
-//     })
+    $(document).keydown(function(e){
+      if (e.which == 32){
+        getLocalVideo(true)
+      }
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32){
+        getLocalVideo(false)
+}
+    })
 
 
 function callPeer() {
