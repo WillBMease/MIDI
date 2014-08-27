@@ -31,7 +31,7 @@ function getLocalVideo(audioBool) {
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
    
-console.log(stream.getAudioTracks(0))
+console.log(stream.getAudioTracks()[0])
 
     // $(document).keydown(function(e){
     //   if (e.which == 32){
