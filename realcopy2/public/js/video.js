@@ -34,6 +34,10 @@ function getLocalVideo() {
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
+  }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
+}
+
+
     $(document).keydown(function(e){
       if (e.which == 32)
   window.localStream.audio = true
@@ -42,10 +46,6 @@ function getLocalVideo() {
       if (e.which == 32)
  window.localStream.audio = false
     })
-
-  }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
-}
-
 
 
 function callPeer() {
