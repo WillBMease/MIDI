@@ -40,14 +40,14 @@ function getLocalVideo() {
 }
 
 
-    $(document).keydown(function(e){
-      if (e.which == 32)
-  // window.localStream.audio = true
-    })
-    $(document).keyup(function(e){
-      if (e.which == 32)
- window.localStream.audio: false
-    })
+ //    $(document).keydown(function(e){
+ //      if (e.which == 32)
+ //  // window.localStream.audio = true
+ //    })
+ //    $(document).keyup(function(e){
+ //      if (e.which == 32)
+ // window.localStream.audio: false
+ //    })
 
 
 function callPeer() {
