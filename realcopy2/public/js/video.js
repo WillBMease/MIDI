@@ -30,8 +30,7 @@ function getLocalVideo(audioBool) {
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
-    window.localStream = stream;
-
+   
     $(document).keydown(function(e){
       if (e.which == 32){
         stream.getAudioTracks()[0].enabled = true;
@@ -39,13 +38,15 @@ function getLocalVideo(audioBool) {
         // console.log(window.existingCall)
       }
     })
-    $(document).keyup(function(e){
-      if (e.which == 32){
-        stream.getAudioTracks()[0].enabled = false;
-        // getLocalVideo(false)
-        // navigator.getUserMedia.audio = false
-}
-    })
+//     $(document).keyup(function(e){
+//       if (e.which == 32){
+//         stream.getAudioTracks()[0].enabled = false;
+//         // getLocalVideo(false)
+//         // navigator.getUserMedia.audio = false
+// }
+//     })
+
+    window.localStream = stream;
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
