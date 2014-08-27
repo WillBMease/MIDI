@@ -31,13 +31,15 @@ function getLocalVideo(audioBool) {
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
    
-    $(document).keydown(function(e){
-      if (e.which == 32){
-        stream.getAudioTracks()[0].enabled = true;
-        // navigator.getUserMedia.audio = true
-        // console.log(window.existingCall)
-      }
-    })
+stream.getAudioTracks()
+
+    // $(document).keydown(function(e){
+    //   if (e.which == 32){
+    //     stream.getAudioTracks()[0].enabled = true;
+    //     // navigator.getUserMedia.audio = true
+    //     // console.log(window.existingCall)
+    //   }
+    // })
 //     $(document).keyup(function(e){
 //       if (e.which == 32){
 //         stream.getAudioTracks()[0].enabled = false;
