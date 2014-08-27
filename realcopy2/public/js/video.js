@@ -21,7 +21,7 @@ $(function(){
   $('#end').bind('click', endCall);
 });
 
-var myStream
+
 
 // Call/Video Management
 function getLocalVideo(audioBool) {
@@ -31,25 +31,27 @@ function getLocalVideo(audioBool) {
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
-    myStream = window.localStream
-
-  }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
-}
-
 
     $(document).keydown(function(e){
       if (e.which == 32){
-        navigator.getAudioTracks()[0].enabled = true;
+        stream.getAudioTracks()[0].enabled = true;
         // navigator.getUserMedia.audio = true
         // console.log(window.existingCall)
       }
     })
     $(document).keyup(function(e){
       if (e.which == 32){
+        stream.getAudioTracks()[0].enabled = false;
         // getLocalVideo(false)
         // navigator.getUserMedia.audio = false
 }
     })
+
+  }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
+}
+
+
+
 
 
 function callPeer() {
