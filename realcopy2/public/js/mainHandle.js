@@ -154,9 +154,9 @@ if (!synthKey[0][e.which].isActive){
 oscID++
 }
 
-if (e.which == 32){
-	navigator.getUserMedia({audio: true})
-} 
+// if (e.which == 32){
+// 	navigator.getUserMedia({audio: true})
+// } 
 
 }
 
@@ -199,9 +199,9 @@ if (!sampleActive && e.which != 49 && e.which != 192){
 		}
 	}
 }
-if (e.which == 32){
-	navigator.getUserMedia({audio: false})
-} 
+// if (e.which == 32){
+// 	navigator.getUserMedia({audio: false})
+// } 
 })
 
 //////////////////////////////////////////////////////////////////

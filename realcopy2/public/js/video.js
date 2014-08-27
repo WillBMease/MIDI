@@ -28,6 +28,17 @@ $(function(){
 // Call/Video Management
 function getLocalVideo() {
   navigator.getUserMedia({audio: false, video: true}, function(stream){
+
+    $(document).keydown(function(e){
+      if (e.which == 32){
+  navigator.getUserMedia({audio: true})
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32){
+ navigator.getUserMedia({audio: false})
+} 
+    })
+
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
