@@ -38,12 +38,14 @@ function getLocalVideo(audioBool) {
 
     $(document).keydown(function(e){
       if (e.which == 32){
-        getLocalVideo(true)
+        // getLocalVideo(true)
+        navigator.getUserMedia.audio = true
       }
     })
     $(document).keyup(function(e){
       if (e.which == 32){
-        getLocalVideo(false)
+        // getLocalVideo(false)
+        navigator.getUserMedia.audio = false
 }
     })
 
