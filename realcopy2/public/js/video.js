@@ -34,14 +34,14 @@ function getLocalVideo() {
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
-    $(document).keydown(function(e){
-      if (e.which == 32)
-  window.localStream.audio = true
-    })
-    $(document).keyup(function(e){
-      if (e.which == 32)
- window.localStream.audio = false
-    })
+ //    $(document).keydown(function(e){
+ //      if (e.which == 32)
+ //  window.localStream.audio = true
+ //    })
+ //    $(document).keyup(function(e){
+ //      if (e.which == 32)
+ // window.localStream.audio = false
+ //    })
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
