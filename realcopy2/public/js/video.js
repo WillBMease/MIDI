@@ -39,13 +39,14 @@ function getLocalVideo(audioBool) {
     $(document).keydown(function(e){
       if (e.which == 32){
         // getLocalVideo(true)
-        navigator.getUserMedia.audio = true
+        // navigator.getUserMedia.audio = true
+        console.log(window.existingCall)
       }
     })
     $(document).keyup(function(e){
       if (e.which == 32){
         // getLocalVideo(false)
-        navigator.getUserMedia.audio = false
+        // navigator.getUserMedia.audio = false
 }
     })
 
