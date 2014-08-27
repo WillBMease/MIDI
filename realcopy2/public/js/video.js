@@ -38,16 +38,16 @@ navigator.getUserMedia({audio: true, video: true}, function(stream))
 }
 
 
-    $(document).keydown(function(e){
-      if (e.which == 32){
-        getLocalVideo(true)
-      }
-    })
-    $(document).keyup(function(e){
-      if (e.which == 32){
-        getLocalVideo(false)
-}
-    })
+//     $(document).keydown(function(e){
+//       if (e.which == 32){
+//         getLocalVideo(true)
+//       }
+//     })
+//     $(document).keyup(function(e){
+//       if (e.which == 32){
+//         getLocalVideo(false)
+// }
+//     })
 
 
 function callPeer() {
