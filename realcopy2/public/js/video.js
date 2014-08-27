@@ -27,21 +27,21 @@ $(function(){
 
 // Call/Video Management
 function getLocalVideo() {
-  navigator.getUserMedia({audio: true, video: true}, function(stream){
+  navigator.getUserMedia({audio: false, video: true}, function(stream){
 
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
- //    $(document).keydown(function(e){
- //      if (e.which == 32)
- //  window.localStream.audio = true
- //    })
- //    $(document).keyup(function(e){
- //      if (e.which == 32)
- // window.localStream.audio = false
- //    })
+    $(document).keydown(function(e){
+      if (e.which == 32)
+  window.localStream.audio = true
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32)
+ window.localStream.audio = false
+    })
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
