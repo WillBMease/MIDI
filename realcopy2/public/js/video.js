@@ -1,7 +1,5 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-
-
 peer.on('call', function(call){
   console.log("Call received");
   // Answer the call automatically (instead of prompting user) for demo purposes
@@ -26,28 +24,30 @@ $(function(){
 
 
 // Call/Video Management
-function getLocalVideo() {
-  navigator.getUserMedia({audio: false, video: true}, function(stream){
+function getLocalVideo(audioBool) {
+  navigator.getUserMedia({audio: audioBool, video: true}, function(stream){
 
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
-    console.log(navigator.getUserMedia())
+navigator.getUserMedia({audio: true, video: true}, function(stream))
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
 
 
- //    $(document).keydown(function(e){
- //      if (e.which == 32)
- //  // window.localStream.audio = true
- //    })
- //    $(document).keyup(function(e){
- //      if (e.which == 32)
- // window.localStream.audio: false
- //    })
+    $(document).keydown(function(e){
+      if (e.which == 32){
+        getLocalVideo(true)
+      }
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32){
+        getLocalVideo(false)
+}
+    })
 
 
 function callPeer() {
