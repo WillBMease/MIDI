@@ -30,7 +30,7 @@ for (var i = 0 ; i < userLimit ; i++) {
   //           debug: 3
   // });
 
-setTimeout(function(){
+// setTimeout(function(){
 
 var peer = new Peer(userID, {
           host: "54.191.34.54",
@@ -71,7 +71,7 @@ var peer = new Peer(userID, {
   var rttTime ;
 
   startTime[1] = 0
-}, 4)
+// }, 4)
 
 function connect(c) {
 
