@@ -71,7 +71,7 @@ var peer = new Peer(userID, {
   var rttTime ;
 
   startTime[1] = 0
-}, 4000)
+}, 4)
 
 function connect(c) {
 
