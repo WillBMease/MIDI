@@ -38,13 +38,12 @@ function getLocalVideo() {
 }
 
     $(document).keydown(function(e){
-      if (e.which == 32){
-  window.localStream.audio = true})
+      if (e.which == 32)
+  window.localStream.audio = true
     })
     $(document).keyup(function(e){
-      if (e.which == 32){
- window.localStream.audio = false})
-} 
+      if (e.which == 32)
+ window.localStream.audio = false
     })
 
 function callPeer() {
