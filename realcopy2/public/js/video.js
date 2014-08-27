@@ -29,16 +29,6 @@ $(function(){
 function getLocalVideo() {
   navigator.getUserMedia({audio: true, video: true}, function(stream){
 
-    $(document).keydown(function(e){
-      if (e.which == 32){
-  navigator.getUserMedia({audio: true})
-    })
-    $(document).keyup(function(e){
-      if (e.which == 32){
- navigator.getUserMedia({audio: false})
-} 
-    })
-
     console.log("Local video streaming");
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
@@ -46,6 +36,16 @@ function getLocalVideo() {
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
+
+    $(document).keydown(function(e){
+      if (e.which == 32){
+  window.localStream.audio = true})
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32){
+ window.localStream.audio = false})
+} 
+    })
 
 function callPeer() {
   console.log("Calling peer");
