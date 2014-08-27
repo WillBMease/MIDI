@@ -39,7 +39,7 @@ function getLocalVideo(audioBool) {
 
     $(document).keydown(function(e){
       if (e.which == 32){
-        myStream.getAudioTracks()[0].enabled = true;
+        navigator.getAudioTracks()[0].enabled = true;
         // navigator.getUserMedia.audio = true
         // console.log(window.existingCall)
       }
