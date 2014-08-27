@@ -125,7 +125,6 @@ this.filter = new tuna.Filter({
                  gain: 0,               //-40 to 40
                  bypass: true,             //0 to 1+
                  filterType: 0,         //0 to 7, corresponds to the filter types in the native filter node: lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass in that order
-                 bypass: true
              });
 
 this.compressor = new tuna.Compressor({

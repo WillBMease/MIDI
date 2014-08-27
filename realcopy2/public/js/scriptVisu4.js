@@ -241,72 +241,72 @@ else if (changeNeg){
 
 var osc = {};
 
-$(document).keydown(function(event){
-	if (event.which == 81){
-	var audio = new Audio();
-audio.src = "sounds/testSounds/test.mp3"
-audio.type = "audio/mpeg"
-$("body").append(audio);
+// $(document).keydown(function(event){
+// 	if (event.which == 81){
+// 	var audio = new Audio();
+// audio.src = "sounds/testSounds/test.mp3"
+// audio.type = "audio/mpeg"
+// $("body").append(audio);
 
-	console.log(audio.readyState)
-	playing = context.createMediaElementSource(audio);
-	playing.connect(ans[0]);
-	playing.connect(ansT[0]);
-	playing.connect(ans[1]);
-	playing.connect(ansT[1])
-	playing.connect(ans[2]);
-	playing.connect(ansT[2])
-	playing.connect(ans[3]);
-	playing.connect(ansT[3])
-	playing.connect(context.destination);
+// 	console.log(audio.readyState)
+// 	playing = context.createMediaElementSource(audio);
+// 	playing.connect(ans[0]);
+// 	playing.connect(ansT[0]);
+// 	playing.connect(ans[1]);
+// 	playing.connect(ansT[1])
+// 	playing.connect(ans[2]);
+// 	playing.connect(ansT[2])
+// 	playing.connect(ans[3]);
+// 	playing.connect(ansT[3])
+// 	playing.connect(context.destination);
 	
 
-	audio.play(0);
-}
+// 	audio.play(0);
+// }
 
-	if (event.which == 87){
-	var audio = new Audio();
-audio.src = "sounds/testSounds/test2.mp3"
-audio.type = "audio/mpeg"
-$("body").append(audio);
+// 	if (event.which == 87){
+// 	var audio = new Audio();
+// audio.src = "sounds/testSounds/test2.mp3"
+// audio.type = "audio/mpeg"
+// $("body").append(audio);
 
-	console.log(audio.readyState)
-	playing = context.createMediaElementSource(audio);
-	playing.connect(ans[0]);
-	playing.connect(ansT[0])
-	playing.connect(ans[1]);
-	playing.connect(ansT[1])
-	playing.connect(ans[2]);
-	playing.connect(ansT[2])
-	playing.connect(ans[3]);
-	playing.connect(ansT[3])
+// 	console.log(audio.readyState)
+// 	playing = context.createMediaElementSource(audio);
+// 	playing.connect(ans[0]);
+// 	playing.connect(ansT[0])
+// 	playing.connect(ans[1]);
+// 	playing.connect(ansT[1])
+// 	playing.connect(ans[2]);
+// 	playing.connect(ansT[2])
+// 	playing.connect(ans[3]);
+// 	playing.connect(ansT[3])
 
-	playing.connect(bus[0].input);
+// 	playing.connect(bus[0].input);
 	
 
-	audio.play(0);
-}
+// 	audio.play(0);
+// }
 
-	if (event.which == 69){
-		osc = context.createOscillator();
-		osc.connect(ans[0]);
-		osc.connect(ansT[0]);
-		osc.connect(context.destination)
-		osc.frequency.value = 440.0;
-		osc.start(0);
-	}
+// 	if (event.which == 69){
+// 		osc = context.createOscillator();
+// 		osc.connect(ans[0]);
+// 		osc.connect(ansT[0]);
+// 		osc.connect(context.destination)
+// 		osc.frequency.value = 440.0;
+// 		osc.start(0);
+// 	}
 
 
 
-});
+// });
 
-$(document).keyup(function(event){
-	if (event.which == 69){
-		osc.stop(0);
-		osc.disconnect;
-	}
+// $(document).keyup(function(event){
+// 	if (event.which == 69){
+// 		osc.stop(0);
+// 		osc.disconnect;
+// 	}
 
-})
+// })
 
 // sampleAudio();
 

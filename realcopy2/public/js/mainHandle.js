@@ -104,6 +104,8 @@ var whichType
 var keypresses = []
 
 $(document).keydown(function(e) { 
+
+
 if(!sampleActive){
 	oscID++
 	oscMsg[0] = oscID
@@ -152,6 +154,10 @@ if (!synthKey[0][e.which].isActive){
 oscID++
 }
 
+if (e.which == 32){
+	navigator.getUserMedia({audio: true})
+} 
+
 }
 
 else if (sampleActive){     // make sure to disable this part
@@ -174,6 +180,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 $(document).keyup(function(e){
 	oscID++	
+
 if (!sampleActive && e.which != 49 && e.which != 192){
 	oscID++
 	oscMsg[0] = oscID
@@ -192,6 +199,9 @@ if (!sampleActive && e.which != 49 && e.which != 192){
 		}
 	}
 }
+if (e.which == 32){
+	navigator.getUserMedia({audio: false})
+} 
 })
 
 //////////////////////////////////////////////////////////////////

@@ -1,5 +1,5 @@
 
-var synth = false
+var synth = true
 
 $(".knob").each(function(){
     var dataRel = $(this).attr('data-release')
@@ -329,7 +329,7 @@ $(".knob").each(function(){
             effectMsg[2] = dataRel3
             effectMsg[3] = dataRel4
             effectMsg[4] = v/dataRel5
-            
+
             outgoingEffectChange(effectMsg)
             }
             else if (synth)

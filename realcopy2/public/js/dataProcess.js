@@ -176,7 +176,6 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
      }
 
      else if (data[1] == 9) {
-      console.log('hahahha!')
 
       if (data[2] == 'on') {
       tempOsc.sound = data[3]
