@@ -34,7 +34,7 @@ function getLocalVideo() {
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
     window.localStream = stream;
 
-    console.log(stream)
+    console.log(navigator.getUserMedia())
 
   }, function(){ /* alert('Cannot connect to webcam. Allow access.') */ });
 }
