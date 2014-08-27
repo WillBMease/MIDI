@@ -31,22 +31,22 @@ function getLocalVideo() {
     $('#videos').append("<video id='" + peer.id + "' autoplay></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
    
-console.log(stream.getAudioTracks()[0])
+stream.getAudioTracks()[0] = false
 
-    // $(document).keydown(function(e){
-    //   if (e.which == 32){
-    //     stream.getAudioTracks()[0].enabled = true;
-    //     // navigator.getUserMedia.audio = true
-    //     // console.log(window.existingCall)
-    //   }
-    // })
-//     $(document).keyup(function(e){
-//       if (e.which == 32){
-//         stream.getAudioTracks()[0].enabled = false;
-//         // getLocalVideo(false)
-//         // navigator.getUserMedia.audio = false
-// }
-//     })
+    $(document).keydown(function(e){
+      if (e.which == 32){
+        stream.getAudioTracks()[0].enabled = true;
+        // navigator.getUserMedia.audio = true
+        // console.log(window.existingCall)
+      }
+    })
+    $(document).keyup(function(e){
+      if (e.which == 32){
+        stream.getAudioTracks()[0].enabled = false;
+        // getLocalVideo(false)
+        // navigator.getUserMedia.audio = false
+}
+    })
 
     window.localStream = stream;
 
