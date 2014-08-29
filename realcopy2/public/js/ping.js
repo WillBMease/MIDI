@@ -10,6 +10,7 @@ var firstPing = true
 var recentPing = 100
 var doQuant = false
 var firstQuant = false
+var lowPing = 1000
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
@@ -66,11 +67,15 @@ pingID++
 
 function quantTest(){
 
-if (recentPing > 10 && doQuant == false){
+if (recentPing < lowPing)
+      lowPing = recentPing
+
+
+if (pingID <= 10 && doQuant == false){
       pinger()
 }
 
-else if (recentPing <= 10 && doQuant == false){
+else if (pingID > 10 && doQuant == false){
       var setPing = []
       setPing[1] = '15'
       setPing[2] = recentPing / 2
