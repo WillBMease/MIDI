@@ -33,7 +33,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(quantTest, 25)
+      refreshPing = setInterval(quantTest, 35)
 }
 
 else if (pingActive) {
@@ -71,7 +71,7 @@ if (recentPing < lowPing)
       lowPing = recentPing
 
 
-if (pingID <= 100 && doQuant == false){
+if (pingID <= 50 && doQuant == false){
       pinger()
 }
 
