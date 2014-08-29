@@ -33,7 +33,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(quantTest, 250)
+      refreshPing = setInterval(quantTest, 50)
 }
 
 else if (pingActive) {
@@ -71,7 +71,7 @@ if (recentPing < lowPing)
       lowPing = recentPing
 
 
-if (pingID <= 10 && doQuant == false){
+if (pingID <= 100 && doQuant == false){
       pinger()
 }
 
@@ -81,6 +81,7 @@ else if (pingID > 10 && doQuant == false){
       setPing[2] = recentPing / 2
       doQuant = true
       firstQuant = true
+      console.log('lowPing is ' + lowPing)
 
       for (var i = 1 ; i < userLimit ; i++){
          if (user[i] != 0){
