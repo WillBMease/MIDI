@@ -166,7 +166,9 @@ for (var i = 0 ; i < userLimit + 1 ; i++){
 	bus[i] = new AudioBus()
 	// bus[i].connect(ans[i])
 	// bus[i].connect(ansT[i])
-	bus[i].connect(context.destination)
+	bus[i].connect(oscilloscopes[i])
+	// bus[i].connect(context.destination)
+	oscilloscopes[i].connect(context.destination)
 }
 
 
