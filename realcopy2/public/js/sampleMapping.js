@@ -6,6 +6,7 @@ var bufferLoader;
 var sampleRate = 44100
 var firstInst = 'gPiano'
 var firstRun = true
+var recordedNotes = []
 
 		for (i = 0; i <= 120; i++) {
 
@@ -98,6 +99,10 @@ if(check != 200  && check != 49 && check != 192){
 
 function triggerMidiDevice(index, midiData){
 
+	if (recordingActive){
+		recording(index, midiData)
+	}
+
 	if(setController){
 		setControls(midiData);		
 	}
@@ -124,5 +129,9 @@ function triggerMidiDevice(index, midiData){
     }
 
 }
+}
+
+function recording(index, midiData){
+
 }
 
