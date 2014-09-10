@@ -71,7 +71,7 @@ if (recentPing < lowPing)
       lowPing = recentPing
 
 
-if (pingID <= 50 && doQuant == false){
+if (pingID <= 20 && doQuant == false){
       pinger()
 }
 
@@ -145,13 +145,13 @@ else {
       console.log('sending - receiving: ' + variance)
       console.log('')
 
-      if (variance < 500){
-            var delayed = 500 - variance
+      if (variance < 1000){
+            var delayed = 1000 - variance
       setTimeout(function(){
       triggerSample(0, hardNote)
             setTimeout(function(){
                   triggerSample(0, hardNote)
-            }, 250)
+            }, 25)
       }, delayed)
       }
 
