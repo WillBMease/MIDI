@@ -71,7 +71,7 @@ if (recentPing < lowPing)
       lowPing = recentPing
 
 
-if (pingID <= 8 && doQuant == false){
+if (pingID <= 12 && doQuant == false){
       pinger()
 }
 
