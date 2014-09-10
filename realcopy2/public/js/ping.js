@@ -71,7 +71,7 @@ if (recentPing < lowPing)
       lowPing = recentPing
 
 
-if (pingID <= 20 && doQuant == false){
+if (pingID <= 8 && doQuant == false){
       pinger()
 }
 
@@ -151,7 +151,7 @@ else {
       triggerSample(0, hardNote)
             setTimeout(function(){
                   triggerSample(0, hardNote)
-            }, 250)
+            }, 60)
       }, delayed)
       }
 
