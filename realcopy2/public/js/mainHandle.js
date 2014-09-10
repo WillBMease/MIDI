@@ -73,7 +73,7 @@ var globalOctave = 5;
 
 //variable used to 
 var midiActive = false;
-var sampleActive = false;
+var sampleActive = true;
 
 var oscChecks = []
 
@@ -110,7 +110,6 @@ var keypresses = []
 
 $(document).keydown(function(e) { 
 
-
 if(!sampleActive){
 	oscID++
 	oscMsg[0] = oscID
@@ -120,6 +119,7 @@ if(!sampleActive){
 	oscMsg[4] = null
 	oscMsg[5] = '1'
 	oscMsg[6] = false
+	oscMsg[7] = new Date()
 
 if (synthKey[0][e.which] == null){
 	soundObj = {
@@ -149,6 +149,10 @@ if (!synthKey[0][e.which].isActive){
 
 	playSynth(0, oscMsg, false)
 
+	if (recordingActive){
+		recording(0, oscMsg)
+	}
+
 	for (var i = 1 ; i < userLimit ; i++){
 		if (user[i] != 0) {
 			for (var x = 0 ; x < 3 ; x++)
@@ -169,6 +173,7 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
+	sampleMsg[7] = new Date()
 	triggerSample(0, sampleMsg)
 
 for (var i = 1 ; i < userLimit ; i++) {
@@ -177,6 +182,10 @@ for (var i = 1 ; i < userLimit ; i++) {
 		user[i].send(sampleMsg);
 	}
 }
+	if (recordingActive){
+		recording(0, sampleMsg)
+	}
+
 	sampleID++
 }
 

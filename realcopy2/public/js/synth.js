@@ -198,9 +198,9 @@ if (highDecay < decay3[index])
     synthKey[index][key[3]].gain2.gain.cancelScheduledValues(1, context.currentTime);
     synthKey[index][key[3]].gain3.gain.cancelScheduledValues(1, context.currentTime);
 
-    synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
-    synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
-    synthKey[index][key[3]].gain3.gain.setValueAtTime(0, context.currentTime);
+    // synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
+    // synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);
+    // synthKey[index][key[3]].gain3.gain.setValueAtTime(0, context.currentTime);
 
 synthKey[index][key[3]].gain1.gain.linearRampToValueAtTime(0, context.currentTime + decay1[index] / 1000);
 synthKey[index][key[3]].gain2.gain.linearRampToValueAtTime(0, context.currentTime + decay2[index] / 1000);

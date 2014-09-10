@@ -7,6 +7,8 @@ var sampleRate = 44100
 var firstInst = 'gPiano'
 var firstRun = true
 var recordedNotes = []
+var recordedCt = 0
+var recordingActive = false
 
 		for (i = 0; i <= 120; i++) {
 
@@ -29,7 +31,7 @@ for (var i = 0 ; i < userLimit + 1 ; i++) {
 }
 
 // Initialize your own instrument on startup
-// loadInstrument(0, firstInst)
+loadInstrument(0, firstInst)
 
 
 function loadInstrument(index, instr){
@@ -74,6 +76,7 @@ if (paths[0]){
 
 function triggerSample(index, key) {
 
+	console.log(key)
 	transpose(index, key[2]);
 	var check = keyboardMap(key[2]) ;
 
@@ -131,7 +134,36 @@ function triggerMidiDevice(index, midiData){
 }
 }
 
+function playRecording(position)
+{
+	var tempo = 60;
+	var releaseTime = 0.15;
+	var secondsPerBeat = 60.0 / tempo;
+
+	var now = context.currentTime;
+	var i = 0, startTime=0, osc = null;
+
+	for(i = 0; i < 12; i++) {
+    	startTime = now + (i*secondsPerBeat) ;
+    	osc = context.createOscillator();
+    	osc.connect(context.destination);
+    	// osc.value = 
+    	osc.start();
+    	osc.stop(startTime + releaseTime);
+} 
+}
+
+
 function recording(index, midiData){
+	recordedNotes[recordedCt] = midiData
+
+	console.log(recordedNotes[recordedCt])
+
+	if (recordedCt == 5){
+		playRecording(0, recordedNotes)
+	}
+		recordedCt++
 
 }
+
 
