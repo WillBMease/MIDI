@@ -33,7 +33,7 @@ function Ping(){
 
 if (!pingActive) {
       pingActive = true
-      refreshPing = setInterval(quantTest, 1000)
+      refreshPing = setInterval(quantTest, 500)
 }
 
 else if (pingActive) {
@@ -151,7 +151,7 @@ else {
       triggerSample(0, hardNote)
             setTimeout(function(){
                   triggerSample(0, hardNote)
-            }, 25)
+            }, 250)
       }, delayed)
       }
 
