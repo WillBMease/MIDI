@@ -145,10 +145,13 @@ else {
       console.log('sending - receiving: ' + variance)
       console.log('')
 
-      if (variance < 300){
-            var delayed = 300 - variance
+      if (variance < 500){
+            var delayed = 500 - variance
       setTimeout(function(){
       triggerSample(0, hardNote)
+            setTimeout(function(){
+                  triggerSample(0, hardNote)
+            }, 250)
       }, delayed)
       }
 
