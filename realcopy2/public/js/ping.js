@@ -151,7 +151,7 @@ else {
       triggerSample(0, hardNote)
             setTimeout(function(){
                   triggerSample(0, hardNote)
-            }, 60)
+            }, 120)
       }, delayed)
       }
 
