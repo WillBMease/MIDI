@@ -1,4 +1,4 @@
-function webrtcStart(){
+// function webrtcStart(){
 
 var user = [] 
 var userLimit = 4
@@ -125,4 +125,4 @@ $(document).ready(function() {
 
   });
 
-} // end webrtcStart()
+// } // end webrtcStart()

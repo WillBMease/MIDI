@@ -1,4 +1,4 @@
-function effects(){
+// function effects(){
 
 var effectMsg = []
 effectMsg[1] = 8
@@ -481,4 +481,4 @@ function outgoingEffectChange(effectMsg) {
 			user[i].send(effectMsg)
 	}
 }
-} // end effects() function
+// } // end effects() function
