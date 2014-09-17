@@ -34,10 +34,6 @@ function Ping(){
 if (!pingActive) {
       pingActive = true
       refreshPing = setInterval(quantTest, 500)
-      while (pingID < 14){
-            if (pingID == 12)
-                  clearInterval(refreshPing)
-      }
 }
 
 else if (pingActive || quantID > 15) {
