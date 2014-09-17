@@ -34,6 +34,10 @@ function Ping(){
 if (!pingActive) {
       pingActive = true
       refreshPing = setInterval(quantTest, 500)
+      while (pingID < 14){
+            if (pingID == 12)
+                  clearInterval(refreshPing)
+      }
 }
 
 else if (pingActive || quantID > 15) {
@@ -89,7 +93,7 @@ else if (pingID > 10 && doQuant == false){
             user[i].send(setPing)
           }
       }
-            clearInterval(refreshPing)
+
 }
 
 if (doQuant == false || doQuant == true) {     
@@ -146,13 +150,13 @@ else {
       console.log('sending - receiving: ' + variance)
       console.log('')
 
-      if (variance < 1000){
-            var delayed = 1000 - variance
+      if (variance < 25){
+            var delayed = 25 - variance
       setTimeout(function(){
       triggerSample(0, data)
-            setTimeout(function(){
-                  triggerSample(1, data)
-            }, 40)
+            // setTimeout(function(){
+            //       triggerSample(1, data)
+            // }, 40)
       }, delayed)
       }
 
