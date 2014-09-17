@@ -174,8 +174,10 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
 	sampleMsg[7] = +new Date()
-	triggerSample(0, sampleMsg)
-	console.log("yayeyay")
+	setTimeout(function(){
+		triggerSample(0, sampleMsg)
+	}, 25)
+
 
 for (var i = 1 ; i < userLimit ; i++) {
 	if (user[i] != 0) {
