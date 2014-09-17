@@ -14,7 +14,13 @@
 
 	</head>
 
-	<body>
+	<body onload="load()">
+    <!-- <body> -->
+
+    <!--for soundjack, temporarily disabled-->
+<object width="0" height="0" type="application/x-sj2" id="plugin0">
+    <param value="soundcardProbe" name="onload">
+</object>
 
 
 <a class = "inavibe">
@@ -171,17 +177,17 @@ jellyvibes</a>
 
 //////// Synth Controlling ////////
 
-        <input class="knob"  id="attack1" data-min="0" data-max="1000" data-step="1" data-release="attack1" data-release2="8" data-release3="'attack1'" data-release4="'value'" data-release5="101" value="15"/>
+        <input class="knob"  id="attack1" data-min="0" data-max="1000" data-step="1" data-release="attack1" data-release2="8" data-release3="'attack1'" data-release4="'value'" data-release5="101" value="150"/>
        
-        <input class="knob"  id="attack2" data-min="0" data-max="1000" data-step="1" data-release="attack2" data-release2="8" data-release3="'attack2'" data-release4="'value'" data-release5="101" value="15"/>
+        <input class="knob"  id="attack2" data-min="0" data-max="1000" data-step="1" data-release="attack2" data-release2="8" data-release3="'attack2'" data-release4="'value'" data-release5="101" value="150"/>
        
-        <input class="knob"  id="attack3" data-min="0" data-max="1000" data-step="1" data-release="attack3" data-release2="8" data-release3="'attack3'" data-release4="'value'" data-release5="101" value="15"/>
+        <input class="knob"  id="attack3" data-min="0" data-max="1000" data-step="1" data-release="attack3" data-release2="8" data-release3="'attack3'" data-release4="'value'" data-release5="101" value="150"/>
 
-        <input class="knob"  id="decay1" data-min="0" data-max="1000" data-step="1" data-release="decay1" data-release2="8" data-release3="'decay1'" data-release4="'value'" data-release5="101" value="120"/>
+        <input class="knob"  id="decay1" data-min="0" data-max="1000" data-step="1" data-release="decay1" data-release2="8" data-release3="'decay1'" data-release4="'value'" data-release5="101" value="150"/>
 
-        <input class="knob"  id="decay2" data-min="0" data-max="1000" data-step="1" data-release="decay2" data-release2="8" data-release3="'decay2'" data-release4="'value'" data-release5="101" value="120"/>
+        <input class="knob"  id="decay2" data-min="0" data-max="1000" data-step="1" data-release="decay2" data-release2="8" data-release3="'decay2'" data-release4="'value'" data-release5="101" value="150"/>
        
-        <input class="knob"  id="decay3" data-min="0" data-max="1000" data-step="1" data-release="decay3" data-release2="8" data-release3="'decay3'" data-release4="'value'" data-release5="101" value="120"/>
+        <input class="knob"  id="decay3" data-min="0" data-max="1000" data-step="1" data-release="decay3" data-release2="8" data-release3="'decay3'" data-release4="'value'" data-release5="101" value="150"/>
 
         <input class="knob"  id="detune1" data-min="0" data-max="1000" data-step="1" data-release="detune1" data-release2="8" data-release3="'detune1'" data-release4="'value'" data-release5="101" value="0"/>
 
@@ -287,11 +293,11 @@ jellyvibes</a>
 
         <input class="knob" id="wahwah-auto" data-min="0" data-max="1" data-step="1" data-release="bus[0].wahwah.automode" data-release2="8" data-release3="'wahwah'" data-release4="'automode'" data-release5="1" value="1"/>
 
-        <input class="knob" id="wahwah-base" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.baseFrequency" data-release2="8" data-release3="'wahwah'" data-release4="'baseFrequency'" data-release5="101" value="50"/>
+        <input class="knob" id="wahwah-base" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.baseFrequency" data-release2="8" data-release3="'wahwah'" data-release4="'baseFrequency'" data-release5="100" value="50"/>
 
-        <input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="bus[0].wahwah.excursionOctaves" data-release2="8" data-release3="'wahwah'" data-release4="'excursionOctaves'" data-release5="1" value="4"/>    
+        <input class="knob" id="wahwah-excursion" data-min="1" data-max="6" data-step="1" data-release="bus[0].wahwah.excursionOctaves" data-release2="8" data-release3="'wahwah'" data-release4="'excursionOctaves'" data-release5="1" value="2"/>    
 
-        <input class="knob" id="wahwah-sweep" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.sweep" data-release2="8" data-release3="'wahwah'" data-release4="'sweep'" data-release5="101" value="80"/>     
+        <input class="knob" id="wahwah-sweep" data-min="0" data-max="100" data-step="1" data-release="bus[0].wahwah.sweep" data-release2="8" data-release3="'wahwah'" data-release4="'sweep'" data-release5="100" value="80"/>     
 
         <input class="knob" id="wahwah-resonance" data-min="1" data-max="100" data-step="1" data-release="bus[0].wahwah.resonance" data-release2="8" data-release3="'wahwah'" data-release4="'resonance'" data-release5="1" value="50"/>
 
@@ -334,7 +340,7 @@ jellyvibes</a>
 
 
 
-  <div id="videos"></div>
+  <div id="videos" muted="muted"></div>
 
 Horizontal: <input type="text" id="rowx" placeholder="Horizontal" style="align: center">
 Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: center">
@@ -473,11 +479,13 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 </style>
 
 
+
 <script src="jui/external/jquery/jquery.js"></script>
 <script src="jui/jquery-ui.min.js"></script>
 <script src="jui/jquery.knob.js"></script>
 <script src="jui/jcanvas.min.js"></script>
 
+         <!-- // <script src="js/soundjack.js"></script> -->
 		 <script src="js/pjv.js"></script>
 		 <script src="js/WebMIDIAPI.js"></script>
 		 <script src="js/tuna.js"></script>
@@ -500,7 +508,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 		 <script src="js/midiInputConversion.js"></script>
 		 <script src="js/surfaceControllers.js"></script>
 		 <script src="js/knobLoader.js"></script>
-		 <script src="js/soundjack.js"></script>
+		 // <script src="js/soundjack.js"></script>
 
 
 	</body>

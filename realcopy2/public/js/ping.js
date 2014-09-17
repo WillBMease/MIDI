@@ -36,7 +36,7 @@ if (!pingActive) {
       refreshPing = setInterval(quantTest, 500)
 }
 
-else if (pingActive) {
+else if (pingActive || quantID > 15) {
       pingActive = false
       clearInterval(refreshPing)
 }
@@ -56,7 +56,10 @@ for (var i = 1 ; i < userLimit ; i++)
       if (user[i] != 0)
       {
             for (var x = 0 ; x < 3 ; x++) {
-                  user[i].send(pingMsg);
+                  user[i].send(pingMsg)
+                  setTimeout(function(){
+                        user[i].send(pingMsg)
+                  }, 3)
             }
       }
 }  

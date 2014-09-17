@@ -194,9 +194,9 @@ if (highDecay < decay2[index])
 if (highDecay < decay3[index])
 	highDecay = decay3[index]
 
-	synthKey[index][key[3]].gain1.gain.cancelScheduledValues(1, context.currentTime);
-    synthKey[index][key[3]].gain2.gain.cancelScheduledValues(1, context.currentTime);
-    synthKey[index][key[3]].gain3.gain.cancelScheduledValues(1, context.currentTime);
+	synthKey[index][key[3]].gain1.gain.cancelScheduledValues(0, context.currentTime);
+    synthKey[index][key[3]].gain2.gain.cancelScheduledValues(0, context.currentTime);
+    synthKey[index][key[3]].gain3.gain.cancelScheduledValues(0, context.currentTime);
 
     // synthKey[index][key[3]].gain1.gain.setValueAtTime(0, context.currentTime);
     // synthKey[index][key[3]].gain2.gain.setValueAtTime(0, context.currentTime);

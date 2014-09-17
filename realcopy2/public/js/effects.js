@@ -1,3 +1,5 @@
+function effects(){
+
 var effectMsg = []
 effectMsg[1] = 8
 
@@ -15,12 +17,12 @@ var attack1 = [],
 	oscVol3 = []
 
 for (var i = 0 ; i < userLimit ; i++){
-	attack1[i] = 15
-	attack2[i] = 15
-	attack3[i] = 15
-	decay1[i] = 100
-	decay2[i] = 100
-	decay3[i] = 100
+	attack1[i] = 150
+	attack2[i] = 150
+	attack3[i] = 150
+	decay1[i] = 150
+	decay2[i] = 150
+	decay3[i] = 150
 	detune1[i] = 0
 	detune2[i] = 0
 	detune3[i] = 0
@@ -104,7 +106,7 @@ this.cabinet = new tuna.Cabinet({
 this.wahwah = new tuna.WahWah({
                  automode: true,                //true/false
                  baseFrequency: 0.5,            //0 to 1
-                 excursionOctaves: 4,           //1 to 6
+                 excursionOctaves: 2,           //1 to 6
                  sweep: 0.8,                    //0 to 1
                  resonance: 80,                 //1 to 100
                  sensitivity: 0.8,              //-1 to 1
@@ -479,3 +481,4 @@ function outgoingEffectChange(effectMsg) {
 			user[i].send(effectMsg)
 	}
 }
+} // end effects() function

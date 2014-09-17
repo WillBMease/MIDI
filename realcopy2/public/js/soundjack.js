@@ -1,4 +1,7 @@
 /// EVENTS DEFINIEREN / SOCKET AKTIVIEREN / KARTE CHECKEN / CONFIG LADEN
+		
+var sjcount = 0
+
 		function soundcardProbe(){	
 		    setReceiverBufferOptions();
 			
@@ -95,10 +98,13 @@
 			      function getBufferFromPlugin(bufferAsString,bufferSize){
 				      // PROCESS BUFFER HERE
 					  document.sjForm.dropout.value = bufferAsString;
-					  for (var i = 1 ; i < userLimit ; i++) {
-					  		if (user[i] != 0)
-					  			user[i].send(bufferAsString)
-					  }
+					  sjcount++
+					  if (sjcount % 250)
+					  console.log(bufferAsString)
+					  // for (var i = 1 ; i < userLimit ; i++) {
+					  // 		if (user[i] != 0)
+					  // 			user[i].send(bufferAsString)
+					  // }
 				  });
 		}
 		
@@ -123,7 +129,12 @@
         }
         
 		function pluginLoaded() {
-            //alert("Plugin loaded!");
+            alert("Plugin loaded!");
+            console.log('plugin loaded')
+            setTimeout(function(){
+            webrtcStart()
+            effects()            	
+            }, 2500)
         }
         
         function addTestEvent(){

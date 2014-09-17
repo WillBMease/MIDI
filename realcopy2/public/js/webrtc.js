@@ -1,3 +1,5 @@
+function webrtcStart(){
+
 var user = [] 
 var userLimit = 4
 var firstDate = 0
@@ -99,8 +101,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 
 }
 
-} // end connect function
-
+} // end connect()
 
 $(document).ready(function() {
     // Connect to a peer
@@ -123,3 +124,5 @@ $(document).ready(function() {
     })
 
   });
+
+} // end webrtcStart()
