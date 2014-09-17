@@ -86,7 +86,7 @@ var fullChk = 0
               logRTT[0]++
        $('#messages').empty().append('<br> Latency for ' + user[index].peer + ': ' + '  - - -  ' + rttString + 'ms');
          
-          if (data[0] % 100 == 0){
+          if (data[0] % 100 == 0 && data[0] != 0){
 
 var under25 = logRTT[0] + logRTT[1] + logRTT[2] + logRTT[3] + logRTT[4]
 var over25 = logRTT[5] + logRTT[6] + logRTT[7]
@@ -147,7 +147,8 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
               calculate = false
 
         if (calculate) {
-            triggerSample(index, data) ;
+            // triggerSample(index, data) ;
+            quantizer(data)
             sampleCheck[data[0]] = data[0]
           }
      }

@@ -57,9 +57,6 @@ for (var i = 1 ; i < userLimit ; i++)
       {
             for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(pingMsg)
-                  setTimeout(function(){
-                        user[i].send(pingMsg)
-                  }, 3)
             }
       }
 }  
@@ -92,6 +89,7 @@ else if (pingID > 10 && doQuant == false){
             user[i].send(setPing)
           }
       }
+            clearInterval(refreshPing)
 }
 
 if (doQuant == false || doQuant == true) {     
@@ -141,7 +139,7 @@ else {
       benchmark[2] = new Date()
 
       var benchDiff = benchmark[2] - benchmark[1]
-      var realDiff = data[2] - benchmark[0]
+      var realDiff = data[7] - benchmark[0]
       var variance = benchDiff - realDiff
       console.log('receiving side: ' + benchDiff)
       console.log('sending side: ' + realDiff)
@@ -151,9 +149,9 @@ else {
       if (variance < 1000){
             var delayed = 1000 - variance
       setTimeout(function(){
-      triggerSample(0, hardNote)
+      triggerSample(0, data)
             setTimeout(function(){
-                  triggerSample(1, hardNote)
+                  triggerSample(1, data)
             }, 40)
       }, delayed)
       }

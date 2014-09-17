@@ -173,7 +173,7 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[0] = sampleID
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
-	sampleMsg[7] = new Date()
+	sampleMsg[7] = +new Date()
 	triggerSample(0, sampleMsg)
 	console.log("yayeyay")
 
