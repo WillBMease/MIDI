@@ -171,8 +171,8 @@ else {
       console.log('sending - receiving: ' + variance)
       console.log('')
 
-      if (variance < 25){
-            var delayed = 25 - variance
+      if (variance < 1000){
+            var delayed = 1000 - variance
       setTimeout(function(){
       triggerSample(index, data)
             // setTimeout(function(){
