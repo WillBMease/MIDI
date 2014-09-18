@@ -65,7 +65,7 @@ var fullChk = 0
             console.log(data[0])
             console.log('Latency is ' + rttTime + 'ms');
             console.log('')
-            recentPing = rttTime
+            recentPing[index] = rttTime
             var rttString = rttTime.toString() ;
             pingCheck.push(data[0])
             if (rttTime > 50)
@@ -148,7 +148,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
         if (calculate) {
             // triggerSample(index, data) ;
-            quantizer(data)
+            quantizer(index, data)
             sampleCheck[data[0]] = data[0]
           }
      }

@@ -4,24 +4,37 @@ var pingMsg = []
 var pingID = 0
 var pingFirst = 0
 var benchmark = []
-var prevMsg
+      for (int i = 1 ; i < userLimit ; i++){
+            benchmark[i] = []
+      }
+var prevMsg = []
 var increment = false
 var firstPing = true
-var recentPing = 100
+var recentPing = []
+      for (int i = 1 ; i < userLimit ; i++){
+            recentPing[i] = 250
+      }
 var doQuant = false
 var firstQuant = false
-var lowPing = 1000
+var lowPing = []
+      for (int i = 1 ; i < userLimit ; i++){
+            lowPing[i] = 250
+      }
 
 pingMsg[0] = pingID ;
 pingMsg[1] = '0' ;
 
 var quantID = 0
 var quantMsg = []
-quantMsg[0] = quantID
-quantMsg[1] = null
-quantMsg[2] = null
-quantMsg[3] = null
-quantMsg[4] = null
+
+      for (int i = 1 ; i < userLimit ; i++){
+            quantMsg[i] = []
+            quantMsg[i][0] = quantID
+            quantMsg[i][1] = null
+            quantMsg[i][2] = null
+            quantMsg[i][3] = null
+            quantMsg[i][4] = null
+      }
 
       var hardNote = []
       hardNote[0] = 0
@@ -67,8 +80,10 @@ pingID++
 
 function quantTest(){
 
-if (recentPing < lowPing)
-      lowPing = recentPing
+for (int i = 1 ; i < userLimit ; i++){
+if (recentPing[i] < lowPing[i])
+      lowPing[i] = recentPing[i]
+}
 
 
 if (pingID <= 12 && doQuant == false){
@@ -77,40 +92,50 @@ if (pingID <= 12 && doQuant == false){
 
 else if (pingID > 10 && doQuant == false){
       var setPing = []
-      setPing[1] = '15'
-      setPing[2] = recentPing / 2
+      for (int i = 1 ; i < userLimit ; i++){
+            setPing[i] = []
+            setPing[i][1] = '15'
+            setPing[i][2] = recentPing[i] / 2
+      }
       doQuant = true
       firstQuant = true
-      console.log('lowPing is ' + lowPing)
+
+      for (int i = 1 ; i < userLimit ; i++)
+            console.log('lowPing is ' + lowPing[i])
 
       for (var i = 1 ; i < userLimit ; i++){
          if (user[i] != 0){
             for (var x = 0 ; x < 3 ; x++)
-            user[i].send(setPing)
+            user[i].send(setPing[i])
           }
       }
 
 }
 
 if (doQuant == false || doQuant == true) {     
-      quantMsg[0] = quantID
-      quantMsg[1] = '12'
-      quantMsg[2] = +new Date()
-      quantMsg[3] = null
+      for (int i = 1 ; i < userLimit ; i++){
+      quantMsg[i][0] = quantID
+      quantMsg[i][1] = '12'
+      quantMsg[i][3] = null
+}
 
      if (firstQuant){
-            quantMsg[1] = '100'
+      for (int i = 1 ; i < userLimit ; i++){
+            quantMsg[i][1] = '100'
+      }
             firstQuant = false
      }
 
       if (quantID == 0){
-            quantMsg[3] = recentPing
+            for (int i = 1 ; i < userLimit ; i++)
+            quantMsg[3] = recentPing[i]
       }
 
     for (var i = 1 ; i < userLimit ; i++)
 {
       if (user[i] != 0)
       {
+            quantMsg[i][2] = +new Date()
             for (var x = 0 ; x < 3 ; x++) {
                   user[i].send(quantMsg);
             }
@@ -123,23 +148,23 @@ quantID++
 
 }
 
-function quantizer(data){
+function quantizer(index, data){
       if (doQuant == false) {
-            benchmark[0] = data[2]
-            benchmark[1] = new Date()
-            benchmark[3] = 0
-            prevMsg = data[2]
+            benchmark[index][0] = data[2]
+            benchmark[index][1] = new Date()
+            benchmark[index][3] = 0
+            prevMsg[index] = data[2]
       }
 
 
 else {
       console.log('ID: ' + data[0])
-      console.log('recent ping: ' + benchmark[4])
+      console.log('recent ping: ' + benchmark[index][4])
 
-      benchmark[2] = new Date()
+      benchmark[index][2] = new Date()
 
-      var benchDiff = benchmark[2] - benchmark[1]
-      var realDiff = data[7] - benchmark[0]
+      var benchDiff = benchmark[index][2] - benchmark[index][1]
+      var realDiff = data[7] - benchmark[index][0]
       var variance = benchDiff - realDiff
       console.log('receiving side: ' + benchDiff)
       console.log('sending side: ' + realDiff)
@@ -149,7 +174,7 @@ else {
       if (variance < 25){
             var delayed = 25 - variance
       setTimeout(function(){
-      triggerSample(0, data)
+      triggerSample(index, data)
             // setTimeout(function(){
             //       triggerSample(1, data)
             // }, 40)
@@ -157,7 +182,7 @@ else {
       }
 
       else
-      triggerSample(0, hardNote)
+      triggerSample(index, data)
 }
       prevMsg = data[2]
 }
