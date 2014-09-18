@@ -221,7 +221,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
 
    else if (data[1] == '12'){
       if (quantCt[data[0]] != data[0]){
-      quantizer(data)
+      quantizer(index, data)
       quantCt[data[0]] = data[0]
     }
    }
