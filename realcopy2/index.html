@@ -155,6 +155,9 @@ jellyvibes</a>
 <a class="changeSynth3" id="triangle"><i>Triangle3</i></a>
 <a class="changeSynth3" id="sawtooth"><i>Sawtooth3</i></a>
 
+<a onclick="startRecord()"><i>Record</i></a>
+<a onclick="playRecord()"><i>Play</i></a>
+
 </h6>
 
 
@@ -216,7 +219,7 @@ jellyvibes</a>
      	
     ///////////////Chorus Mapping//////////////////
 
-        <input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].chorus.rate" data-release2="8" data-release3="'chorus'" data-release4="'rate'" data-release5="800" value="500"/>
+        <input class="knob" id="chorus-rate" data-min="1" data-max="800" data-step="1" data-release="bus[0].chorus.rate" data-release2="8" data-release3="'chorus'" data-release4="'rate'" data-release5="800" value="50"/>
 
         <input class="knob" id="chorus-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].chorus.feedback" data-release2="8" data-release3="'chorus'" data-release4="'feedback'" data-release5="101" value="80"/>
 	
@@ -226,14 +229,14 @@ jellyvibes</a>
 
         <input class="knob" id="delay-feedback" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.feedback" data-release2="8" data-release3="'delay'" data-release4="'feedback'" data-release5="101" value="80"/> 
 
-        <input class="knob" id="delay-time" data-min="0" data-max="1000" data-step="1" data-release="bus[0].delay.delayTime" data-release2="8" data-release3="'delay'" data-release4="'delayTime'" data-release5="1" value="500"/>
+        <input class="knob" id="delay-time" data-min="0" data-max="1000" data-step="1" data-release="bus[0].delay.delayTime" data-release2="8" data-release3="'delay'" data-release4="'delayTime'" data-release5="1" value="50"/>
 
 
         <input class="knob" id="delay-wetLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.wetLevel" data-release2="8" data-release3="'delay'" data-release4="'wetLevel'" data-release5="101" value="50"/>
 
         <input class="knob" id="delay-dryLevel" data-min="0" data-max="100" data-step="1" data-release="bus[0].delay.dryLevel" data-release2="8" data-release3="'delay'" data-release4="'dryLevel'" data-release5="101" value="40"/>    
   
-        <input class="knob" id="delay-cutoff" data-min="20" data-max="22050" data-step="1" data-release="bus[0].delay.cutoff" data-release2="8" data-release3="'delay'" data-release4="'cutoff'" data-release5="1" value="20000"/>
+        <input class="knob" id="delay-cutoff" data-min="20" data-max="22050" data-step="1" data-release="bus[0].delay.cutoff" data-release2="8" data-release3="'delay'" data-release4="'cutoff'" data-release5="1" value="4000"/>
         
     ///////////////Phaser Mapping//////////////////
 

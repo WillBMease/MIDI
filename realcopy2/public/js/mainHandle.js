@@ -150,6 +150,7 @@ if (!synthKey[0][e.which].isActive){
 	playSynth(0, oscMsg, false)
 
 	if (recordingActive){
+		console.log("osc")
 		recording(0, oscMsg)
 	}
 
@@ -186,6 +187,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 	}
 }
 	if (recordingActive){
+		console.log("sample")
 		recording(0, sampleMsg)
 	}
 

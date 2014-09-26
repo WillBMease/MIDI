@@ -134,7 +134,7 @@ function triggerMidiDevice(index, midiData){
 }
 }
 
-function playRecording(position)
+function playRecord(position)
 {
 	var tempo = 60;
 	var releaseTime = 0.15;
@@ -142,15 +142,30 @@ function playRecording(position)
 
 	var now = context.currentTime;
 	var i = 0, startTime=0, osc = null;
+	var x = 0;
 
-	for(i = 0; i < 12; i++) {
-    	startTime = now + (i*secondsPerBeat) ;
-    	osc = context.createOscillator();
-    	osc.connect(context.destination);
-    	// osc.value = 
-    	osc.start();
-    	osc.stop(startTime + releaseTime);
+	for (var i = 0; i < recordedNotes.length; i++) {
+    	// startTime = now + (i*secondsPerBeat) ;
+    	// osc = context.createOscillator();
+    	// osc.connect(context.destination);
+    	// // osc.value = 
+    	// osc.start();
+    	// osc.stop(startTime + releaseTime);
+
+    	setTimeout(function(){
+    	if (sampleActive){
+    		triggerSample(0, recordedNotes[i])
+    	}
+    	else{
+    		playSynth(0, recordedNotes[i], false)
+    	}
+    	    }, 250+x)
+    	x += 250;
 } 
+}
+
+function startRecord(){
+	recordingActive = true
 }
 
 
@@ -159,9 +174,6 @@ function recording(index, midiData){
 
 	console.log(recordedNotes[recordedCt])
 
-	if (recordedCt == 5){
-		playRecording(0, recordedNotes)
-	}
 		recordedCt++
 
 }

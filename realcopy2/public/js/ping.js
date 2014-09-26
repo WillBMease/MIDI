@@ -4,20 +4,20 @@ var pingMsg = []
 var pingID = 0
 var pingFirst = 0
 var benchmark = []
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             benchmark[i] = []
       }
 var prevMsg = []
 var increment = false
 var firstPing = true
 var recentPing = []
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             recentPing[i] = 250
       }
 var doQuant = false
 var firstQuant = false
 var lowPing = []
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             lowPing[i] = 250
       }
 
@@ -27,7 +27,7 @@ pingMsg[1] = '0' ;
 var quantID = 0
 var quantMsg = []
 
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             quantMsg[i] = []
             quantMsg[i][0] = quantID
             quantMsg[i][1] = null
@@ -80,7 +80,7 @@ pingID++
 
 function quantTest(){
 
-for (int i = 1 ; i < userLimit ; i++){
+for (var i = 1 ; i < userLimit ; i++){
 if (recentPing[i] < lowPing[i])
       lowPing[i] = recentPing[i]
 }
@@ -92,7 +92,7 @@ if (pingID <= 12 && doQuant == false){
 
 else if (pingID > 10 && doQuant == false){
       var setPing = []
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             setPing[i] = []
             setPing[i][1] = '15'
             setPing[i][2] = recentPing[i] / 2
@@ -100,7 +100,7 @@ else if (pingID > 10 && doQuant == false){
       doQuant = true
       firstQuant = true
 
-      for (int i = 1 ; i < userLimit ; i++)
+      for (var i = 1 ; i < userLimit ; i++)
             console.log('lowPing is ' + lowPing[i])
 
       for (var i = 1 ; i < userLimit ; i++){
@@ -113,21 +113,21 @@ else if (pingID > 10 && doQuant == false){
 }
 
 if (doQuant == false || doQuant == true) {     
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
       quantMsg[i][0] = quantID
       quantMsg[i][1] = '12'
       quantMsg[i][3] = null
 }
 
      if (firstQuant){
-      for (int i = 1 ; i < userLimit ; i++){
+      for (var i = 1 ; i < userLimit ; i++){
             quantMsg[i][1] = '100'
       }
             firstQuant = false
      }
 
       if (quantID == 0){
-            for (int i = 1 ; i < userLimit ; i++)
+            for (var i = 1 ; i < userLimit ; i++)
             quantMsg[3] = recentPing[i]
       }
 
