@@ -125,11 +125,11 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
         // if (receiveCt % 100 == 0) {
         // $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
         //   }
-        // }
+        }
 
-      // else if (data[1] == '5' && data[2] == '3') {
-      //  // $('#messages').append('<br>' + 'packetID: ' + packetID + ' & ' + data[3]);
-      //       }
+      else if (data[1] == '5' && data[2] == '3') {
+       // $('#messages').append('<br>' + 'packetID: ' + packetID + ' & ' + data[3]);
+            }
 
       ///////// End Audio packet testing
 
