@@ -17,7 +17,7 @@ function audioTest() {
 
 if (audioActive) {
 	audioActive = false
-	clearInterval(function())
+	// clearInterval(function())
 }
 else if (!audioActive) {
 	audioActive = true
