@@ -171,11 +171,7 @@ function startRecord(){
 
 function recording(index, midiData){
 	recordedNotes[recordedCt] = midiData
-
-	console.log(recordedNotes[recordedCt])
-
 		recordedCt++
-
 }
 
 

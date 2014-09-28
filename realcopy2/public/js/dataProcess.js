@@ -20,6 +20,8 @@ var tempObj = {
       pathPointer:""
     }
 
+    var oldDate = +new Date()
+
 
 function dataProcess(index, c){
 
@@ -116,6 +118,9 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
         receiveCt++
         console.log(data[0])
         data[2] = '3' 
+        var disperse = data[4] - oldDate
+        console.log(disperse)
+        oldDate = data[4]
         if (receiveCt % 100 == 0) {
         $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
           }

@@ -7,7 +7,7 @@ var packetCt = 0
 	audioMsg[1] = 5
 	audioMsg[2] = 2
 
-	for (var x = 4 ; x < 32 ; x++) {
+	for (var x = 5 ; x < 32 ; x++) {
 		audioMsg[x] = x
 	}
 
@@ -23,6 +23,7 @@ else if (!audioActive) {
 
 	setInterval(function() {
 	audioMsg[3] = packetID
+	audioMsg[4] = +new Date();
 	
 	for (var y = 1 ; y < userLimit ; y++) {
 	
