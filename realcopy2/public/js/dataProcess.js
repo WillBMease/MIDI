@@ -21,6 +21,7 @@ var tempObj = {
     }
 
     var oldDate = +new Date()
+    var disperse
 
 
 function dataProcess(index, c){
@@ -115,16 +116,16 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
           ////////// Audio packet testing
 
       else if (data[1] == '5' && data[2] == '2') {
-        receiveCt++
-        console.log(data[0])
-        data[2] = '3' 
-        var disperse = data[4] - oldDate
+        // receiveCt++
+        // console.log(data[0])
+        // data[2] = '3' 
+        disperse = data[4] - oldDate
         console.log(disperse)
         oldDate = data[4]
-        if (receiveCt % 100 == 0) {
-        $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
-          }
-        }
+        // if (receiveCt % 100 == 0) {
+        // $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);
+        //   }
+        // }
 
       else if (data[1] == '5' && data[2] == '3') {
        // $('#messages').append('<br>' + 'packetID: ' + packetID + ' & ' + data[3]);
