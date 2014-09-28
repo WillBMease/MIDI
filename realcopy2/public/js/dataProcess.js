@@ -119,8 +119,7 @@ var over25 = logRTT[5] + logRTT[6] + logRTT[7]
         // receiveCt++
         // console.log(data[0])
         // data[2] = '3' 
-        disperse = data[4] - oldDate
-        console.log(disperse)
+        console.log(data[4] - oldDate)
         oldDate = data[4]
         // if (receiveCt % 100 == 0) {
         // $('#messages').append('<br>' + 'Received packetID: ' + data[3] + ' & Count is: ' + receiveCt);

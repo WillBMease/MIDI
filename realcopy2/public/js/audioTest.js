@@ -17,23 +17,24 @@ function audioTest() {
 
 if (audioActive) {
 	audioActive = false
+	clearInterval(function())
 }
 else if (!audioActive) {
 	audioActive = true
 
 	setInterval(function() {
-	audioMsg[3] = packetID
+	// audioMsg[3] = packetID
 	audioMsg[4] = +new Date();
 	
 	for (var y = 1 ; y < userLimit ; y++) {
 	
 	if (user[y] != 0) {
-	packetCt++
-	audioMsg[0] = packetCt
+	// packetCt++
+	// audioMsg[0] = packetCt
 	user[y].send(audioMsg)
 		}
 	}
-	packetID++ }, 1)
+	// packetID++ }, 1)
 
 	audioActive = true
 
