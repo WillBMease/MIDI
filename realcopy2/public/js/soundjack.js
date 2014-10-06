@@ -101,7 +101,7 @@ function soundcardProbe(){
 					// if (tempCount % 100 == 0){
 						for (var i = 1 ; i < userLimit ; i++ ){
 							if (user[i] != 0){
-							user[i].send(bufferSize);
+							user[i].send(bufferAsString);
 							console.log("send to " + user[i].peer);
 								}
 							}

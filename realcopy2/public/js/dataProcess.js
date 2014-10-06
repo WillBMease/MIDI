@@ -50,9 +50,9 @@ var fullChk = 0
               loadInstrument(index, firstInst)
     user[index].on('data', function(data){
 
-console.log(data)
+// console.log(data)
 newer = new Date()
-console.log(newer - older)
+console.log("Time difference: " + newer - older + "ms")
 older = newer
 
       if (data[1] == '0' && data[2] == '0') {
