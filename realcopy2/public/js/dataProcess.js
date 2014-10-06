@@ -52,7 +52,8 @@ var fullChk = 0
 
 // console.log(data)
 newer = new Date()
-console.log("Time difference: " + newer - older + "ms")
+var temper = newer - older
+console.log("Time difference: " + temper + "ms")
 older = newer
 
       if (data[1] == '0' && data[2] == '0') {
