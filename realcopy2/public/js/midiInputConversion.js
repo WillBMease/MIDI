@@ -636,14 +636,25 @@ function masterConversion(midiInput){
 }
 
 
+var octaveMsg = []
+octaveMsg[1] = 7
 
+function transpose(index, noteInput){
 
+	// 1
+	if(noteInput == 49 && octave[index] < globalOctave){
+		console.log('octave up!')
+		octave[index] = octave[index] + 1;
+		octaveMsg[2] = octave[index]
+	}
+	// ~
+	if(noteInput == 192 && octave[index] != 0){
+		console.log('octave down!')
+		octave[index] = octave[index] - 1;
+		octaveMsg[2] = octave[index]
+	}
 
-
-
-
-
-
+}
 
 
 

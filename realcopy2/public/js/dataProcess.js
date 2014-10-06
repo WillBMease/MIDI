@@ -35,6 +35,7 @@ var lowRtt = 1000
 var quantCt = []
 var beatChk = []
 var oscChk = []
+var newer, older = 0
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -49,6 +50,10 @@ var fullChk = 0
               loadInstrument(index, firstInst)
     user[index].on('data', function(data){
 
+console.log(data)
+newer = new Date()
+console.log(newer - older)
+older = newer
 
       if (data[1] == '0' && data[2] == '0') {
         if (pingIncoming[data[0]] != data[0]){

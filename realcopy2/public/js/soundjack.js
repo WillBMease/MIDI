@@ -1,13 +1,12 @@
-/// EVENTS DEFINIEREN / SOCKET AKTIVIEREN / KARTE CHECKEN / CONFIG LADEN
-		
-var sjcount = 0
+var tempCount = 0
 
-		function soundcardProbe(){	
+function soundcardProbe(){	
 		    setReceiverBufferOptions();
 			
 			addSJEvents();
 		    bind();
-		    alert(plugin().soundcardProbe());	
+		    // alert(plugin().soundcardProbe());
+		    plugin().soundcardProbe()	
 		    plugin().readConfig();
 			setTimeout("restartSoundcard()",1000);
 		    plugin().getExternalIPAndPort();
@@ -97,14 +96,17 @@ var sjcount = 0
 			  addEvent(plugin(),'passBufferToScript',
 			      function getBufferFromPlugin(bufferAsString,bufferSize){
 				      // PROCESS BUFFER HERE
-					  document.sjForm.dropout.value = bufferAsString;
-					  sjcount++
-					  if (sjcount % 250)
-					  console.log(bufferAsString)
-					  // for (var i = 1 ; i < userLimit ; i++) {
-					  // 		if (user[i] != 0)
-					  // 			user[i].send(bufferAsString)
-					  // }
+					  // alert(bufferSize);
+
+					// if (tempCount % 100 == 0){
+						for (var i = 1 ; i < userLimit ; i++ ){
+							if (user[i] != 0){
+							user[i].send(bufferSize);
+							console.log("send to " + user[i].peer);
+								}
+							}
+
+					// tempCount++
 				  });
 		}
 		
@@ -129,12 +131,7 @@ var sjcount = 0
         }
         
 		function pluginLoaded() {
-            alert("Plugin loaded!");
-            console.log('plugin loaded')
-            setTimeout(function(){
-            webrtcStart()
-            effects()            	
-            }, 2500)
+            //alert("Plugin loaded!");
         }
         
         function addTestEvent(){
@@ -180,7 +177,8 @@ var sjcount = 0
 		    bitDepth = 16;
 		    sampleRate = 48000; 
 		    
-		    alert(plugin().startAudioDevice(inputIndex,outputIndex,channels,frameSize,bitDepth,sampleRate));		
+		    // alert(plugin().startAudioDevice(inputIndex,outputIndex,channels,frameSize,bitDepth,sampleRate));
+		    plugin().startAudioDevice(inputIndex,outputIndex,channels,frameSize,bitDepth,sampleRate)		
 		    
 			/// PARAMETER IN CONFIG SICHERN
 			plugin().writeConfig();
@@ -212,14 +210,16 @@ var sjcount = 0
 		/// AUDIO DEVICE LIST REFRESHEN	
 		function refreshAudioDeviceList(){	
 		  /// VORHER HIER OPTIONS LÖSCHEN
-		  alert(plugin().soundcardProbe());	
+		  // alert(plugin().soundcardProbe());	
+		  plugin().soundcardProbe()
 		}
 		
 		function bind(){
 		    //IPAddress = document.sjForm.bindIP.value;
 		    IPAddress = "0.0.0.0";
 		    Port = "4401";//document.sjForm.bindPort.value;	
-		    alert(plugin().bind(IPAddress,Port));
+		    // alert(plugin().bind(IPAddress,Port));
+		    plugin().bind(IPAddress,Port)
 		}
 		
 		function goForExternalIPAndPort(){
@@ -231,7 +231,7 @@ var sjcount = 0
 	        IP = document.sjForm.sendIPAddress.value;
 		    port = document.sjForm.sendPort.value;
 		  
-		    alert(plugin().startStream(IP,port));	
+		    alert(plugin().startStream(IP,port,"",""));	
 		}
 		
 		function stopNetStream(){

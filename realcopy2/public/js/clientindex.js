@@ -671,9 +671,11 @@ else if (ev.data[2] == 0 || ev.data[2] == 64){
 		midiMsg[2] = ev.data[0].toString(16) ;
 		midiMsg[3] = ev.data[1].toString(16) ;
 		midiMsg[4] = ev.data[2];
+		midiMsg[7] = +new Date()
 
-	console.log('detect midi')
-
+		if (recordingActive){
+		recording(0, midiMsg, true)
+	}
 		triggerMidiDevice(0, midiMsg)
 
 	for (var i = 1 ; i < userLimit ; i++ )

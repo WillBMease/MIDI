@@ -14,13 +14,10 @@
 
 	</head>
 
-	<!-- <body onload="load()"> -->
-    <body>
+	<body onload="load()">
+    <!-- <body> -->
 
     <!--for soundjack, temporarily disabled-->
-<!-- <object width="0" height="0" type="application/x-sj2" id="plugin0">
-    <param value="soundcardProbe" name="onload">
-</object> -->
 
 
 <a class = "inavibe">
@@ -156,7 +153,8 @@ jellyvibes</a>
 <a class="changeSynth3" id="sawtooth"><i>Sawtooth3</i></a>
 
 <a onclick="startRecord()"><i>Record</i></a>
-<a onclick="playRecord()"><i>Play</i></a>
+<a id="playRecording"><i>Play</i></a>
+<a onclick="startLooping()"><i>Loop</i></a>
 
 </h6>
 
@@ -465,21 +463,206 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
    	 </canvas>
 </div> -->
 
-<div id="oscilloscope0"></div>
+<!-- <div id="oscilloscope0"></div> -->
 <style>
-    #oscilloscope0 {
+/*    #oscilloscope0 {
         width: 400px;
         height: 200px;
-    }
+    }*/
 </style>
 
-<div id="oscilloscope1"></div>
+<!-- <div id="oscilloscope1"></div> -->
 <style>
-    #oscilloscope1 {
+/*    #oscilloscope1 {
         width: 400px;
         height: 200px;
-    }
+    }*/
 </style>
+
+<canvas id="sequencer" width="1000" height="1000"
+    style="background: #fff; margin: 20px;">
+</canvas>
+
+<!-- <canvas id="myCanvas" width="200" height="100"
+style="border:1px solid #040870;">
+</canvas> -->
+
+
+
+
+
+
+
+
+
+
+
+<object id="plugin0" type="application/x-sjc" width="0" height="0">
+    <param name="onload" value="soundcardProbe" />
+</object><br />
+
+ <form name="sjForm"> 
+<h2>Local soundcard and network section</h2>
+<table>
+  <tr>
+    <td width="180">Soundcard-Input: </td>
+      <td width="300"><select name="soundcardInput" onChange="restartSoundcard()">
+            <option></option>
+          </select>
+        <input name="mute" type="button" value="mute" onClick="javascript:muteLocalSound()">
+        <input name="unmute" type="button" value="unmute" onClick="javascript:unmuteLocalSound()">
+        <br></td>
+  </tr>
+  <tr>
+    <td>Soundcard-Output:</td>
+    <td><select name="soundcardOutput" onChange="restartSoundcard()">
+          <option></option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="audioRefresh" type="button" value="Refresh list" onClick="javascript:refreshAudioDeviceList()"></td>
+  </tr>
+  <tr>
+    <td>Audio-Channels:</td>
+    <td><select name="audioChannels" onChange="restartSoundcard()">
+          <option selected="selected">1</option>
+          <option>2</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Soundcardbuffer size:</td>
+    <td><select name="soundcardBufferSize" size="1" onChange="networkPacketChanger(),restartSoundcard()"> --><!--UNOBTRUSIVE JS ! -->
+          <option>64</option>
+          <option>128</option>
+          <option>256</option>
+          <option selected="selected">512</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Level:</td>
+    <td><input type="range" name="localVolume" min="0" max="1" value="0" step="0.1" onChange="setLocalVolume(this.value)" />
+  </tr>
+    
+  <tr>
+     <td>&nbsp;</td>
+    <td><input name="audioStart" type="button" value="Restart" onClick="javascript:restartSoundcard()">
+      <input name="audioStop" type="button" value="Stop" onClick="javascript:stopAudioDevice()"></td>
+  </tr>
+
+  <tr>
+     <td><input name="getExternalIPAndPort" type="button" value="External IP and Port" onClick="javascript:goForExternalIPAndPort()"></td>
+     <td><input type="text" name="localIP" value="IP=127.0.0.1" disabled/></td>
+  </tr>
+   
+  <tr>
+     <td>&nbsp;</td>
+     <td><input type="text" name="localPort" value="Port=4401" disabled/></td>
+  </tr>
+</table>
+
+<br>
+
+<!-- already commented!! -->
+
+<!--LOCAL NETWORK SECTION
+<table width="400" border="1"/>
+  <tr>
+    <td>bind to port:</td>
+    <td><input type="text" name="bindPort" value="4401"/></td>
+  </tr>
+    <tr>
+      <td><input name="bindButton" type="button" value="bind" onClick="javascript:bind()"/></td>
+      <td></td>
+  </tr>
+</table>
+
+<br>
+-->
+
+<!-- end of already commmented! -->
+
+<h2>Sender section</h2>
+<table>
+  <tr>
+    <td width=180>UDP/IP Packetsize: </td>
+    <td width=300><select name="IP" size="1" disabled>
+          <option>64</option>
+          <option>128</option>
+          <option>256</option>
+          <option selected="selected">512</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>Codec quality:</td>
+    <td><select name="codecQuality" onChange="javascript:changeStreamSettings()">
+          <option>OPUS 24 kbps</option>
+          <option>OPUS 48 kbps</option>
+          <option selected="selected">OPUS 96 kbps</option>
+          <option>OPUS 192 kbps</option>
+          <option>linear 768 kbps</option>
+        </select></td>
+  </tr>
+  <tr>
+    <td>IP-Address:</td>
+      <td><input type="text" name="sendIPAddress" value="127.0.0.1"/></td>
+  </tr>
+  <tr>
+    <td>Port:</td>
+    <td><input type="text" name="sendPort" value="4401"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="netStreamStart" type="button" value="Start Net Stream" onClick="javascript:startNetStream()" />
+      <input name="netStreamStop" type="button" value="Stop Net Stream" onClick="javascript:stopNetStream()" /></td>
+  </tr>
+</table>
+
+<br>
+
+<h2>Receiver section</h2>
+<table>
+  <tr>
+    <td width=180>Buffersize: </td>
+    <td width=300>
+        <select name="networkBufferSize" onChange="javascript:setReceiverBufferSize()">
+          <option>1</option>
+          <option selected="selected">2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+         <input type="text" width=50 name="dropout" id="dropout" disabled>
+    </td>   
+  </tr>
+ 
+  <tr>
+    <td>Delay:</td>
+    <td><input type="text" name="delay" id="delay" disabled></td>
+  </tr>
+ 
+  <tr>
+    <td>Level:</td>
+    <td><input name="remoteVolume" type="range" min="0" max="1" value="0" step="0.1" onChange="setRemoteVolume(this.value)" /></td> 
+  </tr>
+  <tr>
+</table>
+
+</form>
+
+<br>
+
+<!-- HIER WERDEN DIE FB-STANDARD FUNKTIONEN VERLINKT    
+<a href="#" onClick="javascript:pluginValid()">Click me!</a> <br />
+<a href="#" onClick="javascript:addTestEvent()">Activate click counter</a> <br />
+<a href="#" onClick="javascript:testEvent()">Fire a test event</a> <br />
+--> 
+
+
+
+
+
+
+
 
 
 
@@ -488,7 +671,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 <script src="jui/jquery.knob.js"></script>
 <script src="jui/jcanvas.min.js"></script>
 
-         <!-- // <script src="js/soundjack.js"></script> -->
+         // <script src="js/soundjack.js"></script>
 		 <script src="js/pjv.js"></script>
 		 <script src="js/WebMIDIAPI.js"></script>
 		 <script src="js/tuna.js"></script>
@@ -500,7 +683,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 		 <script src="js/scriptVisu4.js"></script>
 		 <script src="js/dataProcess.js"></script>
 		 <script src="js/synth.js"></script>
-		 <script src="js/effects.js"></script>
+		 <!-- // <script src="js/effects.js"></script> -->
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>

@@ -175,9 +175,9 @@ else if (sampleActive){     // make sure to disable this part
 	sampleMsg[1] = '2' ;
 	sampleMsg[2] = e.which ;
 	sampleMsg[7] = +new Date()
-	setTimeout(function(){
+	// setTimeout(function(){
 		triggerSample(0, sampleMsg)
-	}, 25)
+	// }, 25)
 
 
 for (var i = 1 ; i < userLimit ; i++) {
@@ -187,8 +187,7 @@ for (var i = 1 ; i < userLimit ; i++) {
 	}
 }
 	if (recordingActive){
-		console.log("sample")
-		recording(0, sampleMsg)
+		recording(0, sampleMsg, false)
 	}
 
 	sampleID++
@@ -229,27 +228,6 @@ if (!sampleActive && e.which != 49 && e.which != 192){
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-var octaveMsg = []
-octaveMsg[1] = 7
-
-
-function transpose(index, noteInput){
-
-console.log(noteInput)
-	// 1
-	if(noteInput == 49 && octave[index] < globalOctave){
-		console.log('octave up!')
-		octave[index] = octave[index] + 1;
-		octaveMsg[2] = octave[index]
-	}
-	// ~
-	if(noteInput == 192 && octave[index] != 0){
-		console.log('octave down!')
-		octave[index] = octave[index] - 1;
-		octaveMsg[2] = octave[index]
-	}
-
-}
 
 function keyGlow(cssClass){
 	$('.active').removeClass(active);
