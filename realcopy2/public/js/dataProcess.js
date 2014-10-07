@@ -37,6 +37,11 @@ var beatChk = []
 var oscChk = []
 var newer, older = 0
 var averagecount = 0;
+var logger = []
+
+for (var i = 0 ; i < 9 ; i++){
+    logger[i] = 0
+}
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
@@ -56,12 +61,47 @@ newer = new Date()
 var temper = newer - older
 older = newer
 
+if (temper == 0)
+  logger[0]++
+else if (temper == 1)
+  logger[1]++
+else if (temper == 2)
+  logger[2]++
+else if (temper == 3)
+  logger[3]++
+else if (temper == 4)
+  logger[4]++
+else if (temper == 5)
+  logger[5]++
+else if (temper < 10)
+  logger[6]++
+else if (temper < 20)
+  logger[7]++
+else
+  logger[8]++
+
 averagecount += temper;
 if (data[0] < 5000)
   console.log("ID#: " + data[0] + " -- Time difference: " + temper + "ms")
 else if (data[0] == 5000){
  var resulter = averagecount / 5000
  console.log("The average time difference for 5000 packets is: " + resulter + "ms")
+
+var under3 = logger[0] + logger[1] + logger[2] + logger[3]
+var under5 = under3 + logger[4] + logger[5]
+var prcnt = under3 / 5000
+
+ console.log("Packets under 3ms: " + under3 + " -- " + prcnt + "% consistent")
+ console.log("0ms: " + logger[0])
+ console.log("1ms: " + logger[1])
+ console.log("2ms: " + logger[2])
+ console.log("3ms: " + logger[3])
+ console.log("4ms: " + logger[4])
+ console.log("5ms: " + logger[5])
+ console.log("5 - 10ms: " + logger[6])
+ console.log("10 - 20ms: " + logger[7])
+ console.log("Over 20ms: " + logger[8])
+
 }
 
       if (data[1] == '0' && data[2] == '0') {
