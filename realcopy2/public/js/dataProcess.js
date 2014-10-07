@@ -36,6 +36,7 @@ var quantCt = []
 var beatChk = []
 var oscChk = []
 var newer, older = 0
+var averagecount = 0;
   
   for (var i = 0 ; i < 8 ; i++)
     logRTT[i] = 0
