@@ -97,16 +97,18 @@ function soundcardProbe(){
 			      function getBufferFromPlugin(bufferAsString,bufferSize){
 				      // PROCESS BUFFER HERE
 					  // alert(bufferSize);
-
+					  var thismsg = []
+					  thismsg[0] = tempCount
+					  thismsg[1] = bufferAsString
 					// if (tempCount % 100 == 0){
 						for (var i = 1 ; i < userLimit ; i++ ){
 							if (user[i] != 0){
-							user[i].send(bufferAsString);
+							user[i].send(thismsg);
 							console.log("send to " + user[i].peer);
 								}
 							}
 
-					// tempCount++
+					tempCount++
 				  });
 		}
 		

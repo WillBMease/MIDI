@@ -53,8 +53,15 @@ var fullChk = 0
 // console.log(data)
 newer = new Date()
 var temper = newer - older
-console.log("Time difference: " + temper + "ms")
 older = newer
+
+averagecount += temper;
+if (data[0] < 5000)
+  console.log("ID#: " + data[0] + " -- Time difference: " + temper + "ms")
+else if (data[0] == 5000){
+ var resulter = averagecount / 5000
+ console.log("The average time difference for 5000 packets is: " + resulter + "ms")
+}
 
       if (data[1] == '0' && data[2] == '0') {
         if (pingIncoming[data[0]] != data[0]){
