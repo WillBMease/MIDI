@@ -3,6 +3,9 @@
 	<head>
 		<title> JellyVibes </title>
 
+        <!-- <div class="milky"> JellyVibes </div> -->
+
+
 	 	<link rel="stylesheet" href="jui/jquery-ui.theme.css" />
 	 	<link rel="jui/jquery-ui.css" />
 
@@ -20,141 +23,146 @@
     <!--for soundjack, temporarily disabled-->
 
 
-<a class = "inavibe">
+<a class="milky">
 jellyvibes</a>
 
 <!-- <a href="http://jazz-soft.net/download/Jazz-Plugin/1.3/Jazz-Plugin-1-3.dmg">DOWNLOAD</a> -->
 <br><br><br><br><br><br><br><br><br><br>
 
-<h2>
-<div class="row1">
-<a id="bass" class="changeInstrument"><i>bass</i>
-<a id="harp" class="changeInstrument"><i>harp</i></a>
-<a id="gPiano" class="changeInstrument"><i>piano</i></a>
-<a id="jazzdrums" class="changeInstrument"><i>drums</i><a>
-<a id="brass" class="changeInstrument"><i>brass</i></a>
-<a id="organ" class="changeInstrument"><i>organ</i></a>
-</div>
-<div class="row2">
-<a id="bells" class="changeInstrument"><i>bells</i></a>
-<a id="flute" class="changeInstrument"><i>flute</i></a>
-<a id="violin" class="changeInstrument"><i>violin</i></a>
-<a id="alto_sax" class="changeInstrument"><i>alto sax</i></a>
-<a id="western_piano" class="changeInstrument"><i>western piano</i></a>
-<a id="ballad_guitar" class="changeInstrument"><i>ballad guitar</i></a>
-</div>
-<div class="row3">
-<a id="blown_bottles" class="changeInstrument"><i>blown bottles</i></a>
-<a id="soft_voices" class="changeInstrument"><i>soft voices</i></a>
-<a id="electric_guitar" class="changeInstrument"><i>electric guitar</i></a>
-<a id="pizzicato" class="changeInstrument"><i>pizzicato</i></a>
-<a id="old_strings" class="changeInstrument"><i>oldstrings</i></a> 
-<a id="numb" class="changeInstrument"><i>numb</i></a>
+<select>
+    <option id="bass" class="changeInstrument"><i>bass</i></option>
+    <option id="harp" class="changeInstrument"><i>harp</i></option>
+    <option id="gPiano" class="changeInstrument"><i>piano</i></option>
+    <option id="jazzdrums" class="changeInstrument"><i>drums</i></option>
+    <option id="brass" class="changeInstrument"><i>brass</i></option>
+    <option id="organ" class="changeInstrument"><i>organ</i></option>
+    <option id="bells" class="changeInstrument"><i>bells</i></option>
+    <option id="flute" class="changeInstrument"><i>flute</i></option>
+    <option id="violin" class="changeInstrument"><i>violin</i></option>
+    <option id="alto_sax" class="changeInstrument"><i>alto sax</i></option>
+    <option id="western_piano" class="changeInstrument"><i>western piano</i></option>
+    <option id="ballad_guitar" class="changeInstrument"><i>ballad guitar</i></option>
+    <option id="blown_bottles" class="changeInstrument"><i>blown bottles</i></option>
+    <option id="soft_voices" class="changeInstrument"><i>soft voices</i></option>
+    <option id="electric_guitar" class="changeInstrument"><i>electric guitar</i><</option>
+    <option id="pizzicato" class="changeInstrument"><i>pizzicato</i></option>
+    <option id="old_strings" class="changeInstrument"><i>oldstrings</i></option> 
+    <option id="numb" class="changeInstrument"><i>numb</i></option>
+    <option id="gospel_organ" class="changeInstrument"><i>Gospel Organ</i></option>
+</select>
 
-<a id="gospel_organ" class="changeInstrument"><i>Gospel Organ</i></a>
-<a id="metronome" class="changeInstrument"><i>loadMetro</i></a>
+
+
+<button id="metronome" class="changeInstrument"><i>loadMetro</i></button>
  
-<a class = "midi-pos" onclick = "runTest();" ><i>midi</i></a>
-<a class = "controller-pos" onclick = "assignControllers('',triggerMidiDevice(index, midiData);" ><i>Assign Controller</i></a>
-<a class = "controller-pos" onclick = "assignControllers('volume');" ><i>Assign Volume</i></a>
+<!-- <option class = "midi-pos" onclick = "runTest();" ><i>midi</i></option> -->
 
-<!-- <a class = "controller-pos" onclick = "assignControllers('#reverb-level');" ><i>Reverb Lvl</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#reverb-wetLevel');" ><i>Reverb Wet Level</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#reverb-highCut');"><i>Reverb HighCut</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#reverb-lowCut');"><i>Reverb lowCut</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#reverb-dryLevel');"><i>Reverb dryLevel</i></a> -->
+<select>
+<option class = "controller-pos" onclick = "assignControllers('volume');" ><i>Assign Volume</i></option>
+<option class = "controller-pos" onclick = "assignControllers('',triggerMidiDevice(index, midiData);" ><i>Assign Controller</i></option>
 
-
-<!-- <a class = "controller-pos" onclick= "assignControllers('#chorus-rate');"><i>chorus rate</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#chorus-feedback');"><i>chorus feedback</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#chorus-delay');"><i>chorus delay</i></a>
- -->
-
-<!-- <a class = "controller-pos" onclick="assignControllers('#delay-feedback');" ><i>Delay Feedback</i></a>
-<a class = "controller-pos" onclick="assignControllers('#delay-time');"><i>delay time</i></a>
-<a class = "controller-pos" onclick="assignControllers('#delay-wetLevel');"><i>delay wetLevel</i></a>
-<a class = "controller-pos" onclick="assignControllers('#delay-dryLevel');"><i>delay dryLevel</i></a>
-<a class = "controller-pos" onclick="assignControllers('#delay-cutoff');"><i>delay cutoff</i></a> -->
+<option class = "controller-pos" onclick = "assignControllers('#reverb-level');" ><i>Reverb Lvl</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#reverb-wetLevel');" ><i>Reverb Wet Level</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#reverb-highCut');"><i>Reverb HighCut</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#reverb-lowCut');"><i>Reverb lowCut</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#reverb-dryLevel');"><i>Reverb dryLevel</i></option>
 
 
-<!-- <a class = "controller-pos" onclick = "assignControllers('#phaser-rate');" ><i>Phaser Rate</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#phaser-depth');" ><i>Phaser depth</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#phaser-feedback');" ><i>Phaser Feedback</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#phaser-stereo');" ><i>Phaser stereo</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#phaser-bmf');" ><i>Phaser bmf</i></a> -->
+<option class = "controller-pos" onclick= "assignControllers('#chorus-rate');"><i>chorus rate</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#chorus-feedback');"><i>chorus feedback</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#chorus-delay');"><i>chorus delay</i></option>
 
 
-<!-- <a class = "controller-pos" onclick = "assignControllers('#overdrive-outputGain');" ><i>Overdrive outputGain</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#overdrive-drive');" ><i>Overdrive drive</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#overdrive-curveLevel');" ><i>Overdrive curveLevel</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#overdrive-algorithm');" ><i>Overdrive algorithm</i></a> -->
+<option class = "controller-pos" onclick="assignControllers('#delay-feedback');" ><i>Delay Feedback</i></option>
+<option class = "controller-pos" onclick="assignControllers('#delay-time');"><i>delay time</i></option>
+<option class = "controller-pos" onclick="assignControllers('#delay-wetLevel');"><i>delay wetLevel</i></option>
+<option class = "controller-pos" onclick="assignControllers('#delay-dryLevel');"><i>delay dryLevel</i></option>
+<option class = "controller-pos" onclick="assignControllers('#delay-cutoff');"><i>delay cutoff</i></option>
 
 
-<!-- <a class = "controller-pos" onclick = "assignControllers('#compressor-threshold');" ><i>compressor threshold</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#compressor-makeGain');" ><i>compressor makeGain</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#compressor-attack');" ><i>compressor attack</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#compressor-release');" ><i>compressor release</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#compressor-ratio');" ><i>compressor ratio</i></a>
-<a class = "controller-pos" onclick = "assignControllers('#compressor-knee');" ><i>compressor knee</i></a> -->
+<option class = "controller-pos" onclick = "assignControllers('#phaser-rate');" ><i>Phaser Rate</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#phaser-depth');" ><i>Phaser depth</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#phaser-feedback');" ><i>Phaser Feedback</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#phaser-stereo');" ><i>Phaser stereo</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#phaser-bmf');" ><i>Phaser bmf</i></option>
 
 
-<!-- <a class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#filter-q');"><i>Filter Q</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#filter-gain');"><i>Filter gain</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></a> -->
+<option class = "controller-pos" onclick = "assignControllers('#overdrive-outputGain');" ><i>Overdrive outputGain</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#overdrive-drive');" ><i>Overdrive drive</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#overdrive-curveLevel');" ><i>Overdrive curveLevel</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#overdrive-algorithm');" ><i>Overdrive algorithm</i></option>
 
 
-<!-- <a class = "controller-pos" onclick= "assignControllers('#tremolo-intensity');"><i>tremolo intensity</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#tremolo-rate');"><i>tremolo rate</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#tremolo-phase');"><i>tremolo phase</i></a> -->
+<option class = "controller-pos" onclick = "assignControllers('#compressor-threshold');" ><i>compressor threshold</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#compressor-makeGain');" ><i>compressor makeGain</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#compressor-attack');" ><i>compressor attack</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#compressor-release');" ><i>compressor release</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#compressor-ratio');" ><i>compressor ratio</i></option>
+<option class = "controller-pos" onclick = "assignControllers('#compressor-knee');" ><i>compressor knee</i></option>
 
 
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-base');"><i>wahwah base</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-excursion');"><i>wahwah excursion</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-sweep');"><i>wahwah sweep</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-resonance');"><i>wahwah resonance</i></a>
-<a class = "controller-pos" onclick= "assignControllers('#wahwah-sensitivity');"><i>wahwah sensitivity</i></a>
+<option class = "controller-pos" onclick= "assignControllers('#filter-frequency');"><i>Filter Frequency</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#filter-q');"><i>Filter Q</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#filter-gain');"><i>Filter gain</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#filter-type');"><i>Filter type</i></option>
 
 
-</div>
-</h2>
+<option class = "controller-pos" onclick= "assignControllers('#tremolo-intensity');"><i>tremolo intensity</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#tremolo-rate');"><i>tremolo rate</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#tremolo-phase');"><i>tremolo phase</i></option>
+
+
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-auto');"><i>wahwah auto</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-base');"><i>wahwah base</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-excursion');"><i>wahwah excursion</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-sweep');"><i>wahwah sweep</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-resonance');"><i>wahwah resonance</i></option>
+<option class = "controller-pos" onclick= "assignControllers('#wahwah-sensitivity');"><i>wahwah sensitivity</i></option>
+
+</select>
 
 <h6>
-<a id="reverb" class = "outgoingEffect" ><i>Reverb</i></a>
-<a id="wahwah" class = "outgoingEffect" ><i>WahWah</i></a>
-<a id="overdrive" class = "outgoingEffect" ><i>Overdrive</i></a>
-<a id="chorus" class = "outgoingEffect" ><i>Chorus</i></a>
-<a id="phaser" class = "outgoingEffect" ><i>Phaser</i></a>
-<a id="cabinet" class = "outgoingEffect" ><i>Cabinet</i></a>
-<a id="tremolo" class = "outgoingEffect" ><i>Tremolo</i></a>
-<a id="delay" class = "outgoingEffect" ><i>Delay</i></a>
-<a id="compressor" class = "outgoingEffect" ><i>Compressor</i></a>
-<a id="filter" class = "outgoingEffect" ><i>filter</i></a>
-<a onclick = "startMetronome()" ><i>Metronome</i></a>
-<a onclick ="toggleBPM()"><i>BPM</i></a>
+<select>
+    <option id="reverb" class = "outgoingEffect" ><i>Reverb</i></option>
+    <option id="wahwah" class = "outgoingEffect" ><i>WahWah</i></option>
+    <option id="overdrive" class = "outgoingEffect" ><i>Overdrive</i></option>
+    <option id="chorus" class = "outgoingEffect" ><i>Chorus</i></option>
+    <option id="phaser" class = "outgoingEffect" ><i>Phaser</i></option>
+    <option id="cabinet" class = "outgoingEffect" ><i>Cabinet</i></option>
+    <option id="tremolo" class = "outgoingEffect" ><i>Tremolo</i></option>
+    <option id="delay" class = "outgoingEffect" ><i>Delay</i></option>
+    <option id="compressor" class = "outgoingEffect" ><i>Compressor</i></option>
+    <option id="filter" class = "outgoingEffect" ><i>filter</i></option>
+</select>
 
+<option onclick = "startMetronome()" ><i>Metronome</i></option>
+<option onclick ="toggleBPM()"><i>BPM</i></option>
 
-<a id="synth"><i>Synth</i></a>
+<input id="slider1" type="range" min="40" max="180" step="1" onchange="printValue('slider1','rangeValue1')"/>
+<input id="rangeValue1" type="text" size="2"/>
+
+<select>
+<option id="synth"><i>Synth</i></option>
 <!-- Osc 1 -->
-<a class="changeSynth1" id="sine"><i>Sine1</i></a>
-<a class="changeSynth1" id="square"><i>Square1</i></a>
-<a class="changeSynth1" id="triangle"><i>Triangle1</i></a>
-<a class="changeSynth1" id="sawtooth"><i>Sawtooth1</i></a>
+<option class="changeSynth1" id="sine"><i>Sine1</i></option>
+<option class="changeSynth1" id="square"><i>Square1</i></option>
+<option class="changeSynth1" id="triangle"><i>Triangle1</i></option>
+<option class="changeSynth1" id="sawtooth"><i>Sawtooth1</i></option>
 <!-- Osc 2 -->
-<a class="changeSynth2" id="sine"><i>Sine2</i></a>
-<a class="changeSynth2" id="square"><i>Square2</i></a>
-<a class="changeSynth2" id="triangle"><i>Triangle2</i></a>
-<a class="changeSynth2" id="sawtooth"><i>Sawtooth2</i></a>
+<option class="changeSynth2" id="sine"><i>Sine2</i></option>
+<option class="changeSynth2" id="square"><i>Square2</i></option>
+<option class="changeSynth2" id="triangle"><i>Triangle2</i></option>
+<option class="changeSynth2" id="sawtooth"><i>Sawtooth2</i></option>
 <!-- Osc 3 -->
-<a class="changeSynth3" id="sine"><i>Sine3</i></a>
-<a class="changeSynth3" id="square"><i>Square3</i></a>
-<a class="changeSynth3" id="triangle"><i>Triangle3</i></a>
-<a class="changeSynth3" id="sawtooth"><i>Sawtooth3</i></a>
+<option class="changeSynth3" id="sine"><i>Sine3</i></option>
+<option class="changeSynth3" id="square"><i>Square3</i></option>
+<option class="changeSynth3" id="triangle"><i>Triangle3</i></option>
+<option class="changeSynth3" id="sawtooth"><i>Sawtooth3</i></option>
 
-<a onclick="startRecord()"><i>Record</i></a>
-<a id="playRecording"><i>Play</i></a>
-<a onclick="startLooping()"><i>Loop</i></a>
+<option onclick="startRecord()"><i>Record</i></option>
+<option id="playRecording"><i>Play</i></option>
+<option onclick="startLooping()"><i>Loop</i></option>
+</select>
 
 </h6>
 
@@ -331,6 +339,8 @@ jellyvibes</a>
 
     <button id="call" type="button">Video On</button>
     <button id="end" type="button">Video Off</button>
+    <button id="vidrecord" type="button">Record</button>
+    <button id="recordstop" type="button">Stop</button>
   </center>
 
 
@@ -671,7 +681,7 @@ style="border:1px solid #040870;">
 <script src="jui/jquery.knob.js"></script>
 <script src="jui/jcanvas.min.js"></script>
 
-         // <script src="js/soundjack.js"></script>
+         <script src="js/soundjack.js"></script>
 		 <script src="js/pjv.js"></script>
 		 <script src="js/WebMIDIAPI.js"></script>
 		 <script src="js/tuna.js"></script>
@@ -683,18 +693,20 @@ style="border:1px solid #040870;">
 		 <script src="js/scriptVisu4.js"></script>
 		 <script src="js/dataProcess.js"></script>
 		 <script src="js/synth.js"></script>
-		 <!-- // <script src="js/effects.js"></script> -->
+		 <script src="js/effects.js"></script>
 		 <script src="js/video.js"></script>
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
 		 <script src="js/audioTest.js"></script>
 		 <script src="js/sampleMapping.js"></script>
+         <script src="js/recording.js"></script>
 		 <script src="js/metronome.js"></script>
 		 <script src="js/audioTest.js"></script>
 		 <script src="js/midiInputConversion.js"></script>
 		 <script src="js/surfaceControllers.js"></script>
 		 <script src="js/knobLoader.js"></script>
-		 <!-- // <script src="js/soundjack.js"></script> -->
+         <script src="//cdn.WebRTC-Experiment.com/RecordRTC.js"></script>
+          <script src="https://cdn.webrtc-experiment.com/gif-recorder.js"></script>
 
 
 	</body>
