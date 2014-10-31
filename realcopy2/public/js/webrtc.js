@@ -27,27 +27,27 @@ $(document).ready(function() {
 
 // var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
 
-    var peer = new Peer(userID, {
-            host: "54.191.34.54",
-            port: 9000,
-            path: '/peerjs-server',
-            debug: 3
-  });
+  //   var peer = new Peer(userID, {
+  //           host: "54.191.34.54",
+  //           port: 9000,
+  //           path: '/peerjs-server',
+  //           debug: 3
+  // });
 
 // setTimeout(function(){
 
-// var peer = new Peer(userID, {
-//           host: "54.191.34.54",
-//           port: 9000,
-//           path: '/peerjs-server',
-//           config: {
-//             'iceServers': [
-//             { url: 'stun:54.186.225.6:3478' },
-//             { url: 'turn:54.186.225.6:3478',
-//               credential: 'jvsecretkey',
-//               realm: 'jvturn'
-//             }]}
-// });
+var peer = new Peer(userID, {
+          host: "54.191.34.54",
+          port: 9000,
+          path: '/peerjs-server',
+          config: {
+            'iceServers': [
+            { url: 'stun:54.186.225.6:3478' },
+            { url: 'turn:54.186.225.6:3478',
+              credential: 'jvsecretkey',
+              realm: 'jvturn'
+            }]}
+});
 
   //   var peer = new Peer(userID, {
   //           host: "54.191.34.54",
