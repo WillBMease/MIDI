@@ -1,4 +1,4 @@
-var loop1 = [1, 5, 1, 5, 2, 5, 5]
+var loop1 = [4, 7, 4, 7, 2, 5, 5]
 var rhythm1 = [0, 0, 500, 0, 500, 0, 500]
 loopingActive = true
 var loopMsg = []
