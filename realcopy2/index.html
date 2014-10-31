@@ -52,7 +52,7 @@ jellyvibes</a>
 </select>
 
 
-
+<button id="loop"><i>playloop</i></button>
 <button id="metronome" class="changeInstrument"><i>loadMetro</i></button>
  
 <!-- <option class = "midi-pos" onclick = "runTest();" ><i>midi</i></option> -->
@@ -351,7 +351,9 @@ jellyvibes</a>
 
 
 
-  <div id="videos" muted="muted"></div>
+<!--   <div id="videos" muted="muted"></div>
+    <div id="videos"></div> -->
+
 
 Horizontal: <input type="text" id="rowx" placeholder="Horizontal" style="align: center">
 Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: center">
@@ -489,9 +491,9 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
     }*/
 </style>
 
-<canvas id="sequencer" width="1000" height="1000"
+<!-- <canvas id="sequencer" width="1000" height="1000"
     style="background: #fff; margin: 20px;">
-</canvas>
+</canvas> -->
 
 <!-- <canvas id="myCanvas" width="200" height="100"
 style="border:1px solid #040870;">
@@ -669,6 +671,13 @@ style="border:1px solid #040870;">
 
 
 
+<input type="checkbox" id="kick1"></input>
+<input type="checkbox" id="kick2"></input>
+<input type="checkbox" id="kick3"></input>
+<input type="checkbox" id="kick4"></input>
+<input type="checkbox" id="kick5"></input>
+<input type="checkbox" id="kick6"></input>
+<input type="checkbox" id="kick7"></input>
 
 
 
@@ -694,12 +703,13 @@ style="border:1px solid #040870;">
 		 <script src="js/dataProcess.js"></script>
 		 <script src="js/synth.js"></script>
 		 <script src="js/effects.js"></script>
-		 <script src="js/video.js"></script>
+		 <!-- <script src="js/video.js"></script> -->
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
 		 <script src="js/audioTest.js"></script>
 		 <script src="js/sampleMapping.js"></script>
          <script src="js/recording.js"></script>
+         <script src="js/loops.js"></script>
 		 <script src="js/metronome.js"></script>
 		 <script src="js/audioTest.js"></script>
 		 <script src="js/midiInputConversion.js"></script>

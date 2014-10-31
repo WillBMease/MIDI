@@ -359,6 +359,11 @@ console.log(data[0])
 
    }
 
+   else if (data[1] == "20"){ 
+      playingActive = true
+      playLoop(0)
+    }
+
 
     });
           user[index].on('close', function(err){ 

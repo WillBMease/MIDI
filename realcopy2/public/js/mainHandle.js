@@ -99,8 +99,8 @@ for (var i = 0 ; i < userLimit ; i++){
 	ansT[i] = context.createAnalyser();
 }
 
-oscilloscopes[0] = new WavyJones(context, 'oscilloscope0');
-oscilloscopes[1] = new WavyJones(context, 'oscilloscope1');
+// oscilloscopes[0] = new WavyJones(context, 'oscilloscope0');
+// oscilloscopes[1] = new WavyJones(context, 'oscilloscope1');
 
 var soundOn ;
 var soundOff ;
