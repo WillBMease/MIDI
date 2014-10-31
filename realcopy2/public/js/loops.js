@@ -2,7 +2,7 @@ var loop1 = [1, 5, 1, 5, 2, 5, 5]
 var rhythm1 = [0, 0, 500, 0, 500, 0, 500]
 loopingActive = true
 var loopMsg = []
-loopMsg[0] = 20
+loopMsg[1] = 20
 
 var drumloop = []
 
