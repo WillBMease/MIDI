@@ -25,14 +25,14 @@ $(document).ready(function() {
   // the key connects the peer to the server that does the handshake
   //var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
-var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
+// var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
 
-  //   var peer = new Peer(userID, {
-  //           host: "54.191.34.54",
-  //           port: 9000,
-  //           path: '/peerjs-server',
-  //           debug: 3
-  // });
+    var peer = new Peer(userID, {
+            host: "54.191.34.54",
+            port: 9000,
+            path: '/peerjs-server',
+            debug: 3
+  });
 
 // setTimeout(function(){
 
