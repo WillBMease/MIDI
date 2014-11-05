@@ -364,6 +364,8 @@ console.log(data[0])
       playLoop(0)
     }
 
+    // else if (data[1])
+
 
     });
           user[index].on('close', function(err){ 

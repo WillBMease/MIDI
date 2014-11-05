@@ -17,8 +17,8 @@
 
 	</head>
 
-	<body onload="load()">
-    <!-- <body> -->
+	<!-- <body onload="load()"> -->
+    <body>
 
     <!--for soundjack, temporarily disabled-->
 
@@ -28,6 +28,8 @@ jellyvibes</a>
 
 <!-- <a href="http://jazz-soft.net/download/Jazz-Plugin/1.3/Jazz-Plugin-1-3.dmg">DOWNLOAD</a> -->
 <br><br><br><br><br><br><br><br><br><br>
+
+<input id="bpm" type="range" min="50" max="1000" step="1" onchange="changeBPM()"/>
 
 <select>
     <option id="bass" class="changeInstrument"><i>bass</i></option>
@@ -44,7 +46,7 @@ jellyvibes</a>
     <option id="ballad_guitar" class="changeInstrument"><i>ballad guitar</i></option>
     <option id="blown_bottles" class="changeInstrument"><i>blown bottles</i></option>
     <option id="soft_voices" class="changeInstrument"><i>soft voices</i></option>
-    <option id="electric_guitar" class="changeInstrument"><i>electric guitar</i><</option>
+    <option id="electric_guitar" class="changeInstrument"><i>electric guitar</i></option>
     <option id="pizzicato" class="changeInstrument"><i>pizzicato</i></option>
     <option id="old_strings" class="changeInstrument"><i>oldstrings</i></option> 
     <option id="numb" class="changeInstrument"><i>numb</i></option>
@@ -53,7 +55,320 @@ jellyvibes</a>
 
 
 <button id="loop"><i>playloop</i></button>
+<button id="sequencer"><i>playsequencer</i></button>
 <button id="metronome" class="changeInstrument"><i>loadMetro</i></button>
+    
+
+<br>
+<div class="drumGrid">
+<div class="checktime c1" id="time01" style="float:left">
+<input type="checkbox" value="0" id="time1" name=""></input>
+        <label for="time1"></label>
+    </div>
+<div class="checktime c2" style="float:left">
+<input type="checkbox" value="0" id="time2" name=""></input>
+        <label for="time2"></label>
+    </div>
+    <div class="checktime c3" style="float:left">
+<input type="checkbox" value="0" id="time3" name=""></input>
+        <label for="time3"></label>
+        </div>
+    <div class="checktime c4" style="float:left">
+<input type="checkbox" value="0" id="time4" name=""></input>
+        <label for="time4"></label>
+        </div>
+        <div class="checktime c5" style="float:left">
+<input type="checkbox" value="0" id="time5" name=""></input>
+        <label for="time5"></label>
+        </div>
+        <div class="checktime c6" style="float:left">
+<input type="checkbox" value="0" id="time6" name=""></input>
+        <label for="time6"></label>
+        </div>
+        <div class="checktime c7" style="float:left">
+<input type="checkbox" value="0" id="time7" name=""></input>
+        <label for="time7"></label>
+        </div>
+        <div class="checktime c8" style="float:left">
+<input type="checkbox" value="0" id="time8" name=""></input>
+        <label for="time8"></label>
+        </div>
+Timing
+<br>
+<div class="checkcrash c1" style="float:left">
+<input type="checkbox" value="0" id="crash1" name=""></input>
+        <label for="crash1"></label>
+    </div>
+<div class="checkcrash c2" style="float:left">
+<input type="checkbox" value="0" id="crash2" name=""></input>
+        <label for="crash2"></label>
+    </div>
+<div class="checkcrash c3" style="float:left">
+<input type="checkbox" value="0" id="crash3" name=""></input>
+        <label for="crash3"></label>
+    </div>
+<div class="checkcrash c4" style="float:left">
+<input type="checkbox" value="0" id="crash4" name=""></input>
+        <label for="crash4"></label>
+    </div>
+<div class="checkcrash c5" style="float:left">
+<input type="checkbox" value="0" id="crash5" name=""></input>
+        <label for="crash5"></label>
+    </div>
+<div class="checkcrash c6" style="float:left">
+<input type="checkbox" value="0" id="crash6" name=""></input>
+        <label for="crash6"></label>
+    </div>
+<div class="checkcrash c7" style="float:left">
+<input type="checkbox" value="0" id="crash7" name=""></input>
+        <label for="crash7"></label>
+    </div>
+<div class="checkcrash c8" style="float:left">
+<input type="checkbox" value="0" id="crash8" name=""></input>
+        <label for="crash8"></label>
+    </div>
+Crash
+<br>
+<div class="checkkick c1" style="float:left">
+<input type="checkbox" value="0" id="kick1" name=""></input>
+        <label for="kick1"></label>
+    </div>
+<div class="checkkick c2" style="float:left">
+<input type="checkbox" value="0" id="kick2" name=""></input>
+        <label for="kick2"></label>
+    </div>
+<div class="checkkick c3" style="float:left">
+<input type="checkbox" value="0" id="kick3" name=""></input>
+        <label for="kick3"></label>
+    </div>
+<div class="checkkick c4" style="float:left">
+<input type="checkbox" value="0" id="kick4" name=""></input>
+        <label for="kick4"></label>
+    </div>
+<div class="checkkick c5" style="float:left">
+<input type="checkbox" value="0" id="kick5" name=""></input>
+        <label for="kick5"></label>
+    </div>
+<div class="checkkick c6" style="float:left">
+<input type="checkbox" value="0" id="kick6" name=""></input>
+        <label for="kick6"></label>
+    </div>
+<div class="checkkick c7" style="float:left">
+<input type="checkbox" value="0" id="kick7" name=""></input>
+        <label for="kick7"></label>
+    </div>
+<div class="checkkick c8" style="float:left">
+<input type="checkbox" value="0" id="kick8" name=""></input>
+        <label for="kick8"></label>
+    </div>
+
+<br>
+
+<div class="checkhihat c1" style="float:left">
+<input type="checkbox" value="0" id="hihat1" name=""></input>
+        <label for="hihat1"></label>
+    </div>
+<div class="checkhihat c2" style="float:left">
+<input type="checkbox" value="0" id="hihat2" name=""></input>
+        <label for="hihat2"></label>
+    </div>
+<div class="checkhihat c3" style="float:left">
+<input type="checkbox" value="0" id="hihat3" name=""></input>
+        <label for="hihat3"></label>
+    </div>
+<div class="checkhihat c4" style="float:left">
+<input type="checkbox" value="0" id="hihat4" name=""></input>
+        <label for="hihat4"></label>
+    </div>
+<div class="checkhihat c5" style="float:left">
+<input type="checkbox" value="0" id="hihat5" name=""></input>
+        <label for="hihat5"></label>
+    </div>
+<div class="checkhihat c6" style="float:left">
+<input type="checkbox" value="0" id="hihat6" name=""></input>
+        <label for="hihat6"></label>
+    </div>
+<div class="checkhihat c7" style="float:left">
+<input type="checkbox" value="0" id="hihat7" name=""></input>
+        <label for="hihat7"></label>
+    </div>
+<div class="checkhihat c8" style="float:left">
+<input type="checkbox" value="0" id="hihat8" name=""></input>
+        <label for="hihat8"></label>
+    </div>
+Hi-Hat
+<br>
+<div class="checkride c1" style="float:left">
+<input type="checkbox" value="0" id="ride1" name=""></input>
+        <label for="ride1"></label>
+    </div>
+<div class="checkride c2" style="float:left">
+<input type="checkbox" value="0" id="ride2" name=""></input>
+        <label for="ride2"></label>
+    </div>
+<div class="checkride c3" style="float:left">
+<input type="checkbox" value="0" id="ride3" name=""></input>
+        <label for="ride3"></label>
+    </div>
+<div class="checkride c4" style="float:left">
+<input type="checkbox" value="0" id="ride4" name=""></input>
+        <label for="ride4"></label>
+    </div>
+<div class="checkride c5" style="float:left">
+<input type="checkbox" value="0" id="ride5" name=""></input>
+        <label for="ride5"></label>
+    </div>
+<div class="checkride c6" style="float:left">
+<input type="checkbox" value="0" id="ride6" name=""></input>
+        <label for="ride6"></label>
+    </div>
+<div class="checkride c7" style="float:left">
+<input type="checkbox" value="0" id="ride7" name=""></input>
+        <label for="ride7"></label>
+    </div>
+<div class="checkride c8" style="float:left">
+<input type="checkbox" value="0" id="ride8" name=""></input>
+        <label for="ride8"></label>
+    </div>
+Ride
+<br>
+<div class="checksnare c1" style="float:left">
+<input type="checkbox" value="0" id="snare1" name=""></input>
+        <label for="snare1"></label>
+    </div>
+<div class="checksnare c2" style="float:left">
+<input type="checkbox" value="0" id="snare2" name=""></input>
+        <label for="snare2"></label>
+    </div>
+<div class="checksnare c3" style="float:left">
+<input type="checkbox" value="0" id="snare3" name=""></input>
+        <label for="snare3"></label>
+    </div>
+<div class="checksnare c4" style="float:left">
+<input type="checkbox" value="0" id="snare4" name=""></input>
+        <label for="snare4"></label>
+    </div>
+<div class="checksnare c5" style="float:left">
+<input type="checkbox" value="0" id="snare5" name=""></input>
+        <label for="snare5"></label>
+    </div>
+<div class="checksnare c6" style="float:left">
+<input type="checkbox" value="0" id="snare6" name=""></input>
+        <label for="snare6"></label>
+    </div>
+<div class="checksnare c7" style="float:left">
+<input type="checkbox" value="0" id="snare7" name=""></input>
+        <label for="snare7"></label>
+    </div>
+<div class="checksnare c8" style="float:left">
+<input type="checkbox" value="0" id="snare8" name=""></input>
+        <label for="snare8"></label>
+    </div>
+Snare
+<br>
+<div class="checktom1 c1" style="float:left">
+<input type="checkbox" value="0" id="tom-one1" name=""></input>
+        <label for="tom-one1"></label>
+    </div>
+<div class="checktom1 c2" style="float:left">
+<input type="checkbox" value="0" id="tom-one2" name=""></input>
+        <label for="tom-one2"></label>
+    </div>
+<div class="checktom1 c3" style="float:left">
+<input type="checkbox" value="0" id="tom-one3" name=""></input>
+        <label for="tom-one3"></label>
+    </div>
+<div class="checktom1 c4" style="float:left">
+<input type="checkbox" value="0" id="tom-one4" name=""></input>
+        <label for="tom-one4"></label>
+    </div>
+<div class="checktom1 c5" style="float:left">
+<input type="checkbox" value="0" id="tom-one5" name=""></input>
+        <label for="tom-one5"></label>
+    </div>
+<div class="checktom1 c6" style="float:left">
+<input type="checkbox" value="0" id="tom-one6" name=""></input>
+        <label for="tom-one6"></label>
+    </div>
+<div class="checktom1 c7" style="float:left">
+<input type="checkbox" value="0" id="tom-one7" name=""></input>
+        <label for="tom-one7"></label>
+    </div>
+<div class="checktom1 c8" style="float:left">
+<input type="checkbox" value="0" id="tom-one8" name=""></input>
+        <label for="tom-one8"></label>
+    </div>
+Tom 1
+<br>
+<div class="checktom2 c1" style="float:left">
+<input type="checkbox" value="0" id="tom-two1" name=""></input>
+        <label for="tom-two1"></label>
+    </div>
+<div class="checktom2 c2" style="float:left">
+<input type="checkbox" value="0" id="tom-two2" name=""></input>
+        <label for="tom-two2"></label>
+    </div>
+<div class="checktom2 c3" style="float:left">
+<input type="checkbox" value="0" id="tom-two3" name=""></input>
+        <label for="tom-two3"></label>
+    </div>
+<div class="checktom2 c4" style="float:left">
+<input type="checkbox" value="0" id="tom-two4" name=""></input>
+        <label for="tom-two4"></label>
+    </div>
+<div class="checktom2 c5" style="float:left">
+<input type="checkbox" value="0" id="tom-two5" name=""></input>
+        <label for="tom-two5"></label>
+    </div>
+<div class="checktom2 c6" style="float:left">
+<input type="checkbox" value="0" id="tom-two6" name=""></input>
+        <label for="tom-two6"></label>
+    </div>
+<div class="checktom2 c7" style="float:left">
+<input type="checkbox" value="0" id="tom-two7" name=""></input>
+        <label for="tom-two7"></label>
+    </div>
+<div class="checktom2 c8" style="float:left">
+<input type="checkbox" value="0" id="tom-two8" name=""></input>
+        <label for="tom-two8"></label>
+    </div>
+Tom 2
+<br>
+<div class="checktom3 c1" style="float:left">
+<input type="checkbox" value="0" id="tom-three1" name=""></input>
+        <label for="tom-three1"></label>
+    </div>
+<div class="checktom3 c2" style="float:left">
+<input type="checkbox" value="0" id="tom-three2" name=""></input>
+        <label for="tom-three2"></label>
+    </div>
+<div class="checktom3 c3" style="float:left">
+<input type="checkbox" value="0" id="tom-three3" name=""></input>
+        <label for="tom-three3"></label>
+    </div>
+<div class="checktom3 c4" style="float:left">
+<input type="checkbox" value="0" id="tom-three4" name=""></input>
+        <label for="tom-three4"></label>
+    </div>
+<div class="checktom3 c5" style="float:left">
+<input type="checkbox" value="0" id="tom-three5" name=""></input>
+        <label for="tom-three5"></label>
+    </div>
+<div class="checktom3 c6" style="float:left">
+<input type="checkbox" value="0" id="tom-three6" name=""></input>
+        <label for="tom-three6"></label>
+    </div>
+<div class="checktom3 c7" style="float:left">
+<input type="checkbox" value="0" id="tom-three7" name=""></input>
+        <label for="tom-three7"></label>
+    </div>
+<div class="checktom3 c8" style="float:left">
+<input type="checkbox" value="0" id="tom-three8" name=""></input>
+        <label for="tom-three8"></label>
+    </div>
+Tom 3
+<br>
+</div>
  
 <!-- <option class = "midi-pos" onclick = "runTest();" ><i>midi</i></option> -->
 
@@ -351,8 +666,10 @@ jellyvibes</a>
 
 
 
-<!--   <div id="videos" muted="muted"></div>
-    <div id="videos"></div> -->
+  <div id="videos" muted="muted"></div>
+    <div id="videos"></div>
+
+<section class="experiment"></section>
 
 
 Horizontal: <input type="text" id="rowx" placeholder="Horizontal" style="align: center">
@@ -363,7 +680,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
   <div id="gpscontainer">
   	<div id="dropcontainer"></div>
 
-  	<div id="instruments">
+<!--   	<div id="instruments">
 	<p>Jazz Drums</p>
 	<div>
 		<div id="ss1" data-class="sample" data-sound="kick" class="draggable" data-type="drum" data-instrument = "jazzdrums"  data-frequency = "" data-noteIndex = "5">
@@ -443,7 +760,7 @@ Vertical: <input type="text" id="rowy" placeholder="Vertical" style="align: cent
 	</div>
 
 </div>
-  </div>
+  </div> -->
 
 
 
@@ -502,195 +819,12 @@ style="border:1px solid #040870;">
 
 
 
-
-
-
-
-
-
-
-<object id="plugin0" type="application/x-sjc" width="0" height="0">
-    <param name="onload" value="soundcardProbe" />
-</object><br />
-
- <form name="sjForm"> 
-<h2>Local soundcard and network section</h2>
-<table>
-  <tr>
-    <td width="180">Soundcard-Input: </td>
-      <td width="300"><select name="soundcardInput" onChange="restartSoundcard()">
-            <option></option>
-          </select>
-        <input name="mute" type="button" value="mute" onClick="javascript:muteLocalSound()">
-        <input name="unmute" type="button" value="unmute" onClick="javascript:unmuteLocalSound()">
-        <br></td>
-  </tr>
-  <tr>
-    <td>Soundcard-Output:</td>
-    <td><select name="soundcardOutput" onChange="restartSoundcard()">
-          <option></option>
-        </select></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input name="audioRefresh" type="button" value="Refresh list" onClick="javascript:refreshAudioDeviceList()"></td>
-  </tr>
-  <tr>
-    <td>Audio-Channels:</td>
-    <td><select name="audioChannels" onChange="restartSoundcard()">
-          <option selected="selected">1</option>
-          <option>2</option>
-        </select></td>
-  </tr>
-  <tr>
-    <td>Soundcardbuffer size:</td>
-    <td><select name="soundcardBufferSize" size="1" onChange="networkPacketChanger(),restartSoundcard()"> --><!--UNOBTRUSIVE JS ! -->
-          <option>64</option>
-          <option>128</option>
-          <option>256</option>
-          <option selected="selected">512</option>
-        </select></td>
-  </tr>
-  <tr>
-    <td>Level:</td>
-    <td><input type="range" name="localVolume" min="0" max="1" value="0" step="0.1" onChange="setLocalVolume(this.value)" />
-  </tr>
-    
-  <tr>
-     <td>&nbsp;</td>
-    <td><input name="audioStart" type="button" value="Restart" onClick="javascript:restartSoundcard()">
-      <input name="audioStop" type="button" value="Stop" onClick="javascript:stopAudioDevice()"></td>
-  </tr>
-
-  <tr>
-     <td><input name="getExternalIPAndPort" type="button" value="External IP and Port" onClick="javascript:goForExternalIPAndPort()"></td>
-     <td><input type="text" name="localIP" value="IP=127.0.0.1" disabled/></td>
-  </tr>
-   
-  <tr>
-     <td>&nbsp;</td>
-     <td><input type="text" name="localPort" value="Port=4401" disabled/></td>
-  </tr>
-</table>
-
-<br>
-
-<!-- already commented!! -->
-
-<!--LOCAL NETWORK SECTION
-<table width="400" border="1"/>
-  <tr>
-    <td>bind to port:</td>
-    <td><input type="text" name="bindPort" value="4401"/></td>
-  </tr>
-    <tr>
-      <td><input name="bindButton" type="button" value="bind" onClick="javascript:bind()"/></td>
-      <td></td>
-  </tr>
-</table>
-
-<br>
--->
-
-<!-- end of already commmented! -->
-
-<h2>Sender section</h2>
-<table>
-  <tr>
-    <td width=180>UDP/IP Packetsize: </td>
-    <td width=300><select name="IP" size="1" disabled>
-          <option>64</option>
-          <option>128</option>
-          <option>256</option>
-          <option selected="selected">512</option>
-        </select></td>
-  </tr>
-  <tr>
-    <td>Codec quality:</td>
-    <td><select name="codecQuality" onChange="javascript:changeStreamSettings()">
-          <option>OPUS 24 kbps</option>
-          <option>OPUS 48 kbps</option>
-          <option selected="selected">OPUS 96 kbps</option>
-          <option>OPUS 192 kbps</option>
-          <option>linear 768 kbps</option>
-        </select></td>
-  </tr>
-  <tr>
-    <td>IP-Address:</td>
-      <td><input type="text" name="sendIPAddress" value="127.0.0.1"/></td>
-  </tr>
-  <tr>
-    <td>Port:</td>
-    <td><input type="text" name="sendPort" value="4401"/></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><input name="netStreamStart" type="button" value="Start Net Stream" onClick="javascript:startNetStream()" />
-      <input name="netStreamStop" type="button" value="Stop Net Stream" onClick="javascript:stopNetStream()" /></td>
-  </tr>
-</table>
-
-<br>
-
-<h2>Receiver section</h2>
-<table>
-  <tr>
-    <td width=180>Buffersize: </td>
-    <td width=300>
-        <select name="networkBufferSize" onChange="javascript:setReceiverBufferSize()">
-          <option>1</option>
-          <option selected="selected">2</option>
-          <option>3</option>
-          <option>4</option>
-        </select>
-         <input type="text" width=50 name="dropout" id="dropout" disabled>
-    </td>   
-  </tr>
- 
-  <tr>
-    <td>Delay:</td>
-    <td><input type="text" name="delay" id="delay" disabled></td>
-  </tr>
- 
-  <tr>
-    <td>Level:</td>
-    <td><input name="remoteVolume" type="range" min="0" max="1" value="0" step="0.1" onChange="setRemoteVolume(this.value)" /></td> 
-  </tr>
-  <tr>
-</table>
-
-</form>
-
-<br>
-
-<!-- HIER WERDEN DIE FB-STANDARD FUNKTIONEN VERLINKT    
-<a href="#" onClick="javascript:pluginValid()">Click me!</a> <br />
-<a href="#" onClick="javascript:addTestEvent()">Activate click counter</a> <br />
-<a href="#" onClick="javascript:testEvent()">Fire a test event</a> <br />
---> 
-
-
-
-<input type="checkbox" id="kick1"></input>
-<input type="checkbox" id="kick2"></input>
-<input type="checkbox" id="kick3"></input>
-<input type="checkbox" id="kick4"></input>
-<input type="checkbox" id="kick5"></input>
-<input type="checkbox" id="kick6"></input>
-<input type="checkbox" id="kick7"></input>
-
-
-
-
-
-
-
 <script src="jui/external/jquery/jquery.js"></script>
 <script src="jui/jquery-ui.min.js"></script>
 <script src="jui/jquery.knob.js"></script>
 <script src="jui/jcanvas.min.js"></script>
 
-         <script src="js/soundjack.js"></script>
+         <!-- <script src="js/soundjack.js"></script> -->
 		 <script src="js/pjv.js"></script>
 		 <script src="js/WebMIDIAPI.js"></script>
 		 <script src="js/tuna.js"></script>
@@ -699,16 +833,18 @@ style="border:1px solid #040870;">
 		 <script src="js/mainHandle.js"></script>
 		 <script src="js/bufferloader.js"></script>
 		 <script src="js/clientindex.js"></script>
+         <script src="js/midi.js"></script>
 		 <script src="js/scriptVisu4.js"></script>
 		 <script src="js/dataProcess.js"></script>
 		 <script src="js/synth.js"></script>
 		 <script src="js/effects.js"></script>
-		 <!-- <script src="js/video.js"></script> -->
+		 <!-- // <script src="js/video.js"></script> -->
 		 <script src="js/instrumentChange.js"></script>
 		 <script src="js/ping.js"></script>
 		 <script src="js/audioTest.js"></script>
 		 <script src="js/sampleMapping.js"></script>
          <script src="js/recording.js"></script>
+         <script src="js/sequencer.js"></script>
          <script src="js/loops.js"></script>
 		 <script src="js/metronome.js"></script>
 		 <script src="js/audioTest.js"></script>

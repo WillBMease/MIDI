@@ -3,7 +3,8 @@ body,html {
   padding: 0;
   margin: 0;
   font-family: Arial;
-  background-color: #202020;
+  /*background-color: #202020;*/
+  background-color: #FFFFFF;
   color: #444;
   font-size: 15px;
   line-height: 18px;
@@ -142,4 +143,18 @@ form {
   width: 20%;
 
 
+}
+
+.experiment {
+    border: 1px solid rgb(189, 189, 189);
+    margin: 1em 3em;
+    border-radius: .2em;
+}
+
+.experiment .header {
+    padding: .2em .4em;
+}
+
+.experiment .description {
+    padding: .8em 1.4em;
 }

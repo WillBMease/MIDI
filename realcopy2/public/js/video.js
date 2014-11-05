@@ -21,6 +21,21 @@ $(function(){
   $('#end').bind('click', endCall);
 });
 
+// getLocalVideo()
+
+
+// **************************************************
+// **************************************************
+// **************************************************
+
+
+
+// **************************************************
+// **************************************************
+// **************************************************
+
+
+
 
 
 // Call/Video Management
@@ -28,10 +43,11 @@ function getLocalVideo() {
   navigator.getUserMedia({audio: true, video: true}, function(stream){
 
     console.log("Local video streaming");
-    $('#videos').append("<video id='" + peer.id + "' autoplay muted:'true' volume:'0'></video>");
+    $('#videos').append("<video id='" + peer.id + "' autoplay muted:'false' volume:'0'></video>");
     $('#' + peer.id).prop('src', URL.createObjectURL(stream));
    
 stream.getAudioTracks()[0].enabled = false
+
 
     $(document).keydown(function(e){
       if (e.which == 32){

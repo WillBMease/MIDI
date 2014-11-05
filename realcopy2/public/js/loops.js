@@ -1,4 +1,13 @@
-var loop1 = [4, 7, 4, 7, 2, 5, 5]
+var crash = 2,
+    kick = 4,
+    hihat = 6,
+    ride = 8,
+    snare = 12,
+    tom1 = 14,
+    tom3 = 15,
+    tom2 = 16;
+
+var loop1 = [kick, hihat, kick, hihat, crash, snare, snare]
 var rhythm1 = [0, 0, 500, 0, 500, 0, 500]
 loopingActive = true
 var loopMsg = []
@@ -50,22 +59,11 @@ function playLoop(position)
 console.log(position)
 	if(position < loop1.length) {
     	startTime = now
-    	// console.log(drumloop[position][5])
-
-
-	// transpose(0, drumloop[position][0]);
-	// var check = keyboardMap(drumloop[position][0]) ;
-
-	 // mappedKey = keyboardMap(drumloop[position][0]  + (octave[0]*12));
-	
-  // console.log(mappedKey)
-
 
 	var source1 = context.createBufferSource();
   var note = drumloop[position][0];
 
     source1.buffer = noteNode[6][note];
-console.log("play")
     source1.connect(bus[0].input);
     source1.start(startTime);
 
@@ -96,5 +94,4 @@ console.log("play")
 	else{
 		position = 0
 	}
-
 }
