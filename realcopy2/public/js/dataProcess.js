@@ -364,7 +364,11 @@ console.log(data[0])
       playLoop(0)
     }
 
-    // else if (data[1])
+    else if (data[1] == "21"){
+      if (data[2] == '1'){
+      startSequencer()
+      }
+    }
 
 
     });

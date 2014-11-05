@@ -58,25 +58,45 @@
   var schedule = 0
   var drumMsg = []
 
+  var thebeat = []
+
+  for (var x = 0 ; x < 8 ; x++){
+    thebeat[i] = []
+        for (var y = 0 ; y < 8 ; y++){
+            thebeat[i]
+        }
+  }
+
  $('#sequencer').click(function(){
 if (!sequencerActive) {
     sequencerActive = true
-    // setInterval(function(){
+    setTimeout(function(){
     refreshSequencer = setInterval(playSequencer, bpmSeq);
-// }, 25)
+}, 25)
 
-    // drumMsg[0] = 21
-    // drumMsg[1] = 21
-    // drumMsg[2] = 1
+    drumMsg[0] = 21
+    drumMsg[1] = 21
+    drumMsg[2] = 1
 
-    // for (var i = 1 ; i < userLimit ; i++){
-    //     if (user[i] != 0) {
-    //         for (var x = 0 ; x < 3 ; x++)
-    //             user[i].send(drumMsg);
-    //     }
-    //   }   
+    for (var i = 1 ; i < userLimit ; i++){
+        if (user[i] != 0) {
+            for (var x = 0 ; x < 3 ; x++)
+                user[i].send(drumMsg);
+        }
+      }   
     }
 
+else if (sequencerActive) {
+    sequencerActive = false
+    clearInterval(refreshSequencer)
+    }
+})
+
+function startSequencer(){
+if (!sequencerActive) {
+    sequencerActive = true
+    refreshSequencer = setInterval(playSequencer, bpmSeq);
+    }
 else if (sequencerActive) {
     sequencerActive = false
     clearInterval(refreshSequencer)
