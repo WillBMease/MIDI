@@ -26,7 +26,7 @@ for (var i = 0 ; i < userLimit ; i++) {
   // the key connects the peer to the server that does the handshake
   //var peer = new Peer(randID, {key: 'lwjd5qra8257b9', debug: true});
 
-var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
+// var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
 
   //   var peer = new Peer(userID, {
   //           host: "54.191.34.54",
@@ -37,18 +37,18 @@ var peer = new Peer(userID, {key: 'lwjd5qra8257b9'});
 
 // setTimeout(function(){
 
-// var peer = new Peer(userID, {
-//           host: "54.191.34.54",
-//           port: 9000,
-//           path: '/peerjs-server',
-//           config: {
-//             'iceServers': [
-//             { url: 'stun:54.186.225.6:3478' },
-//             { url: 'turn:54.186.225.6:3478',
-//               credential: 'jvsecretkey',
-//               realm: 'jvturn'
-//             }]}
-// });
+var peer = new Peer(userID, {
+          host: "54.191.34.54",
+          port: 9000,
+          path: '/peerjs-server',
+          config: {
+            'iceServers': [
+            { url: 'stun:54.186.225.6:3478' },
+            { url: 'turn:54.186.225.6:3478',
+              credential: 'jvsecretkey',
+              realm: 'jvturn'
+            }]}
+});
 
   //    var peer = new Peer(userID, {
   //           host: "54.191.34.54",
