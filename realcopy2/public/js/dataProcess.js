@@ -355,8 +355,6 @@ console.log(data[0])
       else if (data[3] == '3')
         oscVol3[index] = data[4]
     }
-
-
    }
 
    else if (data[1] == "20"){ 

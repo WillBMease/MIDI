@@ -58,14 +58,124 @@
   var schedule = 0
   var drumMsg = []
 
+  var trueBeat = []
+
+for (var x = 0 ; x < 8 ; x++){
+    trueBeat[x] = []
+    for (var y = 0 ; y < 8 ; y++){
+        trueBeat[x][y] = []
+    }
+    for (var y = 0 ; y < 8 ; y++){
+        trueBeat[x][0] = trueCrash[x]
+        trueBeat[x][1] = trueKick[x]
+        trueBeat[x][2] = trueHihat[x]
+        trueBeat[x][3] = trueRide[x]
+        trueBeat[x][4] = trueSnare[x]
+        trueBeat[x][5] = trueTom1[x]
+        trueBeat[x][6] = trueTom2[x]
+        trueBeat[x][7] = trueTom3[x]
+    }
+}
+
+
+
+  // thebeat[note position][drum hit][true/false]
   var thebeat = []
 
   for (var x = 0 ; x < 8 ; x++){
-    thebeat[i] = []
+    thebeat[x] = []
         for (var y = 0 ; y < 8 ; y++){
-            thebeat[i]
+            thebeat[x][y] = []
+            thebeat[x][y][0] = trueBeat[0][y][x]
+            if (trueBeat[0][y][x] == 1){
+                assignDrum(x+1, y)
+            }
         }
   }
+
+  function clearDrumGrid(){
+    
+for (var x = 0 ; x < 8 ; x++){
+    if (x == 0){
+        chosenDrum = "#crash"
+    }
+    else if (x == 1){
+        chosenDrum = "#kick"
+    }
+    else if (x == 2){
+        chosenDrum = "#hihat"
+    }
+    else if (x == 3){
+        chosenDrum = "#ride"
+    }
+    else if (x == 4){
+        chosenDrum = "#snare"
+    }
+    else if (x == 5){
+        chosenDrum = "#tom-one"
+    }
+    else if (x == 6){
+        chosenDrum = "#tom-two"
+    }
+    else if (x == 7){
+        chosenDrum = "#tom-three"
+    }
+  for (var y = 0 ; y < 8 ; y++){
+    var temp = chosenDrum + "" + (y+1)
+    $(temp).prop('checked', false);
+  }
+}
+  }
+
+  function changeDrumBeat(which){
+    clearDrumGrid()
+
+    if (which == "Beat 1"){
+        for (var x = 0 ; x < 8 ; x++){
+            for (var y = 0 ; y < 8 ; y++){
+                if (trueBeat[0][y][x] == 1)
+                    assignDrum(x+1, y)
+            }
+        }
+    }
+    else if (which == "Beat 2"){
+        for (var x = 0 ; x < 8 ; x++){
+            for (var y = 0 ; y < 8 ; y++){
+                if (trueBeat[1][y][x] == 1)
+                    assignDrum(x+1, y)
+            }
+        }
+    }
+  }
+
+function assignDrum(p, which){
+    var chosenDrum
+    if (which == 0){
+        chosenDrum = "#crash"+p
+    }
+    else if (which == 1){
+        chosenDrum = "#kick"+p
+    }
+    else if (which == 2){
+        chosenDrum = "#hihat"+p
+    }
+    else if (which == 3){
+        chosenDrum = "#ride"+p
+    }
+    else if (which == 4){
+        chosenDrum = "#snare"+p
+    }
+    else if (which == 5){
+        chosenDrum = "#tom-one"+p
+    }
+    else if (which == 6){
+        chosenDrum = "#tom-two"+p
+    }
+    else if (which == 7){
+        chosenDrum = "#tom-three"+p
+    }
+    $(chosenDrum).prop('checked', true);
+}
 
  $('#sequencer').click(function(){
 if (!sequencerActive) {
@@ -101,7 +211,7 @@ else if (sequencerActive) {
     sequencerActive = false
     clearInterval(refreshSequencer)
     }
-})
+}
 
  $("#bpm").change(function() {
     bpmSeq = $(this).val();
