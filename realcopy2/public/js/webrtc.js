@@ -108,6 +108,7 @@ for (var i = 1 ; i < userLimit ; i++) {
     // Connect to a peer
 
     $('#connect').click(function(){
+      console.log(peer)
       var c = peer.connect($('#rid').val());
       console.log('this is a TEST: ' + c)
       c.on('open', function(){
